@@ -117,7 +117,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/Install-Yahei-Consolas-Hybrid-font-in-linux-mint.html">
+    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/some-points-while-doing-leetcode-problems-by-java.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -130,7 +130,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/Install-Yahei-Consolas-Hybrid-font-in-linux-mint.html" class="post-title-link" itemprop="url">Install Yahei Consolas Hybrid font in linux mint</a>
+          <a href="/posts/some-points-while-doing-leetcode-problems-by-java.html" class="post-title-link" itemprop="url">Some points while doing leetcode problems by Java</a>
         </h2>
 
         <div class="post-meta-container">
@@ -141,16 +141,7 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2020-04-16 16:18:51" itemprop="dateCreated datePublished" datetime="2020-04-16T16:18:51+08:00">2020-04-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Linux-mint/" itemprop="url" rel="index"><span itemprop="name">Linux mint</span></a>
-        </span>
+      <time title="Created: 2021-03-04 21:22:46" itemprop="dateCreated datePublished" datetime="2021-03-04T21:22:46+08:00">2021-03-04</time>
     </span>
 
   
@@ -163,33 +154,52 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>由于刚刚安装的Linux mint终端中的中文字体显示为<strong>楷体</strong>，但是这个楷体在终端中显示有些问题：字与字之间空隙很大。所以就打算换一款字体。</p>
-<hr>
-<!-- toc -->
+          <ol>
+<li><p><code>public char[] toCharArray()</code>: 将字符串转换为字符数组。</p>
+</li>
+<li><p><code>Arrays.sort(int[] a)</code></p>
+</li>
+<li><p><code>valueOf</code></p>
+</li>
+<li><p><code>Map.values()</code>: 获得map的全部值</p>
+</li>
+<li><p><code>Map.keySet()</code>: 获得map的全部键</p>
+</li>
+<li><p>遍历字符串中的字符</p>
+<p>背景: 使用foreach语法遍历字符串，但是出现了下面这个错误</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foreach not applicable to expression type</span><br></pre></td></tr></table></figure>
 
-<hr>
-<h3 id="1-字体介绍及下载"><a href="#1-字体介绍及下载" class="headerlink" title="1 | 字体介绍及下载"></a>1 | 字体介绍及下载</h3><p>关于<code>Yahei Consolas Hybrid</code>这个字体我是从<a target="_blank" rel="noopener" href="https://forum.ubuntu.org.cn/viewtopic.php?p=1312510">怎样修改终端字体</a>这篇文章中发现的。关于这款字体linux公社有一篇文章[^1]，其中有这样一段描述:</p>
+<p>但是也不知道为什么错误。</p>
+<p>搜索了一下，有三种方法</p>
+<ol>
+<li><p>第一种，将字符串转换成字符数组，然后使用foreach</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span>[] charArray = str.toCharArray();</span><br></pre></td></tr></table></figure></li>
+<li><p>第二种，使用charAt(index)</p>
+</li>
+<li><p>第三种，使用substr()</p>
+</li>
+</ol>
 <blockquote>
-<p>Consolas雅黑混合字体是什么？？Consolas是一种专门为编程人员设计的字体,这一字体的特性是所有字母、数字与符号均能非常容易辨认！而且所有字符都具有相同的宽度，让编程人员看着更舒服，当然在打个人和商业信函的时候，用这个字体也是不错的选择，这一字体还专门为ClearType做了优化，可以让它更舒适地展示在屏幕上。</p>
+<p>个人感觉还是第一种更好用。</p>
 </blockquote>
-<p>这款字体的下载链接在这里[^2]。</p>
-<h3 id="2-字体的安装"><a href="#2-字体的安装" class="headerlink" title="2 | 字体的安装"></a>2 | 字体的安装</h3><p>将<code>YaHei.Consolas.1.11b.rar</code>解压，得到<code>YaHei.Consolas.1.11b.ttf</code>。</p>
-<p>之后在linux mint 系统字体文件夹中建立对应的字体文件夹</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /usr/share/fonts/vista</span><br></pre></td></tr></table></figure>
-<p>复制字体文件到对应的文件夹下</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp YaHei.Consolas.1.11b.ttf /usr/share/fonts/vista</span><br></pre></td></tr></table></figure>
-<p>更改字体文件权限</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 644 /usr/share/fonts/vista/YaHei.Consolas.1.11b.ttf</span><br></pre></td></tr></table></figure>
-<p>刷新并安装字体</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkfontscale &amp;&amp; sudo mkfontdir &amp;&amp; sudo fc-cache -fv</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-安装之后设置字体"><a href="#3-安装之后设置字体" class="headerlink" title="3 | 安装之后设置字体"></a>3 | 安装之后设置字体</h3><p>在mint的左下角<code>Menu</code>中搜索<code>appearance</code>，打开。如下边这个界面</p>
-<p><img src="/posts/Install-Yahei-Consolas-Hybrid-font-in-linux-mint/Appearance_Preferences_001.png" alt="Appearance Preferences_001"><br>在这里面可以设置应用字体，文档字体，桌面字体，窗口标题字体等等。</p>
-<p>下面设置<strong>终端字体</strong><br>打开终端，在终端左上角<code>Edit -&gt; Profiles</code>，打开</p>
-<p><img src="/posts/Install-Yahei-Consolas-Hybrid-font-in-linux-mint/Profiles_002.png" alt="Profiles_002"><br>点击右边的<code>Edit</code>, 就可以在<code>General</code>界面下的<code>font</code>进行选择字体了，在其中选择我们之前已经安装好了的Yahei Consolas Hybrid字体即可。</p>
-<p><img src="/posts/Install-Yahei-Consolas-Hybrid-font-in-linux-mint/Editing_Profile_Default_004.png" alt="Editing_Profile_Default_004"></p>
-<h3 id="全部参考文档"><a href="#全部参考文档" class="headerlink" title="全部参考文档"></a>全部参考文档</h3><p>[1] <a target="_blank" rel="noopener" href="https://forum.ubuntu.org.cn/viewtopic.php?p=1312510">怎样修改终端字体</a><br>[2] <a target="_blank" rel="noopener" href="https://www.linuxidc.com/Linux/2011-08/40747.htm">Consolas雅黑混合版yahei consolas hybrid编程字体下载</a><br>[3] <a target="_blank" rel="noopener" href="https://linux.linuxidc.com/linuxconf/download.php?file=Li9saW51eGZpbGVzL3B1Yi9PdGhlci/X1szlL0NvbnNvbGFz0cW62rvsus+w5nlhaGVpIGNvbnNvbGFzIGh5YnJpZLHgs8zX1szlz8LU2C8lNUJMaW51eElEQy5jb20lNURZYUhlaS5Db25zb2xhcy4xLjExYi5yYXI=">下载yahei consolas hybrid字体</a><br>[4] <a target="_blank" rel="noopener" href="https://www.cnblogs.com/MonkeyF/archive/2013/05/13/3076466.html">Linux下设置雅黑-Consolas混合字体</a><br>[5] <a target="_blank" rel="noopener" href="https://www.iteye.com/blog/fooler5-2406227">ubuntu安装微软雅黑和Consolas字体</a></p>
-<p>[^1]: <a target="_blank" rel="noopener" href="https://www.linuxidc.com/Linux/2011-08/40747.htm">Consolas雅黑混合版yahei consolas hybrid编程字体下载</a><br>[^2]: <a target="_blank" rel="noopener" href="https://linux.linuxidc.com/linuxconf/download.php?file=Li9saW51eGZpbGVzL3B1Yi9PdGhlci/X1szlL0NvbnNvbGFz0cW62rvsus+w5nlhaGVpIGNvbnNvbGFzIGh5YnJpZLHgs8zX1szlz8LU2C8lNUJMaW51eElEQy5jb20lNURZYUhlaS5Db25zb2xhcy4xLjExYi5yYXI=">下载yahei consolas hybrid字体</a></p>
+</li>
+<li><p><code>set</code>是一个抽象接口，不能直接new一个set对象。</p>
+<ul>
+<li><code>set.add()</code>: 向集合中添加元素。</li>
+<li><code>set.contains()</code>: 判断集合中是否包含某一元素。</li>
+</ul>
+</li>
+<li><p>将entry对象放入hashmap中</p>
+<p><code>hashmap.put(k, v)</code></p>
+</li>
+<li><p>HashMap不能使用基本数据类型。</p>
+</li>
+<li><p>map获得值</p>
+<p>map.get(key)</p>
+</li>
+<li><p>初始化一个double数组</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span>[] d = <span class="keyword">new</span> <span class="keyword">double</span>[<span class="number">10</span>];</span><br></pre></td></tr></table></figure></li>
+</ol>
 
       
     </div>
@@ -216,7 +226,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/install-linux-mint-in-vmware-and-other-preparations.html">
+    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/some-basics-of-java.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -229,7 +239,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/install-linux-mint-in-vmware-and-other-preparations.html" class="post-title-link" itemprop="url">Install linux mint in vmware and other preparations</a>
+          <a href="/posts/some-basics-of-java.html" class="post-title-link" itemprop="url">Some basics of Java</a>
         </h2>
 
         <div class="post-meta-container">
@@ -240,7 +250,7 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2020-04-16 11:40:57" itemprop="dateCreated datePublished" datetime="2020-04-16T11:40:57+08:00">2020-04-16</time>
+      <time title="Created: 2021-03-04 21:16:25" itemprop="dateCreated datePublished" datetime="2021-03-04T21:16:25+08:00">2021-03-04</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -248,7 +258,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Linux-distribution/" itemprop="url" rel="index"><span itemprop="name">Linux distribution</span></a>
+          <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
         </span>
     </span>
 
@@ -262,33 +272,39 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>因为想要将Hexo博客的书写单独分离出一个生产环境，这样之后如果宿主操作系统更换之后博客的环境就不用再次安装了，因此昨天晚上在VMware虚拟机中安装了Linux mint（之前一直使用的桌面是Ubuntu16.04），今天来写一个安装过程以及安装好之后的一些准备工作。</p>
+          <p>[toc]</p>
 <hr>
-<!-- toc -->
+<h2 id="JDBC编程六步"><a href="#JDBC编程六步" class="headerlink" title="JDBC编程六步"></a>JDBC编程六步</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1. 注册驱动</span><br><span class="line">  &gt; 作用:告诉Java程序,即将要连接的是哪个品牌的数据库.</span><br><span class="line">2. 获取连接</span><br><span class="line">  &gt; 表示JVM的进程和数据库进程之间的通道打开了.属于进程间通信.</span><br><span class="line">3. 获取数据库操作对象（专门执行sql语句的对象)</span><br><span class="line">4. 执行SQL语句</span><br><span class="line">  &gt; jdbc中sql语句不需要写分号.</span><br><span class="line">5. 处理查询结果集</span><br><span class="line">  &gt; 只有当第四步执行的是select语句时,才有第五步.</span><br><span class="line">6. 释放资源</span><br></pre></td></tr></table></figure>
 
-<hr>
-<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1 | 安装"></a>1 | 安装</h2><p>下载<a target="_blank" rel="noopener" href="https://www.linuxmint.com/edition.php?id=276">Linux mint镜像文件</a>，这里我下载的是<code>MATE</code>，官网可能下载的有些慢，可以使用<code>xdm</code>进行下载。<br>下载之后就可以使用虚拟机了，之后的安装步骤就不多说了，一些简单的步骤。</p>
-<h2 id="2-下载之后的使用"><a href="#2-下载之后的使用" class="headerlink" title="2 | 下载之后的使用"></a>2 | 下载之后的使用</h2><h3 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h3><h3 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install vim</span><br><span class="line">sudo apt install vim-gtk</span><br></pre></td></tr></table></figure>
-<p>注意将vim的桌面版本也下载上，不然可能vim的终端版本的<code>clipboard</code>没有安装上，使用<code>$vim version | grep &quot;clipboard&quot;</code>进行查看，如果有<code>+clipboard</code>即表示已经安装上。</p>
-<h3 id="git"><a href="#git" class="headerlink" title="git"></a>git</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install git</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 6步</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.Statement;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JDBCTest01</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Connection conn = <span class="keyword">null</span>;</span><br><span class="line">		Statement stmt = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">// 1 注册驱动</span></span><br><span class="line">			DriverManager.registerDriver(<span class="keyword">new</span> com.mysql.cj.jdbc.Driver());</span><br><span class="line">			<span class="comment">// 2 获取连接</span></span><br><span class="line">			<span class="comment">//   jdbc:mysql:// 协议</span></span><br><span class="line">			String url = <span class="string">&quot;jdbc:mysql://127.0.0.1:3306/database_name&quot;</span>;</span><br><span class="line">			String user = <span class="string">&quot;xxx&quot;</span>;</span><br><span class="line">			String passward = <span class="string">&quot;xxxxxx&quot;</span>;</span><br><span class="line">			conn = DriverManager.getConnection(url, user, passward);</span><br><span class="line"></span><br><span class="line">			System.out.println(<span class="string">&quot;数据库连接对象&quot;</span> + conn);</span><br><span class="line">			<span class="comment">// 3 获取数据库操作对象</span></span><br><span class="line">			stmt = conn.createStatement();</span><br><span class="line">			<span class="comment">// 4 执行SQL语句</span></span><br><span class="line"></span><br><span class="line">			String sql = <span class="string">&quot;insert into city(city_id, city_name, country_id) values(5, &#x27;Japan&#x27;, 3);&quot;</span>;</span><br><span class="line">			<span class="comment">// 专门执行DML语句(insert, delete, update)</span></span><br><span class="line">			<span class="comment">// 返回值是影响数据库中的记录条数</span></span><br><span class="line">			<span class="keyword">int</span> count = stmt.executeUpdate(sql);</span><br><span class="line">			System.out.println(count == <span class="number">1</span> ? <span class="string">&quot;保存成功&quot;</span> : <span class="string">&quot;保存失败&quot;</span>);</span><br><span class="line">			<span class="comment">// 5 处理查询结果集</span></span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">			<span class="comment">// 6 释放资源</span></span><br><span class="line">			<span class="comment">// 从小到大依次关闭</span></span><br><span class="line">			<span class="comment">// 分别对其try...catch</span></span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				<span class="keyword">if</span> (stmt != <span class="keyword">null</span>) &#123;</span><br><span class="line">					stmt.close();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				<span class="keyword">if</span> (conn != <span class="keyword">null</span>) &#123;</span><br><span class="line">					conn.close();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h3 id="tmux"><a href="#tmux" class="headerlink" title="tmux"></a>tmux</h3><h3 id="输入法"><a href="#输入法" class="headerlink" title="输入法"></a>输入法</h3><h3 id="离线安装nodejs-1"><a href="#离线安装nodejs-1" class="headerlink" title="离线安装nodejs^1"></a>离线安装nodejs<a href="%5BLinux%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85node%5D(https://www.jianshu.com/p/7bef118592c3)">^1</a></h3><p>nodejs是hexo运行所必须的环境，下载<a target="_blank" rel="noopener" href="https://cdn.npm.taobao.org/dist/node/v12.16.2/node-v12.16.2-linux-x64.tar.xz">nodejs</a></p>
-<p>下载完毕后，解压，并将解压后的文件夹移入自己的某个文件夹中，这里我将文件夹放置在<code>/usr/local/lib/nodejs</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /usr/local/lib/nodejs</span><br><span class="line">sudo tar -xJvf node-xxx-xxx.tar.xz -C /usr/local/lib/nodejs</span><br><span class="line">sudo mv /usr/local/lib/nodejs/node-xxx-xxx /usr/local/lib/nodejs/node-xxx # 更改名称</span><br></pre></td></tr></table></figure>
+<p>注册驱动的第二种方式:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class.forName(<span class="string">&quot;com.mysql.cj.jdbc.Driver&quot;</span>);</span><br></pre></td></tr></table></figure>
 
-<p>设置环境变量，在<code>/etc/profile</code>中，在文件最后添加</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Nodejs</span><br><span class="line">export NODEJS_HOME=/usr/local/lib/nodejs/node-xxx/bin  # xxx是版本号</span><br><span class="line">export PATH=$NODEJS_HOME:$PATH</span><br></pre></td></tr></table></figure>
-
-<p>刷新文件配置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">. /etc/profile</span><br></pre></td></tr></table></figure>
-
-<p>测试</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm version</span><br></pre></td></tr></table></figure>
-
-<p>创建sudo链接</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s /usr/local/lib/nodejs/node-xxx/bin/node /usr/bin/node</span><br><span class="line">sudo ln -s /usr/local/lib/nodejs/node-xxx/bin/npm /usr/bin/npm</span><br><span class="line">sudo ln -s /usr/local/lib/nodejs/node-xxx/bin/npx /usr/bin/npx</span><br></pre></td></tr></table></figure>
-
-<h3 id="其它一些配置"><a href="#其它一些配置" class="headerlink" title="其它一些配置"></a>其它一些配置</h3><p><strong>将caps lock映射为ctrl</strong></p>
+<p>这种方式较为常用,原因:</p>
+<p>参数是一个字符串,可以写到<code>xxx.properties</code>文件中.</p>
+<p>这种方法不需要返回值,我们只想用它的类加载动作.</p>
+<blockquote>
+<p>实际开发中不建议把连接数据库的信息写死到java程序中.</p>
+</blockquote>
+<p>注意:</p>
+<ol>
+<li>jdbc.properties不能用引号和空格,不然会报错.</li>
+</ol>
+<p>问题</p>
+<ol>
+<li><p>linux下java命令有，但是没有javac</p>
+<p>解决：没有安装jdk</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install openjdk-<span class="number">8</span>-jdk</span><br></pre></td></tr></table></figure></li>
+<li><p>jar包的安置</p>
+<blockquote>
+<p>不推荐在系统环境变量中设置<code>classpath</code>,会污染系统环境</p>
+</blockquote>
+<p>在启动jvm时设置<code>classpath</code></p>
+<p>给javac/java命令传入<code>-classpath</code>或<code>-cp</code>参数</p>
+<p>默认<code>-cp</code>值是<code>.</code>,即当前目录.</p>
+</li>
+</ol>
 
       
     </div>
@@ -307,6 +323,838 @@
 
 
 
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/gdb-STL-pretty-print.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ongoing">
+      <meta itemprop="description" content="Good cooking takes time.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ongoing's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/gdb-STL-pretty-print.html" class="post-title-link" itemprop="url">gdb STL pretty printer</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-11-05 18:19:44" itemprop="dateCreated datePublished" datetime="2020-11-05T18:19:44+08:00">2020-11-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Debug/" itemprop="url" rel="index"><span itemprop="name">Debug</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>GDB: not easy to learn, but easy to use<br>:)</p>
+</blockquote>
+<p>gdb在打印普通变量时会有很好的作用，但是有时想要打印stl中的容器时，返回i的信息却并不怎么友好。</p>
+<p>例如在打印一个<code>map&lt;int, int&gt; mp;</code>中的变量<code>mp</code>时，在gdb中使用<code>print mp</code>返回的是如下的结果</p>
+<p><img src="/posts/gdb-STL-pretty-print/pretty_printer_1.png" alt="image-20201105183207331"></p>
+<p>这样的信息很杂，而一般在debug中重要的几点就是</p>
+<ol>
+<li>容器中元素个数</li>
+<li>容器中元素值</li>
+<li>容器元素类型</li>
+<li>…</li>
+</ol>
+<p>而上面这几项在返回的信息中很难寻找。</p>
+<p>经过一番搜索，我发现在gdb中可以使用python语言脚本，以及gdb内置的有一个名为<code>pretty printer</code>的东西，这个东西可以使得在gdb中打印容器时返回的信息是<strong>非常友好</strong>的！</p>
+<p>这是一篇关于gdb pretty printer的 <a target="_blank" rel="noopener" href="https://sourceware.org/gdb/wiki/STLSupport">GDB wiki STL support </a>，里边有三种方式，这里展示的是第一种方法。</p>
+<p>下面的是具体的实现步骤，经过这些步骤我们再次在gdb中打印容器时，返回的就不是一大堆杂乱的信息，而是一些重要的信息，如下</p>
+<p><img src="/posts/gdb-STL-pretty-print/pretty_printer_2.png" alt="image-20201105183935497"></p>
+<p>对不对，这样的信息是不是就清晰明了的许多呢？如同在ide中debug一样，并且不用使用鼠标点来点去，非常方便。</p>
+<ol>
+<li><p>使用<code>SVN</code>下载一个官方仓库</p>
+<ol>
+<li><p>先自己创建一个文件夹存放这个仓库，例如存放在<code>~/.gdb</code>下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/.gdb</span><br></pre></td></tr></table></figure></li>
+<li><p>在本文件夹下执行如下命令<br><em>如果没有svn，则需要先安装 Install svn(ubuntu):</em> <code>sudo apt-get install subversion</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn co svn://gcc.gnu.org/svn/gcc/trunk/libstdc++-v3/python</span><br></pre></td></tr></table></figure>
+
+<p>这条命令执行完毕后会发现<code>~/.gdb</code>目录下多了一个<code>python</code>文件夹。</p>
+</li>
+</ol>
+</li>
+</ol>
+<ol start="2">
+<li><p>在<code>~/.gdbinit</code>文件中书写如下内容(<code>.gdbinit</code>文件如不存在则自行创建)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">python</span><br><span class="line">import sys</span><br><span class="line">sys.path.insert(0, <span class="string">&#x27;python文件夹的绝对路径&#x27;</span>)</span><br><span class="line">from libstdcxx.v6.printers import register_libstdcxx_printers</span><br><span class="line">register_libstdcxx_printers (None)</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> <span class="built_in">print</span> pretty on <span class="comment"># 使格式更加美观</span></span><br></pre></td></tr></table></figure>
+
+<p><em>注：第三行中的路径需要根据自己clone下的python自行设定，例如如果根据我前面设定的就是<code>/home/你的用户名/.gdb/python</code></em></p>
+</li>
+</ol>
+<p>经过这两步后重新启动gdb即可。</p>
+<p>当然也可以自己书写python脚本对gdb进行各种设置，这样会更加贴切自己的使用体验。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/the-max-capacity-of-queue-that-is-simulated-by-two-stacks.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ongoing">
+      <meta itemprop="description" content="Good cooking takes time.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ongoing's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/the-max-capacity-of-queue-that-is-simulated-by-two-stacks.html" class="post-title-link" itemprop="url">The max capacity of queue that is simulated by two stacks</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-11-03 19:56:52" itemprop="dateCreated datePublished" datetime="2020-11-03T19:56:52+08:00">2020-11-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>今天在做面试题目的时候遇到了一道题：使用两个栈来模拟一个队列，栈1容量为m,栈2容量为n,且m&gt;n,<br>请问这个队列的最大容量是多少？</p>
+<p><img src="/posts/the-max-capacity-of-queue-that-is-simulated-by-two-stacks/capacity_1.png" alt="image-20201103200116463"></p>
+<p>初始状态: </p>
+<ul>
+<li>$S1.capacity() = m$</li>
+<li>$S2.capacity() = n$</li>
+<li>$Q.size() = 0$</li>
+</ul>
+<p>假设$S1$用作队列入队的存储空间，$S2$用作队列出对的缓存空间。</p>
+<ol>
+<li><p>假设现在队列Q进入$n$个元素，如下面这个状态</p>
+<p><img src="/posts/the-max-capacity-of-queue-that-is-simulated-by-two-stacks/capacity_2.png" alt="image-20201103200442800"></p>
+</li>
+<li><p>对应的，会在S1入栈$n$个元素</p>
+<p><img src="/posts/the-max-capacity-of-queue-that-is-simulated-by-two-stacks/capacity_3.png" alt="image-20201103200907645"></p>
+</li>
+<li><p>将S1中的元素全部出栈，这n个元素被放入栈S2中</p>
+<p><img src="/posts/the-max-capacity-of-queue-that-is-simulated-by-two-stacks/capacity_4.png" alt="image-20201103201054707"></p>
+</li>
+<li><p>假设现在再向队列Q中推入$n+1$个元素</p>
+<p><img src="/posts/the-max-capacity-of-queue-that-is-simulated-by-two-stacks/capacity_5.png" alt="image-20201103202002269"></p>
+</li>
+<li><p>对应的，向栈S1中入栈$n+1$个元素</p>
+<p><img src="/posts/the-max-capacity-of-queue-that-is-simulated-by-two-stacks/capacity_6.png" alt="image-20201103202138704"></p>
+</li>
+<li><p>此时进行出队操作，$E1\sim En$先出队列即：缓存栈S2中元素全部出栈</p>
+<p><img src="/posts/the-max-capacity-of-queue-that-is-simulated-by-two-stacks/capacity_7.png" alt="image-20201103202618941"></p>
+</li>
+<li><p>接下来继续出队</p>
+<ol>
+<li><p>先将S1中出栈n个元素到S2中</p>
+<p><img src="/posts/the-max-capacity-of-queue-that-is-simulated-by-two-stacks/capacity_8.png" alt="image-20201103203130423"></p>
+</li>
+<li><p>队列继续出栈</p>
+<ol>
+<li>$E_{n+1}$出队列，对应的栈$S1$出栈最后一个元素</li>
+<li>队列中元素En+2到E2n+1出队，对应栈S2出栈所有元素</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>从以上操作中可以看出两个栈模拟出的队列的最大容量为$\color{blue}{2n+1}$。再对队列入队的话，就不能得到正常出队序列了。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/gdb-basic-usage-and-some-useful-gdb-ui.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ongoing">
+      <meta itemprop="description" content="Good cooking takes time.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ongoing's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/gdb-basic-usage-and-some-useful-gdb-ui.html" class="post-title-link" itemprop="url">gdb basic usage and some useful gdb ui</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-10-24 20:31:14" itemprop="dateCreated datePublished" datetime="2020-10-24T20:31:14+08:00">2020-10-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Debug/" itemprop="url" rel="index"><span itemprop="name">Debug</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>写C或者C++程序时有时候发现出了问题，总是习惯于直接printf或者cout，如果观察的地方比较少，用这种方法还好，但是一旦需要观察的变量多了起来，就非常麻烦。写一大堆累赘的print语句很麻烦，而且会让自己的程序变得混乱。<br>知道gdb这个linux调试工具是很久之前的事情了，但是那个时候还是print流派（或者不想付出学习新事物的时间，觉得print还能应付）,但是现在因为需求的变化，在慢慢使用gdb的过程中，发现确实非常好用，也慢慢开始变得熟练了起来。</p>
+<!-- toc -->
+
+<hr>
+<h3 id="gdb的一些基本命令"><a href="#gdb的一些基本命令" class="headerlink" title="gdb的一些基本命令"></a>gdb的一些基本命令</h3><p>注意: <code>[]</code>中是可以省略输入的字母。</p>
+<ol>
+<li><p>设置断点：<code>b[reak] 行号</code></p>
+</li>
+<li><p>删除断点：<code>delete 断点id</code></p>
+</li>
+<li><p>删除所有断点: <code>delete</code></p>
+</li>
+<li><p>展示所有断点信息: <code>i[nfo] b[reakpoints]</code></p>
+</li>
+<li><p>注意想要使用gdb，在编译的时候需要在最后加上<code>-g</code>选项, 以便生成的程序中带有调试信息。</p>
+<p><code>gcc main.c -o main -g</code></p>
+</li>
+<li><p>运行程序: <code>r[un]</code></p>
+</li>
+<li><p>查看变量的值: <code>p[rint] 变量名</code></p>
+</li>
+<li><p>查看变量类型: <code>ptype 变量名</code></p>
+</li>
+<li><p>单步执行</p>
+<ol>
+<li><code>next</code> </li>
+<li><code>step</code><br>两者的区别是next遇到函数不会进入函数内部，step会执行到函数内部。</li>
+</ol>
+</li>
+<li><p>查看堆栈内容: <code>i[nfo] frame</code></p>
+</li>
+<li><p>查看栈帧： <code>backtrace</code></p>
+</li>
+<li><p>查看全局变量和静态变量：<code>info variables</code></p>
+</li>
+<li><p>查看当前stack frame局部变量:<code>info locals</code></p>
+</li>
+<li><p>查看当前stack frame参数：<code>info args</code></p>
+</li>
+<li><p>选取待debug文件: <code>file xxx</code></p>
+</li>
+<li><p>有时候debug跑过了我们想要的看的信息所在处，这个时候我们想要回退一下,gdb也有这个回退的功能:</p>
+</li>
+<li><p>run之后输入<code>record</code>命令启动记录回放</p>
+</li>
+<li><p>接下来就可以使用<code>reverse-next</code>…, 或者直接<code>rn</code></p>
+</li>
+<li><p>关闭进程记录回放: <code>reverse stop</code></p>
+</li>
+<li><p>执行到下一个断点: <code>continue</code>: resume execution and continue until a breakpoint is hit.</p>
+</li>
+</ol>
+<h3 id="gdb图形化界面"><a href="#gdb图形化界面" class="headerlink" title="gdb图形化界面"></a>gdb图形化界面</h3><h4 id="gdbtui"><a href="#gdbtui" class="headerlink" title="gdbtui"></a>gdbtui</h4><p>gdbtui是gdb自带的命令行界面。</p>
+<p>界面开启: <code>gdbtui -q 程序名</code></p>
+<p>默认情况下，GDB TUI 模式会显示 command 窗口和 source 窗口，如上图所示，还有其他窗口，如下列举的四个常用的窗口：</p>
+<p>（cmd）command 命令窗口，可以输入调试命令<br>（src）source 源代码窗口， 显示当前行、断点等信息<br>（asm）assembly 汇编代码窗口<br>（reg）register 寄存器窗口</p>
+<h4 id="cgdb"><a href="#cgdb" class="headerlink" title="cgdb"></a>cgdb</h4><ol>
+<li>比gdbtui更好的一点是对于源码会有高亮，而且界面更加光滑。</li>
+<li><img src="/posts/gdb-basic-usage-and-some-useful-gdb-ui/gdb_1.png" alt="image-20201018150646401"></li>
+</ol>
+<p>安装: <code>sudo apt-get install cgdb</code></p>
+<p>使用了vi的模式, 基本使用方法如下:</p>
+<ul>
+<li><code>esc</code>进入cgdb mode</li>
+<li><code>i</code>进入gdb mode</li>
+<li>在代码处窗口使用<code>空格</code>设置或取消断点</li>
+<li>调整窗口大小`:set winsplit=’style’</li>
+<li>退出<ul>
+<li><code>quit</code></li>
+<li><code>&lt;ctrl-d&gt;</code></li>
+</ul>
+</li>
+</ul>
+<p>在gdb中调试带有<code>scanf</code>语句时如同陷入了死循环，这个时候在cgdb中需要<br>    1. 按下<code>esc</code>后按下<code>T</code>，会出现一个新窗口，在这里面输入要输入的东西<br>    2. 然后再<code>esc</code>后<code>i</code>进入到<code>gdb mode</code>即可。</p>
+<h4 id="vim-gdb-best-of-all"><a href="#vim-gdb-best-of-all" class="headerlink" title="vim + gdb(best of all)"></a>vim + gdb(best of all)</h4><p>需要的环境:</p>
+<ul>
+<li>vim(v8.1+)</li>
+<li>gdb(v7.2+)</li>
+</ul>
+<p>这一篇是<a href="https://www.ongoing.ink/blog/posts/2020/10/install-gdb-version-9.2.html">安装gdb-9.2</a>的文章。</p>
+<p>这个用着的体验是三个中较好的一个，主要是窗口之间的联动很不错，刷新界面也很顺滑。</p>
+<center><i>(可放大观看)</i></center>
+
+<p><img src="/posts/gdb-basic-usage-and-some-useful-gdb-ui/vim_gdb.png" alt="vim_gdb"></p>
+<p>可以看到有三个窗口：</p>
+<ul>
+<li>源码窗口: 可以在源码窗口对应位置输入<code>:Break</code>打断点</li>
+<li>Debug窗口: 这里输入gdb命令进行各种查看</li>
+<li>I/O窗口: 当源码中有输入语句时，在这里进行输入</li>
+</ul>
+<h3 id="学习gdb的资源"><a href="#学习gdb的资源" class="headerlink" title="学习gdb的资源"></a>学习gdb的资源</h3><ol>
+<li><a target="_blank" rel="noopener" href="http://www.unknownroad.com/rtfm/gdbtut/">RMS’s gdb Debugger Tutorial</a>, 这个教程很简洁。</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/install-gdb-version-9.2.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ongoing">
+      <meta itemprop="description" content="Good cooking takes time.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ongoing's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/install-gdb-version-9.2.html" class="post-title-link" itemprop="url">Install gdb version 9.2</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-10-24 20:23:51" itemprop="dateCreated datePublished" datetime="2020-10-24T20:23:51+08:00">2020-10-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Debug/" itemprop="url" rel="index"><span itemprop="name">Debug</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>想要使用vim+gdb的模式，但是本机上的gdb为7.2, 需要手动编译最新的gdb9.2.</p>
+<h3 id="卸载本机gdb"><a href="#卸载本机gdb" class="headerlink" title="卸载本机gdb"></a>卸载本机gdb</h3><p>使用<code>rpm -qa  | grep gdb</code>检查，但是虽然本机上可以使用gdb，上一条指令却没有任何结果。最后使用<code>apt remove</code>删除了gdb。</p>
+<h3 id="安装新版本gdb"><a href="#安装新版本gdb" class="headerlink" title="安装新版本gdb"></a>安装新版本gdb</h3><ol>
+<li><p>在<a target="_blank" rel="noopener" href="http://ftp.gnu.org/gnu/gdb/">gun.org</a>上获取gdb-9.2.tar.gz</p>
+<p><img src="/posts/install-gdb-version-9.2/gnu_gdb.png" alt="image-20201021134212775"></p>
+<p><em>注：如果使用浏览器下载太慢，可以使用<a target="_blank" rel="noopener" href="https://github.com/subhra74/xdm"> xdm </a>进行下载</em></p>
+</li>
+<li><p>解压</p>
+</li>
+<li><p>进入解压后的文件夹<code>gdb-9.2</code></p>
+</li>
+<li><p>在本文件夹打开终端，如果此时直接执行<code>./configure</code>后不会有结果，需要根据提示新建一个文件夹</p>
+<p><img src="/posts/install-gdb-version-9.2/build_prob.png" alt="image-20201021134313587"></p>
+<ol>
+<li><p><code>mkdir build</code></p>
+</li>
+<li><p><code>cd build</code></p>
+</li>
+<li><p><code>pwd</code>得到<code>configure</code>文件的<code>绝对路径</code>后执行</p>
+</li>
+<li><p><code>make</code></p>
+<p>键入make后就需要等待一段时间了。</p>
+</li>
+</ol>
+</li>
+<li><p>最后一步: <code>sudo make install</code></p>
+</li>
+</ol>
+<p><img src="/posts/install-gdb-version-9.2/installed_gdb_info.png" alt="image-20201021134546535"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/implement-str-functions-strlen-strcpy-strstr-and-atoi.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ongoing">
+      <meta itemprop="description" content="Good cooking takes time.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ongoing's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/implement-str-functions-strlen-strcpy-strstr-and-atoi.html" class="post-title-link" itemprop="url">Implement str functions: strlen, strcpy, strstr and atoi</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-10-16 15:50:09" itemprop="dateCreated datePublished" datetime="2020-10-16T15:50:09+08:00">2020-10-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>自己动手实现的四个库函数， 分别是:</p>
+<ol>
+<li>strlen </li>
+<li>strcpy </li>
+<li>strstr</li>
+<li>atoi</li>
+</ol>
+<p>代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;dbg.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;assert.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;limits.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 实现strlen,获取字符串长度</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">size_t</span>  <span class="title">strlen</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *s;</span><br><span class="line">    <span class="keyword">for</span> (s = str; *s; s++) &#123;&#125;</span><br><span class="line">    <span class="keyword">return</span> s - str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 实现strcpy, 字符串拷贝函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">strcpy</span><span class="params">(<span class="keyword">char</span> *to, <span class="keyword">const</span> <span class="keyword">char</span>* from)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">assert</span>(to != <span class="literal">NULL</span> &amp;&amp; from != <span class="literal">NULL</span>); <span class="comment">// 注意边界条件</span></span><br><span class="line">    <span class="keyword">char</span> *p = to;</span><br><span class="line">    <span class="keyword">while</span> ((*p++ = *from++) != <span class="string">&#x27;\0&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> to;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 实现strstr, 子串查找函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">str_str</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *str, <span class="keyword">const</span> <span class="keyword">char</span> *sub)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">assert</span>(str);</span><br><span class="line">    <span class="built_in">assert</span>(sub);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *str_p = str;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *start = str; <span class="comment">// start记录匹配成功的位置</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *sub_p = sub;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">char</span> *res = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">100</span>]; </span><br><span class="line">    <span class="keyword">while</span> (*start)</span><br><span class="line">    &#123;</span><br><span class="line">        str_p = start;</span><br><span class="line">        sub_p = sub;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 停止条件</span></span><br><span class="line">        <span class="comment">// 1. 其中一个已经到达&#x27;\0&#x27;</span></span><br><span class="line">        <span class="comment">// 2. 两个字符不相等</span></span><br><span class="line">        <span class="keyword">while</span> (*str_p &amp;&amp; *sub_p &amp;&amp; *str_p == *sub_p)</span><br><span class="line">        &#123;</span><br><span class="line">            str_p++;</span><br><span class="line">            sub_p++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (*sub_p == <span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//dbg(sub_p);</span></span><br><span class="line">            <span class="built_in">strcpy</span>(res, start);</span><br><span class="line">            <span class="comment">//dbg(res);</span></span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        start++; <span class="comment">// str指针后移</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment"> * 实现atoi(), 将一个字符串转化为整数</span></span><br><span class="line"><span class="comment"> * 边界数据：</span></span><br><span class="line"><span class="comment"> * 1. 带有正负号的</span></span><br><span class="line"><span class="comment"> * 2. 有空格的</span></span><br><span class="line"><span class="comment"> * 3. 不是数字的，如字母</span></span><br><span class="line"><span class="comment"> * 4. 溢出的数据</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">my_atoi</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> sign = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> len = <span class="built_in">strlen</span>(str);</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (str[i] == <span class="string">&#x27; &#x27;</span> &amp;&amp; i &lt; len) i++; <span class="comment">// 1. 去除左边空格</span></span><br><span class="line">    <span class="comment">// 2. 带有正负号</span></span><br><span class="line">    <span class="keyword">if</span> (str[i] == <span class="string">&#x27;+&#x27;</span>) i++; <span class="comment">// 正号直接过</span></span><br><span class="line">    <span class="keyword">if</span> (str[i] == <span class="string">&#x27;-&#x27;</span>)      <span class="comment">// 负号需要记录下来</span></span><br><span class="line">    &#123;</span><br><span class="line">        sign = <span class="number">-1</span>;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3. 转换</span></span><br><span class="line">    <span class="keyword">for</span> (; i &lt; len; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 无效检测</span></span><br><span class="line">        <span class="keyword">if</span> (str[i] &lt; <span class="string">&#x27;0&#x27;</span> || str[i] &gt; <span class="string">&#x27;9&#x27;</span>) </span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="comment">// 溢出检测</span></span><br><span class="line">        <span class="keyword">if</span> (num &gt; INT_MAX / <span class="number">10</span> || </span><br><span class="line">            (num == INT_MAX / <span class="number">10</span> &amp;&amp; (str[i] - <span class="string">&#x27;0&#x27;</span>) &gt; INT_MAX % <span class="number">10</span>))</span><br><span class="line">            <span class="keyword">return</span> sign == <span class="number">-1</span> ? INT_MIN : INT_MAX;</span><br><span class="line"></span><br><span class="line">        num = <span class="number">10</span> * num + (str[i] - <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sign * num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 1. strlen</span></span><br><span class="line">    <span class="keyword">char</span> str[<span class="number">20</span>] = <span class="string">&quot;helloworld&quot;</span>;</span><br><span class="line">    <span class="keyword">size_t</span> res = <span class="built_in">strlen</span>(str);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;length: &quot;</span> &lt;&lt; res &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;====================&quot;</span> &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2. strcpy</span></span><br><span class="line">    <span class="keyword">char</span> to[<span class="number">20</span>];</span><br><span class="line">    <span class="built_in">strcpy</span>(to, str);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;to: &quot;</span> &lt;&lt; to &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;====================&quot;</span> &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3. strstr</span></span><br><span class="line">    <span class="keyword">char</span> *sub = <span class="string">&quot;or&quot;</span>;</span><br><span class="line">    <span class="built_in">dbg</span>(<span class="built_in">str_str</span>(str, sub));</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;====================&quot;</span> &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 4. atoi</span></span><br><span class="line">    <span class="built_in">dbg</span>(<span class="built_in">my_atoi</span>(<span class="string">&quot;124153&quot;</span>));</span><br><span class="line">    <span class="built_in">dbg</span>(<span class="built_in">my_atoi</span>(<span class="string">&quot;-124153000000000000000000000000000&quot;</span>));</span><br><span class="line">    <span class="built_in">dbg</span>(<span class="built_in">my_atoi</span>(<span class="string">&quot;hhhh&quot;</span>));</span><br><span class="line">    <span class="built_in">dbg</span>(<span class="built_in">my_atoi</span>(<span class="string">&quot;     132&quot;</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果:<br><img src="/posts/implement-str-functions-strlen-strcpy-strstr-and-atoi/str.png" alt="str"></p>
+<p>前两个并不难，第三个稍微要考虑一些东西，最后一个需要注意边界情况。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/bubble-sort.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ongoing">
+      <meta itemprop="description" content="Good cooking takes time.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ongoing's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/bubble-sort.html" class="post-title-link" itemprop="url">Bubble Sort</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-10-16 13:19:14" itemprop="dateCreated datePublished" datetime="2020-10-16T13:19:14+08:00">2020-10-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>冒泡排序，是一种交换类的排序，通过一系列交换动作完成。在排序过程中，第一个关键字和第二个比较，若第一个大，则交换，否则不交换；然后第二个与第三个比较，进行之前类似动作，知道最大的关键字到了序列的最后，则一趟冒泡排序完成。无序序列元素减一，有序序列元素加一。经过多次排序，然后无序序列变为有序序列。</p>
+<p><strong>算法结束条件</strong>: $\color{blue}{在一趟排序过程中没有发生关键字交换}$。</p>
+<p>下边是算法的具体实现:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;dbg.h&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubbleSort</span><span class="params">(<span class="keyword">int</span> R[], <span class="keyword">int</span> len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> flag; <span class="comment">// 交换标志</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = len - <span class="number">1</span>; i &gt;= <span class="number">1</span>; i--) <span class="comment">// 无序序列范围</span></span><br><span class="line">    &#123;</span><br><span class="line">        flag = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i; j++) <span class="comment">// i不断减小，无序序列元素不断减少，i之后都是有序序列元素</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (R[j<span class="number">-1</span>] &gt; R[j]) <span class="comment">// 前一个关键字大于后一个，则交换</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> temp = R[j];</span><br><span class="line">                R[j] = R[j<span class="number">-1</span>];</span><br><span class="line">                R[j<span class="number">-1</span>] = temp;</span><br><span class="line">                </span><br><span class="line">                <span class="comment">// 若发生交换，将falg置为1</span></span><br><span class="line">                flag = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (flag == <span class="number">0</span>) <span class="comment">// 一趟排序中没有发生交换，则有序，算法结束。</span></span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> R[] = &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">18</span>, <span class="number">3</span>, <span class="number">28</span>, <span class="number">23</span>, <span class="number">38</span>, <span class="number">7</span>, <span class="number">8</span>&#125;;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Before sorting: &quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">dbg</span>(R);</span><br><span class="line">    <span class="keyword">int</span> len = <span class="built_in"><span class="keyword">sizeof</span></span>(R) / <span class="built_in"><span class="keyword">sizeof</span></span>(R[<span class="number">0</span>]);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;After sorting : &quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">bubbleSort</span>(R, len);</span><br><span class="line">    <span class="built_in">dbg</span>(R);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果:<br><img src="/posts/bubble-sort/bubble_sort.png" alt=" bubble_sort "></p>
+<p>时间复杂度</p>
+<ol>
+<li>最坏情况：序列逆序, 为$\color{blue}{O(n^2)}$。此时内外循环都要执行。</li>
+<li>最好情况：序列有序，为$\color{blue}{O(n)}$。此时if条件始终不成立，内层循环执行n-1次后算法结束。</li>
+</ol>
+<p>空间复杂度$\color{blue}{O(1)}$: 交换时使用的辅助变量temp，故为$O(1)$.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/merge-sort.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ongoing">
+      <meta itemprop="description" content="Good cooking takes time.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ongoing's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/merge-sort.html" class="post-title-link" itemprop="url">Merge Sort</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-10-15 17:24:27" itemprop="dateCreated datePublished" datetime="2020-10-15T17:24:27+08:00">2020-10-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>归并排序，将两个或两个以上的有序序列组合成一个新的有序序列。</p>
+<p>下边这种将被排序表分成$ \lceil n/2 \rceil$个长度为2或1的有序表，然后再两两归并。被称作<code>二路归并排序</code>。</p>
+<p>下边是<code>二路归并排序</code>代码:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;dbg.h&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将[low, mid] 和 [mid+1, high]合成一个有序表</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> low, <span class="keyword">int</span> mid, <span class="keyword">int</span> high)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, j, k;</span><br><span class="line">    <span class="keyword">int</span> B[high] = &#123;<span class="number">0</span>&#125;; <span class="comment">// 定义辅助数组</span></span><br><span class="line">    <span class="keyword">for</span> (k = low; k &lt;= high; k++)</span><br><span class="line">        B[k] = A[k]; <span class="comment">// 将A中元素复制到辅助数组B中</span></span><br><span class="line">    <span class="keyword">for</span> (i = low, j = mid + <span class="number">1</span>, k = i; i &lt;= mid &amp;&amp; j &lt;= high; k++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (B[i] &lt;= B[j]) <span class="comment">// 将较小值复制到A中</span></span><br><span class="line">            A[k] = B[i++];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            A[k] = B[j++];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 对剩余的元素进行复制</span></span><br><span class="line">    <span class="keyword">while</span> (i &lt;= mid) A[k++] = B[i++];</span><br><span class="line">    <span class="keyword">while</span> (j &lt;= high) A[k++] = B[j++];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (low &lt; high)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = low + (high - low) / <span class="number">2</span>; <span class="comment">// 划分序列</span></span><br><span class="line">        <span class="built_in">mergeSort</span>(A, low, mid);           <span class="comment">// 对左子序列进行递归排序得到一个有序序列</span></span><br><span class="line">        <span class="built_in">mergeSort</span>(A, mid + <span class="number">1</span>, high);      <span class="comment">// 对右子序列进行递归排序得到一个有序序列</span></span><br><span class="line">        <span class="built_in">merge</span>(A, low, mid, high);         <span class="comment">// 对最终的两个有序序列进行归并</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> R[] = &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">53</span>, <span class="number">532</span>, <span class="number">52</span>, <span class="number">5</span>, <span class="number">67</span>, <span class="number">68</span>&#125;;</span><br><span class="line">    <span class="built_in">dbg</span>(R);</span><br><span class="line">    <span class="keyword">int</span> len = <span class="built_in"><span class="keyword">sizeof</span></span>(R) / <span class="built_in"><span class="keyword">sizeof</span></span>(R[<span class="number">0</span>]);</span><br><span class="line">    <span class="built_in">mergeSort</span>(R, <span class="number">0</span>, len - <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">dbg</span>(R);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果:<br><img src="/posts/merge-sort/merge_sort.png" alt="merge_sort"></p>
+<p>时间复杂度 $\color{blue}{O(nlog_2n)}$</p>
+<ol>
+<li>(函数mergeSort)一共要执行$O(log_2n)$次排序，类似二分查找</li>
+<li>(函数merge)每趟归并排序时间复杂度为$O(n)$</li>
+</ol>
+<p>空间复杂度$\color{blue}{O(n)}$: <code>merge()</code>中辅助数组B占用n个单元，故为$O(n)$.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/selection-sort.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ongoing">
+      <meta itemprop="description" content="Good cooking takes time.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ongoing's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/selection-sort.html" class="post-title-link" itemprop="url">Selection Sort</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-10-13 20:24:38" itemprop="dateCreated datePublished" datetime="2020-10-13T20:24:38+08:00">2020-10-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>选择排序是交换排序的一种。它的思想是每一轮选出最小者交换到左侧。</p>
+<hr>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;dbg.h&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">selectSort</span><span class="params">(<span class="keyword">int</span> R[], <span class="keyword">int</span> len)</span></span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> R[] = &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">18</span>, <span class="number">3</span>, <span class="number">28</span>, <span class="number">23</span>, <span class="number">38</span>, <span class="number">7</span>, <span class="number">8</span>&#125;;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Before sorting: &quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">dbg</span>(R);</span><br><span class="line">    <span class="keyword">int</span> len = <span class="built_in"><span class="keyword">sizeof</span></span>(R) / <span class="built_in"><span class="keyword">sizeof</span></span>(R[<span class="number">0</span>]);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;After sorting : &quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">selectSort</span>(R, len);</span><br><span class="line">    <span class="built_in">dbg</span>(R);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">selectSort</span><span class="params">(<span class="keyword">int</span> R[], <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> minIndex = i;</span><br><span class="line">        <span class="comment">// 1. 找到元素i右侧最小值</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; n; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            minIndex = R[j] &lt; R[minIndex] ? j : minIndex;</span><br><span class="line">            <span class="comment">//if (R[j] &lt; R[minIndex])</span></span><br><span class="line">            <span class="comment">//    minIndex = j;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 2. 交换</span></span><br><span class="line">        <span class="keyword">int</span> temp = R[i];</span><br><span class="line">        R[i] = R[minIndex];</span><br><span class="line">        R[minIndex] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果:<br><img src="/posts/selection-sort/selectSort.png" alt="selectSort"></p>
+<p>时间复杂度: <code>O(n^2)</code></p>
+<ol>
+<li>每次寻找最小值再交换到左侧是<code>O(n)</code></li>
+<li>循环n-1轮是<code>O(n)</code></li>
+</ol>
+<p>空间复杂度: <code>O(1)</code></p>
+<p>注意：选择排序并不稳定，当序列中含有多个值相同的元素时，会使这些值相对次序发生变化。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+  </nav>
 
 </div>
   </main>
