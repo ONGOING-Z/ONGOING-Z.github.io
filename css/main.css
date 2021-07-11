@@ -868,6 +868,7 @@ pre code {
   border-top: 3px solid transparent;
   flex-grow: 1;
   list-style-type: none;
+  transition: all 0.2s ease-out;
 }
 @media (max-width: 413px) {
   .post-body .tabs ul.nav-tabs li.tab,
@@ -1994,6 +1995,23 @@ pre code {
   margin: initial;
   overflow-wrap: break-word;
 }
+.posts-expand .post-title .post-edit-link {
+  border-bottom: 0;
+  color: #bbb;
+  display: inline-block;
+  float: right;
+  font-size: 1.25em;
+  margin-left: -1.2em;
+  transition: color 0.2s ease-in;
+}
+@media (max-width: 567px) {
+  .posts-expand .post-title .post-edit-link {
+    margin-left: initial;
+  }
+}
+.posts-expand .post-title .post-edit-link:hover {
+  color: #87daff;
+}
 .posts-expand .post-title-link {
   border-bottom: 0;
   color: var(--link-color);
@@ -2699,7 +2717,7 @@ hr {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #f96bff;
+  background: #6cff38;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
