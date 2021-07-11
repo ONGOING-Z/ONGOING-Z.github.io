@@ -8,19 +8,21 @@
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/bitbug_favicon.ico">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/bitbug_favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic%7Cmonospace:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"www.ongoing.ink","root":"/","images":"/images","scheme":"Mist","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"remove","padding":18,"offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.ongoing.ink","root":"/","images":"/images","scheme":"Mist","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"remove","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 <meta name="description" content="Good cooking takes time.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="ongoing&#39;s blog">
@@ -83,10 +85,9 @@
 
 <nav class="site-nav">
   <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>Home</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags</a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories</a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
   </ul>
 </nav>
 
@@ -167,13 +168,13 @@
 
 <h2 id="面向对象特征-继承性"><a href="#面向对象特征-继承性" class="headerlink" title="面向对象特征 - 继承性"></a>面向对象特征 - 继承性</h2><p>继承是多态的前提。</p>
 <p>继承解决的主要问题：<strong>共性抽取</strong>。</p>
-<p><img src="/posts/java-review-part-3-object-oriented-inheritance/java_12.png" alt="image-20201007211558068"></p>
+<p><img data-src="java-review-part-3-object-oriented-inheritance/java_12.png" alt="image-20201007211558068"></p>
 <p>继承关系当中的特点：</p>
 <ol>
 <li>子类可以拥有父类的“内容”</li>
 <li>子类还可以拥有自己专有的内容</li>
 </ol>
-<p><img src="/posts/java-review-part-3-object-oriented-inheritance/java_13.png" alt="image-20201007212023299"></p>
+<p><img data-src="java-review-part-3-object-oriented-inheritance/java_13.png" alt="image-20201007212023299"></p>
 <p>在父子类的继承关系当中，如果成员变量重名，则<em>创建子类</em>时，访问有两种方式：</p>
 <ol>
 <li>直接通过<strong>子类对象</strong>访问成员变量: 等号左边是谁，就优先用谁，没有则向上找。</li>
@@ -192,7 +193,7 @@
 <p>在父子类的继承关系中欧给你，创建子类对象，访问成员方法规则是</p>
 <p>创建的对象是谁，就优先用谁，如果没有则向上找。、</p>
 <p>注意事项：无论是成员方法还是成员变量，如果没有都是向上找父类，不会向下找子类。</p>
-<p>继承中方法的重写(override)/<strong>覆盖</strong>:<img src="/posts/java-review-part-3-object-oriented-inheritance/java_14.png" alt="image-20201008202509619"></p>
+<p>继承中方法的重写(override)/<strong>覆盖</strong>:<img data-src="java-review-part-3-object-oriented-inheritance/java_14.png" alt="image-20201008202509619"></p>
 <p>在<strong>继承关系</strong>中，方法的名称一样，参数列表也一样。</p>
 <p>方法覆盖重写特点:创建的是子类对象，则优先用子类方法</p>
 <p>注意事项：</p>
@@ -214,20 +215,20 @@
 <li><p>子类构造方法中有一个默认隐含的”super()”调用，所以一定是先调用的父类构造，后执行的子类构造。</p>
 </li>
 <li><p>子类构造可以通过super关键字来调用父类重载构造</p>
-<p><img src="/posts/java-review-part-3-object-oriented-inheritance/java_15.png" alt="image-20201008150011673"></p>
-<p><img src="/posts/java-review-part-3-object-oriented-inheritance/java_16.png" alt="image-20201008150025553"></p>
+<p><img data-src="java-review-part-3-object-oriented-inheritance/java_15.png" alt="image-20201008150011673"></p>
+<p><img data-src="java-review-part-3-object-oriented-inheritance/java_16.png" alt="image-20201008150025553"></p>
 </li>
 <li><p>super的父类构造调用，必须是子类构造方法的第一个语句。不能子类构造调用多次super构造。</p>
 </li>
 </ol>
-<p><img src="/posts/java-review-part-3-object-oriented-inheritance/java_17.png" alt="image-20201008150335387"></p>
+<p><img data-src="java-review-part-3-object-oriented-inheritance/java_17.png" alt="image-20201008150335387"></p>
 <p>super关键字的用法 - 3种</p>
 <ol>
 <li>在子类的成员方法中，访问父类成员变量</li>
 <li>在子类成员方法中，访问父类成员方法。</li>
 <li>在子类构造方法中，访问父类构造方法。</li>
 </ol>
-<p><img src="/posts/java-review-part-3-object-oriented-inheritance/java_18.png" alt="image-20201008150937380"></p>
+<p><img data-src="java-review-part-3-object-oriented-inheritance/java_18.png" alt="image-20201008150937380"></p>
 <p>this关键字的用法</p>
 <ol>
 <li><p>在本类成员方法中，访问本类成员变量</p>
@@ -240,20 +241,20 @@
 </li>
 </ol>
 <p>this和super内存图解</p>
-<p><img src="/posts/java-review-part-3-object-oriented-inheritance/java_19.png" alt="image-20201008153359131"></p>
+<p><img data-src="java-review-part-3-object-oriented-inheritance/java_19.png" alt="image-20201008153359131"></p>
 <p>java继承的3个特点</p>
 <ol>
 <li><p>java语言是单继承的。一个类的直接父亲只能有唯一一个。</p>
-<p><img src="/posts/java-review-part-3-object-oriented-inheritance/java_20.png" alt="image-20201008153556700"></p>
+<p><img data-src="java-review-part-3-object-oriented-inheritance/java_20.png" alt="image-20201008153556700"></p>
 </li>
 <li><p>java语言可以多级继承。父亲有父亲。</p>
 </li>
 <li><p>一个子类的直接父类唯一，但是一个父类可以有很多子类。</p>
 </li>
 </ol>
-<h3 id="抽象"><a href="#抽象" class="headerlink" title="抽象"></a>抽象</h3><p><img src="/posts/java-review-part-3-object-oriented-inheritance/java_21.png" alt="image-20201008154610257"></p>
+<h3 id="抽象"><a href="#抽象" class="headerlink" title="抽象"></a>抽象</h3><p><img data-src="java-review-part-3-object-oriented-inheritance/java_21.png" alt="image-20201008154610257"></p>
 <p>抽象方法定义与抽象类定义</p>
-<p><img src="/posts/java-review-part-3-object-oriented-inheritance/java_22.png" alt="image-20201008154934841"></p>
+<p><img data-src="java-review-part-3-object-oriented-inheritance/java_22.png" alt="image-20201008154934841"></p>
 <p>抽象类和抽象方法的使用：</p>
 <ol>
 <li><p>不能直接创建new抽象类对象</p>
@@ -266,14 +267,14 @@
 <li><p>创建子类对象进行使用。 </p>
 </li>
 </ol>
-<p><img src="/posts/java-review-part-3-object-oriented-inheritance/java_23.png" alt="image-20201008160326178"></p>
+<p><img data-src="java-review-part-3-object-oriented-inheritance/java_23.png" alt="image-20201008160326178"></p>
 <h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p>接口就是一种<strong>公共规范标准</strong>。</p>
 <p>接口是多个类的公共规范，接口是一种引用数据类型。</p>
 <p>接口<strong>最重要的内容</strong>就是：抽象方法。</p>
 <p>接口定义基本格式：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> 接口名称 </span>&#123;</span><br><span class="line">    <span class="comment">// 接口内容</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/posts/java-review-part-3-object-oriented-inheritance/java_24.png" alt="image-20201008164321161"></p>
+<p><img data-src="java-review-part-3-object-oriented-inheritance/java_24.png" alt="image-20201008164321161"></p>
 <p>接口的抽象方法定义：</p>
 <ul>
 <li>在任何版本java中，都可以定义抽象方法</li>
@@ -289,10 +290,10 @@
 <li><p>创建实现类的对象，使用。</p>
 </li>
 </ol>
-<p><img src="/posts/java-review-part-3-object-oriented-inheritance/java_26.png" alt="image-20201008165642608"></p>
-<p><img src="/posts/java-review-part-3-object-oriented-inheritance/java_25.png" alt="image-20201008165949043"></p>
+<p><img data-src="java-review-part-3-object-oriented-inheritance/java_26.png" alt="image-20201008165642608"></p>
+<p><img data-src="java-review-part-3-object-oriented-inheritance/java_25.png" alt="image-20201008165949043"></p>
 <p>接口的静态方法定义：</p>
-<p><img src="/posts/java-review-part-3-object-oriented-inheritance/java_27.png" alt="image-20201008170520414"></p>
+<p><img data-src="java-review-part-3-object-oriented-inheritance/java_27.png" alt="image-20201008170520414"></p>
 <p>接口静态方法使用:</p>
 <ol>
 <li><p>不能通过接口实现类的对象来调用接口当中的静态方法</p>
@@ -303,13 +304,13 @@
 </li>
 </ol>
 <p>接口的私有方法定义：</p>
-<p><img src="/posts/java-review-part-3-object-oriented-inheritance/java_28.png" alt="image-20201008171848001"></p>
+<p><img data-src="java-review-part-3-object-oriented-inheritance/java_28.png" alt="image-20201008171848001"></p>
 <p>接口常量定义和使用</p>
-<p><img src="/posts/java-review-part-3-object-oriented-inheritance/java_29.png" alt="image-20201008195606414"></p>
+<p><img data-src="java-review-part-3-object-oriented-inheritance/java_29.png" alt="image-20201008195606414"></p>
 <p>一旦使用final关键字，说明不可改变。</p>
 <p>注意</p>
 <ol>
-<li>接口中的常量，可以省略<code>public static final</code>，但是不<img src="/posts/java-review-part-3-object-oriented-inheritance/java_30.png" alt="image-20201008200738915">写也照样是这样。</li>
+<li>接口中的常量，可以省略<code>public static final</code>，但是不<img data-src="java-review-part-3-object-oriented-inheritance/java_30.png" alt="image-20201008200738915">写也照样是这样。</li>
 <li>接口中的常量，必须进行赋值。</li>
 <li>接口中常量的名称，完全使用大写字母，用下划线进行分隔。（推荐命名规则)</li>
 </ol>
@@ -461,7 +462,7 @@
 </li>
 </ol>
 <p>一个对象的内存图</p>
-<p><img src="/posts/java-review-2-object-oriented-encapsulation/java_7.png" alt="image-20201006222558003"></p>
+<p><img data-src="java-review-2-object-oriented-encapsulation/java_7.png" alt="image-20201006222558003"></p>
 <ul>
 <li>方法的进栈和出栈</li>
 <li>堆中<code>成员方法</code>保存的是一个地址值</li>
@@ -580,8 +581,8 @@
 <p>对于ArrayList来说，有一个尖括号<code>&lt;E&gt;</code>代表泛型。</p>
 <p>泛型：装在集合中的所有元素，全都是统一的什么类型。</p>
 <p>注意：<strong>泛型只能是引用类型</strong>，不能是基本类型。也就是说集合里面保存的都是地址，但是基本类型数据没有地址。</p>
-<p><img src="/posts/java-review-2-object-oriented-encapsulation/java_8.png" alt="image-20201007181816779"></p>
-<p><img src="/home/fifth/.config/Typora/typora-user-images/image-20201007182105425.png" alt="image-20201007182105425"></p>
+<p><img data-src="java-review-2-object-oriented-encapsulation/java_8.png" alt="image-20201007181816779"></p>
+<p><img data-src="/home/fifth/.config/Typora/typora-user-images/image-20201007182105425.png" alt="image-20201007182105425"></p>
 <p><code>ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;();</code></p>
 <p>注意右侧的尖括号也是要写的。</p>
 <p>注意：对于ArrayList集合，直接打印得到的不是地址值，而是内容。如果内容为空，则得到的是空的中括号[].</p>
@@ -610,7 +611,7 @@
 <li>1种直接创建: <code>String str = &quot;Helo&quot;;</code></li>
 </ul>
 <p>字符串常量池: 程序当中直接写上的双引号字符串，就在字符串常量池中。<strong>new</strong>的不在池中。</p>
-<p><img src="/posts/java-review-2-object-oriented-encapsulation/java_9.png" alt="image-20201007185616780"></p>
+<p><img data-src="java-review-2-object-oriented-encapsulation/java_9.png" alt="image-20201007185616780"></p>
 <p>注意：</p>
 <ul>
 <li>对于基本类型来说，<code>==</code>是进行数值比较</li>
@@ -630,7 +631,7 @@
 <li><code>public int indexOf(String str)</code>:查找参数字符串在本字符串中首次出现的索引位置</li>
 </ul>
 <h4 id="静态static关键字"><a href="#静态static关键字" class="headerlink" title="静态static关键字"></a>静态static关键字</h4><p>一旦用了static关键字，那么这样的内容就不再属于对象自己，而是属于类的，所以凡是本类的对象，都共享一份数据。</p>
-<p><img src="/posts/java-review-2-object-oriented-encapsulation/java_10.png" alt="image-20201007200635788"></p>
+<p><img data-src="java-review-2-object-oriented-encapsulation/java_10.png" alt="image-20201007200635788"></p>
 <ol>
 <li><p>static修饰成员变量</p>
 </li>
@@ -659,7 +660,7 @@
 </li>
 </ol>
 <p>static内存图</p>
-<p><img src="/posts/java-review-2-object-oriented-encapsulation/java_11.png" alt="image-20201007204617382"></p>
+<p><img data-src="java-review-2-object-oriented-encapsulation/java_11.png" alt="image-20201007204617382"></p>
 <p>注意：根据类名称访问静态成员变量时，全程和对象没有关系，只和类有关系。</p>
 <ul>
 <li><p>静态代码块</p>
@@ -766,7 +767,7 @@
 <h3 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h3><ol>
 <li>Javaa虚拟机本身不具备跨平台功能，每个操作系统下有不同版本的虚拟机。</li>
 </ol>
-<p><img src="/posts/java-review-part-1-basic/JVM.png" alt="image-20201006125133593"></p>
+<p><img data-src="java-review-part-1-basic/JVM.png" alt="image-20201006125133593"></p>
 <ol start="2">
 <li>java的方法就是类似C语言的函数</li>
 </ol>
@@ -881,7 +882,7 @@
 <li><p>寄存器(pc Register): 与CPU相关</p>
 </li>
 </ol>
-<p><img src="/posts/java-review-part-1-basic/java_6.png" alt="image-20201006155912578"></p>
+<p><img data-src="java-review-part-1-basic/java_6.png" alt="image-20201006155912578"></p>
 <p>注：上图出自<code>黑马程序员 Java</code></p>
 
       
@@ -959,7 +960,7 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;dbg.h&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertSort</span><span class="params">(<span class="keyword">int</span> R[], <span class="keyword">int</span> len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp;</span><br><span class="line">    <span class="comment">// 初始将index = 0的值默认为有序序列</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        temp = R[i];</span><br><span class="line">        <span class="keyword">int</span> j = i - <span class="number">1</span>; <span class="comment">// 有序序列最后一个元素</span></span><br><span class="line">        <span class="keyword">while</span> (j &gt;= <span class="number">0</span> &amp;&amp; temp &lt; R[j])</span><br><span class="line">        &#123;</span><br><span class="line">            R[j + <span class="number">1</span>] = R[j]; <span class="comment">// 后移</span></span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        R[j + <span class="number">1</span>] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> R[] = &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">18</span>, <span class="number">3</span>, <span class="number">28</span>, <span class="number">23</span>, <span class="number">38</span>, <span class="number">7</span>, <span class="number">8</span>&#125;;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Before sorting: &quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">dbg</span>(R);</span><br><span class="line">    <span class="keyword">int</span> len = <span class="built_in"><span class="keyword">sizeof</span></span>(R) / <span class="built_in"><span class="keyword">sizeof</span></span>(R[<span class="number">0</span>]);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;After sorting : &quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">insertSort</span>(R, len);</span><br><span class="line">    <span class="built_in">dbg</span>(R);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>运行结果:</p>
-<p><img src="/posts/insertion-sort/insertion_sort.png" alt="insertion_sort"></p>
+<p><img data-src="insertion-sort/insertion_sort.png" alt="insertion_sort"></p>
 <p>最坏情况：整个序列为<code>逆序</code></p>
 <ul>
 <li>内层循环<code>temp &lt; R[j]</code>始终成立</li>
@@ -1050,7 +1051,7 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;dbg.h&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 大顶堆调整</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">adjustHeap</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> p, <span class="keyword">int</span> len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> curParent = a[p];  <span class="comment">// 当前父亲结点</span></span><br><span class="line">    <span class="keyword">int</span> child = <span class="number">2</span> * p + <span class="number">1</span>; <span class="comment">// 找到当前结点左孩子，并让child指向左孩子</span></span><br><span class="line">    <span class="keyword">while</span> (child &lt; len)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (child + <span class="number">1</span> &lt; len &amp;&amp; a[child] &lt; a[child + <span class="number">1</span>])  <span class="comment">// 如果右孩子结点值大于左孩子</span></span><br><span class="line">            child++;                                     <span class="comment">// child指向右孩子</span></span><br><span class="line">        <span class="keyword">if</span> (curParent &lt; a[child]) <span class="comment">// 孩子结点值大于父亲结点</span></span><br><span class="line">        &#123;</span><br><span class="line">            a[p] = a[child];</span><br><span class="line">            p = child;</span><br><span class="line">            child = <span class="number">2</span> * p + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    a[p] = curParent;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">heapSort</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = len / <span class="number">2</span> - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) <span class="comment">// 建立初始堆</span></span><br><span class="line">        <span class="built_in">adjustHeap</span>(a, i, len);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = len - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> temp = a[<span class="number">0</span>];</span><br><span class="line">        a[<span class="number">0</span>] = a[i];</span><br><span class="line">        a[i] = temp;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">adjustHeap</span>(a, <span class="number">0</span>, i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[] = &#123;<span class="number">5</span>,<span class="number">10</span>,<span class="number">7</span>,<span class="number">34</span>,<span class="number">23</span>,<span class="number">58</span>,<span class="number">2</span>,<span class="number">55</span>,<span class="number">35</span>,<span class="number">45</span>&#125;;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Before sorting: &quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">dbg</span>(a);</span><br><span class="line">    <span class="keyword">int</span> len = <span class="built_in"><span class="keyword">sizeof</span></span>(a) / <span class="built_in"><span class="keyword">sizeof</span></span>(a[<span class="number">0</span>]);</span><br><span class="line">    <span class="built_in">heapSort</span>(a, len);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;After sorting : &quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">dbg</span>(a);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>运行结果如下:</p>
-<p><img src="/posts/heap-sort/heap_sort.png" alt=" heap_sort"></p>
+<p><img data-src="heap-sort/heap_sort.png" alt=" heap_sort"></p>
 <p>时间复杂度: $\color{blue}{O(nlog_2n)}$。</p>
 <p>分析: 完全二叉树的高度为$\lceil{log_2(n+1)}\rceil$, 其时间复杂度可以认为是$O(log_2n)$</p>
 <p>空间复杂度$\color{blue}{O(1)}$: 使用了常数个辅助单元，故为$O(1)$.</p>
@@ -1160,11 +1161,11 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">       insert(4);</span><br><span class="line">       insert(10);</span><br><span class="line">       insert(15);</span><br><span class="line">        /   \</span><br><span class="line">      /       \</span><br><span class="line">remove();      insert(0);</span><br></pre></td></tr></table></figure>
 
 <ol>
-<li>第一步，向一棵空树中插入值为<code>4</code>的结点<br><img src="/posts/Data-structure-heap/insert_4.png" alt="insert_4"></li>
-<li>第二步，向树中插入值为<code>10</code>的结点<br><img src="/posts/Data-structure-heap/insert_10.png" alt="insert_10"></li>
-<li>第三步，向树中插入值为<code>15</code>的结点<br><img src="/posts/Data-structure-heap/insert_15.png" alt="insert_15"></li>
-<li>移除结点<br><img src="/posts/Data-structure-heap/removal.png" alt="removal"></li>
-<li>在<strong>第三步</strong>基础上插入值为<code>0</code>的结点<br><img src="/posts/Data-structure-heap/insert_0.png" alt="insert_0"></li>
+<li>第一步，向一棵空树中插入值为<code>4</code>的结点<br><img data-src="Data-structure-heap/insert_4.png" alt="insert_4"></li>
+<li>第二步，向树中插入值为<code>10</code>的结点<br><img data-src="Data-structure-heap/insert_10.png" alt="insert_10"></li>
+<li>第三步，向树中插入值为<code>15</code>的结点<br><img data-src="Data-structure-heap/insert_15.png" alt="insert_15"></li>
+<li>移除结点<br><img data-src="Data-structure-heap/removal.png" alt="removal"></li>
+<li>在<strong>第三步</strong>基础上插入值为<code>0</code>的结点<br><img data-src="Data-structure-heap/insert_0.png" alt="insert_0"></li>
 </ol>
 <blockquote>
 <p>Insert an element: insert into the last position and bubble it up.<br>Remove an element: remove the highest element and put the element at last position to the top, then bubble it down.</p>
@@ -1551,7 +1552,7 @@
 <li>AND、OR、XOR要求操作数为整数类型，它们对操作数对应的位进行指定操作，每次对左右操作数的各一位进行操作。</li>
 <li>下标引用操作和间接访问表达式是等价的。<br> <code>array[下标] &lt;=&gt; *(array + (下标))</code></li>
 </ol>
-<h4 id="6th-指针"><a href="#6th-指针" class="headerlink" title="6th 指针"></a>6th 指针</h4><p><img src="/posts/C-and-pointer-reading-notes/variable_addr.png" alt="varialbe_and_addr"></p>
+<h4 id="6th-指针"><a href="#6th-指针" class="headerlink" title="6th 指针"></a>6th 指针</h4><p><img data-src="C-and-pointer-reading-notes/variable_addr.png" alt="varialbe_and_addr"></p>
 <p>Pointers - variables that store address of another variable.<br>指针变量存储的是地址</p>
 <ol start="0">
 <li>间接访问(de-referencing)操作符</li>
@@ -1559,8 +1560,8 @@
 <li>变量的值就是分配给该变量的内存位置所存储的数值。??</li>
 <li>指针变量可以作为左值，并不是因为它们是指针，而是因为它们是变量。对指针变量进行间接访问表示我们应该访问指针所指向的位置。</li>
 </ol>
-<p><img src="/posts/C-and-pointer-reading-notes/pointer_1.png" alt="Image"></p>
-<p><img src="/posts/C-and-pointer-reading-notes/pointer_2.png" alt="Image"></p>
+<p><img data-src="C-and-pointer-reading-notes/pointer_1.png" alt="Image"></p>
+<p><img data-src="C-and-pointer-reading-notes/pointer_2.png" alt="Image"></p>
 <p><code>int *b = &amp;a</code>和<code>b = &amp;a</code>的区别是什么?<br>这两个表达的应该是一样的意思。<br>看第二个b，这个b代表的是指针，如果加上声明语句的话和前一个是一样的<br>感觉<code>int * p; p = &amp;a;</code>,这个更好理解。</p>
 <p>一个例子</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">8</span>;</span><br><span class="line">    <span class="keyword">int</span> *p;</span><br><span class="line">    p = &amp;a; <span class="comment">// &amp;a is address of a</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, p); <span class="comment">// p is 2002</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, p + <span class="number">1</span>); <span class="comment">// p+1 is 2006</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -1569,7 +1570,7 @@
 <li><p>a pointer to pointer(pic source: youtube mycodeschool)</p>
  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *p;</span><br><span class="line"><span class="keyword">int</span> **q;</span><br><span class="line">q = &amp;p;</span><br></pre></td></tr></table></figure></li>
 </ol>
-<p><img src="/posts/C-and-pointer-reading-notes/pointer_to_pointer.png" alt="Image"></p>
+<p><img data-src="C-and-pointer-reading-notes/pointer_to_pointer.png" alt="Image"></p>
 
       
     </div>
@@ -1861,7 +1862,7 @@
     <div class="post-body" itemprop="articleBody">
           <p>问题：两个栈实现一个队列</p>
 <p>可以下看一下下面这幅图理解一个过程:</p>
-<p><img src="/posts/two-stacks-implement-a-queue/two_stacks_implement_a_queue.png" alt="two-stacks_implement_a_queue"></p>
+<p><img data-src="two-stacks-implement-a-queue/two_stacks_implement_a_queue.png" alt="two-stacks_implement_a_queue"></p>
 
       
     </div>
@@ -1892,10 +1893,10 @@
 
 
 <div class="copyright">
-  &copy; 
+  &copy; 2020 – 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
-    <i class=""></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">ongoing</span>
 </div>
@@ -1927,12 +1928,15 @@
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
   
 
 
 
+  <script class="next-config" data-name="nprogress" type="application/json">{"enable":true,"spinner":true}</script>
+  <script src="/js/third-party/nprogress.js"></script>
 
   
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>

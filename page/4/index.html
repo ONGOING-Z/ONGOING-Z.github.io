@@ -8,19 +8,21 @@
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/bitbug_favicon.ico">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/bitbug_favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic%7Cmonospace:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"www.ongoing.ink","root":"/","images":"/images","scheme":"Mist","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"remove","padding":18,"offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.ongoing.ink","root":"/","images":"/images","scheme":"Mist","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"remove","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 <meta name="description" content="Good cooking takes time.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="ongoing&#39;s blog">
@@ -83,10 +85,9 @@
 
 <nav class="site-nav">
   <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>Home</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags</a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories</a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
   </ul>
 </nav>
 
@@ -365,11 +366,11 @@
 <p>eg. List the last four Pixar movies released (ordered from most recent to least)</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> movies</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">year</span> <span class="keyword">DESC</span></span><br><span class="line">LIMIT <span class="number">4</span>;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/posts/basic-of-sql/sql_eg_1.png" alt="sql_eg_1"></p>
+<p><img data-src="basic-of-sql/sql_eg_1.png" alt="sql_eg_1"></p>
 <p>eg. List the <strong>next</strong> five Pixar movies sorted alphabetically</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> movies</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> title <span class="keyword">ASC</span></span><br><span class="line">LIMIT <span class="number">5</span> <span class="keyword">OFFSET</span> <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/posts/basic-of-sql/sql_eg_2.png" alt="sql_eg_2"></p>
+<p><img data-src="basic-of-sql/sql_eg_2.png" alt="sql_eg_2"></p>
 <h3 id="4-Multi-table-queries-with-JOINs"><a href="#4-Multi-table-queries-with-JOINs" class="headerlink" title="4. Multi-table queries with JOINs"></a>4. Multi-table queries with JOINs</h3><p><strong>JOIN clause</strong></p>
 <ul>
 <li>INNER JOIN<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">%</span> <span class="keyword">Select</span> query <span class="keyword">with</span> <span class="keyword">INNER</span> <span class="keyword">JOIN</span> <span class="keyword">on</span> multiple tables</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">column</span>, another_table_column, ...</span><br><span class="line"><span class="keyword">FROM</span> mytable</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> another_table</span><br><span class="line">  <span class="keyword">ON</span> mytable.id <span class="operator">=</span> another_table.id</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">condition</span>(s)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">column</span>, ... <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span></span><br><span class="line">LIMIT num_limit <span class="keyword">OFFSET</span> num_offset;</span><br></pre></td></tr></table></figure>
@@ -384,7 +385,7 @@ A process that matchs rows from the first table and the second table with<br>hav
 <p>When joining table A to table B, a <code>LEFT JOIN</code> simply includes rows from A regardless of whether a matching row is found in B. The <code>RIGHT JOIN</code> is the same, but reversed, keeping rows in B regardless of whether a match is found in A. Finally, a <code>FULL JOIN</code> simply means that rows from both tables are kept, regardless of whether a matching row exists in the other table.</p>
 </blockquote>
 <p>eg. List all buildings and the distinct employee roles in each building (including empty buildings)</p>
-<p><img src="/posts/basic-of-sql/sql_eg_3.png" alt="sql_eg_3"></p>
+<p><img data-src="basic-of-sql/sql_eg_3.png" alt="sql_eg_3"></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> building_name, role <span class="keyword">FROM</span> buildings</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> employees</span><br><span class="line">  <span class="keyword">ON</span> buildings.building_name <span class="operator">=</span> employees.building</span><br></pre></td></tr></table></figure>
 
 
@@ -398,7 +399,7 @@ A process that matchs rows from the first table and the second table with<br>hav
 <blockquote>
 <p>Find the names of the buildings that hold no employees.</p>
 </blockquote>
-<p><img src="/posts/basic-of-sql/sql_eg_4.png" alt="sql_eg_4"></p>
+<p><img data-src="basic-of-sql/sql_eg_4.png" alt="sql_eg_4"></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> building_name</span><br><span class="line"><span class="keyword">FROM</span> buildings</span><br><span class="line">  <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> employees</span><br><span class="line">    <span class="keyword">ON</span> building_name <span class="operator">=</span> building</span><br><span class="line"><span class="keyword">WHERE</span> role <span class="keyword">IS</span> <span class="keyword">NULL</span>;</span><br></pre></td></tr></table></figure>
 
 <p><em>此题需要仔细思考一下</em></p>
@@ -448,11 +449,11 @@ A process that matchs rows from the first table and the second table with<br>hav
 <p>The <code>HAVING</code> clause constraints are written the same way as the <code>WHERE</code> clause constraints.</p>
 </blockquote>
 <p>eg. Find the total number of years employed by all Engineers</p>
-<p><img src="/posts/basic-of-sql/sql_eg_5.png" alt="sql_eg_5"></p>
+<p><img data-src="basic-of-sql/sql_eg_5.png" alt="sql_eg_5"></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> role, <span class="built_in">SUM</span>(years_employed)</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> role</span><br><span class="line"><span class="keyword">HAVING</span> role <span class="operator">=</span> &quot;Engineer&quot;;</span><br></pre></td></tr></table></figure>
 
 <p>result</p>
-<p><img src="/posts/basic-of-sql/sql_eg_6.png" alt="sql_eg_6"></p>
+<p><img data-src="basic-of-sql/sql_eg_6.png" alt="sql_eg_6"></p>
 <h3 id="10-Order-of-execution-of-a-Query"><a href="#10-Order-of-execution-of-a-Query" class="headerlink" title="10. Order of execution of a Query"></a>10. Order of execution of a Query</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">%</span> Complete <span class="keyword">SELECT</span> query</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> <span class="keyword">column</span>, AGG_FUNC(column_or_expression), ...</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">table</span></span><br><span class="line">  <span class="keyword">JOIN</span> another_table</span><br><span class="line">    <span class="keyword">ON</span> table.column <span class="operator">=</span> another_table.column</span><br><span class="line">  <span class="keyword">WHERE</span> constraint_expression</span><br><span class="line">  <span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">column</span></span><br><span class="line">  <span class="keyword">HAVING</span> constraint_expression</span><br><span class="line">  <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">column</span> <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span></span><br><span class="line">  LIMIT count <span class="keyword">OFFSET</span> count;</span><br></pre></td></tr></table></figure>
 
 <h3 id="11-Inserting-rows"><a href="#11-Inserting-rows" class="headerlink" title="11. Inserting rows"></a>11. Inserting rows</h3><p>Inserting new data</p>
@@ -658,10 +659,10 @@ A process that matchs rows from the first table and the second table with<br>hav
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkfontscale &amp;&amp; sudo mkfontdir &amp;&amp; sudo fc-cache -fv</span><br></pre></td></tr></table></figure>
 
 <h3 id="3-安装之后设置字体"><a href="#3-安装之后设置字体" class="headerlink" title="3 | 安装之后设置字体"></a>3 | 安装之后设置字体</h3><p>在mint的左下角<code>Menu</code>中搜索<code>appearance</code>，打开。如下边这个界面</p>
-<p><img src="/posts/Install-Yahei-Consolas-Hybrid-font-in-linux-mint/Appearance_Preferences_001.png" alt="Appearance Preferences_001"><br>在这里面可以设置应用字体，文档字体，桌面字体，窗口标题字体等等。</p>
+<p><img data-src="Install-Yahei-Consolas-Hybrid-font-in-linux-mint/Appearance_Preferences_001.png" alt="Appearance Preferences_001"><br>在这里面可以设置应用字体，文档字体，桌面字体，窗口标题字体等等。</p>
 <p>下面设置<strong>终端字体</strong><br>打开终端，在终端左上角<code>Edit -&gt; Profiles</code>，打开</p>
-<p><img src="/posts/Install-Yahei-Consolas-Hybrid-font-in-linux-mint/Profiles_002.png" alt="Profiles_002"><br>点击右边的<code>Edit</code>, 就可以在<code>General</code>界面下的<code>font</code>进行选择字体了，在其中选择我们之前已经安装好了的Yahei Consolas Hybrid字体即可。</p>
-<p><img src="/posts/Install-Yahei-Consolas-Hybrid-font-in-linux-mint/Editing_Profile_Default_004.png" alt="Editing_Profile_Default_004"></p>
+<p><img data-src="Install-Yahei-Consolas-Hybrid-font-in-linux-mint/Profiles_002.png" alt="Profiles_002"><br>点击右边的<code>Edit</code>, 就可以在<code>General</code>界面下的<code>font</code>进行选择字体了，在其中选择我们之前已经安装好了的Yahei Consolas Hybrid字体即可。</p>
+<p><img data-src="Install-Yahei-Consolas-Hybrid-font-in-linux-mint/Editing_Profile_Default_004.png" alt="Editing_Profile_Default_004"></p>
 <h3 id="全部参考文档"><a href="#全部参考文档" class="headerlink" title="全部参考文档"></a>全部参考文档</h3><p>[1] <a target="_blank" rel="noopener" href="https://forum.ubuntu.org.cn/viewtopic.php?p=1312510">怎样修改终端字体</a><br>[2] <a target="_blank" rel="noopener" href="https://www.linuxidc.com/Linux/2011-08/40747.htm">Consolas雅黑混合版yahei consolas hybrid编程字体下载</a><br>[3] <a target="_blank" rel="noopener" href="https://linux.linuxidc.com/linuxconf/download.php?file=Li9saW51eGZpbGVzL3B1Yi9PdGhlci/X1szlL0NvbnNvbGFz0cW62rvsus+w5nlhaGVpIGNvbnNvbGFzIGh5YnJpZLHgs8zX1szlz8LU2C8lNUJMaW51eElEQy5jb20lNURZYUhlaS5Db25zb2xhcy4xLjExYi5yYXI=">下载yahei consolas hybrid字体</a><br>[4] <a target="_blank" rel="noopener" href="https://www.cnblogs.com/MonkeyF/archive/2013/05/13/3076466.html">Linux下设置雅黑-Consolas混合字体</a><br>[5] <a target="_blank" rel="noopener" href="https://www.iteye.com/blog/fooler5-2406227">ubuntu安装微软雅黑和Consolas字体</a></p>
 <p>[^1]: <a target="_blank" rel="noopener" href="https://www.linuxidc.com/Linux/2011-08/40747.htm">Consolas雅黑混合版yahei consolas hybrid编程字体下载</a><br>[^2]: <a target="_blank" rel="noopener" href="https://linux.linuxidc.com/linuxconf/download.php?file=Li9saW51eGZpbGVzL3B1Yi9PdGhlci/X1szlL0NvbnNvbGFz0cW62rvsus+w5nlhaGVpIGNvbnNvbGFzIGh5YnJpZLHgs8zX1szlz8LU2C8lNUJMaW51eElEQy5jb20lNURZYUhlaS5Db25zb2xhcy4xLjExYi5yYXI=">下载yahei consolas hybrid字体</a></p>
 
@@ -925,7 +926,7 @@ A process that matchs rows from the first table and the second table with<br>hav
 <p>这样的样式，很方便：红色表示被删减，绿色表示被增加。人眼对色彩是非常敏感的，这样鲜明的对比很容易被人识别出来，方便阅读博客。</p>
 </blockquote>
 <p>第一次见到<code>diff syntax</code>这个词是在这个<a target="_blank" rel="noopener" href="https://io-oi.me/tech/hexo-next-optimization/#fnref:1">地方</a>，其中讲述到这个功能的地方如下图</p>
-<p><img src="/posts/diff-synatx-in-code-blocks/diff_example.jpg" alt="image-diff_example"></p>
+<p><img data-src="diff-synatx-in-code-blocks/diff_example.jpg" alt="image-diff_example"></p>
 <p>当时很想找到如何才能在自己博客的代码段实现这个功能，百度中也未搜索到这个东西，在不知道这个功能名称的前提下去根据功能的描述进行搜索，很费脑筋去想关键词，这样一来如果自己的描述关键词不沾边，结果可想而知。</p>
 <p>想要实现这个效果：<br>在代码块中制定语言，在**```**后加上<code>diff</code>表示语言，然后接着如下进行书写就可以了。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- removed</span><br><span class="line">+ added</span><br></pre></td></tr></table></figure>
@@ -1295,10 +1296,10 @@ A process that matchs rows from the first table and the second table with<br>hav
 
 
 <div class="copyright">
-  &copy; 
+  &copy; 2020 – 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
-    <i class=""></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">ongoing</span>
 </div>
@@ -1330,12 +1331,15 @@ A process that matchs rows from the first table and the second table with<br>hav
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
   
 
 
 
+  <script class="next-config" data-name="nprogress" type="application/json">{"enable":true,"spinner":true}</script>
+  <script src="/js/third-party/nprogress.js"></script>
 
   
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
