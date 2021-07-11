@@ -166,49 +166,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <!-- toc -->
-
-<h3 id="git-查看修改用户名与密码"><a href="#git-查看修改用户名与密码" class="headerlink" title="git 查看修改用户名与密码"></a>git 查看修改用户名与密码</h3><ul>
-<li>查看用户名<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name</span><br></pre></td></tr></table></figure></li>
-<li>修改用户名<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;your name&quot;</span><br></pre></td></tr></table></figure></li>
-<li>查看邮箱地址<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email</span><br></pre></td></tr></table></figure></li>
-<li>修改邮箱地址<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email &quot;your email address&quot;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="git-本地与远程仓库关联与解除"><a href="#git-本地与远程仓库关联与解除" class="headerlink" title="git 本地与远程仓库关联与解除"></a>git 本地与远程仓库关联与解除</h3><ul>
-<li>查看远程仓库信息<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure></li>
-<li>建立新仓库<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在github中建立一个新的仓库</span><br><span class="line">可以不要README.md文件</span><br></pre></td></tr></table></figure></li>
-<li>关联<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin git@github.com:your_name/repository_name.git</span><br></pre></td></tr></table></figure></li>
-<li>解除关联<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote remove origin</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="GitHub快速更换绑定邮箱"><a href="#GitHub快速更换绑定邮箱" class="headerlink" title="GitHub快速更换绑定邮箱"></a>GitHub快速更换绑定邮箱</h3><p>（1）点击头像<br>（2）setting<br>（3）Email<br>（4）Add email address<br>（5）新邮箱验证，返回github，将新邮箱验证Set Primary.</p>
-<h3 id="git-推送"><a href="#git-推送" class="headerlink" title="git 推送"></a>git 推送</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-
-<h3 id="github-如何删除仓库"><a href="#github-如何删除仓库" class="headerlink" title="github 如何删除仓库"></a>github 如何删除仓库</h3><p>（1）settings<br>（2）页面最下方’Delete this repository’</p>
-<h3 id="查看本地与远程的连接"><a href="#查看本地与远程的连接" class="headerlink" title="查看本地与远程的连接"></a>查看本地与远程的连接</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-
-<h3 id="git在本地配置公钥"><a href="#git在本地配置公钥" class="headerlink" title="git在本地配置公钥"></a>git在本地配置公钥</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C email_address</span><br></pre></td></tr></table></figure>
-
-<h3 id="对文件或文件夹重命名"><a href="#对文件或文件夹重命名" class="headerlink" title="对文件或文件夹重命名"></a>对文件或文件夹重命名</h3><p>使用<code>git mv</code>即可对文件或文件夹进行<code>转移</code>或者<code>重命名</code>。<br>使用方法如下</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git mv &lt;source&gt; &lt;destination&gt;</span><br><span class="line">git mv &lt;source&gt; &lt;destination directory&gt;</span><br></pre></td></tr></table></figure>
-<p><em>暂时还没看懂重命名文件夹是怎么做的。</em></p>
-<h3 id="git基本操作"><a href="#git基本操作" class="headerlink" title="git基本操作"></a>git基本操作</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 初始化仓库</span><br><span class="line">git init</span><br><span class="line"># 取消初始化仓库</span><br><span class="line">rm -rf .git/</span><br><span class="line"># 查看仓库状态（哪些文件提交了，哪些文件未提交）</span><br><span class="line">git status</span><br><span class="line"># 添加文件至提交列表</span><br><span class="line">git add filename</span><br><span class="line">## 同时添加多个文件</span><br><span class="line">git add filename1 filename2 (中间以空格区分)</span><br></pre></td></tr></table></figure>
-
-<h3 id="git删除add中的文件（缓存文件）"><a href="#git删除add中的文件（缓存文件）" class="headerlink" title="git删除add中的文件（缓存文件）"></a>git删除add中的文件（缓存文件）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm --cached file_name</span><br></pre></td></tr></table></figure>
-
-<h3 id="Git每次push都需要输入用户名与密码"><a href="#Git每次push都需要输入用户名与密码" class="headerlink" title="Git每次push都需要输入用户名与密码"></a>Git每次push都需要输入用户名与密码</h3><p>首先，如果我们git clone的下载代码的时候是连接的https://而不是git@git (ssh)的形式，当我们操作git pull/push到远程的时候，总是提示我们输入账号和密码才能操作成功，频繁的输入账号和密码会很麻烦，也特别烦恼。</p>
-<p><strong>解决办法</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git bash进入你的项目目录，输入:</span><br><span class="line">git config --global credential.helper store</span><br></pre></td></tr></table></figure>
-<p>此项会在本地生成一个文本，上边记录你的账号和密码。<br>然后你使用上述的命令配置好之后，再操作一次git pull，然后它会提示你输入账号密码，这一次之后就不需要再次输入密码了。</p>
-<h3 id="发现github上的绿色格子几天没有亮了"><a href="#发现github上的绿色格子几天没有亮了" class="headerlink" title="发现github上的绿色格子几天没有亮了"></a>发现github上的绿色格子几天没有亮了</h3><p>原因：之前github的邮箱更换了，但是本地主机的邮箱忘记更换。</p>
-<p>使用<code>git config user.email</code>查看是否和github上保留的邮箱是否一致，</p>
-<p>如果不一致，使用<code>git config user.email &quot;your_address”</code>进行本地邮箱的更换。</p>
-<h3 id="在终端中键入git-status后显示中文乱码"><a href="#在终端中键入git-status后显示中文乱码" class="headerlink" title="在终端中键入git status后显示中文乱码"></a>在终端中键入git status后显示中文乱码</h3><p>解决办法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.quotepath false</span><br></pre></td></tr></table></figure>
-
-<h3 id="重写最后一个commit信息"><a href="#重写最后一个commit信息" class="headerlink" title="重写最后一个commit信息"></a>重写最后一个commit信息</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend</span><br></pre></td></tr></table></figure>
-
-<h3 id="恢复git-rm的文件"><a href="#恢复git-rm的文件" class="headerlink" title="恢复git rm的文件"></a>恢复git rm的文件</h3><p>第一步: <code>git reset</code><br>第二步: <code>git checkout the_file_deleted</code></p>
-<h3 id="下载最新版本库，不带有历史库"><a href="#下载最新版本库，不带有历史库" class="headerlink" title="下载最新版本库，不带有历史库"></a>下载最新版本库，不带有历史库</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone repository_link --depth=1</span><br></pre></td></tr></table></figure>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/git-knowledge.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -283,291 +248,14 @@
           <p>一月份的时候有一个考察，但是当时连一个很简单的语句都不会写了，之后就在<a target="_blank" rel="noopener" href="https://sqlbolt.com/">SQLBolt</a>上进行了一个回顾，这里进行记录，以后方便随时回来查看。</p>
 <hr>
 <!-- toc -->
-
-<hr>
-<h3 id="1-SELECT"><a href="#1-SELECT" class="headerlink" title="1. SELECT"></a>1. SELECT</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> table_name;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-Queries-with-constraints"><a href="#2-Queries-with-constraints" class="headerlink" title="2. Queries with constraints"></a>2. Queries with constraints</h3><ul>
-<li>WHERE clause<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">column</span>,...</span><br><span class="line">FORM <span class="keyword">table</span></span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">condition</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="center">Operator</th>
-<th align="center">SQL Example</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">BETWEEN … AND …</td>
-<td align="center">clo_name <strong>BETWEEN</strong> 0.5 <strong>AND</strong> 1.5</td>
-</tr>
-<tr>
-<td align="center">NOT BETWEEN … AND …</td>
-<td align="center">clo_name NOT <strong>BETWEEN</strong> 2000 <strong>AND</strong> 2010</td>
-</tr>
-<tr>
-<td align="center">IN (…)</td>
-<td align="center">clo_name <strong>IN</strong> (1, 3, 5)</td>
-</tr>
-<tr>
-<td align="center">NOT IN (…)</td>
-<td align="center">col_name <strong>NOT IN</strong> (1, 3, 5)</td>
-</tr>
-</tbody></table>
-<center>表1</center>
-
-<table>
-<thead>
-<tr>
-<th align="center">Operator</th>
-<th align="center">Condition</th>
-<th align="center">Example</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">LIKE</td>
-<td align="center">Case insensitive exact string comparison</td>
-<td align="center">col_name <strong>LIKE</strong> ‘abc’</td>
-</tr>
-<tr>
-<td align="center">NOT LIKE</td>
-<td align="center">Case insensitive exact string inequality comparison</td>
-<td align="center">col_name **NOT LIKE ** ‘abc’</td>
-</tr>
-<tr>
-<td align="center">%</td>
-<td align="center">Match(only with LIKE or NOT LIKE</td>
-<td align="center">col_name <strong>LIKE</strong> ‘%hello%’</td>
-</tr>
-<tr>
-<td align="center">_</td>
-<td align="center">Used to match a single character(only with LIKE or NOT LIKE)</td>
-<td align="center">col_name <strong>LIKE</strong> “AN_”</td>
-</tr>
-<tr>
-<td align="center">IN (…)</td>
-<td align="center">String exists in a list</td>
-<td align="center">col_name <strong>IN</strong> (“A”, “B”)</td>
-</tr>
-<tr>
-<td align="center">NOT IN (…)</td>
-<td align="center">String does not exit in a list</td>
-<td align="center">col_name <strong>NOT IN</strong> (“C”, “E”)</td>
-</tr>
-</tbody></table>
-<center>表2</center>
-
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">column</span>,...</span><br><span class="line">FORM <span class="keyword">table</span></span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">condition</span></span><br><span class="line">  <span class="keyword">AND</span><span class="operator">/</span><span class="keyword">OR</span> another_condition</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-Filtering-and-sorting-Query-results"><a href="#3-Filtering-and-sorting-Query-results" class="headerlink" title="3. Filtering and sorting Query results"></a>3. Filtering and sorting Query results</h3><ul>
-<li>Unique results<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> <span class="keyword">column</span>, another_column, ...</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">condition</span>(s)</span><br></pre></td></tr></table></figure></li>
-<li>Ordering results<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">%</span> <span class="keyword">Select</span> query <span class="keyword">with</span> ordered results</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">column</span>, another_column, ...</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">condition</span>(s)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">column</span> <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure></li>
-<li>Limiting results to a subset<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">%</span> <span class="keyword">Select</span> query <span class="keyword">with</span> limited <span class="keyword">rows</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">column</span>, another_column, ...</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">condition</span>(s)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">column</span> <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span></span><br><span class="line">LIMIT num_limit <span class="keyword">OFFSET</span> num_offset <span class="operator">%</span> <span class="keyword">offset</span>偏移量</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>eg. List the last four Pixar movies released (ordered from most recent to least)</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> movies</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">year</span> <span class="keyword">DESC</span></span><br><span class="line">LIMIT <span class="number">4</span>;</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="basic-of-sql/sql_eg_1.png" alt="sql_eg_1"></p>
-<p>eg. List the <strong>next</strong> five Pixar movies sorted alphabetically</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> movies</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> title <span class="keyword">ASC</span></span><br><span class="line">LIMIT <span class="number">5</span> <span class="keyword">OFFSET</span> <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="basic-of-sql/sql_eg_2.png" alt="sql_eg_2"></p>
-<h3 id="4-Multi-table-queries-with-JOINs"><a href="#4-Multi-table-queries-with-JOINs" class="headerlink" title="4. Multi-table queries with JOINs"></a>4. Multi-table queries with JOINs</h3><p><strong>JOIN clause</strong></p>
-<ul>
-<li>INNER JOIN<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">%</span> <span class="keyword">Select</span> query <span class="keyword">with</span> <span class="keyword">INNER</span> <span class="keyword">JOIN</span> <span class="keyword">on</span> multiple tables</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">column</span>, another_table_column, ...</span><br><span class="line"><span class="keyword">FROM</span> mytable</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> another_table</span><br><span class="line">  <span class="keyword">ON</span> mytable.id <span class="operator">=</span> another_table.id</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">condition</span>(s)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">column</span>, ... <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span></span><br><span class="line">LIMIT num_limit <span class="keyword">OFFSET</span> num_offset;</span><br></pre></td></tr></table></figure>
-A process that matchs rows from the first table and the second table with<br>have the same key to create a result row with combined columns from both<br>tables.</li>
-</ul>
-<p>eg.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title, rating</span><br><span class="line"><span class="keyword">FROM</span> movies</span><br><span class="line">  <span class="keyword">JOIN</span> boxoffice</span><br><span class="line">    <span class="keyword">ON</span> movies.id <span class="operator">=</span> boxoffice.movie_id</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> rating <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-OUTER-JOINs"><a href="#5-OUTER-JOINs" class="headerlink" title="5. OUTER JOINs"></a>5. OUTER JOINs</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">%</span><span class="keyword">Select</span> query <span class="keyword">with</span> <span class="keyword">LEFT</span><span class="operator">/</span><span class="keyword">RIGHT</span><span class="operator">/</span><span class="keyword">FULL</span> JOINs <span class="keyword">on</span> multiple tables</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">column</span>, another_column, ...</span><br><span class="line"><span class="keyword">FROM</span> mytable</span><br><span class="line"><span class="keyword">INNER</span><span class="operator">/</span><span class="keyword">LEFT</span><span class="operator">/</span><span class="keyword">RIGHT</span><span class="operator">/</span><span class="keyword">FULL</span> <span class="keyword">JOIN</span> another_table</span><br><span class="line">  <span class="keyword">ON</span> mytable.id <span class="operator">=</span> another_table.matching_id</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">condition</span>(s)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">column</span>, ... <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span></span><br><span class="line">LIMIT num_limit <span class="keyword">OFFSET</span> num_offset;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>When joining table A to table B, a <code>LEFT JOIN</code> simply includes rows from A regardless of whether a matching row is found in B. The <code>RIGHT JOIN</code> is the same, but reversed, keeping rows in B regardless of whether a match is found in A. Finally, a <code>FULL JOIN</code> simply means that rows from both tables are kept, regardless of whether a matching row exists in the other table.</p>
-</blockquote>
-<p>eg. List all buildings and the distinct employee roles in each building (including empty buildings)</p>
-<p><img data-src="basic-of-sql/sql_eg_3.png" alt="sql_eg_3"></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> building_name, role <span class="keyword">FROM</span> buildings</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> employees</span><br><span class="line">  <span class="keyword">ON</span> buildings.building_name <span class="operator">=</span> employees.building</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="6-A-short-note-on-NULLs"><a href="#6-A-short-note-on-NULLs" class="headerlink" title="6. A short note on NULLs"></a>6. A short note on NULLs</h3><blockquote>
-<p>Test  a column for NULL values in a <strong>WHERE</strong> clause by using either <strong>IS NULL</strong> or <strong>IS NOT NULL</strong> constraint.</p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">%</span><span class="keyword">Select</span> query <span class="keyword">with</span> constraints <span class="keyword">on</span> <span class="keyword">NULL</span> <span class="keyword">values</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">column</span>, another_column, ...</span><br><span class="line"><span class="keyword">FROM</span> mytable</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">column</span> <span class="keyword">IS</span><span class="operator">/</span><span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span></span><br><span class="line"><span class="keyword">AND</span><span class="operator">/</span><span class="keyword">OR</span> another_condition</span><br></pre></td></tr></table></figure>
-
-<p>eg.</p>
-<blockquote>
-<p>Find the names of the buildings that hold no employees.</p>
-</blockquote>
-<p><img data-src="basic-of-sql/sql_eg_4.png" alt="sql_eg_4"></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> building_name</span><br><span class="line"><span class="keyword">FROM</span> buildings</span><br><span class="line">  <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> employees</span><br><span class="line">    <span class="keyword">ON</span> building_name <span class="operator">=</span> building</span><br><span class="line"><span class="keyword">WHERE</span> role <span class="keyword">IS</span> <span class="keyword">NULL</span>;</span><br></pre></td></tr></table></figure>
-
-<p><em>此题需要仔细思考一下</em></p>
-<h3 id="7-Queries-with-expressions"><a href="#7-Queries-with-expressions" class="headerlink" title="7. Queries with expressions"></a>7. Queries with expressions</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">%</span> <span class="keyword">Select</span> query <span class="keyword">with</span> expression aliases</span><br><span class="line"><span class="keyword">SELECT</span> col_expression <span class="keyword">AS</span> expr_description, ...</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">table</span>;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">%</span> Example query <span class="keyword">with</span> <span class="keyword">both</span> <span class="keyword">column</span> <span class="keyword">and</span> <span class="keyword">table</span> name aliases</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">column</span> <span class="keyword">AS</span> better_column_name, ...</span><br><span class="line"><span class="keyword">FROM</span> complex_table_name <span class="keyword">AS</span> easy_table_name;</span><br></pre></td></tr></table></figure>
-
-<h3 id="8-Queries-with-aggregates-Pt-1"><a href="#8-Queries-with-aggregates-Pt-1" class="headerlink" title="8. Queries with aggregates(Pt.1)"></a>8. Queries with aggregates(Pt.1)</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">%</span> <span class="keyword">Select</span> query <span class="keyword">with</span> aggregate <span class="keyword">function</span> <span class="keyword">over</span> <span class="keyword">all</span> <span class="keyword">rows</span></span><br><span class="line"><span class="keyword">SELECT</span> AGG_FUNC(column_or_expression) <span class="keyword">AS</span> aggregate_description, ...</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">table</span></span><br><span class="line"><span class="keyword">WHERE</span> constraint_expression;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Common aggregate functions</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th><strong>Function</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>COUNT(*)</td>
-</tr>
-<tr>
-<td>MIN(column)</td>
-</tr>
-<tr>
-<td>MAX(column)</td>
-</tr>
-<tr>
-<td>AVG(column)</td>
-</tr>
-<tr>
-<td>SUM(column)</td>
-</tr>
-</tbody></table>
-<ul>
-<li>Grouped aggregate functions</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">%</span> <span class="keyword">Select</span> query <span class="keyword">with</span> aggregate functions <span class="keyword">over</span> <span class="keyword">groups</span></span><br><span class="line"><span class="keyword">SELECT</span> AGG_FUNC(column_or_expression) <span class="keyword">AS</span> aggregate_expression, ...</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">table</span></span><br><span class="line"><span class="keyword">WHERE</span> constraint_expression</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">column</span>;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>The <strong>GROUP BY</strong> clause works by grouping rows that have the same value in the column specified.</p>
-</blockquote>
-<h3 id="9-Queries-with-aggregates-Pt-2"><a href="#9-Queries-with-aggregates-Pt-2" class="headerlink" title="9.  Queries with aggregates (Pt. 2)"></a>9.  Queries with aggregates (Pt. 2)</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">%</span> <span class="keyword">Select</span> query <span class="keyword">with</span> <span class="keyword">HAVING</span> <span class="keyword">constraint</span></span><br><span class="line"><span class="keyword">SELECT</span> group_by_column, AGG_FUNC(column_expression) <span class="keyword">AS</span> aggregate_result_alias, ...</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">table</span></span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">condition</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">column</span></span><br><span class="line"><span class="keyword">HAVING</span> group_condition;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>The <strong>HAVING</strong> clause constraints are applied to the grouped rows.</p>
-<p>The <code>HAVING</code> clause constraints are written the same way as the <code>WHERE</code> clause constraints.</p>
-</blockquote>
-<p>eg. Find the total number of years employed by all Engineers</p>
-<p><img data-src="basic-of-sql/sql_eg_5.png" alt="sql_eg_5"></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> role, <span class="built_in">SUM</span>(years_employed)</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> role</span><br><span class="line"><span class="keyword">HAVING</span> role <span class="operator">=</span> &quot;Engineer&quot;;</span><br></pre></td></tr></table></figure>
-
-<p>result</p>
-<p><img data-src="basic-of-sql/sql_eg_6.png" alt="sql_eg_6"></p>
-<h3 id="10-Order-of-execution-of-a-Query"><a href="#10-Order-of-execution-of-a-Query" class="headerlink" title="10. Order of execution of a Query"></a>10. Order of execution of a Query</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">%</span> Complete <span class="keyword">SELECT</span> query</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> <span class="keyword">column</span>, AGG_FUNC(column_or_expression), ...</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">table</span></span><br><span class="line">  <span class="keyword">JOIN</span> another_table</span><br><span class="line">    <span class="keyword">ON</span> table.column <span class="operator">=</span> another_table.column</span><br><span class="line">  <span class="keyword">WHERE</span> constraint_expression</span><br><span class="line">  <span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">column</span></span><br><span class="line">  <span class="keyword">HAVING</span> constraint_expression</span><br><span class="line">  <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">column</span> <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span></span><br><span class="line">  LIMIT count <span class="keyword">OFFSET</span> count;</span><br></pre></td></tr></table></figure>
-
-<h3 id="11-Inserting-rows"><a href="#11-Inserting-rows" class="headerlink" title="11. Inserting rows"></a>11. Inserting rows</h3><p>Inserting new data</p>
-<ul>
-<li>Insert statement with values for all columns</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">table</span></span><br><span class="line"><span class="keyword">VALUES</span> (value_or_expr, another_value_or_expr, ...),</span><br><span class="line">       (value_or_expr_2, another_value_or_expr_2, ...),</span><br><span class="line">       ...;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Insert statement with specific columns</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">table</span></span><br><span class="line">(<span class="keyword">column</span>, another_column, ...)</span><br><span class="line"><span class="keyword">VALUES</span> (value_or_expr, another_value_or_expr, ...),</span><br><span class="line">       (value_or_expr_2, another_value_or_expr_2, ...),</span><br><span class="line">       ...;</span><br></pre></td></tr></table></figure>
-
-<p><em>注意<code>string格式</code>的双引号</em></p>
-<h3 id="12-Updating-rows"><a href="#12-Updating-rows" class="headerlink" title="12. Updating rows"></a>12. Updating rows</h3><p>Update existing data</p>
-<ul>
-<li>Update statement with values</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">UPDATE <span class="keyword">table</span></span><br><span class="line"><span class="keyword">SET</span> <span class="keyword">column</span> <span class="operator">=</span> value_or_expr,</span><br><span class="line">    other_column <span class="operator">=</span> another_value_or_expr,</span><br><span class="line">    ...</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">condition</span>;</span><br></pre></td></tr></table></figure>
-
-<p><em>It’s recommended that you run the constraint in a <code>SELECT</code> query first to ensure that you are updating the right rows.</em></p>
-<h3 id="13-Deleting-rows"><a href="#13-Deleting-rows" class="headerlink" title="13. Deleting rows"></a>13. Deleting rows</h3><p>Delete data from a table in the database</p>
-<ul>
-<li>Delete statement with condition</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> <span class="keyword">table</span></span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">condition</span>;</span><br></pre></td></tr></table></figure>
-
-<p><em>It’s recommended that you run the constraint in a <code>SELECT</code> query first to ensure that you are removing the right rows.</em></p>
-<h3 id="14-Creating-tables"><a href="#14-Creating-tables" class="headerlink" title="14. Creating tables"></a>14. Creating tables</h3><ul>
-<li>Create table statement</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> table_name (</span><br><span class="line">	<span class="keyword">column</span> DataType TableConstraint <span class="keyword">DEFAULT</span> default_value,</span><br><span class="line">    another_column DataType TableConstraint <span class="keyword">DEFAULT</span> default_value,</span><br><span class="line">    ...</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>Table data types</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>Data type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>INTEGER, BOOLEAN</td>
-<td></td>
-</tr>
-<tr>
-<td>FLOAT, DOUBLE, REAL</td>
-<td>precise numerical data</td>
-</tr>
-<tr>
-<td>CHARACTER, VARCHAR, TEXT</td>
-<td></td>
-</tr>
-<tr>
-<td>DATE, DATETIME</td>
-<td></td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>Table constraints</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>Constraint</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>PRIMARY KEY</td>
-<td>This means that the values in this column are unique, and each value can be used to identify a single row in this table.</td>
-</tr>
-<tr>
-<td>AUTOINCEREMENT(自增)</td>
-<td>For integer values, this means that the value is automatically filled in and incremented with each row insertion.</td>
-</tr>
-<tr>
-<td>UNIQUE</td>
-<td>The values in this column have to be unique</td>
-</tr>
-<tr>
-<td>NOT NULL</td>
-<td></td>
-</tr>
-<tr>
-<td>FOREIGN KEY</td>
-<td>This is a consistency check which ensures that each value in this column corresponds to another value in a column in another table.</td>
-</tr>
-</tbody></table>
-<p>eg.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> movies (</span><br><span class="line">    id <span class="type">INTEGER</span> <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">    title TEXT,</span><br><span class="line">    director TEXT,</span><br><span class="line">    <span class="keyword">year</span> <span class="type">INTEGER</span>,</span><br><span class="line">    length_minutes <span class="type">INTEGER</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<h3 id="15-Altering-tables"><a href="#15-Altering-tables" class="headerlink" title="15. Altering tables"></a>15. Altering tables</h3><p>Adding columns</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">%</span> Altering <span class="keyword">table</span> <span class="keyword">to</span> <span class="keyword">add</span> <span class="keyword">new</span> <span class="keyword">column</span>(s)</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span>	table_name</span><br><span class="line"><span class="keyword">ADD</span> <span class="keyword">column</span> DataType OptionalTableConstraint</span><br><span class="line">  <span class="keyword">DEFAULT</span> default_value;</span><br></pre></td></tr></table></figure>
-
-<p>Removing columns</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">%</span> Altering <span class="keyword">table</span> <span class="keyword">to</span> remove <span class="keyword">column</span>(s)</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name</span><br><span class="line"><span class="keyword">DROP</span> column_to_be_deleted;</span><br></pre></td></tr></table></figure>
-
-<p>Renaming the table</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">%</span> Altering <span class="keyword">table</span> name</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name</span><br><span class="line">RENAME <span class="keyword">TO</span> new_table_name;</span><br></pre></td></tr></table></figure>
-
-<h3 id="16-Dropping-tables"><a href="#16-Dropping-tables" class="headerlink" title="16. Dropping tables"></a>16. Dropping tables</h3><ul>
-<li>Drop table statement</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> IF <span class="keyword">EXISTS</span> table_name;</span><br></pre></td></tr></table></figure>
-
-<p><em>If you have another table that is dependent on columns in table you are removing (for example, with a <code>FOREIGN KEY</code> dependency) then you will have to either update all dependent tables first to remove the dependent rows or to remove those tables entirely.</em></p>
-<center>FINISHED: 20_1_29</center>
-
-<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><p>[1] <a target="_blank" rel="noopener" href="https://sqlbolt.com/">SQLBolt</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/basic-of-sql.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -640,33 +328,14 @@ A process that matchs rows from the first table and the second table with<br>hav
     
     <div class="post-body" itemprop="articleBody">
           <p>由于刚刚安装的Linux mint终端中的中文字体显示为<strong>楷体</strong>，但是这个楷体在终端中显示有些问题：字与字之间空隙很大。所以就打算换一款字体。</p>
-<hr>
-<!-- toc -->
-
-<hr>
-<h3 id="1-字体介绍及下载"><a href="#1-字体介绍及下载" class="headerlink" title="1 | 字体介绍及下载"></a>1 | 字体介绍及下载</h3><p>关于<code>Yahei Consolas Hybrid</code>这个字体我是从<a target="_blank" rel="noopener" href="https://forum.ubuntu.org.cn/viewtopic.php?p=1312510">怎样修改终端字体</a>这篇文章中发现的。关于这款字体linux公社有一篇文章[^1]，其中有这样一段描述:</p>
-<blockquote>
-<p>Consolas雅黑混合字体是什么？？Consolas是一种专门为编程人员设计的字体,这一字体的特性是所有字母、数字与符号均能非常容易辨认！而且所有字符都具有相同的宽度，让编程人员看着更舒服，当然在打个人和商业信函的时候，用这个字体也是不错的选择，这一字体还专门为ClearType做了优化，可以让它更舒适地展示在屏幕上。</p>
-</blockquote>
-<p>这款字体的下载链接在这里[^2]。</p>
-<h3 id="2-字体的安装"><a href="#2-字体的安装" class="headerlink" title="2 | 字体的安装"></a>2 | 字体的安装</h3><p>将<code>YaHei.Consolas.1.11b.rar</code>解压，得到<code>YaHei.Consolas.1.11b.ttf</code>。</p>
-<p>之后在linux mint 系统字体文件夹中建立对应的字体文件夹</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /usr/share/fonts/vista</span><br></pre></td></tr></table></figure>
-<p>复制字体文件到对应的文件夹下</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp YaHei.Consolas.1.11b.ttf /usr/share/fonts/vista</span><br></pre></td></tr></table></figure>
-<p>更改字体文件权限</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 644 /usr/share/fonts/vista/YaHei.Consolas.1.11b.ttf</span><br></pre></td></tr></table></figure>
-<p>刷新并安装字体</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkfontscale &amp;&amp; sudo mkfontdir &amp;&amp; sudo fc-cache -fv</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-安装之后设置字体"><a href="#3-安装之后设置字体" class="headerlink" title="3 | 安装之后设置字体"></a>3 | 安装之后设置字体</h3><p>在mint的左下角<code>Menu</code>中搜索<code>appearance</code>，打开。如下边这个界面</p>
-<p><img data-src="Install-Yahei-Consolas-Hybrid-font-in-linux-mint/Appearance_Preferences_001.png" alt="Appearance Preferences_001"><br>在这里面可以设置应用字体，文档字体，桌面字体，窗口标题字体等等。</p>
-<p>下面设置<strong>终端字体</strong><br>打开终端，在终端左上角<code>Edit -&gt; Profiles</code>，打开</p>
-<p><img data-src="Install-Yahei-Consolas-Hybrid-font-in-linux-mint/Profiles_002.png" alt="Profiles_002"><br>点击右边的<code>Edit</code>, 就可以在<code>General</code>界面下的<code>font</code>进行选择字体了，在其中选择我们之前已经安装好了的Yahei Consolas Hybrid字体即可。</p>
-<p><img data-src="Install-Yahei-Consolas-Hybrid-font-in-linux-mint/Editing_Profile_Default_004.png" alt="Editing_Profile_Default_004"></p>
-<h3 id="全部参考文档"><a href="#全部参考文档" class="headerlink" title="全部参考文档"></a>全部参考文档</h3><p>[1] <a target="_blank" rel="noopener" href="https://forum.ubuntu.org.cn/viewtopic.php?p=1312510">怎样修改终端字体</a><br>[2] <a target="_blank" rel="noopener" href="https://www.linuxidc.com/Linux/2011-08/40747.htm">Consolas雅黑混合版yahei consolas hybrid编程字体下载</a><br>[3] <a target="_blank" rel="noopener" href="https://linux.linuxidc.com/linuxconf/download.php?file=Li9saW51eGZpbGVzL3B1Yi9PdGhlci/X1szlL0NvbnNvbGFz0cW62rvsus+w5nlhaGVpIGNvbnNvbGFzIGh5YnJpZLHgs8zX1szlz8LU2C8lNUJMaW51eElEQy5jb20lNURZYUhlaS5Db25zb2xhcy4xLjExYi5yYXI=">下载yahei consolas hybrid字体</a><br>[4] <a target="_blank" rel="noopener" href="https://www.cnblogs.com/MonkeyF/archive/2013/05/13/3076466.html">Linux下设置雅黑-Consolas混合字体</a><br>[5] <a target="_blank" rel="noopener" href="https://www.iteye.com/blog/fooler5-2406227">ubuntu安装微软雅黑和Consolas字体</a></p>
-<p>[^1]: <a target="_blank" rel="noopener" href="https://www.linuxidc.com/Linux/2011-08/40747.htm">Consolas雅黑混合版yahei consolas hybrid编程字体下载</a><br>[^2]: <a target="_blank" rel="noopener" href="https://linux.linuxidc.com/linuxconf/download.php?file=Li9saW51eGZpbGVzL3B1Yi9PdGhlci/X1szlL0NvbnNvbGFz0cW62rvsus+w5nlhaGVpIGNvbnNvbGFzIGh5YnJpZLHgs8zX1szlz8LU2C8lNUJMaW51eElEQy5jb20lNURZYUhlaS5Db25zb2xhcy4xLjExYi5yYXI=">下载yahei consolas hybrid字体</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/Install-Yahei-Consolas-Hybrid-font-in-linux-mint.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -739,33 +408,14 @@ A process that matchs rows from the first table and the second table with<br>hav
     
     <div class="post-body" itemprop="articleBody">
           <p>因为想要将Hexo博客的书写单独分离出一个生产环境，这样之后如果宿主操作系统更换之后博客的环境就不用再次安装了，因此昨天晚上在VMware虚拟机中安装了Linux mint（之前一直使用的桌面是Ubuntu16.04），今天来写一个安装过程以及安装好之后的一些准备工作。</p>
-<hr>
-<!-- toc -->
-
-<hr>
-<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1 | 安装"></a>1 | 安装</h2><p>下载<a target="_blank" rel="noopener" href="https://www.linuxmint.com/edition.php?id=276">Linux mint镜像文件</a>，这里我下载的是<code>MATE</code>，官网可能下载的有些慢，可以使用<code>xdm</code>进行下载。<br>下载之后就可以使用虚拟机了，之后的安装步骤就不多说了，一些简单的步骤。</p>
-<h2 id="2-下载之后的使用"><a href="#2-下载之后的使用" class="headerlink" title="2 | 下载之后的使用"></a>2 | 下载之后的使用</h2><h3 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h3><h3 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install vim</span><br><span class="line">sudo apt install vim-gtk</span><br></pre></td></tr></table></figure>
-<p>注意将vim的桌面版本也下载上，不然可能vim的终端版本的<code>clipboard</code>没有安装上，使用<code>$vim version | grep &quot;clipboard&quot;</code>进行查看，如果有<code>+clipboard</code>即表示已经安装上。</p>
-<h3 id="git"><a href="#git" class="headerlink" title="git"></a>git</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install git</span><br></pre></td></tr></table></figure>
-
-<h3 id="tmux"><a href="#tmux" class="headerlink" title="tmux"></a>tmux</h3><h3 id="输入法"><a href="#输入法" class="headerlink" title="输入法"></a>输入法</h3><h3 id="离线安装nodejs-1"><a href="#离线安装nodejs-1" class="headerlink" title="离线安装nodejs^1"></a>离线安装nodejs<a href="%5BLinux%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85node%5D(https://www.jianshu.com/p/7bef118592c3)">^1</a></h3><p>nodejs是hexo运行所必须的环境，下载<a target="_blank" rel="noopener" href="https://cdn.npm.taobao.org/dist/node/v12.16.2/node-v12.16.2-linux-x64.tar.xz">nodejs</a></p>
-<p>下载完毕后，解压，并将解压后的文件夹移入自己的某个文件夹中，这里我将文件夹放置在<code>/usr/local/lib/nodejs</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /usr/local/lib/nodejs</span><br><span class="line">sudo tar -xJvf node-xxx-xxx.tar.xz -C /usr/local/lib/nodejs</span><br><span class="line">sudo mv /usr/local/lib/nodejs/node-xxx-xxx /usr/local/lib/nodejs/node-xxx # 更改名称</span><br></pre></td></tr></table></figure>
-
-<p>设置环境变量，在<code>/etc/profile</code>中，在文件最后添加</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Nodejs</span><br><span class="line">export NODEJS_HOME=/usr/local/lib/nodejs/node-xxx/bin  # xxx是版本号</span><br><span class="line">export PATH=$NODEJS_HOME:$PATH</span><br></pre></td></tr></table></figure>
-
-<p>刷新文件配置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">. /etc/profile</span><br></pre></td></tr></table></figure>
-
-<p>测试</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm version</span><br></pre></td></tr></table></figure>
-
-<p>创建sudo链接</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s /usr/local/lib/nodejs/node-xxx/bin/node /usr/bin/node</span><br><span class="line">sudo ln -s /usr/local/lib/nodejs/node-xxx/bin/npm /usr/bin/npm</span><br><span class="line">sudo ln -s /usr/local/lib/nodejs/node-xxx/bin/npx /usr/bin/npx</span><br></pre></td></tr></table></figure>
-
-<h3 id="其它一些配置"><a href="#其它一些配置" class="headerlink" title="其它一些配置"></a>其它一些配置</h3><p><strong>将caps lock映射为ctrl</strong></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/install-linux-mint-in-vmware-and-other-preparations.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -828,7 +478,10 @@ A process that matchs rows from the first table and the second table with<br>hav
     
     
     <div class="post-body" itemprop="articleBody">
-          <ol>
+          <span id="more"></span>
+
+
+<ol>
 <li><p>我认为<code>脚注</code>在长文章中是非常有用的，脚注对于一个个小点的标注会使人知道它的“来源”，而<code>参考</code>则更多是针对于全局文章。</p>
 </li>
 <li><p>博客文章结构</p>
@@ -920,7 +573,10 @@ A process that matchs rows from the first table and the second table with<br>hav
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>这几次看别人博客时总是发现了一些东西，比如有的博客中总是出现下面的这种样式：</p>
+          <span id="more"></span>
+
+
+<p>这几次看别人博客时总是发现了一些东西，比如有的博客中总是出现下面的这种样式：</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// this is a test.</span><br><span class="line"><span class="deletion">- this is removed;</span></span><br><span class="line"><span class="addition">+ this is added.</span></span><br></pre></td></tr></table></figure>
 
 <blockquote>
@@ -1006,7 +662,14 @@ A process that matchs rows from the first table and the second table with<br>hav
     
     <div class="post-body" itemprop="articleBody">
           <p>将<code>~/public/blog/</code>下的<code>index.html</code>替换为自己设置的网站进入页面，如果有css文件和图片文件自己设置好路径。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/undefined.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1079,29 +742,14 @@ A process that matchs rows from the first table and the second table with<br>hav
     
     <div class="post-body" itemprop="articleBody">
           <p>今天忽然想起博客在github上存放的只是public中的文件，其他的建站源代码只保存在本地，这样的话如果本地电脑系统坏掉了或者发生了意外电脑不见了，那么没有了建站源码，我的网站不就gg了嘛！，所以上网搜了下备份网站源码的教程，下文是记录。</p>
-<ol>
-<li>首先在github博客所在仓库(即<code>yourname.github.io</code>)中<code>新建分支Hexo</code>(名字任意)，并且将其设为默认分支，<br>在网站中进行设置即可；</li>
-<li>将博客仓库<code>clone</code>至本地，将之前本地博客<strong>根文件夹</strong>下的<code>_config.yml</code>，<code>themes/</code>，<code>source/</code>，<code>scffolds/</code>，<code>package.json</code>，<code>.gitignore</code><br>复制到clone的文件夹<code>yourname.github.io/</code>下；</li>
-<li>将<code>themes/next/</code>(next为使用的主题)中的**.git/**删除，否则无法将主题文件夹push；</li>
-<li>在<code>yourname.github.io/</code>下执行<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$npm install</span><br><span class="line">$npm install hexo-deployer-git</span><br><span class="line">$npm install hexo-server --save  // 为使用本地测试hexo s作准备</span><br></pre></td></tr></table></figure></li>
-<li>接下来就可以将网站源码备份了<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$git add *</span><br><span class="line">$git commit -m &quot;your message&quot;</span><br><span class="line">$git push origin Hexo  // 这里的Hexo是你新建的仓库分支名称</span><br></pre></td></tr></table></figure></li>
-<li>执行<code>hexo g -d</code>生成静态页面并部署至github仓库中。</li>
-</ol>
-<p><strong>写一下书写hexo博客的依赖</strong></p>
-<ol>
-<li>git</li>
-<li>nodejs</li>
-<li>npm</li>
-<li>github博客仓库clone至本地</li>
-<li>在clone文件夹下执行<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$npm install hexo-cli -g</span><br><span class="line">$npm install</span><br><span class="line">$npm install hexo-deployer-git</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p><strong>这种方法对于我的设置出问题了</strong></p>
-<blockquote>
-<p>之前我是将自己的主页设置成了自己的页面，也就是自己的域名(<a target="_blank" rel="noopener" href="http://www.ongoing.ink)打开后是自己写的界面,在自己的页面点击/">www.ongoing.ink)打开后是自己写的界面，在自己的页面点击</a><br>博客图标才是进入自己的博客(<a href="http://www.ongoing.ink/blog)%EF%BC%8C%E8%BF%99%E4%B8%AA%E7%95%8C%E9%9D%A2%E5%B0%B1%E6%98%AF%E4%BD%BF%E7%94%A8%60hexo">www.ongoing.ink/blog)，这个界面就是使用`hexo</a> + next`的界面，但是打开后是404.</p>
-</blockquote>
-<p>然后使用了这种方法就出了问题，<code>hexo g</code>自动生成的文件在<code>public/blog</code>，这个不需改变<br>这个问题先放在这里。<br><strong>参考文档</strong></p>
-<p>[1] <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/baab04284923">怎么去备份你的Hexo博客</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/how-to-backx-up-my-hexo-blog-source-code.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1174,23 +822,14 @@ A process that matchs rows from the first table and the second table with<br>hav
     
     <div class="post-body" itemprop="articleBody">
           <p><strong>自定义文章链接</strong></p>
-<p>使用插件：<a target="_blank" rel="noopener" href="https://github.com/rozbo/hexo-abbrlink">hexo-abbrlink</a>，安装:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-abbrlink --save</span><br></pre></td></tr></table></figure>
-<p>修改<code>站点配置文件</code></p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">permalink:</span> <span class="string">:abbrlink/</span></span><br></pre></td></tr></table></figure>
-<p>之后在自己的博客文章开头中加入：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">abbrlink: seourl</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<p>此处<code>seouel</code>填写自己的链接名称<br>当然可以看官方文档增加其它的链接字段，比如在链接中自动生成日期加入，等等。</p>
-<p>在生成的文章链接中添加日期，例如下面这种样式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">your_domain/posts/2020/04/diff-synatx-in-code-blocks.html</span><br></pre></td></tr></table></figure>
-<p>需要在<code>站点配置文件</code>中配置</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">permalink:</span> <span class="string">posts/:year/:month/:abbrlink.html</span></span><br></pre></td></tr></table></figure>
-<p>并且这样做后生成的图片也不会乱，不必再次进行整理。</p>
-<p><strong>参考</strong></p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://blog.zuiyu1818.cn/posts/NexT_seourl.html">博客文章链接优化</a></li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/optimize-blog-article-link.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1263,11 +902,14 @@ A process that matchs rows from the first table and the second table with<br>hav
     
     <div class="post-body" itemprop="articleBody">
           <!-- toc -->
-
-<hr>
-<h2 id="在next主题中点击tags出现“Cannot-GET-tags-20-”"><a href="#在next主题中点击tags出现“Cannot-GET-tags-20-”" class="headerlink" title="在next主题中点击tags出现“Cannot GET /tags/%20/”"></a>在next主题中点击tags出现“Cannot GET /tags/%20/”</h2><p>%20是网页地址的空格符。<br>在<code>主题配置文件</code>搜索<code>menu</code>后将<code>||</code>前的空格删除即可。</p>
-<h2 id="hexo不能使用hexo-s命令"><a href="#hexo不能使用hexo-s命令" class="headerlink" title="hexo不能使用hexo s命令"></a>hexo不能使用hexo s命令</h2><p>原因：未安装<code>hexo-server</code><br>安装：<code>npm install hexo-server --save</code></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/some-problems-when-using-hexo.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 

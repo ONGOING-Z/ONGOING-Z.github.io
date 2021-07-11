@@ -242,67 +242,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <h3 id="背景1"><a href="#背景1" class="headerlink" title="背景1"></a>背景1</h3><p>昨天晚上(20.4.1)忽然看到<code>ubuntu20.04</code>的操作画面，界面更加体贴用户了，配备了一些很不错的特性，其中一个我很喜欢的就是<code>黑夜模式</code>。所以就打算换到它了，但是我一直使用的Ubuntu版本是16.04，所以就先打算升级到18.04，再升级到20.04。接下来就开始了一系列更新操作，当时也没有将软件包全部更新到最新版，主要也是因为源的问题，一些包总是<code>请求超时</code>，所以忽略警告开始升级。</p>
-<p>升级下载过程完毕后，安装花费了很长时间，最后在安装界面上<strong>一直停留在那里不动了</strong>，已经接近凌晨，索性<code>强制关机</code>，去睡觉了。</p>
-<p>第二天早上起来接着开机，但是还是卡在那个地方。这个时候就决定放弃这次升级了，打算直接在官网下载<code>ubuntu19.10</code>版本进行<code>u盘安装</code>。将<code>iso文件</code>烧录至u盘后，插入自己的电脑，进入<code>bios界面</code>，选择从<code>u盘启动</code>，接下来就是一系列配置过程，可进行<code>默认设置</code>，或者<code>自定义设置</code>，这里我选择了自定义设置，因为需要对那几个目录(/home等等)进行磁盘分配。</p>
-<p>设置完毕之后，重新启动，这时出现了问题，开机画面变成了</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GRUB loading</span><br><span class="line">error:unknow filesystem</span><br><span class="line">grub rescue&gt;</span><br></pre></td></tr></table></figure>
-
-<p>这样的字符黑乎乎的界面，上网查找资料，使用了</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">grub rescue&gt;set # 查看当前配置</span><br><span class="line">grub rescue&gt;ls  # 查看当前磁盘及磁盘分区</span><br><span class="line">(hd0) (hd0,msdos0)...(hd1) (hd1,msdos9) (hd1,msdos8)...</span><br><span class="line"># 这里的hd代表磁盘，msdosx代表分区(x为数字)</span><br></pre></td></tr></table></figure>
-<p>开始使用<code>ls</code>命令找<code>grub</code>所在的磁盘，找到了，但是在<code>grub\</code>下并没有<code>normal.mo d</code>文件。</p>
-<p>所以即使设置了</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set root=(hd1,msdos6) # 设置grub启动分区</span><br><span class="line">set prefix(hd1,msdos6)/boot/grub # 设置grub启动路径</span><br><span class="line">insmod normal</span><br></pre></td></tr></table></figure>
-<p>后就会出现错误，显示<code>file not found</code></p>
-<p>而且此时将之强制关机后，开机后会直接进入<code>grub rescue</code>界面，看不到开机过程中一闪而过的<code>进入bios</code>的选项界面了，我试了下在开机后，不断按下<code>F2</code>(我的电脑进入bios的热键是F2)，这下又出现了当初进入bios的界面了。</p>
-<p>寻找Linux核心文件所在分区:<br>我的电脑在<code>(hd1,sdb8)</code>中有名字类似与vmlinuz-3.0.0-12-generic这样的文件，这是Linux核心文件，如果找到，记下(hd1,sdb<code>x</code>)中的x值。假设找到（hd0,5）时，显示了文件夹中的文件。</p>
-<p>然后用Live USB启动，在Live USB的Ubuntu的终端中依次输入以下命令:</p>
-<ul>
-<li>如果/boot单独分区：  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mount /dev/sdb8 /mnt # 注意8这个数字，你需要改写成你自己的</span><br><span class="line">sudo grub-install --boot-directory=/mnt /dev/sda</span><br></pre></td></tr></table></figure></li>
-<li>如果/boot没有单独分区：  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mount /dev/sda5 /mnt</span><br><span class="line">sudo grub-install --boot-directory=/mnt/boot /dev/sda</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>重新启动Ubuntu后，发现熟悉的grub启动界面又回来了，这次虽然没有用到最新的20.04,<br>但开始使用19.10版本了，也算是更新了!</p>
-<hr>
-<h3 id="背景2"><a href="#背景2" class="headerlink" title="背景2"></a>背景2</h3><p><em>20.5.5</em></p>
-<p>今天又进入到<code>grub rescue&gt;</code>了，这次是因为vmware扩容的问题。</p>
-<p>上网找了下问题，搜索到的一个结果里边有这样一段话:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">楼主的问题是光标的问题，</span><br><span class="line">其实那个问题已经在楼上有解决方案了，就是引导盘符的问题。</span><br><span class="line">重启虚拟机，还在虚拟机加载进度条的时候就按下ESC，就可以切换当前需要打开的引导了，切到CDROM就好了。</span><br><span class="line">或者干脆F2（不推荐），去修改引导，不推荐的原因是因为，你装完系统还要再改回来成硬盘引导。</span><br><span class="line">所以ESC用一下，装一下系统就好了。</span><br><span class="line"></span><br><span class="line">我说这层答案很好的原因是在切换引导之后，选择安装Win10的时候，会报错。</span><br><span class="line">报的错就是硬盘问题。</span><br><span class="line">没错，是这个问题。</span><br><span class="line"></span><br><span class="line">而这一层给出的就是这个问题的答案。</span><br><span class="line"></span><br><span class="line">直接在虚拟机设置里，在硬盘→高级里，把SATA换成IDE就好了。</span><br></pre></td></tr></table></figure>
-
-<p>之前没有将这个答案看完整，直接<code>F2</code>进行高级设置了…<br>根据<a target="_blank" rel="noopener" href="https://blog.csdn.net/Q1302182594/article/details/51658229?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1">这篇博客</a>还有<a target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/2267276798977896028.html">这篇博客</a>对虚拟机扩容了20G，后使用<code>shutdown -r now</code>后直接进入了grub rescue界面。</p>
-<p>本来以为虚拟机扩容大功告成，但不知竟然又发生了这种事情。</p>
-<p>我觉得linux的磁盘那些操作真的好难啊！有些不懂。</p>
-<p>使用<code>ls</code>对硬盘进行扫描，但是并未发现boot文件夹，除了一个<code>ex2</code>,其它都是<code>unknown filesystem</code>，不知道该怎么解决。</p>
-<p>我决定重新装一个ubuntu20.</p>
-<p>唉，之前也没及时对v2ray文件进行备份。也没有写教程.</p>
-<hr>
-<h3 id="背景3"><a href="#背景3" class="headerlink" title="背景3"></a>背景3</h3><p><em>20.9.16 aft</em></p>
-<p>今天因为想玩游戏，但是windows下需要合并两个分区（因为单独一个分区装不下我想玩的游戏…），在WePE中使用分区工具对两个分区进行合并之后，重新启动出现黑乎乎的界面:<code>&gt;grub rescue</code></p>
-<p>内心已经做好重新装系统的准备，但是还是抱着一丝希望，先试试，毕竟这种情况已经遇到过一次了。</p>
-<p>在这种界面需要记住几个<em>重要命令</em>:</p>
-<ul>
-<li><code>set</code>: 设置变量</li>
-<li><code>ls</code>: 显示分区</li>
-<li><code>insmod normal</code>: 在设置完成后想要回到正常界面需要输入这个命令</li>
-<li><code>normal</code>: 这个命令和上边的是一起的</li>
-</ul>
-<p>接下来就是正差的操作流程了</p>
-<ol>
-<li>使用set查看<code>grub</code>分区，需要一个个的试,这时候需要使用<code>ls</code>命令</li>
-<li>找到了之后就使用<code>set</code>进行设置，类似</li>
-</ol>
-<ul>
-<li><code>set root=hd0,msdos2</code></li>
-<li><code>set prefix=(hd0,msdos2)/grub</code></li>
-</ul>
-<ol start="3">
-<li>进行设置了之后就使用<code>set</code>可以查看当前设置</li>
-<li>输入<code>insmod normal</code>回退到grub启动界面,这个命令输入后还需要再次输入<code>normal</code>才行。</li>
-<li>到了这里还没有完，需要进入linux更新grub</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo update-grub</span><br><span class="line">sudo grub-install /dev/sda</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>最后一个总结: 遇到这种情况先别急着下结论，比如最坏就得重新装系统啦怎么怎么样，还是要到网上搜索一下有没有人遇到了类似的问题，比如我当时就已经打算重装系统了，但是还是抱着试一试的态度搜索了一下，也许是之前遇到过两次类似的情况，这次处理起来就顺利多了，就是系统找不到引导文件的事情，把路径设置进系统里就好了。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/grub-rescue.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -375,19 +322,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>快速排序，顾名思义，在所有排序方法中它是最快的，先说一个它的时间复杂度是O(nlog<sub>2</sub>N), 虽然也有其他排序方法的时间复杂度也是这个（例如堆排序），但是快排的常数项是最小的。</p>
-<p>先来看一下代码:</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;dbg.h&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(<span class="keyword">int</span>[], <span class="keyword">int</span>, <span class="keyword">int</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> R[] = &#123;<span class="number">49</span>, <span class="number">38</span>, <span class="number">65</span>, <span class="number">97</span>, <span class="number">76</span>, <span class="number">13</span>, <span class="number">27</span>, <span class="number">49</span>&#125;;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;sort before: &quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">dbg</span>(R);</span><br><span class="line">    <span class="keyword">int</span> len = <span class="built_in"><span class="keyword">sizeof</span></span>(R) / <span class="built_in"><span class="keyword">sizeof</span></span>(R[<span class="number">0</span>]);</span><br><span class="line">    <span class="built_in">quickSort</span>(R, <span class="number">0</span>, len - <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;sort after: &quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">dbg</span>(R);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(<span class="keyword">int</span> R[], <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp;</span><br><span class="line">    <span class="keyword">int</span> i = low, j = high;</span><br><span class="line">    <span class="keyword">if</span> (low &lt; high)</span><br><span class="line">    &#123;</span><br><span class="line">        temp = R[low]; <span class="comment">// 枢轴</span></span><br><span class="line">        <span class="keyword">while</span> (i &lt; j)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">while</span> (j &gt; i &amp;&amp; R[j] &gt;= temp) j--; <span class="comment">// 从右往左扫描</span></span><br><span class="line">            <span class="keyword">if</span> (i &lt; j)</span><br><span class="line">            &#123;</span><br><span class="line">                R[i] = R[j];</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> (i &lt; j &amp;&amp; R[i] &lt; temp) i++; <span class="comment">// 从左往右扫描</span></span><br><span class="line">            <span class="keyword">if</span> (i &lt; j)</span><br><span class="line">            &#123;</span><br><span class="line">                R[j] = R[i];</span><br><span class="line">                j--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        R[i] = temp;</span><br><span class="line">        <span class="built_in">quickSort</span>(R, low, i - <span class="number">1</span>);</span><br><span class="line">        <span class="built_in">quickSort</span>(R, i + <span class="number">1</span>, high);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果如下(文章中显示变量使用的是<a target="_blank" rel="noopener" href="https://github.com/sharkdp/dbg-macro">dbg</a>)</p>
-<p><img data-src="quick-sort/quick_sort.png" alt="quick_sort"></p>
-<p>说一个具体的思路:</p>
-<ol>
-<li>首先，找到一个数字作为比较的<code>枢轴</code>，这里使用的是数组最左端的数字，使用<code>temp</code>暂存，现在最左端相当于挖了一个坑（因为当前数字已经赋值给temp了).</li>
-<li>从右往左扫描数组，找到比枢轴<code>小的数字</code>，将这个数字赋值给枢轴所在位置(填左边的坑, 同时在右边挖了一个坑)</li>
-<li>从左往右扫描数组，找到比枢轴<code>大的数字</code>，将这个数字赋值给右边挖的坑。</li>
-</ol>
-<p>这个排序方法使用的分治的思想，英文叫做<code>divide and conquer</code>， 分割之后再去克服每一项。递归也是属于这一种。就是将一个大问题分解成相似的小问题，然后解决了其中的一个小问题后，使用类似的方法就解决了所有的问题。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/quick-sort.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -460,24 +402,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>在vim中书写markdown文件挺方便的，但是有时侯需要预览一下效果，就有些不方便了，下边我找到一个插件，可以实现这个功能。</p>
-<hr>
-<!-- toc -->
-
-<hr>
-<h2 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h2>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:chris-lea/node.js</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install nodejs</span><br></pre></td></tr></table></figure>
-
-<h2 id="安装instant-markdown-d"><a href="#安装instant-markdown-d" class="headerlink" title="安装instant-markdown-d"></a>安装instant-markdown-d</h2>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm -g install instant-markdown-d</span><br></pre></td></tr></table></figure>
-<p>   注: 如果<code>npm</code>太慢，就改用<code>cnpm</code>进行安装。</p>
-   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install cnpm -g --registry=https://registry.npm.taobao.org </span><br></pre></td></tr></table></figure>
-
-<h2 id="安装vim插件vim-instant-Markdown"><a href="#安装vim插件vim-instant-Markdown" class="headerlink" title="安装vim插件vim-instant-Markdown"></a>安装vim插件vim-instant-Markdown</h2><p>   可以搭配vim插件<code>tabular</code>和vim插件<code>vim-markdown</code>使用。如果没有安装这两个插件，在你的<code>.vimrc</code>文件中加入(注：这里我所使用的vim插件管理器是<code>vim-plug</code>)</p>
-   <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Plug <span class="string">&#x27;godlygeek/tabular&#x27;</span> <span class="comment">&quot; 此插件必须在vim-markdown之前</span></span><br><span class="line">Plug <span class="string">&#x27;plasticboy/vim-markdown&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>   这两个插件安装完毕之后开始安装<code>vim-instant-Markdown</code>，在你的<code>.vimrc</code>插件部分添加</p>
-   <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Plug <span class="string">&#x27;suan/vim-instant-markdown&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>   执行<code>:PlugInstall</code>，插件安装完成后，在vim打开markdown文件就会在电脑默认的浏览器中打开一个窗口进行实时预览。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/vim-instant-preview.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -550,52 +482,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>最近因为在安装一个gdb的浏览器版本时将ubuntu16.04本机的Python2环境给修改了，然后第二天早上打开我的电脑，发现启动不了，将修改的软链接给还原回来，还是不行…</p>
-<p>借着这个”机会”，我将windows10又重新装入我的电脑了，因为最近刚入手一个西部数据1T移动硬盘，买回来之后发现识别不了，它支持的平台只有windows和mac，看了希捷移动硬盘介绍，也是这样。</p>
-<p>中间省略装系统步骤…这次安装的ubuntu版本还是16.04，为什么呢？因为我之前也安装了ubuntu20.04，安装好发现vmware在这个版本上少了一些库，但是我有好多个虚拟机需要使用，所以最后我又换回了稳定的ubuntu16.04。</p>
-<p>下面是我恢复shell中包括vim、tmux、zsh等等的生产力步骤:</p>
-<!-- toc -->
-
-<hr>
-<h2 id="cpas-gt-ctrl"><a href="#cpas-gt-ctrl" class="headerlink" title="cpas -&gt; ctrl"></a>cpas -&gt; ctrl</h2><p>安装<code>gnome-tweak-tool</code></p>
-<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install gnome-tweak-tool</span><br></pre></td></tr></table></figure>
-</code></pre>
-<h2 id="tmux-tpm插件管理器"><a href="#tmux-tpm插件管理器" class="headerlink" title="tmux tpm插件管理器"></a>tmux tpm插件管理器</h2><p><a target="_blank" rel="noopener" href="https://github.com/tmux-plugins/tpm">tpm的github仓库</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm</span><br></pre></td></tr></table></figure>
-
-<p>安装tmux插件: <code>prefix + I</code>，默认<code>prefix</code>是<code>&lt;ctrl&gt;b</code></p>
-<h2 id="zsh-install"><a href="#zsh-install" class="headerlink" title="zsh install"></a>zsh install</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install zsh</span><br></pre></td></tr></table></figure>
-
-<h2 id="zplug"><a href="#zplug" class="headerlink" title="zplug"></a>zplug</h2><p><a target="_blank" rel="noopener" href="https://github.com/zplug/zplug">zplug的github仓库</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/zplug/zplug .zplug</span><br></pre></td></tr></table></figure>
-
-<h2 id="oh-my-zsh"><a href="#oh-my-zsh" class="headerlink" title="oh-my-zsh"></a>oh-my-zsh</h2><p><a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh">oh-my-zsh的github仓库</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh</span><br></pre></td></tr></table></figure>
-
-<h3 id="oh-my-zsh的一个插件"><a href="#oh-my-zsh的一个插件" class="headerlink" title="oh-my-zsh的一个插件"></a>oh-my-zsh的一个插件</h3><p><a target="_blank" rel="noopener" href="https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md">zsh-autosuggestions的github仓库</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-autosuggestions <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-autosuggestions</span><br></pre></td></tr></table></figure>
-
-<h3 id="zsh命令行去掉git信息"><a href="#zsh命令行去掉git信息" class="headerlink" title="zsh命令行去掉git信息"></a>zsh命令行去掉git信息</h3><p>一些zsh的theme的命令行中有太多信息，这会干扰自己，并且会大大增加加载时间，我将git信息给移除出去。</p>
-<p>在自己的<code>~/.zshrc</code>找到<code>themes</code>关键字，然后到<code>~/.ohmyzsh/themes</code>下找到自己的themes，打开，修改其中的信息，这里是直接将git信息删去了.</p>
-<h2 id="coc-nvi环境依赖-nodejs"><a href="#coc-nvi环境依赖-nodejs" class="headerlink" title="coc.nvi环境依赖 nodejs"></a><a target="_blank" rel="noopener" href="https://github.com/neoclide/coc.nvim/wiki/Install-coc.nvim">coc.nvi环境依赖 nodejs</a></h2><h3 id="1-Install-nodejs-gt-10-12"><a href="#1-Install-nodejs-gt-10-12" class="headerlink" title="1. Install nodejs &gt;= 10.12:"></a>1. Install nodejs &gt;= 10.12:</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sL install-node.now.sh/lts | bash</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-yarn"><a href="#2-yarn" class="headerlink" title="2. yarn"></a>2. <a target="_blank" rel="noopener" href="https://linux265.com/news/3756.html">yarn</a></h3><p>按照以下步骤在 Ubuntu 16.04/18.04 系统上安装 Yarn：</p>
-<p>步骤1.添加GPG密钥</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -</span><br></pre></td></tr></table></figure>
-
-<p>步骤2.添加Yarn存储库</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;deb https://dl.yarnpkg.com/debian/ stable main&quot;</span> | sudo tee /etc/apt/sources.list.d/yarn.list</span><br></pre></td></tr></table></figure>
-<p>步骤3.更新包列表并安装Yarn</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install yarn</span><br></pre></td></tr></table></figure>
-
-<h2 id="command-t-一款vim文件搜索插件"><a href="#command-t-一款vim文件搜索插件" class="headerlink" title="command-t 一款vim文件搜索插件"></a>command-t 一款vim文件搜索插件</h2><p><a target="_blank" rel="noopener" href="https://github.com/wincent/command-t">command-t的github仓库</a></p>
-<p>注: 我所使用的vim插件管理器是<a target="_blank" rel="noopener" href="https://github.com/junegunn/vim-plug">vim-plug</a>。在vim中执行<code>:PlugInstall</code>安装好<code>command-t</code>后，这个是时候command-t还是不能使用的，还需要安装一些依赖。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install aptitude</span><br><span class="line">sudo aptitude install ruby-dev</span><br></pre></td></tr></table></figure>
-
-<p>到vim安装的插件目录下<code>~/.vim/plugged/command-t</code>，如果你用插件管理器是bundle的话，目录则是<code>~/.vim/bundle/command-t</code>。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.vim/plugged/command-t</span><br><span class="line">rake make</span><br></pre></td></tr></table></figure>
-
-<p>之后即可使用command-t进行文件搜索。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/recover-the-shell-production-environment.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -667,15 +561,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="二分法和c语言实现及时间复杂度分析"><a href="#二分法和c语言实现及时间复杂度分析" class="headerlink" title="二分法和c语言实现及时间复杂度分析"></a>二分法和c语言实现及时间复杂度分析</h2><!-- toc -->
-
-<hr>
-<h2 id="1-实现-C"><a href="#1-实现-C" class="headerlink" title="1. 实现 - C"></a>1. 实现 - C</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 二分查找</span></span><br><span class="line"><span class="comment">// 注意middle的下标和位于数组middle的值</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">binary_search</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> to_be_found, <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> l = <span class="number">0</span>;        <span class="comment">// left index</span></span><br><span class="line">    <span class="keyword">int</span> r = len - <span class="number">1</span>;  <span class="comment">// right index</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (l &lt;= r) &#123;</span><br><span class="line">        <span class="comment">//int middle = (l + r) / 2; // find the middle number index</span></span><br><span class="line">        <span class="keyword">int</span> middle = l + (r - l) / <span class="number">2</span>; <span class="comment">// find the middle number index</span></span><br><span class="line">                                      <span class="comment">// 避免溢出</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (a[middle] == to_be_found)  <span class="comment">// 刚好中间数就是我们要找的数</span></span><br><span class="line">            <span class="keyword">return</span> middle;</span><br><span class="line">        <span class="keyword">if</span> (a[middle] &lt; to_be_found)   <span class="comment">// 中间数 &lt; 要找的数</span></span><br><span class="line">            l = middle + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            r = middle - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">10</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> len = <span class="keyword">sizeof</span>(a) / <span class="keyword">sizeof</span>(a[<span class="number">0</span>]);  <span class="comment">// calculate the array&#x27;s length</span></span><br><span class="line">    <span class="keyword">int</span> res = binary_search(a, <span class="number">4</span>, len);</span><br><span class="line">    <span class="keyword">if</span> (res != <span class="number">-1</span>)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Find out index: %d\n&quot;</span>, res);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;No answer!\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-时间复杂度分析"><a href="#2-时间复杂度分析" class="headerlink" title="2. 时间复杂度分析"></a>2. 时间复杂度分析</h2><p>假设数组长度为n，每次查找后长度减半</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 第一次: n/2</span><br><span class="line">// 第二次: n/4</span><br><span class="line">// ...</span><br><span class="line">// 第k次: n * (1/2)^k</span><br></pre></td></tr></table></figure>
-<p>最坏情况: 数据长度为1时找到，即 n * (1/2)<sup>k</sup> = 1.  求解得k = log<sub>2</sub>(n).</p>
-
+          <p>二分法和c语言实现及时间复杂度分析</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/binary-search.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -748,19 +642,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>这两天需要在wps中写点东西，但是里边并没有word中中文的大部分字体，所以需要添加一些字体。</p>
-<hr>
-<!-- toc -->
-
-<hr>
-<p>因为我的系统(ubuntu16.04)默认的是英文环境，所以在wps的字体选项中没有一个中文选项，就先将系统默认环境改成了中文。<br>在系统应用中搜索<code>language support</code>，然后将选择语言中的<code>中文</code>调到第一项中，之后<code>应用到整个环境</code>，这些都做完之后，登出重新登录。</p>
-<p>现在打开wps for linux，我发现字体选项中多了几种中文字体，但是常见的字体如”宋体”/“黑体”这些并没有。所以需要为wps配置字体。</p>
-<h2 id="配置字体步骤"><a href="#配置字体步骤" class="headerlink" title="配置字体步骤"></a>配置字体步骤</h2><p>(1) 如果旁边有另一台配置windows系统的电脑或者本机里有windows电脑，就很方便，直接从<code>C:\windows\fonts\</code>下复制字体文件，需要什么字体就在文件夹下搜索字体名称即可。</p>
-<p>(2) 将复制的字体拷贝到ubuntu下的<code>/usr/share/fonts/</code>下，下一步执行以下命令，生成字体的索引信息：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mkfontscale</span><br><span class="line">sudo mkfontdir</span><br><span class="line">sudo fc-cache</span><br></pre></td></tr></table></figure>
-
-<p>(3) 重启wps后发现字体选项中中文字体出现了我们新添加的几种字体。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>[1] <a target="_blank" rel="noopener" href="https://blog.csdn.net/liweibin1994/article/details/73384790">Ubuntu下WPS中文字体显示问题</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/the-font-configuration-of-wps-for-linux.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -834,113 +723,14 @@
     <div class="post-body" itemprop="articleBody">
           <p>记录自己在使用vim中使用的命令和一些方法。</p>
 <hr>
-<!-- toc -->
-
-<hr>
-<center><h2> VIM </h2></center>
-
-<h2 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h2><p><code>i</code>: Insert text before the cursor.<br><code>o</code>: Begin a new line below the cursor.<br><code>R</code>: Replace character continually.<br><code>r</code>: Replace character once.</p>
-<ol>
-<li><p>在 vi 的环境中,如何将目前正在编辑的文件另存新档名为 newfilename</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:w newfilename</span><br></pre></td></tr></table></figure></li>
-<li><p>到达指定行<br>(1) In normal mode: <code>line_numberG</code><br>例: 到达第九行即<code>9G</code><br>(2) In command mode: <code>:line_number</code><br>例: 到达第九行即<code>:9</code></p>
-</li>
-</ol>
-<p>  <strong>注</strong>: 认为第一种方法更为快速，因为如果是第二种方法的话，目光还需要向下移动。</p>
-<ol start="2">
-<li><p>vim <code>&lt;leader&gt;</code>键: <code>\</code></p>
-</li>
-<li><p>vim 替换<br>具体查看vim帮助文档<code>:h substitute</code><br>全局替换: <code>:%s/search_string/substituted_string/g</code><br>此处：</p>
-<ul>
-<li><code>%</code>: 指范围，相当于<code>1~$</code>，文档的第一行到最后一行</li>
-<li><code>g</code>: replace all occurrences in the line. Without this argument, replacement occurs only for the first occurrence in  each line.</li>
-</ul>
-</li>
-<li><p>vim精确查找<br>先看一个例子: 准确查找int</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/\&lt;int\&gt;</span><br></pre></td></tr></table></figure>
-<p>其中</p>
-</li>
-</ol>
-<ul>
-<li><code>\&lt;</code>: 匹配单词开头</li>
-<li><code>\&gt;</code>: 匹配单词结尾</li>
-</ul>
-<ol start="5">
-<li><p>拷贝整个文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:%y</span><br><span class="line">ggyG</span><br></pre></td></tr></table></figure></li>
-<li><p>获得当前文件的名称</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 在屏幕上显示当前名称</span><br><span class="line">:echo expand(&quot;%:t&quot;)</span><br><span class="line"># 粘贴复制当前文件名称</span><br><span class="line">:let @f=expand(&quot;%:t&quot;)</span><br><span class="line">然后粘贴即可</span><br></pre></td></tr></table></figure></li>
-<li><p><code>&lt;esc&gt;</code> == <code>Ctrl - [</code></p>
-</li>
-<li><p>合并上下行<code>shift + j</code><br><code>shift + j</code>可以删除行末尾的回车</p>
-</li>
-<li><p>查找到结果后<br>(1) 向下查询：<code>n</code><br>(2) 向上查询：<code>shift + n</code>(联想到网页的tab与shift tab)</p>
-</li>
-<li><p>Visual mode in vim<br>(1) <code>v</code>: 选择字符<br>(1) <code>shift + v</code>: 选择整行<br>(1) <code>ctrl + v</code>: 选择整块</p>
-</li>
-<li><p><code>gUaW</code><br>大写一个单词</p>
-</li>
-<li><p>Paste local timestamp<br><code>&quot;=strftime(&quot;%c&quot;)&lt;cr&gt;p</code><br><code>&quot;=</code>: expression register</p>
-</li>
-<li><p><code>q:</code><br>Opens a history of previous commands.</p>
-</li>
-<li><p>vim宏录制<br>目的: 减少重复动作.<br>(1) In <code>normal</code> mode input <code>qa</code>(or qb, qc…a, b, c, d is your register)<br>(2) And then you will see “starting …” singnal below.<br>(3) Quit this function: in normal mode input <code>q</code>, you will end this process.<br>使用宏:<br>In <code>normal</code> mode input <code>@a</code>, <code>a</code> is your register name. If you want it to run several times, add <code>number</code> in front of <code>@a</code>. For example, <code>7@a</code>.</p>
-</li>
-<li><p>到达行首<br>In normal mode input <code>0</code>.</p>
-</li>
-<li><p>替换实例<br>(1) 删除行首数字<br><code>:%s/^[0-9]//g</code><br>(2) 删除行尾数字<br><code>:%s/[0-9]$//g</code></p>
-</li>
-<li><p>删除空行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:g/^$/d</span><br></pre></td></tr></table></figure>
-<p>如果空行开头有空格，这种方法就不好用了，使用</p>
-</li>
-</ol>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:g/^\s*$/d</span><br></pre></td></tr></table></figure>
-
-<ol start="19">
-<li>在使用vim中的<code>y</code>进行复制后，使用<code>p</code>进行粘贴，再次使用<code>p</code>就不能粘贴了，想要粘贴还得去复制一次，很繁琐</li>
-</ol>
-<p>  解决方法: 将使用<code>p</code>替换成<code>&quot;0p</code>，这样就可以无限粘贴。<br>  <strong>注</strong>: 寄存器<code>0</code>的位置放置的就是最近复制的内容。</p>
-<ol start="20">
-<li><p>vim <code>read</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:read !command</span><br></pre></td></tr></table></figure>
-<p>The way to append the output of an external command.</p>
-</li>
-<li><p><code>ctrl + f / ctrl + b</code>: 快速浏览</p>
-</li>
-<li><p><code>di(</code><br>Delete all content inside ().</p>
-</li>
-<li><p>delete a pairs by using tpope/vim-surround</p>
-</li>
-</ol>
-<p>   删除一对括号: <code>ds(</code> # delete surround<br>   删除一对双引号: <code>ds&quot;</code><br>   删除一对单引号: <code>ds&#39;</code></p>
-<p>   添加一对括号:<br>   <em>普通模式</em>: <code>ysiw(</code><br>   <em>可视模式</em>: <code>S(</code></p>
-<p>   以下是<a target="_blank" rel="noopener" href="https://github.com/tpope/vim-surround">tpope/vim-surround</a>节选</p>
-<p>   It’s easiest to explain with examples. Press <code>cs&quot;&#39;</code> inside<br>   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;Hello world!&quot;</span><br></pre></td></tr></table></figure><br>   to change it to<br>   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;Hello world!&#x27;</span><br></pre></td></tr></table></figure><br>   Now press <code>cs&#39;&lt;q&gt;</code> to change it to<br>   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;q&gt;Hello world!&lt;/q&gt;</span><br></pre></td></tr></table></figure><br>   To go full circle, press <code>cst&quot;</code> to get<br>   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;Hello world!&quot;</span><br></pre></td></tr></table></figure><br>   To remove the delimiters entirely, press <code>ds&quot;</code>.</p>
-   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello world!</span><br></pre></td></tr></table></figure>
-
-<ol start="24">
-<li><code>!$</code><br><code>!</code>$是一个特殊的环境变量，它代表了上一个命令的最后一个字符串。如：你可能会这样<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir mydir</span><br><span class="line">$ mv mydir yourdir</span><br><span class="line">$ <span class="built_in">cd</span> yourdir</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>  可以改成：<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir mydir</span><br><span class="line">$ mv !$ yourdir</span><br><span class="line">$ <span class="built_in">cd</span> !$</span><br></pre></td></tr></table></figure><br>25. 在 bash 里，使用 Ctrl-R 而不是上下光标键来查找历史命令。<br>26. 使用 man ascii 来查看 ASCII 表。<br>27. 命令行注释命令: <code>alt + #</code><br>28. vim中查看缓冲区: <code>:ls</code><br>  然后使用<code>:buffer num</code>进行切换</p>
-<ol start="29">
-<li><p>vim 书签<br>(1) 创建书签: <code>m + 字母</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ma  // 书签名称必须是单个字母，此处示例为a</span><br></pre></td></tr></table></figure>
-<p>(2) 跳转书签</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">` + 书签名称</span><br></pre></td></tr></table></figure>
-<p>(3) 列出所有书签: <code>:marks</code><br>(4) 删除书签: <code>:delmarks name</code></p>
-</li>
-<li><p>在vim中访问shell<br>(1) 进入shell: <code>:shell</code> or <code>:sh</code><br>(2) 离开shell: <code>exit</code></p>
-</li>
-</ol>
-<h2 id="Plug插件管理器删除插件"><a href="#Plug插件管理器删除插件" class="headerlink" title="Plug插件管理器删除插件"></a>Plug插件管理器删除插件</h2><p>(1) 注释掉或删除在<code>.vimrc</code>中的添加的<code>Plug</code>命令；<br>(2) 运行<code>:source ~/vimrc</code>或重启vim；<br>(3) 运行<code>:PlugClean</code>删除插件。</p>
-<h2 id="Vim-example"><a href="#Vim-example" class="headerlink" title="Vim example"></a>Vim example</h2><ol>
-<li>How to convert this piece of text(from vim in reddit)<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Arch linux</span><br><span class="line">Manjaro</span><br><span class="line">Ubuntu</span><br></pre></td></tr></table></figure>
-into<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. Arch linux</span><br><span class="line">2. Manjaro</span><br><span class="line">3. Ubuntu</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>  Ways:<br>  (1) Make 3 lines of text out first one<br>  (2) use visual-block mode to insert <code>0.</code> for 3 lines<br>  (3) use visual-block again and <code>g&lt;Ctrl-a&gt;</code> to “sequentially” increase your <code>0</code>s</p>
-<p>附: <a target="_blank" rel="noopener" href="https://github.com/ONGOING-Z/dotfiles/blob/master/.vimrc">我的.vimrc</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/record-some-basics-of-vim.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1004,27 +794,14 @@ into<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span
     
     <div class="post-body" itemprop="articleBody">
           <p>一段时间之前，看到过一篇博客，博客的最下方有一个按钮，点击之后可以看到博主同步在github中的markdown源文件，我觉得这个作用很不错。所以经过一番搜索之后，发现了一篇实现此功能的博客(参考中的第一篇)，还搜索了一下<code>swig</code>的语法特性，当然是不需要太多的知识的，因为参考中是<code>ejs</code>语法，这里大概就只需要知道****是变量的写法就足够了。</p>
-<hr>
-<!-- toc -->
-
-<hr>
-<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><ul>
-<li>点击进入仓库可以清晰发现文章增加或者删减的历史记录</li>
-<li>可以在github的<code>issues</code>中讨论（稍稍充当评论系统???)</li>
-</ul>
-<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p><img data-src="link-to-github-and-view-the-updated-history-of-articles/display.png" alt="display"><br>可以看到<strong>更新历史</strong>一行有三项:</p>
-<ul>
-<li><code>Blame</code>: 左边是<code>commit</code>信息，右边是对应代码</li>
-<li><code>History</code>: 文章修改历史</li>
-<li><code>.md Raw</code>: 文章markdown源文件</li>
-</ul>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>首先需要新建一个仓库。仓库建好之后, 将<code>博客根目录/source/_posts/</code>文件夹下的文件push到github我们新建的仓库中，在我们的博客修改过后，需要我们手动进行上传。</p>
-<p>将下方代码添加至<code>themes/next/layout/_macro/my-copyright-swig</code>下<a href="%E6%88%91%E6%89%80%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%BB%E9%A2%98%E6%98%AFnext">^1</a>, 注意这里的<code>my-copyright-swig</code>是我另建的显示文章结束后<strong>版权</strong>的文件。创建博客版权的文章在<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/93170e7413e9">这里</a>。</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if page.copyright %&#125;</span><br><span class="line">&lt;div class=&quot;my_post_copyright&quot;&gt;</span><br><span class="line">  &lt;script src=&quot;//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;!-- JS库 sweetalert 可修改路径 --&gt;</span><br><span class="line">  &lt;script type=&quot;text/javascript&quot; src=&quot;http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script src=&quot;http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css&quot;&gt;</span><br><span class="line"></span><br><span class="line">  &lt;p&gt;&lt;span&gt;本文标题:&lt;/span&gt;&#123;&#123; page.title &#125;&#125;&lt;/a&gt;&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;&lt;span&gt;文章作者:&lt;/span&gt;&#123;&#123; theme.author &#125;&#125;&lt;/a&gt;&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;&lt;span&gt;发布时间:&lt;/span&gt;&#123;&#123; page.date.format(&quot;YYYY年MM月DD日 - HH:mm:ss&quot;) &#125;&#125;&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;&lt;span&gt;最后更新:&lt;/span&gt;&#123;&#123; page.updated.format(&quot;YYYY年MM月DD日 - HH:mm:ss&quot;) &#125;&#125;&lt;/p&gt;</span><br><span class="line"><span class="addition">+  &lt;p&gt;</span></span><br><span class="line"><span class="addition">+      &lt;span&gt;更新历史:&lt;/span&gt;&lt;i class=&quot;fa fa-github&quot;&gt;&lt;/i&gt;</span></span><br><span class="line"><span class="addition">+      &lt;a href=&quot;https://github.com/ONGOING-Z/Hexo-blog-backup/blame/master/&#123;&#123; page.date.format(&quot;YYYY-MM-DD&quot;) &#125;&#125;-&#123;&#123; page.title &#125;&#125;.md&quot; title=&quot;顺序查看文章各部分修改记录&quot; target = &quot;_blank&quot;&gt;Blame&lt;/a&gt;,</span></span><br><span class="line"><span class="addition">+      &lt;a href=&quot;https://github.com/ONGOING-Z/Hexo-blog-backup/commits/master/&#123;&#123; page.date.format(&quot;YYYY-MM-DD&quot;) &#125;&#125;-&#123;&#123; page.title &#125;&#125;.md&quot; title=&quot;查看文章有关更新记录&quot; target = &quot;_blank&quot;&gt;History&lt;/a&gt;&lt;span class=&quot;raw&quot;&gt;文本模式:&lt;/span&gt;&lt;i class=&quot;fa fa-file-text-o&quot;&gt;&lt;/i&gt;</span></span><br><span class="line"><span class="addition">+      &lt;a href=&quot;https://raw.githubusercontent.com/ONGOING-Z/Hexo-blog-backup/commits/master/&#123;&#123; page.date.format(&quot;YYYY-MM-DD&quot;) &#125;&#125;-&#123;&#123; page.title &#125;&#125;.md&quot; title=&quot;查看 &amp; 下载文章 Markdown 原始文本&quot; target = &quot;_blank&quot;&gt; .md Raw&lt;/a&gt;</span></span><br><span class="line"><span class="addition">+  &lt;/p&gt;</span></span><br><span class="line">  &lt;p&gt;&lt;span&gt;原始链接:&lt;/span&gt;&lt;a href=&quot;&#123;&#123; url_for(page.path) &#125;&#125;&quot; title=&quot;&#123;&#123; page.title &#125;&#125;&quot;&gt;&#123;&#123; page.permalink &#125;&#125;&lt;/a&gt;</span><br><span class="line">    &lt;span class=&quot;copy-path&quot;  title=&quot;点击复制文章链接&quot;&gt;&lt;i class=&quot;fa fa-clipboard&quot; data-clipboard-text=&quot;&#123;&#123; page.permalink &#125;&#125;&quot;  aria-label=&quot;复制成功！&quot;&gt;&lt;/i&gt;&lt;/span&gt;</span><br><span class="line">  &lt;/p&gt;</span><br><span class="line">  &lt;p&gt;&lt;span&gt;许可协议:&lt;/span&gt;&lt;i class=&quot;fa fa-creative-commons&quot;&gt;&lt;/i&gt; &lt;a rel=&quot;license&quot; href=&quot;https://creativecommons.org/licenses/by-nc-nd/4.0/&quot; target=&quot;_blank&quot; title=&quot;Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)&quot;&gt;署名-非商业性使用-禁止演绎 4.0 国际&lt;/a&gt; 转载请保留原文链接及作者。&lt;/p&gt;  </span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;script&gt; </span><br><span class="line">    var clipboard = new Clipboard(&#x27;.fa-clipboard&#x27;);</span><br><span class="line">    clipboard.on(&#x27;success&#x27;, $(function()&#123;</span><br><span class="line">      $(&quot;.fa-clipboard&quot;).click(function()&#123;</span><br><span class="line">        swal(&#123;   </span><br><span class="line">          title: &quot;&quot;,   </span><br><span class="line">          text: &#x27;复制成功&#x27;,   </span><br><span class="line">          html: false,</span><br><span class="line">          timer: 500,   </span><br><span class="line">          showConfirmButton: false</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;));  </span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-
-<p>其中绿色部分代码是实现效果的代码。这之中我们修改<code>href</code>的属性对应自己的<strong>仓库信息</strong>和<strong>文章信息</strong>即可。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>[1] <a target="_blank" rel="noopener" href="http://moxfive.xyz/2016/01/10/hexo-post-version-control/">关联 GitHub, 让 Hexo 支持查看文章更新历史</a><br>[2] <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/variables.html">hexo变量</a><br>[3] <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/93170e7413e9">https://www.jianshu.com/p/93170e7413e9</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/link-to-github-and-view-the-updated-history-of-articles.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1099,172 +876,14 @@ into<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span
           <p>记录自己在使用linux中渐渐使用的命令和一些方法。</p>
 <hr>
 <!-- toc -->
-
-<hr>
-<ol>
-<li><p>在一个终端中打开另一个窗口</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctrl + shift + t</span><br></pre></td></tr></table></figure></li>
-<li><p>回到上一次目录</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd -</span><br></pre></td></tr></table></figure></li>
-<li><p>列出当前登录用户</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w</span><br></pre></td></tr></table></figure></li>
-<li><p>Linux进出sudo的方法</p>
-<p> 进入<code>sudo</code>mode: <code>sudo -i</code><br> 退出<code>sudo</code>mode: <code>ctrl + d</code></p>
-</li>
-<li><p>grep(general regular expression print)<br><code>ls | grep &quot;linux&quot;</code>: List file that its name includes string “linux”.</p>
-</li>
-<li><p>Clear commands history<br><code>history -c</code></p>
-</li>
-<li><p>终端锁定与退出锁定(终端无法输入的假死问题)<a target="_blank" rel="noopener" href="https://www.cnblogs.com/guochaoxxl/p/10428991.html">^1</a></p>
-</li>
-</ol>
-<ul>
-<li>终端锁定<br>  <code>ctrl + s</code></li>
-<li>退出锁定<br>  <code>ctrl + q</code></li>
-</ul>
-<ol start="8">
-<li>File permission</li>
-</ol>
-<ul>
-<li><code>chmod</code><br>  Change mode.<br>  10number: <code>d</code>(directory) or <code>-</code>(that represents file)<br>  Permission:<pre><code>- `r`: (100)&lt;sub&gt;2&lt;/sub&gt; //4
-- `w`: (010)&lt;sub&gt;2&lt;/sub&gt; //2
-- `x`: (001)&lt;sub&gt;2&lt;/sub&gt; //1
-</code></pre>
-  eg. <code>chmod 777 file/dir</code>  // Give file/dir rwx permission.</li>
-<li><code>chgrp</code><br>  Change file group.</li>
-<li><code>chown</code><br>  Change file owner.</li>
-</ul>
-<ol start="9">
-<li><p>Change font size in terminal</p>
-<p> Change bigger: <code>ctrl -</code><br> Change smaller: <code>ctrl +</code></p>
-</li>
-<li><p>Rename</p>
-<p>将test.jpg改成test1.jpg</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv &#123;<span class="built_in">test</span>,test1&#125;.jpg</span><br></pre></td></tr></table></figure></li>
-<li><p>在linux中跳出很深的文件夹，如果没有记住文件路径，就要一层层<code>cd</code>过去，浪费很多的时间。</p>
-<p>解决方法1<br>在<code>/etc/profile.d/</code>目录下新建例如<code>dd.sh</code>文件，文件内容如下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> dd=<span class="string">&#x27;cd /media/folder1/folder2/.../&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>接下来保存退出</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> dd.sh</span><br></pre></td></tr></table></figure>
-<p>效果: 在命令行中输入<code>dd</code>即可实现挑入指定目录。<br>并且重启之后在命令行中依然生效。</p>
-<p>解决方法2<br>在<code>~/.bashrc</code>中添加</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> dd=<span class="string">&#x27;cd /media/folder1/folder2/.../&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>也可以有同样的效果。</p>
-</li>
-<li><p>Linux光标移动</p>
-<p><code>ctrl + a</code>: 行首<br><code>ctrl + e</code>: 行尾</p>
-<p><code>ctrl + f</code>: 光标右移<br><code>ctrl + b</code>: 光标左移</p>
-<p><code>esc + f</code>: 右移一个单词<br><code>esc + b</code>: 左移一个单词</p>
-</li>
-<li><p>Linux <code>mv</code><br>功能<br>(1) 修改名称<br>(2) 移动文件</p>
-</li>
-<li><p>Bash<br>(1) 注释: <code>#</code><br>(2) <code>#!/bin/bash</code>的意义<br>以<code>#</code>代表是个注释，但是<code>#!</code>并不是注释了，它用来指明这个脚本所需要的<code>Shell</code><br>(3) shell变量类型<br>变量类型只有字符串</p>
-</li>
-<li><p>caps -&gt; ctrl(reference 32)</p>
-</li>
-<li><p>Download video in CLI<br>(1) you-get<br>(2)youtube_dl</p>
-</li>
-<li><p>du(disk usage)</p>
-</li>
-<li><p><code>ctrl + u</code>: 从光标处删除文本直到行首</p>
-</li>
-<li><p><code>ctrl + k</code>: 从光标处删除文本直到行尾</p>
-</li>
-<li><p><code>alt + f</code>: 向后一个单词</p>
-</li>
-<li><p><code>alt + b</code>: 向前一个单词</p>
-</li>
-<li><p>重复使用上一个命令: <code>!!</code></p>
-</li>
-<li><p><code>dstat</code><br>View the net speed in late 10 seconds and other functions.</p>
-</li>
-<li><p>Symbolic links</p>
-</li>
-<li><p>I/O redirection</p>
-<blockquote>
-<p>I/O redirection allows us to change where output goes and where input comes from. Normally, output goes to the screen and input comes from the keyboard, but with I/O redirection we can change that.</p>
-</blockquote>
-</li>
-<li><p>The Letter-Based Method</p>
-<blockquote>
-<p>In addition to the method described above there is a second way to change permissions. Chmod uses either the hexadecimal representation of the permissions or a letter-based representation. The letter-based representation is [ugoa][+-][rwx]. This is one of the letters u (user=file owner), g (group), o (others), a (all users, groups and others); followed by + or - to add or remove permissions; and then the symbolic representation of the permissions in the form of r(read) w(write) x(execute). To extend Write permissions to all for the file “file.txt”,</p>
-</blockquote>
-<p>For example, you would type:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod a+w file.txt</span><br></pre></td></tr></table></figure></li>
-<li><p><code>uptime</code><br>Tell how long the system has been running.</p>
-</li>
-<li><p>Change user</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su [username]</span><br></pre></td></tr></table></figure>
-<p>退出此用户: <code>exit</code></p>
-</li>
-<li><p>Add user</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">useradd [username]</span><br><span class="line">passwd [username]</span><br></pre></td></tr></table></figure></li>
-<li><p>Delete user</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">userdel [-r] [username]</span><br></pre></td></tr></table></figure>
-<p>-r: remove the home dir of [username]</p>
-</li>
-<li><p>Print current effective user</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whoami</span><br></pre></td></tr></table></figure></li>
-<li><p>linux将cpas-&gt;ctrl</p>
-<p>(1) Edit <code>/etc/default/keyboard</code></p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># KEYBOARD CONFIGURATION FILE</span><br><span class="line"></span><br><span class="line"># Consult the keyboard(5) manual page.</span><br><span class="line"></span><br><span class="line">XKBMODEL=&quot;pc105&quot;</span><br><span class="line">XKBLAYOUT=&quot;cn&quot;</span><br><span class="line">XKBVARIANT=&quot;&quot;</span><br><span class="line"><span class="deletion">- XKBOPTIONS=&quot;&quot;</span></span><br><span class="line"><span class="addition">+ XKBOPTIONS=&quot;ctrl:nocaps&quot;</span></span><br><span class="line"></span><br><span class="line">BACKSPACE=&quot;guess&quot;</span><br></pre></td></tr></table></figure>
-<p>(2) 运行如下命令，设置生效</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg-reconfigure keyboard-configuration</span><br></pre></td></tr></table></figure></li>
-<li><p>cp 排除某个目录<br>例. 有目录b, c, 复制到<code>/f</code>下，排除b</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp -r !(b) /f</span><br></pre></td></tr></table></figure></li>
-<li><p>在linux下弹出u盘命令（假设u盘设备是sdb1）</p>
-</li>
-</ol>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo eject -s /dev/sdb1</span><br></pre></td></tr></table></figure>
-
-<ol start="35">
-<li>ccat</li>
-</ol>
-<p>  内置的<code>cat</code>查看命令没有语法高亮，但是使用<code>ccat</code>可以有这个作用。</p>
-<p>  下载二进制代码文件<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/jingweno/ccat/releases/download/v1.1.0/linux-amd64-1.1.0.tar.gz</span><br></pre></td></tr></table></figure><br>  解压<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar xfz linux-amd64-1.1.0.tar.gz</span><br></pre></td></tr></table></figure><br>  将<code>ccat</code>文件复制到<code>/usr/local/bin/</code>文件夹下<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp linux-amd64-1.1.0/ccat /usr/<span class="built_in">local</span>/bin/</span><br></pre></td></tr></table></figure><br>  使用<code>ccat</code>命令查看文件会发现文件显示变成彩色的了。</p>
-<ol start="36">
-<li>ssh &amp; public key</li>
-</ol>
-<p>  (1) 本地生成公钥<br>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure><br>  之后全部默认回车即可。</p>
-<p>  (2) 将本地公钥<code>~/.ssh/id_rsa.pub</code>复制到远程主机<code>~/.ssh/autoorized_keys</code>文件中，如果目录和文件皆不存在，直接创建新的文件。<br>  (3) 重启ssh服务<br>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service ssh restart</span><br></pre></td></tr></table></figure><br>  之后与主机相连就不必再输入密码。</p>
-<ol start="37">
-<li><code>ls</code>的<code>-S</code>选项<blockquote>
-<p>sort  by  WORD instead of name: none (-U), size (-S), time (-t), version (-v), extension (-X)</p>
-</blockquote>
-</li>
-</ol>
-<p>  准确来说就是将文件从大到小进行排序。</p>
-<ol start="38">
-<li><code>tab</code></li>
-</ol>
-<p>  (1) 命令补全: tab接在一串指令的第一个字的后面<br>  (2) 文件补齐: tab接在一串指令的第二个字的后面</p>
-<ol start="39">
-<li><code>find</code></li>
-</ol>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find dir_name -name filename_to_be_searched</span><br></pre></td></tr></table></figure>
-<ol start="40">
-<li>在 bash 里，使用 <code>Ctrl-R</code> 而不是上下光标键来查找历史命令。</li>
-<li>使用 <code>man ascii</code> 来查看 ASCII 表。</li>
-<li>命令行注释命令: <code>alt + #</code></li>
-</ol>
-<hr>
-<h3 id="Linux各目录"><a href="#Linux各目录" class="headerlink" title="Linux各目录"></a>Linux各目录</h3><h4 id="etc"><a href="#etc" class="headerlink" title="etc"></a>etc</h4><ol>
-<li>含义: and so on</li>
-<li>功能: 存放零零碎碎的东西</li>
-</ol>
-<h3 id="linux各种解压命令汇总"><a href="#linux各种解压命令汇总" class="headerlink" title="linux各种解压命令汇总"></a>linux各种解压命令汇总</h3><h4 id="tar-xz"><a href="#tar-xz" class="headerlink" title=".tar.xz"></a><code>.tar.xz</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$xz -d filename.tar.xz</span><br><span class="line">$tar -xvf filename.tar</span><br></pre></td></tr></table></figure>
-<h4 id="tar-gz"><a href="#tar-gz" class="headerlink" title="tar.gz"></a><code>tar.gz</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf xxx.tar.gz</span><br></pre></td></tr></table></figure>
-<h4 id="rar"><a href="#rar" class="headerlink" title=".rar"></a><code>.rar</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unrar e file.rar # e: 解压压缩包中的全部问价至文件夹</span><br></pre></td></tr></table></figure>
-
-<p>今天因要下载win10 iso文件，奈何文件太大，只好利用winrar软件将4g的iso文件分成了4个1g的小文件，转到linux下后，直接将4个小文件提取了出来，但问题是4个提取出来的文件并没有合并在一起，这可不是我想要的结果，百度一查，赶紧在linux安装了rar,只需用<code>rar e name.part1.rar</code>，提取后的文件就是合并后的文件了。</p>
-<hr>
-<h3 id="Problems"><a href="#Problems" class="headerlink" title="Problems"></a>Problems</h3><h4 id="在ubuntu19-01上安装curl出现问题curl-Depends-libcurl4-7-58-0-2ubuntu3-8-but-7-65-3-1ubuntu3-is-to-be-installed"><a href="#在ubuntu19-01上安装curl出现问题curl-Depends-libcurl4-7-58-0-2ubuntu3-8-but-7-65-3-1ubuntu3-is-to-be-installed" class="headerlink" title="在ubuntu19.01上安装curl出现问题curl : Depends: libcurl4 (= 7.58.0-2ubuntu3.8) but 7.65.3-1ubuntu3 is to be installed"></a>在ubuntu19.01上安装curl出现问题curl : Depends: libcurl4 (= 7.58.0-2ubuntu3.8) but 7.65.3-1ubuntu3 is to be installed</h4><p>问题如下</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The following packages have unmet dependencies:</span><br><span class="line">curl : Depends: libcurl4 (= 7.58.0-2ubuntu3.8) but 7.65.3-1ubuntu3 is to be installed</span><br><span class="line">E: Unable to correct problems, you have held broken packages.</span><br></pre></td></tr></table></figure>
-<p>解决方法:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get purge libcurl4</span><br></pre></td></tr></table></figure>
-<p>接下来就可以正常安装<code>curl</code>了。</p>
-<h4 id="linux升级gdb"><a href="#linux升级gdb" class="headerlink" title="linux升级gdb"></a>linux升级gdb</h4><p>gdb官网下载太慢，<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/gnu/gdb/">清华大学镜像站</a>可以下载</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/some-linux-usage-record.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 

@@ -23,15 +23,15 @@
   <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.ongoing.ink","root":"/","images":"/images","scheme":"Mist","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"remove","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="背景1昨天晚上(20.4.1)忽然看到ubuntu20.04的操作画面，界面更加体贴用户了，配备了一些很不错的特性，其中一个我很喜欢的就是黑夜模式。所以就打算换到它了，但是我一直使用的Ubuntu版本是16.04，所以就先打算升级到18.04，再升级到20.04。接下来就开始了一系列更新操作，当时也没有将软件包全部更新到最新版，主要也是因为源的问题，一些包总是请求超时，所以忽略警告开始升级。 升级">
+<meta name="description" content="背景1昨天晚上(20.4.1)忽然看到ubuntu20.04的操作画面，界面更加体贴用户了，配备了一些很不错的特性，其中一个我很喜欢的就是黑夜模式。所以就打算换到它了，但是我一直使用的Ubuntu版本是16.04，所以就先打算升级到18.04，再升级到20.04。接下来就开始了一系列更新操作，当时也没有将软件包全部更新到最新版，主要也是因为源的问题，一些包总是请求超时，所以忽略警告开始升级。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Grub rescue">
 <meta property="og:url" content="https://www.ongoing.ink/posts/grub-rescue.html">
 <meta property="og:site_name" content="ongoing&#39;s blog">
-<meta property="og:description" content="背景1昨天晚上(20.4.1)忽然看到ubuntu20.04的操作画面，界面更加体贴用户了，配备了一些很不错的特性，其中一个我很喜欢的就是黑夜模式。所以就打算换到它了，但是我一直使用的Ubuntu版本是16.04，所以就先打算升级到18.04，再升级到20.04。接下来就开始了一系列更新操作，当时也没有将软件包全部更新到最新版，主要也是因为源的问题，一些包总是请求超时，所以忽略警告开始升级。 升级">
+<meta property="og:description" content="背景1昨天晚上(20.4.1)忽然看到ubuntu20.04的操作画面，界面更加体贴用户了，配备了一些很不错的特性，其中一个我很喜欢的就是黑夜模式。所以就打算换到它了，但是我一直使用的Ubuntu版本是16.04，所以就先打算升级到18.04，再升级到20.04。接下来就开始了一系列更新操作，当时也没有将软件包全部更新到最新版，主要也是因为源的问题，一些包总是请求超时，所以忽略警告开始升级。">
 <meta property="og:locale">
 <meta property="article:published_time" content="2020-09-30T04:06:27.000Z">
-<meta property="article:modified_time" content="2021-07-11T06:52:56.001Z">
+<meta property="article:modified_time" content="2021-07-11T07:14:39.611Z">
 <meta property="article:author" content="ongoing">
 <meta property="article:tag" content="Computer">
 <meta name="twitter:card" content="summary">
@@ -177,6 +177,9 @@
     
     <div class="post-body" itemprop="articleBody">
         <h3 id="背景1"><a href="#背景1" class="headerlink" title="背景1"></a>背景1</h3><p>昨天晚上(20.4.1)忽然看到<code>ubuntu20.04</code>的操作画面，界面更加体贴用户了，配备了一些很不错的特性，其中一个我很喜欢的就是<code>黑夜模式</code>。所以就打算换到它了，但是我一直使用的Ubuntu版本是16.04，所以就先打算升级到18.04，再升级到20.04。接下来就开始了一系列更新操作，当时也没有将软件包全部更新到最新版，主要也是因为源的问题，一些包总是<code>请求超时</code>，所以忽略警告开始升级。</p>
+<span id="more"></span>
+
+
 <p>升级下载过程完毕后，安装花费了很长时间，最后在安装界面上<strong>一直停留在那里不动了</strong>，已经接近凌晨，索性<code>强制关机</code>，去睡觉了。</p>
 <p>第二天早上起来接着开机，但是还是卡在那个地方。这个时候就决定放弃这次升级了，打算直接在官网下载<code>ubuntu19.10</code>版本进行<code>u盘安装</code>。将<code>iso文件</code>烧录至u盘后，插入自己的电脑，进入<code>bios界面</code>，选择从<code>u盘启动</code>，接下来就是一系列配置过程，可进行<code>默认设置</code>，或者<code>自定义设置</code>，这里我选择了自定义设置，因为需要对那几个目录(/home等等)进行磁盘分配。</p>
 <p>设置完毕之后，重新启动，这时出现了问题，开机画面变成了</p>

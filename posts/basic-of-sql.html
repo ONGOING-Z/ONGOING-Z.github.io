@@ -23,12 +23,12 @@
   <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.ongoing.ink","root":"/","images":"/images","scheme":"Mist","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"remove","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="一月份的时候有一个考察，但是当时连一个很简单的语句都不会写了，之后就在SQLBolt上进行了一个回顾，这里进行记录，以后方便随时回来查看。     1. SELECT1SELECT * FROM table_name;  2. Queries with constraints WHERE clause123SELECT column,...FORM tableWHERE condition">
+<meta name="description" content="一月份的时候有一个考察，但是当时连一个很简单的语句都不会写了，之后就在SQLBolt上进行了一个回顾，这里进行记录，以后方便随时回来查看。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Basic of SQL">
 <meta property="og:url" content="https://www.ongoing.ink/posts/basic-of-sql.html">
 <meta property="og:site_name" content="ongoing&#39;s blog">
-<meta property="og:description" content="一月份的时候有一个考察，但是当时连一个很简单的语句都不会写了，之后就在SQLBolt上进行了一个回顾，这里进行记录，以后方便随时回来查看。     1. SELECT1SELECT * FROM table_name;  2. Queries with constraints WHERE clause123SELECT column,...FORM tableWHERE condition">
+<meta property="og:description" content="一月份的时候有一个考察，但是当时连一个很简单的语句都不会写了，之后就在SQLBolt上进行了一个回顾，这里进行记录，以后方便随时回来查看。">
 <meta property="og:locale">
 <meta property="og:image" content="https://www.ongoing.ink/posts/basic-of-sql/sql_eg_1.png">
 <meta property="og:image" content="https://www.ongoing.ink/posts/basic-of-sql/sql_eg_2.png">
@@ -37,7 +37,7 @@
 <meta property="og:image" content="https://www.ongoing.ink/posts/basic-of-sql/sql_eg_5.png">
 <meta property="og:image" content="https://www.ongoing.ink/posts/basic-of-sql/sql_eg_6.png">
 <meta property="article:published_time" content="2020-04-19T11:41:09.000Z">
-<meta property="article:modified_time" content="2021-07-11T06:52:56.001Z">
+<meta property="article:modified_time" content="2021-07-11T07:14:39.603Z">
 <meta property="article:author" content="ongoing">
 <meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary">
@@ -186,6 +186,8 @@
         <p>一月份的时候有一个考察，但是当时连一个很简单的语句都不会写了，之后就在<a target="_blank" rel="noopener" href="https://sqlbolt.com/">SQLBolt</a>上进行了一个回顾，这里进行记录，以后方便随时回来查看。</p>
 <hr>
 <!-- toc -->
+<span id="more"></span>
+
 
 <hr>
 <h3 id="1-SELECT"><a href="#1-SELECT" class="headerlink" title="1. SELECT"></a>1. SELECT</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> table_name;</span><br></pre></td></tr></table></figure>

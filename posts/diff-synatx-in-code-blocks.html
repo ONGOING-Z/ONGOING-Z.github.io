@@ -23,16 +23,16 @@
   <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.ongoing.ink","root":"/","images":"/images","scheme":"Mist","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"remove","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="这几次看别人博客时总是发现了一些东西，比如有的博客中总是出现下面的这种样式： 123&#x2F;&#x2F; this is a test.- this is removed;+ this is added.   这样的样式，很方便：红色表示被删减，绿色表示被增加。人眼对色彩是非常敏感的，这样鲜明的对比很容易被人识别出来，方便阅读博客。  第一次见到diff syntax这个词是在这个地方，其中讲述到这个功能的地方如">
+<meta name="description" content="这几次看别人博客时总是发现了一些东西，比如有的博客中总是出现下面的这种样式： 123&#x2F;&#x2F; this is a test.- this is removed;+ this is added.   这样的样式，很方便：红色表示被删减，绿色表示被增加。人眼对色彩是非常敏感的，这样鲜明的对比很容易被人识别出来，方便阅读博客。  第一次见到diff syntax这个词是在这个地方，其中讲述到这个功能的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Diff-synatx-in-code-blocks">
 <meta property="og:url" content="https://www.ongoing.ink/posts/diff-synatx-in-code-blocks.html">
 <meta property="og:site_name" content="ongoing&#39;s blog">
-<meta property="og:description" content="这几次看别人博客时总是发现了一些东西，比如有的博客中总是出现下面的这种样式： 123&#x2F;&#x2F; this is a test.- this is removed;+ this is added.   这样的样式，很方便：红色表示被删减，绿色表示被增加。人眼对色彩是非常敏感的，这样鲜明的对比很容易被人识别出来，方便阅读博客。  第一次见到diff syntax这个词是在这个地方，其中讲述到这个功能的地方如">
+<meta property="og:description" content="这几次看别人博客时总是发现了一些东西，比如有的博客中总是出现下面的这种样式： 123&#x2F;&#x2F; this is a test.- this is removed;+ this is added.   这样的样式，很方便：红色表示被删减，绿色表示被增加。人眼对色彩是非常敏感的，这样鲜明的对比很容易被人识别出来，方便阅读博客。  第一次见到diff syntax这个词是在这个地方，其中讲述到这个功能的">
 <meta property="og:locale">
 <meta property="og:image" content="https://www.ongoing.ink/posts/diff-synatx-in-code-blocks/diff_example.jpg">
 <meta property="article:published_time" content="2020-04-12T05:23:32.000Z">
-<meta property="article:modified_time" content="2021-07-11T06:52:56.001Z">
+<meta property="article:modified_time" content="2021-07-11T07:14:39.603Z">
 <meta property="article:author" content="ongoing">
 <meta property="article:tag" content="Markdown">
 <meta property="article:tag" content="Writing skills">
@@ -179,7 +179,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>这几次看别人博客时总是发现了一些东西，比如有的博客中总是出现下面的这种样式：</p>
+        <span id="more"></span>
+
+
+<p>这几次看别人博客时总是发现了一些东西，比如有的博客中总是出现下面的这种样式：</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// this is a test.</span><br><span class="line"><span class="deletion">- this is removed;</span></span><br><span class="line"><span class="addition">+ this is added.</span></span><br></pre></td></tr></table></figure>
 
 <blockquote>

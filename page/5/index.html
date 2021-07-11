@@ -165,7 +165,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <!-- toc -->
+          <span id="more"></span>
+
+<!-- toc -->
 
 <hr>
 <ul>
@@ -281,22 +283,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <!-- toc -->
-
-<hr>
-<h2 id="如何在ubuntu命令行升级进行安装"><a href="#如何在ubuntu命令行升级进行安装" class="headerlink" title="如何在ubuntu命令行升级进行安装"></a>如何在ubuntu命令行升级进行安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:jonathonf/vim</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install vim</span><br></pre></td></tr></table></figure>
-
-<p>注意：这种方法可能会非常慢!</p>
-<h2 id="Ubuntu-16-04-编译安装Vim-v8-2-推荐"><a href="#Ubuntu-16-04-编译安装Vim-v8-2-推荐" class="headerlink" title="Ubuntu 16.04 编译安装Vim v8.2(推荐)"></a>Ubuntu 16.04 编译安装Vim v8.2(推荐)</h2><p>先卸载原本的vim</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove vim vim-runtime gvim vim-tiny vim-common vim-gui-common</span><br></pre></td></tr></table></figure>
-<p>接下来将<code>vim源码</code>从github上clone下来后进行编译，注意编译的过程中可能会遇到各种各样的环<br>境或依赖不匹配，根据自己的需要去进行安装。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> <span class="built_in">clone</span> https://github.com/vim/vim.git</span><br><span class="line"><span class="variable">$cd</span> vim</span><br><span class="line">$./configure --with-features=huge --enable-gui=auto --enable-cscope \</span><br><span class="line">             --prefix=/usr -enable-python3interp=yes                \</span><br><span class="line">             --with-python3-command=/usr/bin/python3                \</span><br><span class="line">             --with-python3-config-dir=your_python3_path</span><br><span class="line"></span><br><span class="line"><span class="variable">$sudo</span> make VIMRUNTIMEDIR=/usr/share/vim/vim82</span><br><span class="line"><span class="variable">$sudo</span> make install</span><br><span class="line"><span class="variable">$vim</span> --version <span class="comment"># 检查vim版本</span></span><br></pre></td></tr></table></figure>
-
-<p>安装完成后需要检查安装好的vim中有没有<code>clipboard</code>，使用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim --version | grep <span class="string">&quot;clipboard&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>来检查，这一样对于粘贴板是非常重要的。如果没有的话就需要自己去分析是什么原因了。</p>
-<p><em>20.9.3</em>: 第二次编译安装vim8.2依旧是没有clipboard这一项的，依旧使用了我的<a href="https://www.ongoing.ink/blog/posts/2020/04/the-errors-when-compeling-vim8.2.html"> 老办法 </a>。</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/how-to-install-vim8.2-in-ubuntu16.04.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -360,91 +354,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>这篇文章记录我自己在使用Hexo过程遇到的问题和一些使用方法。</p>
-<hr>
-<!-- toc -->
-
-<hr>
-<h2 id="创建一篇新文章"><a href="#创建一篇新文章" class="headerlink" title="创建一篇新文章"></a>创建一篇新文章</h2><p><code>$hexo new [layout] &lt;title&gt;</code></p>
-<h2 id="添加文章更新时间-1"><a href="#添加文章更新时间-1" class="headerlink" title="添加文章更新时间^1"></a>添加文章更新时间<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ae3a0666e998">^1</a></h2><p>首先修改<code>/themes/next/layout/_macro/</code>下的<code>post.swig</code>文件，在<code>&lt;span class=&quot;post-time&quot;&gt;...&lt;/span&gt;</code><br>标签后添加如下内容:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;%if post.updated and post.updated &gt; post.date%&#125;</span><br><span class="line">  &lt;span class=&quot;post-updated&quot;&gt;</span><br><span class="line">    &amp;nbsp; | &amp;nbsp; &#123;&#123; __(&#x27;post.updated&#x27;) &#125;&#125;</span><br><span class="line">    &lt;time itemprop=&quot;dateUpdated&quot; datetime=&quot;&#123;&#123; moment(post.updated).format() &#125;&#125;&quot; content=&quot;&#123;&#123; date(post.updated, config.date_format) &#125;&#125;&quot;&gt;</span><br><span class="line">      &#123;&#123; date(post.updated, config.date_format) &#125;&#125;</span><br><span class="line">    &lt;/time&gt;</span><br><span class="line">  &lt;/span&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-<p>其次若博客站点默认语言为中文，则修改<code>/themes/next/languages/</code>下的<code>zh_Hans.yml</code>文件</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post:</span></span><br><span class="line">  <span class="attr">updated:</span> <span class="string">更新于</span></span><br></pre></td></tr></table></figure>
-<p>若为其他语言，则修改对应的语言文件即可。<br>最后修改<code>主题配置文件</code>，添加如下内容</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">display_updated:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="添加Gitalk"><a href="#添加Gitalk" class="headerlink" title="添加Gitalk"></a>添加Gitalk</h2><h3 id="Error-not-found"><a href="#Error-not-found" class="headerlink" title="Error: not found"></a>Error: not found</h3><p>看了很多帖子，但是还是没有解决。</p>
-<h2 id="Next-显示文章阅读数"><a href="#Next-显示文章阅读数" class="headerlink" title="Next 显示文章阅读数"></a>Next 显示文章阅读数</h2><p>为博客显示<code>站点访问人数</code>/<code>站点浏览量</code>/<code>文章浏览量</code><br>在<code>Next</code>主题中内置有<a target="_blank" rel="noopener" href="http://theme-next.iissnan.com/third-party-services.html#analytics-busuanzi">不蒜子统计</a></p>
-<p><strong>设置方法</strong><br>在<code>主题设置文件_config.yml</code>中搜索<code>busuanzi_count</code></p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Show PV/UV of the website/page with busuanzi.</span></span><br><span class="line"><span class="comment"># Get more information on http://ibruce.info/2015/04/04/busuanzi/</span></span><br><span class="line"><span class="attr">busuanzi_count:</span></span><br><span class="line">  <span class="comment"># count values only if the other configs are false</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># custom uv span for the whole site</span></span><br><span class="line">  <span class="attr">site_uv:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">site_uv_header:</span> <span class="string">&lt;i</span> <span class="string">class=&quot;fa</span> <span class="string">fa-user&quot;&gt;访客数&lt;/i&gt;</span></span><br><span class="line">  <span class="attr">site_uv_footer:</span> <span class="string">人</span></span><br><span class="line">  <span class="comment"># custom pv span for the whole site</span></span><br><span class="line">  <span class="attr">site_pv:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">site_pv_header:</span> <span class="string">&lt;i</span> <span class="string">class=&quot;fa</span> <span class="string">fa-eye&quot;&gt;总访问量&lt;/i&gt;</span></span><br><span class="line">  <span class="attr">site_pv_footer:</span> <span class="string">次</span></span><br><span class="line">  <span class="comment"># custom pv span for one page only</span></span><br><span class="line">  <span class="attr">page_pv:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">page_pv_header:</span> <span class="string">&lt;i</span> <span class="string">class=&quot;fa</span> <span class="string">fa-file-o&quot;&gt;阅读&lt;/i&gt;</span></span><br><span class="line">  <span class="attr">page_pv_footer:</span> <span class="string">次</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>出现的问题</strong><br>这样设置之后看网站上并未显示出访问数，查询之后，发现是<code>不蒜子</code>的域名更换了，所以我们网站<br>中对应的不蒜子域名也要进行更换。官网消息在<a target="_blank" rel="noopener" href="http://ibruce.info/2015/04/04/busuanzi/">这里</a></p>
-<p>将<code>/theme/next/layout/_third-party/analytics/</code>下的<code>busuanzi-counter.swig</code>文件中的</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script async src=&quot;//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>更改为</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script async src=&quot;//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>即可，这样设置之后提交就可以发现访问数字显示出来了。</p>
-<h2 id="文章设置"><a href="#文章设置" class="headerlink" title="文章设置"></a>文章设置</h2><h3 id="Next文章调整宽度"><a href="#Next文章调整宽度" class="headerlink" title="Next文章调整宽度"></a>Next文章调整宽度</h3><p>修改<code>\themes\next\source\css\_variables\base.styl</code>文件，搜索<code>content-desktop-large</code><br>然后设置想要的宽度即可。</p>
-<h3 id="Next文章修改文字大小"><a href="#Next文章修改文字大小" class="headerlink" title="Next文章修改文字大小"></a>Next文章修改文字大小</h3><p>修改<code>\themes\next\source\css\_variables\base.styl</code>文件，搜索<code>font-size-base</code><br>然后设置想要的文字大小即可。</p>
-<h3 id="设置字体-2"><a href="#设置字体-2" class="headerlink" title="设置字体^2"></a>设置字体<a target="_blank" rel="noopener" href="https://io-oi.me/tech/noto-serif-sc-added-on-google-fonts/">^2</a></h3><p>此位博主博客极为精品，干货极多。</p>
-<h3 id="添加博客图片方式"><a href="#添加博客图片方式" class="headerlink" title="添加博客图片方式"></a>添加博客图片方式</h3><p>我所使用方式是<strong>相对路径本地引用</strong>，另外还有绝对路径和CDN生成链接的方式，在这里展示第一种。<br>设置<code>站点配置文件</code></p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">- post_asset_folder: false</span></span><br><span class="line"><span class="addition">+ post_asset_folder: true</span></span><br></pre></td></tr></table></figure>
-<p>之后在<code>git bash</code>中执行<code>$hexo new [layout] article_name</code>后本地会在<code>~/source/_posts</code>下自动生成一个<code>article_name</code>文件夹。</p>
-<p>注意如果你的<code>md</code>文件如果设置了自动添加日期到名称的选项，在接下来的引用中你需要将日期给去掉，在执行<code>$hexo g</code>后你会发现在<code>~/public/posts/</code>下的同名文件夹是没有日期的，是一个“裸的”文章名称文件夹。这一点需要注意。<br>文件夹生成之后就将图片添加进去，在文章中使用<code>![image_name](image_path)</code>即可了。</p>
-<h3 id="打开文章时不同时显示目录"><a href="#打开文章时不同时显示目录" class="headerlink" title="打开文章时不同时显示目录"></a>打开文章时不同时显示目录</h3><blockquote>
-<p>当初在新建博客的时候将文章目录在打开的时候也自动从右边弹出，但是发现这样并不怎么美观，并且我一般看博客文章的目录都喜欢在最开始看，不想将自己的目光一瞥看一眼目录，这样的目光转动我觉得很麻烦，也可能是自己的习惯问题。所以就将目录自动弹出关闭。</p>
-</blockquote>
-<p>关闭自动弹出</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># file path: themes/next/source/css/_custom/custom.style</span><br><span class="line">//文章目录默认展开</span><br><span class="line">//.post-toc .nav .nav-child &#123; display: block; &#125;</span><br></pre></td></tr></table></figure>
-<p>将代码注释或删除即可。</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 文件：站点配置文件_config.yml</span><br><span class="line">toc:</span><br><span class="line"><span class="deletion">-  enable: true</span></span><br><span class="line"><span class="addition">+  enable: false</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="完全移除sidebar"><a href="#完全移除sidebar" class="headerlink" title="完全移除sidebar"></a>完全移除sidebar</h3><figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 文件: 主题配置文件</span><br><span class="line">sidebar:</span><br><span class="line">  # Sidebar Position, available value: left | right (only for Pisces | Gemini).</span><br><span class="line">  position: left</span><br><span class="line">  #position: right</span><br><span class="line"></span><br><span class="line">  # Sidebar Display, available value (only for Muse | Mist):</span><br><span class="line">  #  - post    expand on posts automatically. Default.</span><br><span class="line">  #  - always  expand for all pages automatically</span><br><span class="line">  #  - hide    expand only when click on the sidebar toggle icon.</span><br><span class="line">  #  - remove  Totally remove sidebar including sidebar toggle.</span><br><span class="line"><span class="deletion">-  display: post</span></span><br><span class="line"><span class="addition">+  #display: post</span></span><br><span class="line">  #display: always</span><br><span class="line">  #display: hide</span><br><span class="line"><span class="deletion">-  #display: remove</span></span><br><span class="line"><span class="addition">+  display: remove</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="写英文标题"><a href="#写英文标题" class="headerlink" title="写英文标题"></a>写英文标题</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">&quot;This is a test&quot;</span>  <span class="comment"># 注意使用双引号将文章题目包裹，不然只会只用最后一个单词作为标题</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="设置代码块字体"><a href="#设置代码块字体" class="headerlink" title="设置代码块字体"></a>设置代码块字体</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 文件：主题配置文件</span></span><br><span class="line">font:</span><br><span class="line">  ...</span><br><span class="line">  <span class="comment"># Font settings for &lt;code&gt; and code blocks.</span></span><br><span class="line">  codes:</span><br><span class="line">    external: <span class="literal">true</span></span><br><span class="line">    family: monospace</span><br><span class="line">    size:</span><br></pre></td></tr></table></figure>
-<p>我在这里设置的字体是<strong>monospace</strong></p>
-<h3 id="设置目录，在正文上方-3"><a href="#设置目录，在正文上方-3" class="headerlink" title="设置目录，在正文上方^3"></a>设置目录，在正文上方<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/87a885fef1a6">^3</a></h3><p>(1) 安装<code>hexo-toc</code>插件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-toc --save</span><br></pre></td></tr></table></figure>
-<p>npm如果太慢，使用cnpm.</p>
-<p>(2) 配置<code>站点配置文件_config.yml</code></p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">toc:</span></span><br><span class="line">  <span class="attr">maxdepth:</span> <span class="number">3</span></span><br><span class="line">  <span class="attr">class:</span> <span class="string">toc</span></span><br><span class="line">  <span class="attr">slugify:</span> <span class="string">transliteration</span></span><br><span class="line">  <span class="attr">decodeEntities:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">anchor:</span></span><br><span class="line">    <span class="attr">position:</span> <span class="string">after</span></span><br><span class="line">    <span class="attr">symbol:</span> <span class="string">&#x27;#&#x27;</span></span><br><span class="line">    <span class="attr">style:</span> <span class="string">header-anchor</span></span><br></pre></td></tr></table></figure>
-<p>(3) 在文章中加入</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- toc --&gt;</span><br></pre></td></tr></table></figure>
-
-<p><strong>注</strong>: 如果标题处设置了脚注，类似<code>[^1]</code>这样的，则在生成好的目录处点击并不会跳转。关于这一点我还没有找到解决方法。</p>
-<h2 id="关闭本地搜索"><a href="#关闭本地搜索" class="headerlink" title="关闭本地搜索"></a>关闭本地搜索</h2><figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 文件：主题配置文件</span><br><span class="line">local_search:</span><br><span class="line"><span class="deletion">-  enable: true</span></span><br><span class="line"><span class="addition">+  enable: false</span></span><br></pre></td></tr></table></figure>
-<h2 id="添加文章底部版权声明-4"><a href="#添加文章底部版权声明-4" class="headerlink" title="添加文章底部版权声明^4"></a>添加文章底部版权声明<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/93170e7413e9">^4</a></h2><h2 id="Hexo-日志"><a href="#Hexo-日志" class="headerlink" title="Hexo 日志"></a>Hexo 日志</h2><p><em>20.4.10</em></p>
-<ul>
-<li>hexo md不支持<code>[toc]</code>写法</li>
-</ul>
-<p><em>20.4.11</em></p>
-<ul>
-<li>想要进行仓库分支备份博客源码，但是由于自己设置了主页，导致备份后的链接跳转变乱，就又使用会最初无备份的版本，自己另寻他路备份。</li>
-</ul>
-<p><em>20.4.12</em></p>
-<ul>
-<li>添加博客图片相对路径方式</li>
-<li>在代码块中使用diff展示增减行</li>
-<li>打开文章时不同时显示目录</li>
-<li>设置代码块字体</li>
-<li>关闭本地搜索</li>
-<li>完全移除Sidebar</li>
-</ul>
-<p><em>20.4.25</em></p>
-<ul>
-<li>移除gitalk</li>
-</ul>
-<p><em>20.5.4</em></p>
-<ul>
-<li>正文上方添加目录</li>
-<li>添加文章底部版权声明</li>
-</ul>
-<p><em>21.7.6</em></p>
-<ul>
-<li>使用 Github Action 对博客改造进行 CI/CD，将部署步骤移除本地</li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/writing-skill-in-hexo.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -517,244 +434,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <!-- toc -->
-
-<hr>
-<h3 id="一些细节"><a href="#一些细节" class="headerlink" title="一些细节"></a>一些细节</h3><ol>
-<li><p>linux下编译运行c++程序</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g++ -W file_name.cpp -o another_name</span><br><span class="line">./file_name</span><br></pre></td></tr></table></figure>
-
-<p>  <code>-W</code>: 输入错误信息</p>
-</li>
-<li><p>字符数组的输入输出</p>
-<p>  <code>scanf</code>输入，<code>printf</code>输出</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> str[<span class="number">10</span>];</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, str);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>, str);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>注</strong>：<code>%s</code>识别<code>空格</code>作为字符串的结尾；<code>scanf</code>在使用<code>%s</code>时，对应数组名是不需要加<code>&amp;</code>运算符的。</p>
-</li>
-<li><p>数组初始化符号<code>&#123;&#125;</code></p>
-</li>
-<li><p><code>ascii</code></p>
-<p>A: 65; a: 97</p>
-</li>
-<li><p>结构体的初始化</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%d %c %d&quot;</span>, &amp;a, &amp;data, &amp;b);</span><br><span class="line">node[a] = &#123;data, b, <span class="literal">false</span>&#125;;  <span class="comment">// 注意时花括号，和数组初始化一样。</span></span><br></pre></td></tr></table></figure></li>
-<li><p>高位补0与高位补空</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%05d&quot;</span>, i);  <span class="comment">// 使不足５位的整数的高位补０。</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%5d&quot;</span>, i);  <span class="comment">// 使不足５位的整数的高位补为空。</span></span><br></pre></td></tr></table></figure></li>
-<li><p><code>scanf()</code>使用<code>%c</code>可以读入<code>空格</code>，要注意格式！ </p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%d %c&quot;</span>);</span><br></pre></td></tr></table></figure></li>
-<li><p>使用new运算符为链表结点分配内存空间</p>
-<p>使用方法：<code>typename *p = new typename;</code></p>
-<p>例子如下</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *p = <span class="keyword">new</span> <span class="keyword">int</span>;</span><br><span class="line">node *p = <span class="keyword">new</span> node;</span><br><span class="line"><span class="keyword">int</span> *p = <span class="keyword">new</span> arr[<span class="number">10000</span>];</span><br></pre></td></tr></table></figure></li>
-<li><p><code>memset</code>对数组中每一个元素赋相同的值</p>
-<p>格式：<code>memset(name, value, sizeof(name))</code></p>
-<p>前提条件：添加<code>string.h</code></p>
-<p>==建议赋值为0或-1==，不易出错。</p>
-</li>
-</ol>
-<h3 id="c"><a href="#c" class="headerlink" title="c++"></a>c++</h3><h4 id="1-vector"><a href="#1-vector" class="headerlink" title="1. vector"></a>1. vector</h4><blockquote>
-<p>使用：<code>#include&lt;vector&gt;</code>；除此之外，还需加上<code>using namespace std;</code></p>
-</blockquote>
-<h5 id="（1）定义"><a href="#（1）定义" class="headerlink" title="（1）定义"></a>（1）定义</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="keyword">typename</span>&gt; name;</span><br></pre></td></tr></table></figure>
-
-<p><em>注：其长度可以根据需要进行变化，“变长数组”</em></p>
-<h5 id="（2）vector容器内元素的访问"><a href="#（2）vector容器内元素的访问" class="headerlink" title="（2）vector容器内元素的访问"></a>（2）vector容器内元素的访问</h5><p>eg. </p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="keyword">typename</span>&gt; vi;</span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li><p>通过<code>下标</code>访问</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi[index];  <span class="comment">// 下标从为0~vi.size()-1</span></span><br></pre></td></tr></table></figure></li>
-<li><p>通过<code>迭代器</code>访问</p>
-<p>迭代器(iterator)定义：<code>vector&lt;typename&gt;::iterator it;</code></p>
-<p>// it 是一个 vector<typename>::iterator 型的变量</typename></p>
-<p>// 这样得到了迭代器it，访问vector里的内容方式如下：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*it</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 测试vector</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; vi;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">5</span>; i++)&#123;</span><br><span class="line">        vi.<span class="built_in">push_back</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt;::iterator it = vi.<span class="built_in">begin</span>(); <span class="comment">// vi.begin()取vi首元素地址</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, *(it+i));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vector_test_2</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; vi;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">5</span>; i++)&#123;</span><br><span class="line">        vi.<span class="built_in">push_back</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(vector&lt;<span class="keyword">int</span>&gt;::iterator it = vi.<span class="built_in">begin</span>(); it != vi.<span class="built_in">end</span>(); it++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, *it);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h5 id="（3）vector常用函数"><a href="#（3）vector常用函数" class="headerlink" title="（3）vector常用函数"></a>（3）vector常用函数</h5><ul>
-<li><p><code>push_back()</code></p>
-<p>push_back(x): 在vector后添加元素x，时间复杂度<code>O(1)</code></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vector_test_3</span></span><br><span class="line"><span class="comment">// push_back()</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; vi;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;=<span class="number">3</span>; i++)&#123;</span><br><span class="line">        vi.<span class="built_in">push_back</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, vi[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p><code>pop_back()</code></p>
-<p>pop_back(): 删除vector尾元素，时间复杂度<code>O(1)</code></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vector_test_4</span></span><br><span class="line"><span class="comment">// pop_back()</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; vi;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">5</span>; i++)&#123;</span><br><span class="line">        vi.<span class="built_in">push_back</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">    vi.<span class="built_in">pop_back</span>();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; vi.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, vi[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// result: 1 2 3 4</span></span><br></pre></td></tr></table></figure></li>
-<li><p>size()</p>
-<p>用来获得vector中元素个数，时间复杂度<code>O(1)</code></p>
-</li>
-<li><p>clear()</p>
-<p>用来清空vector中的所有元素，时间复杂度<code>O(n)</code></p>
-</li>
-<li><p>insert()</p>
-<p><code>insert(it, x)</code>: 向vector迭代器it处插入元素x，时间复杂度<code>O(N)</code></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vector_test_7</span></span><br><span class="line"><span class="comment">// insert(it, x)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; vi;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">3</span>; i++)&#123;</span><br><span class="line">        vi.<span class="built_in">push_back</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">    vi.<span class="built_in">insert</span>(vi.<span class="built_in">begin</span>()+<span class="number">2</span>, <span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; vi.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, vi[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// result: 1 2 -1 3</span></span><br></pre></td></tr></table></figure></li>
-<li><p>erase()</p>
-<p>时间复杂度均为<code>O(N)</code></p>
-<ul>
-<li><p>删除单个元素 erase(it)</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vector_test_8</span></span><br><span class="line"><span class="comment">// erase()</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; vi;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">5</span>; i++)&#123;</span><br><span class="line">        vi.<span class="built_in">push_back</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">    vi.<span class="built_in">erase</span>(vi.<span class="built_in">begin</span>()+<span class="number">3</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; vi.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, vi[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// result: 1 2 3 5</span></span><br></pre></td></tr></table></figure></li>
-<li><p>删除区间所有元素 erase(first, last) <strong>左开右闭</strong></p>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="2-stack"><a href="#2-stack" class="headerlink" title="2. stack"></a>2. stack</h4><h5 id="（1）定义-1"><a href="#（1）定义-1" class="headerlink" title="（1）定义"></a>（1）定义</h5><p>添加<code>#include &lt;stack&gt;</code>与<code>using namespace std;</code></p>
-<p>定义写法：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stack&lt;<span class="keyword">typename</span>&gt; name;</span><br></pre></td></tr></table></figure>
-
-<h5 id="（2）stack容器内元素访问"><a href="#（2）stack容器内元素访问" class="headerlink" title="（2）stack容器内元素访问"></a>（2）stack容器内元素访问</h5><p>后进先出，只能通过<code>top()</code>访问栈顶元素。</p>
-<h5 id="（3）常用函数"><a href="#（3）常用函数" class="headerlink" title="（3）常用函数"></a>（3）常用函数</h5><ul>
-<li><p>push()</p>
-<p>push(x): 将x入栈，时间复杂度<code>O(1)</code></p>
-</li>
-<li><p>top()</p>
-<p>top(): 获得栈顶元素，时间复杂度<code>O(1)</code></p>
-</li>
-<li><p>pop()</p>
-<p>pop(): 弹出栈顶元素，时间复杂度<code>O(1)</code></p>
-</li>
-<li><p>empty()</p>
-<p>检测stack是否为空。返回<code>true</code>为空。时间复杂度<code>O(1)</code></p>
-</li>
-<li><p>size()</p>
-<p>返回stack内元素个数。时间复杂度<code>O(1)</code></p>
-</li>
-</ul>
-<h4 id="3-string"><a href="#3-string" class="headerlink" title="3. string"></a>3. string</h4><h5 id="（1）定义-2"><a href="#（1）定义-2" class="headerlink" title="（1）定义"></a>（1）定义</h5><p>添加<code>#include &lt;string&gt;</code>与<code>using namespace std</code></p>
-<p><code>string str;</code></p>
-<p>初始化：<code>string str = &quot;abcd&quot;;</code></p>
-<h5 id="（2）string中内容访问"><a href="#（2）string中内容访问" class="headerlink" title="（2）string中内容访问"></a>（2）string中内容访问</h5><ul>
-<li><p>通过下标访问</p>
-<p><code>str[i]</code></p>
-</li>
-<li><p>通过迭代器访问</p>
-<p>定义：<code>string::iterator it;</code></p>
-<p>通过<code>*it</code>访问string中的每一位。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// string_test_3</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    string str = <span class="string">&quot;abcd&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span>(string::iterator it = str.<span class="built_in">begin</span>(); it != str.<span class="built_in">end</span>(); it++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%c&quot;</span>, *it);</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h5 id="（3）常用函数-1"><a href="#（3）常用函数-1" class="headerlink" title="（3）常用函数"></a>（3）常用函数</h5><h4 id="4-queue"><a href="#4-queue" class="headerlink" title="4. queue"></a>4. queue</h4><h5 id="（1）定义-3"><a href="#（1）定义-3" class="headerlink" title="（1）定义"></a>（1）定义</h5><p>预先条件：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br></pre></td></tr></table></figure>
-
-<p><code>queue&lt;typename&gt; name;</code></p>
-<h5 id="（2）容器内元素访问"><a href="#（2）容器内元素访问" class="headerlink" title="（2）容器内元素访问"></a>（2）容器内元素访问</h5><p>通过<code>front()</code>访问队首元素，通过<code>back()</code>访问队尾元素。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// queue_test_1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    queue&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">        q.<span class="built_in">push</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d %d\n&quot;</span>, q.<span class="built_in">front</span>(), q.<span class="built_in">back</span>());</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">result:</span><br><span class="line"><span class="number">0</span> <span class="number">4</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="（3）常用函数-2"><a href="#（3）常用函数-2" class="headerlink" title="（3）常用函数"></a>（3）常用函数</h5><ul>
-<li><p>push()</p>
-<p><code>push(x)</code>：将x入队。</p>
-<p>时间复杂度：<code>O(1)</code></p>
-</li>
-<li><p>front()/back()</p>
-<p>时间复杂度：<code>O(1)</code></p>
-</li>
-<li><p>pop()</p>
-<p>pop()：出队</p>
-<p>时间复杂度：<code>O(1)</code></p>
-</li>
-<li><p>empty()</p>
-<p>检测q是否为空，为空返回true.</p>
-<p>时间复杂度：<code>O(1)</code></p>
-</li>
-<li><p>size()</p>
-<p>返回元素个数。</p>
-<p>时间复杂度：<code>O(1)</code></p>
-</li>
-</ul>
-<h5 id="（4）用途"><a href="#（4）用途" class="headerlink" title="（4）用途"></a>（4）用途</h5><ul>
-<li>广度优先搜索</li>
-</ul>
-<h4 id="5-algorithm头文件下常用函数"><a href="#5-algorithm头文件下常用函数" class="headerlink" title="5. algorithm头文件下常用函数"></a>5. algorithm头文件下常用函数</h4><blockquote>
-<p>须添加<code>using namespace std;</code></p>
-</blockquote>
-<h5 id="（1）max-min-abs"><a href="#（1）max-min-abs" class="headerlink" title="（1）max()/min()/abs()"></a>（1）max()/min()/abs()</h5><ul>
-<li><p>max(x, y): 返回x, y中最大值</p>
-</li>
-<li><p>min(x, y): 返回x, y中最小值</p>
-<p><strong>参数必须是两个， 可以是浮点数</strong></p>
-</li>
-<li><p>max(x, max(y, z)): 返回三者中最大值</p>
-</li>
-<li><p>abx(x): 返回x绝对值  // <strong>x必须是整数</strong></p>
-</li>
-<li><p>fabs(x): <strong>浮点数绝对值，使用<code>math</code>头文件</strong></p>
-</li>
-</ul>
-<h5 id="（2）swap"><a href="#（2）swap" class="headerlink" title="（2）swap()"></a>（2）swap()</h5><ul>
-<li>swap(x, y): 交换x和y的值</li>
-</ul>
-<h5 id="（3）reverse"><a href="#（3）reverse" class="headerlink" title="（3）reverse()"></a>（3）reverse()</h5><ul>
-<li><p>reverse(it, it2): 将数组指针在[it, it2)之间的元素或容器的迭代器在[it, it2)范围内的元素进行反转。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// algorithm_test_3</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">10</span>] = &#123;<span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>&#125;;</span><br><span class="line">    <span class="built_in">reverse</span>(a, a+<span class="number">4</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">6</span>; i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">result: <span class="number">13</span> <span class="number">12</span> <span class="number">11</span> <span class="number">10</span> <span class="number">14</span> <span class="number">15</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h5 id="（4）sort"><a href="#（4）sort" class="headerlink" title="（4）sort()"></a>（4）sort()</h5><ul>
-<li><p>如何使用sort排序</p>
-<ul>
-<li><p>使用</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br></pre></td></tr></table></figure>
-
-<p><code>sort(首元素地址(必填), 尾元素地址(必填), 比较函数(非必填))</code></p>
-<p>注：不写比较函数，默认递增排序</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// algorithm_test_4</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">6</span>] = &#123;<span class="number">9</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">-1</span>&#125;;</span><br><span class="line">    <span class="built_in">sort</span>(a, a+<span class="number">4</span>); <span class="comment">// [0, 4)</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">6</span>; i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, a[i]);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    <span class="built_in">sort</span>(a, a+<span class="number">6</span>); <span class="comment">// [0, 6)</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">6</span>; i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, a[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">result:</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="images/img_1.png" alt="img_1"></p>
-</li>
-</ul>
-</li>
-<li><p> 如何实现比较函数cmp</p>
-</li>
-<li><p>基本数据类型数组的排序</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 实现从大到小排序</span></span><br><span class="line"><span class="comment">// algorithm_test_5</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a &gt; b;  <span class="comment">// 当a&gt;b时，a放在b前边</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;;</span><br><span class="line">    <span class="built_in">sort</span>(a, a+<span class="number">4</span>, cmp);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">result:</span><br><span class="line"><span class="number">4</span> <span class="number">3</span> <span class="number">2</span> <span class="number">1</span></span><br></pre></td></tr></table></figure></li>
-<li><p>结构体数组的排序</p>
-<p>定义如下结构体：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> x, y;</span><br><span class="line">&#125;ssd[<span class="number">10</span>];</span><br></pre></td></tr></table></figure>
-
-<p><strong>将ssd数组按x从大到小排序</strong>：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(node a, node b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.x &gt; b.x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>eg.</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// algorithm_test_6</span></span><br><span class="line"><span class="comment">// 结构体数组的排序</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> x, y;</span><br><span class="line">&#125;ssd[<span class="number">10</span>];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(node a, node b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.x &gt; b.x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ssd[<span class="number">0</span>].x = <span class="number">2</span>;</span><br><span class="line">    ssd[<span class="number">0</span>].y = <span class="number">2</span>;</span><br><span class="line">    ssd[<span class="number">1</span>].x = <span class="number">1</span>;</span><br><span class="line">    ssd[<span class="number">1</span>].y = <span class="number">3</span>;</span><br><span class="line">    ssd[<span class="number">2</span>].x = <span class="number">3</span>;</span><br><span class="line">    ssd[<span class="number">2</span>].y = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">sort</span>(ssd, ssd+<span class="number">3</span>, cmp);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d %d\n&quot;</span>, ssd[i].x, ssd[i].y);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>result:</p>
-<p><img data-src="images/img_2.png" alt="img_2"></p>
-</li>
-</ul>
-<h5 id="（5）fill"><a href="#（5）fill" class="headerlink" title="（5）fill"></a>（5）fill</h5><ul>
-<li>将数组或容器中某一段区间赋为某个相同的值。==赋值可以是数组类型对应的任何值==</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">5</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line">    <span class="built_in">fill</span>(a, a+<span class="number">5</span>, <span class="number">23</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">result:</span><br><span class="line"><span class="number">23</span> <span class="number">23</span> <span class="number">23</span> <span class="number">23</span> <span class="number">23</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="6-map"><a href="#6-map" class="headerlink" title="6. map"></a>6. map</h4><blockquote>
-<p>翻译为映射。</p>
-<p>例如在定义数组时，是定义了一个从<code>int</code>到<code>int</code>的映射，如<code>arr[0] = 5</code>是将0映射到5.</p>
-<p>map可以将任何基本类型映射到任何基本类型。</p>
-</blockquote>
-<h5 id="（1）定义-4"><a href="#（1）定义-4" class="headerlink" title="（1）定义"></a>（1）定义</h5><ul>
-<li><p>前提条件</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br></pre></td></tr></table></figure></li>
-<li><p>map定义</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">map&lt;typename1, typename2&gt; mp;</span><br></pre></td></tr></table></figure>
-
-<p>注：如果是字符串到整型的映射，必须使用<code>string</code>而不能用<code>char数组</code></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">map&lt;string, <span class="keyword">int</span>&gt; mp;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h5 id="（2）容器内元素访问-1"><a href="#（2）容器内元素访问-1" class="headerlink" title="（2）容器内元素访问"></a>（2）容器内元素访问</h5><ul>
-<li><p>通过下标访问</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// map_test_1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    map&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; mp;</span><br><span class="line">    mp[<span class="string">&#x27;c&#x27;</span>] = <span class="number">20</span>;</span><br><span class="line">    mp[<span class="string">&#x27;c&#x27;</span>] = <span class="number">30</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, mp[<span class="string">&#x27;c&#x27;</span>]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>通过迭代器访问(跳过)</p>
-</li>
-</ul>
-<h5 id="（3）常用函数-3"><a href="#（3）常用函数-3" class="headerlink" title="（3）常用函数"></a>（3）常用函数</h5><ul>
-<li>find()</li>
-<li>size()</li>
-<li>clear()</li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/some-basic-knowledge-of-c&c++.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
