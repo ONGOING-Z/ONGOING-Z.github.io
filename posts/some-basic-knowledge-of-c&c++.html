@@ -21,17 +21,17 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.ongoing.ink","root":"/","images":"/images","scheme":"Mist","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"remove","padding":18,"offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="一些细节 linux下编译运行c++程序  12g++ -W file_name.cpp -o another_name.&#x2F;file_name -W: 输入错误信息  字符数组的输入输出   scanf输入，printf输出   1234567#include &lt;stdio.h&gt;int main()&amp;#123;    char str[10];    scanf(&quot;%s">
+<meta name="description" content="一些细节 linux下编译运行c++程序 12g++ -W file_name.cpp -o another_name.&#x2F;file_name    -W: 输入错误信息  字符数组的输入输出   scanf输入，printf输出 1234567#include &lt;stdio.h&gt;int main()&amp;#123;    char str[10];    scanf(&quot;%s">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C语言的一些基础知识">
 <meta property="og:url" content="https://www.ongoing.ink/posts/some-basic-knowledge-of-c&c++.html">
 <meta property="og:site_name" content="ongoing&#39;s blog">
-<meta property="og:description" content="一些细节 linux下编译运行c++程序  12g++ -W file_name.cpp -o another_name.&#x2F;file_name -W: 输入错误信息  字符数组的输入输出   scanf输入，printf输出   1234567#include &lt;stdio.h&gt;int main()&amp;#123;    char str[10];    scanf(&quot;%s">
+<meta property="og:description" content="一些细节 linux下编译运行c++程序 12g++ -W file_name.cpp -o another_name.&#x2F;file_name    -W: 输入错误信息  字符数组的输入输出   scanf输入，printf输出 1234567#include &lt;stdio.h&gt;int main()&amp;#123;    char str[10];    scanf(&quot;%s">
 <meta property="og:locale">
 <meta property="og:image" content="https://www.ongoing.ink/posts/images/img_1.png">
 <meta property="og:image" content="https://www.ongoing.ink/posts/images/img_2.png">
 <meta property="article:published_time" content="2020-04-04T07:18:31.000Z">
-<meta property="article:modified_time" content="2021-07-11T04:04:39.686Z">
+<meta property="article:modified_time" content="2021-07-11T04:13:44.579Z">
 <meta property="article:author" content="ongoing">
 <meta property="article:tag" content="C language">
 <meta name="twitter:card" content="summary">
@@ -181,48 +181,38 @@
 
 <hr>
 <h3 id="一些细节"><a href="#一些细节" class="headerlink" title="一些细节"></a>一些细节</h3><ol>
-<li>linux下编译运行c++程序</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g++ -W file_name.cpp -o another_name</span><br><span class="line">./file_name</span><br></pre></td></tr></table></figure>
-<p><code>-W</code>: 输入错误信息</p>
-<ol start="2">
-<li>字符数组的输入输出</li>
-</ol>
-<ul>
-<li><code>scanf</code>输入，<code>printf</code>输出</li>
-</ul>
- <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> str[<span class="number">10</span>];</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, str);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>, str);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p>linux下编译运行c++程序</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g++ -W file_name.cpp -o another_name</span><br><span class="line">./file_name</span><br></pre></td></tr></table></figure>
+
+<p>  <code>-W</code>: 输入错误信息</p>
+</li>
+<li><p>字符数组的输入输出</p>
+<p>  <code>scanf</code>输入，<code>printf</code>输出</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> str[<span class="number">10</span>];</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, str);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>, str);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>注</strong>：<code>%s</code>识别<code>空格</code>作为字符串的结尾；<code>scanf</code>在使用<code>%s</code>时，对应数组名是不需要加<code>&amp;</code>运算符的。</p>
-<ol start="3">
+</li>
 <li><p>数组初始化符号<code>&#123;&#125;</code></p>
 </li>
 <li><p><code>ascii</code></p>
-</li>
-</ol>
 <p>A: 65; a: 97</p>
-<ol start="5">
-<li>结构体的初始化</li>
-</ol>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%d %c %d&quot;</span>, &amp;a, &amp;data, &amp;b);</span><br><span class="line">node[a] = &#123;data, b, <span class="literal">false</span>&#125;;  <span class="comment">// 注意时花括号，和数组初始化一样。</span></span><br></pre></td></tr></table></figure>
-
-<ol start="6">
+</li>
+<li><p>结构体的初始化</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%d %c %d&quot;</span>, &amp;a, &amp;data, &amp;b);</span><br><span class="line">node[a] = &#123;data, b, <span class="literal">false</span>&#125;;  <span class="comment">// 注意时花括号，和数组初始化一样。</span></span><br></pre></td></tr></table></figure></li>
 <li><p>高位补0与高位补空</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%05d&quot;</span>, i);  <span class="comment">// 使不足５位的整数的高位补０。</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%5d&quot;</span>, i);  <span class="comment">// 使不足５位的整数的高位补为空。</span></span><br></pre></td></tr></table></figure></li>
 <li><p><code>scanf()</code>使用<code>%c</code>可以读入<code>空格</code>，要注意格式！ </p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%d %c&quot;</span>);</span><br></pre></td></tr></table></figure></li>
 <li><p>使用new运算符为链表结点分配内存空间</p>
-</li>
-</ol>
 <p>使用方法：<code>typename *p = new typename;</code></p>
-<p>eg.</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *p = <span class="keyword">new</span> <span class="keyword">int</span>;</span><br><span class="line">node *p = <span class="keyword">new</span> node;</span><br><span class="line"><span class="keyword">int</span> *p = <span class="keyword">new</span> arr[<span class="number">10000</span>];</span><br></pre></td></tr></table></figure>
-<ol start="9">
-<li><code>memset</code>对数组中每一个元素赋相同的值</li>
-</ol>
+<p>例子如下</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *p = <span class="keyword">new</span> <span class="keyword">int</span>;</span><br><span class="line">node *p = <span class="keyword">new</span> node;</span><br><span class="line"><span class="keyword">int</span> *p = <span class="keyword">new</span> arr[<span class="number">10000</span>];</span><br></pre></td></tr></table></figure></li>
+<li><p><code>memset</code>对数组中每一个元素赋相同的值</p>
 <p>格式：<code>memset(name, value, sizeof(name))</code></p>
 <p>前提条件：添加<code>string.h</code></p>
 <p>==建议赋值为0或-1==，不易出错。</p>
+</li>
+</ol>
 <h3 id="c"><a href="#c" class="headerlink" title="c++"></a>c++</h3><h4 id="1-vector"><a href="#1-vector" class="headerlink" title="1. vector"></a>1. vector</h4><blockquote>
 <p>使用：<code>#include&lt;vector&gt;</code>；除此之外，还需加上<code>using namespace std;</code></p>
 </blockquote>
@@ -276,8 +266,6 @@
 <h4 id="2-stack"><a href="#2-stack" class="headerlink" title="2. stack"></a>2. stack</h4><h5 id="（1）定义-1"><a href="#（1）定义-1" class="headerlink" title="（1）定义"></a>（1）定义</h5><p>添加<code>#include &lt;stack&gt;</code>与<code>using namespace std;</code></p>
 <p>定义写法：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stack&lt;<span class="keyword">typename</span>&gt; name;</span><br></pre></td></tr></table></figure>
-
-
 
 <h5 id="（2）stack容器内元素访问"><a href="#（2）stack容器内元素访问" class="headerlink" title="（2）stack容器内元素访问"></a>（2）stack容器内元素访问</h5><p>后进先出，只能通过<code>top()</code>访问栈顶元素。</p>
 <h5 id="（3）常用函数"><a href="#（3）常用函数" class="headerlink" title="（3）常用函数"></a>（3）常用函数</h5><ul>

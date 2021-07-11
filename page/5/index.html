@@ -171,7 +171,7 @@
   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">no terminal library found</span><br><span class="line">checking for tgetent()... configure: error: NOT FOUND!</span><br><span class="line">You need to install a terminal library; for example ncurses.</span><br><span class="line">Or specify the name of the library with --with-tlib.</span><br></pre></td></tr></table></figure>
 
 <p>  解决方法:</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libncurses5-dev libncursesw5-dev</span><br></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libncurses5-dev libncursesw5-dev</span><br></pre></td></tr></table></figure>
 <p>  It worked on Ubuntu16.04.</p>
 </li>
 <li><p>E492: Not an editor command: NERDTreeToggle<br>   此错误是在我使用<code>:PlugInstall</code>后按下<code>F3</code>(此处F3是开启目录树)出现的。</p>
@@ -189,7 +189,7 @@
 <li><p>vim不支持’+y’粘贴操作<br>   Use <code>:echo has(&quot;clipboard&quot;)</code> to check.</p>
 <blockquote>
 <p>But now I can use it in Gvim. And +python and +python3 can be used in Gvim<br>too! I have no idea.<br>   网上的i解决办法: <code>sudo apt-get install vim-gnome</code>来安装<code>gvim</code>，但是安装了<br>   之后依旧不能解决.<br>   <strong>解决方法</strong>:<br>   在<code>.bashrc</code>文件中加入</p>
-   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alias vim=&#x27;gvim -v&#x27;</span><br></pre></td></tr></table></figure>
+   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> vim=<span class="string">&#x27;gvim -v&#x27;</span></span><br></pre></td></tr></table></figure>
 <p>   然后<code>$source .bashrc</code>,再次查看<code>$vim --version | grep &quot;clipboard&quot;</code>后发现</p>
    <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+clipboard +xterm_clipboard</span><br></pre></td></tr></table></figure>
 <p>这个错误在python环境装好之后自动消失了。</p>
@@ -198,7 +198,7 @@
 <li><p>Error: LeaderF requires vim compiled with +python or +python3<br>  需要在vimi编译的时候加上<code>--enable-pythoninterp</code>, <code>--with-python-config-dir</code><br>  options.</p>
 <blockquote>
 <p>按照上边的执行设置并未其作用。<br>使用:echo has(“python”)和:echo has(“python3”)没有相应的结果<br>  下边是另一个设置:(但未尝试)</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">--enable-python3interp=yes</span><br><span class="line">--with-python3-command=/usr/bin/python3</span><br><span class="line">--with-python3-config-dir=</span><br></pre></td></tr></table></figure></blockquote>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">--enable-python3interp=yes</span><br><span class="line">--with-python3-command=/usr/bin/python3</span><br><span class="line">--with-python3-config-dir=</span><br></pre></td></tr></table></figure></blockquote>
 </li>
 <li><p>Error: Error detected while processing function leaderf#Gtags#updateGtags:<br>line 1: E121: Undefined variable: g:Lf_py</p>
 <blockquote>
@@ -281,20 +281,20 @@
           <!-- toc -->
 
 <hr>
-<h2 id="如何在ubuntu命令行升级进行安装"><a href="#如何在ubuntu命令行升级进行安装" class="headerlink" title="如何在ubuntu命令行升级进行安装"></a>如何在ubuntu命令行升级进行安装</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:jonathonf/vim</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install vim</span><br></pre></td></tr></table></figure>
+<h2 id="如何在ubuntu命令行升级进行安装"><a href="#如何在ubuntu命令行升级进行安装" class="headerlink" title="如何在ubuntu命令行升级进行安装"></a>如何在ubuntu命令行升级进行安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:jonathonf/vim</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install vim</span><br></pre></td></tr></table></figure>
 
 <p>注意：这种方法可能会非常慢!</p>
 <h2 id="Ubuntu-16-04-编译安装Vim-v8-2-推荐"><a href="#Ubuntu-16-04-编译安装Vim-v8-2-推荐" class="headerlink" title="Ubuntu 16.04 编译安装Vim v8.2(推荐)"></a>Ubuntu 16.04 编译安装Vim v8.2(推荐)</h2><p>先卸载原本的vim</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove vim vim-runtime gvim vim-tiny vim-common vim-gui-common</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove vim vim-runtime gvim vim-tiny vim-common vim-gui-common</span><br></pre></td></tr></table></figure>
 <p>接下来将<code>vim源码</code>从github上clone下来后进行编译，注意编译的过程中可能会遇到各种各样的环<br>境或依赖不匹配，根据自己的需要去进行安装。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$git clone https://github.com/vim/vim.git</span><br><span class="line">$cd vim</span><br><span class="line">$./configure --with-features=huge --enable-gui=auto --enable-cscope \</span><br><span class="line">             --prefix=/usr -enable-python3interp=yes                \</span><br><span class="line">             --with-python3-command=/usr/bin/python3                \</span><br><span class="line">             --with-python3-config-dir=your_python3_path</span><br><span class="line"></span><br><span class="line">$sudo make VIMRUNTIMEDIR=/usr/share/vim/vim82</span><br><span class="line">$sudo make install</span><br><span class="line">$vim --version # 检查vim版本</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> <span class="built_in">clone</span> https://github.com/vim/vim.git</span><br><span class="line"><span class="variable">$cd</span> vim</span><br><span class="line">$./configure --with-features=huge --enable-gui=auto --enable-cscope \</span><br><span class="line">             --prefix=/usr -enable-python3interp=yes                \</span><br><span class="line">             --with-python3-command=/usr/bin/python3                \</span><br><span class="line">             --with-python3-config-dir=your_python3_path</span><br><span class="line"></span><br><span class="line"><span class="variable">$sudo</span> make VIMRUNTIMEDIR=/usr/share/vim/vim82</span><br><span class="line"><span class="variable">$sudo</span> make install</span><br><span class="line"><span class="variable">$vim</span> --version <span class="comment"># 检查vim版本</span></span><br></pre></td></tr></table></figure>
 
 <p>安装完成后需要检查安装好的vim中有没有<code>clipboard</code>，使用</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim --version | grep <span class="string">&quot;clipboard&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>来检查，这一样对于粘贴板是非常重要的。如果没有的话就需要自己去分析是什么原因了。</p>
 <p><em>20.9.3</em>: 第二次编译安装vim8.2依旧是没有clipboard这一项的，依旧使用了我的<a href="https://www.ongoing.ink/blog/posts/2020/04/the-errors-when-compeling-vim8.2.html"> 老办法 </a>。</p>
-
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3>
       
     </div>
 
@@ -518,48 +518,38 @@
 
 <hr>
 <h3 id="一些细节"><a href="#一些细节" class="headerlink" title="一些细节"></a>一些细节</h3><ol>
-<li>linux下编译运行c++程序</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g++ -W file_name.cpp -o another_name</span><br><span class="line">./file_name</span><br></pre></td></tr></table></figure>
-<p><code>-W</code>: 输入错误信息</p>
-<ol start="2">
-<li>字符数组的输入输出</li>
-</ol>
-<ul>
-<li><code>scanf</code>输入，<code>printf</code>输出</li>
-</ul>
- <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> str[<span class="number">10</span>];</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, str);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>, str);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p>linux下编译运行c++程序</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g++ -W file_name.cpp -o another_name</span><br><span class="line">./file_name</span><br></pre></td></tr></table></figure>
+
+<p>  <code>-W</code>: 输入错误信息</p>
+</li>
+<li><p>字符数组的输入输出</p>
+<p>  <code>scanf</code>输入，<code>printf</code>输出</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> str[<span class="number">10</span>];</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, str);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>, str);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>注</strong>：<code>%s</code>识别<code>空格</code>作为字符串的结尾；<code>scanf</code>在使用<code>%s</code>时，对应数组名是不需要加<code>&amp;</code>运算符的。</p>
-<ol start="3">
+</li>
 <li><p>数组初始化符号<code>&#123;&#125;</code></p>
 </li>
 <li><p><code>ascii</code></p>
-</li>
-</ol>
 <p>A: 65; a: 97</p>
-<ol start="5">
-<li>结构体的初始化</li>
-</ol>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%d %c %d&quot;</span>, &amp;a, &amp;data, &amp;b);</span><br><span class="line">node[a] = &#123;data, b, <span class="literal">false</span>&#125;;  <span class="comment">// 注意时花括号，和数组初始化一样。</span></span><br></pre></td></tr></table></figure>
-
-<ol start="6">
+</li>
+<li><p>结构体的初始化</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%d %c %d&quot;</span>, &amp;a, &amp;data, &amp;b);</span><br><span class="line">node[a] = &#123;data, b, <span class="literal">false</span>&#125;;  <span class="comment">// 注意时花括号，和数组初始化一样。</span></span><br></pre></td></tr></table></figure></li>
 <li><p>高位补0与高位补空</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%05d&quot;</span>, i);  <span class="comment">// 使不足５位的整数的高位补０。</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%5d&quot;</span>, i);  <span class="comment">// 使不足５位的整数的高位补为空。</span></span><br></pre></td></tr></table></figure></li>
 <li><p><code>scanf()</code>使用<code>%c</code>可以读入<code>空格</code>，要注意格式！ </p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%d %c&quot;</span>);</span><br></pre></td></tr></table></figure></li>
 <li><p>使用new运算符为链表结点分配内存空间</p>
-</li>
-</ol>
 <p>使用方法：<code>typename *p = new typename;</code></p>
-<p>eg.</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *p = <span class="keyword">new</span> <span class="keyword">int</span>;</span><br><span class="line">node *p = <span class="keyword">new</span> node;</span><br><span class="line"><span class="keyword">int</span> *p = <span class="keyword">new</span> arr[<span class="number">10000</span>];</span><br></pre></td></tr></table></figure>
-<ol start="9">
-<li><code>memset</code>对数组中每一个元素赋相同的值</li>
-</ol>
+<p>例子如下</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *p = <span class="keyword">new</span> <span class="keyword">int</span>;</span><br><span class="line">node *p = <span class="keyword">new</span> node;</span><br><span class="line"><span class="keyword">int</span> *p = <span class="keyword">new</span> arr[<span class="number">10000</span>];</span><br></pre></td></tr></table></figure></li>
+<li><p><code>memset</code>对数组中每一个元素赋相同的值</p>
 <p>格式：<code>memset(name, value, sizeof(name))</code></p>
 <p>前提条件：添加<code>string.h</code></p>
 <p>==建议赋值为0或-1==，不易出错。</p>
+</li>
+</ol>
 <h3 id="c"><a href="#c" class="headerlink" title="c++"></a>c++</h3><h4 id="1-vector"><a href="#1-vector" class="headerlink" title="1. vector"></a>1. vector</h4><blockquote>
 <p>使用：<code>#include&lt;vector&gt;</code>；除此之外，还需加上<code>using namespace std;</code></p>
 </blockquote>
@@ -613,8 +603,6 @@
 <h4 id="2-stack"><a href="#2-stack" class="headerlink" title="2. stack"></a>2. stack</h4><h5 id="（1）定义-1"><a href="#（1）定义-1" class="headerlink" title="（1）定义"></a>（1）定义</h5><p>添加<code>#include &lt;stack&gt;</code>与<code>using namespace std;</code></p>
 <p>定义写法：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stack&lt;<span class="keyword">typename</span>&gt; name;</span><br></pre></td></tr></table></figure>
-
-
 
 <h5 id="（2）stack容器内元素访问"><a href="#（2）stack容器内元素访问" class="headerlink" title="（2）stack容器内元素访问"></a>（2）stack容器内元素访问</h5><p>后进先出，只能通过<code>top()</code>访问栈顶元素。</p>
 <h5 id="（3）常用函数"><a href="#（3）常用函数" class="headerlink" title="（3）常用函数"></a>（3）常用函数</h5><ul>
@@ -845,17 +833,17 @@
 <h2 id="Install-vim-8"><a href="#Install-vim-8" class="headerlink" title="Install vim 8+"></a>Install vim 8+</h2><p>安装vim的方式</p>
 <ul>
 <li>将源文件下载下来后可以采用编译的方法进行。</li>
-<li>在命令行中安装  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install vim</span><br><span class="line">sudo apt install vim-gtk3</span><br></pre></td></tr></table></figure></li>
+<li>在命令行中安装  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install vim</span><br><span class="line">sudo apt install vim-gtk3</span><br></pre></td></tr></table></figure></li>
 </ul>
 <p>安装完毕后安装<code>vim-plug</code>，其作用是管理vim的插件。安装有以下两种方式</p>
 <ul>
-<li>在终端中键入下边命令  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim</span><br></pre></td></tr></table></figure></li>
+<li>在终端中键入下边命令  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fLo ~/.vim/<span class="built_in">autoload</span>/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim</span><br></pre></td></tr></table></figure></li>
 <li>将<a target="_blank" rel="noopener" href="https://github.com/ONGOING-Z/dotfiles">plug.vim</a>下载下来后移入<code>~/.vim/autoload</code>文件夹下即可使用。</li>
 </ul>
 <p><strong>注</strong>: 使用vim-plug必须先安装git，不然不能使用!<br>使用自己的<a target="_blank" rel="noopener" href="https://github.com/ONGOING-Z/dotfiles">.vimrc</a></p>
-<h2 id="Install-tmux"><a href="#Install-tmux" class="headerlink" title="Install tmux"></a>Install tmux</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install tmux</span><br></pre></td></tr></table></figure>
+<h2 id="Install-tmux"><a href="#Install-tmux" class="headerlink" title="Install tmux"></a>Install tmux</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install tmux</span><br></pre></td></tr></table></figure>
 <p>使用自己的<a target="_blank" rel="noopener" href="https://github.com/ONGOING-Z/dotfiles">.tmux.conf</a></p>
-<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install git</span><br></pre></td></tr></table></figure>
+<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install git</span><br></pre></td></tr></table></figure>
 <h2 id="Install-googlepinyin"><a href="#Install-googlepinyin" class="headerlink" title="Install googlepinyin"></a>Install googlepinyin</h2><p>在<code>text entry setting</code>可以设置，可能出现安装之后重新启动又得再次选择输入法的情况．</p>
 <ul>
 <li>在命令行中输入<code>fcitx</code>，检查其是否已经安装，如果未安装，执行<code>sudo apt install fcitx</code>进行安装。</li>
@@ -870,23 +858,23 @@
 </ul>
 <p><strong>注</strong>: googlepinyin对于ubuntu20也同样适用。</p>
 <h2 id="Install-chrome"><a href="#Install-chrome" class="headerlink" title="Install chrome"></a>Install chrome</h2><ul>
-<li>CLI安装<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo wget http://www.linuxidc.com/files/repo/google-chrome.list -P /etc/apt/sources.list.d/</span><br><span class="line">wget -q -O - https://dl.google.com/linux/linux_signing_key.pub  | sudo apt-key add -</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install google-chrome-stable</span><br></pre></td></tr></table></figure></li>
+<li>CLI安装<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo wget http://www.linuxidc.com/files/repo/google-chrome.list -P /etc/apt/sources.list.d/</span><br><span class="line">wget -q -O - https://dl.google.com/linux/linux_signing_key.pub  | sudo apt-key add -</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install google-chrome-stable</span><br></pre></td></tr></table></figure></li>
 <li>到Chrome官网直接下载<code>.deb</code>包进行安装<br>  手动安装: <code>sudo dpkg -i xxx.deb</code></li>
 </ul>
 <h2 id="卸载不必要软件"><a href="#卸载不必要软件" class="headerlink" title="卸载不必要软件"></a>卸载不必要软件</h2><p>当然如果在安装过程中选择了<code>最小安装</code>，就直接跳过此步，因为那种最小安装方式只会安装浏览器和一些必要组件。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"># 删除Amazon广告图标</span><br><span class="line">sudo apt-get -y purge gedit* </span><br><span class="line">sudo rm -f /usr/share/applications/com.canonical.launcher.amazon.desktop</span><br><span class="line">sudo rm -f /usr/share/applications/ubuntu-amazon-default.desktop</span><br><span class="line"># 其他软件</span><br><span class="line">#邮件</span><br><span class="line">sudo apt-get -y purge thunderbird*</span><br><span class="line">#火狐浏览器</span><br><span class="line">sudo apt-get -y purge firefox</span><br><span class="line">#备份</span><br><span class="line">sudo apt-get -y purge deja-dup</span><br><span class="line">#扫描</span><br><span class="line">sudo apt-get -y purge simple-scan</span><br><span class="line">#打印</span><br><span class="line">sudo apt-get -y purge hplip* </span><br><span class="line">#打印驱动</span><br><span class="line">sudo apt-get -y purge printer-driver* </span><br><span class="line">#音乐播放</span><br><span class="line">sudo apt-get -y purge rhythmbox* </span><br><span class="line">#文本编辑</span><br><span class="line">sudo apt-get -y purge gedit* </span><br><span class="line">#办公套件</span><br><span class="line">sudo apt-get -y purge libreoffice* </span><br><span class="line">#屏幕阅读</span><br><span class="line">sudo apt-get -y purge gnome-orca </span><br><span class="line">#屏幕键盘</span><br><span class="line">sudo apt-get -y purge onboard </span><br><span class="line">#对对碰</span><br><span class="line">sudo apt-get -y purge mahjongg </span><br><span class="line">#纸牌王</span><br><span class="line">sudo apt-get -y purge aisleriot </span><br><span class="line">#数独</span><br><span class="line">sudo apt-get -y purge gnome-sudoku </span><br><span class="line">#扫雷</span><br><span class="line">sudo apt-get -y purge gnomine </span><br><span class="line">#命令刻碟</span><br><span class="line">sudo apt-get -y purge wodim </span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除Amazon广告图标</span></span><br><span class="line">sudo apt-get -y purge gedit* </span><br><span class="line">sudo rm -f /usr/share/applications/com.canonical.launcher.amazon.desktop</span><br><span class="line">sudo rm -f /usr/share/applications/ubuntu-amazon-default.desktop</span><br><span class="line"><span class="comment"># 其他软件</span></span><br><span class="line"><span class="comment">#邮件</span></span><br><span class="line">sudo apt-get -y purge thunderbird*</span><br><span class="line"><span class="comment">#火狐浏览器</span></span><br><span class="line">sudo apt-get -y purge firefox</span><br><span class="line"><span class="comment">#备份</span></span><br><span class="line">sudo apt-get -y purge deja-dup</span><br><span class="line"><span class="comment">#扫描</span></span><br><span class="line">sudo apt-get -y purge simple-scan</span><br><span class="line"><span class="comment">#打印</span></span><br><span class="line">sudo apt-get -y purge hplip* </span><br><span class="line"><span class="comment">#打印驱动</span></span><br><span class="line">sudo apt-get -y purge printer-driver* </span><br><span class="line"><span class="comment">#音乐播放</span></span><br><span class="line">sudo apt-get -y purge rhythmbox* </span><br><span class="line"><span class="comment">#文本编辑</span></span><br><span class="line">sudo apt-get -y purge gedit* </span><br><span class="line"><span class="comment">#办公套件</span></span><br><span class="line">sudo apt-get -y purge libreoffice* </span><br><span class="line"><span class="comment">#屏幕阅读</span></span><br><span class="line">sudo apt-get -y purge gnome-orca </span><br><span class="line"><span class="comment">#屏幕键盘</span></span><br><span class="line">sudo apt-get -y purge onboard </span><br><span class="line"><span class="comment">#对对碰</span></span><br><span class="line">sudo apt-get -y purge mahjongg </span><br><span class="line"><span class="comment">#纸牌王</span></span><br><span class="line">sudo apt-get -y purge aisleriot </span><br><span class="line"><span class="comment">#数独</span></span><br><span class="line">sudo apt-get -y purge gnome-sudoku </span><br><span class="line"><span class="comment">#扫雷</span></span><br><span class="line">sudo apt-get -y purge gnomine </span><br><span class="line"><span class="comment">#命令刻碟</span></span><br><span class="line">sudo apt-get -y purge wodim </span><br></pre></td></tr></table></figure>
 
 <p>卸载内置视频软件<code>totem</code>，没有太多功能，使用<code>smplayer</code>代替</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt purge totem</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt purge totem</span><br></pre></td></tr></table></figure>
 
 <h2 id="Install-xdm"><a href="#Install-xdm" class="headerlink" title="Install xdm"></a>Install xdm</h2><p><code>xdm</code>是一款下载软件，使用过后发现下载速度相对浏览器下载会比较快。<br><a target="_blank" rel="noopener" href="https://hansteam.coding.net/s/7ab96bda-abd0-4f4c-80a3-899f07cb7f3b">这个链接</a>是一位博主的，xdm官网在国外，下载很慢，这里下载会比较快。</p>
 <ul>
 <li>使用xdm在chrome官网下载.deb包</li>
 <li>使用xdm在vmware官网下载.deb包</li>
 </ul>
-<h2 id="Display-netspeed"><a href="#Display-netspeed" class="headerlink" title="Display netspeed"></a>Display netspeed</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$sudo add-apt-repository ppa:fossfreedom/indicator-sysmonitor</span><br><span class="line">$sudo apt-get update</span><br><span class="line">$sudo apt-get install indicator-sysmonitor</span><br><span class="line">$indicator-sysmonitor &amp;</span><br></pre></td></tr></table></figure>
+<h2 id="Display-netspeed"><a href="#Display-netspeed" class="headerlink" title="Display netspeed"></a>Display netspeed</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sudo</span> add-apt-repository ppa:fossfreedom/indicator-sysmonitor</span><br><span class="line"><span class="variable">$sudo</span> apt-get update</span><br><span class="line"><span class="variable">$sudo</span> apt-get install indicator-sysmonitor</span><br><span class="line"><span class="variable">$indicator</span>-sysmonitor &amp;</span><br></pre></td></tr></table></figure>
 <p>启动之后就可以在屏幕右上角出现网速了。<br>右键右上角图标，勾选run on startup，使其开机启动。</p>
-<h2 id="系统负载指示器"><a href="#系统负载指示器" class="headerlink" title="系统负载指示器"></a><del>系统负载指示器</del></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install  indicator-multiload</span><br></pre></td></tr></table></figure>
+<h2 id="系统负载指示器"><a href="#系统负载指示器" class="headerlink" title="系统负载指示器"></a><del>系统负载指示器</del></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install  indicator-multiload</span><br></pre></td></tr></table></figure>
 <p><em>没啥用，是图形化的，不能显示数据</em></p>
 <h2 id="Unity-tewak-tool"><a href="#Unity-tewak-tool" class="headerlink" title="Unity tewak tool"></a>Unity tewak tool</h2><p>作用：</p>
 <ul>
