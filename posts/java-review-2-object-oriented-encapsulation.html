@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.ongoing.ink","root":"/","images":"/images","scheme":"Mist","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"remove","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="面向对象 面向过程：强调步骤 面向对象：强调对象 特征：封装、继承、多态   类：一组相关属性和行为的集合。 属性：状态信息 行为：可以做什么   类和对象的关系 类是对一类事物的描述，是抽象的 对象是一类事物的实例，是具体的 类是对象的模板，对象是类的实体。    类的定义 成员变量（属性） 直接定义在类当中，在方法外边。   成员方法（行为) 无static关键字    一个类不能直接使">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java review part 2 object-oriented encapsulation ">
+<meta property="og:url" content="https://www.ongoing.ink/posts/java-review-2-object-oriented-encapsulation.html">
+<meta property="og:site_name" content="ongoing&#39;s blog">
+<meta property="og:description" content="面向对象 面向过程：强调步骤 面向对象：强调对象 特征：封装、继承、多态   类：一组相关属性和行为的集合。 属性：状态信息 行为：可以做什么   类和对象的关系 类是对一类事物的描述，是抽象的 对象是一类事物的实例，是具体的 类是对象的模板，对象是类的实体。    类的定义 成员变量（属性） 直接定义在类当中，在方法外边。   成员方法（行为) 无static关键字    一个类不能直接使">
+<meta property="og:locale">
+<meta property="og:image" content="https://www.ongoing.ink/posts/java-review-2-object-oriented-encapsulation/java_7.png">
+<meta property="og:image" content="https://www.ongoing.ink/posts/java-review-2-object-oriented-encapsulation/java_8.png">
+<meta property="og:image" content="https://www.ongoing.ink/home/fifth/.config/Typora/typora-user-images/image-20201007182105425.png">
+<meta property="og:image" content="https://www.ongoing.ink/posts/java-review-2-object-oriented-encapsulation/java_9.png">
+<meta property="og:image" content="https://www.ongoing.ink/posts/java-review-2-object-oriented-encapsulation/java_10.png">
+<meta property="og:image" content="https://www.ongoing.ink/posts/java-review-2-object-oriented-encapsulation/java_11.png">
+<meta property="article:published_time" content="2020-10-10T12:25:28.000Z">
+<meta property="article:modified_time" content="2021-07-11T06:43:58.820Z">
+<meta property="article:author" content="ongoing">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.ongoing.ink/posts/java-review-2-object-oriented-encapsulation/java_7.png">
+
+
+<link rel="canonical" href="https://www.ongoing.ink/posts/java-review-2-object-oriented-encapsulation.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"https://www.ongoing.ink/posts/java-review-2-object-oriented-encapsulation.html","path":"posts/java-review-2-object-oriented-encapsulation.html","title":"Java review part 2 object-oriented encapsulation "}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java review part 2 object-oriented encapsulation  | ongoing's blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">ongoing's blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>Schedule</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/java-review-2-object-oriented-encapsulation.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ongoing">
+      <meta itemprop="description" content="Good cooking takes time.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ongoing's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java review part 2 object-oriented encapsulation <a href="https://github.com/user-name/repo-name/tree/branch-name/subdirectory-name/_posts/2020-10-10-Java-review-2-object-oriented-encapsulation.md" class="post-edit-link" title="Edit this post" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-10-10 20:25:28" itemprop="dateCreated datePublished" datetime="2020-10-10T20:25:28+08:00">2020-10-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Fundamental/" itemprop="url" rel="index"><span itemprop="name">Fundamental</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <!-- toc -->
+
+<hr>
+<h3 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h3><ul>
+<li>面向过程：强调步骤</li>
+<li>面向对象：强调对象<ul>
+<li>特征：封装、继承、多态</li>
+</ul>
+</li>
+<li>类：一组相关属性和行为的集合。<ul>
+<li>属性：状态信息</li>
+<li>行为：可以做什么</li>
+</ul>
+</li>
+<li>类和对象的关系<ul>
+<li>类是对一类事物的描述，是<strong>抽象的</strong></li>
+<li>对象是一类事物的实例，是<strong>具体的</strong></li>
+<li>类是对象的模板，对象是类的实体。</li>
+</ul>
+</li>
+</ul>
+<h4 id="类的定义"><a href="#类的定义" class="headerlink" title="类的定义"></a>类的定义</h4><ul>
+<li>成员变量（属性）<ul>
+<li>直接定义在类当中，<strong>在方法外边</strong>。</li>
+</ul>
+</li>
+<li>成员方法（行为)<ul>
+<li>无<code>static</code>关键字</li>
+</ul>
+</li>
+</ul>
+<p>一个类不能直接使用，需要根据类创建一个对象，才能使用。</p>
+<p>步骤：</p>
+<ol>
+<li><p>导包：指出需要什么类，在什么位置。</p>
+<p><code>import 包名称.类名称</code></p>
+<p>对于和当前类属于同一个包的情况，可以省略导包语句。</p>
+</li>
+<li><p>创建: <code>类名称 对象名 = new 类名称();</code></p>
+</li>
+<li><p>使用</p>
+<ol>
+<li>使用成员变量: <code>对象名.成员变量名</code></li>
+<li>使用成员方法: <code>对象名.成员方法名(参数)</code></li>
+</ol>
+</li>
+</ol>
+<p>一个对象的内存图</p>
+<p><img data-src="java-review-2-object-oriented-encapsulation/java_7.png" alt="image-20201006222558003"></p>
+<ul>
+<li>方法的进栈和出栈</li>
+<li>堆中<code>成员方法</code>保存的是一个地址值</li>
+<li>方法要执行，一定要进栈，执行完毕就出栈</li>
+<li>new之后有默认值</li>
+<li>对象的名称也叫做对象的引用名</li>
+</ul>
+<p>使用对象类型作为方法的参数：当一个对象作为方法的参数，传递到方法当中时，实际上传递进去的是对象的<strong>地址值</strong>。</p>
+<p>使用对象作为方法的返回值：返回值其实就是对象的<strong>地址值</strong>。</p>
+<p>成员变量与局部变量的区别：</p>
+<ol>
+<li>定义位置不一样（重要）<ul>
+<li>成员变量：在方法外部，直接写在类中</li>
+<li>局部变量：在方法内部</li>
+</ul>
+</li>
+<li>作用范围不一样（重要）<ul>
+<li>成员变量：整个类可以通用</li>
+<li>局部变量：只有方法中可以使用，出了方法不能使用。</li>
+</ul>
+</li>
+<li>默认值不一样<ul>
+<li>成员变量：若没有赋值，会有默认值，规则和数组一样</li>
+<li>局部变量：没有默认值，如果要想使用，必须手动进行赋值。</li>
+</ul>
+</li>
+<li>内存位置不一样（了解）<ul>
+<li>成员变量：位于堆内存</li>
+<li>局部变量：位于栈内存</li>
+</ul>
+</li>
+<li>生命周期不一样<ul>
+<li>成员变量：随着对象创建而诞生，随着对象被垃圾回收而消失。</li>
+<li>局部变量：随着方法进栈而诞生，随着方法出栈而消失。</li>
+</ul>
+</li>
+</ol>
+<p>方法的参数也是局部变量，在调用的时候必然会被赋值。</p>
+<hr>
+<h2 id="面向对象-封装性"><a href="#面向对象-封装性" class="headerlink" title="面向对象 - 封装性"></a>面向对象 - 封装性</h2><ol>
+<li><p><strong>封装在java中体现</strong></p>
+<ul>
+<li><p>方法是一种封装</p>
+</li>
+<li><p>关键字<code>private</code>也是一种封装</p>
+<p>使用private将需要保护的成员变量进行修饰。在本类中可以随意访问，但是超出本类范围之外不能<strong>直接</strong>访问。</p>
+<p>间接访问private成员变量：设置一对getter/setter方法</p>
+<ul>
+<li>setter方法：有参数，无返回值。方法名称必须是<code>set</code>+首字母变大写(setXxx)</li>
+<li>getter方法：无参数，有返回值。方法名称必须是<code>get</code>+首字母变大写(getXxx)。</li>
+<li>注意：对于基本数据类型中的<code>boolean</code>型，Getter方法一定要写成<code>isXxx</code>形式，setXxx规则不变。</li>
+</ul>
+</li>
+</ul>
+<p> 封装：将一些细节信息隐藏起来，对于外界不可见。</p>
+</li>
+<li><p><code>this</code>关键字</p>
+<p>作用：在重名下起到区分的效果。</p>
+<p>当方法的局部变量和类的成员变量重名时，根据“就近原则”，优先使用局部变量。</p>
+<p>如果需要访问本类中的成员变量，需要使用这种格式: <code>this.成员变量名</code> </p>
+<p><strong>通过谁调用的方法，谁就是this.</strong></p>
+</li>
+<li><p>构造方法</p>
+<p>专门用来创建对象的方法。（使用构造方法创造对象可以更具体）</p>
+<p>格式: </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> 类名称(参数) &#123;</span><br><span class="line">    方法体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意事项：</p>
+<ul>
+<li>构造方法名称必须和所在类名称完全一样</li>
+<li>构造方法不需要写返回值类型，void也不需要</li>
+<li>构造方法不能产生返回值。</li>
+<li>如果没有编写任何构造方法，那么编译器将会默认赠送一个构造方法，没有参数且方法体什么都不做。<code>public Student() &#123;&#125;</code></li>
+<li>一旦编写了至少一个构造方法，那么编译器将不再赠送。</li>
+<li>构造方法也是可以进行重载的。</li>
+</ul>
+<p>new对象就是在调用构造方法。</p>
+</li>
+<li><p><strong>标准的类</strong>(Java Bean)</p>
+<ul>
+<li>所有成员变量都要使用private关键字修饰</li>
+<li>为每一个成员变量编写一对Getter/Setter方法</li>
+<li>编写一个无参数构造方法</li>
+<li>编写一个全参数构造方法</li>
+</ul>
+<p>在idea中可以自动生成下面3项！！！菜单<code>Code -&gt; Generate</code></p>
+</li>
+</ol>
+<h3 id="API文档的查看"><a href="#API文档的查看" class="headerlink" title="API文档的查看"></a>API文档的查看</h3><ol>
+<li>包路径</li>
+<li>构造方法</li>
+<li>方法摘要</li>
+</ol>
+<h4 id="Scanner类"><a href="#Scanner类" class="headerlink" title="Scanner类"></a>Scanner类</h4><ul>
+<li><p>引用类型一般使用步骤</p>
+<ol>
+<li>导包: <code>import 包路径.类名称;</code><ul>
+<li>如果需要使用的目标类，和当前类位于同一个包下，则可以省略包不写。</li>
+<li>只有<code>java.lang</code>包下的内容需要导包，其他的包需要import语句。</li>
+</ul>
+</li>
+<li>创建： <code>类名称 对象名 = new 类名称();</code></li>
+<li>使用： 对象名.成员方法();</li>
+</ol>
+<p><code>System.in</code>代表从键盘输入。</p>
+<p>其实键盘输入的都是字符串。</p>
+</li>
+</ul>
+<h4 id="匿名对象"><a href="#匿名对象" class="headerlink" title="匿名对象"></a>匿名对象</h4><p>正常的创建对象格式: <code>类名称 对象名 = new 类名称();</code></p>
+<p>匿名对象创建格式: <code>new 类名称()</code></p>
+<p>注意: 匿名对象只能使用唯一的一次，下次只能创建新的匿名对象。</p>
+<p>建议：如果确定有一个对象只需要使用一次，就可以使用匿名对象。</p>
+<h4 id="Random类"><a href="#Random类" class="headerlink" title="Random类"></a>Random类</h4><p>生成随机数字。</p>
+<h4 id="对象数组"><a href="#对象数组" class="headerlink" title="对象数组"></a>对象数组</h4><p>数组可以存储任何数据类型</p>
+<h4 id="ArrayList集合"><a href="#ArrayList集合" class="headerlink" title="ArrayList集合"></a>ArrayList集合</h4><p>其长度可以随意改变。</p>
+<p>对于ArrayList来说，有一个尖括号<code>&lt;E&gt;</code>代表泛型。</p>
+<p>泛型：装在集合中的所有元素，全都是统一的什么类型。</p>
+<p>注意：<strong>泛型只能是引用类型</strong>，不能是基本类型。也就是说集合里面保存的都是地址，但是基本类型数据没有地址。</p>
+<p><img data-src="java-review-2-object-oriented-encapsulation/java_8.png" alt="image-20201007181816779"></p>
+<p><img data-src="/home/fifth/.config/Typora/typora-user-images/image-20201007182105425.png" alt="image-20201007182105425"></p>
+<p><code>ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;();</code></p>
+<p>注意右侧的尖括号也是要写的。</p>
+<p>注意：对于ArrayList集合，直接打印得到的不是地址值，而是内容。如果内容为空，则得到的是空的中括号[].</p>
+<p>常用方法：</p>
+<ul>
+<li>添加数据方法: <code>public boolean add(E e)</code></li>
+<li>从集合中获取元素: <code>public E get(int index)</code></li>
+<li>从集合中删除元素: <code>public E remove(int index)</code></li>
+<li>获取集合长度: <code>public int size()</code></li>
+</ul>
+<h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><ul>
+<li>程序当中所有的双引号字符串，都是<code>String</code>类的对象（就算没有new, 也照样是)</li>
+</ul>
+<p>字符串的特点:</p>
+<ol>
+<li>字符串的内容永不可变。(重要)</li>
+<li>因为字符串不可改变，所以字符串是可以共享使用的。</li>
+<li>字符串效果上相当于是char[]字符数组，但是底层原理是byte[]字节数组。</li>
+</ol>
+<p>创建字符串的常见3+1种方式:</p>
+<ul>
+<li> 3种构造方法</li>
+<li><code>public String()</code>: 创建一个空白字符串</li>
+<li><code>public String(char[] array)</code>: 根据字符数组内容创建字符串。</li>
+<li><code>public String(byte[] array)</code>： 根据字节数组的内容，创建对应字符串。</li>
+<li>1种直接创建: <code>String str = &quot;Helo&quot;;</code></li>
+</ul>
+<p>字符串常量池: 程序当中直接写上的双引号字符串，就在字符串常量池中。<strong>new</strong>的不在池中。</p>
+<p><img data-src="java-review-2-object-oriented-encapsulation/java_9.png" alt="image-20201007185616780"></p>
+<p>注意：</p>
+<ul>
+<li>对于基本类型来说，<code>==</code>是进行数值比较</li>
+<li>对于引用类型来说，<code>==</code>是进行<strong>地址值</strong>的比较</li>
+</ul>
+<p>常用String方法：</p>
+<ul>
+<li><code>public boolean equals(Object obj)</code>: 参数可以是任何对象，只有参数是一个字符串并且内容相同的才会给true;否则返回false.<ul>
+<li><code>equals</code>方法具有对称性，即<code>a.equals(b)和b.equals(a)</code>效果一样。</li>
+<li>如果比较双方一个常量一个变量，推荐将常量字符串写在前面。推荐<code>&quot;abc&quot;.equals(str)</code>, 不推荐<code>str.equals(&quot;abc&quot;);</code>(原因，如果变量为null，比较后程序会报错。)</li>
+</ul>
+</li>
+<li><code>public boolean equalsIgnoreCase(String str)</code></li>
+<li><code>public int length()</code>: 字符串长度</li>
+<li><code>public String concat(String str)</code>: 将当前字符串和参数字符串拼接</li>
+<li><code>public char charAt(int index)</code>: 获取指定索引位置的单个字符。</li>
+<li><code>public int indexOf(String str)</code>:查找参数字符串在本字符串中首次出现的索引位置</li>
+</ul>
+<h4 id="静态static关键字"><a href="#静态static关键字" class="headerlink" title="静态static关键字"></a>静态static关键字</h4><p>一旦用了static关键字，那么这样的内容就不再属于对象自己，而是属于类的，所以凡是本类的对象，都共享一份数据。</p>
+<p><img data-src="java-review-2-object-oriented-encapsulation/java_10.png" alt="image-20201007200635788"></p>
+<ol>
+<li><p>static修饰成员变量</p>
+</li>
+<li><p>static修饰方法</p>
+<p>一旦使用static修饰成员方法，这就成为了静态方法。静态方法不属于对象，而是属于类的。</p>
+<ul>
+<li>如果没有static，那么必须首先创建对象，然后通过对象才能使用它。</li>
+<li>对于静态方法来说，可以通过对象名进行调用，也可以直接通过类名称来调用。<code>类名称.静态方法</code></li>
+<li>如果有static关键字，可以不创建对象，直接通过类名称调用它</li>
+<li>对于本类当中的静态方法，可以省略类名称。</li>
+</ul>
+</li>
+</ol>
+<p>无论是成员变量还是成员方法，如果有static关键字修饰，都推荐用类名称进行调用</p>
+<ul>
+<li>静态变量：类名称.静态变量</li>
+<li>静态方法：类名称.静态方法</li>
+</ul>
+<p>注意</p>
+<ol>
+<li><p><strong>静态不能访问非静态</strong>(重点)</p>
+<p>原因：因为在内存当中是先有的静态内容，后有的非静态内容。（先人不知道后人，但是后人知道先人）</p>
+</li>
+<li><p>静态方法中不能用<code>this</code></p>
+<p>原因：this代表当前对象，但是静态方法是通过类调用的，和对象没有关系。</p>
+</li>
+</ol>
+<p>static内存图</p>
+<p><img data-src="java-review-2-object-oriented-encapsulation/java_11.png" alt="image-20201007204617382"></p>
+<p>注意：根据类名称访问静态成员变量时，全程和对象没有关系，只和类有关系。</p>
+<ul>
+<li><p>静态代码块</p>
+<ol>
+<li><p>格式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 类名称 </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="comment">// 静态代码块内容</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>特点：当第一次用到本类时，静态代码块执行唯一的一次。</p>
+</li>
+<li><p>静态内容优先于非静态，所以静态代码块优先于构造方法执行。 </p>
+</li>
+<li><p>典型用途：用来一次性地对静态成员变量进行赋值。</p>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="Arrays类"><a href="#Arrays类" class="headerlink" title="Arrays类"></a>Arrays类</h4><p>两个常用的方法</p>
+<ol>
+<li><code>public static String toString(数组)</code>:将参数数组变成字符串</li>
+<li><code>public static void sort(数组)</code>: 按照默认升序对数组的元素进行排序。</li>
+</ol>
+<h4 id="Math类"><a href="#Math类" class="headerlink" title="Math类"></a>Math类</h4><p>常用方法</p>
+<ol>
+<li><code>public static double abs(double num)</code>: 获取绝对值</li>
+<li><code>public statiic double ceil(double num)</code>: 向上取整</li>
+<li><code>public static floor double floor(double num)</code>: 向下取整</li>
+<li><code>public static long round(double num)</code>: 四舍五入</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/java-review-part-1-basic.html" rel="prev" title="Java review part 1 - basic">
+                  <i class="fa fa-chevron-left"></i> Java review part 1 - basic
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/java-review-part-3-object-oriented-inheritance.html" rel="next" title="Java review part 3 object-oriented Inheritance">
+                  Java review part 3 object-oriented Inheritance <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ongoing</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+  <script class="next-config" data-name="nprogress" type="application/json">{"enable":true,"spinner":true}</script>
+  <script src="/js/third-party/nprogress.js"></script>
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
