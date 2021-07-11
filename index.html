@@ -117,220 +117,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/some-points-while-doing-leetcode-problems-by-java.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ongoing">
-      <meta itemprop="description" content="Good cooking takes time.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ongoing's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/some-points-while-doing-leetcode-problems-by-java.html" class="post-title-link" itemprop="url">Some points while doing leetcode problems by Java</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-04 21:22:46" itemprop="dateCreated datePublished" datetime="2021-03-04T21:22:46+08:00">2021-03-04</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <ol>
-<li><p><code>public char[] toCharArray()</code>: 将字符串转换为字符数组。</p>
-</li>
-<li><p><code>Arrays.sort(int[] a)</code></p>
-</li>
-<li><p><code>valueOf</code></p>
-</li>
-<li><p><code>Map.values()</code>: 获得map的全部值</p>
-</li>
-<li><p><code>Map.keySet()</code>: 获得map的全部键</p>
-</li>
-<li><p>遍历字符串中的字符</p>
-<p>背景: 使用foreach语法遍历字符串，但是出现了下面这个错误</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foreach not applicable to expression type</span><br></pre></td></tr></table></figure>
-
-<p>但是也不知道为什么错误。</p>
-<p>搜索了一下，有三种方法</p>
-<ol>
-<li><p>第一种，将字符串转换成字符数组，然后使用foreach</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span>[] charArray = str.toCharArray();</span><br></pre></td></tr></table></figure></li>
-<li><p>第二种，使用charAt(index)</p>
-</li>
-<li><p>第三种，使用substr()</p>
-</li>
-</ol>
-<blockquote>
-<p>个人感觉还是第一种更好用。</p>
-</blockquote>
-</li>
-<li><p><code>set</code>是一个抽象接口，不能直接new一个set对象。</p>
-<ul>
-<li><code>set.add()</code>: 向集合中添加元素。</li>
-<li><code>set.contains()</code>: 判断集合中是否包含某一元素。</li>
-</ul>
-</li>
-<li><p>将entry对象放入hashmap中</p>
-<p><code>hashmap.put(k, v)</code></p>
-</li>
-<li><p>HashMap不能使用基本数据类型。</p>
-</li>
-<li><p>map获得值</p>
-<p>map.get(key)</p>
-</li>
-<li><p>初始化一个double数组</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span>[] d = <span class="keyword">new</span> <span class="keyword">double</span>[<span class="number">10</span>];</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/some-basics-of-java.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ongoing">
-      <meta itemprop="description" content="Good cooking takes time.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ongoing's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/some-basics-of-java.html" class="post-title-link" itemprop="url">Some basics of Java</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-04 21:16:25" itemprop="dateCreated datePublished" datetime="2021-03-04T21:16:25+08:00">2021-03-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>[toc]</p>
-<hr>
-<h2 id="JDBC编程六步"><a href="#JDBC编程六步" class="headerlink" title="JDBC编程六步"></a>JDBC编程六步</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1. 注册驱动</span><br><span class="line">  &gt; 作用:告诉Java程序,即将要连接的是哪个品牌的数据库.</span><br><span class="line">2. 获取连接</span><br><span class="line">  &gt; 表示JVM的进程和数据库进程之间的通道打开了.属于进程间通信.</span><br><span class="line">3. 获取数据库操作对象（专门执行sql语句的对象)</span><br><span class="line">4. 执行SQL语句</span><br><span class="line">  &gt; jdbc中sql语句不需要写分号.</span><br><span class="line">5. 处理查询结果集</span><br><span class="line">  &gt; 只有当第四步执行的是select语句时,才有第五步.</span><br><span class="line">6. 释放资源</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 6步</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.Statement;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JDBCTest01</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Connection conn = <span class="keyword">null</span>;</span><br><span class="line">		Statement stmt = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">// 1 注册驱动</span></span><br><span class="line">			DriverManager.registerDriver(<span class="keyword">new</span> com.mysql.cj.jdbc.Driver());</span><br><span class="line">			<span class="comment">// 2 获取连接</span></span><br><span class="line">			<span class="comment">//   jdbc:mysql:// 协议</span></span><br><span class="line">			String url = <span class="string">&quot;jdbc:mysql://127.0.0.1:3306/database_name&quot;</span>;</span><br><span class="line">			String user = <span class="string">&quot;xxx&quot;</span>;</span><br><span class="line">			String passward = <span class="string">&quot;xxxxxx&quot;</span>;</span><br><span class="line">			conn = DriverManager.getConnection(url, user, passward);</span><br><span class="line"></span><br><span class="line">			System.out.println(<span class="string">&quot;数据库连接对象&quot;</span> + conn);</span><br><span class="line">			<span class="comment">// 3 获取数据库操作对象</span></span><br><span class="line">			stmt = conn.createStatement();</span><br><span class="line">			<span class="comment">// 4 执行SQL语句</span></span><br><span class="line"></span><br><span class="line">			String sql = <span class="string">&quot;insert into city(city_id, city_name, country_id) values(5, &#x27;Japan&#x27;, 3);&quot;</span>;</span><br><span class="line">			<span class="comment">// 专门执行DML语句(insert, delete, update)</span></span><br><span class="line">			<span class="comment">// 返回值是影响数据库中的记录条数</span></span><br><span class="line">			<span class="keyword">int</span> count = stmt.executeUpdate(sql);</span><br><span class="line">			System.out.println(count == <span class="number">1</span> ? <span class="string">&quot;保存成功&quot;</span> : <span class="string">&quot;保存失败&quot;</span>);</span><br><span class="line">			<span class="comment">// 5 处理查询结果集</span></span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">			<span class="comment">// 6 释放资源</span></span><br><span class="line">			<span class="comment">// 从小到大依次关闭</span></span><br><span class="line">			<span class="comment">// 分别对其try...catch</span></span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				<span class="keyword">if</span> (stmt != <span class="keyword">null</span>) &#123;</span><br><span class="line">					stmt.close();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				<span class="keyword">if</span> (conn != <span class="keyword">null</span>) &#123;</span><br><span class="line">					conn.close();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>注册驱动的第二种方式:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class.forName(<span class="string">&quot;com.mysql.cj.jdbc.Driver&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>这种方式较为常用,原因:</p>
-<p>参数是一个字符串,可以写到<code>xxx.properties</code>文件中.</p>
-<p>这种方法不需要返回值,我们只想用它的类加载动作.</p>
-<blockquote>
-<p>实际开发中不建议把连接数据库的信息写死到java程序中.</p>
-</blockquote>
-<p>注意:</p>
-<ol>
-<li>jdbc.properties不能用引号和空格,不然会报错.</li>
-</ol>
-<p>问题</p>
-<ol>
-<li><p>linux下java命令有，但是没有javac</p>
-<p>解决：没有安装jdk</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install openjdk-<span class="number">8</span>-jdk</span><br></pre></td></tr></table></figure></li>
-<li><p>jar包的安置</p>
-<blockquote>
-<p>不推荐在系统环境变量中设置<code>classpath</code>,会污染系统环境</p>
-</blockquote>
-<p>在启动jvm时设置<code>classpath</code></p>
-<p>给javac/java命令传入<code>-classpath</code>或<code>-cp</code>参数</p>
-<p>默认<code>-cp</code>值是<code>.</code>,即当前目录.</p>
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/gdb-STL-pretty-print.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1134,6 +920,277 @@
 </ol>
 <p>空间复杂度: <code>O(1)</code></p>
 <p>注意：选择排序并不稳定，当序列中含有多个值相同的元素时，会使这些值相对次序发生变化。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/java-review-part-4-polymorphism.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ongoing">
+      <meta itemprop="description" content="Good cooking takes time.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ongoing's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/java-review-part-4-polymorphism.html" class="post-title-link" itemprop="url">java review part 4 - polymorphism(多态)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-10-13 19:48:34" itemprop="dateCreated datePublished" datetime="2020-10-13T19:48:34+08:00">2020-10-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Fundamental/" itemprop="url" rel="index"><span itemprop="name">Fundamental</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="面向对象特性-多态"><a href="#面向对象特性-多态" class="headerlink" title="面向对象特性 - 多态"></a>面向对象特性 - 多态</h2><p><img src="/posts/java-review-part-4-polymorphism/java_31.png" alt="image-20201008204326276"></p>
+<p>多态针对的是对象。</p>
+<p><img src="/posts/java-review-part-4-polymorphism/java_32.png" alt="image-20201008204931235"></p>
+<p>左父右子就是多态。</p>
+<blockquote>
+<p>多态中成员变量访问特点</p>
+</blockquote>
+<p><img src="/posts/java-review-part-4-polymorphism/java_33.png" alt="image-20201008210215813"></p>
+<p>在多态的代码中，成员方法访问规则：看new的是谁，就优先用谁，没有则向上找。</p>
+<p><img src="/posts/java-review-part-4-polymorphism/java_34.png" alt="image-20201008210741864"></p>
+<p><em>这句话没怎么懂？</em></p>
+<blockquote>
+<p>使用多态的好处</p>
+</blockquote>
+<p><img src="/posts/java-review-part-4-polymorphism/java_35.png" alt="image-20201008211228089"></p>
+<blockquote>
+<p>对象的向上转型</p>
+</blockquote>
+<p>向上转型就是多态的写法。</p>
+<p><img src="/posts/java-review-part-4-polymorphism/java_36.png" alt="image-20201008212150491"></p>
+<blockquote>
+<p>对象的向下转型</p>
+</blockquote>
+<p>向上转型是安全的。但有一个弊端：对象一旦向上转型为父类，那么就无法调用子类原本特有的内容。</p>
+<p>解决方案：用对象的向下转型[<strong>还原</strong>]</p>
+<p>对象向下转型，其实是一个还原动作。</p>
+<p>格式：<code>子类名称 对象名 = （子类名称）父类对象</code></p>
+<p>含义：将父类对象还原成为本来的子类对象（<strong>类似强制转换</strong>!!!!!!!）</p>
+<p><img src="/posts/java-review-part-4-polymorphism/java_37.png" alt="image-20201008213449209"></p>
+<blockquote>
+<p>instanceof关键字</p>
+</blockquote>
+<p>如何知道一个父类引用的对象是什么子类？</p>
+<p>格式：<code>对象 instanceof 类名称</code></p>
+<p>这将得到一个boolean值结果，判断前面的对象能不能当作后面类的实例。</p>
+<p>向下转型一定要进行instanceof判断，否则可能会发生类转换异常。</p>
+<blockquote>
+<p>一个案例</p>
+<ol>
+<li>接口的基本使用</li>
+<li>对象的上下转型</li>
+<li>使用接口作为方法参数</li>
+</ol>
+</blockquote>
+<p><img src="/posts/java-review-part-4-polymorphism/java_38.png" alt="image-20201008214944705"></p>
+<hr>
+<blockquote>
+<p>final关键字</p>
+</blockquote>
+<p><img src="/posts/java-review-part-4-polymorphism/java_39.png" alt="image-20201008221922766"></p>
+<ol>
+<li><p>final修饰类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> 类名称 </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>含义：当前类不能有任何子类（太监类）</p>
+<p>注意：一个类如果是final的，那么其中所有的成员方法都无法覆盖重写（因为没有儿子，无法继承）</p>
+</li>
+<li><p>final修饰成员方法</p>
+<p><img src="/posts/java-review-part-4-polymorphism/java_40.png" alt="image-20201008222359872"></p>
+</li>
+<li><p>final修饰局部变量</p>
+<p><img src="/posts/java-review-part-4-polymorphism/java_41.png" alt="image-20201008222526746"></p>
+<p><img src="/posts/java-review-part-4-polymorphism/java_42.png" alt="image-20201008222905353"></p>
+</li>
+<li><p>final修饰成员变量</p>
+<p><img src="/posts/java-review-part-4-polymorphism/java_43.png" alt="image-20201008223327454"></p>
+</li>
+</ol>
+<blockquote>
+<p>四种权限修饰符</p>
+</blockquote>
+<p><img src="/posts/java-review-part-4-polymorphism/java_44.png" alt="image-20201008224027035"></p>
+<h3 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h3><blockquote>
+<p>内部类概念</p>
+</blockquote>
+<p><img src="/posts/java-review-part-4-polymorphism/java_45.png" alt="image-20201009105344326"></p>
+<blockquote>
+<p>成员内部类定义</p>
+</blockquote>
+<p><img src="/posts/java-review-part-4-polymorphism/java_46.png" alt="image-20201009105516278"></p>
+<blockquote>
+<p>成员内部类使用</p>
+</blockquote>
+<ol>
+<li><p>间接方式：在外部类的方法中，使用内部类；然后main方法只是调用外部类的方法。</p>
+</li>
+<li><p>直接方式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">外部类名称.内部类名称 对象名 = <span class="keyword">new</span> 外部类名称().new 内部类名称(); </span><br></pre></td></tr></table></figure></li>
+</ol>
+<blockquote>
+<p>内部类的同名变量访问</p>
+</blockquote>
+<p>如果出现重名现象，格式为：<code>外部类名称.this.外部类成员变量</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> num = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Inner</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> num = <span class="number">30</span>;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> num = <span class="number">20</span>;</span><br><span class="line">            System.out.println(num);集合</span><br><span class="line">            System.out.println(<span class="keyword">this</span>.num);</span><br><span class="line">            System.out.println(Outer.<span class="keyword">this</span>.num);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>局部内部类定义</p>
+</blockquote>
+<p><img src="/posts/java-review-part-4-polymorphism/java_47.png" alt="image-20201009111650623"></p>
+<p><img src="/posts/java-review-part-4-polymorphism/java_48.png" alt="image-20201009112211427"></p>
+<blockquote>
+<p>局部内部类final问题</p>
+</blockquote>
+<p>局部内部类，如果希望访问所在方法的局部变量，这个变量必须是<strong>有效final的</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyOuter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> num = <span class="number">10</span>;</span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">MyInner</span> </span>&#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodInner</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(num);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/posts/java-review-part-4-polymorphism/java_49.png" alt="image-20201009125814618"></p>
+<p>生命周期不一样。</p>
+<blockquote>
+<p>匿名内部类（重要！）</p>
+</blockquote>
+<p><img src="/posts/java-review-part-4-polymorphism/java_50.png" alt="image-20201009130757958"></p>
+<p><img src="/posts/java-review-part-4-polymorphism/java_51.png" alt="image-20201009131653016"></p>
+<p><img src="/posts/java-review-part-4-polymorphism/java_52.png" alt="image-20201009131717167"></p>
+<blockquote>
+<p>类作为成员变量类型</p>
+</blockquote>
+<p> String也是一个类，自己定义的类当然也可以使用。</p>
+<p>当然用的时候需要创建对象。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/binary-insertion-sort.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ongoing">
+      <meta itemprop="description" content="Good cooking takes time.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ongoing's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/binary-insertion-sort.html" class="post-title-link" itemprop="url">折半插入排序</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-10-12 20:22:56" itemprop="dateCreated datePublished" datetime="2020-10-12T20:22:56+08:00">2020-10-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>直接插入需要在有序数据一个个查找，找到插入位置，然后插入, 效率较慢;折半插入是使用<strong>二分查找</strong>在有序区间查找插入位置，减少查找量。</p>
+<p>总的来说，折半插入排序就是折半查找+插入排序。关于直接插入排序可以看这一篇<a href="https://www.ongoing.ink/blog/posts/2020/10/insertion-sort.html"> 文章 </a>。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;dbg.h&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">binaryInsetionSort</span><span class="params">(<span class="keyword">int</span> R[], <span class="keyword">int</span> len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 假设初始有序序列为R[0]</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> temp = R[i];</span><br><span class="line">        <span class="keyword">int</span> low = <span class="number">0</span>, high = i - <span class="number">1</span>; <span class="comment">// 设置折半查找范围</span></span><br><span class="line">        <span class="keyword">while</span> (low &lt;= high)        <span class="comment">// 开始在有序序列中进行折半查找,</span></span><br><span class="line">                                   <span class="comment">//low为最终查找到的插入位置</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = low + (high - low) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (R[mid] &gt; temp)</span><br><span class="line">                high = mid - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                low = mid + <span class="number">1</span>;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i - <span class="number">1</span>; j &gt;= low; j--)</span><br><span class="line">            R[j + <span class="number">1</span>] = R[j]; <span class="comment">// 后移，将插入位置空出来</span></span><br><span class="line">        R[low] = temp;       <span class="comment">// 插入元素</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> R[] = &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">18</span>, <span class="number">3</span>, <span class="number">28</span>, <span class="number">23</span>, <span class="number">38</span>, <span class="number">7</span>, <span class="number">8</span>&#125;;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Before sorting: &quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">dbg</span>(R);</span><br><span class="line">    <span class="keyword">int</span> len = <span class="built_in"><span class="keyword">sizeof</span></span>(R) / <span class="built_in"><span class="keyword">sizeof</span></span>(R[<span class="number">0</span>]);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;After sorting : &quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">binaryInsetionSort</span>(R, len);</span><br><span class="line">    <span class="built_in">dbg</span>(R);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果<br><img src="/posts/binary-insertion-sort/binary_insertion_sort.png" alt="binary_insertion_sort"></p>
+<p>时间复杂度: <code>O(n^2)</code></p>
 
       
     </div>

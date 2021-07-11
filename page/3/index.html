@@ -117,298 +117,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/C-basic-part-2.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ongoing">
-      <meta itemprop="description" content="Good cooking takes time.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ongoing's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/C-basic-part-2.html" class="post-title-link" itemprop="url">C basic part 2 </a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-10-01 10:53:05" itemprop="dateCreated datePublished" datetime="2020-10-01T10:53:05+08:00">2020-10-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Fundamental/" itemprop="url" rel="index"><span itemprop="name">Fundamental</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>新增一些关于C和C++的基础知识。</p>
-<hr>
-<ol>
-<li><p>数组初始化符号<code>&#123;&#125;</code></p>
-</li>
-<li><p>Get array length(C)</p>
- <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> arr[];</span><br><span class="line"><span class="keyword">int</span> length = <span class="keyword">sizeof</span>(arr)/<span class="keyword">sizeof</span>(arr[<span class="number">0</span>]); <span class="comment">// 总字节数/第一个元素字节数</span></span><br></pre></td></tr></table></figure></li>
-<li><p>define</p>
-<p> <code>#define 名字 替换文本</code></p>
-<p> （1）符号常量通常用大写字母拼写<br> （2）末尾无分号</p>
-</li>
-<li><p>C中常量INT_MAX和INT_MIN分别表示最大、最小整数，定义在头文件limits.h中. INT_MAX = 2^31-1，INT_MIN= -2^31</p>
-</li>
-<li><p>逻辑移位</p>
-<p> 逻辑移位: (1)逻辑左移 (2)逻辑右移; 移出的空位都用0来补。</p>
-</li>
-<li><p>nullptr</p>
-<p> 其指c++ 中的空指针常量。</p>
-</li>
-<li><p>c++ delete</p>
-<p> 假设ptr是一个指针，delete ptr代表释放内存，只用来释放ptr指向的内存。</p>
-</li>
-<li><p>to_string()</p>
-<p> 将数值转换为字符串。</p>
-</li>
-<li><p>for循环遍历字符串的一种新方法</p>
- <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    string str = <span class="string">&quot;better&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">char</span> c : str)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%c\n&quot;</span>, c);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>c++ auto (since C++ 11)(谨慎使用)</p>
-<p>可以自动推断变量类型</p>
-<ol>
-<li>auto变量必须在定义时进行初始化，如果不进行初始化，就不能进行变量类型的推断了。</li>
-</ol>
-</li>
-<li><p>c++ pair/ make_pair</p>
-<p>C++标准程序库中凡是“必须返回两个值”的函数， 也都会利用pair对象。</p>
-<p><code>make_pair</code>的用法<br>无需写出型别， 就可以生成一个pair对象。<br>例： <code>std::make_pair(42, &#39;@&#39;);</code></p>
-<p>而不必费力写成： <code>std::pair&lt;int, char&gt;(42, &#39;@&#39;)</code></p>
-<p>值的访问: 两个值可以分别用pair的两个公有函数first和second访问。</p>
-</li>
-<li><p>map的count和find,map和unordered_map</p>
-<p>使用count，返回的是被查找元素的个数。如果有，返回1；否则，返回0。注意，map中不存在相同元素，所以返回值只能是1或0。</p>
-<p>使用find，返回的是被查找元素的位置，没有则返回map.end()。</p>
-</li>
-<li><p>string.substr()</p>
-<p>string.substr(start, [length])</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string s = <span class="string">&quot;12345&quot;</span></span><br><span class="line">string sub1 = s.<span class="built_in">substr</span>(<span class="number">3</span>); <span class="comment">// sub1 = &quot;345&quot;</span></span><br><span class="line">string sub2 =  s.<span class="built_in">substr</span>(<span class="number">3</span>, <span class="number">2</span>);  <span class="comment">// sub2 = &quot;34&quot;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>string to int: stoi()</p>
-<p>stoi(str, start_position, 2) 2是进制，此例意为将2进制的str从position转换成10进制</p>
-</li>
-<li><p>char to int: <code>c - &#39;0&#39;</code></p>
-</li>
-<li><p>int to char: <code>i + &#39;0&#39;</code></p>
-</li>
-<li><p>异或</p>
-</li>
-</ol>
-<ul>
-<li>性质: <code>a ^ b</code>即为a和b的二进制形式每一位进行运算，最后得到的结果。每位运算逻辑:<br>  相同为0， 不同为1. 类似半加。</li>
-<li>规律:<ul>
-<li>任何数和本身异或为<code>0</code></li>
-<li>任何数和0异或为<code>本身</code></li>
-</ul>
-</li>
-</ul>
-<ol start="18">
-<li><p>pow(), not power, 需要<code>cmath</code>头文件</p>
-</li>
-<li><p>自己写的头文件要用<code>&quot;&quot;</code>引用；标准的头文件要用<code>&lt;&gt;</code>引用。</p>
-<p>非系统头文件的查找通常开始于源文件所在的路径。</p>
-</li>
-<li><p>声明与定义</p>
-<p>定义只可出现一次，声明可以出现多次。</p>
-</li>
-<li><p>引用</p>
-</li>
-</ol>
-<p>   <code>int&amp;</code>, 这里的<code>&amp;</code>不是取地址符号，叫做<code>引用符号</code>.<br>   变量的引用就是变量的别名。相当于一个人的小名</p>
-<ul>
-<li><p>声明引用时必须指定代表是哪一个变量，即对它进行初始化</p>
- <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> &amp;a = b; <span class="comment">// 声明a是b的引用</span></span><br></pre></td></tr></table></figure>
-
-<p> 如果只是<code>int &amp;a</code>, 这样就是错误的。</p>
-</li>
-<li><p>引用和其所代表的变量共享同一内存单元，系统不为引用另外分配存储单元。</p>
-</li>
-<li><p>如何判断<code>&amp;</code>是<code>引用</code>还是<code>取地址符</code><br> 方法: 判断<code>&amp;a</code>这样形式前是否有<code>类型符号</code></p>
-</li>
-</ul>
-<ol start="22">
-<li><p>C++中的<code>.h</code>和<code>.cpp</code>文件</p>
-<p>在 C++ 中，分别使用<code>.h</code> 和<code>.cpp</code> 来定义一个类。 <code>.h</code> 中存放类的声明，函数原型（放在类的声明中）。 <code>.cpp</code> 存放函数体。</p>
-<p>也就是说，一个存放声明(declaration)，一个存放定义（definition)。</p>
-</li>
-<li><p>当数组作为函数参数进行传递时，数组就会自动退化为同类型指针。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">GetSize</span><span class="params">(<span class="keyword">int</span> data[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="built_in"><span class="keyword">sizeof</span></span>(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> data[] = &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> size = <span class="built_in">Getsize</span>(data); <span class="comment">// 4</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>vector</p>
-<ul>
-<li>front(): 返回第一个元素引用</li>
-<li>back(): 返回最后一个元素引用</li>
-<li>reverse一个vector: <code>reverse(res.begin(), res.end());</code></li>
-</ul>
-</li>
-<li><p>maltimap</p>
-<p><code>multimap</code> 容器保存的是有序的键/值对，但它可以保存<strong>重复</strong>的元素。</p>
-</li>
-<li><p>map</p>
-<p><strong>注意</strong>: map中的key是唯一的，并且不能修改，遇到重复的key就会插入失败</p>
-</li>
-</ol>
-<hr>
-<h3 id="C-STL"><a href="#C-STL" class="headerlink" title="C++ STL"></a>C++ STL</h3><h4 id="accumulate"><a href="#accumulate" class="headerlink" title="accumulate"></a>accumulate</h4><p><code>accumulate</code>定义在<code>#include&lt;numeric&gt;</code>中，作用有两个，一个是累加求和，另一个是自定义类型数据的处理</p>
-<ol>
-<li><p>累加求和</p>
- <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> sum = <span class="built_in">accumulate</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), begin_value);</span><br></pre></td></tr></table></figure>
-
-<p> 前两个形参: 累加元素范围; 第三个形参: 累加初值</p>
-<p> 一个例子</p>
- <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;numeric&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> arr[] = &#123;<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>&#125;;</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">va</span><span class="params">(&amp;arr[<span class="number">0</span>], &amp;arr[<span class="number">5</span>])</span></span>;</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="built_in">accumulate</span>(va.<span class="built_in">begin</span>(), va.<span class="built_in">end</span>(), <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, sum);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h4 id="unordered-set"><a href="#unordered-set" class="headerlink" title="unordered_set"></a>unordered_set</h4><h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>c++ unordered_set定义: 是一个集合，集合中的每一个元素都是唯一的，就算插入几个相同的元素，但是最后保留下的只有一个。</p>
-<p>注意: unordered_set中数据是无序的.</p>
-<h5 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h5><ul>
-<li><p>unordered_set::find()</p>
-<p>  unordered_set::find()函数是C++ STL中的内置函数，用于在容器中搜索元素。它返回元素的迭代器，如果找到其他元素，则返回指向unordered_set::end()的迭代器。</p>
-<p>  用法： unordered_set_name.find(key)</p>
-  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(s.<span class="built_in">find</span>(xx) != s.<span class="built_in">end</span>()) xxx</span><br></pre></td></tr></table></figure></li>
-<li><p>unordered_set::insert(element)</p>
-<p>  unordered_set::insert(element)</p>
-</li>
-<li><p>set 与 unordered_set</p>
-</li>
-</ul>
-<p>何时使用<code>set</code>: 需要有序的数据!</p>
-<h4 id="unordered-map"><a href="#unordered-map" class="headerlink" title="unordered_map"></a>unordered_map</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unordered_map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    unordered_map&lt;<span class="keyword">int</span>, string&gt; myMap = &#123;&#123;<span class="number">5</span>, <span class="string">&quot;张大&quot;</span>&#125;, &#123;<span class="number">6</span>, <span class="string">&quot;李五&quot;</span>&#125;&#125;;</span><br><span class="line">    myMap[<span class="number">2</span>] = <span class="string">&quot;李四&quot;</span>;</span><br><span class="line">    myMap.<span class="built_in">insert</span>(pair&lt;<span class="keyword">int</span>, string&gt;(<span class="number">3</span>, <span class="string">&quot;陈二&quot;</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">auto</span> iter = myMap.<span class="built_in">begin</span>();</span><br><span class="line">    <span class="keyword">while</span> (iter != myMap.<span class="built_in">end</span>())</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; iter-&gt;first &lt;&lt; <span class="string">&quot;,&quot;</span> &lt;&lt; iter-&gt;second &lt;&lt; endl;</span><br><span class="line">        ++iter;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>两个属性值: <code>first</code> and <code>second</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">myMap.first # myMap-&gt;first是错误的写法</span><br><span class="line">myMap.second</span><br></pre></td></tr></table></figure>
-
-<h4 id="set"><a href="#set" class="headerlink" title="set"></a>set</h4><p>set中每个值都唯一，系统可以根据元素的值自动排序.</p>
-<ul>
-<li><p>set.insert()</p>
-  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    set&lt;<span class="keyword">int</span>&gt; set1;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        set1.<span class="built_in">insert</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">    set&lt;<span class="keyword">int</span>&gt;::iterator it;</span><br><span class="line">    <span class="keyword">for</span> (it = set1.<span class="built_in">begin</span>(); it != set1.<span class="built_in">end</span>(); it++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, *it);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<hr>
-<p>–&gt; 前一篇<a href="https://www.ongoing.ink/blog/posts/2020/04/some-basic-knowledge-of-c&c++.html">C basic part 1</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/two-stacks-implement-a-queue.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ongoing">
-      <meta itemprop="description" content="Good cooking takes time.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ongoing's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/two-stacks-implement-a-queue.html" class="post-title-link" itemprop="url">Two stacks implement a queue</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-09-30 13:17:19" itemprop="dateCreated datePublished" datetime="2020-09-30T13:17:19+08:00">2020-09-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>问题：两个栈实现一个队列</p>
-<p>可以下看一下下面这幅图理解一个过程:</p>
-<p><img src="/posts/two-stacks-implement-a-queue/two_stacks_implement_a_queue.png" alt="two-stacks_implement_a_queue"></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/two-queues-implement-a-stack.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1230,6 +938,330 @@ into<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span
 </ol>
 <p>  Ways:<br>  (1) Make 3 lines of text out first one<br>  (2) use visual-block mode to insert <code>0.</code> for 3 lines<br>  (3) use visual-block again and <code>g&lt;Ctrl-a&gt;</code> to “sequentially” increase your <code>0</code>s</p>
 <p>附: <a target="_blank" rel="noopener" href="https://github.com/ONGOING-Z/dotfiles/blob/master/.vimrc">我的.vimrc</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/link-to-github-and-view-the-updated-history-of-articles.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ongoing">
+      <meta itemprop="description" content="Good cooking takes time.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ongoing's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/link-to-github-and-view-the-updated-history-of-articles.html" class="post-title-link" itemprop="url">文章关联github及查看文章源文件更新历史</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-05-06 16:57:40" itemprop="dateCreated datePublished" datetime="2020-05-06T16:57:40+08:00">2020-05-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>一段时间之前，看到过一篇博客，博客的最下方有一个按钮，点击之后可以看到博主同步在github中的markdown源文件，我觉得这个作用很不错。所以经过一番搜索之后，发现了一篇实现此功能的博客(参考中的第一篇)，还搜索了一下<code>swig</code>的语法特性，当然是不需要太多的知识的，因为参考中是<code>ejs</code>语法，这里大概就只需要知道****是变量的写法就足够了。</p>
+<hr>
+<!-- toc -->
+
+<hr>
+<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><ul>
+<li>点击进入仓库可以清晰发现文章增加或者删减的历史记录</li>
+<li>可以在github的<code>issues</code>中讨论（稍稍充当评论系统???)</li>
+</ul>
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p><img src="/posts/link-to-github-and-view-the-updated-history-of-articles/display.png" alt="display"><br>可以看到<strong>更新历史</strong>一行有三项:</p>
+<ul>
+<li><code>Blame</code>: 左边是<code>commit</code>信息，右边是对应代码</li>
+<li><code>History</code>: 文章修改历史</li>
+<li><code>.md Raw</code>: 文章markdown源文件</li>
+</ul>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>首先需要新建一个仓库。仓库建好之后, 将<code>博客根目录/source/_posts/</code>文件夹下的文件push到github我们新建的仓库中，在我们的博客修改过后，需要我们手动进行上传。</p>
+<p>将下方代码添加至<code>themes/next/layout/_macro/my-copyright-swig</code>下<a href="%E6%88%91%E6%89%80%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%BB%E9%A2%98%E6%98%AFnext">^1</a>, 注意这里的<code>my-copyright-swig</code>是我另建的显示文章结束后<strong>版权</strong>的文件。创建博客版权的文章在<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/93170e7413e9">这里</a>。</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if page.copyright %&#125;</span><br><span class="line">&lt;div class=&quot;my_post_copyright&quot;&gt;</span><br><span class="line">  &lt;script src=&quot;//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;!-- JS库 sweetalert 可修改路径 --&gt;</span><br><span class="line">  &lt;script type=&quot;text/javascript&quot; src=&quot;http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script src=&quot;http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css&quot;&gt;</span><br><span class="line"></span><br><span class="line">  &lt;p&gt;&lt;span&gt;本文标题:&lt;/span&gt;&#123;&#123; page.title &#125;&#125;&lt;/a&gt;&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;&lt;span&gt;文章作者:&lt;/span&gt;&#123;&#123; theme.author &#125;&#125;&lt;/a&gt;&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;&lt;span&gt;发布时间:&lt;/span&gt;&#123;&#123; page.date.format(&quot;YYYY年MM月DD日 - HH:mm:ss&quot;) &#125;&#125;&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;&lt;span&gt;最后更新:&lt;/span&gt;&#123;&#123; page.updated.format(&quot;YYYY年MM月DD日 - HH:mm:ss&quot;) &#125;&#125;&lt;/p&gt;</span><br><span class="line"><span class="addition">+  &lt;p&gt;</span></span><br><span class="line"><span class="addition">+      &lt;span&gt;更新历史:&lt;/span&gt;&lt;i class=&quot;fa fa-github&quot;&gt;&lt;/i&gt;</span></span><br><span class="line"><span class="addition">+      &lt;a href=&quot;https://github.com/ONGOING-Z/Hexo-blog-backup/blame/master/&#123;&#123; page.date.format(&quot;YYYY-MM-DD&quot;) &#125;&#125;-&#123;&#123; page.title &#125;&#125;.md&quot; title=&quot;顺序查看文章各部分修改记录&quot; target = &quot;_blank&quot;&gt;Blame&lt;/a&gt;,</span></span><br><span class="line"><span class="addition">+      &lt;a href=&quot;https://github.com/ONGOING-Z/Hexo-blog-backup/commits/master/&#123;&#123; page.date.format(&quot;YYYY-MM-DD&quot;) &#125;&#125;-&#123;&#123; page.title &#125;&#125;.md&quot; title=&quot;查看文章有关更新记录&quot; target = &quot;_blank&quot;&gt;History&lt;/a&gt;&lt;span class=&quot;raw&quot;&gt;文本模式:&lt;/span&gt;&lt;i class=&quot;fa fa-file-text-o&quot;&gt;&lt;/i&gt;</span></span><br><span class="line"><span class="addition">+      &lt;a href=&quot;https://raw.githubusercontent.com/ONGOING-Z/Hexo-blog-backup/commits/master/&#123;&#123; page.date.format(&quot;YYYY-MM-DD&quot;) &#125;&#125;-&#123;&#123; page.title &#125;&#125;.md&quot; title=&quot;查看 &amp; 下载文章 Markdown 原始文本&quot; target = &quot;_blank&quot;&gt; .md Raw&lt;/a&gt;</span></span><br><span class="line"><span class="addition">+  &lt;/p&gt;</span></span><br><span class="line">  &lt;p&gt;&lt;span&gt;原始链接:&lt;/span&gt;&lt;a href=&quot;&#123;&#123; url_for(page.path) &#125;&#125;&quot; title=&quot;&#123;&#123; page.title &#125;&#125;&quot;&gt;&#123;&#123; page.permalink &#125;&#125;&lt;/a&gt;</span><br><span class="line">    &lt;span class=&quot;copy-path&quot;  title=&quot;点击复制文章链接&quot;&gt;&lt;i class=&quot;fa fa-clipboard&quot; data-clipboard-text=&quot;&#123;&#123; page.permalink &#125;&#125;&quot;  aria-label=&quot;复制成功！&quot;&gt;&lt;/i&gt;&lt;/span&gt;</span><br><span class="line">  &lt;/p&gt;</span><br><span class="line">  &lt;p&gt;&lt;span&gt;许可协议:&lt;/span&gt;&lt;i class=&quot;fa fa-creative-commons&quot;&gt;&lt;/i&gt; &lt;a rel=&quot;license&quot; href=&quot;https://creativecommons.org/licenses/by-nc-nd/4.0/&quot; target=&quot;_blank&quot; title=&quot;Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)&quot;&gt;署名-非商业性使用-禁止演绎 4.0 国际&lt;/a&gt; 转载请保留原文链接及作者。&lt;/p&gt;  </span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;script&gt; </span><br><span class="line">    var clipboard = new Clipboard(&#x27;.fa-clipboard&#x27;);</span><br><span class="line">    clipboard.on(&#x27;success&#x27;, $(function()&#123;</span><br><span class="line">      $(&quot;.fa-clipboard&quot;).click(function()&#123;</span><br><span class="line">        swal(&#123;   </span><br><span class="line">          title: &quot;&quot;,   </span><br><span class="line">          text: &#x27;复制成功&#x27;,   </span><br><span class="line">          html: false,</span><br><span class="line">          timer: 500,   </span><br><span class="line">          showConfirmButton: false</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;));  </span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中绿色部分代码是实现效果的代码。这之中我们修改<code>href</code>的属性对应自己的<strong>仓库信息</strong>和<strong>文章信息</strong>即可。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>[1] <a target="_blank" rel="noopener" href="http://moxfive.xyz/2016/01/10/hexo-post-version-control/">关联 GitHub, 让 Hexo 支持查看文章更新历史</a><br>[2] <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/variables.html">hexo变量</a><br>[3] <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/93170e7413e9">https://www.jianshu.com/p/93170e7413e9</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/some-linux-usage-record.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ongoing">
+      <meta itemprop="description" content="Good cooking takes time.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ongoing's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/some-linux-usage-record.html" class="post-title-link" itemprop="url">Some linux usage record</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-05-03 23:10:08" itemprop="dateCreated datePublished" datetime="2020-05-03T23:10:08+08:00">2020-05-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Fundamental/" itemprop="url" rel="index"><span itemprop="name">Fundamental</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>记录自己在使用linux中渐渐使用的命令和一些方法。</p>
+<hr>
+<!-- toc -->
+
+<hr>
+<ol>
+<li><p>在一个终端中打开另一个窗口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctrl + shift + t</span><br></pre></td></tr></table></figure></li>
+<li><p>回到上一次目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd -</span><br></pre></td></tr></table></figure></li>
+<li><p>列出当前登录用户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w</span><br></pre></td></tr></table></figure></li>
+<li><p>Linux进出sudo的方法</p>
+<p> 进入<code>sudo</code>mode: <code>sudo -i</code><br> 退出<code>sudo</code>mode: <code>ctrl + d</code></p>
+</li>
+<li><p>grep(general regular expression print)<br><code>ls | grep &quot;linux&quot;</code>: List file that its name includes string “linux”.</p>
+</li>
+<li><p>Clear commands history<br><code>history -c</code></p>
+</li>
+<li><p>终端锁定与退出锁定(终端无法输入的假死问题)<a target="_blank" rel="noopener" href="https://www.cnblogs.com/guochaoxxl/p/10428991.html">^1</a></p>
+</li>
+</ol>
+<ul>
+<li>终端锁定<br>  <code>ctrl + s</code></li>
+<li>退出锁定<br>  <code>ctrl + q</code></li>
+</ul>
+<ol start="8">
+<li>File permission</li>
+</ol>
+<ul>
+<li><code>chmod</code><br>  Change mode.<br>  10number: <code>d</code>(directory) or <code>-</code>(that represents file)<br>  Permission:<pre><code>- `r`: (100)&lt;sub&gt;2&lt;/sub&gt; //4
+- `w`: (010)&lt;sub&gt;2&lt;/sub&gt; //2
+- `x`: (001)&lt;sub&gt;2&lt;/sub&gt; //1
+</code></pre>
+  eg. <code>chmod 777 file/dir</code>  // Give file/dir rwx permission.</li>
+<li><code>chgrp</code><br>  Change file group.</li>
+<li><code>chown</code><br>  Change file owner.</li>
+</ul>
+<ol start="9">
+<li><p>Change font size in terminal</p>
+<p> Change bigger: <code>ctrl -</code><br> Change smaller: <code>ctrl +</code></p>
+</li>
+<li><p>Rename</p>
+<p>将test.jpg改成test1.jpg</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv &#123;<span class="built_in">test</span>,test1&#125;.jpg</span><br></pre></td></tr></table></figure></li>
+<li><p>在linux中跳出很深的文件夹，如果没有记住文件路径，就要一层层<code>cd</code>过去，浪费很多的时间。</p>
+<p>解决方法1<br>在<code>/etc/profile.d/</code>目录下新建例如<code>dd.sh</code>文件，文件内容如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> dd=<span class="string">&#x27;cd /media/folder1/folder2/.../&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>接下来保存退出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> dd.sh</span><br></pre></td></tr></table></figure>
+<p>效果: 在命令行中输入<code>dd</code>即可实现挑入指定目录。<br>并且重启之后在命令行中依然生效。</p>
+<p>解决方法2<br>在<code>~/.bashrc</code>中添加</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> dd=<span class="string">&#x27;cd /media/folder1/folder2/.../&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>也可以有同样的效果。</p>
+</li>
+<li><p>Linux光标移动</p>
+<p><code>ctrl + a</code>: 行首<br><code>ctrl + e</code>: 行尾</p>
+<p><code>ctrl + f</code>: 光标右移<br><code>ctrl + b</code>: 光标左移</p>
+<p><code>esc + f</code>: 右移一个单词<br><code>esc + b</code>: 左移一个单词</p>
+</li>
+<li><p>Linux <code>mv</code><br>功能<br>(1) 修改名称<br>(2) 移动文件</p>
+</li>
+<li><p>Bash<br>(1) 注释: <code>#</code><br>(2) <code>#!/bin/bash</code>的意义<br>以<code>#</code>代表是个注释，但是<code>#!</code>并不是注释了，它用来指明这个脚本所需要的<code>Shell</code><br>(3) shell变量类型<br>变量类型只有字符串</p>
+</li>
+<li><p>caps -&gt; ctrl(reference 32)</p>
+</li>
+<li><p>Download video in CLI<br>(1) you-get<br>(2)youtube_dl</p>
+</li>
+<li><p>du(disk usage)</p>
+</li>
+<li><p><code>ctrl + u</code>: 从光标处删除文本直到行首</p>
+</li>
+<li><p><code>ctrl + k</code>: 从光标处删除文本直到行尾</p>
+</li>
+<li><p><code>alt + f</code>: 向后一个单词</p>
+</li>
+<li><p><code>alt + b</code>: 向前一个单词</p>
+</li>
+<li><p>重复使用上一个命令: <code>!!</code></p>
+</li>
+<li><p><code>dstat</code><br>View the net speed in late 10 seconds and other functions.</p>
+</li>
+<li><p>Symbolic links</p>
+</li>
+<li><p>I/O redirection</p>
+<blockquote>
+<p>I/O redirection allows us to change where output goes and where input comes from. Normally, output goes to the screen and input comes from the keyboard, but with I/O redirection we can change that.</p>
+</blockquote>
+</li>
+<li><p>The Letter-Based Method</p>
+<blockquote>
+<p>In addition to the method described above there is a second way to change permissions. Chmod uses either the hexadecimal representation of the permissions or a letter-based representation. The letter-based representation is [ugoa][+-][rwx]. This is one of the letters u (user=file owner), g (group), o (others), a (all users, groups and others); followed by + or - to add or remove permissions; and then the symbolic representation of the permissions in the form of r(read) w(write) x(execute). To extend Write permissions to all for the file “file.txt”,</p>
+</blockquote>
+<p>For example, you would type:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod a+w file.txt</span><br></pre></td></tr></table></figure></li>
+<li><p><code>uptime</code><br>Tell how long the system has been running.</p>
+</li>
+<li><p>Change user</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su [username]</span><br></pre></td></tr></table></figure>
+<p>退出此用户: <code>exit</code></p>
+</li>
+<li><p>Add user</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">useradd [username]</span><br><span class="line">passwd [username]</span><br></pre></td></tr></table></figure></li>
+<li><p>Delete user</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">userdel [-r] [username]</span><br></pre></td></tr></table></figure>
+<p>-r: remove the home dir of [username]</p>
+</li>
+<li><p>Print current effective user</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whoami</span><br></pre></td></tr></table></figure></li>
+<li><p>linux将cpas-&gt;ctrl</p>
+<p>(1) Edit <code>/etc/default/keyboard</code></p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># KEYBOARD CONFIGURATION FILE</span><br><span class="line"></span><br><span class="line"># Consult the keyboard(5) manual page.</span><br><span class="line"></span><br><span class="line">XKBMODEL=&quot;pc105&quot;</span><br><span class="line">XKBLAYOUT=&quot;cn&quot;</span><br><span class="line">XKBVARIANT=&quot;&quot;</span><br><span class="line"><span class="deletion">- XKBOPTIONS=&quot;&quot;</span></span><br><span class="line"><span class="addition">+ XKBOPTIONS=&quot;ctrl:nocaps&quot;</span></span><br><span class="line"></span><br><span class="line">BACKSPACE=&quot;guess&quot;</span><br></pre></td></tr></table></figure>
+<p>(2) 运行如下命令，设置生效</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg-reconfigure keyboard-configuration</span><br></pre></td></tr></table></figure></li>
+<li><p>cp 排除某个目录<br>例. 有目录b, c, 复制到<code>/f</code>下，排除b</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp -r !(b) /f</span><br></pre></td></tr></table></figure></li>
+<li><p>在linux下弹出u盘命令（假设u盘设备是sdb1）</p>
+</li>
+</ol>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo eject -s /dev/sdb1</span><br></pre></td></tr></table></figure>
+
+<ol start="35">
+<li>ccat</li>
+</ol>
+<p>  内置的<code>cat</code>查看命令没有语法高亮，但是使用<code>ccat</code>可以有这个作用。</p>
+<p>  下载二进制代码文件<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/jingweno/ccat/releases/download/v1.1.0/linux-amd64-1.1.0.tar.gz</span><br></pre></td></tr></table></figure><br>  解压<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar xfz linux-amd64-1.1.0.tar.gz</span><br></pre></td></tr></table></figure><br>  将<code>ccat</code>文件复制到<code>/usr/local/bin/</code>文件夹下<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp linux-amd64-1.1.0/ccat /usr/<span class="built_in">local</span>/bin/</span><br></pre></td></tr></table></figure><br>  使用<code>ccat</code>命令查看文件会发现文件显示变成彩色的了。</p>
+<ol start="36">
+<li>ssh &amp; public key</li>
+</ol>
+<p>  (1) 本地生成公钥<br>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure><br>  之后全部默认回车即可。</p>
+<p>  (2) 将本地公钥<code>~/.ssh/id_rsa.pub</code>复制到远程主机<code>~/.ssh/autoorized_keys</code>文件中，如果目录和文件皆不存在，直接创建新的文件。<br>  (3) 重启ssh服务<br>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service ssh restart</span><br></pre></td></tr></table></figure><br>  之后与主机相连就不必再输入密码。</p>
+<ol start="37">
+<li><code>ls</code>的<code>-S</code>选项<blockquote>
+<p>sort  by  WORD instead of name: none (-U), size (-S), time (-t), version (-v), extension (-X)</p>
+</blockquote>
+</li>
+</ol>
+<p>  准确来说就是将文件从大到小进行排序。</p>
+<ol start="38">
+<li><code>tab</code></li>
+</ol>
+<p>  (1) 命令补全: tab接在一串指令的第一个字的后面<br>  (2) 文件补齐: tab接在一串指令的第二个字的后面</p>
+<ol start="39">
+<li><code>find</code></li>
+</ol>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find dir_name -name filename_to_be_searched</span><br></pre></td></tr></table></figure>
+<ol start="40">
+<li>在 bash 里，使用 <code>Ctrl-R</code> 而不是上下光标键来查找历史命令。</li>
+<li>使用 <code>man ascii</code> 来查看 ASCII 表。</li>
+<li>命令行注释命令: <code>alt + #</code></li>
+</ol>
+<hr>
+<h3 id="Linux各目录"><a href="#Linux各目录" class="headerlink" title="Linux各目录"></a>Linux各目录</h3><h4 id="etc"><a href="#etc" class="headerlink" title="etc"></a>etc</h4><ol>
+<li>含义: and so on</li>
+<li>功能: 存放零零碎碎的东西</li>
+</ol>
+<h3 id="linux各种解压命令汇总"><a href="#linux各种解压命令汇总" class="headerlink" title="linux各种解压命令汇总"></a>linux各种解压命令汇总</h3><h4 id="tar-xz"><a href="#tar-xz" class="headerlink" title=".tar.xz"></a><code>.tar.xz</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$xz -d filename.tar.xz</span><br><span class="line">$tar -xvf filename.tar</span><br></pre></td></tr></table></figure>
+<h4 id="tar-gz"><a href="#tar-gz" class="headerlink" title="tar.gz"></a><code>tar.gz</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf xxx.tar.gz</span><br></pre></td></tr></table></figure>
+<h4 id="rar"><a href="#rar" class="headerlink" title=".rar"></a><code>.rar</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unrar e file.rar # e: 解压压缩包中的全部问价至文件夹</span><br></pre></td></tr></table></figure>
+
+<p>今天因要下载win10 iso文件，奈何文件太大，只好利用winrar软件将4g的iso文件分成了4个1g的小文件，转到linux下后，直接将4个小文件提取了出来，但问题是4个提取出来的文件并没有合并在一起，这可不是我想要的结果，百度一查，赶紧在linux安装了rar,只需用<code>rar e name.part1.rar</code>，提取后的文件就是合并后的文件了。</p>
+<hr>
+<h3 id="Problems"><a href="#Problems" class="headerlink" title="Problems"></a>Problems</h3><h4 id="在ubuntu19-01上安装curl出现问题curl-Depends-libcurl4-7-58-0-2ubuntu3-8-but-7-65-3-1ubuntu3-is-to-be-installed"><a href="#在ubuntu19-01上安装curl出现问题curl-Depends-libcurl4-7-58-0-2ubuntu3-8-but-7-65-3-1ubuntu3-is-to-be-installed" class="headerlink" title="在ubuntu19.01上安装curl出现问题curl : Depends: libcurl4 (= 7.58.0-2ubuntu3.8) but 7.65.3-1ubuntu3 is to be installed"></a>在ubuntu19.01上安装curl出现问题curl : Depends: libcurl4 (= 7.58.0-2ubuntu3.8) but 7.65.3-1ubuntu3 is to be installed</h4><p>问题如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The following packages have unmet dependencies:</span><br><span class="line">curl : Depends: libcurl4 (= 7.58.0-2ubuntu3.8) but 7.65.3-1ubuntu3 is to be installed</span><br><span class="line">E: Unable to correct problems, you have held broken packages.</span><br></pre></td></tr></table></figure>
+<p>解决方法:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get purge libcurl4</span><br></pre></td></tr></table></figure>
+<p>接下来就可以正常安装<code>curl</code>了。</p>
+<h4 id="linux升级gdb"><a href="#linux升级gdb" class="headerlink" title="linux升级gdb"></a>linux升级gdb</h4><p>gdb官网下载太慢，<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/gnu/gdb/">清华大学镜像站</a>可以下载</p>
 
       
     </div>

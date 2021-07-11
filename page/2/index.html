@@ -117,277 +117,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/java-review-part-4-polymorphism.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ongoing">
-      <meta itemprop="description" content="Good cooking takes time.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ongoing's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/java-review-part-4-polymorphism.html" class="post-title-link" itemprop="url">java review part 4 - polymorphism(多态)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-10-13 19:48:34" itemprop="dateCreated datePublished" datetime="2020-10-13T19:48:34+08:00">2020-10-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Fundamental/" itemprop="url" rel="index"><span itemprop="name">Fundamental</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="面向对象特性-多态"><a href="#面向对象特性-多态" class="headerlink" title="面向对象特性 - 多态"></a>面向对象特性 - 多态</h2><p><img src="/posts/java-review-part-4-polymorphism/java_31.png" alt="image-20201008204326276"></p>
-<p>多态针对的是对象。</p>
-<p><img src="/posts/java-review-part-4-polymorphism/java_32.png" alt="image-20201008204931235"></p>
-<p>左父右子就是多态。</p>
-<blockquote>
-<p>多态中成员变量访问特点</p>
-</blockquote>
-<p><img src="/posts/java-review-part-4-polymorphism/java_33.png" alt="image-20201008210215813"></p>
-<p>在多态的代码中，成员方法访问规则：看new的是谁，就优先用谁，没有则向上找。</p>
-<p><img src="/posts/java-review-part-4-polymorphism/java_34.png" alt="image-20201008210741864"></p>
-<p><em>这句话没怎么懂？</em></p>
-<blockquote>
-<p>使用多态的好处</p>
-</blockquote>
-<p><img src="/posts/java-review-part-4-polymorphism/java_35.png" alt="image-20201008211228089"></p>
-<blockquote>
-<p>对象的向上转型</p>
-</blockquote>
-<p>向上转型就是多态的写法。</p>
-<p><img src="/posts/java-review-part-4-polymorphism/java_36.png" alt="image-20201008212150491"></p>
-<blockquote>
-<p>对象的向下转型</p>
-</blockquote>
-<p>向上转型是安全的。但有一个弊端：对象一旦向上转型为父类，那么就无法调用子类原本特有的内容。</p>
-<p>解决方案：用对象的向下转型[<strong>还原</strong>]</p>
-<p>对象向下转型，其实是一个还原动作。</p>
-<p>格式：<code>子类名称 对象名 = （子类名称）父类对象</code></p>
-<p>含义：将父类对象还原成为本来的子类对象（<strong>类似强制转换</strong>!!!!!!!）</p>
-<p><img src="/posts/java-review-part-4-polymorphism/java_37.png" alt="image-20201008213449209"></p>
-<blockquote>
-<p>instanceof关键字</p>
-</blockquote>
-<p>如何知道一个父类引用的对象是什么子类？</p>
-<p>格式：<code>对象 instanceof 类名称</code></p>
-<p>这将得到一个boolean值结果，判断前面的对象能不能当作后面类的实例。</p>
-<p>向下转型一定要进行instanceof判断，否则可能会发生类转换异常。</p>
-<blockquote>
-<p>一个案例</p>
-<ol>
-<li>接口的基本使用</li>
-<li>对象的上下转型</li>
-<li>使用接口作为方法参数</li>
-</ol>
-</blockquote>
-<p><img src="/posts/java-review-part-4-polymorphism/java_38.png" alt="image-20201008214944705"></p>
-<hr>
-<blockquote>
-<p>final关键字</p>
-</blockquote>
-<p><img src="/posts/java-review-part-4-polymorphism/java_39.png" alt="image-20201008221922766"></p>
-<ol>
-<li><p>final修饰类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> 类名称 </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>含义：当前类不能有任何子类（太监类）</p>
-<p>注意：一个类如果是final的，那么其中所有的成员方法都无法覆盖重写（因为没有儿子，无法继承）</p>
-</li>
-<li><p>final修饰成员方法</p>
-<p><img src="/posts/java-review-part-4-polymorphism/java_40.png" alt="image-20201008222359872"></p>
-</li>
-<li><p>final修饰局部变量</p>
-<p><img src="/posts/java-review-part-4-polymorphism/java_41.png" alt="image-20201008222526746"></p>
-<p><img src="/posts/java-review-part-4-polymorphism/java_42.png" alt="image-20201008222905353"></p>
-</li>
-<li><p>final修饰成员变量</p>
-<p><img src="/posts/java-review-part-4-polymorphism/java_43.png" alt="image-20201008223327454"></p>
-</li>
-</ol>
-<blockquote>
-<p>四种权限修饰符</p>
-</blockquote>
-<p><img src="/posts/java-review-part-4-polymorphism/java_44.png" alt="image-20201008224027035"></p>
-<h3 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h3><blockquote>
-<p>内部类概念</p>
-</blockquote>
-<p><img src="/posts/java-review-part-4-polymorphism/java_45.png" alt="image-20201009105344326"></p>
-<blockquote>
-<p>成员内部类定义</p>
-</blockquote>
-<p><img src="/posts/java-review-part-4-polymorphism/java_46.png" alt="image-20201009105516278"></p>
-<blockquote>
-<p>成员内部类使用</p>
-</blockquote>
-<ol>
-<li><p>间接方式：在外部类的方法中，使用内部类；然后main方法只是调用外部类的方法。</p>
-</li>
-<li><p>直接方式：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">外部类名称.内部类名称 对象名 = <span class="keyword">new</span> 外部类名称().new 内部类名称(); </span><br></pre></td></tr></table></figure></li>
-</ol>
-<blockquote>
-<p>内部类的同名变量访问</p>
-</blockquote>
-<p>如果出现重名现象，格式为：<code>外部类名称.this.外部类成员变量</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> num = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Inner</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> num = <span class="number">30</span>;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> num = <span class="number">20</span>;</span><br><span class="line">            System.out.println(num);集合</span><br><span class="line">            System.out.println(<span class="keyword">this</span>.num);</span><br><span class="line">            System.out.println(Outer.<span class="keyword">this</span>.num);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-
-
-<blockquote>
-<p>局部内部类定义</p>
-</blockquote>
-<p><img src="/posts/java-review-part-4-polymorphism/java_47.png" alt="image-20201009111650623"></p>
-<p><img src="/posts/java-review-part-4-polymorphism/java_48.png" alt="image-20201009112211427"></p>
-<blockquote>
-<p>局部内部类final问题</p>
-</blockquote>
-<p>局部内部类，如果希望访问所在方法的局部变量，这个变量必须是<strong>有效final的</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyOuter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> num = <span class="number">10</span>;</span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">MyInner</span> </span>&#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodInner</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(num);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/posts/java-review-part-4-polymorphism/java_49.png" alt="image-20201009125814618"></p>
-<p>生命周期不一样。</p>
-<blockquote>
-<p>匿名内部类（重要！）</p>
-</blockquote>
-<p><img src="/posts/java-review-part-4-polymorphism/java_50.png" alt="image-20201009130757958"></p>
-<p><img src="/posts/java-review-part-4-polymorphism/java_51.png" alt="image-20201009131653016"></p>
-<p><img src="/posts/java-review-part-4-polymorphism/java_52.png" alt="image-20201009131717167"></p>
-<blockquote>
-<p>类作为成员变量类型</p>
-</blockquote>
-<p> String也是一个类，自己定义的类当然也可以使用。</p>
-<p>当然用的时候需要创建对象。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/binary-insertion-sort.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ongoing">
-      <meta itemprop="description" content="Good cooking takes time.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ongoing's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/binary-insertion-sort.html" class="post-title-link" itemprop="url">折半插入排序</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-10-12 20:22:56" itemprop="dateCreated datePublished" datetime="2020-10-12T20:22:56+08:00">2020-10-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>直接插入需要在有序数据一个个查找，找到插入位置，然后插入, 效率较慢;折半插入是使用<strong>二分查找</strong>在有序区间查找插入位置，减少查找量。</p>
-<p>总的来说，折半插入排序就是折半查找+插入排序。关于直接插入排序可以看这一篇<a href="https://www.ongoing.ink/blog/posts/2020/10/insertion-sort.html"> 文章 </a>。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;dbg.h&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">binaryInsetionSort</span><span class="params">(<span class="keyword">int</span> R[], <span class="keyword">int</span> len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 假设初始有序序列为R[0]</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> temp = R[i];</span><br><span class="line">        <span class="keyword">int</span> low = <span class="number">0</span>, high = i - <span class="number">1</span>; <span class="comment">// 设置折半查找范围</span></span><br><span class="line">        <span class="keyword">while</span> (low &lt;= high)        <span class="comment">// 开始在有序序列中进行折半查找,</span></span><br><span class="line">                                   <span class="comment">//low为最终查找到的插入位置</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = low + (high - low) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (R[mid] &gt; temp)</span><br><span class="line">                high = mid - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                low = mid + <span class="number">1</span>;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i - <span class="number">1</span>; j &gt;= low; j--)</span><br><span class="line">            R[j + <span class="number">1</span>] = R[j]; <span class="comment">// 后移，将插入位置空出来</span></span><br><span class="line">        R[low] = temp;       <span class="comment">// 插入元素</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> R[] = &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">18</span>, <span class="number">3</span>, <span class="number">28</span>, <span class="number">23</span>, <span class="number">38</span>, <span class="number">7</span>, <span class="number">8</span>&#125;;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Before sorting: &quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">dbg</span>(R);</span><br><span class="line">    <span class="keyword">int</span> len = <span class="built_in"><span class="keyword">sizeof</span></span>(R) / <span class="built_in"><span class="keyword">sizeof</span></span>(R[<span class="number">0</span>]);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;After sorting : &quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">binaryInsetionSort</span>(R, len);</span><br><span class="line">    <span class="built_in">dbg</span>(R);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果<br><img src="/posts/binary-insertion-sort/binary_insertion_sort.png" alt="binary_insertion_sort"></p>
-<p>时间复杂度: <code>O(n^2)</code></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/java-review-part-3-object-oriented-inheritance.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1841,6 +1570,298 @@
  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *p;</span><br><span class="line"><span class="keyword">int</span> **q;</span><br><span class="line">q = &amp;p;</span><br></pre></td></tr></table></figure></li>
 </ol>
 <p><img src="/posts/C-and-pointer-reading-notes/pointer_to_pointer.png" alt="Image"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/C-basic-part-2.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ongoing">
+      <meta itemprop="description" content="Good cooking takes time.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ongoing's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/C-basic-part-2.html" class="post-title-link" itemprop="url">C basic part 2 </a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-10-01 10:53:05" itemprop="dateCreated datePublished" datetime="2020-10-01T10:53:05+08:00">2020-10-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Fundamental/" itemprop="url" rel="index"><span itemprop="name">Fundamental</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>新增一些关于C和C++的基础知识。</p>
+<hr>
+<ol>
+<li><p>数组初始化符号<code>&#123;&#125;</code></p>
+</li>
+<li><p>Get array length(C)</p>
+ <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> arr[];</span><br><span class="line"><span class="keyword">int</span> length = <span class="keyword">sizeof</span>(arr)/<span class="keyword">sizeof</span>(arr[<span class="number">0</span>]); <span class="comment">// 总字节数/第一个元素字节数</span></span><br></pre></td></tr></table></figure></li>
+<li><p>define</p>
+<p> <code>#define 名字 替换文本</code></p>
+<p> （1）符号常量通常用大写字母拼写<br> （2）末尾无分号</p>
+</li>
+<li><p>C中常量INT_MAX和INT_MIN分别表示最大、最小整数，定义在头文件limits.h中. INT_MAX = 2^31-1，INT_MIN= -2^31</p>
+</li>
+<li><p>逻辑移位</p>
+<p> 逻辑移位: (1)逻辑左移 (2)逻辑右移; 移出的空位都用0来补。</p>
+</li>
+<li><p>nullptr</p>
+<p> 其指c++ 中的空指针常量。</p>
+</li>
+<li><p>c++ delete</p>
+<p> 假设ptr是一个指针，delete ptr代表释放内存，只用来释放ptr指向的内存。</p>
+</li>
+<li><p>to_string()</p>
+<p> 将数值转换为字符串。</p>
+</li>
+<li><p>for循环遍历字符串的一种新方法</p>
+ <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    string str = <span class="string">&quot;better&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">char</span> c : str)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%c\n&quot;</span>, c);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>c++ auto (since C++ 11)(谨慎使用)</p>
+<p>可以自动推断变量类型</p>
+<ol>
+<li>auto变量必须在定义时进行初始化，如果不进行初始化，就不能进行变量类型的推断了。</li>
+</ol>
+</li>
+<li><p>c++ pair/ make_pair</p>
+<p>C++标准程序库中凡是“必须返回两个值”的函数， 也都会利用pair对象。</p>
+<p><code>make_pair</code>的用法<br>无需写出型别， 就可以生成一个pair对象。<br>例： <code>std::make_pair(42, &#39;@&#39;);</code></p>
+<p>而不必费力写成： <code>std::pair&lt;int, char&gt;(42, &#39;@&#39;)</code></p>
+<p>值的访问: 两个值可以分别用pair的两个公有函数first和second访问。</p>
+</li>
+<li><p>map的count和find,map和unordered_map</p>
+<p>使用count，返回的是被查找元素的个数。如果有，返回1；否则，返回0。注意，map中不存在相同元素，所以返回值只能是1或0。</p>
+<p>使用find，返回的是被查找元素的位置，没有则返回map.end()。</p>
+</li>
+<li><p>string.substr()</p>
+<p>string.substr(start, [length])</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string s = <span class="string">&quot;12345&quot;</span></span><br><span class="line">string sub1 = s.<span class="built_in">substr</span>(<span class="number">3</span>); <span class="comment">// sub1 = &quot;345&quot;</span></span><br><span class="line">string sub2 =  s.<span class="built_in">substr</span>(<span class="number">3</span>, <span class="number">2</span>);  <span class="comment">// sub2 = &quot;34&quot;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>string to int: stoi()</p>
+<p>stoi(str, start_position, 2) 2是进制，此例意为将2进制的str从position转换成10进制</p>
+</li>
+<li><p>char to int: <code>c - &#39;0&#39;</code></p>
+</li>
+<li><p>int to char: <code>i + &#39;0&#39;</code></p>
+</li>
+<li><p>异或</p>
+</li>
+</ol>
+<ul>
+<li>性质: <code>a ^ b</code>即为a和b的二进制形式每一位进行运算，最后得到的结果。每位运算逻辑:<br>  相同为0， 不同为1. 类似半加。</li>
+<li>规律:<ul>
+<li>任何数和本身异或为<code>0</code></li>
+<li>任何数和0异或为<code>本身</code></li>
+</ul>
+</li>
+</ul>
+<ol start="18">
+<li><p>pow(), not power, 需要<code>cmath</code>头文件</p>
+</li>
+<li><p>自己写的头文件要用<code>&quot;&quot;</code>引用；标准的头文件要用<code>&lt;&gt;</code>引用。</p>
+<p>非系统头文件的查找通常开始于源文件所在的路径。</p>
+</li>
+<li><p>声明与定义</p>
+<p>定义只可出现一次，声明可以出现多次。</p>
+</li>
+<li><p>引用</p>
+</li>
+</ol>
+<p>   <code>int&amp;</code>, 这里的<code>&amp;</code>不是取地址符号，叫做<code>引用符号</code>.<br>   变量的引用就是变量的别名。相当于一个人的小名</p>
+<ul>
+<li><p>声明引用时必须指定代表是哪一个变量，即对它进行初始化</p>
+ <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> &amp;a = b; <span class="comment">// 声明a是b的引用</span></span><br></pre></td></tr></table></figure>
+
+<p> 如果只是<code>int &amp;a</code>, 这样就是错误的。</p>
+</li>
+<li><p>引用和其所代表的变量共享同一内存单元，系统不为引用另外分配存储单元。</p>
+</li>
+<li><p>如何判断<code>&amp;</code>是<code>引用</code>还是<code>取地址符</code><br> 方法: 判断<code>&amp;a</code>这样形式前是否有<code>类型符号</code></p>
+</li>
+</ul>
+<ol start="22">
+<li><p>C++中的<code>.h</code>和<code>.cpp</code>文件</p>
+<p>在 C++ 中，分别使用<code>.h</code> 和<code>.cpp</code> 来定义一个类。 <code>.h</code> 中存放类的声明，函数原型（放在类的声明中）。 <code>.cpp</code> 存放函数体。</p>
+<p>也就是说，一个存放声明(declaration)，一个存放定义（definition)。</p>
+</li>
+<li><p>当数组作为函数参数进行传递时，数组就会自动退化为同类型指针。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">GetSize</span><span class="params">(<span class="keyword">int</span> data[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="built_in"><span class="keyword">sizeof</span></span>(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> data[] = &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> size = <span class="built_in">Getsize</span>(data); <span class="comment">// 4</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>vector</p>
+<ul>
+<li>front(): 返回第一个元素引用</li>
+<li>back(): 返回最后一个元素引用</li>
+<li>reverse一个vector: <code>reverse(res.begin(), res.end());</code></li>
+</ul>
+</li>
+<li><p>maltimap</p>
+<p><code>multimap</code> 容器保存的是有序的键/值对，但它可以保存<strong>重复</strong>的元素。</p>
+</li>
+<li><p>map</p>
+<p><strong>注意</strong>: map中的key是唯一的，并且不能修改，遇到重复的key就会插入失败</p>
+</li>
+</ol>
+<hr>
+<h3 id="C-STL"><a href="#C-STL" class="headerlink" title="C++ STL"></a>C++ STL</h3><h4 id="accumulate"><a href="#accumulate" class="headerlink" title="accumulate"></a>accumulate</h4><p><code>accumulate</code>定义在<code>#include&lt;numeric&gt;</code>中，作用有两个，一个是累加求和，另一个是自定义类型数据的处理</p>
+<ol>
+<li><p>累加求和</p>
+ <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> sum = <span class="built_in">accumulate</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), begin_value);</span><br></pre></td></tr></table></figure>
+
+<p> 前两个形参: 累加元素范围; 第三个形参: 累加初值</p>
+<p> 一个例子</p>
+ <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;numeric&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> arr[] = &#123;<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>&#125;;</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">va</span><span class="params">(&amp;arr[<span class="number">0</span>], &amp;arr[<span class="number">5</span>])</span></span>;</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="built_in">accumulate</span>(va.<span class="built_in">begin</span>(), va.<span class="built_in">end</span>(), <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, sum);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="unordered-set"><a href="#unordered-set" class="headerlink" title="unordered_set"></a>unordered_set</h4><h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>c++ unordered_set定义: 是一个集合，集合中的每一个元素都是唯一的，就算插入几个相同的元素，但是最后保留下的只有一个。</p>
+<p>注意: unordered_set中数据是无序的.</p>
+<h5 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h5><ul>
+<li><p>unordered_set::find()</p>
+<p>  unordered_set::find()函数是C++ STL中的内置函数，用于在容器中搜索元素。它返回元素的迭代器，如果找到其他元素，则返回指向unordered_set::end()的迭代器。</p>
+<p>  用法： unordered_set_name.find(key)</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(s.<span class="built_in">find</span>(xx) != s.<span class="built_in">end</span>()) xxx</span><br></pre></td></tr></table></figure></li>
+<li><p>unordered_set::insert(element)</p>
+<p>  unordered_set::insert(element)</p>
+</li>
+<li><p>set 与 unordered_set</p>
+</li>
+</ul>
+<p>何时使用<code>set</code>: 需要有序的数据!</p>
+<h4 id="unordered-map"><a href="#unordered-map" class="headerlink" title="unordered_map"></a>unordered_map</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unordered_map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    unordered_map&lt;<span class="keyword">int</span>, string&gt; myMap = &#123;&#123;<span class="number">5</span>, <span class="string">&quot;张大&quot;</span>&#125;, &#123;<span class="number">6</span>, <span class="string">&quot;李五&quot;</span>&#125;&#125;;</span><br><span class="line">    myMap[<span class="number">2</span>] = <span class="string">&quot;李四&quot;</span>;</span><br><span class="line">    myMap.<span class="built_in">insert</span>(pair&lt;<span class="keyword">int</span>, string&gt;(<span class="number">3</span>, <span class="string">&quot;陈二&quot;</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">auto</span> iter = myMap.<span class="built_in">begin</span>();</span><br><span class="line">    <span class="keyword">while</span> (iter != myMap.<span class="built_in">end</span>())</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; iter-&gt;first &lt;&lt; <span class="string">&quot;,&quot;</span> &lt;&lt; iter-&gt;second &lt;&lt; endl;</span><br><span class="line">        ++iter;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>两个属性值: <code>first</code> and <code>second</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">myMap.first # myMap-&gt;first是错误的写法</span><br><span class="line">myMap.second</span><br></pre></td></tr></table></figure>
+
+<h4 id="set"><a href="#set" class="headerlink" title="set"></a>set</h4><p>set中每个值都唯一，系统可以根据元素的值自动排序.</p>
+<ul>
+<li><p>set.insert()</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    set&lt;<span class="keyword">int</span>&gt; set1;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        set1.<span class="built_in">insert</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">    set&lt;<span class="keyword">int</span>&gt;::iterator it;</span><br><span class="line">    <span class="keyword">for</span> (it = set1.<span class="built_in">begin</span>(); it != set1.<span class="built_in">end</span>(); it++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, *it);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<p>–&gt; 前一篇<a href="https://www.ongoing.ink/blog/posts/2020/04/some-basic-knowledge-of-c&c++.html">C basic part 1</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/two-stacks-implement-a-queue.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ongoing">
+      <meta itemprop="description" content="Good cooking takes time.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ongoing's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/two-stacks-implement-a-queue.html" class="post-title-link" itemprop="url">Two stacks implement a queue</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-09-30 13:17:19" itemprop="dateCreated datePublished" datetime="2020-09-30T13:17:19+08:00">2020-09-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>问题：两个栈实现一个队列</p>
+<p>可以下看一下下面这幅图理解一个过程:</p>
+<p><img src="/posts/two-stacks-implement-a-queue/two_stacks_implement_a_queue.png" alt="two-stacks_implement_a_queue"></p>
 
       
     </div>

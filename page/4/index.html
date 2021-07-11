@@ -117,330 +117,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/link-to-github-and-view-the-updated-history-of-articles.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ongoing">
-      <meta itemprop="description" content="Good cooking takes time.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ongoing's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/link-to-github-and-view-the-updated-history-of-articles.html" class="post-title-link" itemprop="url">文章关联github及查看文章源文件更新历史</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-05-06 16:57:40" itemprop="dateCreated datePublished" datetime="2020-05-06T16:57:40+08:00">2020-05-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>一段时间之前，看到过一篇博客，博客的最下方有一个按钮，点击之后可以看到博主同步在github中的markdown源文件，我觉得这个作用很不错。所以经过一番搜索之后，发现了一篇实现此功能的博客(参考中的第一篇)，还搜索了一下<code>swig</code>的语法特性，当然是不需要太多的知识的，因为参考中是<code>ejs</code>语法，这里大概就只需要知道****是变量的写法就足够了。</p>
-<hr>
-<!-- toc -->
-
-<hr>
-<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><ul>
-<li>点击进入仓库可以清晰发现文章增加或者删减的历史记录</li>
-<li>可以在github的<code>issues</code>中讨论（稍稍充当评论系统???)</li>
-</ul>
-<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p><img src="/posts/link-to-github-and-view-the-updated-history-of-articles/display.png" alt="display"><br>可以看到<strong>更新历史</strong>一行有三项:</p>
-<ul>
-<li><code>Blame</code>: 左边是<code>commit</code>信息，右边是对应代码</li>
-<li><code>History</code>: 文章修改历史</li>
-<li><code>.md Raw</code>: 文章markdown源文件</li>
-</ul>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>首先需要新建一个仓库。仓库建好之后, 将<code>博客根目录/source/_posts/</code>文件夹下的文件push到github我们新建的仓库中，在我们的博客修改过后，需要我们手动进行上传。</p>
-<p>将下方代码添加至<code>themes/next/layout/_macro/my-copyright-swig</code>下<a href="%E6%88%91%E6%89%80%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%BB%E9%A2%98%E6%98%AFnext">^1</a>, 注意这里的<code>my-copyright-swig</code>是我另建的显示文章结束后<strong>版权</strong>的文件。创建博客版权的文章在<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/93170e7413e9">这里</a>。</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if page.copyright %&#125;</span><br><span class="line">&lt;div class=&quot;my_post_copyright&quot;&gt;</span><br><span class="line">  &lt;script src=&quot;//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;!-- JS库 sweetalert 可修改路径 --&gt;</span><br><span class="line">  &lt;script type=&quot;text/javascript&quot; src=&quot;http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script src=&quot;http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css&quot;&gt;</span><br><span class="line"></span><br><span class="line">  &lt;p&gt;&lt;span&gt;本文标题:&lt;/span&gt;&#123;&#123; page.title &#125;&#125;&lt;/a&gt;&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;&lt;span&gt;文章作者:&lt;/span&gt;&#123;&#123; theme.author &#125;&#125;&lt;/a&gt;&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;&lt;span&gt;发布时间:&lt;/span&gt;&#123;&#123; page.date.format(&quot;YYYY年MM月DD日 - HH:mm:ss&quot;) &#125;&#125;&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;&lt;span&gt;最后更新:&lt;/span&gt;&#123;&#123; page.updated.format(&quot;YYYY年MM月DD日 - HH:mm:ss&quot;) &#125;&#125;&lt;/p&gt;</span><br><span class="line"><span class="addition">+  &lt;p&gt;</span></span><br><span class="line"><span class="addition">+      &lt;span&gt;更新历史:&lt;/span&gt;&lt;i class=&quot;fa fa-github&quot;&gt;&lt;/i&gt;</span></span><br><span class="line"><span class="addition">+      &lt;a href=&quot;https://github.com/ONGOING-Z/Hexo-blog-backup/blame/master/&#123;&#123; page.date.format(&quot;YYYY-MM-DD&quot;) &#125;&#125;-&#123;&#123; page.title &#125;&#125;.md&quot; title=&quot;顺序查看文章各部分修改记录&quot; target = &quot;_blank&quot;&gt;Blame&lt;/a&gt;,</span></span><br><span class="line"><span class="addition">+      &lt;a href=&quot;https://github.com/ONGOING-Z/Hexo-blog-backup/commits/master/&#123;&#123; page.date.format(&quot;YYYY-MM-DD&quot;) &#125;&#125;-&#123;&#123; page.title &#125;&#125;.md&quot; title=&quot;查看文章有关更新记录&quot; target = &quot;_blank&quot;&gt;History&lt;/a&gt;&lt;span class=&quot;raw&quot;&gt;文本模式:&lt;/span&gt;&lt;i class=&quot;fa fa-file-text-o&quot;&gt;&lt;/i&gt;</span></span><br><span class="line"><span class="addition">+      &lt;a href=&quot;https://raw.githubusercontent.com/ONGOING-Z/Hexo-blog-backup/commits/master/&#123;&#123; page.date.format(&quot;YYYY-MM-DD&quot;) &#125;&#125;-&#123;&#123; page.title &#125;&#125;.md&quot; title=&quot;查看 &amp; 下载文章 Markdown 原始文本&quot; target = &quot;_blank&quot;&gt; .md Raw&lt;/a&gt;</span></span><br><span class="line"><span class="addition">+  &lt;/p&gt;</span></span><br><span class="line">  &lt;p&gt;&lt;span&gt;原始链接:&lt;/span&gt;&lt;a href=&quot;&#123;&#123; url_for(page.path) &#125;&#125;&quot; title=&quot;&#123;&#123; page.title &#125;&#125;&quot;&gt;&#123;&#123; page.permalink &#125;&#125;&lt;/a&gt;</span><br><span class="line">    &lt;span class=&quot;copy-path&quot;  title=&quot;点击复制文章链接&quot;&gt;&lt;i class=&quot;fa fa-clipboard&quot; data-clipboard-text=&quot;&#123;&#123; page.permalink &#125;&#125;&quot;  aria-label=&quot;复制成功！&quot;&gt;&lt;/i&gt;&lt;/span&gt;</span><br><span class="line">  &lt;/p&gt;</span><br><span class="line">  &lt;p&gt;&lt;span&gt;许可协议:&lt;/span&gt;&lt;i class=&quot;fa fa-creative-commons&quot;&gt;&lt;/i&gt; &lt;a rel=&quot;license&quot; href=&quot;https://creativecommons.org/licenses/by-nc-nd/4.0/&quot; target=&quot;_blank&quot; title=&quot;Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)&quot;&gt;署名-非商业性使用-禁止演绎 4.0 国际&lt;/a&gt; 转载请保留原文链接及作者。&lt;/p&gt;  </span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;script&gt; </span><br><span class="line">    var clipboard = new Clipboard(&#x27;.fa-clipboard&#x27;);</span><br><span class="line">    clipboard.on(&#x27;success&#x27;, $(function()&#123;</span><br><span class="line">      $(&quot;.fa-clipboard&quot;).click(function()&#123;</span><br><span class="line">        swal(&#123;   </span><br><span class="line">          title: &quot;&quot;,   </span><br><span class="line">          text: &#x27;复制成功&#x27;,   </span><br><span class="line">          html: false,</span><br><span class="line">          timer: 500,   </span><br><span class="line">          showConfirmButton: false</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;));  </span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-
-<p>其中绿色部分代码是实现效果的代码。这之中我们修改<code>href</code>的属性对应自己的<strong>仓库信息</strong>和<strong>文章信息</strong>即可。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>[1] <a target="_blank" rel="noopener" href="http://moxfive.xyz/2016/01/10/hexo-post-version-control/">关联 GitHub, 让 Hexo 支持查看文章更新历史</a><br>[2] <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/variables.html">hexo变量</a><br>[3] <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/93170e7413e9">https://www.jianshu.com/p/93170e7413e9</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/some-linux-usage-record.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ongoing">
-      <meta itemprop="description" content="Good cooking takes time.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ongoing's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/some-linux-usage-record.html" class="post-title-link" itemprop="url">Some linux usage record</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-05-03 23:10:08" itemprop="dateCreated datePublished" datetime="2020-05-03T23:10:08+08:00">2020-05-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Fundamental/" itemprop="url" rel="index"><span itemprop="name">Fundamental</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>记录自己在使用linux中渐渐使用的命令和一些方法。</p>
-<hr>
-<!-- toc -->
-
-<hr>
-<ol>
-<li><p>在一个终端中打开另一个窗口</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctrl + shift + t</span><br></pre></td></tr></table></figure></li>
-<li><p>回到上一次目录</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd -</span><br></pre></td></tr></table></figure></li>
-<li><p>列出当前登录用户</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w</span><br></pre></td></tr></table></figure></li>
-<li><p>Linux进出sudo的方法</p>
-<p> 进入<code>sudo</code>mode: <code>sudo -i</code><br> 退出<code>sudo</code>mode: <code>ctrl + d</code></p>
-</li>
-<li><p>grep(general regular expression print)<br><code>ls | grep &quot;linux&quot;</code>: List file that its name includes string “linux”.</p>
-</li>
-<li><p>Clear commands history<br><code>history -c</code></p>
-</li>
-<li><p>终端锁定与退出锁定(终端无法输入的假死问题)<a target="_blank" rel="noopener" href="https://www.cnblogs.com/guochaoxxl/p/10428991.html">^1</a></p>
-</li>
-</ol>
-<ul>
-<li>终端锁定<br>  <code>ctrl + s</code></li>
-<li>退出锁定<br>  <code>ctrl + q</code></li>
-</ul>
-<ol start="8">
-<li>File permission</li>
-</ol>
-<ul>
-<li><code>chmod</code><br>  Change mode.<br>  10number: <code>d</code>(directory) or <code>-</code>(that represents file)<br>  Permission:<pre><code>- `r`: (100)&lt;sub&gt;2&lt;/sub&gt; //4
-- `w`: (010)&lt;sub&gt;2&lt;/sub&gt; //2
-- `x`: (001)&lt;sub&gt;2&lt;/sub&gt; //1
-</code></pre>
-  eg. <code>chmod 777 file/dir</code>  // Give file/dir rwx permission.</li>
-<li><code>chgrp</code><br>  Change file group.</li>
-<li><code>chown</code><br>  Change file owner.</li>
-</ul>
-<ol start="9">
-<li><p>Change font size in terminal</p>
-<p> Change bigger: <code>ctrl -</code><br> Change smaller: <code>ctrl +</code></p>
-</li>
-<li><p>Rename</p>
-<p>将test.jpg改成test1.jpg</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv &#123;<span class="built_in">test</span>,test1&#125;.jpg</span><br></pre></td></tr></table></figure></li>
-<li><p>在linux中跳出很深的文件夹，如果没有记住文件路径，就要一层层<code>cd</code>过去，浪费很多的时间。</p>
-<p>解决方法1<br>在<code>/etc/profile.d/</code>目录下新建例如<code>dd.sh</code>文件，文件内容如下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> dd=<span class="string">&#x27;cd /media/folder1/folder2/.../&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>接下来保存退出</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> dd.sh</span><br></pre></td></tr></table></figure>
-<p>效果: 在命令行中输入<code>dd</code>即可实现挑入指定目录。<br>并且重启之后在命令行中依然生效。</p>
-<p>解决方法2<br>在<code>~/.bashrc</code>中添加</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> dd=<span class="string">&#x27;cd /media/folder1/folder2/.../&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>也可以有同样的效果。</p>
-</li>
-<li><p>Linux光标移动</p>
-<p><code>ctrl + a</code>: 行首<br><code>ctrl + e</code>: 行尾</p>
-<p><code>ctrl + f</code>: 光标右移<br><code>ctrl + b</code>: 光标左移</p>
-<p><code>esc + f</code>: 右移一个单词<br><code>esc + b</code>: 左移一个单词</p>
-</li>
-<li><p>Linux <code>mv</code><br>功能<br>(1) 修改名称<br>(2) 移动文件</p>
-</li>
-<li><p>Bash<br>(1) 注释: <code>#</code><br>(2) <code>#!/bin/bash</code>的意义<br>以<code>#</code>代表是个注释，但是<code>#!</code>并不是注释了，它用来指明这个脚本所需要的<code>Shell</code><br>(3) shell变量类型<br>变量类型只有字符串</p>
-</li>
-<li><p>caps -&gt; ctrl(reference 32)</p>
-</li>
-<li><p>Download video in CLI<br>(1) you-get<br>(2)youtube_dl</p>
-</li>
-<li><p>du(disk usage)</p>
-</li>
-<li><p><code>ctrl + u</code>: 从光标处删除文本直到行首</p>
-</li>
-<li><p><code>ctrl + k</code>: 从光标处删除文本直到行尾</p>
-</li>
-<li><p><code>alt + f</code>: 向后一个单词</p>
-</li>
-<li><p><code>alt + b</code>: 向前一个单词</p>
-</li>
-<li><p>重复使用上一个命令: <code>!!</code></p>
-</li>
-<li><p><code>dstat</code><br>View the net speed in late 10 seconds and other functions.</p>
-</li>
-<li><p>Symbolic links</p>
-</li>
-<li><p>I/O redirection</p>
-<blockquote>
-<p>I/O redirection allows us to change where output goes and where input comes from. Normally, output goes to the screen and input comes from the keyboard, but with I/O redirection we can change that.</p>
-</blockquote>
-</li>
-<li><p>The Letter-Based Method</p>
-<blockquote>
-<p>In addition to the method described above there is a second way to change permissions. Chmod uses either the hexadecimal representation of the permissions or a letter-based representation. The letter-based representation is [ugoa][+-][rwx]. This is one of the letters u (user=file owner), g (group), o (others), a (all users, groups and others); followed by + or - to add or remove permissions; and then the symbolic representation of the permissions in the form of r(read) w(write) x(execute). To extend Write permissions to all for the file “file.txt”,</p>
-</blockquote>
-<p>For example, you would type:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod a+w file.txt</span><br></pre></td></tr></table></figure></li>
-<li><p><code>uptime</code><br>Tell how long the system has been running.</p>
-</li>
-<li><p>Change user</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su [username]</span><br></pre></td></tr></table></figure>
-<p>退出此用户: <code>exit</code></p>
-</li>
-<li><p>Add user</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">useradd [username]</span><br><span class="line">passwd [username]</span><br></pre></td></tr></table></figure></li>
-<li><p>Delete user</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">userdel [-r] [username]</span><br></pre></td></tr></table></figure>
-<p>-r: remove the home dir of [username]</p>
-</li>
-<li><p>Print current effective user</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whoami</span><br></pre></td></tr></table></figure></li>
-<li><p>linux将cpas-&gt;ctrl</p>
-<p>(1) Edit <code>/etc/default/keyboard</code></p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># KEYBOARD CONFIGURATION FILE</span><br><span class="line"></span><br><span class="line"># Consult the keyboard(5) manual page.</span><br><span class="line"></span><br><span class="line">XKBMODEL=&quot;pc105&quot;</span><br><span class="line">XKBLAYOUT=&quot;cn&quot;</span><br><span class="line">XKBVARIANT=&quot;&quot;</span><br><span class="line"><span class="deletion">- XKBOPTIONS=&quot;&quot;</span></span><br><span class="line"><span class="addition">+ XKBOPTIONS=&quot;ctrl:nocaps&quot;</span></span><br><span class="line"></span><br><span class="line">BACKSPACE=&quot;guess&quot;</span><br></pre></td></tr></table></figure>
-<p>(2) 运行如下命令，设置生效</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg-reconfigure keyboard-configuration</span><br></pre></td></tr></table></figure></li>
-<li><p>cp 排除某个目录<br>例. 有目录b, c, 复制到<code>/f</code>下，排除b</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp -r !(b) /f</span><br></pre></td></tr></table></figure></li>
-<li><p>在linux下弹出u盘命令（假设u盘设备是sdb1）</p>
-</li>
-</ol>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo eject -s /dev/sdb1</span><br></pre></td></tr></table></figure>
-
-<ol start="35">
-<li>ccat</li>
-</ol>
-<p>  内置的<code>cat</code>查看命令没有语法高亮，但是使用<code>ccat</code>可以有这个作用。</p>
-<p>  下载二进制代码文件<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/jingweno/ccat/releases/download/v1.1.0/linux-amd64-1.1.0.tar.gz</span><br></pre></td></tr></table></figure><br>  解压<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar xfz linux-amd64-1.1.0.tar.gz</span><br></pre></td></tr></table></figure><br>  将<code>ccat</code>文件复制到<code>/usr/local/bin/</code>文件夹下<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp linux-amd64-1.1.0/ccat /usr/<span class="built_in">local</span>/bin/</span><br></pre></td></tr></table></figure><br>  使用<code>ccat</code>命令查看文件会发现文件显示变成彩色的了。</p>
-<ol start="36">
-<li>ssh &amp; public key</li>
-</ol>
-<p>  (1) 本地生成公钥<br>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure><br>  之后全部默认回车即可。</p>
-<p>  (2) 将本地公钥<code>~/.ssh/id_rsa.pub</code>复制到远程主机<code>~/.ssh/autoorized_keys</code>文件中，如果目录和文件皆不存在，直接创建新的文件。<br>  (3) 重启ssh服务<br>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service ssh restart</span><br></pre></td></tr></table></figure><br>  之后与主机相连就不必再输入密码。</p>
-<ol start="37">
-<li><code>ls</code>的<code>-S</code>选项<blockquote>
-<p>sort  by  WORD instead of name: none (-U), size (-S), time (-t), version (-v), extension (-X)</p>
-</blockquote>
-</li>
-</ol>
-<p>  准确来说就是将文件从大到小进行排序。</p>
-<ol start="38">
-<li><code>tab</code></li>
-</ol>
-<p>  (1) 命令补全: tab接在一串指令的第一个字的后面<br>  (2) 文件补齐: tab接在一串指令的第二个字的后面</p>
-<ol start="39">
-<li><code>find</code></li>
-</ol>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find dir_name -name filename_to_be_searched</span><br></pre></td></tr></table></figure>
-<ol start="40">
-<li>在 bash 里，使用 <code>Ctrl-R</code> 而不是上下光标键来查找历史命令。</li>
-<li>使用 <code>man ascii</code> 来查看 ASCII 表。</li>
-<li>命令行注释命令: <code>alt + #</code></li>
-</ol>
-<hr>
-<h3 id="Linux各目录"><a href="#Linux各目录" class="headerlink" title="Linux各目录"></a>Linux各目录</h3><h4 id="etc"><a href="#etc" class="headerlink" title="etc"></a>etc</h4><ol>
-<li>含义: and so on</li>
-<li>功能: 存放零零碎碎的东西</li>
-</ol>
-<h3 id="linux各种解压命令汇总"><a href="#linux各种解压命令汇总" class="headerlink" title="linux各种解压命令汇总"></a>linux各种解压命令汇总</h3><h4 id="tar-xz"><a href="#tar-xz" class="headerlink" title=".tar.xz"></a><code>.tar.xz</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$xz -d filename.tar.xz</span><br><span class="line">$tar -xvf filename.tar</span><br></pre></td></tr></table></figure>
-<h4 id="tar-gz"><a href="#tar-gz" class="headerlink" title="tar.gz"></a><code>tar.gz</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf xxx.tar.gz</span><br></pre></td></tr></table></figure>
-<h4 id="rar"><a href="#rar" class="headerlink" title=".rar"></a><code>.rar</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unrar e file.rar # e: 解压压缩包中的全部问价至文件夹</span><br></pre></td></tr></table></figure>
-
-<p>今天因要下载win10 iso文件，奈何文件太大，只好利用winrar软件将4g的iso文件分成了4个1g的小文件，转到linux下后，直接将4个小文件提取了出来，但问题是4个提取出来的文件并没有合并在一起，这可不是我想要的结果，百度一查，赶紧在linux安装了rar,只需用<code>rar e name.part1.rar</code>，提取后的文件就是合并后的文件了。</p>
-<hr>
-<h3 id="Problems"><a href="#Problems" class="headerlink" title="Problems"></a>Problems</h3><h4 id="在ubuntu19-01上安装curl出现问题curl-Depends-libcurl4-7-58-0-2ubuntu3-8-but-7-65-3-1ubuntu3-is-to-be-installed"><a href="#在ubuntu19-01上安装curl出现问题curl-Depends-libcurl4-7-58-0-2ubuntu3-8-but-7-65-3-1ubuntu3-is-to-be-installed" class="headerlink" title="在ubuntu19.01上安装curl出现问题curl : Depends: libcurl4 (= 7.58.0-2ubuntu3.8) but 7.65.3-1ubuntu3 is to be installed"></a>在ubuntu19.01上安装curl出现问题curl : Depends: libcurl4 (= 7.58.0-2ubuntu3.8) but 7.65.3-1ubuntu3 is to be installed</h4><p>问题如下</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The following packages have unmet dependencies:</span><br><span class="line">curl : Depends: libcurl4 (= 7.58.0-2ubuntu3.8) but 7.65.3-1ubuntu3 is to be installed</span><br><span class="line">E: Unable to correct problems, you have held broken packages.</span><br></pre></td></tr></table></figure>
-<p>解决方法:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get purge libcurl4</span><br></pre></td></tr></table></figure>
-<p>接下来就可以正常安装<code>curl</code>了。</p>
-<h4 id="linux升级gdb"><a href="#linux升级gdb" class="headerlink" title="linux升级gdb"></a>linux升级gdb</h4><p>gdb官网下载太慢，<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/gnu/gdb/">清华大学镜像站</a>可以下载</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/git-knowledge.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1423,6 +1099,172 @@ A process that matchs rows from the first table and the second table with<br>hav
 </blockquote>
 <p>然后使用了这种方法就出了问题，<code>hexo g</code>自动生成的文件在<code>public/blog</code>，这个不需改变<br>这个问题先放在这里。<br><strong>参考文档</strong></p>
 <p>[1] <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/baab04284923">怎么去备份你的Hexo博客</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/optimize-blog-article-link.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ongoing">
+      <meta itemprop="description" content="Good cooking takes time.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ongoing's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/optimize-blog-article-link.html" class="post-title-link" itemprop="url">博客文章链接优化</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-04-09 12:07:42" itemprop="dateCreated datePublished" datetime="2020-04-09T12:07:42+08:00">2020-04-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><strong>自定义文章链接</strong></p>
+<p>使用插件：<a target="_blank" rel="noopener" href="https://github.com/rozbo/hexo-abbrlink">hexo-abbrlink</a>，安装:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-abbrlink --save</span><br></pre></td></tr></table></figure>
+<p>修改<code>站点配置文件</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">permalink: :abbrlink/</span><br></pre></td></tr></table></figure>
+<p>之后在自己的博客文章开头中加入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">abbrlink: seourl</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>此处<code>seouel</code>填写自己的链接名称<br>当然可以看官方文档增加其它的链接字段，比如在链接中自动生成日期加入，等等。</p>
+<p>在生成的文章链接中添加日期，例如下面这种样式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">your_domain/posts/2020/04/diff-synatx-in-code-blocks.html</span><br></pre></td></tr></table></figure>
+<p>需要在<code>站点配置文件</code>中配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">permalink: posts/:year/:month/:abbrlink.html</span><br></pre></td></tr></table></figure>
+<p>并且这样做后生成的图片也不会乱，不必再次进行整理。</p>
+<p><strong>参考</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.zuiyu1818.cn/posts/NexT_seourl.html">博客文章链接优化</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/some-problems-when-using-hexo.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ongoing">
+      <meta itemprop="description" content="Good cooking takes time.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ongoing's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/some-problems-when-using-hexo.html" class="post-title-link" itemprop="url">hexo出现的问题</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-04-08 12:41:14" itemprop="dateCreated datePublished" datetime="2020-04-08T12:41:14+08:00">2020-04-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <!-- toc -->
+
+<hr>
+<h2 id="在next主题中点击tags出现“Cannot-GET-tags-20-”"><a href="#在next主题中点击tags出现“Cannot-GET-tags-20-”" class="headerlink" title="在next主题中点击tags出现“Cannot GET /tags/%20/”"></a>在next主题中点击tags出现“Cannot GET /tags/%20/”</h2><p>%20是网页地址的空格符。<br>在<code>主题配置文件</code>搜索<code>menu</code>后将<code>||</code>前的空格删除即可。</p>
+<h2 id="hexo不能使用hexo-s命令"><a href="#hexo不能使用hexo-s命令" class="headerlink" title="hexo不能使用hexo s命令"></a>hexo不能使用hexo s命令</h2><p>原因：未安装<code>hexo-server</code><br>安装：<code>npm install hexo-server --save</code></p>
 
       
     </div>
