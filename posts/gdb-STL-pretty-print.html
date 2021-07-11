@@ -23,17 +23,17 @@
   <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.ongoing.ink","root":"/","images":"/images","scheme":"Mist","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"remove","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="GDB: not easy to learn, but easy to use:)  gdb在打印普通变量时会有很好的作用，但是有时想要打印stl中的容器时，返回i的信息却并不怎么友好。 例如在打印一个map&lt;int, int&gt; mp;中的变量mp时，在gdb中使用print mp返回的是如下的结果  这样的信息很杂，而一般在debug中重要的几点就是  容器中元素个数 容器中元素值">
+<meta name="description" content="GDB: not easy to learn, but easy to use:)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="gdb STL pretty printer">
 <meta property="og:url" content="https://www.ongoing.ink/posts/gdb-STL-pretty-print.html">
 <meta property="og:site_name" content="ongoing&#39;s blog">
-<meta property="og:description" content="GDB: not easy to learn, but easy to use:)  gdb在打印普通变量时会有很好的作用，但是有时想要打印stl中的容器时，返回i的信息却并不怎么友好。 例如在打印一个map&lt;int, int&gt; mp;中的变量mp时，在gdb中使用print mp返回的是如下的结果  这样的信息很杂，而一般在debug中重要的几点就是  容器中元素个数 容器中元素值">
+<meta property="og:description" content="GDB: not easy to learn, but easy to use:)">
 <meta property="og:locale">
 <meta property="og:image" content="https://www.ongoing.ink/posts/gdb-STL-pretty-print/pretty_printer_1.png">
 <meta property="og:image" content="https://www.ongoing.ink/posts/gdb-STL-pretty-print/pretty_printer_2.png">
 <meta property="article:published_time" content="2020-11-05T10:19:44.000Z">
-<meta property="article:modified_time" content="2021-07-11T06:43:58.868Z">
+<meta property="article:modified_time" content="2021-07-11T06:52:56.065Z">
 <meta property="article:author" content="ongoing">
 <meta property="article:tag" content="gdb">
 <meta name="twitter:card" content="summary">
@@ -182,6 +182,8 @@
         <blockquote>
 <p>GDB: not easy to learn, but easy to use<br>:)</p>
 </blockquote>
+<span id="more"></span>
+
 <p>gdb在打印普通变量时会有很好的作用，但是有时想要打印stl中的容器时，返回i的信息却并不怎么友好。</p>
 <p>例如在打印一个<code>map&lt;int, int&gt; mp;</code>中的变量<code>mp</code>时，在gdb中使用<code>print mp</code>返回的是如下的结果</p>
 <p><img data-src="gdb-STL-pretty-print/pretty_printer_1.png" alt="image-20201105183207331"></p>

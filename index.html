@@ -168,45 +168,14 @@
           <blockquote>
 <p>GDB: not easy to learn, but easy to use<br>:)</p>
 </blockquote>
-<p>gdb在打印普通变量时会有很好的作用，但是有时想要打印stl中的容器时，返回i的信息却并不怎么友好。</p>
-<p>例如在打印一个<code>map&lt;int, int&gt; mp;</code>中的变量<code>mp</code>时，在gdb中使用<code>print mp</code>返回的是如下的结果</p>
-<p><img data-src="gdb-STL-pretty-print/pretty_printer_1.png" alt="image-20201105183207331"></p>
-<p>这样的信息很杂，而一般在debug中重要的几点就是</p>
-<ol>
-<li>容器中元素个数</li>
-<li>容器中元素值</li>
-<li>容器元素类型</li>
-<li>…</li>
-</ol>
-<p>而上面这几项在返回的信息中很难寻找。</p>
-<p>经过一番搜索，我发现在gdb中可以使用python语言脚本，以及gdb内置的有一个名为<code>pretty printer</code>的东西，这个东西可以使得在gdb中打印容器时返回的信息是<strong>非常友好</strong>的！</p>
-<p>这是一篇关于gdb pretty printer的 <a target="_blank" rel="noopener" href="https://sourceware.org/gdb/wiki/STLSupport">GDB wiki STL support </a>，里边有三种方式，这里展示的是第一种方法。</p>
-<p>下面的是具体的实现步骤，经过这些步骤我们再次在gdb中打印容器时，返回的就不是一大堆杂乱的信息，而是一些重要的信息，如下</p>
-<p><img data-src="gdb-STL-pretty-print/pretty_printer_2.png" alt="image-20201105183935497"></p>
-<p>对不对，这样的信息是不是就清晰明了的许多呢？如同在ide中debug一样，并且不用使用鼠标点来点去，非常方便。</p>
-<ol>
-<li><p>使用<code>SVN</code>下载一个官方仓库</p>
-<ol>
-<li><p>先自己创建一个文件夹存放这个仓库，例如存放在<code>~/.gdb</code>下</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/.gdb</span><br></pre></td></tr></table></figure></li>
-<li><p>在本文件夹下执行如下命令<br><em>如果没有svn，则需要先安装 Install svn(ubuntu):</em> <code>sudo apt-get install subversion</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn co svn://gcc.gnu.org/svn/gcc/trunk/libstdc++-v3/python</span><br></pre></td></tr></table></figure>
-
-<p>这条命令执行完毕后会发现<code>~/.gdb</code>目录下多了一个<code>python</code>文件夹。</p>
-</li>
-</ol>
-</li>
-</ol>
-<ol start="2">
-<li><p>在<code>~/.gdbinit</code>文件中书写如下内容(<code>.gdbinit</code>文件如不存在则自行创建)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">python</span><br><span class="line">import sys</span><br><span class="line">sys.path.insert(0, <span class="string">&#x27;python文件夹的绝对路径&#x27;</span>)</span><br><span class="line">from libstdcxx.v6.printers import register_libstdcxx_printers</span><br><span class="line">register_libstdcxx_printers (None)</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> <span class="built_in">print</span> pretty on <span class="comment"># 使格式更加美观</span></span><br></pre></td></tr></table></figure>
-
-<p><em>注：第三行中的路径需要根据自己clone下的python自行设定，例如如果根据我前面设定的就是<code>/home/你的用户名/.gdb/python</code></em></p>
-</li>
-</ol>
-<p>经过这两步后重新启动gdb即可。</p>
-<p>当然也可以自己书写python脚本对gdb进行各种设置，这样会更加贴切自己的使用体验。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/gdb-STL-pretty-print.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
