@@ -23,19 +23,19 @@
   <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.ongoing.ink","root":"/","images":"/images","scheme":"Mist","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"remove","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="关于《C和指针》这本书的读书记录。 《C和指针》1th 快速上手 数组名  1int arr[4];   假设int型变量占4 Byte，那么这个声明，编译器会给c预留内存空间4×4 Byte，并且 数组名代表着指向数组第一个元素的指针。  字符串常量存储在常量区，常量区存储的内容是不能被修改的。  指针指定一个存储与计算机内存中的值的地址。  每个 C 程序必须有一个 main 函数，因为它是程">
+<meta name="description" content="关于《C和指针》这本书的读书记录。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C and pointer reading notes">
 <meta property="og:url" content="https://www.ongoing.ink/posts/C-and-pointer-reading-notes.html">
 <meta property="og:site_name" content="ongoing&#39;s blog">
-<meta property="og:description" content="关于《C和指针》这本书的读书记录。 《C和指针》1th 快速上手 数组名  1int arr[4];   假设int型变量占4 Byte，那么这个声明，编译器会给c预留内存空间4×4 Byte，并且 数组名代表着指向数组第一个元素的指针。  字符串常量存储在常量区，常量区存储的内容是不能被修改的。  指针指定一个存储与计算机内存中的值的地址。  每个 C 程序必须有一个 main 函数，因为它是程">
+<meta property="og:description" content="关于《C和指针》这本书的读书记录。">
 <meta property="og:locale">
 <meta property="og:image" content="https://www.ongoing.ink/posts/C-and-pointer-reading-notes/variable_addr.png">
 <meta property="og:image" content="https://www.ongoing.ink/posts/C-and-pointer-reading-notes/pointer_1.png">
 <meta property="og:image" content="https://www.ongoing.ink/posts/C-and-pointer-reading-notes/pointer_2.png">
 <meta property="og:image" content="https://www.ongoing.ink/posts/C-and-pointer-reading-notes/pointer_to_pointer.png">
 <meta property="article:published_time" content="2020-10-01T03:02:57.000Z">
-<meta property="article:modified_time" content="2021-07-11T07:14:39.611Z">
+<meta property="article:modified_time" content="2021-07-11T07:20:45.883Z">
 <meta property="article:author" content="ongoing">
 <meta property="article:tag" content="C">
 <meta name="twitter:card" content="summary">
@@ -182,6 +182,9 @@
     
     <div class="post-body" itemprop="articleBody">
         <p>关于《C和指针》这本书的读书记录。</p>
+<span id="more"></span>
+
+
 <h3 id="《C和指针》"><a href="#《C和指针》" class="headerlink" title="《C和指针》"></a>《C和指针》</h3><h4 id="1th-快速上手"><a href="#1th-快速上手" class="headerlink" title="1th 快速上手"></a>1th 快速上手</h4><ol>
 <li><p>数组名</p>
  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> arr[<span class="number">4</span>];</span><br></pre></td></tr></table></figure>

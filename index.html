@@ -248,49 +248,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>今天在做面试题目的时候遇到了一道题：使用两个栈来模拟一个队列，栈1容量为m,栈2容量为n,且m&gt;n,<br>请问这个队列的最大容量是多少？</p>
-<p><img data-src="the-max-capacity-of-queue-that-is-simulated-by-two-stacks/capacity_1.png" alt="image-20201103200116463"></p>
-<p>初始状态: </p>
-<ul>
-<li>$S1.capacity() = m$</li>
-<li>$S2.capacity() = n$</li>
-<li>$Q.size() = 0$</li>
-</ul>
-<p>假设$S1$用作队列入队的存储空间，$S2$用作队列出对的缓存空间。</p>
-<ol>
-<li><p>假设现在队列Q进入$n$个元素，如下面这个状态</p>
-<p><img data-src="the-max-capacity-of-queue-that-is-simulated-by-two-stacks/capacity_2.png" alt="image-20201103200442800"></p>
-</li>
-<li><p>对应的，会在S1入栈$n$个元素</p>
-<p><img data-src="the-max-capacity-of-queue-that-is-simulated-by-two-stacks/capacity_3.png" alt="image-20201103200907645"></p>
-</li>
-<li><p>将S1中的元素全部出栈，这n个元素被放入栈S2中</p>
-<p><img data-src="the-max-capacity-of-queue-that-is-simulated-by-two-stacks/capacity_4.png" alt="image-20201103201054707"></p>
-</li>
-<li><p>假设现在再向队列Q中推入$n+1$个元素</p>
-<p><img data-src="the-max-capacity-of-queue-that-is-simulated-by-two-stacks/capacity_5.png" alt="image-20201103202002269"></p>
-</li>
-<li><p>对应的，向栈S1中入栈$n+1$个元素</p>
-<p><img data-src="the-max-capacity-of-queue-that-is-simulated-by-two-stacks/capacity_6.png" alt="image-20201103202138704"></p>
-</li>
-<li><p>此时进行出队操作，$E1\sim En$先出队列即：缓存栈S2中元素全部出栈</p>
-<p><img data-src="the-max-capacity-of-queue-that-is-simulated-by-two-stacks/capacity_7.png" alt="image-20201103202618941"></p>
-</li>
-<li><p>接下来继续出队</p>
-<ol>
-<li><p>先将S1中出栈n个元素到S2中</p>
-<p><img data-src="the-max-capacity-of-queue-that-is-simulated-by-two-stacks/capacity_8.png" alt="image-20201103203130423"></p>
-</li>
-<li><p>队列继续出栈</p>
-<ol>
-<li>$E_{n+1}$出队列，对应的栈$S1$出栈最后一个元素</li>
-<li>队列中元素En+2到E2n+1出队，对应栈S2出栈所有元素</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<p>从以上操作中可以看出两个栈模拟出的队列的最大容量为$\color{blue}{2n+1}$。再对队列入队的话，就不能得到正常出队序列了。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/the-max-capacity-of-queue-that-is-simulated-by-two-stacks.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -362,100 +327,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>写C或者C++程序时有时候发现出了问题，总是习惯于直接printf或者cout，如果观察的地方比较少，用这种方法还好，但是一旦需要观察的变量多了起来，就非常麻烦。写一大堆累赘的print语句很麻烦，而且会让自己的程序变得混乱。<br>知道gdb这个linux调试工具是很久之前的事情了，但是那个时候还是print流派（或者不想付出学习新事物的时间，觉得print还能应付）,但是现在因为需求的变化，在慢慢使用gdb的过程中，发现确实非常好用，也慢慢开始变得熟练了起来。</p>
-<!-- toc -->
-
-<hr>
-<h3 id="gdb的一些基本命令"><a href="#gdb的一些基本命令" class="headerlink" title="gdb的一些基本命令"></a>gdb的一些基本命令</h3><p>注意: <code>[]</code>中是可以省略输入的字母。</p>
-<ol>
-<li><p>设置断点：<code>b[reak] 行号</code></p>
-</li>
-<li><p>删除断点：<code>delete 断点id</code></p>
-</li>
-<li><p>删除所有断点: <code>delete</code></p>
-</li>
-<li><p>展示所有断点信息: <code>i[nfo] b[reakpoints]</code></p>
-</li>
-<li><p>注意想要使用gdb，在编译的时候需要在最后加上<code>-g</code>选项, 以便生成的程序中带有调试信息。</p>
-<p><code>gcc main.c -o main -g</code></p>
-</li>
-<li><p>运行程序: <code>r[un]</code></p>
-</li>
-<li><p>查看变量的值: <code>p[rint] 变量名</code></p>
-</li>
-<li><p>查看变量类型: <code>ptype 变量名</code></p>
-</li>
-<li><p>单步执行</p>
-<ol>
-<li><code>next</code> </li>
-<li><code>step</code><br>两者的区别是next遇到函数不会进入函数内部，step会执行到函数内部。</li>
-</ol>
-</li>
-<li><p>查看堆栈内容: <code>i[nfo] frame</code></p>
-</li>
-<li><p>查看栈帧： <code>backtrace</code></p>
-</li>
-<li><p>查看全局变量和静态变量：<code>info variables</code></p>
-</li>
-<li><p>查看当前stack frame局部变量:<code>info locals</code></p>
-</li>
-<li><p>查看当前stack frame参数：<code>info args</code></p>
-</li>
-<li><p>选取待debug文件: <code>file xxx</code></p>
-</li>
-<li><p>有时候debug跑过了我们想要的看的信息所在处，这个时候我们想要回退一下,gdb也有这个回退的功能:</p>
-</li>
-<li><p>run之后输入<code>record</code>命令启动记录回放</p>
-</li>
-<li><p>接下来就可以使用<code>reverse-next</code>…, 或者直接<code>rn</code></p>
-</li>
-<li><p>关闭进程记录回放: <code>reverse stop</code></p>
-</li>
-<li><p>执行到下一个断点: <code>continue</code>: resume execution and continue until a breakpoint is hit.</p>
-</li>
-</ol>
-<h3 id="gdb图形化界面"><a href="#gdb图形化界面" class="headerlink" title="gdb图形化界面"></a>gdb图形化界面</h3><h4 id="gdbtui"><a href="#gdbtui" class="headerlink" title="gdbtui"></a>gdbtui</h4><p>gdbtui是gdb自带的命令行界面。</p>
-<p>界面开启: <code>gdbtui -q 程序名</code></p>
-<p>默认情况下，GDB TUI 模式会显示 command 窗口和 source 窗口，如上图所示，还有其他窗口，如下列举的四个常用的窗口：</p>
-<p>（cmd）command 命令窗口，可以输入调试命令<br>（src）source 源代码窗口， 显示当前行、断点等信息<br>（asm）assembly 汇编代码窗口<br>（reg）register 寄存器窗口</p>
-<h4 id="cgdb"><a href="#cgdb" class="headerlink" title="cgdb"></a>cgdb</h4><ol>
-<li>比gdbtui更好的一点是对于源码会有高亮，而且界面更加光滑。</li>
-<li><img data-src="gdb-basic-usage-and-some-useful-gdb-ui/gdb_1.png" alt="image-20201018150646401"></li>
-</ol>
-<p>安装: <code>sudo apt-get install cgdb</code></p>
-<p>使用了vi的模式, 基本使用方法如下:</p>
-<ul>
-<li><code>esc</code>进入cgdb mode</li>
-<li><code>i</code>进入gdb mode</li>
-<li>在代码处窗口使用<code>空格</code>设置或取消断点</li>
-<li>调整窗口大小`:set winsplit=’style’</li>
-<li>退出<ul>
-<li><code>quit</code></li>
-<li><code>&lt;ctrl-d&gt;</code></li>
-</ul>
-</li>
-</ul>
-<p>在gdb中调试带有<code>scanf</code>语句时如同陷入了死循环，这个时候在cgdb中需要<br>    1. 按下<code>esc</code>后按下<code>T</code>，会出现一个新窗口，在这里面输入要输入的东西<br>    2. 然后再<code>esc</code>后<code>i</code>进入到<code>gdb mode</code>即可。</p>
-<h4 id="vim-gdb-best-of-all"><a href="#vim-gdb-best-of-all" class="headerlink" title="vim + gdb(best of all)"></a>vim + gdb(best of all)</h4><p>需要的环境:</p>
-<ul>
-<li>vim(v8.1+)</li>
-<li>gdb(v7.2+)</li>
-</ul>
-<p>这一篇是<a href="https://www.ongoing.ink/blog/posts/2020/10/install-gdb-version-9.2.html">安装gdb-9.2</a>的文章。</p>
-<p>这个用着的体验是三个中较好的一个，主要是窗口之间的联动很不错，刷新界面也很顺滑。</p>
-<center><i>(可放大观看)</i></center>
-
-<p><img data-src="gdb-basic-usage-and-some-useful-gdb-ui/vim_gdb.png" alt="vim_gdb"></p>
-<p>可以看到有三个窗口：</p>
-<ul>
-<li>源码窗口: 可以在源码窗口对应位置输入<code>:Break</code>打断点</li>
-<li>Debug窗口: 这里输入gdb命令进行各种查看</li>
-<li>I/O窗口: 当源码中有输入语句时，在这里进行输入</li>
-</ul>
-<h3 id="学习gdb的资源"><a href="#学习gdb的资源" class="headerlink" title="学习gdb的资源"></a>学习gdb的资源</h3><ol>
-<li><a target="_blank" rel="noopener" href="http://www.unknownroad.com/rtfm/gdbtut/">RMS’s gdb Debugger Tutorial</a>, 这个教程很简洁。</li>
-</ol>
-
+          <p>写C或者C++程序时有时候发现出了问题，总是习惯于直接printf或者cout，如果观察的地方比较少，用这种方法还好，但是一旦需要观察的变量多了起来，就非常麻烦。写一大堆累赘的print语句很麻烦，而且会让自己的程序变得混乱。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/gdb-basic-usage-and-some-useful-gdb-ui.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -528,35 +408,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>想要使用vim+gdb的模式，但是本机上的gdb为7.2, 需要手动编译最新的gdb9.2.</p>
-<h3 id="卸载本机gdb"><a href="#卸载本机gdb" class="headerlink" title="卸载本机gdb"></a>卸载本机gdb</h3><p>使用<code>rpm -qa  | grep gdb</code>检查，但是虽然本机上可以使用gdb，上一条指令却没有任何结果。最后使用<code>apt remove</code>删除了gdb。</p>
-<h3 id="安装新版本gdb"><a href="#安装新版本gdb" class="headerlink" title="安装新版本gdb"></a>安装新版本gdb</h3><ol>
-<li><p>在<a target="_blank" rel="noopener" href="http://ftp.gnu.org/gnu/gdb/">gun.org</a>上获取gdb-9.2.tar.gz</p>
-<p><img data-src="install-gdb-version-9.2/gnu_gdb.png" alt="image-20201021134212775"></p>
-<p><em>注：如果使用浏览器下载太慢，可以使用<a target="_blank" rel="noopener" href="https://github.com/subhra74/xdm"> xdm </a>进行下载</em></p>
-</li>
-<li><p>解压</p>
-</li>
-<li><p>进入解压后的文件夹<code>gdb-9.2</code></p>
-</li>
-<li><p>在本文件夹打开终端，如果此时直接执行<code>./configure</code>后不会有结果，需要根据提示新建一个文件夹</p>
-<p><img data-src="install-gdb-version-9.2/build_prob.png" alt="image-20201021134313587"></p>
-<ol>
-<li><p><code>mkdir build</code></p>
-</li>
-<li><p><code>cd build</code></p>
-</li>
-<li><p><code>pwd</code>得到<code>configure</code>文件的<code>绝对路径</code>后执行</p>
-</li>
-<li><p><code>make</code></p>
-<p>键入make后就需要等待一段时间了。</p>
-</li>
-</ol>
-</li>
-<li><p>最后一步: <code>sudo make install</code></p>
-</li>
-</ol>
-<p><img data-src="install-gdb-version-9.2/installed_gdb_info.png" alt="image-20201021134546535"></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/install-gdb-version-9.2.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -633,14 +492,15 @@
 <li>strlen </li>
 <li>strcpy </li>
 <li>strstr</li>
-<li>atoi</li>
-</ol>
-<p>代码如下：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;dbg.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;assert.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;limits.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 实现strlen,获取字符串长度</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">size_t</span>  <span class="title">strlen</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *s;</span><br><span class="line">    <span class="keyword">for</span> (s = str; *s; s++) &#123;&#125;</span><br><span class="line">    <span class="keyword">return</span> s - str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 实现strcpy, 字符串拷贝函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">strcpy</span><span class="params">(<span class="keyword">char</span> *to, <span class="keyword">const</span> <span class="keyword">char</span>* from)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">assert</span>(to != <span class="literal">NULL</span> &amp;&amp; from != <span class="literal">NULL</span>); <span class="comment">// 注意边界条件</span></span><br><span class="line">    <span class="keyword">char</span> *p = to;</span><br><span class="line">    <span class="keyword">while</span> ((*p++ = *from++) != <span class="string">&#x27;\0&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> to;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 实现strstr, 子串查找函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">str_str</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *str, <span class="keyword">const</span> <span class="keyword">char</span> *sub)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">assert</span>(str);</span><br><span class="line">    <span class="built_in">assert</span>(sub);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *str_p = str;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *start = str; <span class="comment">// start记录匹配成功的位置</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *sub_p = sub;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">char</span> *res = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">100</span>]; </span><br><span class="line">    <span class="keyword">while</span> (*start)</span><br><span class="line">    &#123;</span><br><span class="line">        str_p = start;</span><br><span class="line">        sub_p = sub;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 停止条件</span></span><br><span class="line">        <span class="comment">// 1. 其中一个已经到达&#x27;\0&#x27;</span></span><br><span class="line">        <span class="comment">// 2. 两个字符不相等</span></span><br><span class="line">        <span class="keyword">while</span> (*str_p &amp;&amp; *sub_p &amp;&amp; *str_p == *sub_p)</span><br><span class="line">        &#123;</span><br><span class="line">            str_p++;</span><br><span class="line">            sub_p++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (*sub_p == <span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//dbg(sub_p);</span></span><br><span class="line">            <span class="built_in">strcpy</span>(res, start);</span><br><span class="line">            <span class="comment">//dbg(res);</span></span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        start++; <span class="comment">// str指针后移</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment"> * 实现atoi(), 将一个字符串转化为整数</span></span><br><span class="line"><span class="comment"> * 边界数据：</span></span><br><span class="line"><span class="comment"> * 1. 带有正负号的</span></span><br><span class="line"><span class="comment"> * 2. 有空格的</span></span><br><span class="line"><span class="comment"> * 3. 不是数字的，如字母</span></span><br><span class="line"><span class="comment"> * 4. 溢出的数据</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">my_atoi</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> sign = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> len = <span class="built_in">strlen</span>(str);</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (str[i] == <span class="string">&#x27; &#x27;</span> &amp;&amp; i &lt; len) i++; <span class="comment">// 1. 去除左边空格</span></span><br><span class="line">    <span class="comment">// 2. 带有正负号</span></span><br><span class="line">    <span class="keyword">if</span> (str[i] == <span class="string">&#x27;+&#x27;</span>) i++; <span class="comment">// 正号直接过</span></span><br><span class="line">    <span class="keyword">if</span> (str[i] == <span class="string">&#x27;-&#x27;</span>)      <span class="comment">// 负号需要记录下来</span></span><br><span class="line">    &#123;</span><br><span class="line">        sign = <span class="number">-1</span>;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3. 转换</span></span><br><span class="line">    <span class="keyword">for</span> (; i &lt; len; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 无效检测</span></span><br><span class="line">        <span class="keyword">if</span> (str[i] &lt; <span class="string">&#x27;0&#x27;</span> || str[i] &gt; <span class="string">&#x27;9&#x27;</span>) </span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="comment">// 溢出检测</span></span><br><span class="line">        <span class="keyword">if</span> (num &gt; INT_MAX / <span class="number">10</span> || </span><br><span class="line">            (num == INT_MAX / <span class="number">10</span> &amp;&amp; (str[i] - <span class="string">&#x27;0&#x27;</span>) &gt; INT_MAX % <span class="number">10</span>))</span><br><span class="line">            <span class="keyword">return</span> sign == <span class="number">-1</span> ? INT_MIN : INT_MAX;</span><br><span class="line"></span><br><span class="line">        num = <span class="number">10</span> * num + (str[i] - <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sign * num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 1. strlen</span></span><br><span class="line">    <span class="keyword">char</span> str[<span class="number">20</span>] = <span class="string">&quot;helloworld&quot;</span>;</span><br><span class="line">    <span class="keyword">size_t</span> res = <span class="built_in">strlen</span>(str);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;length: &quot;</span> &lt;&lt; res &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;====================&quot;</span> &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2. strcpy</span></span><br><span class="line">    <span class="keyword">char</span> to[<span class="number">20</span>];</span><br><span class="line">    <span class="built_in">strcpy</span>(to, str);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;to: &quot;</span> &lt;&lt; to &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;====================&quot;</span> &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3. strstr</span></span><br><span class="line">    <span class="keyword">char</span> *sub = <span class="string">&quot;or&quot;</span>;</span><br><span class="line">    <span class="built_in">dbg</span>(<span class="built_in">str_str</span>(str, sub));</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;====================&quot;</span> &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 4. atoi</span></span><br><span class="line">    <span class="built_in">dbg</span>(<span class="built_in">my_atoi</span>(<span class="string">&quot;124153&quot;</span>));</span><br><span class="line">    <span class="built_in">dbg</span>(<span class="built_in">my_atoi</span>(<span class="string">&quot;-124153000000000000000000000000000&quot;</span>));</span><br><span class="line">    <span class="built_in">dbg</span>(<span class="built_in">my_atoi</span>(<span class="string">&quot;hhhh&quot;</span>));</span><br><span class="line">    <span class="built_in">dbg</span>(<span class="built_in">my_atoi</span>(<span class="string">&quot;     132&quot;</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果:<br><img data-src="implement-str-functions-strlen-strcpy-strstr-and-atoi/str.png" alt="str"></p>
-<p>前两个并不难，第三个稍微要考虑一些东西，最后一个需要注意边界情况。</p>
-
+<li>atoi</li></ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/implement-str-functions-strlen-strcpy-strstr-and-atoi.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -713,18 +573,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>冒泡排序，是一种交换类的排序，通过一系列交换动作完成。在排序过程中，第一个关键字和第二个比较，若第一个大，则交换，否则不交换；然后第二个与第三个比较，进行之前类似动作，知道最大的关键字到了序列的最后，则一趟冒泡排序完成。无序序列元素减一，有序序列元素加一。经过多次排序，然后无序序列变为有序序列。</p>
-<p><strong>算法结束条件</strong>: $\color{blue}{在一趟排序过程中没有发生关键字交换}$。</p>
-<p>下边是算法的具体实现:</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;dbg.h&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubbleSort</span><span class="params">(<span class="keyword">int</span> R[], <span class="keyword">int</span> len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> flag; <span class="comment">// 交换标志</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = len - <span class="number">1</span>; i &gt;= <span class="number">1</span>; i--) <span class="comment">// 无序序列范围</span></span><br><span class="line">    &#123;</span><br><span class="line">        flag = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i; j++) <span class="comment">// i不断减小，无序序列元素不断减少，i之后都是有序序列元素</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (R[j<span class="number">-1</span>] &gt; R[j]) <span class="comment">// 前一个关键字大于后一个，则交换</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> temp = R[j];</span><br><span class="line">                R[j] = R[j<span class="number">-1</span>];</span><br><span class="line">                R[j<span class="number">-1</span>] = temp;</span><br><span class="line">                </span><br><span class="line">                <span class="comment">// 若发生交换，将falg置为1</span></span><br><span class="line">                flag = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (flag == <span class="number">0</span>) <span class="comment">// 一趟排序中没有发生交换，则有序，算法结束。</span></span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> R[] = &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">18</span>, <span class="number">3</span>, <span class="number">28</span>, <span class="number">23</span>, <span class="number">38</span>, <span class="number">7</span>, <span class="number">8</span>&#125;;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Before sorting: &quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">dbg</span>(R);</span><br><span class="line">    <span class="keyword">int</span> len = <span class="built_in"><span class="keyword">sizeof</span></span>(R) / <span class="built_in"><span class="keyword">sizeof</span></span>(R[<span class="number">0</span>]);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;After sorting : &quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">bubbleSort</span>(R, len);</span><br><span class="line">    <span class="built_in">dbg</span>(R);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果:<br><img data-src="bubble-sort/bubble_sort.png" alt=" bubble_sort "></p>
-<p>时间复杂度</p>
-<ol>
-<li>最坏情况：序列逆序, 为$\color{blue}{O(n^2)}$。此时内外循环都要执行。</li>
-<li>最好情况：序列有序，为$\color{blue}{O(n)}$。此时if条件始终不成立，内层循环执行n-1次后算法结束。</li>
-</ol>
-<p>空间复杂度$\color{blue}{O(1)}$: 交换时使用的辅助变量temp，故为$O(1)$.</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/bubble-sort.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -797,17 +653,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>归并排序，将两个或两个以上的有序序列组合成一个新的有序序列。</p>
-<p>下边这种将被排序表分成$ \lceil n/2 \rceil$个长度为2或1的有序表，然后再两两归并。被称作<code>二路归并排序</code>。</p>
-<p>下边是<code>二路归并排序</code>代码:</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;dbg.h&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将[low, mid] 和 [mid+1, high]合成一个有序表</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> low, <span class="keyword">int</span> mid, <span class="keyword">int</span> high)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, j, k;</span><br><span class="line">    <span class="keyword">int</span> B[high] = &#123;<span class="number">0</span>&#125;; <span class="comment">// 定义辅助数组</span></span><br><span class="line">    <span class="keyword">for</span> (k = low; k &lt;= high; k++)</span><br><span class="line">        B[k] = A[k]; <span class="comment">// 将A中元素复制到辅助数组B中</span></span><br><span class="line">    <span class="keyword">for</span> (i = low, j = mid + <span class="number">1</span>, k = i; i &lt;= mid &amp;&amp; j &lt;= high; k++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (B[i] &lt;= B[j]) <span class="comment">// 将较小值复制到A中</span></span><br><span class="line">            A[k] = B[i++];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            A[k] = B[j++];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 对剩余的元素进行复制</span></span><br><span class="line">    <span class="keyword">while</span> (i &lt;= mid) A[k++] = B[i++];</span><br><span class="line">    <span class="keyword">while</span> (j &lt;= high) A[k++] = B[j++];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (low &lt; high)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = low + (high - low) / <span class="number">2</span>; <span class="comment">// 划分序列</span></span><br><span class="line">        <span class="built_in">mergeSort</span>(A, low, mid);           <span class="comment">// 对左子序列进行递归排序得到一个有序序列</span></span><br><span class="line">        <span class="built_in">mergeSort</span>(A, mid + <span class="number">1</span>, high);      <span class="comment">// 对右子序列进行递归排序得到一个有序序列</span></span><br><span class="line">        <span class="built_in">merge</span>(A, low, mid, high);         <span class="comment">// 对最终的两个有序序列进行归并</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> R[] = &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">53</span>, <span class="number">532</span>, <span class="number">52</span>, <span class="number">5</span>, <span class="number">67</span>, <span class="number">68</span>&#125;;</span><br><span class="line">    <span class="built_in">dbg</span>(R);</span><br><span class="line">    <span class="keyword">int</span> len = <span class="built_in"><span class="keyword">sizeof</span></span>(R) / <span class="built_in"><span class="keyword">sizeof</span></span>(R[<span class="number">0</span>]);</span><br><span class="line">    <span class="built_in">mergeSort</span>(R, <span class="number">0</span>, len - <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">dbg</span>(R);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果:<br><img data-src="merge-sort/merge_sort.png" alt="merge_sort"></p>
-<p>时间复杂度 $\color{blue}{O(nlog_2n)}$</p>
-<ol>
-<li>(函数mergeSort)一共要执行$O(log_2n)$次排序，类似二分查找</li>
-<li>(函数merge)每趟归并排序时间复杂度为$O(n)$</li>
-</ol>
-<p>空间复杂度$\color{blue}{O(n)}$: <code>merge()</code>中辅助数组B占用n个单元，故为$O(n)$.</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/merge-sort.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -880,18 +733,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>选择排序是交换排序的一种。它的思想是每一轮选出最小者交换到左侧。</p>
-<hr>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;dbg.h&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">selectSort</span><span class="params">(<span class="keyword">int</span> R[], <span class="keyword">int</span> len)</span></span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> R[] = &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">18</span>, <span class="number">3</span>, <span class="number">28</span>, <span class="number">23</span>, <span class="number">38</span>, <span class="number">7</span>, <span class="number">8</span>&#125;;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Before sorting: &quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">dbg</span>(R);</span><br><span class="line">    <span class="keyword">int</span> len = <span class="built_in"><span class="keyword">sizeof</span></span>(R) / <span class="built_in"><span class="keyword">sizeof</span></span>(R[<span class="number">0</span>]);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;After sorting : &quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">selectSort</span>(R, len);</span><br><span class="line">    <span class="built_in">dbg</span>(R);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">selectSort</span><span class="params">(<span class="keyword">int</span> R[], <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> minIndex = i;</span><br><span class="line">        <span class="comment">// 1. 找到元素i右侧最小值</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; n; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            minIndex = R[j] &lt; R[minIndex] ? j : minIndex;</span><br><span class="line">            <span class="comment">//if (R[j] &lt; R[minIndex])</span></span><br><span class="line">            <span class="comment">//    minIndex = j;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 2. 交换</span></span><br><span class="line">        <span class="keyword">int</span> temp = R[i];</span><br><span class="line">        R[i] = R[minIndex];</span><br><span class="line">        R[minIndex] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果:<br><img data-src="selection-sort/selectSort.png" alt="selectSort"></p>
-<p>时间复杂度: <code>O(n^2)</code></p>
-<ol>
-<li>每次寻找最小值再交换到左侧是<code>O(n)</code></li>
-<li>循环n-1轮是<code>O(n)</code></li>
-</ol>
-<p>空间复杂度: <code>O(1)</code></p>
-<p>注意：选择排序并不稳定，当序列中含有多个值相同的元素时，会使这些值相对次序发生变化。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/selection-sort.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -963,7 +812,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="面向对象特性-多态"><a href="#面向对象特性-多态" class="headerlink" title="面向对象特性 - 多态"></a>面向对象特性 - 多态</h2><p><img data-src="java-review-part-4-polymorphism/java_31.png" alt="image-20201008204326276"></p>
+          <span id="more"></span>
+
+
+
+<h2 id="面向对象特性-多态"><a href="#面向对象特性-多态" class="headerlink" title="面向对象特性 - 多态"></a>面向对象特性 - 多态</h2><p><img data-src="java-review-part-4-polymorphism/java_31.png" alt="image-20201008204326276"></p>
 <p>多态针对的是对象。</p>
 <p><img data-src="java-review-part-4-polymorphism/java_32.png" alt="image-20201008204931235"></p>
 <p>左父右子就是多态。</p>
@@ -1157,12 +1010,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>直接插入需要在有序数据一个个查找，找到插入位置，然后插入, 效率较慢;折半插入是使用<strong>二分查找</strong>在有序区间查找插入位置，减少查找量。</p>
-<p>总的来说，折半插入排序就是折半查找+插入排序。关于直接插入排序可以看这一篇<a href="https://www.ongoing.ink/blog/posts/2020/10/insertion-sort.html"> 文章 </a>。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;dbg.h&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">binaryInsetionSort</span><span class="params">(<span class="keyword">int</span> R[], <span class="keyword">int</span> len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 假设初始有序序列为R[0]</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> temp = R[i];</span><br><span class="line">        <span class="keyword">int</span> low = <span class="number">0</span>, high = i - <span class="number">1</span>; <span class="comment">// 设置折半查找范围</span></span><br><span class="line">        <span class="keyword">while</span> (low &lt;= high)        <span class="comment">// 开始在有序序列中进行折半查找,</span></span><br><span class="line">                                   <span class="comment">//low为最终查找到的插入位置</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = low + (high - low) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (R[mid] &gt; temp)</span><br><span class="line">                high = mid - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                low = mid + <span class="number">1</span>;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i - <span class="number">1</span>; j &gt;= low; j--)</span><br><span class="line">            R[j + <span class="number">1</span>] = R[j]; <span class="comment">// 后移，将插入位置空出来</span></span><br><span class="line">        R[low] = temp;       <span class="comment">// 插入元素</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> R[] = &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">18</span>, <span class="number">3</span>, <span class="number">28</span>, <span class="number">23</span>, <span class="number">38</span>, <span class="number">7</span>, <span class="number">8</span>&#125;;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Before sorting: &quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">dbg</span>(R);</span><br><span class="line">    <span class="keyword">int</span> len = <span class="built_in"><span class="keyword">sizeof</span></span>(R) / <span class="built_in"><span class="keyword">sizeof</span></span>(R[<span class="number">0</span>]);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;After sorting : &quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">binaryInsetionSort</span>(R, len);</span><br><span class="line">    <span class="built_in">dbg</span>(R);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果<br><img data-src="binary-insertion-sort/binary_insertion_sort.png" alt="binary_insertion_sort"></p>
-<p>时间复杂度: <code>O(n^2)</code></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/binary-insertion-sort.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 

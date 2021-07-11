@@ -23,17 +23,17 @@
   <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.ongoing.ink","root":"/","images":"/images","scheme":"Mist","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"remove","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="写C或者C++程序时有时候发现出了问题，总是习惯于直接printf或者cout，如果观察的地方比较少，用这种方法还好，但是一旦需要观察的变量多了起来，就非常麻烦。写一大堆累赘的print语句很麻烦，而且会让自己的程序变得混乱。知道gdb这个linux调试工具是很久之前的事情了，但是那个时候还是print流派（或者不想付出学习新事物的时间，觉得print还能应付）,但是现在因为需求的变化，在慢慢使用">
+<meta name="description" content="写C或者C++程序时有时候发现出了问题，总是习惯于直接printf或者cout，如果观察的地方比较少，用这种方法还好，但是一旦需要观察的变量多了起来，就非常麻烦。写一大堆累赘的print语句很麻烦，而且会让自己的程序变得混乱。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="gdb basic usage and some useful gdb ui">
 <meta property="og:url" content="https://www.ongoing.ink/posts/gdb-basic-usage-and-some-useful-gdb-ui.html">
 <meta property="og:site_name" content="ongoing&#39;s blog">
-<meta property="og:description" content="写C或者C++程序时有时候发现出了问题，总是习惯于直接printf或者cout，如果观察的地方比较少，用这种方法还好，但是一旦需要观察的变量多了起来，就非常麻烦。写一大堆累赘的print语句很麻烦，而且会让自己的程序变得混乱。知道gdb这个linux调试工具是很久之前的事情了，但是那个时候还是print流派（或者不想付出学习新事物的时间，觉得print还能应付）,但是现在因为需求的变化，在慢慢使用">
+<meta property="og:description" content="写C或者C++程序时有时候发现出了问题，总是习惯于直接printf或者cout，如果观察的地方比较少，用这种方法还好，但是一旦需要观察的变量多了起来，就非常麻烦。写一大堆累赘的print语句很麻烦，而且会让自己的程序变得混乱。">
 <meta property="og:locale">
 <meta property="og:image" content="https://www.ongoing.ink/posts/gdb-basic-usage-and-some-useful-gdb-ui/gdb_1.png">
 <meta property="og:image" content="https://www.ongoing.ink/posts/gdb-basic-usage-and-some-useful-gdb-ui/vim_gdb.png">
 <meta property="article:published_time" content="2020-10-24T12:31:14.000Z">
-<meta property="article:modified_time" content="2021-07-11T07:14:39.655Z">
+<meta property="article:modified_time" content="2021-07-11T07:20:45.927Z">
 <meta property="article:author" content="ongoing">
 <meta property="article:tag" content="gdb">
 <meta name="twitter:card" content="summary">
@@ -179,7 +179,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>写C或者C++程序时有时候发现出了问题，总是习惯于直接printf或者cout，如果观察的地方比较少，用这种方法还好，但是一旦需要观察的变量多了起来，就非常麻烦。写一大堆累赘的print语句很麻烦，而且会让自己的程序变得混乱。<br>知道gdb这个linux调试工具是很久之前的事情了，但是那个时候还是print流派（或者不想付出学习新事物的时间，觉得print还能应付）,但是现在因为需求的变化，在慢慢使用gdb的过程中，发现确实非常好用，也慢慢开始变得熟练了起来。</p>
+        <p>写C或者C++程序时有时候发现出了问题，总是习惯于直接printf或者cout，如果观察的地方比较少，用这种方法还好，但是一旦需要观察的变量多了起来，就非常麻烦。写一大堆累赘的print语句很麻烦，而且会让自己的程序变得混乱。</p>
+<span id="more"></span>
+
+<p>知道gdb这个linux调试工具是很久之前的事情了，但是那个时候还是print流派（或者不想付出学习新事物的时间，觉得print还能应付）,但是现在因为需求的变化，在慢慢使用gdb的过程中，发现确实非常好用，也慢慢开始变得熟练了起来。</p>
 <!-- toc -->
 
 <hr>

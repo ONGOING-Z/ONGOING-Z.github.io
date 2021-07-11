@@ -165,7 +165,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <!-- toc -->
+          <span id="more"></span>
+
+
+<!-- toc -->
 
 <h2 id="面向对象特征-继承性"><a href="#面向对象特征-继承性" class="headerlink" title="面向对象特征 - 继承性"></a>面向对象特征 - 继承性</h2><p>继承是多态的前提。</p>
 <p>继承解决的主要问题：<strong>共性抽取</strong>。</p>
@@ -415,7 +418,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <!-- toc -->
+          <span id="more"></span>
+
+
+<!-- toc -->
 
 <hr>
 <h3 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h3><ul>
@@ -762,130 +768,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>学习java时还是大二的时候，当时很多现在新的特性都没有学习，现在重新复习一下Java基础部分.</p>
-<!-- toc -->
-
-<hr>
-<h3 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h3><ol>
-<li>Javaa虚拟机本身不具备跨平台功能，每个操作系统下有不同版本的虚拟机。</li>
-</ol>
-<p><img data-src="java-review-part-1-basic/JVM.png" alt="image-20201006125133593"></p>
-<ol start="2">
-<li>java的方法就是类似C语言的函数</li>
-</ol>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">method_name</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    方法体;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>方法名称命名规则: 例如<code>小驼峰</code>。</li>
-<li>执行方法需要调用。</li>
-<li>方法定义的顺序无所谓。</li>
-<li>不能在一个方法内定义另一个方法，方法应该定义在类当中。</li>
-<li>方法：若干语句的功能集合。 </li>
-</ul>
-<ol start="3">
-<li><p>编译器常量优化<br>在给变量赋值时，如果右侧表达式都是常量，没有任何变量，那么编译器javac将会直接将若干个常量表达式计算得到结果。</p>
-<p> 例如：</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">short</span> res = <span class="number">3</span> + <span class="number">8</span>;</span><br></pre></td></tr></table></figure>
-<p> 编译之后就是</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">short</span> res = <span class="number">13</span>;</span><br></pre></td></tr></table></figure>
-<p> 注意：一旦表达式中有变量参与，就不能进行这种优化了。</p>
-</li>
-<li><p>overload(重载): 多个方法的名称相同，但是参数列表不一样。</p>
-</li>
-</ol>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.mine.day01.demo01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo03OverLoad</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(sum(<span class="number">10</span>, <span class="number">20</span>));</span><br><span class="line">        System.out.println(sum(<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a + b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> c)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a + b  + c;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> c, <span class="keyword">int</span> d)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a + b + c + d;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>好处：只需要记住一个方法名称，实现类似的多个功能。</li>
-<li>方法重载因素<ol>
-<li>参数 个数不同</li>
-<li>参数类型不同</li>
-<li>参数不同类型、且顺序不同</li>
-</ol>
-</li>
-<li>方法重载与下列因素无关<ol>
-<li>与参数名称无关</li>
-<li>与方法返回值类型无关</li>
-</ol>
-</li>
-<li>在调用<code>println</code>语句时，它就是进行了多种数据类型的重载形式。</li>
-</ul>
-<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><ol>
-<li><p>数组特点</p>
-<ul>
-<li>引用数据类型</li>
-<li>元素类型相同</li>
-<li><strong>数组长度在程序运行期间不可改变</strong></li>
-</ul>
-</li>
-<li><p>数组初始化</p>
-<ul>
-<li><p>动态初始化（指定长度）: <code>数据类型[] array_name = new 数据类型[数组长度];</code><br>  使用动态初始化数组时，其中元素将会自动拥有一个默认值。</p>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>int</td>
-<td>0</td>
-</tr>
-<tr>
-<td>float</td>
-<td>0.0</td>
-</tr>
-<tr>
-<td>char</td>
-<td>‘\u0000’</td>
-</tr>
-<tr>
-<td>boolean</td>
-<td>false</td>
-</tr>
-<tr>
-<td>引用</td>
-<td>null</td>
-</tr>
-</tbody></table>
-</li>
-<li><p>静态初始化（指定内容）</p>
-<ul>
-<li>标准格式:  <code>数据类型[] array_name = new 数据类型[] &#123;...&#125;</code></li>
-<li>虽然静态初始化没有直接指定长度，但是可以根据具体内容推算出来</li>
-<li>省略格式: <code>数据类型[] array_name = &#123;...&#125;</code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<p>获取数组长度: <code>arr.length</code></p>
-<h3 id="Java内存划分"><a href="#Java内存划分" class="headerlink" title="Java内存划分"></a>Java内存划分</h3><p>划分为5个部分（前三个重要）：</p>
-<ol>
-<li><p><strong>栈(Stack)</strong>: 存放的都是方法中的局部变量。方法的运行一定在栈中    </p>
-<p>一旦超出作用域，立刻从栈内存中消失</p>
-</li>
-<li><p><strong>堆(Heap)</strong>: <strong>凡是new出来的东西，都在堆当中</strong></p>
-<p>堆内存中的东西都有一个地址值，为16进制。</p>
-<p>堆内存中数据，都有默认值。规则:</p>
-<ul>
-<li>int: 0</li>
-<li>float: 0.0</li>
-<li>char: ‘\u0000’</li>
-<li>boolean: false</li>
-<li>引用类型: null</li>
-</ul>
-</li>
-<li><p><strong>方法区(Method Area)</strong>: 存放<code>.class</code>相关信息，包含方法的信息。</p>
-</li>
-<li><p>本地方法栈(Native Method Stack): 与操作系统相关</p>
-</li>
-<li><p>寄存器(pc Register): 与CPU相关</p>
-</li>
-</ol>
-<p><img data-src="java-review-part-1-basic/java_6.png" alt="image-20201006155912578"></p>
-<p>注：上图出自<code>黑马程序员 Java</code></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/java-review-part-1-basic.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -958,21 +848,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>插入排序，将被排序序列分为两个序列，一个是已经排序好的<code>有序序列</code>, 一个是未经排序的<code>无序序列</code>, 在排序的过程中，每次取一个无序序列元素到插入到有序序列中适当位置，直到所有无序序列元素插入到有序序列中去。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;dbg.h&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertSort</span><span class="params">(<span class="keyword">int</span> R[], <span class="keyword">int</span> len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp;</span><br><span class="line">    <span class="comment">// 初始将index = 0的值默认为有序序列</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        temp = R[i];</span><br><span class="line">        <span class="keyword">int</span> j = i - <span class="number">1</span>; <span class="comment">// 有序序列最后一个元素</span></span><br><span class="line">        <span class="keyword">while</span> (j &gt;= <span class="number">0</span> &amp;&amp; temp &lt; R[j])</span><br><span class="line">        &#123;</span><br><span class="line">            R[j + <span class="number">1</span>] = R[j]; <span class="comment">// 后移</span></span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        R[j + <span class="number">1</span>] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> R[] = &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">18</span>, <span class="number">3</span>, <span class="number">28</span>, <span class="number">23</span>, <span class="number">38</span>, <span class="number">7</span>, <span class="number">8</span>&#125;;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Before sorting: &quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">dbg</span>(R);</span><br><span class="line">    <span class="keyword">int</span> len = <span class="built_in"><span class="keyword">sizeof</span></span>(R) / <span class="built_in"><span class="keyword">sizeof</span></span>(R[<span class="number">0</span>]);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;After sorting : &quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">insertSort</span>(R, len);</span><br><span class="line">    <span class="built_in">dbg</span>(R);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果:</p>
-<p><img data-src="insertion-sort/insertion_sort.png" alt="insertion_sort"></p>
-<p>最坏情况：整个序列为<code>逆序</code></p>
-<ul>
-<li>内层循环<code>temp &lt; R[j]</code>始终成立</li>
-<li>时间复杂度: O(n<sup>2</sup>)</li>
-</ul>
-<p>最好情况：整个序列为<code>有序</code></p>
-<ul>
-<li>内层循环<code>temp &lt; R[j]</code>始终不成立,退化为单层循环</li>
-<li>时间复杂度: O(n)</li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/insertion-sort.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1047,16 +930,14 @@
           <p>预备知识: <a href="https://www.ongoing.ink/blog/posts/2020/10/Data-structure-heap.html">Heap</a></p>
 <p>堆排序，我们知道，堆的根结点值不是最大的(大顶堆)就是最小的(小顶堆)。 </p>
 <p>我们将一个无序序列调整为堆后，找到最大值或者最小值交换到序列的最前面或者是最后面，这样有序序列元素就增加一个，无序序列元素减少一个，对新的无序序列进行之前的操作，这样就实现了排序。</p>
-<p>$\color{blue}{ 堆排序适用场景 }$: 关键字很多的情况。典型例子是从10000个关键字中选取前10个最小的（或最大的)。例如面试题中经常问到的<code>海量数据问题</code>就可以使用堆来做。</p>
-<p>如果关键字比较少，则不推荐使用堆排序。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;dbg.h&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 大顶堆调整</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">adjustHeap</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> p, <span class="keyword">int</span> len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> curParent = a[p];  <span class="comment">// 当前父亲结点</span></span><br><span class="line">    <span class="keyword">int</span> child = <span class="number">2</span> * p + <span class="number">1</span>; <span class="comment">// 找到当前结点左孩子，并让child指向左孩子</span></span><br><span class="line">    <span class="keyword">while</span> (child &lt; len)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (child + <span class="number">1</span> &lt; len &amp;&amp; a[child] &lt; a[child + <span class="number">1</span>])  <span class="comment">// 如果右孩子结点值大于左孩子</span></span><br><span class="line">            child++;                                     <span class="comment">// child指向右孩子</span></span><br><span class="line">        <span class="keyword">if</span> (curParent &lt; a[child]) <span class="comment">// 孩子结点值大于父亲结点</span></span><br><span class="line">        &#123;</span><br><span class="line">            a[p] = a[child];</span><br><span class="line">            p = child;</span><br><span class="line">            child = <span class="number">2</span> * p + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    a[p] = curParent;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">heapSort</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = len / <span class="number">2</span> - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) <span class="comment">// 建立初始堆</span></span><br><span class="line">        <span class="built_in">adjustHeap</span>(a, i, len);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = len - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> temp = a[<span class="number">0</span>];</span><br><span class="line">        a[<span class="number">0</span>] = a[i];</span><br><span class="line">        a[i] = temp;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">adjustHeap</span>(a, <span class="number">0</span>, i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[] = &#123;<span class="number">5</span>,<span class="number">10</span>,<span class="number">7</span>,<span class="number">34</span>,<span class="number">23</span>,<span class="number">58</span>,<span class="number">2</span>,<span class="number">55</span>,<span class="number">35</span>,<span class="number">45</span>&#125;;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Before sorting: &quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">dbg</span>(a);</span><br><span class="line">    <span class="keyword">int</span> len = <span class="built_in"><span class="keyword">sizeof</span></span>(a) / <span class="built_in"><span class="keyword">sizeof</span></span>(a[<span class="number">0</span>]);</span><br><span class="line">    <span class="built_in">heapSort</span>(a, len);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;After sorting : &quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">dbg</span>(a);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果如下:</p>
-<p><img data-src="heap-sort/heap_sort.png" alt=" heap_sort"></p>
-<p>时间复杂度: $\color{blue}{O(nlog_2n)}$。</p>
-<p>分析: 完全二叉树的高度为$\lceil{log_2(n+1)}\rceil$, 其时间复杂度可以认为是$O(log_2n)$</p>
-<p>空间复杂度$\color{blue}{O(1)}$: 使用了常数个辅助单元，故为$O(1)$.</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/heap-sort.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1128,7 +1009,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Implement-a-binary-heap"><a href="#Implement-a-binary-heap" class="headerlink" title="Implement a binary heap"></a>Implement a binary heap</h1><ul>
+          <span id="more"></span>
+
+
+<h1 id="Implement-a-binary-heap"><a href="#Implement-a-binary-heap" class="headerlink" title="Implement a binary heap"></a>Implement a binary heap</h1><ul>
 <li><p>heap is a data structure </p>
 <ul>
 <li>必须是一颗完全二叉树</li>
@@ -1250,179 +1134,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>记录一些在读这本书<a target="_blank" rel="noopener" href="https://book.douban.com/subject/3354490/">《mysql必知必会》</a>时一些重要的概念。</p>
-<!-- toc -->
-
-<hr>
-<h2 id="1th-了解数据库"><a href="#1th-了解数据库" class="headerlink" title="1th 了解数据库"></a>1th 了解数据库</h2><ul>
-<li><p>database</p>
-</li>
-<li><p>table(column, datatype, row)</p>
-</li>
-<li><p>row == record</p>
-</li>
-<li><p>schema(模式): 关于数据库和表的布局及特性的信息</p>
-</li>
-<li><p>primary key</p>
-</li>
-<li><p>表中任何列都可以作为主键:</p>
-<ul>
-<li>任意两行都不具有相同的主键值</li>
-<li>每个行都必须具有一个主键值(主键列不允许NULL值)</li>
-</ul>
-</li>
-<li><p>sql(structured query language): 结构化查询语言</p>
-</li>
-</ul>
-<h2 id="2th-mysql简介"><a href="#2th-mysql简介" class="headerlink" title="2th mysql简介"></a>2th mysql简介</h2><p>MySQL CLI login: mysql -u root -p</p>
-<h2 id="3th-使用mysql"><a href="#3th-使用mysql" class="headerlink" title="3th 使用mysql"></a>3th 使用mysql</h2><ul>
-<li>使用数据库: use database_name;</li>
-<li>显示数据库: show databases;</li>
-<li>获得数据库内表的列表: show tables;</li>
-<li>显示表列: show columns from table_name;</li>
-<li>自增量: auto_increment</li>
-</ul>
-<h2 id="4th-检索数据"><a href="#4th-检索数据" class="headerlink" title="4th 检索数据"></a>4th 检索数据</h2><p>mysql命令行<strong>必须加上分号</strong>来结束sql语句。<br>sql语句不区分大小写，但是对关键字进行大写更易于阅读。</p>
-<ul>
-<li><p>检索单个列</p>
-  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> prod_name</span><br><span class="line"><span class="keyword">from</span> table_name;</span><br></pre></td></tr></table></figure></li>
-<li><p>检索多个列: 在select后给出多个列名，列名间有逗号。</p>
-  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> col1, col2, col3</span><br><span class="line"><span class="keyword">from</span> table_name;</span><br></pre></td></tr></table></figure></li>
-<li><p>检索所有列(最后不要随便使用<code>*</code>)</p>
-  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">from</span> table_name;</span><br></pre></td></tr></table></figure></li>
-<li><p>distinct关键字</p>
-</li>
-<li><p>limit 关键字(第一条记录号为0)</p>
-  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> col_name</span><br><span class="line"><span class="keyword">from</span> table_name</span><br><span class="line">limit <span class="number">5</span>; <span class="operator">/</span><span class="operator">/</span> 指示mysql返回不多于<span class="number">5</span>行</span><br></pre></td></tr></table></figure>
-
-  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> col_name</span><br><span class="line"><span class="keyword">from</span> table_name</span><br><span class="line">limit <span class="number">5</span>, <span class="number">5</span>; <span class="operator">/</span><span class="operator">/</span> 从第<span class="number">5</span>行开始检索<span class="number">5</span>行(不包括开始行)</span><br></pre></td></tr></table></figure></li>
-<li><p>完全限定表名引用列</p>
-  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> table_name.col_name</span><br><span class="line"><span class="keyword">from</span> table_name;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="5th-排序检索-order-by"><a href="#5th-排序检索-order-by" class="headerlink" title="5th 排序检索(order by)"></a>5th 排序检索(order by)</h2><p>order by子句位于from子句之后。</p>
-<ul>
-<li><p>clause(子句)</p>
-  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> col_name</span><br><span class="line"><span class="keyword">from</span> table_name</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> col_name, col_name2;</span><br></pre></td></tr></table></figure></li>
-<li><p>order by排序方向(desc, asc)</p>
-  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> col_name</span><br><span class="line"><span class="keyword">from</span> table_name</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> col_name <span class="keyword">asc</span><span class="operator">/</span><span class="keyword">desc</span>;</span><br></pre></td></tr></table></figure>
-
-<p>  // 实际上asc没什么用，默认是升序的。</p>
-</li>
-<li><p>使用<code>order by</code>和<code>limit</code>的组合，得到一个列中最高或最低的值</p>
-  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> col_name</span><br><span class="line"><span class="keyword">from</span> table_name</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> col_name <span class="keyword">desc</span></span><br><span class="line">limit <span class="number">1</span>;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="6th-过滤数据-where"><a href="#6th-过滤数据-where" class="headerlink" title="6th 过滤数据(where)"></a>6th 过滤数据(where)</h2><ul>
-<li>where clause 在 from clause之后</li>
-<li>同时使用<code>where</code>和<code>order by</code>时，order by应该在where之后</li>
-<li>where 子句操作符<ul>
-<li><code>=</code></li>
-<li><code>&lt;&gt;</code> / <code>!=</code></li>
-<li><code>&lt;</code></li>
-<li><code>&lt;=</code></li>
-<li><code>&gt;</code></li>
-<li><code>&gt;=</code></li>
-<li><code>between</code>: 在两个值之间, 这两个值使用<code>AND</code>分隔</li>
-</ul>
-</li>
-<li><code>is null</code>: 检测空值</li>
-</ul>
-<h2 id="10th-计算字段"><a href="#10th-计算字段" class="headerlink" title="10th 计算字段"></a>10th 计算字段</h2><ul>
-<li>as: 使用别名  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> col_name <span class="keyword">as</span> another_name</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="11th-数据处理函数"><a href="#11th-数据处理函数" class="headerlink" title="11th 数据处理函数"></a>11th 数据处理函数</h2><ul>
-<li>upper(col_name): 将文本转换为大写</li>
-<li>很多日期处理函数</li>
-<li>abs()</li>
-<li>mod()</li>
-<li>rand()</li>
-<li>sqrt()</li>
-<li>round(col_name, a): a是小数点位数</li>
-</ul>
-<h2 id="12th-汇总数据"><a href="#12th-汇总数据" class="headerlink" title="12th 汇总数据"></a>12th 汇总数据</h2><ul>
-<li>aggregate function<ul>
-<li>avg(): 返回某列平均值</li>
-<li>count(): 返回某列行数</li>
-<li>max(): 返回某列最大值</li>
-<li>min(): 返回某列最小值</li>
-<li>sum(): 返回某列值之和</li>
-</ul>
-</li>
-</ul>
-<h2 id="13th-分组数据-group-by-having"><a href="#13th-分组数据-group-by-having" class="headerlink" title="13th 分组数据(group by / having)"></a>13th 分组数据(group by / having)</h2><ul>
-<li>group by: 在 where后，order by之前</li>
-</ul>
-<h2 id="14th-subquery"><a href="#14th-subquery" class="headerlink" title="14th subquery"></a>14th subquery</h2><ul>
-<li>在select语句中，子查询总是从内向外处理</li>
-</ul>
-<h2 id="15th-联结表-join"><a href="#15th-联结表-join" class="headerlink" title="15th 联结表(join)"></a>15th 联结表(join)</h2><ul>
-<li>外键(foreigh key): 为某个表的一列，它包含另一个表的主键值，定义了两个表的关系。<ul>
-<li>好处1: 减少信息的重复</li>
-</ul>
-</li>
-<li>在引用的列可能出现二义性时，必须使用完全限定列名(table_name.col_name)</li>
-</ul>
-<h2 id="16th-创建高级联结"><a href="#16th-创建高级联结" class="headerlink" title="16th 创建高级联结"></a>16th 创建高级联结</h2><ol>
-<li>使用表别名(<code>AS</code>)</li>
-</ol>
-<ul>
-<li>缩短sql语句</li>
-</ul>
-<h2 id="update-and-delete"><a href="#update-and-delete" class="headerlink" title="update and delete"></a>update and delete</h2><ul>
-<li><p>don’t ignore where clause</p>
-</li>
-<li><p>update table_name set xxx=xxx where xxx</p>
-</li>
-<li><p>delete a row</p>
-  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> table_name</span><br><span class="line"><span class="keyword">where</span> col_name <span class="operator">=</span> xxx;</span><br></pre></td></tr></table></figure>
-<h2 id="alter-table"><a href="#alter-table" class="headerlink" title="alter table"></a>alter table</h2></li>
-<li><p>add a column</p>
-  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> vendors</span><br><span class="line"><span class="keyword">add</span> vend_phone <span class="type">char</span>(<span class="number">20</span>);</span><br></pre></td></tr></table></figure></li>
-<li><p>delete table: <code>drop table table_name;</code></p>
-</li>
-</ul>
-<h2 id="view"><a href="#view" class="headerlink" title="view"></a>view</h2><ul>
-<li>create view: <code>create view view_name</code></li>
-<li>drop view: <code>drop view view_name;</code></li>
-</ul>
-<hr>
-<ol>
-<li>mysql注释</li>
-</ol>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#</span><br><span class="line">--</span><br><span class="line">/* */</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li><p>在一行代码中插入多条数据</p>
- <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> table_name <span class="keyword">values</span> (), (), ...</span><br></pre></td></tr></table></figure></li>
-<li><p>mysql修改表名(两种方法)</p>
-<ul>
-<li><code>rename</code><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">RENAME <span class="keyword">TABLE</span> table_name <span class="keyword">TO</span> another_table_name;</span><br></pre></td></tr></table></figure></li>
-<li>ALTER TABLE table_name RENAME TO another_name</li>
-</ul>
-</li>
-<li><p>replace更改数据</p>
- <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UPDATE table_name</span><br><span class="line"><span class="keyword">SET</span> field_name <span class="operator">=</span> REPLACE(field_name, from_data, to_data)</span><br><span class="line"><span class="keyword">where</span> xxx;</span><br></pre></td></tr></table></figure></li>
-<li><p>set关键字更新列(用逗号连接多个)</p>
- <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> col_name<span class="operator">=</span>new_data, col_name2<span class="operator">=</span>new_data2...</span><br></pre></td></tr></table></figure></li>
-<li><p>创建表</p>
- <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> IF <span class="keyword">EXISTS</span> table_name</span><br><span class="line">(xxx,</span><br><span class="line">xxx,</span><br><span class="line">xxx,</span><br><span class="line"><span class="keyword">PRIMARY</span> KEY(pid));</span><br></pre></td></tr></table></figure></li>
-<li><p>substr()</p>
-<p> substr(字符串，起始位置，长度）<br> 起始位置:截取的子串的起始位置（注意:字符串的第一个字符的索引是1）。值为正时从字符串开始位置 开始计数，值为负时从字符串结尾位置开始计数。<br> 长度:截取子串的长度</p>
-</li>
-<li><p>add column in table</p>
- <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name</span><br><span class="line"><span class="keyword">ADD</span> column_name datatype</span><br></pre></td></tr></table></figure></li>
-<li><p>primary key and unique index</p>
-</li>
-</ol>
-<p>  主键约束比唯一索引约束严格，当没有设定主键时，非空唯一索引自动称为主键。对于主键和唯一索引的一些区别主要如下：</p>
-<ul>
-<li>主键不允许空值，唯一索引允许空值</li>
-<li>主键只允许一个，唯一索引允许多个</li>
-</ul>
-<hr>
-<p>MySQL必备神器–mycli(补全)</p>
-<ul>
-<li>Install(ubuntu): <code>sudo apt-get install mycli</code></li>
-<li>Login(cli): <code>mycli -u name -p passward</code></li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/MySQL-crash-course-reading-notes.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1495,84 +1214,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>关于《C和指针》这本书的读书记录。</p>
-<h3 id="《C和指针》"><a href="#《C和指针》" class="headerlink" title="《C和指针》"></a>《C和指针》</h3><h4 id="1th-快速上手"><a href="#1th-快速上手" class="headerlink" title="1th 快速上手"></a>1th 快速上手</h4><ol>
-<li><p>数组名</p>
- <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> arr[<span class="number">4</span>];</span><br></pre></td></tr></table></figure>
-
-<p> 假设<code>int</code>型变量占4 Byte，那么这个声明，编译器会给c预留内存空间4×4 Byte，并且<br> 数组名代表着指向数组第一个元素的指针。</p>
-</li>
-<li><p>字符串常量存储在常量区，常量区存储的内容是不能被修改的。</p>
-</li>
-<li><p>指针指定一个存储与计算机内存中的值的地址。</p>
-</li>
-<li><p>每个 C 程序必须有一个 main 函数，因为它是程序执行的起点。</p>
-</li>
-<li><p>在 C 语言中，数组参数是以<code>引用(reference)</code>形式进行传递的，即传址调用，<br> 而标量和常量是按<code>值(value)</code>传递的。<br> 在函数中对标量参数的任何修改都会在函数返回时丢失，因此，被调用函数无法修改<br> 调用函数以传值形式传递给它的参数。<br> 然而，当被调用函数修改数组参数的其中一个元素时，调用函数所传递的数组就会被实际地修改。</p>
-</li>
-<li><p>在 C语言中，字符串是一串以<code>NUL</code>字节结尾的字符。<code>NUL</code>是作为字符串终止符，它本身并不被看作是字符串的一部分。字符串常量就是源程序中被<code>双引号</code>括起来的一串字符。 例如, <code>&quot;Hello&quot;</code>在内存中占据6个字节的空间。</p>
-</li>
-<li><p> 由于scanf函数的实现原理，所有标量参数的前面必须加上一个<code>&amp;</code>符号。数组参数前面不需要加上<code>&amp;</code>符号，但是若数组参数中出现下标引用，即实际参数是数组某个特定元素，那么它的前面也必须加上<code>&amp;</code></p>
-</li>
-<li><p>编程提示</p>
-<ul>
-<li>在while和if表达式中蕴含赋值操作</li>
-<li>始终要进行检查，确保数组不越界</li>
-</ul>
-</li>
-</ol>
-<h4 id="3th-数据"><a href="#3th-数据" class="headerlink" title="3th 数据"></a>3th 数据</h4><ol>
-<li><p>在C语言中，仅有4中基本数据类型 –<br>整型、浮点型、指针和聚合类型（如数组和结构等).</p>
-</li>
-<li><p>指针可以有效地实现如tree和list这类高级数据结构。</p>
-</li>
-<li><p>房子和它的门牌号码标识</p>
-</li>
-<li><p>可以把计算机内存想象成一条长街上的一间间房子，每间房子都用一个唯一的号码进行标识。每个位置包含一个值，这和它的地址是独立且显著不同的，即使它们都是数字.</p>
-</li>
-<li><p>程序在使用字符串常量会生成一个“指向字符的常量指针”。当一个字符串常量出现于一个表达式中时，表达式所使用的值就是这些字符所存储的地址，而不是这些字符本身。</p>
-</li>
-<li><p>不能把字符串常量赋值给一个字符数组，因为字符串常量的直接值是一个指针，而不是这些字符本身。</p>
-</li>
-<li><p>typedef允许你为各种数据类型定义新名字。<br><code>typedef int another_name</code></p>
-<p> 使用typedef声明类型可以减少使声明变得又臭又长的危险，尤其是那些复杂的声明。</p>
-</li>
-</ol>
-<h4 id="4th-语句"><a href="#4th-语句" class="headerlink" title="4th 语句"></a>4th 语句</h4><ol>
-<li><p>空语句</p>
-<p> C最简单的语句就是空语句，它本身只包含一个分号。空语句本身并不执行任何任务，但有时还是有用。<br> 适用场景: 语法要求出现一条完整的语句。</p>
-</li>
-<li><p>括号是if语句的一部分。</p>
-</li>
-<li><p>C并不具备布尔类型，零值表示假，非零值表示真。</p>
-</li>
-</ol>
-  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (x &gt; <span class="number">3</span>)</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;...&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>  上边这条语句中，表达式<code>x &gt; 3</code>的值将是0或1.</p>
-<h4 id="5th-操作符和表达式"><a href="#5th-操作符和表达式" class="headerlink" title="5th 操作符和表达式"></a>5th 操作符和表达式</h4><ol>
-<li>AND、OR、XOR要求操作数为整数类型，它们对操作数对应的位进行指定操作，每次对左右操作数的各一位进行操作。</li>
-<li>下标引用操作和间接访问表达式是等价的。<br> <code>array[下标] &lt;=&gt; *(array + (下标))</code></li>
-</ol>
-<h4 id="6th-指针"><a href="#6th-指针" class="headerlink" title="6th 指针"></a>6th 指针</h4><p><img data-src="C-and-pointer-reading-notes/variable_addr.png" alt="varialbe_and_addr"></p>
-<p>Pointers - variables that store address of another variable.<br>指针变量存储的是地址</p>
-<ol start="0">
-<li>间接访问(de-referencing)操作符</li>
-<li>变量给了我们更方便的方法记住地址，但是硬件仍然通过地址访问内存位置。</li>
-<li>变量的值就是分配给该变量的内存位置所存储的数值。??</li>
-<li>指针变量可以作为左值，并不是因为它们是指针，而是因为它们是变量。对指针变量进行间接访问表示我们应该访问指针所指向的位置。</li>
-</ol>
-<p><img data-src="C-and-pointer-reading-notes/pointer_1.png" alt="Image"></p>
-<p><img data-src="C-and-pointer-reading-notes/pointer_2.png" alt="Image"></p>
-<p><code>int *b = &amp;a</code>和<code>b = &amp;a</code>的区别是什么?<br>这两个表达的应该是一样的意思。<br>看第二个b，这个b代表的是指针，如果加上声明语句的话和前一个是一样的<br>感觉<code>int * p; p = &amp;a;</code>,这个更好理解。</p>
-<p>一个例子</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">8</span>;</span><br><span class="line">    <span class="keyword">int</span> *p;</span><br><span class="line">    p = &amp;a; <span class="comment">// &amp;a is address of a</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, p); <span class="comment">// p is 2002</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, p + <span class="number">1</span>); <span class="comment">// p+1 is 2006</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li><p>a pointer to pointer(pic source: youtube mycodeschool)</p>
- <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *p;</span><br><span class="line"><span class="keyword">int</span> **q;</span><br><span class="line">q = &amp;p;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p><img data-src="C-and-pointer-reading-notes/pointer_to_pointer.png" alt="Image"></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/C-and-pointer-reading-notes.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1645,151 +1294,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>新增一些关于C和C++的基础知识。</p>
-<hr>
-<ol>
-<li><p>数组初始化符号<code>&#123;&#125;</code></p>
-</li>
-<li><p>Get array length(C)</p>
- <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> arr[];</span><br><span class="line"><span class="keyword">int</span> length = <span class="keyword">sizeof</span>(arr)/<span class="keyword">sizeof</span>(arr[<span class="number">0</span>]); <span class="comment">// 总字节数/第一个元素字节数</span></span><br></pre></td></tr></table></figure></li>
-<li><p>define</p>
-<p> <code>#define 名字 替换文本</code></p>
-<p> （1）符号常量通常用大写字母拼写<br> （2）末尾无分号</p>
-</li>
-<li><p>C中常量INT_MAX和INT_MIN分别表示最大、最小整数，定义在头文件limits.h中. INT_MAX = 2^31-1，INT_MIN= -2^31</p>
-</li>
-<li><p>逻辑移位</p>
-<p> 逻辑移位: (1)逻辑左移 (2)逻辑右移; 移出的空位都用0来补。</p>
-</li>
-<li><p>nullptr</p>
-<p> 其指c++ 中的空指针常量。</p>
-</li>
-<li><p>c++ delete</p>
-<p> 假设ptr是一个指针，delete ptr代表释放内存，只用来释放ptr指向的内存。</p>
-</li>
-<li><p>to_string()</p>
-<p> 将数值转换为字符串。</p>
-</li>
-<li><p>for循环遍历字符串的一种新方法</p>
- <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    string str = <span class="string">&quot;better&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">char</span> c : str)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%c\n&quot;</span>, c);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>c++ auto (since C++ 11)(谨慎使用)</p>
-<p>可以自动推断变量类型</p>
-<ol>
-<li>auto变量必须在定义时进行初始化，如果不进行初始化，就不能进行变量类型的推断了。</li>
-</ol>
-</li>
-<li><p>c++ pair/ make_pair</p>
-<p>C++标准程序库中凡是“必须返回两个值”的函数， 也都会利用pair对象。</p>
-<p><code>make_pair</code>的用法<br>无需写出型别， 就可以生成一个pair对象。<br>例： <code>std::make_pair(42, &#39;@&#39;);</code></p>
-<p>而不必费力写成： <code>std::pair&lt;int, char&gt;(42, &#39;@&#39;)</code></p>
-<p>值的访问: 两个值可以分别用pair的两个公有函数first和second访问。</p>
-</li>
-<li><p>map的count和find,map和unordered_map</p>
-<p>使用count，返回的是被查找元素的个数。如果有，返回1；否则，返回0。注意，map中不存在相同元素，所以返回值只能是1或0。</p>
-<p>使用find，返回的是被查找元素的位置，没有则返回map.end()。</p>
-</li>
-<li><p>string.substr()</p>
-<p>string.substr(start, [length])</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string s = <span class="string">&quot;12345&quot;</span></span><br><span class="line">string sub1 = s.<span class="built_in">substr</span>(<span class="number">3</span>); <span class="comment">// sub1 = &quot;345&quot;</span></span><br><span class="line">string sub2 =  s.<span class="built_in">substr</span>(<span class="number">3</span>, <span class="number">2</span>);  <span class="comment">// sub2 = &quot;34&quot;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>string to int: stoi()</p>
-<p>stoi(str, start_position, 2) 2是进制，此例意为将2进制的str从position转换成10进制</p>
-</li>
-<li><p>char to int: <code>c - &#39;0&#39;</code></p>
-</li>
-<li><p>int to char: <code>i + &#39;0&#39;</code></p>
-</li>
-<li><p>异或</p>
-</li>
-</ol>
-<ul>
-<li>性质: <code>a ^ b</code>即为a和b的二进制形式每一位进行运算，最后得到的结果。每位运算逻辑:<br>  相同为0， 不同为1. 类似半加。</li>
-<li>规律:<ul>
-<li>任何数和本身异或为<code>0</code></li>
-<li>任何数和0异或为<code>本身</code></li>
-</ul>
-</li>
-</ul>
-<ol start="18">
-<li><p>pow(), not power, 需要<code>cmath</code>头文件</p>
-</li>
-<li><p>自己写的头文件要用<code>&quot;&quot;</code>引用；标准的头文件要用<code>&lt;&gt;</code>引用。</p>
-<p>非系统头文件的查找通常开始于源文件所在的路径。</p>
-</li>
-<li><p>声明与定义</p>
-<p>定义只可出现一次，声明可以出现多次。</p>
-</li>
-<li><p>引用</p>
-</li>
-</ol>
-<p>   <code>int&amp;</code>, 这里的<code>&amp;</code>不是取地址符号，叫做<code>引用符号</code>.<br>   变量的引用就是变量的别名。相当于一个人的小名</p>
-<ul>
-<li><p>声明引用时必须指定代表是哪一个变量，即对它进行初始化</p>
- <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> &amp;a = b; <span class="comment">// 声明a是b的引用</span></span><br></pre></td></tr></table></figure>
-
-<p> 如果只是<code>int &amp;a</code>, 这样就是错误的。</p>
-</li>
-<li><p>引用和其所代表的变量共享同一内存单元，系统不为引用另外分配存储单元。</p>
-</li>
-<li><p>如何判断<code>&amp;</code>是<code>引用</code>还是<code>取地址符</code><br> 方法: 判断<code>&amp;a</code>这样形式前是否有<code>类型符号</code></p>
-</li>
-</ul>
-<ol start="22">
-<li><p>C++中的<code>.h</code>和<code>.cpp</code>文件</p>
-<p>在 C++ 中，分别使用<code>.h</code> 和<code>.cpp</code> 来定义一个类。 <code>.h</code> 中存放类的声明，函数原型（放在类的声明中）。 <code>.cpp</code> 存放函数体。</p>
-<p>也就是说，一个存放声明(declaration)，一个存放定义（definition)。</p>
-</li>
-<li><p>当数组作为函数参数进行传递时，数组就会自动退化为同类型指针。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">GetSize</span><span class="params">(<span class="keyword">int</span> data[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="built_in"><span class="keyword">sizeof</span></span>(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> data[] = &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> size = <span class="built_in">Getsize</span>(data); <span class="comment">// 4</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>vector</p>
-<ul>
-<li>front(): 返回第一个元素引用</li>
-<li>back(): 返回最后一个元素引用</li>
-<li>reverse一个vector: <code>reverse(res.begin(), res.end());</code></li>
-</ul>
-</li>
-<li><p>maltimap</p>
-<p><code>multimap</code> 容器保存的是有序的键/值对，但它可以保存<strong>重复</strong>的元素。</p>
-</li>
-<li><p>map</p>
-<p><strong>注意</strong>: map中的key是唯一的，并且不能修改，遇到重复的key就会插入失败</p>
-</li>
-</ol>
-<hr>
-<h3 id="C-STL"><a href="#C-STL" class="headerlink" title="C++ STL"></a>C++ STL</h3><h4 id="accumulate"><a href="#accumulate" class="headerlink" title="accumulate"></a>accumulate</h4><p><code>accumulate</code>定义在<code>#include&lt;numeric&gt;</code>中，作用有两个，一个是累加求和，另一个是自定义类型数据的处理</p>
-<ol>
-<li><p>累加求和</p>
- <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> sum = <span class="built_in">accumulate</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), begin_value);</span><br></pre></td></tr></table></figure>
-
-<p> 前两个形参: 累加元素范围; 第三个形参: 累加初值</p>
-<p> 一个例子</p>
- <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;numeric&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> arr[] = &#123;<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>&#125;;</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">va</span><span class="params">(&amp;arr[<span class="number">0</span>], &amp;arr[<span class="number">5</span>])</span></span>;</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="built_in">accumulate</span>(va.<span class="built_in">begin</span>(), va.<span class="built_in">end</span>(), <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, sum);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h4 id="unordered-set"><a href="#unordered-set" class="headerlink" title="unordered_set"></a>unordered_set</h4><h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>c++ unordered_set定义: 是一个集合，集合中的每一个元素都是唯一的，就算插入几个相同的元素，但是最后保留下的只有一个。</p>
-<p>注意: unordered_set中数据是无序的.</p>
-<h5 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h5><ul>
-<li><p>unordered_set::find()</p>
-<p>  unordered_set::find()函数是C++ STL中的内置函数，用于在容器中搜索元素。它返回元素的迭代器，如果找到其他元素，则返回指向unordered_set::end()的迭代器。</p>
-<p>  用法： unordered_set_name.find(key)</p>
-  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(s.<span class="built_in">find</span>(xx) != s.<span class="built_in">end</span>()) xxx</span><br></pre></td></tr></table></figure></li>
-<li><p>unordered_set::insert(element)</p>
-<p>  unordered_set::insert(element)</p>
-</li>
-<li><p>set 与 unordered_set</p>
-</li>
-</ul>
-<p>何时使用<code>set</code>: 需要有序的数据!</p>
-<h4 id="unordered-map"><a href="#unordered-map" class="headerlink" title="unordered_map"></a>unordered_map</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unordered_map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    unordered_map&lt;<span class="keyword">int</span>, string&gt; myMap = &#123;&#123;<span class="number">5</span>, <span class="string">&quot;张大&quot;</span>&#125;, &#123;<span class="number">6</span>, <span class="string">&quot;李五&quot;</span>&#125;&#125;;</span><br><span class="line">    myMap[<span class="number">2</span>] = <span class="string">&quot;李四&quot;</span>;</span><br><span class="line">    myMap.<span class="built_in">insert</span>(pair&lt;<span class="keyword">int</span>, string&gt;(<span class="number">3</span>, <span class="string">&quot;陈二&quot;</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">auto</span> iter = myMap.<span class="built_in">begin</span>();</span><br><span class="line">    <span class="keyword">while</span> (iter != myMap.<span class="built_in">end</span>())</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; iter-&gt;first &lt;&lt; <span class="string">&quot;,&quot;</span> &lt;&lt; iter-&gt;second &lt;&lt; endl;</span><br><span class="line">        ++iter;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>两个属性值: <code>first</code> and <code>second</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">myMap.first # myMap-&gt;first是错误的写法</span><br><span class="line">myMap.second</span><br></pre></td></tr></table></figure>
-
-<h4 id="set"><a href="#set" class="headerlink" title="set"></a>set</h4><p>set中每个值都唯一，系统可以根据元素的值自动排序.</p>
-<ul>
-<li><p>set.insert()</p>
-  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    set&lt;<span class="keyword">int</span>&gt; set1;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        set1.<span class="built_in">insert</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">    set&lt;<span class="keyword">int</span>&gt;::iterator it;</span><br><span class="line">    <span class="keyword">for</span> (it = set1.<span class="built_in">begin</span>(); it != set1.<span class="built_in">end</span>(); it++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, *it);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<hr>
-<p>–&gt; 前一篇<a href="https://www.ongoing.ink/blog/posts/2020/04/some-basic-knowledge-of-c&c++.html">C basic part 1</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/C-basic-part-2.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1862,9 +1374,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>问题：两个栈实现一个队列</p>
-<p>可以下看一下下面这幅图理解一个过程:</p>
-<p><img data-src="two-stacks-implement-a-queue/two_stacks_implement_a_queue.png" alt="two-stacks_implement_a_queue"></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/two-stacks-implement-a-queue.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 

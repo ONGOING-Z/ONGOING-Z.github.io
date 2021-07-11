@@ -23,12 +23,12 @@
   <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.ongoing.ink","root":"/","images":"/images","scheme":"Mist","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"remove","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="面向对象特征 - 继承性继承是多态的前提。 继承解决的主要问题：共性抽取。  继承关系当中的特点：  子类可以拥有父类的“内容” 子类还可以拥有自己专有的内容   在父子类的继承关系当中，如果成员变量重名，则创建子类时，访问有两种方式：  直接通过子类对象访问成员变量: 等号左边是谁，就优先用谁，没有则向上找。 间接通过成员方法访问成员变量：该方法属于谁，就优先用谁，没有则向上找。  区分三种">
+<meta name="description" content="面向对象特征 - 继承性继承是多态的前提。 继承解决的主要问题：共性抽取。  继承关系当中的特点：  子类可以拥有父类的“内容” 子类还可以拥有自己专有的内容   在父子类的继承关系当中，如果成员变量重名，则创建子类时，访问有两种方式：  直接通过子类对象访问成员变量: 等号左边是谁，就优先用谁，没有则向上找。 间接通过成员方法访问成员变量：该方法属于谁，就优先用谁，没有则向上找。  区">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java review part 3 object-oriented Inheritance">
 <meta property="og:url" content="https://www.ongoing.ink/posts/java-review-part-3-object-oriented-inheritance.html">
 <meta property="og:site_name" content="ongoing&#39;s blog">
-<meta property="og:description" content="面向对象特征 - 继承性继承是多态的前提。 继承解决的主要问题：共性抽取。  继承关系当中的特点：  子类可以拥有父类的“内容” 子类还可以拥有自己专有的内容   在父子类的继承关系当中，如果成员变量重名，则创建子类时，访问有两种方式：  直接通过子类对象访问成员变量: 等号左边是谁，就优先用谁，没有则向上找。 间接通过成员方法访问成员变量：该方法属于谁，就优先用谁，没有则向上找。  区分三种">
+<meta property="og:description" content="面向对象特征 - 继承性继承是多态的前提。 继承解决的主要问题：共性抽取。  继承关系当中的特点：  子类可以拥有父类的“内容” 子类还可以拥有自己专有的内容   在父子类的继承关系当中，如果成员变量重名，则创建子类时，访问有两种方式：  直接通过子类对象访问成员变量: 等号左边是谁，就优先用谁，没有则向上找。 间接通过成员方法访问成员变量：该方法属于谁，就优先用谁，没有则向上找。  区">
 <meta property="og:locale">
 <meta property="og:image" content="https://www.ongoing.ink/posts/java-review-part-3-object-oriented-inheritance/java_12.png">
 <meta property="og:image" content="https://www.ongoing.ink/posts/java-review-part-3-object-oriented-inheritance/java_13.png">
@@ -50,7 +50,7 @@
 <meta property="og:image" content="https://www.ongoing.ink/posts/java-review-part-3-object-oriented-inheritance/java_29.png">
 <meta property="og:image" content="https://www.ongoing.ink/posts/java-review-part-3-object-oriented-inheritance/java_30.png">
 <meta property="article:published_time" content="2020-10-12T11:42:44.000Z">
-<meta property="article:modified_time" content="2021-07-11T07:14:39.631Z">
+<meta property="article:modified_time" content="2021-07-11T07:20:45.899Z">
 <meta property="article:author" content="ongoing">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
@@ -196,7 +196,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <!-- toc -->
+        <span id="more"></span>
+
+
+<!-- toc -->
 
 <h2 id="面向对象特征-继承性"><a href="#面向对象特征-继承性" class="headerlink" title="面向对象特征 - 继承性"></a>面向对象特征 - 继承性</h2><p>继承是多态的前提。</p>
 <p>继承解决的主要问题：<strong>共性抽取</strong>。</p>

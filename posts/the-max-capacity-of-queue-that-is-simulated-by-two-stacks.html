@@ -23,12 +23,12 @@
   <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.ongoing.ink","root":"/","images":"/images","scheme":"Mist","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"remove","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="今天在做面试题目的时候遇到了一道题：使用两个栈来模拟一个队列，栈1容量为m,栈2容量为n,且m&gt;n,请问这个队列的最大容量是多少？  初始状态:   $S1.capacity() &#x3D; m$ $S2.capacity() &#x3D; n$ $Q.size() &#x3D; 0$  假设$S1$用作队列入队的存储空间，$S2$用作队列出对的缓存空间。  假设现在队列Q进入$n$个元素，如下面这个状态   对应的，">
+<meta name="description" content="今天在做面试题目的时候遇到了一道题：使用两个栈来模拟一个队列，栈1容量为m,栈2容量为n,且m&gt;n,请问这个队列的最大容量是多少？">
 <meta property="og:type" content="article">
 <meta property="og:title" content="The max capacity of queue that is simulated by two stacks">
 <meta property="og:url" content="https://www.ongoing.ink/posts/the-max-capacity-of-queue-that-is-simulated-by-two-stacks.html">
 <meta property="og:site_name" content="ongoing&#39;s blog">
-<meta property="og:description" content="今天在做面试题目的时候遇到了一道题：使用两个栈来模拟一个队列，栈1容量为m,栈2容量为n,且m&gt;n,请问这个队列的最大容量是多少？  初始状态:   $S1.capacity() &#x3D; m$ $S2.capacity() &#x3D; n$ $Q.size() &#x3D; 0$  假设$S1$用作队列入队的存储空间，$S2$用作队列出对的缓存空间。  假设现在队列Q进入$n$个元素，如下面这个状态   对应的，">
+<meta property="og:description" content="今天在做面试题目的时候遇到了一道题：使用两个栈来模拟一个队列，栈1容量为m,栈2容量为n,且m&gt;n,请问这个队列的最大容量是多少？">
 <meta property="og:locale">
 <meta property="og:image" content="https://www.ongoing.ink/posts/the-max-capacity-of-queue-that-is-simulated-by-two-stacks/capacity_1.png">
 <meta property="og:image" content="https://www.ongoing.ink/posts/the-max-capacity-of-queue-that-is-simulated-by-two-stacks/capacity_2.png">
@@ -39,7 +39,7 @@
 <meta property="og:image" content="https://www.ongoing.ink/posts/the-max-capacity-of-queue-that-is-simulated-by-two-stacks/capacity_7.png">
 <meta property="og:image" content="https://www.ongoing.ink/posts/the-max-capacity-of-queue-that-is-simulated-by-two-stacks/capacity_8.png">
 <meta property="article:published_time" content="2020-11-03T11:56:52.000Z">
-<meta property="article:modified_time" content="2021-07-11T07:14:39.659Z">
+<meta property="article:modified_time" content="2021-07-11T07:20:45.927Z">
 <meta property="article:author" content="ongoing">
 <meta property="article:tag" content="Stack">
 <meta property="article:tag" content="Queue">
@@ -187,6 +187,10 @@
     
     <div class="post-body" itemprop="articleBody">
         <p>今天在做面试题目的时候遇到了一道题：使用两个栈来模拟一个队列，栈1容量为m,栈2容量为n,且m&gt;n,<br>请问这个队列的最大容量是多少？</p>
+<span id="more"></span>
+
+
+
 <p><img data-src="the-max-capacity-of-queue-that-is-simulated-by-two-stacks/capacity_1.png" alt="image-20201103200116463"></p>
 <p>初始状态: </p>
 <ul>
