@@ -23,12 +23,12 @@
   <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.ongoing.ink","root":"/","images":"/images","scheme":"Mist","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"remove","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="面向对象特性 - 多态 多态针对的是对象。  左父右子就是多态。  多态中成员变量访问特点   在多态的代码中，成员方法访问规则：看new的是谁，就优先用谁，没有则向上找。  这句话没怎么懂？  使用多态的好处    对象的向上转型  向上转型就是多态的写法。   对象的向下转型  向上转型是安全的。但有一个弊端：对象一旦向上转型为父类，那么就无法调用子类原本特有的内容。 解决方案：用对象">
+<meta name="description" content="Java 基础知识第四部分。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java review part 4 - polymorphism(多态)">
+<meta property="og:title" content="Java review part 4 - polymorphism(多态)">
 <meta property="og:url" content="https://www.ongoing.ink/posts/java-review-part-4-polymorphism.html">
 <meta property="og:site_name" content="ongoing&#39;s blog">
-<meta property="og:description" content="面向对象特性 - 多态 多态针对的是对象。  左父右子就是多态。  多态中成员变量访问特点   在多态的代码中，成员方法访问规则：看new的是谁，就优先用谁，没有则向上找。  这句话没怎么懂？  使用多态的好处    对象的向上转型  向上转型就是多态的写法。   对象的向下转型  向上转型是安全的。但有一个弊端：对象一旦向上转型为父类，那么就无法调用子类原本特有的内容。 解决方案：用对象">
+<meta property="og:description" content="Java 基础知识第四部分。">
 <meta property="og:locale">
 <meta property="og:image" content="https://www.ongoing.ink/posts/java-review-part-4-polymorphism/java_31.png">
 <meta property="og:image" content="https://www.ongoing.ink/posts/java-review-part-4-polymorphism/java_32.png">
@@ -53,7 +53,7 @@
 <meta property="og:image" content="https://www.ongoing.ink/posts/java-review-part-4-polymorphism/java_51.png">
 <meta property="og:image" content="https://www.ongoing.ink/posts/java-review-part-4-polymorphism/java_52.png">
 <meta property="article:published_time" content="2020-10-13T11:48:34.000Z">
-<meta property="article:modified_time" content="2021-07-12T04:30:40.237Z">
+<meta property="article:modified_time" content="2021-07-12T15:49:10.691Z">
 <meta property="article:author" content="ongoing">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
@@ -64,10 +64,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"https://www.ongoing.ink/posts/java-review-part-4-polymorphism.html","path":"posts/java-review-part-4-polymorphism.html","title":"java review part 4 - polymorphism(多态)"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"https://www.ongoing.ink/posts/java-review-part-4-polymorphism.html","path":"posts/java-review-part-4-polymorphism.html","title":"Java review part 4 - polymorphism(多态)"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>java review part 4 - polymorphism(多态) | ongoing's blog</title>
+<title>Java review part 4 - polymorphism(多态) | ongoing's blog</title>
   
 
 
@@ -159,7 +159,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          java review part 4 - polymorphism(多态)<a href="https://github.com/user-name/repo-name/tree/branch-name/subdirectory-name/_posts/2020-10-13-java-review-part-4-polymorphism.md" class="post-edit-link" title="Edit this post" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+          Java review part 4 - polymorphism(多态)<a href="https://github.com/user-name/repo-name/tree/branch-name/subdirectory-name/_posts/2020-10-13-java-review-part-4-polymorphism.md" class="post-edit-link" title="Edit this post" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
         </h1>
 
         <div class="post-meta-container">
@@ -199,7 +199,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <span id="more"></span>
+        <p>Java 基础知识第四部分。</p>
+<span id="more"></span>
 
 
 

@@ -779,7 +779,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/java-review-part-4-polymorphism.html" class="post-title-link" itemprop="url">java review part 4 - polymorphism(多态)</a>
+          <a href="/posts/java-review-part-4-polymorphism.html" class="post-title-link" itemprop="url">Java review part 4 - polymorphism(多态)</a>
         </h2>
 
         <div class="post-meta-container">
@@ -812,132 +812,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <span id="more"></span>
-
-
-
-<h2 id="面向对象特性-多态"><a href="#面向对象特性-多态" class="headerlink" title="面向对象特性 - 多态"></a>面向对象特性 - 多态</h2><p><img data-src="java-review-part-4-polymorphism/java_31.png" alt="image-20201008204326276"></p>
-<p>多态针对的是对象。</p>
-<p><img data-src="java-review-part-4-polymorphism/java_32.png" alt="image-20201008204931235"></p>
-<p>左父右子就是多态。</p>
-<blockquote>
-<p>多态中成员变量访问特点</p>
-</blockquote>
-<p><img data-src="java-review-part-4-polymorphism/java_33.png" alt="image-20201008210215813"></p>
-<p>在多态的代码中，成员方法访问规则：看new的是谁，就优先用谁，没有则向上找。</p>
-<p><img data-src="java-review-part-4-polymorphism/java_34.png" alt="image-20201008210741864"></p>
-<p><em>这句话没怎么懂？</em></p>
-<blockquote>
-<p>使用多态的好处</p>
-</blockquote>
-<p><img data-src="java-review-part-4-polymorphism/java_35.png" alt="image-20201008211228089"></p>
-<blockquote>
-<p>对象的向上转型</p>
-</blockquote>
-<p>向上转型就是多态的写法。</p>
-<p><img data-src="java-review-part-4-polymorphism/java_36.png" alt="image-20201008212150491"></p>
-<blockquote>
-<p>对象的向下转型</p>
-</blockquote>
-<p>向上转型是安全的。但有一个弊端：对象一旦向上转型为父类，那么就无法调用子类原本特有的内容。</p>
-<p>解决方案：用对象的向下转型[<strong>还原</strong>]</p>
-<p>对象向下转型，其实是一个还原动作。</p>
-<p>格式：<code>子类名称 对象名 = （子类名称）父类对象</code></p>
-<p>含义：将父类对象还原成为本来的子类对象（<strong>类似强制转换</strong>!!!!!!!）</p>
-<p><img data-src="java-review-part-4-polymorphism/java_37.png" alt="image-20201008213449209"></p>
-<blockquote>
-<p>instanceof关键字</p>
-</blockquote>
-<p>如何知道一个父类引用的对象是什么子类？</p>
-<p>格式：<code>对象 instanceof 类名称</code></p>
-<p>这将得到一个boolean值结果，判断前面的对象能不能当作后面类的实例。</p>
-<p>向下转型一定要进行instanceof判断，否则可能会发生类转换异常。</p>
-<blockquote>
-<p>一个案例</p>
-<ol>
-<li>接口的基本使用</li>
-<li>对象的上下转型</li>
-<li>使用接口作为方法参数</li>
-</ol>
-</blockquote>
-<p><img data-src="java-review-part-4-polymorphism/java_38.png" alt="image-20201008214944705"></p>
-<hr>
-<blockquote>
-<p>final关键字</p>
-</blockquote>
-<p><img data-src="java-review-part-4-polymorphism/java_39.png" alt="image-20201008221922766"></p>
-<ol>
-<li><p>final修饰类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> 类名称 </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>含义：当前类不能有任何子类（太监类）</p>
-<p>注意：一个类如果是final的，那么其中所有的成员方法都无法覆盖重写（因为没有儿子，无法继承）</p>
-</li>
-<li><p>final修饰成员方法</p>
-<p><img data-src="java-review-part-4-polymorphism/java_40.png" alt="image-20201008222359872"></p>
-</li>
-<li><p>final修饰局部变量</p>
-<p><img data-src="java-review-part-4-polymorphism/java_41.png" alt="image-20201008222526746"></p>
-<p><img data-src="java-review-part-4-polymorphism/java_42.png" alt="image-20201008222905353"></p>
-</li>
-<li><p>final修饰成员变量</p>
-<p><img data-src="java-review-part-4-polymorphism/java_43.png" alt="image-20201008223327454"></p>
-</li>
-</ol>
-<blockquote>
-<p>四种权限修饰符</p>
-</blockquote>
-<p><img data-src="java-review-part-4-polymorphism/java_44.png" alt="image-20201008224027035"></p>
-<h3 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h3><blockquote>
-<p>内部类概念</p>
-</blockquote>
-<p><img data-src="java-review-part-4-polymorphism/java_45.png" alt="image-20201009105344326"></p>
-<blockquote>
-<p>成员内部类定义</p>
-</blockquote>
-<p><img data-src="java-review-part-4-polymorphism/java_46.png" alt="image-20201009105516278"></p>
-<blockquote>
-<p>成员内部类使用</p>
-</blockquote>
-<ol>
-<li><p>间接方式：在外部类的方法中，使用内部类；然后main方法只是调用外部类的方法。</p>
-</li>
-<li><p>直接方式：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">外部类名称.内部类名称 对象名 = <span class="keyword">new</span> 外部类名称().new 内部类名称(); </span><br></pre></td></tr></table></figure></li>
-</ol>
-<blockquote>
-<p>内部类的同名变量访问</p>
-</blockquote>
-<p>如果出现重名现象，格式为：<code>外部类名称.this.外部类成员变量</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> num = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Inner</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> num = <span class="number">30</span>;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> num = <span class="number">20</span>;</span><br><span class="line">            System.out.println(num);集合</span><br><span class="line">            System.out.println(<span class="keyword">this</span>.num);</span><br><span class="line">            System.out.println(Outer.<span class="keyword">this</span>.num);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-
-
-<blockquote>
-<p>局部内部类定义</p>
-</blockquote>
-<p><img data-src="java-review-part-4-polymorphism/java_47.png" alt="image-20201009111650623"></p>
-<p><img data-src="java-review-part-4-polymorphism/java_48.png" alt="image-20201009112211427"></p>
-<blockquote>
-<p>局部内部类final问题</p>
-</blockquote>
-<p>局部内部类，如果希望访问所在方法的局部变量，这个变量必须是<strong>有效final的</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyOuter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> num = <span class="number">10</span>;</span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">MyInner</span> </span>&#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodInner</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(num);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="java-review-part-4-polymorphism/java_49.png" alt="image-20201009125814618"></p>
-<p>生命周期不一样。</p>
-<blockquote>
-<p>匿名内部类（重要！）</p>
-</blockquote>
-<p><img data-src="java-review-part-4-polymorphism/java_50.png" alt="image-20201009130757958"></p>
-<p><img data-src="java-review-part-4-polymorphism/java_51.png" alt="image-20201009131653016"></p>
-<p><img data-src="java-review-part-4-polymorphism/java_52.png" alt="image-20201009131717167"></p>
-<blockquote>
-<p>类作为成员变量类型</p>
-</blockquote>
-<p> String也是一个类，自己定义的类当然也可以使用。</p>
-<p>当然用的时候需要创建对象。</p>
-
+          <p>Java 基础知识第四部分。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/java-review-part-4-polymorphism.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
