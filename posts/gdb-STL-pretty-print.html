@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.ongoing.ink","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.8.1","exturl":false,"sidebar":{"position":"left","display":"remove","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":false,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="GDB: not easy to learn, but easy to use:)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gdb STL pretty printer">
+<meta property="og:url" content="https://www.ongoing.ink/posts/gdb-STL-pretty-print.html">
+<meta property="og:site_name" content="ongoing&#39;s blog">
+<meta property="og:description" content="GDB: not easy to learn, but easy to use:)">
+<meta property="og:locale">
+<meta property="og:image" content="https://www.ongoing.ink/posts/gdb-STL-pretty-print/pretty_printer_1.png">
+<meta property="og:image" content="https://www.ongoing.ink/posts/gdb-STL-pretty-print/pretty_printer_2.png">
+<meta property="article:published_time" content="2020-11-05T10:19:44.000Z">
+<meta property="article:modified_time" content="2021-11-18T13:24:08.590Z">
+<meta property="article:author" content="ongoing">
+<meta property="article:tag" content="gdb">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.ongoing.ink/posts/gdb-STL-pretty-print/pretty_printer_1.png">
+
+
+<link rel="canonical" href="https://www.ongoing.ink/posts/gdb-STL-pretty-print.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"https://www.ongoing.ink/posts/gdb-STL-pretty-print.html","path":"posts/gdb-STL-pretty-print.html","title":"gdb STL pretty printer"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>gdb STL pretty printer | ongoing's blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">ongoing's blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/gdb-STL-pretty-print.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ongoing">
+      <meta itemprop="description" content="Good cooking takes time.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ongoing's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          gdb STL pretty printer
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-11-05 18:19:44" itemprop="dateCreated datePublished" datetime="2020-11-05T18:19:44+08:00">2020-11-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Debug/" itemprop="url" rel="index"><span itemprop="name">Debug</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+<p>GDB: not easy to learn, but easy to use<br>:)</p>
+</blockquote>
+<span id="more"></span>
+
+<p>gdb在打印普通变量时会有很好的作用，但是有时想要打印stl中的容器时，返回i的信息却并不怎么友好。</p>
+<p>例如在打印一个<code>map&lt;int, int&gt; mp;</code>中的变量<code>mp</code>时，在gdb中使用<code>print mp</code>返回的是如下的结果</p>
+<p><img data-src="gdb-STL-pretty-print/pretty_printer_1.png" alt="image-1"></p>
+<p>这样的信息很杂，而一般在debug中重要的几点就是</p>
+<ol>
+<li>容器中元素个数</li>
+<li>容器中元素值</li>
+<li>容器元素类型</li>
+<li>…</li>
+</ol>
+<p>而上面这几项在返回的信息中很难寻找。</p>
+<p>经过一番搜索，我发现在gdb中可以使用python语言脚本，以及gdb内置的有一个名为<code>pretty printer</code>的东西，这个东西可以使得在gdb中打印容器时返回的信息是<strong>非常友好</strong>的！</p>
+<p>这是一篇关于gdb pretty printer的 <a target="_blank" rel="noopener" href="https://sourceware.org/gdb/wiki/STLSupport">GDB wiki STL support </a>，里边有三种方式，这里展示的是第一种方法。</p>
+<p>下面的是具体的实现步骤，经过这些步骤我们再次在gdb中打印容器时，返回的就不是一大堆杂乱的信息，而是一些重要的信息，如下</p>
+<p><img data-src="gdb-STL-pretty-print/pretty_printer_2.png" alt="image-2"></p>
+<p>对不对，这样的信息是不是就清晰明了的许多呢？如同在ide中debug一样，并且不用使用鼠标点来点去，非常方便。</p>
+<ol>
+<li><p>使用<code>SVN</code>下载一个官方仓库</p>
+<ol>
+<li><p>先自己创建一个文件夹存放这个仓库，例如存放在<code>~/.gdb</code>下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/.gdb</span><br></pre></td></tr></table></figure></li>
+<li><p>在本文件夹下执行如下命令<br><em>如果没有svn，则需要先安装 Install svn(ubuntu):</em> <code>sudo apt-get install subversion</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn co svn://gcc.gnu.org/svn/gcc/trunk/libstdc++-v3/python</span><br></pre></td></tr></table></figure>
+
+<p>这条命令执行完毕后会发现<code>~/.gdb</code>目录下多了一个<code>python</code>文件夹。</p>
+</li>
+</ol>
+</li>
+</ol>
+<ol start="2">
+<li><p>在<code>~/.gdbinit</code>文件中书写如下内容(<code>.gdbinit</code>文件如不存在则自行创建)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">python</span><br><span class="line">import sys</span><br><span class="line">sys.path.insert(0, <span class="string">&#x27;python文件夹的绝对路径&#x27;</span>)</span><br><span class="line">from libstdcxx.v6.printers import register_libstdcxx_printers</span><br><span class="line">register_libstdcxx_printers (None)</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> <span class="built_in">print</span> pretty on <span class="comment"># 使格式更加美观</span></span><br></pre></td></tr></table></figure>
+
+<p><em>注：第三行中的路径需要根据自己clone下的python自行设定，例如如果根据我前面设定的就是<code>/home/你的用户名/.gdb/python</code></em></p>
+</li>
+</ol>
+<p>经过这两步后重新启动gdb即可。</p>
+<p>当然也可以自己书写python脚本对gdb进行各种设置，这样会更加贴切自己的使用体验。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/gdb/" rel="tag"># gdb</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/the-max-capacity-of-queue-that-is-simulated-by-two-stacks.html" rel="prev" title="The max capacity of queue that is simulated by two stacks">
+                  <i class="fa fa-chevron-left"></i> The max capacity of queue that is simulated by two stacks
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/deploy-blog-by-github-actions.html" rel="next" title="通过 Github Actions 部署 Hexo 博客（一）">
+                  通过 Github Actions 部署 Hexo 博客（一） <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ongoing</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

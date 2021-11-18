@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.ongoing.ink","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.8.1","exturl":false,"sidebar":{"position":"left","display":"remove","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":false,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="写C或者C++程序时有时候发现出了问题，总是习惯于直接printf或者cout，如果观察的地方比较少，用这种方法还好，但是一旦需要观察的变量多了起来，就非常麻烦。写一大堆累赘的print语句很麻烦，而且会让自己的程序变得混乱。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gdb basic usage and some useful gdb ui">
+<meta property="og:url" content="https://www.ongoing.ink/posts/gdb-basic-usage-and-some-useful-gdb-ui.html">
+<meta property="og:site_name" content="ongoing&#39;s blog">
+<meta property="og:description" content="写C或者C++程序时有时候发现出了问题，总是习惯于直接printf或者cout，如果观察的地方比较少，用这种方法还好，但是一旦需要观察的变量多了起来，就非常麻烦。写一大堆累赘的print语句很麻烦，而且会让自己的程序变得混乱。">
+<meta property="og:locale">
+<meta property="og:image" content="https://www.ongoing.ink/posts/gdb-basic-usage-and-some-useful-gdb-ui/gdb_1.png">
+<meta property="og:image" content="https://www.ongoing.ink/posts/gdb-basic-usage-and-some-useful-gdb-ui/vim_gdb.png">
+<meta property="article:published_time" content="2020-10-24T12:31:14.000Z">
+<meta property="article:modified_time" content="2021-11-18T13:24:08.586Z">
+<meta property="article:author" content="ongoing">
+<meta property="article:tag" content="gdb">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.ongoing.ink/posts/gdb-basic-usage-and-some-useful-gdb-ui/gdb_1.png">
+
+
+<link rel="canonical" href="https://www.ongoing.ink/posts/gdb-basic-usage-and-some-useful-gdb-ui.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"https://www.ongoing.ink/posts/gdb-basic-usage-and-some-useful-gdb-ui.html","path":"posts/gdb-basic-usage-and-some-useful-gdb-ui.html","title":"gdb basic usage and some useful gdb ui"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>gdb basic usage and some useful gdb ui | ongoing's blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">ongoing's blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/gdb-basic-usage-and-some-useful-gdb-ui.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ongoing">
+      <meta itemprop="description" content="Good cooking takes time.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ongoing's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          gdb basic usage and some useful gdb ui
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-10-24 20:31:14" itemprop="dateCreated datePublished" datetime="2020-10-24T20:31:14+08:00">2020-10-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Debug/" itemprop="url" rel="index"><span itemprop="name">Debug</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>写C或者C++程序时有时候发现出了问题，总是习惯于直接printf或者cout，如果观察的地方比较少，用这种方法还好，但是一旦需要观察的变量多了起来，就非常麻烦。写一大堆累赘的print语句很麻烦，而且会让自己的程序变得混乱。</p>
+<span id="more"></span>
+
+<p>知道gdb这个linux调试工具是很久之前的事情了，但是那个时候还是print流派（或者不想付出学习新事物的时间，觉得print还能应付）,但是现在因为需求的变化，在慢慢使用gdb的过程中，发现确实非常好用，也慢慢开始变得熟练了起来。</p>
+<!-- toc -->
+
+<hr>
+<h3 id="gdb的一些基本命令"><a href="#gdb的一些基本命令" class="headerlink" title="gdb的一些基本命令"></a>gdb的一些基本命令</h3><p>注意: <code>[]</code>中是可以省略输入的字母。</p>
+<ol>
+<li><p>设置断点：<code>b[reak] 行号</code></p>
+</li>
+<li><p>删除断点：<code>delete 断点id</code></p>
+</li>
+<li><p>删除所有断点: <code>delete</code></p>
+</li>
+<li><p>展示所有断点信息: <code>i[nfo] b[reakpoints]</code></p>
+</li>
+<li><p>注意想要使用gdb，在编译的时候需要在最后加上<code>-g</code>选项, 以便生成的程序中带有调试信息。</p>
+<p><code>gcc main.c -o main -g</code></p>
+</li>
+<li><p>运行程序: <code>r[un]</code></p>
+</li>
+<li><p>查看变量的值: <code>p[rint] 变量名</code></p>
+</li>
+<li><p>查看变量类型: <code>ptype 变量名</code></p>
+</li>
+<li><p>单步执行</p>
+<ol>
+<li><code>next</code> </li>
+<li><code>step</code><br>两者的区别是next遇到函数不会进入函数内部，step会执行到函数内部。</li>
+</ol>
+</li>
+<li><p>查看堆栈内容: <code>i[nfo] frame</code></p>
+</li>
+<li><p>查看栈帧： <code>backtrace</code></p>
+</li>
+<li><p>查看全局变量和静态变量：<code>info variables</code></p>
+</li>
+<li><p>查看当前stack frame局部变量:<code>info locals</code></p>
+</li>
+<li><p>查看当前stack frame参数：<code>info args</code></p>
+</li>
+<li><p>选取待debug文件: <code>file xxx</code></p>
+</li>
+<li><p>有时候debug跑过了我们想要的看的信息所在处，这个时候我们想要回退一下,gdb也有这个回退的功能:</p>
+</li>
+<li><p>run之后输入<code>record</code>命令启动记录回放</p>
+</li>
+<li><p>接下来就可以使用<code>reverse-next</code>…, 或者直接<code>rn</code></p>
+</li>
+<li><p>关闭进程记录回放: <code>reverse stop</code></p>
+</li>
+<li><p>执行到下一个断点: <code>continue</code>: resume execution and continue until a breakpoint is hit.</p>
+</li>
+</ol>
+<h3 id="gdb图形化界面"><a href="#gdb图形化界面" class="headerlink" title="gdb图形化界面"></a>gdb图形化界面</h3><h4 id="gdbtui"><a href="#gdbtui" class="headerlink" title="gdbtui"></a>gdbtui</h4><p>gdbtui是gdb自带的命令行界面。</p>
+<p>界面开启: <code>gdbtui -q 程序名</code></p>
+<p>默认情况下，GDB TUI 模式会显示 command 窗口和 source 窗口，如上图所示，还有其他窗口，如下列举的四个常用的窗口：</p>
+<p>（cmd）command 命令窗口，可以输入调试命令<br>（src）source 源代码窗口， 显示当前行、断点等信息<br>（asm）assembly 汇编代码窗口<br>（reg）register 寄存器窗口</p>
+<h4 id="cgdb"><a href="#cgdb" class="headerlink" title="cgdb"></a>cgdb</h4><ol>
+<li>比gdbtui更好的一点是对于源码会有高亮，而且界面更加光滑。</li>
+<li><img data-src="gdb-basic-usage-and-some-useful-gdb-ui/gdb_1.png" alt="image-20201018150646401"></li>
+</ol>
+<p>安装: <code>sudo apt-get install cgdb</code></p>
+<p>使用了vi的模式, 基本使用方法如下:</p>
+<ul>
+<li><code>esc</code>进入cgdb mode</li>
+<li><code>i</code>进入gdb mode</li>
+<li>在代码处窗口使用<code>空格</code>设置或取消断点</li>
+<li>调整窗口大小`:set winsplit=’style’</li>
+<li>退出<ul>
+<li><code>quit</code></li>
+<li><code>&lt;ctrl-d&gt;</code></li>
+</ul>
+</li>
+</ul>
+<p>在gdb中调试带有<code>scanf</code>语句时如同陷入了死循环，这个时候在cgdb中需要<br>    1. 按下<code>esc</code>后按下<code>T</code>，会出现一个新窗口，在这里面输入要输入的东西<br>    2. 然后再<code>esc</code>后<code>i</code>进入到<code>gdb mode</code>即可。</p>
+<h4 id="vim-gdb-best-of-all"><a href="#vim-gdb-best-of-all" class="headerlink" title="vim + gdb(best of all)"></a>vim + gdb(best of all)</h4><p>需要的环境:</p>
+<ul>
+<li>vim(v8.1+)</li>
+<li>gdb(v7.2+)</li>
+</ul>
+<p>这一篇是<a href="https://www.ongoing.ink/blog/posts/2020/10/install-gdb-version-9.2.html">安装gdb-9.2</a>的文章。</p>
+<p>这个用着的体验是三个中较好的一个，主要是窗口之间的联动很不错，刷新界面也很顺滑。</p>
+<center><i>(可放大观看)</i></center>
+
+<p><img data-src="gdb-basic-usage-and-some-useful-gdb-ui/vim_gdb.png" alt="vim_gdb"></p>
+<p>可以看到有三个窗口：</p>
+<ul>
+<li>源码窗口: 可以在源码窗口对应位置输入<code>:Break</code>打断点</li>
+<li>Debug窗口: 这里输入gdb命令进行各种查看</li>
+<li>I/O窗口: 当源码中有输入语句时，在这里进行输入</li>
+</ul>
+<h3 id="学习gdb的资源"><a href="#学习gdb的资源" class="headerlink" title="学习gdb的资源"></a>学习gdb的资源</h3><ol>
+<li><a target="_blank" rel="noopener" href="http://www.unknownroad.com/rtfm/gdbtut/">RMS’s gdb Debugger Tutorial</a>, 这个教程很简洁。</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/gdb/" rel="tag"># gdb</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/install-gdb-version-9.2.html" rel="prev" title="Install gdb version 9.2">
+                  <i class="fa fa-chevron-left"></i> Install gdb version 9.2
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/the-max-capacity-of-queue-that-is-simulated-by-two-stacks.html" rel="next" title="The max capacity of queue that is simulated by two stacks">
+                  The max capacity of queue that is simulated by two stacks <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ongoing</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

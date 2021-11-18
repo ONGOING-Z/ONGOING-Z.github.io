@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.ongoing.ink","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.8.1","exturl":false,"sidebar":{"position":"left","display":"remove","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":false,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="一月份的时候有一个考察，但是当时连一个很简单的语句都不会写了，之后就在SQLBolt上进行了一个回顾，这里进行记录，以后方便随时回来查看。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Basic of SQL">
+<meta property="og:url" content="https://www.ongoing.ink/posts/basic-of-sql.html">
+<meta property="og:site_name" content="ongoing&#39;s blog">
+<meta property="og:description" content="一月份的时候有一个考察，但是当时连一个很简单的语句都不会写了，之后就在SQLBolt上进行了一个回顾，这里进行记录，以后方便随时回来查看。">
+<meta property="og:locale">
+<meta property="og:image" content="https://www.ongoing.ink/posts/basic-of-sql/sql_eg_1.png">
+<meta property="og:image" content="https://www.ongoing.ink/posts/basic-of-sql/sql_eg_2.png">
+<meta property="og:image" content="https://www.ongoing.ink/posts/basic-of-sql/sql_eg_3.png">
+<meta property="og:image" content="https://www.ongoing.ink/posts/basic-of-sql/sql_eg_4.png">
+<meta property="og:image" content="https://www.ongoing.ink/posts/basic-of-sql/sql_eg_5.png">
+<meta property="og:image" content="https://www.ongoing.ink/posts/basic-of-sql/sql_eg_6.png">
+<meta property="article:published_time" content="2020-04-19T11:41:09.000Z">
+<meta property="article:modified_time" content="2021-11-18T13:24:08.554Z">
+<meta property="article:author" content="ongoing">
+<meta property="article:tag" content="MySQL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.ongoing.ink/posts/basic-of-sql/sql_eg_1.png">
+
+
+<link rel="canonical" href="https://www.ongoing.ink/posts/basic-of-sql.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"https://www.ongoing.ink/posts/basic-of-sql.html","path":"posts/basic-of-sql.html","title":"Basic of SQL"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Basic of SQL | ongoing's blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">ongoing's blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/basic-of-sql.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ongoing">
+      <meta itemprop="description" content="Good cooking takes time.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ongoing's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Basic of SQL
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-04-19 19:41:09" itemprop="dateCreated datePublished" datetime="2020-04-19T19:41:09+08:00">2020-04-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Fundamental/" itemprop="url" rel="index"><span itemprop="name">Fundamental</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>一月份的时候有一个考察，但是当时连一个很简单的语句都不会写了，之后就在<a target="_blank" rel="noopener" href="https://sqlbolt.com/">SQLBolt</a>上进行了一个回顾，这里进行记录，以后方便随时回来查看。</p>
+<hr>
+<!-- toc -->
+<span id="more"></span>
+
+
+<hr>
+<h3 id="1-SELECT"><a href="#1-SELECT" class="headerlink" title="1. SELECT"></a>1. SELECT</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> table_name;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-Queries-with-constraints"><a href="#2-Queries-with-constraints" class="headerlink" title="2. Queries with constraints"></a>2. Queries with constraints</h3><ul>
+<li>WHERE clause<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">column</span>,...</span><br><span class="line">FORM <span class="keyword">table</span></span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">condition</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">Operator</th>
+<th align="center">SQL Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">BETWEEN … AND …</td>
+<td align="center">clo_name <strong>BETWEEN</strong> 0.5 <strong>AND</strong> 1.5</td>
+</tr>
+<tr>
+<td align="center">NOT BETWEEN … AND …</td>
+<td align="center">clo_name NOT <strong>BETWEEN</strong> 2000 <strong>AND</strong> 2010</td>
+</tr>
+<tr>
+<td align="center">IN (…)</td>
+<td align="center">clo_name <strong>IN</strong> (1, 3, 5)</td>
+</tr>
+<tr>
+<td align="center">NOT IN (…)</td>
+<td align="center">col_name <strong>NOT IN</strong> (1, 3, 5)</td>
+</tr>
+</tbody></table>
+<center>表1</center>
+
+<table>
+<thead>
+<tr>
+<th align="center">Operator</th>
+<th align="center">Condition</th>
+<th align="center">Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">LIKE</td>
+<td align="center">Case insensitive exact string comparison</td>
+<td align="center">col_name <strong>LIKE</strong> ‘abc’</td>
+</tr>
+<tr>
+<td align="center">NOT LIKE</td>
+<td align="center">Case insensitive exact string inequality comparison</td>
+<td align="center">col_name **NOT LIKE ** ‘abc’</td>
+</tr>
+<tr>
+<td align="center">%</td>
+<td align="center">Match(only with LIKE or NOT LIKE</td>
+<td align="center">col_name <strong>LIKE</strong> ‘%hello%’</td>
+</tr>
+<tr>
+<td align="center">_</td>
+<td align="center">Used to match a single character(only with LIKE or NOT LIKE)</td>
+<td align="center">col_name <strong>LIKE</strong> “AN_”</td>
+</tr>
+<tr>
+<td align="center">IN (…)</td>
+<td align="center">String exists in a list</td>
+<td align="center">col_name <strong>IN</strong> (“A”, “B”)</td>
+</tr>
+<tr>
+<td align="center">NOT IN (…)</td>
+<td align="center">String does not exit in a list</td>
+<td align="center">col_name <strong>NOT IN</strong> (“C”, “E”)</td>
+</tr>
+</tbody></table>
+<center>表2</center>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">column</span>,...</span><br><span class="line">FORM <span class="keyword">table</span></span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">condition</span></span><br><span class="line">  <span class="keyword">AND</span><span class="operator">/</span><span class="keyword">OR</span> another_condition</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-Filtering-and-sorting-Query-results"><a href="#3-Filtering-and-sorting-Query-results" class="headerlink" title="3. Filtering and sorting Query results"></a>3. Filtering and sorting Query results</h3><ul>
+<li>Unique results<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> <span class="keyword">column</span>, another_column, ...</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">condition</span>(s)</span><br></pre></td></tr></table></figure></li>
+<li>Ordering results<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">%</span> <span class="keyword">Select</span> query <span class="keyword">with</span> ordered results</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">column</span>, another_column, ...</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">condition</span>(s)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">column</span> <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure></li>
+<li>Limiting results to a subset<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">%</span> <span class="keyword">Select</span> query <span class="keyword">with</span> limited <span class="keyword">rows</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">column</span>, another_column, ...</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">condition</span>(s)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">column</span> <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span></span><br><span class="line">LIMIT num_limit <span class="keyword">OFFSET</span> num_offset <span class="operator">%</span> <span class="keyword">offset</span>偏移量</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>eg. List the last four Pixar movies released (ordered from most recent to least)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> movies</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">year</span> <span class="keyword">DESC</span></span><br><span class="line">LIMIT <span class="number">4</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="basic-of-sql/sql_eg_1.png" alt="sql_eg_1"></p>
+<p>eg. List the <strong>next</strong> five Pixar movies sorted alphabetically</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> movies</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> title <span class="keyword">ASC</span></span><br><span class="line">LIMIT <span class="number">5</span> <span class="keyword">OFFSET</span> <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="basic-of-sql/sql_eg_2.png" alt="sql_eg_2"></p>
+<h3 id="4-Multi-table-queries-with-JOINs"><a href="#4-Multi-table-queries-with-JOINs" class="headerlink" title="4. Multi-table queries with JOINs"></a>4. Multi-table queries with JOINs</h3><p><strong>JOIN clause</strong></p>
+<ul>
+<li>INNER JOIN<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">%</span> <span class="keyword">Select</span> query <span class="keyword">with</span> <span class="keyword">INNER</span> <span class="keyword">JOIN</span> <span class="keyword">on</span> multiple tables</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">column</span>, another_table_column, ...</span><br><span class="line"><span class="keyword">FROM</span> mytable</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> another_table</span><br><span class="line">  <span class="keyword">ON</span> mytable.id <span class="operator">=</span> another_table.id</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">condition</span>(s)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">column</span>, ... <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span></span><br><span class="line">LIMIT num_limit <span class="keyword">OFFSET</span> num_offset;</span><br></pre></td></tr></table></figure>
+A process that matchs rows from the first table and the second table with<br>have the same key to create a result row with combined columns from both<br>tables.</li>
+</ul>
+<p>eg.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title, rating</span><br><span class="line"><span class="keyword">FROM</span> movies</span><br><span class="line">  <span class="keyword">JOIN</span> boxoffice</span><br><span class="line">    <span class="keyword">ON</span> movies.id <span class="operator">=</span> boxoffice.movie_id</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> rating <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-OUTER-JOINs"><a href="#5-OUTER-JOINs" class="headerlink" title="5. OUTER JOINs"></a>5. OUTER JOINs</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">%</span><span class="keyword">Select</span> query <span class="keyword">with</span> <span class="keyword">LEFT</span><span class="operator">/</span><span class="keyword">RIGHT</span><span class="operator">/</span><span class="keyword">FULL</span> JOINs <span class="keyword">on</span> multiple tables</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">column</span>, another_column, ...</span><br><span class="line"><span class="keyword">FROM</span> mytable</span><br><span class="line"><span class="keyword">INNER</span><span class="operator">/</span><span class="keyword">LEFT</span><span class="operator">/</span><span class="keyword">RIGHT</span><span class="operator">/</span><span class="keyword">FULL</span> <span class="keyword">JOIN</span> another_table</span><br><span class="line">  <span class="keyword">ON</span> mytable.id <span class="operator">=</span> another_table.matching_id</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">condition</span>(s)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">column</span>, ... <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span></span><br><span class="line">LIMIT num_limit <span class="keyword">OFFSET</span> num_offset;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>When joining table A to table B, a <code>LEFT JOIN</code> simply includes rows from A regardless of whether a matching row is found in B. The <code>RIGHT JOIN</code> is the same, but reversed, keeping rows in B regardless of whether a match is found in A. Finally, a <code>FULL JOIN</code> simply means that rows from both tables are kept, regardless of whether a matching row exists in the other table.</p>
+</blockquote>
+<p>eg. List all buildings and the distinct employee roles in each building (including empty buildings)</p>
+<p><img data-src="basic-of-sql/sql_eg_3.png" alt="sql_eg_3"></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> building_name, role <span class="keyword">FROM</span> buildings</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> employees</span><br><span class="line">  <span class="keyword">ON</span> buildings.building_name <span class="operator">=</span> employees.building</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="6-A-short-note-on-NULLs"><a href="#6-A-short-note-on-NULLs" class="headerlink" title="6. A short note on NULLs"></a>6. A short note on NULLs</h3><blockquote>
+<p>Test  a column for NULL values in a <strong>WHERE</strong> clause by using either <strong>IS NULL</strong> or <strong>IS NOT NULL</strong> constraint.</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">%</span><span class="keyword">Select</span> query <span class="keyword">with</span> constraints <span class="keyword">on</span> <span class="keyword">NULL</span> <span class="keyword">values</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">column</span>, another_column, ...</span><br><span class="line"><span class="keyword">FROM</span> mytable</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">column</span> <span class="keyword">IS</span><span class="operator">/</span><span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span></span><br><span class="line"><span class="keyword">AND</span><span class="operator">/</span><span class="keyword">OR</span> another_condition</span><br></pre></td></tr></table></figure>
+
+<p>eg.</p>
+<blockquote>
+<p>Find the names of the buildings that hold no employees.</p>
+</blockquote>
+<p><img data-src="basic-of-sql/sql_eg_4.png" alt="sql_eg_4"></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> building_name</span><br><span class="line"><span class="keyword">FROM</span> buildings</span><br><span class="line">  <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> employees</span><br><span class="line">    <span class="keyword">ON</span> building_name <span class="operator">=</span> building</span><br><span class="line"><span class="keyword">WHERE</span> role <span class="keyword">IS</span> <span class="keyword">NULL</span>;</span><br></pre></td></tr></table></figure>
+
+<p><em>此题需要仔细思考一下</em></p>
+<h3 id="7-Queries-with-expressions"><a href="#7-Queries-with-expressions" class="headerlink" title="7. Queries with expressions"></a>7. Queries with expressions</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">%</span> <span class="keyword">Select</span> query <span class="keyword">with</span> expression aliases</span><br><span class="line"><span class="keyword">SELECT</span> col_expression <span class="keyword">AS</span> expr_description, ...</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">table</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">%</span> Example query <span class="keyword">with</span> <span class="keyword">both</span> <span class="keyword">column</span> <span class="keyword">and</span> <span class="keyword">table</span> name aliases</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">column</span> <span class="keyword">AS</span> better_column_name, ...</span><br><span class="line"><span class="keyword">FROM</span> complex_table_name <span class="keyword">AS</span> easy_table_name;</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-Queries-with-aggregates-Pt-1"><a href="#8-Queries-with-aggregates-Pt-1" class="headerlink" title="8. Queries with aggregates(Pt.1)"></a>8. Queries with aggregates(Pt.1)</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">%</span> <span class="keyword">Select</span> query <span class="keyword">with</span> aggregate <span class="keyword">function</span> <span class="keyword">over</span> <span class="keyword">all</span> <span class="keyword">rows</span></span><br><span class="line"><span class="keyword">SELECT</span> AGG_FUNC(column_or_expression) <span class="keyword">AS</span> aggregate_description, ...</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">table</span></span><br><span class="line"><span class="keyword">WHERE</span> constraint_expression;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Common aggregate functions</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Function</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>COUNT(*)</td>
+</tr>
+<tr>
+<td>MIN(column)</td>
+</tr>
+<tr>
+<td>MAX(column)</td>
+</tr>
+<tr>
+<td>AVG(column)</td>
+</tr>
+<tr>
+<td>SUM(column)</td>
+</tr>
+</tbody></table>
+<ul>
+<li>Grouped aggregate functions</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">%</span> <span class="keyword">Select</span> query <span class="keyword">with</span> aggregate functions <span class="keyword">over</span> <span class="keyword">groups</span></span><br><span class="line"><span class="keyword">SELECT</span> AGG_FUNC(column_or_expression) <span class="keyword">AS</span> aggregate_expression, ...</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">table</span></span><br><span class="line"><span class="keyword">WHERE</span> constraint_expression</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">column</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>The <strong>GROUP BY</strong> clause works by grouping rows that have the same value in the column specified.</p>
+</blockquote>
+<h3 id="9-Queries-with-aggregates-Pt-2"><a href="#9-Queries-with-aggregates-Pt-2" class="headerlink" title="9.  Queries with aggregates (Pt. 2)"></a>9.  Queries with aggregates (Pt. 2)</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">%</span> <span class="keyword">Select</span> query <span class="keyword">with</span> <span class="keyword">HAVING</span> <span class="keyword">constraint</span></span><br><span class="line"><span class="keyword">SELECT</span> group_by_column, AGG_FUNC(column_expression) <span class="keyword">AS</span> aggregate_result_alias, ...</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">table</span></span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">condition</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">column</span></span><br><span class="line"><span class="keyword">HAVING</span> group_condition;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>The <strong>HAVING</strong> clause constraints are applied to the grouped rows.</p>
+<p>The <code>HAVING</code> clause constraints are written the same way as the <code>WHERE</code> clause constraints.</p>
+</blockquote>
+<p>eg. Find the total number of years employed by all Engineers</p>
+<p><img data-src="basic-of-sql/sql_eg_5.png" alt="sql_eg_5"></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> role, <span class="built_in">SUM</span>(years_employed)</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> role</span><br><span class="line"><span class="keyword">HAVING</span> role <span class="operator">=</span> &quot;Engineer&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>result</p>
+<p><img data-src="basic-of-sql/sql_eg_6.png" alt="sql_eg_6"></p>
+<h3 id="10-Order-of-execution-of-a-Query"><a href="#10-Order-of-execution-of-a-Query" class="headerlink" title="10. Order of execution of a Query"></a>10. Order of execution of a Query</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">%</span> Complete <span class="keyword">SELECT</span> query</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> <span class="keyword">column</span>, AGG_FUNC(column_or_expression), ...</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">table</span></span><br><span class="line">  <span class="keyword">JOIN</span> another_table</span><br><span class="line">    <span class="keyword">ON</span> table.column <span class="operator">=</span> another_table.column</span><br><span class="line">  <span class="keyword">WHERE</span> constraint_expression</span><br><span class="line">  <span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">column</span></span><br><span class="line">  <span class="keyword">HAVING</span> constraint_expression</span><br><span class="line">  <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">column</span> <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span></span><br><span class="line">  LIMIT count <span class="keyword">OFFSET</span> count;</span><br></pre></td></tr></table></figure>
+
+<h3 id="11-Inserting-rows"><a href="#11-Inserting-rows" class="headerlink" title="11. Inserting rows"></a>11. Inserting rows</h3><p>Inserting new data</p>
+<ul>
+<li>Insert statement with values for all columns</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">table</span></span><br><span class="line"><span class="keyword">VALUES</span> (value_or_expr, another_value_or_expr, ...),</span><br><span class="line">       (value_or_expr_2, another_value_or_expr_2, ...),</span><br><span class="line">       ...;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Insert statement with specific columns</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">table</span></span><br><span class="line">(<span class="keyword">column</span>, another_column, ...)</span><br><span class="line"><span class="keyword">VALUES</span> (value_or_expr, another_value_or_expr, ...),</span><br><span class="line">       (value_or_expr_2, another_value_or_expr_2, ...),</span><br><span class="line">       ...;</span><br></pre></td></tr></table></figure>
+
+<p><em>注意<code>string格式</code>的双引号</em></p>
+<h3 id="12-Updating-rows"><a href="#12-Updating-rows" class="headerlink" title="12. Updating rows"></a>12. Updating rows</h3><p>Update existing data</p>
+<ul>
+<li>Update statement with values</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">UPDATE <span class="keyword">table</span></span><br><span class="line"><span class="keyword">SET</span> <span class="keyword">column</span> <span class="operator">=</span> value_or_expr,</span><br><span class="line">    other_column <span class="operator">=</span> another_value_or_expr,</span><br><span class="line">    ...</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">condition</span>;</span><br></pre></td></tr></table></figure>
+
+<p><em>It’s recommended that you run the constraint in a <code>SELECT</code> query first to ensure that you are updating the right rows.</em></p>
+<h3 id="13-Deleting-rows"><a href="#13-Deleting-rows" class="headerlink" title="13. Deleting rows"></a>13. Deleting rows</h3><p>Delete data from a table in the database</p>
+<ul>
+<li>Delete statement with condition</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> <span class="keyword">table</span></span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">condition</span>;</span><br></pre></td></tr></table></figure>
+
+<p><em>It’s recommended that you run the constraint in a <code>SELECT</code> query first to ensure that you are removing the right rows.</em></p>
+<h3 id="14-Creating-tables"><a href="#14-Creating-tables" class="headerlink" title="14. Creating tables"></a>14. Creating tables</h3><ul>
+<li>Create table statement</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> table_name (</span><br><span class="line">	<span class="keyword">column</span> DataType TableConstraint <span class="keyword">DEFAULT</span> default_value,</span><br><span class="line">    another_column DataType TableConstraint <span class="keyword">DEFAULT</span> default_value,</span><br><span class="line">    ...</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Table data types</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Data type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>INTEGER, BOOLEAN</td>
+<td></td>
+</tr>
+<tr>
+<td>FLOAT, DOUBLE, REAL</td>
+<td>precise numerical data</td>
+</tr>
+<tr>
+<td>CHARACTER, VARCHAR, TEXT</td>
+<td></td>
+</tr>
+<tr>
+<td>DATE, DATETIME</td>
+<td></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Table constraints</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Constraint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PRIMARY KEY</td>
+<td>This means that the values in this column are unique, and each value can be used to identify a single row in this table.</td>
+</tr>
+<tr>
+<td>AUTOINCEREMENT(自增)</td>
+<td>For integer values, this means that the value is automatically filled in and incremented with each row insertion.</td>
+</tr>
+<tr>
+<td>UNIQUE</td>
+<td>The values in this column have to be unique</td>
+</tr>
+<tr>
+<td>NOT NULL</td>
+<td></td>
+</tr>
+<tr>
+<td>FOREIGN KEY</td>
+<td>This is a consistency check which ensures that each value in this column corresponds to another value in a column in another table.</td>
+</tr>
+</tbody></table>
+<p>eg.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> movies (</span><br><span class="line">    id <span class="type">INTEGER</span> <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">    title TEXT,</span><br><span class="line">    director TEXT,</span><br><span class="line">    <span class="keyword">year</span> <span class="type">INTEGER</span>,</span><br><span class="line">    length_minutes <span class="type">INTEGER</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h3 id="15-Altering-tables"><a href="#15-Altering-tables" class="headerlink" title="15. Altering tables"></a>15. Altering tables</h3><p>Adding columns</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">%</span> Altering <span class="keyword">table</span> <span class="keyword">to</span> <span class="keyword">add</span> <span class="keyword">new</span> <span class="keyword">column</span>(s)</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span>	table_name</span><br><span class="line"><span class="keyword">ADD</span> <span class="keyword">column</span> DataType OptionalTableConstraint</span><br><span class="line">  <span class="keyword">DEFAULT</span> default_value;</span><br></pre></td></tr></table></figure>
+
+<p>Removing columns</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">%</span> Altering <span class="keyword">table</span> <span class="keyword">to</span> remove <span class="keyword">column</span>(s)</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name</span><br><span class="line"><span class="keyword">DROP</span> column_to_be_deleted;</span><br></pre></td></tr></table></figure>
+
+<p>Renaming the table</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">%</span> Altering <span class="keyword">table</span> name</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name</span><br><span class="line">RENAME <span class="keyword">TO</span> new_table_name;</span><br></pre></td></tr></table></figure>
+
+<h3 id="16-Dropping-tables"><a href="#16-Dropping-tables" class="headerlink" title="16. Dropping tables"></a>16. Dropping tables</h3><ul>
+<li>Drop table statement</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> IF <span class="keyword">EXISTS</span> table_name;</span><br></pre></td></tr></table></figure>
+
+<p><em>If you have another table that is dependent on columns in table you are removing (for example, with a <code>FOREIGN KEY</code> dependency) then you will have to either update all dependent tables first to remove the dependent rows or to remove those tables entirely.</em></p>
+<center>FINISHED: 20_1_29</center>
+
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><p>[1] <a target="_blank" rel="noopener" href="https://sqlbolt.com/">SQLBolt</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/Install-Yahei-Consolas-Hybrid-font-in-linux-mint.html" rel="prev" title="Install Yahei Consolas Hybrid font in linux mint">
+                  <i class="fa fa-chevron-left"></i> Install Yahei Consolas Hybrid font in linux mint
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/git-knowledge.html" rel="next" title="Git knowledge">
+                  Git knowledge <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ongoing</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

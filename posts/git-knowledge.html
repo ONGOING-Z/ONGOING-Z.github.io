@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.ongoing.ink","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.8.1","exturl":false,"sidebar":{"position":"left","display":"remove","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":false,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git knowledge">
+<meta property="og:url" content="https://www.ongoing.ink/posts/git-knowledge.html">
+<meta property="og:site_name" content="ongoing&#39;s blog">
+<meta property="og:locale">
+<meta property="article:published_time" content="2020-04-26T05:11:41.000Z">
+<meta property="article:modified_time" content="2021-11-18T13:24:08.554Z">
+<meta property="article:author" content="ongoing">
+<meta property="article:tag" content="Git">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.ongoing.ink/posts/git-knowledge.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"https://www.ongoing.ink/posts/git-knowledge.html","path":"posts/git-knowledge.html","title":"Git knowledge"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Git knowledge | ongoing's blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">ongoing's blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/git-knowledge.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ongoing">
+      <meta itemprop="description" content="Good cooking takes time.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ongoing's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Git knowledge
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-04-26 13:11:41" itemprop="dateCreated datePublished" datetime="2020-04-26T13:11:41+08:00">2020-04-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Fundamental/" itemprop="url" rel="index"><span itemprop="name">Fundamental</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <!-- toc -->
+<span id="more"></span>
+
+
+<h3 id="git-查看修改用户名与密码"><a href="#git-查看修改用户名与密码" class="headerlink" title="git 查看修改用户名与密码"></a>git 查看修改用户名与密码</h3><ul>
+<li>查看用户名<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name</span><br></pre></td></tr></table></figure></li>
+<li>修改用户名<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;your name&quot;</span><br></pre></td></tr></table></figure></li>
+<li>查看邮箱地址<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email</span><br></pre></td></tr></table></figure></li>
+<li>修改邮箱地址<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email &quot;your email address&quot;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="git-本地与远程仓库关联与解除"><a href="#git-本地与远程仓库关联与解除" class="headerlink" title="git 本地与远程仓库关联与解除"></a>git 本地与远程仓库关联与解除</h3><ul>
+<li>查看远程仓库信息<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure></li>
+<li>建立新仓库<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在github中建立一个新的仓库</span><br><span class="line">可以不要README.md文件</span><br></pre></td></tr></table></figure></li>
+<li>关联<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin git@github.com:your_name/repository_name.git</span><br></pre></td></tr></table></figure></li>
+<li>解除关联<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote remove origin</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="GitHub快速更换绑定邮箱"><a href="#GitHub快速更换绑定邮箱" class="headerlink" title="GitHub快速更换绑定邮箱"></a>GitHub快速更换绑定邮箱</h3><p>（1）点击头像<br>（2）setting<br>（3）Email<br>（4）Add email address<br>（5）新邮箱验证，返回github，将新邮箱验证Set Primary.</p>
+<h3 id="git-推送"><a href="#git-推送" class="headerlink" title="git 推送"></a>git 推送</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+
+<h3 id="github-如何删除仓库"><a href="#github-如何删除仓库" class="headerlink" title="github 如何删除仓库"></a>github 如何删除仓库</h3><p>（1）settings<br>（2）页面最下方’Delete this repository’</p>
+<h3 id="查看本地与远程的连接"><a href="#查看本地与远程的连接" class="headerlink" title="查看本地与远程的连接"></a>查看本地与远程的连接</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+
+<h3 id="git在本地配置公钥"><a href="#git在本地配置公钥" class="headerlink" title="git在本地配置公钥"></a>git在本地配置公钥</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C email_address</span><br></pre></td></tr></table></figure>
+
+<h3 id="对文件或文件夹重命名"><a href="#对文件或文件夹重命名" class="headerlink" title="对文件或文件夹重命名"></a>对文件或文件夹重命名</h3><p>使用<code>git mv</code>即可对文件或文件夹进行<code>转移</code>或者<code>重命名</code>。<br>使用方法如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git mv &lt;source&gt; &lt;destination&gt;</span><br><span class="line">git mv &lt;source&gt; &lt;destination directory&gt;</span><br></pre></td></tr></table></figure>
+<p><em>暂时还没看懂重命名文件夹是怎么做的。</em></p>
+<h3 id="git基本操作"><a href="#git基本操作" class="headerlink" title="git基本操作"></a>git基本操作</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 初始化仓库</span><br><span class="line">git init</span><br><span class="line"># 取消初始化仓库</span><br><span class="line">rm -rf .git/</span><br><span class="line"># 查看仓库状态（哪些文件提交了，哪些文件未提交）</span><br><span class="line">git status</span><br><span class="line"># 添加文件至提交列表</span><br><span class="line">git add filename</span><br><span class="line">## 同时添加多个文件</span><br><span class="line">git add filename1 filename2 (中间以空格区分)</span><br></pre></td></tr></table></figure>
+
+<h3 id="git删除add中的文件（缓存文件）"><a href="#git删除add中的文件（缓存文件）" class="headerlink" title="git删除add中的文件（缓存文件）"></a>git删除add中的文件（缓存文件）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm --cached file_name</span><br></pre></td></tr></table></figure>
+
+<h3 id="Git每次push都需要输入用户名与密码"><a href="#Git每次push都需要输入用户名与密码" class="headerlink" title="Git每次push都需要输入用户名与密码"></a>Git每次push都需要输入用户名与密码</h3><p>首先，如果我们git clone的下载代码的时候是连接的https://而不是git@git (ssh)的形式，当我们操作git pull/push到远程的时候，总是提示我们输入账号和密码才能操作成功，频繁的输入账号和密码会很麻烦，也特别烦恼。</p>
+<p><strong>解决办法</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git bash进入你的项目目录，输入:</span><br><span class="line">git config --global credential.helper store</span><br></pre></td></tr></table></figure>
+<p>此项会在本地生成一个文本，上边记录你的账号和密码。<br>然后你使用上述的命令配置好之后，再操作一次git pull，然后它会提示你输入账号密码，这一次之后就不需要再次输入密码了。</p>
+<h3 id="发现github上的绿色格子几天没有亮了"><a href="#发现github上的绿色格子几天没有亮了" class="headerlink" title="发现github上的绿色格子几天没有亮了"></a>发现github上的绿色格子几天没有亮了</h3><p>原因：之前github的邮箱更换了，但是本地主机的邮箱忘记更换。</p>
+<p>使用<code>git config user.email</code>查看是否和github上保留的邮箱是否一致，</p>
+<p>如果不一致，使用<code>git config user.email &quot;your_address”</code>进行本地邮箱的更换。</p>
+<h3 id="在终端中键入git-status后显示中文乱码"><a href="#在终端中键入git-status后显示中文乱码" class="headerlink" title="在终端中键入git status后显示中文乱码"></a>在终端中键入git status后显示中文乱码</h3><p>解决办法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.quotepath false</span><br></pre></td></tr></table></figure>
+
+<h3 id="重写最后一个commit信息"><a href="#重写最后一个commit信息" class="headerlink" title="重写最后一个commit信息"></a>重写最后一个commit信息</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend</span><br></pre></td></tr></table></figure>
+
+<h3 id="恢复git-rm的文件"><a href="#恢复git-rm的文件" class="headerlink" title="恢复git rm的文件"></a>恢复git rm的文件</h3><p>第一步: <code>git reset</code><br>第二步: <code>git checkout the_file_deleted</code></p>
+<h3 id="下载最新版本库，不带有历史库"><a href="#下载最新版本库，不带有历史库" class="headerlink" title="下载最新版本库，不带有历史库"></a>下载最新版本库，不带有历史库</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone repository_link --depth=1</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Git/" rel="tag"># Git</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/basic-of-sql.html" rel="prev" title="Basic of SQL">
+                  <i class="fa fa-chevron-left"></i> Basic of SQL
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/some-linux-usage-record.html" rel="next" title="Some linux usage record">
+                  Some linux usage record <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ongoing</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
