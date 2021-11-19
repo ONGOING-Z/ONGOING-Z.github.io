@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.ongoing.ink","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.8.1","exturl":false,"sidebar":{"position":"left","display":"remove","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":false,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="记录自己在使用linux中渐渐使用的命令和一些方法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Some linux usage record">
+<meta property="og:url" content="https://www.ongoing.ink/posts/some-linux-usage-record.html">
+<meta property="og:site_name" content="ongoing&#39;s blog">
+<meta property="og:description" content="记录自己在使用linux中渐渐使用的命令和一些方法。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2020-05-03T15:10:08.000Z">
+<meta property="article:modified_time" content="2021-11-19T15:13:19.856Z">
+<meta property="article:author" content="ongoing">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.ongoing.ink/posts/some-linux-usage-record.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"https://www.ongoing.ink/posts/some-linux-usage-record.html","path":"posts/some-linux-usage-record.html","title":"Some linux usage record"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Some linux usage record | ongoing's blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">ongoing's blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories</a></li>
+  </ul>
+</nav>
+
+
+
+<link rel="manifest" href="/manifest.json">
+
+</div>
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://www.ongoing.ink/posts/some-linux-usage-record.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ongoing">
+      <meta itemprop="description" content="Good cooking takes time.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ongoing's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Some linux usage record
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-05-03 23:10:08" itemprop="dateCreated datePublished" datetime="2020-05-03T23:10:08+08:00">2020-05-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Fundamental/" itemprop="url" rel="index"><span itemprop="name">Fundamental</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>记录自己在使用linux中渐渐使用的命令和一些方法。</p>
+<hr>
+<!-- toc -->
+<span id="more"></span>
+
+
+<hr>
+<ol>
+<li><p>在一个终端中打开另一个窗口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctrl + shift + t</span><br></pre></td></tr></table></figure></li>
+<li><p>回到上一次目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd -</span><br></pre></td></tr></table></figure></li>
+<li><p>列出当前登录用户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w</span><br></pre></td></tr></table></figure></li>
+<li><p>Linux进出sudo的方法</p>
+<p> 进入<code>sudo</code>mode: <code>sudo -i</code><br> 退出<code>sudo</code>mode: <code>ctrl + d</code></p>
+</li>
+<li><p>grep(general regular expression print)<br><code>ls | grep &quot;linux&quot;</code>: List file that its name includes string “linux”.</p>
+</li>
+<li><p>Clear commands history<br><code>history -c</code></p>
+</li>
+<li><p>终端锁定与退出锁定(终端无法输入的假死问题)<a target="_blank" rel="noopener" href="https://www.cnblogs.com/guochaoxxl/p/10428991.html">^1</a></p>
+</li>
+</ol>
+<ul>
+<li>终端锁定<br>  <code>ctrl + s</code></li>
+<li>退出锁定<br>  <code>ctrl + q</code></li>
+</ul>
+<ol start="8">
+<li>File permission</li>
+</ol>
+<ul>
+<li><code>chmod</code><br>  Change mode.<br>  10number: <code>d</code>(directory) or <code>-</code>(that represents file)<br>  Permission:<pre><code>- `r`: (100)&lt;sub&gt;2&lt;/sub&gt; //4
+- `w`: (010)&lt;sub&gt;2&lt;/sub&gt; //2
+- `x`: (001)&lt;sub&gt;2&lt;/sub&gt; //1
+</code></pre>
+  eg. <code>chmod 777 file/dir</code>  // Give file/dir rwx permission.</li>
+<li><code>chgrp</code><br>  Change file group.</li>
+<li><code>chown</code><br>  Change file owner.</li>
+</ul>
+<ol start="9">
+<li><p>Change font size in terminal</p>
+<p> Change bigger: <code>ctrl -</code><br> Change smaller: <code>ctrl +</code></p>
+</li>
+<li><p>Rename</p>
+<p>将test.jpg改成test1.jpg</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv &#123;<span class="built_in">test</span>,test1&#125;.jpg</span><br></pre></td></tr></table></figure></li>
+<li><p>在linux中跳出很深的文件夹，如果没有记住文件路径，就要一层层<code>cd</code>过去，浪费很多的时间。</p>
+<p>解决方法1<br>在<code>/etc/profile.d/</code>目录下新建例如<code>dd.sh</code>文件，文件内容如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> dd=<span class="string">&#x27;cd /media/folder1/folder2/.../&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>接下来保存退出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> dd.sh</span><br></pre></td></tr></table></figure>
+<p>效果: 在命令行中输入<code>dd</code>即可实现挑入指定目录。<br>并且重启之后在命令行中依然生效。</p>
+<p>解决方法2<br>在<code>~/.bashrc</code>中添加</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> dd=<span class="string">&#x27;cd /media/folder1/folder2/.../&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>也可以有同样的效果。</p>
+</li>
+<li><p>Linux光标移动</p>
+<p><code>ctrl + a</code>: 行首<br><code>ctrl + e</code>: 行尾</p>
+<p><code>ctrl + f</code>: 光标右移<br><code>ctrl + b</code>: 光标左移</p>
+<p><code>esc + f</code>: 右移一个单词<br><code>esc + b</code>: 左移一个单词</p>
+</li>
+<li><p>Linux <code>mv</code><br>功能<br>(1) 修改名称<br>(2) 移动文件</p>
+</li>
+<li><p>Bash<br>(1) 注释: <code>#</code><br>(2) <code>#!/bin/bash</code>的意义<br>以<code>#</code>代表是个注释，但是<code>#!</code>并不是注释了，它用来指明这个脚本所需要的<code>Shell</code><br>(3) shell变量类型<br>变量类型只有字符串</p>
+</li>
+<li><p>caps -&gt; ctrl(reference 32)</p>
+</li>
+<li><p>Download video in CLI<br>(1) you-get<br>(2)youtube_dl</p>
+</li>
+<li><p>du(disk usage)</p>
+</li>
+<li><p><code>ctrl + u</code>: 从光标处删除文本直到行首</p>
+</li>
+<li><p><code>ctrl + k</code>: 从光标处删除文本直到行尾</p>
+</li>
+<li><p><code>alt + f</code>: 向后一个单词</p>
+</li>
+<li><p><code>alt + b</code>: 向前一个单词</p>
+</li>
+<li><p>重复使用上一个命令: <code>!!</code></p>
+</li>
+<li><p><code>dstat</code><br>View the net speed in late 10 seconds and other functions.</p>
+</li>
+<li><p>Symbolic links</p>
+</li>
+<li><p>I/O redirection</p>
+<blockquote>
+<p>I/O redirection allows us to change where output goes and where input comes from. Normally, output goes to the screen and input comes from the keyboard, but with I/O redirection we can change that.</p>
+</blockquote>
+</li>
+<li><p>The Letter-Based Method</p>
+<blockquote>
+<p>In addition to the method described above there is a second way to change permissions. Chmod uses either the hexadecimal representation of the permissions or a letter-based representation. The letter-based representation is [ugoa][+-][rwx]. This is one of the letters u (user=file owner), g (group), o (others), a (all users, groups and others); followed by + or - to add or remove permissions; and then the symbolic representation of the permissions in the form of r(read) w(write) x(execute). To extend Write permissions to all for the file “file.txt”,</p>
+</blockquote>
+<p>For example, you would type:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod a+w file.txt</span><br></pre></td></tr></table></figure></li>
+<li><p><code>uptime</code><br>Tell how long the system has been running.</p>
+</li>
+<li><p>Change user</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su [username]</span><br></pre></td></tr></table></figure>
+<p>退出此用户: <code>exit</code></p>
+</li>
+<li><p>Add user</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">useradd [username]</span><br><span class="line">passwd [username]</span><br></pre></td></tr></table></figure></li>
+<li><p>Delete user</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">userdel [-r] [username]</span><br></pre></td></tr></table></figure>
+<p>-r: remove the home dir of [username]</p>
+</li>
+<li><p>Print current effective user</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whoami</span><br></pre></td></tr></table></figure></li>
+<li><p>linux将cpas-&gt;ctrl</p>
+<p>(1) Edit <code>/etc/default/keyboard</code></p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># KEYBOARD CONFIGURATION FILE</span><br><span class="line"></span><br><span class="line"># Consult the keyboard(5) manual page.</span><br><span class="line"></span><br><span class="line">XKBMODEL=&quot;pc105&quot;</span><br><span class="line">XKBLAYOUT=&quot;cn&quot;</span><br><span class="line">XKBVARIANT=&quot;&quot;</span><br><span class="line"><span class="deletion">- XKBOPTIONS=&quot;&quot;</span></span><br><span class="line"><span class="addition">+ XKBOPTIONS=&quot;ctrl:nocaps&quot;</span></span><br><span class="line"></span><br><span class="line">BACKSPACE=&quot;guess&quot;</span><br></pre></td></tr></table></figure>
+<p>(2) 运行如下命令，设置生效</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg-reconfigure keyboard-configuration</span><br></pre></td></tr></table></figure></li>
+<li><p>cp 排除某个目录<br>例. 有目录b, c, 复制到<code>/f</code>下，排除b</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp -r !(b) /f</span><br></pre></td></tr></table></figure></li>
+<li><p>在linux下弹出u盘命令（假设u盘设备是sdb1）</p>
+</li>
+</ol>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo eject -s /dev/sdb1</span><br></pre></td></tr></table></figure>
+
+<ol start="35">
+<li>ccat</li>
+</ol>
+<p>  内置的<code>cat</code>查看命令没有语法高亮，但是使用<code>ccat</code>可以有这个作用。</p>
+<p>  下载二进制代码文件<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/jingweno/ccat/releases/download/v1.1.0/linux-amd64-1.1.0.tar.gz</span><br></pre></td></tr></table></figure><br>  解压<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar xfz linux-amd64-1.1.0.tar.gz</span><br></pre></td></tr></table></figure><br>  将<code>ccat</code>文件复制到<code>/usr/local/bin/</code>文件夹下<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp linux-amd64-1.1.0/ccat /usr/<span class="built_in">local</span>/bin/</span><br></pre></td></tr></table></figure><br>  使用<code>ccat</code>命令查看文件会发现文件显示变成彩色的了。</p>
+<ol start="36">
+<li>ssh &amp; public key</li>
+</ol>
+<p>  (1) 本地生成公钥<br>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure><br>  之后全部默认回车即可。</p>
+<p>  (2) 将本地公钥<code>~/.ssh/id_rsa.pub</code>复制到远程主机<code>~/.ssh/autoorized_keys</code>文件中，如果目录和文件皆不存在，直接创建新的文件。<br>  (3) 重启ssh服务<br>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service ssh restart</span><br></pre></td></tr></table></figure><br>  之后与主机相连就不必再输入密码。</p>
+<ol start="37">
+<li><code>ls</code>的<code>-S</code>选项<blockquote>
+<p>sort  by  WORD instead of name: none (-U), size (-S), time (-t), version (-v), extension (-X)</p>
+</blockquote>
+</li>
+</ol>
+<p>  准确来说就是将文件从大到小进行排序。</p>
+<ol start="38">
+<li><code>tab</code></li>
+</ol>
+<p>  (1) 命令补全: tab接在一串指令的第一个字的后面<br>  (2) 文件补齐: tab接在一串指令的第二个字的后面</p>
+<ol start="39">
+<li><code>find</code></li>
+</ol>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find dir_name -name filename_to_be_searched</span><br></pre></td></tr></table></figure>
+<ol start="40">
+<li>在 bash 里，使用 <code>Ctrl-R</code> 而不是上下光标键来查找历史命令。</li>
+<li>使用 <code>man ascii</code> 来查看 ASCII 表。</li>
+<li>命令行注释命令: <code>alt + #</code></li>
+</ol>
+<hr>
+<h3 id="Linux各目录"><a href="#Linux各目录" class="headerlink" title="Linux各目录"></a>Linux各目录</h3><h4 id="etc"><a href="#etc" class="headerlink" title="etc"></a>etc</h4><ol>
+<li>含义: and so on</li>
+<li>功能: 存放零零碎碎的东西</li>
+</ol>
+<h3 id="linux各种解压命令汇总"><a href="#linux各种解压命令汇总" class="headerlink" title="linux各种解压命令汇总"></a>linux各种解压命令汇总</h3><h4 id="tar-xz"><a href="#tar-xz" class="headerlink" title=".tar.xz"></a><code>.tar.xz</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$xz -d filename.tar.xz</span><br><span class="line">$tar -xvf filename.tar</span><br></pre></td></tr></table></figure>
+<h4 id="tar-gz"><a href="#tar-gz" class="headerlink" title="tar.gz"></a><code>tar.gz</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf xxx.tar.gz</span><br></pre></td></tr></table></figure>
+<h4 id="rar"><a href="#rar" class="headerlink" title=".rar"></a><code>.rar</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unrar e file.rar # e: 解压压缩包中的全部问价至文件夹</span><br></pre></td></tr></table></figure>
+
+<p>今天因要下载win10 iso文件，奈何文件太大，只好利用winrar软件将4g的iso文件分成了4个1g的小文件，转到linux下后，直接将4个小文件提取了出来，但问题是4个提取出来的文件并没有合并在一起，这可不是我想要的结果，百度一查，赶紧在linux安装了rar,只需用<code>rar e name.part1.rar</code>，提取后的文件就是合并后的文件了。</p>
+<hr>
+<h3 id="Problems"><a href="#Problems" class="headerlink" title="Problems"></a>Problems</h3><h4 id="在ubuntu19-01上安装curl出现问题curl-Depends-libcurl4-7-58-0-2ubuntu3-8-but-7-65-3-1ubuntu3-is-to-be-installed"><a href="#在ubuntu19-01上安装curl出现问题curl-Depends-libcurl4-7-58-0-2ubuntu3-8-but-7-65-3-1ubuntu3-is-to-be-installed" class="headerlink" title="在ubuntu19.01上安装curl出现问题curl : Depends: libcurl4 (= 7.58.0-2ubuntu3.8) but 7.65.3-1ubuntu3 is to be installed"></a>在ubuntu19.01上安装curl出现问题curl : Depends: libcurl4 (= 7.58.0-2ubuntu3.8) but 7.65.3-1ubuntu3 is to be installed</h4><p>问题如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The following packages have unmet dependencies:</span><br><span class="line">curl : Depends: libcurl4 (= 7.58.0-2ubuntu3.8) but 7.65.3-1ubuntu3 is to be installed</span><br><span class="line">E: Unable to correct problems, you have held broken packages.</span><br></pre></td></tr></table></figure>
+<p>解决方法:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get purge libcurl4</span><br></pre></td></tr></table></figure>
+<p>接下来就可以正常安装<code>curl</code>了。</p>
+<h4 id="linux升级gdb"><a href="#linux升级gdb" class="headerlink" title="linux升级gdb"></a>linux升级gdb</h4><p>gdb官网下载太慢，<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/gnu/gdb/">清华大学镜像站</a>可以下载</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/git-knowledge.html" rel="prev" title="Git knowledge">
+                  <i class="fa fa-chevron-left"></i> Git knowledge
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/link-to-github-and-view-the-updated-history-of-articles.html" rel="next" title="文章关联github及查看文章源文件更新历史">
+                  文章关联github及查看文章源文件更新历史 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fab fa-envira"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ongoing</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
