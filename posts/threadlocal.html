@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ongoing-z.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"remove","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":false,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://ongoing-z.github.io/posts/threadlocal.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"https://ongoing-z.github.io/posts/threadlocal.html","path":"posts/threadlocal.html","title":"Threadlocal"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Threadlocal | ongoing's blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ongoing's blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories</a></li>
+  </ul>
+</nav>
+
+
+
+<link rel="manifest" href="/manifest.json">
+
+</div>
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://ongoing-z.github.io/posts/threadlocal.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ongoing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ongoing's blog">
+      <meta itemprop="description" content="Good cooking takes time.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Threadlocal | ongoing's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Threadlocal
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-11-08 22:48:00" itemprop="dateCreated datePublished" datetime="2023-11-08T22:48:00+08:00">2023-11-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>前言: Threadlocal线程本地变量的例子。</p>
+<span id="more"></span>
+
+<p><code>ThreadlocalUtils.java</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ThreadlocalUtils</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> ThreadLocal&lt;Map&gt; threadlocal = <span class="keyword">new</span> <span class="title class_">ThreadLocal</span>() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">protected</span> Object <span class="title function_">initialValue</span><span class="params">()</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;threadlocal初始化，值为空&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">setData</span><span class="params">(String key, Object value)</span> &#123;</span><br><span class="line">        <span class="type">Map</span> <span class="variable">map</span> <span class="operator">=</span> threadlocal.get();</span><br><span class="line">        <span class="keyword">if</span> (map == <span class="literal">null</span>) &#123;</span><br><span class="line">            map = <span class="keyword">new</span> <span class="title class_">HashMap</span>();</span><br><span class="line">            map.put(key, value);</span><br><span class="line">            threadlocal.set(map);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        map.put(key, value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title function_">getData</span><span class="params">(String key)</span> &#123;</span><br><span class="line">        <span class="type">Map</span> <span class="variable">map</span> <span class="operator">=</span> threadlocal.get();</span><br><span class="line">        <span class="keyword">if</span> (map != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> map.get(key);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">clear</span><span class="params">()</span> &#123;</span><br><span class="line">        threadlocal.remove();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>ThreadlocalUtilsTest.java</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ThreadlocalUtils</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> ThreadLocal&lt;Map&gt; threadlocal = <span class="keyword">new</span> <span class="title class_">ThreadLocal</span>() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">protected</span> Object <span class="title function_">initialValue</span><span class="params">()</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;threadlocal初始化，值为空&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">setData</span><span class="params">(String key, Object value)</span> &#123;</span><br><span class="line">        <span class="type">Map</span> <span class="variable">map</span> <span class="operator">=</span> threadlocal.get();</span><br><span class="line">        <span class="keyword">if</span> (map == <span class="literal">null</span>) &#123;</span><br><span class="line">            map = <span class="keyword">new</span> <span class="title class_">HashMap</span>();</span><br><span class="line">            map.put(key, value);</span><br><span class="line">            threadlocal.set(map);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        map.put(key, value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title function_">getData</span><span class="params">(String key)</span> &#123;</span><br><span class="line">        <span class="type">Map</span> <span class="variable">map</span> <span class="operator">=</span> threadlocal.get();</span><br><span class="line">        <span class="keyword">if</span> (map != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> map.get(key);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">clear</span><span class="params">()</span> &#123;</span><br><span class="line">        threadlocal.remove();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&#x3D;&#x3D;&#x3D;&gt;</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">当前线程是：thread2</span><br><span class="line">threadlocal初始化，值为空</span><br><span class="line">threadlocal初始化，值为空</span><br><span class="line">当前线程是：thread1</span><br><span class="line">测试共享变量</span><br><span class="line">threadlocal初始化，值为空</span><br><span class="line">当前线程是：thread0</span><br><span class="line">不同一线程内不共享threadlocal</span><br><span class="line">测试共享变量</span><br><span class="line">当前线程是：thread0</span><br><span class="line">同一线程内共享threadlocal</span><br><span class="line">共享变量值为：测试共享变量</span><br></pre></td></tr></table></figure>
+
+<p>main线程与异步线程</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ThreadLocalTest</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        ThreadLocalUtli.setTrace(<span class="string">&quot;外部变量&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;current thread: &quot;</span> + Thread.currentThread().getName());</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Thread</span>(</span><br><span class="line">                () -&gt; &#123;</span><br><span class="line">                    System.out.println(<span class="string">&quot;current thread: &quot;</span> + Thread.currentThread().getName());</span><br><span class="line">                    <span class="keyword">new</span> <span class="title class_">Test1</span>().test1();</span><br><span class="line">                &#125;).start();  <span class="comment">// 异步调用</span></span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Test1</span>().test1(); <span class="comment">// 同步调用</span></span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Test2</span>().test2(); <span class="comment">// 同步调用</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以进行初始化赋值，如果没有这一步的话，<code>get()</code>方法获取到的就是<code>null</code>。</p>
+<p>现在的线程大多都为线程池管理，也就是存在线程复用的情况，线程处理完一个请求后，处理下一个请求也许是相同的线程。<br>如果上一个线程中的本地变量使用完毕后没有清理，下一个请求就会获取到上一个请求中的数据，这样就不安全。因此请求处理完毕之后，最好显式调用下<code>remove()</code>方法清除变量中的数据。<br>防止下一个请求获取到。</p>
+<p>tomcat的<code>min-spare-threads</code>配置，最小工作线程的数量。</p>
+<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><h3 id="日期处理"><a href="#日期处理" class="headerlink" title="日期处理"></a>日期处理</h3><p>每个线程使用自己的<code>DateFormat</code>，就不存在安全问题了。在线程的整个使用过程中，只需要创建一次，又避免了频繁创建的开销。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ThreadlocalDateFormat</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> ThreadLocal&lt;DateFormat&gt; dateFormatThreadLocal = <span class="keyword">new</span> <span class="title class_">ThreadLocal</span>&lt;DateFormat&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">protected</span> DateFormat <span class="title function_">initialValue</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">SimpleDateFormat</span>(<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">date2String</span><span class="params">(Date date)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> dateFormatThreadLocal.get().format(date);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Date <span class="title function_">string2Date</span><span class="params">(String str)</span> <span class="keyword">throws</span> ParseException &#123;</span><br><span class="line">        <span class="keyword">return</span> dateFormatThreadLocal.get().parse(str);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="随机数"><a href="#随机数" class="headerlink" title="随机数"></a>随机数</h3><h3 id="上下文信息"><a href="#上下文信息" class="headerlink" title="上下文信息"></a>上下文信息</h3><p>典型用途：提供上下文信息。</p>
+<p>一个线程执行用户的请求，执行过程中，很多代码会访问一些共同的信息，例如用户身份信息、数据库连接、当前事务等，它们都是线程执行过程中的全局信息。</p>
+<p>使用方法参数进行传递会很繁琐，使用Threadlocal会很方便，可以简化代码，避免传参，类似全局变量。</p>
+<p>首次获取到信息，调用<code>set()</code>方法进行设置，然后就可以在代码的任意地方调用<code>get()</code>方法进行获取。</p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ol>
+<li>Threadlocal对象一般都定义为static，以便于引用。</li>
+<li>如果在线程池里面设置了ThreadLocal变量，则一定要记得及时清理，因为线程池里面的核心线程是一直存在的，如果不清理，线程池里核心线程的threadlocals变量会一直持有ThreadLocal变量。</li>
+<li>尽可能关掉线程（如果是在使用线程池的方案中，这恐怕很难做到）。</li>
+<li>由于每个线程都有自己独立的变量，内存占用上会多一些，是一种以空间换时间的做法。</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+      
+
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/backup-your-apt-package-list.html" rel="prev" title="Backup Your apt package list">
+                  <i class="fa fa-chevron-left"></i> Backup Your apt package list
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/mac-speech.html" rel="next" title="mac speech">
+                  mac speech <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fab fa-envira"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ongoing</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
