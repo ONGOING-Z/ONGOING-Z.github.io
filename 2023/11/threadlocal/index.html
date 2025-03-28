@@ -1,0 +1,121 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Threadlocal | ongoing's blog</title>
+<link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css></head><body><nav><ul class=menu><li><a href=/>首页</a></li><li><a href=/categories/>分类</a></li><li><a href=/tags/>标签</a></li></ul><hr></nav><div class=article-meta><h1><span class=title>Threadlocal</span></h1><h2 class=date>2023/11/08</h2></div><main><p>前言 = Threadlocal线程本地变量的例子。</p><p><code>ThreadlocalUtils.java</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#f92672>import</span> java.util.HashMap;
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> java.util.Map;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ThreadlocalUtils</span> {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> ThreadLocal<span style=color:#f92672>&lt;</span>Map<span style=color:#f92672>&gt;</span> threadlocal <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ThreadLocal() {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>@Override</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>protected</span> Object <span style=color:#a6e22e>initialValue</span>() {
+</span></span><span style=display:flex><span>            System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;threadlocal初始化，值为空&#34;</span>);
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>null</span>;
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>setData</span>(String key, Object value) {
+</span></span><span style=display:flex><span>        Map map <span style=color:#f92672>=</span> threadlocal.<span style=color:#a6e22e>get</span>();
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (map <span style=color:#f92672>==</span> <span style=color:#66d9ef>null</span>) {
+</span></span><span style=display:flex><span>            map <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> HashMap();
+</span></span><span style=display:flex><span>            map.<span style=color:#a6e22e>put</span>(key, value);
+</span></span><span style=display:flex><span>            threadlocal.<span style=color:#a6e22e>set</span>(map);
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        map.<span style=color:#a6e22e>put</span>(key, value);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> Object <span style=color:#a6e22e>getData</span>(String key) {
+</span></span><span style=display:flex><span>        Map map <span style=color:#f92672>=</span> threadlocal.<span style=color:#a6e22e>get</span>();
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (map <span style=color:#f92672>!=</span> <span style=color:#66d9ef>null</span>) {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>return</span> map.<span style=color:#a6e22e>get</span>(key);
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>null</span>;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>clear</span>() {
+</span></span><span style=display:flex><span>        threadlocal.<span style=color:#a6e22e>remove</span>();
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p><code>ThreadlocalUtilsTest.java</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#f92672>import</span> java.util.HashMap;
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> java.util.Map;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ThreadlocalUtils</span> {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> ThreadLocal<span style=color:#f92672>&lt;</span>Map<span style=color:#f92672>&gt;</span> threadlocal <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ThreadLocal() {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>@Override</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>protected</span> Object <span style=color:#a6e22e>initialValue</span>() {
+</span></span><span style=display:flex><span>            System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;threadlocal初始化，值为空&#34;</span>);
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>null</span>;
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>setData</span>(String key, Object value) {
+</span></span><span style=display:flex><span>        Map map <span style=color:#f92672>=</span> threadlocal.<span style=color:#a6e22e>get</span>();
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (map <span style=color:#f92672>==</span> <span style=color:#66d9ef>null</span>) {
+</span></span><span style=display:flex><span>            map <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> HashMap();
+</span></span><span style=display:flex><span>            map.<span style=color:#a6e22e>put</span>(key, value);
+</span></span><span style=display:flex><span>            threadlocal.<span style=color:#a6e22e>set</span>(map);
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        map.<span style=color:#a6e22e>put</span>(key, value);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> Object <span style=color:#a6e22e>getData</span>(String key) {
+</span></span><span style=display:flex><span>        Map map <span style=color:#f92672>=</span> threadlocal.<span style=color:#a6e22e>get</span>();
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (map <span style=color:#f92672>!=</span> <span style=color:#66d9ef>null</span>) {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>return</span> map.<span style=color:#a6e22e>get</span>(key);
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>null</span>;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>clear</span>() {
+</span></span><span style=display:flex><span>        threadlocal.<span style=color:#a6e22e>remove</span>();
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>===></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>当前线程是：thread2
+</span></span><span style=display:flex><span>threadlocal初始化，值为空
+</span></span><span style=display:flex><span>threadlocal初始化，值为空
+</span></span><span style=display:flex><span>当前线程是：thread1
+</span></span><span style=display:flex><span>测试共享变量
+</span></span><span style=display:flex><span>threadlocal初始化，值为空
+</span></span><span style=display:flex><span>当前线程是：thread0
+</span></span><span style=display:flex><span>不同一线程内不共享threadlocal
+</span></span><span style=display:flex><span>测试共享变量
+</span></span><span style=display:flex><span>当前线程是：thread0
+</span></span><span style=display:flex><span>同一线程内共享threadlocal
+</span></span><span style=display:flex><span>共享变量值为：测试共享变量
+</span></span></code></pre></div><p>main线程与异步线程</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ThreadLocalTest</span> {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span>(String<span style=color:#f92672>[]</span> args) {
+</span></span><span style=display:flex><span>        ThreadLocalUtli.<span style=color:#a6e22e>setTrace</span>(<span style=color:#e6db74>&#34;外部变量&#34;</span>);
+</span></span><span style=display:flex><span>        System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;current thread = &#34;</span> <span style=color:#f92672>+</span> Thread.<span style=color:#a6e22e>currentThread</span>().<span style=color:#a6e22e>getName</span>());
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>new</span> Thread(
+</span></span><span style=display:flex><span>                () <span style=color:#f92672>-&gt;</span> {
+</span></span><span style=display:flex><span>                    System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;current thread = &#34;</span> <span style=color:#f92672>+</span> Thread.<span style=color:#a6e22e>currentThread</span>().<span style=color:#a6e22e>getName</span>());
+</span></span><span style=display:flex><span>                    <span style=color:#66d9ef>new</span> Test1().<span style=color:#a6e22e>test1</span>();
+</span></span><span style=display:flex><span>                }).<span style=color:#a6e22e>start</span>();  <span style=color:#75715e>// 异步调用</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>new</span> Test1().<span style=color:#a6e22e>test1</span>(); <span style=color:#75715e>// 同步调用</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>new</span> Test2().<span style=color:#a6e22e>test2</span>(); <span style=color:#75715e>// 同步调用</span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>可以进行初始化赋值，如果没有这一步的话，<code>get()</code>方法获取到的就是<code>null</code>。</p><p>现在的线程大多都为线程池管理，也就是存在线程复用的情况，线程处理完一个请求后，处理下一个请求也许是相同的线程。
+如果上一个线程中的本地变量使用完毕后没有清理，下一个请求就会获取到上一个请求中的数据，这样就不安全。因此请求处理完毕之后，最好显式调用下<code>remove()</code>方法清除变量中的数据。
+防止下一个请求获取到。</p><p>tomcat的<code>min-spare-threads</code>配置，最小工作线程的数量。</p><h2 id=使用场景>使用场景</h2><h3 id=日期处理>日期处理</h3><p>每个线程使用自己的<code>DateFormat</code>，就不存在安全问题了。在线程的整个使用过程中，只需要创建一次，又避免了频繁创建的开销。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ThreadlocalDateFormat</span> {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>T  <span style=color:#66d9ef>static</span> ThreadLocal<span style=color:#f92672>&lt;</span>DateFormat<span style=color:#f92672>&gt;</span> dateFormatThreadLocal <span style=color:#f92672>=</span> <span style=color:#960050;background-color:#1e0010>&#39;</span><span style=color:#66d9ef>new</span> ThreadLocal<span style=color:#f92672>&lt;</span>DateFormat<span style=color:#f92672>&gt;</span>() {<span style=color:#f92672>+</span>08 <span style=color:#f92672>=</span> 00<span style=color:#960050;background-color:#1e0010>&#39;</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>@Override</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>protected</span> DateFormat <span style=color:#a6e22e>initialValue</span>() {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> SimpleDateFormat(<span style=color:#e6db74>&#34;yyyy-MM-dd HH =mm:ss&#34;</span>);
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>T  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> String <span style=color:#a6e22e>date2String</span>(Date date) {<span style=color:#f92672>+</span>08 <span style=color:#f92672>=</span> <span style=color:#960050;background-color:#1e0010>&#39;</span>00<span style=color:#960050;background-color:#1e0010>&#39;</span>
+</span></span><span style=display:flex><span>T      <span style=color:#66d9ef>return</span> dateFormatThreadLocal.<span style=color:#a6e22e>get</span>().<span style=color:#a6e22e>format</span>(date);<span style=color:#f92672>+</span>08 <span style=color:#f92672>=</span> <span style=color:#960050;background-color:#1e0010>&#39;</span>00<span style=color:#960050;background-color:#1e0010>&#39;</span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> Date <span style=color:#a6e22e>string2Date</span>(String str) <span style=color:#66d9ef>throws</span> ParseException {
+</span></span><span style=display:flex><span>T      <span style=color:#66d9ef>return</span> dateFormatThreadLocal.<span style=color:#a6e22e>get</span>().<span style=color:#a6e22e>parse</span>(str);<span style=color:#f92672>+</span>08 <span style=color:#f92672>=</span> <span style=color:#960050;background-color:#1e0010>&#39;</span>00<span style=color:#960050;background-color:#1e0010>&#39;</span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h3 id=随机数>随机数</h3><h3 id=上下文信息>上下文信息</h3><p>典型用途：提供上下文信息。</p><p>一个线程执行用户的请求，执行过程中，很多代码会访问一些共同的信息，例如用户身份信息、数据库连接、当前事务等，它们都是线程执行过程中的全局信息。</p><p>使用方法参数进行传递会很繁琐，使用Threadlocal会很方便，可以简化代码，避免传参，类似全局变量。</p><p>首次获取到信息，调用<code>set()</code>方法进行设置，然后就可以在代码的任意地方调用<code>get()</code>方法进行获取。</p><h2 id=注意>注意</h2><ol><li>Threadlocal对象一般都定义为static，以便于引用。</li><li>如果在线程池里面设置了ThreadLocal变量，则一定要记得及时清理，因为线程池里面的核心线程是一直存在的，如果不清理，线程池里核心线程的threadlocals变量会一直持有ThreadLocal变量。</li><li>尽可能关掉线程（如果是在使用线程池的方案中，这恐怕很难做到）。</li><li>由于每个线程都有自己独立的变量，内存占用上会多一些，是一种以空间换时间的做法。通过增加资源来保证所有对象的线程安全。</li></ol></main><footer></footer></body></html>

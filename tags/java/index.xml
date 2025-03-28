@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Java on ongoing's blog</title><link>https://example.org/tags/java/</link><description>Recent content in Java on ongoing's blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sat, 16 Mar 2024 11:34:00 +0800</lastBuildDate><atom:link href="https://example.org/tags/java/index.xml" rel="self" type="application/rss+xml"/><item><title>程序上下文</title><link>https://example.org/2024/03/context/</link><pubDate>Sat, 16 Mar 2024 11:34:00 +0800</pubDate><guid>https://example.org/2024/03/context/</guid><description>&lt;p>前言 = 程序上下文。&lt;/p>
+&lt;p>可以理解为环境。
+一段程序依赖的变量的集合，如果没有这些外部变量，这些单独的方法也做不了什么。
+一个功能在应用中可能包含了多个方法集合，从请求进入，到逻辑执行，到最后的输出，会加载变量，这些变量又会进入到各种方法，方法可能会对变量产生影响，这一整个过程中
+包含的各类变量大杂烩就是上下文。&lt;/p>
+&lt;p>上下文虽然叫上下文，程序一般只有上文而已。&lt;/p>
+&lt;p>&amp;ldquo;读者要想解读一段由这种符号组成的信息，必须事先知道这段信息的语境 -
+它的上下文关系，前因后果&amp;rdquo;&lt;/p>
+&lt;p>&lt;strong>线程的上下文切换&lt;/strong>
+当两个线程属于同一个进程时，因为虚拟内存是共享的，所以在切换时，虚拟内存资源就保持不动，只需要切换线程的私有数据、寄存器等不共享的数据。&lt;/p></description></item><item><title>Threadlocal</title><link>https://example.org/2023/11/threadlocal/</link><pubDate>Wed, 08 Nov 2023 22:48:00 +0800</pubDate><guid>https://example.org/2023/11/threadlocal/</guid><description>&lt;p>前言 = Threadlocal线程本地变量的例子。&lt;/p>
+&lt;p>&lt;code>ThreadlocalUtils.java&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.util.HashMap;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.util.Map;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">ThreadlocalUtils&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> ThreadLocal&lt;span style="color:#f92672">&amp;lt;&lt;/span>Map&lt;span style="color:#f92672">&amp;gt;&lt;/span> threadlocal &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ThreadLocal() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Override&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">protected&lt;/span> Object &lt;span style="color:#a6e22e">initialValue&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;threadlocal初始化，值为空&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> };
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">setData&lt;/span>(String key, Object value) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Map map &lt;span style="color:#f92672">=&lt;/span> threadlocal.&lt;span style="color:#a6e22e">get&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (map &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> map &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> HashMap();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> map.&lt;span style="color:#a6e22e">put&lt;/span>(key, value);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> threadlocal.&lt;span style="color:#a6e22e">set&lt;/span>(map);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> map.&lt;span style="color:#a6e22e">put&lt;/span>(key, value);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> Object &lt;span style="color:#a6e22e">getData&lt;/span>(String key) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Map map &lt;span style="color:#f92672">=&lt;/span> threadlocal.&lt;span style="color:#a6e22e">get&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (map &lt;span style="color:#f92672">!=&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> map.&lt;span style="color:#a6e22e">get&lt;/span>(key);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">clear&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> threadlocal.&lt;span style="color:#a6e22e">remove&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>ThreadlocalUtilsTest.java&lt;/code>&lt;/p></description></item><item><title>threadpool</title><link>https://example.org/2023/06/threadpool/</link><pubDate>Sun, 18 Jun 2023 10:13:00 +0800</pubDate><guid>https://example.org/2023/06/threadpool/</guid><description>&lt;p>前言 = 关于线程池的一些使用和细节。&lt;/p>
+&lt;p>线程池在我们日常开发中扮演着重要的角色。&lt;/p>
+&lt;ul>
+&lt;li>管理线程的创建和销毁&lt;/li>
+&lt;/ul>
+&lt;p>&lt;code>keepAliveTime&lt;/code> = 为了释放多余的线程资源。非核心线程，空闲时有一个最长等待时间，就是keepAliveTime，时间到了没有任务，会被终止。&lt;/p>
+&lt;p>优点：&lt;/p>
+&lt;ol>
+&lt;li>可以重用线程，避免线程创建的开销&lt;/li>
+&lt;li>任务过多时，通过排队避免创建过多线程，减少系统资源消耗&lt;/li>
+&lt;/ol>
+&lt;h2 id="注意">注意&lt;/h2>
+&lt;ol>
+&lt;li>
+&lt;p>线程池中，核心线程和最大线程是否有特殊标记？&lt;/p>
+&lt;p>没有，无论是核心线程还是非核心线程，在线程池中都一样，当淘汰的时候，不关心是哪些线程，只需要留下核心线程数量个线程即可。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>线程数小于核心线程数，并且线程都处于空闲状态，现在提交一个任务，是新起一个线程还是给之前创建的线程运行？
+execute方法的注释中写道，&lt;code>If fewer than corePoolSize threads are running, try to start a new thread with the given command as its first task&lt;/code>. 从注释可以知道，此时线程池会新起一个线程来运行新任务，不管老线程是否空闲。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h4 id="sleep与yield">sleep()与yield()&lt;/h4>
+&lt;ol>
+&lt;li>sleep()
+不会事线程丢失监视器所有权，当前线程仍然占用CPU分片。
+可读性更好的写法：&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>TimeUnit.&lt;span style="color:#a6e22e">SECONDS&lt;/span>.&lt;span style="color:#a6e22e">sleep&lt;/span>(1);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>yield() 让步
+线程让步。
+对线程调度器发出一个暗示，当前线程愿意让出使用的处理器。
+调用次方法后，状态可能由running状态转为runnable状态。&lt;/li>
+&lt;li>join()
+表示无限等待，一直阻塞当前线程，知道目标线程执行完毕。
+通常是加入的意思，一个线程要加入到另外一个线程，最好是等着它一起走。&lt;/li>
+&lt;/ol>
+&lt;h4 id="守护线程daemon">守护线程(Daemon)&lt;/h4></description></item><item><title>Spring Applicationevent</title><link>https://example.org/2023/02/spring-applicationevent/</link><pubDate>Thu, 02 Feb 2023 12:43:00 +0800</pubDate><guid>https://example.org/2023/02/spring-applicationevent/</guid><description>&lt;p>前言 = 事件机制。&lt;/p>
+&lt;p>可以进行广播。&lt;/p>
+&lt;p>比如班级中发出一个信号，身高高于180厘米的同学，请起立，然后班级中高于这个身高的同学都会站起来，不用每一个单独进行通知。&lt;/p>
+&lt;p>spring中的事件提供了 bean 之间的通信。一个 bean 完成了一部分工作，发布了一个事件，其余订阅了这个事件的 bean 们都会知道。&lt;/p>
+&lt;p>实现：180厘米以上同学站起来的例子(todo)。&lt;/p>
+&lt;h3 id="spring-中上下文事件todo">Spring 中上下文事件(todo)&lt;/h3></description></item><item><title>countdownlatch</title><link>https://example.org/2022/12/countdownlatch/</link><pubDate>Thu, 22 Dec 2022 12:34:00 +0800</pubDate><guid>https://example.org/2022/12/countdownlatch/</guid><description>&lt;p>前言 = 一个使用场景，例如分发10个线程，需要等到这10个线程全部都执行完毕后，再进行下一步的处理。&lt;/p>
+&lt;p>看到过一个例子：举行跑步比赛，发令枪响后，几位选手开始跑步，当最后一位选手跑完全程，然后开始公布选手成绩、以及颁奖仪式。&lt;/p>
+&lt;ol>
+&lt;li>模拟多个线程同时执行的场景&lt;/li>
+&lt;li>模拟依赖场景，例如一个数据的计算需要很多数据来源，需要这些数据来源全部加载完毕后才开始进行计算。&lt;/li>
+&lt;/ol>
+&lt;p>主要方法&lt;/p>
+&lt;ol>
+&lt;li>&lt;code>int getCount&lt;/code>&lt;/li>
+&lt;li>&lt;code>await()&lt;/code>&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">LatchTest&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">final&lt;/span> Logger LOGGER &lt;span style="color:#f92672">=&lt;/span> Logger.&lt;span style="color:#a6e22e">getLogger&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;LatchTest&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Test&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">test&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> CountDownLatch latch &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> CountDownLatch(1);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> i &lt;span style="color:#f92672">=&lt;/span> 0; i &lt;span style="color:#f92672">&amp;lt;&lt;/span> 10; i&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">new&lt;/span> Thread(deal(i, latch)).&lt;span style="color:#a6e22e">start&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> LOGGER.&lt;span style="color:#a6e22e">info&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;3秒后开始....&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> SleepUtil.&lt;span style="color:#a6e22e">sleep&lt;/span>(3000);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> latch.&lt;span style="color:#a6e22e">countDown&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> Runnable &lt;span style="color:#a6e22e">deal&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> threadNum, CountDownLatch latch) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Runnable() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Override&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">run&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">try&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> latch.&lt;span style="color:#a6e22e">await&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> LOGGER.&lt;span style="color:#a6e22e">info&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;开始运行...&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">catch&lt;/span> (InterruptedException e) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">throw&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> RuntimeException(e);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> };
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Test&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">test2&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> CountDownLatch latch &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> CountDownLatch(10);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> i &lt;span style="color:#f92672">=&lt;/span> 0; i &lt;span style="color:#f92672">&amp;lt;&lt;/span> 10; i&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">new&lt;/span> Thread(deal2(i, latch)).&lt;span style="color:#a6e22e">start&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> LOGGER.&lt;span style="color:#a6e22e">info&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;等待加载中...&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">try&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> latch.&lt;span style="color:#a6e22e">await&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> LOGGER.&lt;span style="color:#a6e22e">info&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;开始进入主界面&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">catch&lt;/span> (InterruptedException e) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">throw&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> RuntimeException(e);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> Runnable &lt;span style="color:#a6e22e">deal2&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> threadNum, CountDownLatch latch) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Runnable() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Override&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">run&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">try&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> LOGGER.&lt;span style="color:#a6e22e">info&lt;/span>(threadNum &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34;开始运行&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> SleepUtil.&lt;span style="color:#a6e22e">sleep&lt;/span>(1000);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> LOGGER.&lt;span style="color:#a6e22e">info&lt;/span>(threadNum &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34;运行结束&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">catch&lt;/span> (Exception e) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">finally&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> latch.&lt;span style="color:#a6e22e">countDown&lt;/span>(); &lt;span style="color:#75715e">// 放在finally语句块中，无论程序正常执行还是出现异常，都会执行&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> };
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>异步的使用</title><link>https://example.org/2022/12/async-usage/</link><pubDate>Sat, 10 Dec 2022 10:30:00 +0800</pubDate><guid>https://example.org/2022/12/async-usage/</guid><description>&lt;p>前言 = 在代码逻辑中，你为什么要起异步？起异步的目的是什么？
+让这个逻辑的响应顺序返回给前台？&lt;/p>
+&lt;ul>
+&lt;li>还是为了加快程序的处理速度，让程序并行执行，压榨机器，利用好机器的每一份性能。&lt;/li>
+&lt;li>小心在业务程序中打日志。这是有可能影响性能的，如果要用的话，可以使用异步日志。当然这要考虑日志丢失的情况。&lt;/li>
+&lt;/ul>
+&lt;p>本类中调用异步方法
+在异步方法中断点，发现会阻断主程序。&lt;/p>
+&lt;p>使用IDEA软件中的断点时，将断点的类型置为Thread类型。&lt;/p></description></item><item><title>transaction and async</title><link>https://example.org/2022/12/transaction-and-async/</link><pubDate>Tue, 06 Dec 2022 22:47:00 +0800</pubDate><guid>https://example.org/2022/12/transaction-and-async/</guid><description>&lt;p>前言 = 昨天在生产上遇到了一个问题。
+无缘无故遇到了空指针。但是大部分都是正常的，少部分根据那个key在表中查不到数据。&lt;/p>
+&lt;p>最后发现是因为外层事务未完成，里面起的异步线程就开始跑了，但是根据key查不到外面方法里要插的数据，因为这个时候外层方法还没有提交.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">A&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Transactional&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">exec&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * 事务开始
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// insert 操作&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> insert(key);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 调用异步方法&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> method(key);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * 事务结束
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">B&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Async&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Transactional&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">method&lt;/span>(String key) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * 异步操作开始
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> selectByKey(key);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * 其他操作
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>解决方法：&lt;/p></description></item><item><title>数据库表定义时表中冗余代码字段的重要性</title><link>https://example.org/2022/08/the-importance-of-speccode/</link><pubDate>Thu, 11 Aug 2022 12:45:00 +0800</pubDate><guid>https://example.org/2022/08/the-importance-of-speccode/</guid><description>&lt;p>前言 = 今天讲的是冗余代码的作用。&lt;/p>
+&lt;p>冗余代码不仅在数据库表中有重要作用，也在请求借口中有重要作用！&lt;/p>
+&lt;p>数据库中在设计表的时候就提前划分一个字段冗余码，我们后期想要添加什么信息，但是又不好动原表时，这个时候冗余码的作用就非常重要了，直接用上冗余码就好。&lt;/p>
+&lt;p>在续传接口也可以使用。&lt;/p></description></item><item><title>表查询中的续传</title><link>https://example.org/2022/08/resume-from-break-point/</link><pubDate>Thu, 11 Aug 2022 12:33:00 +0800</pubDate><guid>https://example.org/2022/08/resume-from-break-point/</guid><description>&lt;p>前言 = 关于表查询续传的注意事项。&lt;/p>
+&lt;p>todo 建一张测试表，里面插数据&lt;/p>
+&lt;p>InputX1.java&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">InputX1&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> String partitionNo;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> String name;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> String desc;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>InputY1.java&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">InputY1&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span> continuationCode; &lt;span style="color:#75715e">// 续传标志&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> String partitionNo; &lt;span style="color:#75715e">// 续传标志-1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> String name; &lt;span style="color:#75715e">// 续传标志-2&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> String specCode; &lt;span style="color:#75715e">// 冗余代码&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>注意：续传标志必须要为表的唯一键。&lt;/p>
+&lt;p>关于表的查询，有分页查询，也有续传查询，这里所说的是续传查询。&lt;/p>
+&lt;p>例如我们的&lt;code>Test_T&lt;/code>中记录数为11，但是我们每次传输的数量为10，我们作为请求记录的一方，如果第一次请求得到的记录数为10，这个时候肯定想要知道表中是不是还有其他数据，这个时候续传的那些标志就起到的作用。&lt;/p>
+&lt;p>模拟请求第一次查询，因为不知道数据库表中的情况，Y1中的那些字段全部置为空 =&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;continuationCode&amp;#34;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;partitionNo&amp;#34;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;specCode&amp;#34;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>把这个请求发到数据库中，表中有21条数据，查回来10条，我们这个时候接收到的Y1 =&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;continuationCode&amp;#34;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Y&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;partitionNo&amp;#34;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;01&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Mike_10&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;specCode&amp;#34;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>我们发现续传标志为Y，就表示表中是还存在记录的，我们继续查，将Y1原封不动返回回去：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;continuationCode&amp;#34;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Y&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;partitionNo&amp;#34;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;01&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Mike_10&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;specCode&amp;#34;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>得到传回来的Y1 =&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;continuationCode&amp;#34;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;N&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;partitionNo&amp;#34;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;specCode&amp;#34;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>续传标志为N，代表已经没有数据，全部数据已经请求完了。&lt;/p>
+&lt;p>注意：这里我们每次传输的数量是10，自测的时候要验证&lt;/p></description></item><item><title>程序什么时候应该重试?</title><link>https://example.org/2022/06/when-to-retry/</link><pubDate>Thu, 09 Jun 2022 20:47:00 +0800</pubDate><guid>https://example.org/2022/06/when-to-retry/</guid><description>&lt;p>前言 = 两个服务交互的过程中，何时候需要去重试?&lt;/p>
+&lt;ol>
+&lt;li>因为网络的原因。例如网络的抖动导致响应超时。&lt;/li>
+&lt;li>因为对方资源被其他使用方锁定，我方暂时不能使用，这个也会导致响应超时。这个时候需要等上一段时间后进行重试。&lt;/li>
+&lt;li>重试还是失败了，这个时候怎么办？毕竟不能无限重试，总会有次数限制
+&lt;ol>
+&lt;li>是否需要状态转为人工，人为来处理。&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;/ol></description></item></channel></rss>

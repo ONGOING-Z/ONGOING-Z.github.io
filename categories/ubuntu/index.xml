@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ubuntu on ongoing's blog</title><link>https://example.org/categories/ubuntu/</link><description>Recent content in Ubuntu on ongoing's blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sat, 04 Apr 2020 13:11:08 +0800</lastBuildDate><atom:link href="https://example.org/categories/ubuntu/index.xml" rel="self" type="application/rss+xml"/><item><title>换入新ubuntu要做的几件事情</title><link>https://example.org/2020/04/things-should-be-done-when-change-into-new-ubuntu/</link><pubDate>Sat, 04 Apr 2020 13:11:08 +0800</pubDate><guid>https://example.org/2020/04/things-should-be-done-when-change-into-new-ubuntu/</guid><description>&lt;p>记录自己换入新ubuntu系统后的一些操作。&lt;/p>
+&lt;hr>
+&lt;hr>
+&lt;h2 id="换源">换源&lt;/h2>
+&lt;p>到阿里云或者其他镜像网站复制对应安装版本的源&lt;/p>
+&lt;h2 id="zsh">Zsh&lt;/h2>
+&lt;p>替换机器自带的Bash.&lt;/p>
+&lt;h2 id="vim-8">Vim 8+&lt;/h2>
+&lt;p>安装vim的方式&lt;/p>
+&lt;ul>
+&lt;li>将源文件下载下来后可以采用编译的方法进行。&lt;/li>
+&lt;li>在命令行中安装
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo apt install vim
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo apt install vim-gtk3
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;/ul>
+&lt;p>安装完毕后安装&lt;code>vim-plug&lt;/code>，其作用是管理vim的插件。安装有以下两种方式&lt;/p>
+&lt;ul>
+&lt;li>在终端中键入下边命令
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>curl -fLo ~/.vim/autoload/plug.vim --create-dirs https &lt;span style="color:#f92672">=&lt;/span>//raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>将[plug.vim](https =//github.com/ONGOING-Z/dotfiles)下载下来后移入&lt;code>~/.vim/autoload&lt;/code>文件夹下即可使用。
+&lt;strong>注&lt;/strong> = 使用vim-plug必须先安装git，不然不能使用!
+使用自己的[.vimrc](https =//github.com/ONGOING-Z/dotfiles)&lt;/li>
+&lt;/ul>
+&lt;h2 id="tmux">Tmux&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo apt install tmux
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>使用自己的[.tmux.conf](https =//github.com/ONGOING-Z/dotfiles)&lt;/p>
+&lt;h2 id="git">Git&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo apt install git
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="googlepinyin">Googlepinyin&lt;/h2>
+&lt;p>在&lt;code>text entry setting&lt;/code>可以设置，可能出现安装之后重新启动又得再次选择输入法的情况．&lt;/p>
+&lt;ul>
+&lt;li>在命令行中输入&lt;code>fcitx&lt;/code>，检查其是否已经安装，如果未安装，执行&lt;code>sudo apt install fcitx&lt;/code>进行安装。&lt;/li>
+&lt;li>在命令行中执行&lt;code>im-config&lt;/code>(Input Method Configuration)，进行一番点击之后在选择面板中选择&lt;strong>fcitx&lt;/strong>&lt;/li>
+&lt;li>安装&lt;strong>googlepinyin&lt;/strong>，在命令行中执行&lt;code>sudo apt install fcitx-googlepinyin&lt;/code>&lt;/li>
+&lt;li>重启电脑，使配置生效。(注意 = 不重启有可能在接下来的步骤看不到googlepinyin的选项哦！)&lt;/li>
+&lt;li>在命令行中执行&lt;code>fcitx-config-gtk3&lt;/code>，打开配置面板 =
+&lt;ul>
+&lt;li>点击&lt;code>+&lt;/code>&lt;/li>
+&lt;li>&lt;strong>不要勾选&lt;/strong>Only Show Current Language，搜索一下就可以看到&lt;code>googlepinin&lt;/code>了，加入即可。
+&lt;strong>注&lt;/strong> = googlepinyin对于ubuntu20也同样适用。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="rime">Rime&lt;/h2>
+&lt;p>之前一直使用的是上面的谷歌拼音，后来遇到了 Rime，要好用一些，具体的安装可以看[这篇文章][3]。&lt;/p></description></item></channel></rss>

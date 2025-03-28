@@ -1,0 +1,40 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Git knowledge | ongoing's blog</title>
+<link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css></head><body><nav><ul class=menu><li><a href=/>首页</a></li><li><a href=/categories/>分类</a></li><li><a href=/tags/>标签</a></li></ul><hr></nav><div class=article-meta><h1><span class=title>Git knowledge</span></h1><h2 class=date>2020/04/26</h2></div><main><h3 id=git-查看修改用户名与密码>git 查看修改用户名与密码</h3><ul><li>查看用户名</li></ul><pre tabindex=0><code>git config --global user.name
+</code></pre><ul><li>修改用户名</li></ul><pre tabindex=0><code>git config --global user.name &#34;your name&#34;
+</code></pre><ul><li>查看邮箱地址</li></ul><pre tabindex=0><code>git config --global user.email
+</code></pre><ul><li>修改邮箱地址</li></ul><pre tabindex=0><code>git config --global user.email &#34;your email address&#34;
+</code></pre><h3 id=git-本地与远程仓库关联与解除>git 本地与远程仓库关联与解除</h3><ul><li>查看远程仓库信息</li></ul><pre tabindex=0><code>git remote -v
+</code></pre><ul><li>建立新仓库</li></ul><pre tabindex=0><code>在github中建立一个新的仓库
+可以不要README.md文件
+</code></pre><ul><li>关联</li></ul><pre tabindex=0><code>git remote add origin git@github.com =your_name/repository_name.git
+</code></pre><ul><li>解除关联</li></ul><pre tabindex=0><code>git remote remove origin
+</code></pre><h3 id=github快速更换绑定邮箱>GitHub快速更换绑定邮箱</h3><p>（1）点击头像
+（2）setting
+（3）Email
+（4）Add email address
+（5）新邮箱验证，返回github，将新邮箱验证Set Primary.</p><h3 id=git-推送>git 推送</h3><pre tabindex=0><code>git push -u origin master
+</code></pre><h3 id=github-如何删除仓库>github 如何删除仓库</h3><p>（1）settings
+（2）页面最下方&rsquo;Delete this repository'</p><h3 id=查看本地与远程的连接>查看本地与远程的连接</h3><pre tabindex=0><code>ssh -T git@github.com
+</code></pre><h3 id=git在本地配置公钥>git在本地配置公钥</h3><pre tabindex=0><code>ssh-keygen -t rsa -C email_address
+</code></pre><h3 id=对文件或文件夹重命名>对文件或文件夹重命名</h3><p>使用<code>git mv</code>即可对文件或文件夹进行<code>转移</code>或者<code>重命名</code>。
+使用方法如下</p><pre tabindex=0><code>git mv &lt;source&gt; &lt;destination&gt;
+git mv &lt;source&gt; &lt;destination directory&gt;
+</code></pre><p><em>暂时还没看懂重命名文件夹是怎么做的。</em></p><h3 id=git基本操作>git基本操作</h3><pre tabindex=0><code># 初始化仓库
+git init
+# 取消初始化仓库
+rm -rf .git/
+# 查看仓库状态（哪些文件提交了，哪些文件未提交）
+git status
+# 添加文件至提交列表
+git add filename
+## 同时添加多个文件
+git add filename1 filename2 (中间以空格区分)
+</code></pre><h3 id=git删除add中的文件缓存文件>git删除add中的文件（缓存文件）</h3><pre tabindex=0><code>git rm --cached file_name
+</code></pre><h3 id=git每次push都需要输入用户名与密码>Git每次push都需要输入用户名与密码</h3><p>首先，如果我们git clone的下载代码的时候是连接的https =//而不是git@git (ssh)的形式，当我们操作git pull/push到远程的时候，总是提示我们输入账号和密码才能操作成功，频繁的输入账号和密码会很麻烦，也特别烦恼。</p><p><strong>解决办法</strong></p><pre tabindex=0><code>git bash进入你的项目目录，输入 =
+git config --global credential.helper store
+</code></pre><p>此项会在本地生成一个文本，上边记录你的账号和密码。
+然后你使用上述的命令配置好之后，再操作一次git pull，然后它会提示你输入账号密码，这一次之后就不需要再次输入密码了。</p><h3 id=发现github上的绿色格子几天没有亮了>发现github上的绿色格子几天没有亮了</h3><p>原因：之前github的邮箱更换了，但是本地主机的邮箱忘记更换。</p><p>使用<code>git config user.email</code>查看是否和github上保留的邮箱是否一致，</p><p>如果不一致，使用<code>git config user.email "your_address”</code>进行本地邮箱的更换。</p><h3 id=在终端中键入git-status后显示中文乱码>在终端中键入git status后显示中文乱码</h3><p>解决办法</p><pre tabindex=0><code>git config --global core.quotepath false
+</code></pre><h3 id=重写最后一个commit信息>重写最后一个commit信息</h3><pre tabindex=0><code>git commit --amend
+</code></pre><h3 id=恢复git-rm的文件>恢复git rm的文件</h3><p>第一步 = <code>git reset</code>
+第二步 = <code>git checkout the_file_deleted</code></p><h3 id=下载最新版本库不带有历史库>下载最新版本库，不带有历史库</h3><pre tabindex=0><code>git clone repository_link --depth=1
+</code></pre></main><footer></footer></body></html>
