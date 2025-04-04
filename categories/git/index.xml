@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Git on ongoing's blog</title><link>https://example.org/categories/git/</link><description>Recent content in Git on ongoing's blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sun, 21 Aug 2022 20:18:00 +0800</lastBuildDate><atom:link href="https://example.org/categories/git/index.xml" rel="self" type="application/rss+xml"/><item><title>use gpg to secure your commit</title><link>https://example.org/2022/08/use-gpg-to-secure-your-commit/</link><pubDate>Sun, 21 Aug 2022 20:18:00 +0800</pubDate><guid>https://example.org/2022/08/use-gpg-to-secure-your-commit/</guid><description>&lt;p>前言: 使用 gpg 加密自己的commit。&lt;/p>
+&lt;p>&lt;img src="gpg-01.png" alt="">&lt;/p>
+&lt;p>效果：类似下图，对于commit会有一个verify的绿色小标记&lt;/p>
+&lt;p>&lt;img src="verified.png" alt="">&lt;/p>
+&lt;h3 id="电脑环境">电脑环境&lt;/h3>
+&lt;p>系统：ubuntu16.04&lt;/p>
+&lt;h3 id="安装流程">安装流程&lt;/h3>
+&lt;p>&lt;a href="www.gnupg.org">源码&lt;/a>编译安装。&lt;/p>
+&lt;h3 id="使用">使用&lt;/h3>
+&lt;h4 id="一查看本机的-gpg-version">一、查看本机的 gpg version&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>gpg --version 
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="二生成本地-gpg-key">二、生成本地 gpg key&lt;/h4>
+&lt;h4 id="三将-gpg-key-和-git-关联起来">三、将 gpg key 和 git 关联起来&lt;/h4>
+&lt;h4 id="四将-gpg-公钥上传至-github">四、将 gpg 公钥上传至 github&lt;/h4>
+&lt;h4 id="五备份gpg">五、备份gpg&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>备份密钥分为备份公钥和私钥两个部分，备份公钥：
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>gpg -o keyfilename --export KeyID
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>如果没有KeyID则是备份所有的公钥，-o表示输出到文件keyfilename中，如果加上-a的参数则输出文本格式的信息，否则输出的是二进制格式信息。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>备份私钥：
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>gpg -o keyfilename --export-secret-keys KeyID
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>如果没有KeyID则是备份所有的私钥，-o表示输出到文件keyfilename中，如果加上-a的参数则输出文本格式的信息，否则输出的是二进制格式信息。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>然后在别的机器上可以通过
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>gpg --import filename
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>导入这些密钥信息。
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="六参考">六、参考&lt;/h3>
+&lt;p>Github官方文档有比较详细的说明。&lt;/p></description></item><item><title>Git基础</title><link>https://example.org/2020/04/git-knowledge/</link><pubDate>Sun, 26 Apr 2020 13:11:41 +0800</pubDate><guid>https://example.org/2020/04/git-knowledge/</guid><description>&lt;h3 id="git-查看修改用户名与密码">git 查看修改用户名与密码&lt;/h3>
+&lt;ul>
+&lt;li>查看用户名&lt;/li>
+&lt;/ul>
+&lt;pre tabindex="0">&lt;code>git config --global user.name
+&lt;/code>&lt;/pre>&lt;ul>
+&lt;li>修改用户名&lt;/li>
+&lt;/ul>
+&lt;pre tabindex="0">&lt;code>git config --global user.name &amp;#34;your name&amp;#34;
+&lt;/code>&lt;/pre>&lt;ul>
+&lt;li>查看邮箱地址&lt;/li>
+&lt;/ul>
+&lt;pre tabindex="0">&lt;code>git config --global user.email
+&lt;/code>&lt;/pre>&lt;ul>
+&lt;li>修改邮箱地址&lt;/li>
+&lt;/ul>
+&lt;pre tabindex="0">&lt;code>git config --global user.email &amp;#34;your email address&amp;#34;
+&lt;/code>&lt;/pre>&lt;h3 id="git-本地与远程仓库关联与解除">git 本地与远程仓库关联与解除&lt;/h3>
+&lt;ul>
+&lt;li>查看远程仓库信息&lt;/li>
+&lt;/ul>
+&lt;pre tabindex="0">&lt;code>git remote -v
+&lt;/code>&lt;/pre>&lt;ul>
+&lt;li>建立新仓库&lt;/li>
+&lt;/ul>
+&lt;pre tabindex="0">&lt;code>在github中建立一个新的仓库
+可以不要README.md文件
+&lt;/code>&lt;/pre>&lt;ul>
+&lt;li>关联&lt;/li>
+&lt;/ul>
+&lt;pre tabindex="0">&lt;code>git remote add origin git@github.com =your_name/repository_name.git
+&lt;/code>&lt;/pre>&lt;ul>
+&lt;li>解除关联&lt;/li>
+&lt;/ul>
+&lt;pre tabindex="0">&lt;code>git remote remove origin
+&lt;/code>&lt;/pre>&lt;h3 id="github快速更换绑定邮箱">GitHub快速更换绑定邮箱&lt;/h3>
+&lt;p>（1）点击头像
+（2）setting
+（3）Email
+（4）Add email address
+（5）新邮箱验证，返回github，将新邮箱验证Set Primary.&lt;/p>
+&lt;h3 id="git-推送">git 推送&lt;/h3>
+&lt;pre tabindex="0">&lt;code>git push -u origin master
+&lt;/code>&lt;/pre>&lt;h3 id="github-如何删除仓库">github 如何删除仓库&lt;/h3>
+&lt;p>（1）settings
+（2）页面最下方&amp;rsquo;Delete this repository'&lt;/p>
+&lt;h3 id="查看本地与远程的连接">查看本地与远程的连接&lt;/h3>
+&lt;pre tabindex="0">&lt;code>ssh -T git@github.com
+&lt;/code>&lt;/pre>&lt;h3 id="git在本地配置公钥">git在本地配置公钥&lt;/h3>
+&lt;pre tabindex="0">&lt;code>ssh-keygen -t rsa -C email_address
+&lt;/code>&lt;/pre>&lt;h3 id="对文件或文件夹重命名">对文件或文件夹重命名&lt;/h3>
+&lt;p>使用&lt;code>git mv&lt;/code>即可对文件或文件夹进行&lt;code>转移&lt;/code>或者&lt;code>重命名&lt;/code>。
+使用方法如下&lt;/p></description></item></channel></rss>

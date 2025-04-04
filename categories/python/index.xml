@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Python on ongoing's blog</title><link>https://example.org/categories/python/</link><description>Recent content in Python on ongoing's blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sun, 30 Mar 2025 11:10:00 +0800</lastBuildDate><atom:link href="https://example.org/categories/python/index.xml" rel="self" type="application/rss+xml"/><item><title>Pycharm报错Invalid python interpreter</title><link>https://example.org/2025/03/pycharm-error-invalid-python-interpreter/</link><pubDate>Sun, 30 Mar 2025 11:10:00 +0800</pubDate><guid>https://example.org/2025/03/pycharm-error-invalid-python-interpreter/</guid><description>&lt;h4 id="一背景">一、背景&lt;/h4>
+&lt;p>今天需要使用manim来画图，用pycharm打开之后，在命令行执行&lt;code>venv/bin/manim xxx&lt;/code>命令报错：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>Invalid python interpreter
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>我调整了下pycharm中运行的configuration配置的python解释器路径（位于项目根目录下的&lt;code>venv/bin&lt;/code>下的python可执行程序，如下图）&lt;/p>
+&lt;div style="text-align: center;">
+ &lt;img src="venv_bin_python.png" alt="" style="display: block; margin: auto;" />
+&lt;/div>
+&lt;p>重新执行命令，依旧报错。&lt;/p>
+&lt;h4 id="二问题解决">二、问题解决&lt;/h4>
+&lt;p>我打开&lt;code>venv/bin/manim&lt;/code>文件，突然发现马赛克这一段的路径并不是当前项目的路径
+&lt;div style="text-align: center;">
+ &lt;img src="venv_bin_manim.png" alt="" style="display: block; margin: auto;" />
+&lt;/div>&lt;/p>
+&lt;p>因为最近我在整理这台电脑的文档结构目录，把各个类型的文件路径重新进行了划分，但是这里的路径还是旧项目所在的路径。&lt;/p>
+&lt;p>重新更新了下&lt;code>#!&lt;/code>后面的路径，manim可以正常执行了。&lt;/p>
+&lt;h4 id="三第二个问题">三、第二个问题&lt;/h4>
+&lt;p>在项目跟目录下使用命令&lt;code>source venv/bin/activate&lt;/code>激活虚拟环境后，&lt;/p>
+&lt;div style="text-align: center;">
+ &lt;img src="virtual_environment_mark.png" alt="" style="display: block; margin: auto;" />
+&lt;/div>
+&lt;p>输入指令&lt;code>manim&lt;/code>，还是不生效，需要指定全路径&lt;code>venv/bin/manim&lt;/code>才能正常执行。&lt;/p>
+&lt;p>我问了一下deepseek这个问题
+&lt;img src="question_deepseek_01.png" alt="">&lt;/p>
+&lt;p>它可以正确识别出我的问题，并且给了五种方法
+&lt;img src="answer_deepseek_01.png" alt="">&lt;/p>
+&lt;p>我继续追问
+&lt;img src="answer_deepseek_02.png" alt="">&lt;/p>
+&lt;p>这个路径错误，我马上联想到上面的情形，可能是文件&lt;code>venv/bin/activate&lt;/code>中的路径也是错误的！&lt;/p>
+&lt;p>&lt;img src="venv_bin_activate.png" alt="">&lt;/p>
+&lt;p>确实是这个问题，重新更新成正确的路径后，manim命令可以正常识别了。&lt;/p>
+&lt;h4 id="四如何从根源上解决这个问题">四、如何从根源上解决这个问题？&lt;/h4>
+&lt;p>因为项目路径可能会再变，不能下次项目文件夹再次发生了变动，又需要对venv下的命令路径重新适配.&lt;/p>
+&lt;p>路径硬编码问题：虚拟环境中的可执行文件包含了绝对路径，移动项目后会导致路径失效。&lt;/p></description></item></channel></rss>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Language on ongoing's blog</title><link>https://example.org/tags/language/</link><description>Recent content in Language on ongoing's blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Thu, 01 Oct 2020 11:02:57 +0800</lastBuildDate><atom:link href="https://example.org/tags/language/index.xml" rel="self" type="application/rss+xml"/><item><title>C and pointer reading notes</title><link>https://example.org/2020/10/c-and-pointer-reading-notes/</link><pubDate>Thu, 01 Oct 2020 11:02:57 +0800</pubDate><guid>https://example.org/2020/10/c-and-pointer-reading-notes/</guid><description>&lt;p>关于《C和指针》这本书的读书记录。&lt;/p>
+&lt;h3 id="c和指针">《C和指针》&lt;/h3>
+&lt;h4 id="1th-快速上手">1th 快速上手&lt;/h4>
+&lt;ol>
+&lt;li>
+&lt;p>数组名&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c" data-lang="c">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> arr[&lt;span style="color:#ae81ff">4&lt;/span>];
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>假设&lt;code>int&lt;/code>型变量占4 Byte，那么这个声明，编译器会给c预留内存空间4×4 Byte，并且
+数组名代表着指向数组第一个元素的指针。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>字符串常量存储在常量区，常量区存储的内容是不能被修改的。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>指针指定一个存储与计算机内存中的值的地址。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>每个 C 程序必须有一个 main 函数，因为它是程序执行的起点。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>在 C 语言中，数组参数是以&lt;code>引用(reference)&lt;/code>形式进行传递的，即传址调用，
+而标量和常量是按&lt;code>值(value)&lt;/code>传递的。
+在函数中对标量参数的任何修改都会在函数返回时丢失，因此，被调用函数无法修改
+调用函数以传值形式传递给它的参数。
+然而，当被调用函数修改数组参数的其中一个元素时，调用函数所传递的数组就会被实际地修改。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>在 C语言中，字符串是一串以&lt;code>NUL&lt;/code>字节结尾的字符。&lt;code>NUL&lt;/code>是作为字符串终止符，它本身并不被看作是字符串的一部分。字符串常量就是源程序中被&lt;code>双引号&lt;/code>括起来的一串字符。 例如, &lt;code>&amp;quot;Hello&amp;quot;&lt;/code>在内存中占据6个字节的空间。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>由于scanf函数的实现原理，所有标量参数的前面必须加上一个&lt;code>&amp;amp;&lt;/code>符号。数组参数前面不需要加上&lt;code>&amp;amp;&lt;/code>符号，但是若数组参数中出现下标引用，即实际参数是数组某个特定元素，那么它的前面也必须加上&lt;code>&amp;amp;&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>编程提示&lt;/p>
+&lt;ul>
+&lt;li>在while和if表达式中蕴含赋值操作&lt;/li>
+&lt;li>始终要进行检查，确保数组不越界&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;h4 id="3th-数据">3th 数据&lt;/h4>
+&lt;ol>
+&lt;li>
+&lt;p>在C语言中，仅有4中基本数据类型 &amp;ndash;
+整型、浮点型、指针和聚合类型（如数组和结构等).&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>指针可以有效地实现如tree和list这类高级数据结构。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>房子和它的门牌号码标识&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>可以把计算机内存想象成一条长街上的一间间房子，每间房子都用一个唯一的号码进行标识。每个位置包含一个值，这和它的地址是独立且显著不同的，即使它们都是数字.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>程序在使用字符串常量会生成一个“指向字符的常量指针”。当一个字符串常量出现于一个表达式中时，表达式所使用的值就是这些字符所存储的地址，而不是这些字符本身。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>不能把字符串常量赋值给一个字符数组，因为字符串常量的直接值是一个指针，而不是这些字符本身。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>typedef允许你为各种数据类型定义新名字。
+&lt;code>typedef int another_name&lt;/code>&lt;/p>
+&lt;p>使用typedef声明类型可以减少使声明变得又臭又长的危险，尤其是那些复杂的声明。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h4 id="4th-语句">4th 语句&lt;/h4>
+&lt;ol>
+&lt;li>
+&lt;p>空语句&lt;/p>
+&lt;p>C最简单的语句就是空语句，它本身只包含一个分号。空语句本身并不执行任何任务，但有时还是有用。
+适用场景 = 语法要求出现一条完整的语句。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>括号是if语句的一部分。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>C并不具备布尔类型，零值表示假，非零值表示真。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c" data-lang="c">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">if&lt;/span> (x &lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#ae81ff">3&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">printf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;...&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>上边这条语句中，表达式&lt;code>x &amp;gt; 3&lt;/code>的值将是0或1.&lt;/p>
+&lt;h4 id="5th-操作符和表达式">5th 操作符和表达式&lt;/h4>
+&lt;ol>
+&lt;li>AND、OR、XOR要求操作数为整数类型，它们对操作数对应的位进行指定操作，每次对左右操作数的各一位进行操作。&lt;/li>
+&lt;li>下标引用操作和间接访问表达式是等价的。
+&lt;code>array[下标] &amp;lt;=&amp;gt; *(array + (下标))&lt;/code>&lt;/li>
+&lt;/ol>
+&lt;h4 id="6th-指针">6th 指针&lt;/h4>
+&lt;p>&lt;img src="variable_addr.png" alt="varialbe_and_addr">&lt;/p></description></item><item><title>C basic part 2</title><link>https://example.org/2020/10/c-basic-part-2/</link><pubDate>Thu, 01 Oct 2020 10:53:05 +0800</pubDate><guid>https://example.org/2020/10/c-basic-part-2/</guid><description>&lt;p>新增一些关于C和C++的基础知识。&lt;/p>
+&lt;hr>
+&lt;ol>
+&lt;li>
+&lt;p>数组初始化符号&lt;code>{}&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Get array length(C)&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c" data-lang="c">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> arr[];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> length &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">sizeof&lt;/span>(arr)&lt;span style="color:#f92672">/&lt;/span>&lt;span style="color:#66d9ef">sizeof&lt;/span>(arr[&lt;span style="color:#ae81ff">0&lt;/span>]); &lt;span style="color:#75715e">// 总字节数/第一个元素字节数
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>define&lt;/p>
+&lt;p>&lt;code>#define 名字 替换文本&lt;/code>&lt;/p>
+&lt;p>（1）符号常量通常用大写字母拼写
+（2）末尾无分号&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>C中常量INT_MAX和INT_MIN分别表示最大、最小整数，定义在头文件limits.h中. INT_MAX = 2^31-1，INT_MIN= -2^31&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>逻辑移位&lt;/p>
+&lt;p>逻辑移位 = (1)逻辑左移 (2)逻辑右移; 移出的空位都用0来补。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>nullptr&lt;/p>
+&lt;p>其指c++ 中的空指针常量。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>c++ delete&lt;/p>
+&lt;p>假设ptr是一个指针，delete ptr代表释放内存，只用来释放ptr指向的内存。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>to_string()&lt;/p>
+&lt;p>将数值转换为字符串。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>for循环遍历字符串的一种新方法&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c++" data-lang="c++">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;stdio.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;vector&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;string&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">using&lt;/span> &lt;span style="color:#66d9ef">namespace&lt;/span> std;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(&lt;span style="color:#66d9ef">void&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> string str &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;better&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">char&lt;/span> c &lt;span style="color:#f92672">=&lt;/span> str)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> printf(&lt;span style="color:#e6db74">&amp;#34;%c&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, c);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>c++ auto (since C++ 11)(谨慎使用)&lt;/p>
+&lt;p>可以自动推断变量类型&lt;/p></description></item><item><title>C语言的一些基础知识</title><link>https://example.org/2020/04/some-basic-knowledge-of-cc-/</link><pubDate>Sat, 04 Apr 2020 15:18:31 +0800</pubDate><guid>https://example.org/2020/04/some-basic-knowledge-of-cc-/</guid><description>&lt;hr>
+&lt;h3 id="一些细节">一些细节&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>linux下编译运行c++程序&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c++" data-lang="c++">&lt;span style="display:flex;">&lt;span>g&lt;span style="color:#f92672">++&lt;/span> &lt;span style="color:#f92672">-&lt;/span>W file_name.cpp &lt;span style="color:#f92672">-&lt;/span>o another_name
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>.&lt;span style="color:#f92672">/&lt;/span>file_name
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>-W&lt;/code> = 输入错误信息&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>字符数组的输入输出&lt;/p>
+&lt;p>&lt;code>scanf&lt;/code>输入，&lt;code>printf&lt;/code>输出&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c++" data-lang="c++">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;stdio.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(){
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">char&lt;/span> str[&lt;span style="color:#ae81ff">10&lt;/span>];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> scanf(&lt;span style="color:#e6db74">&amp;#34;%s&amp;#34;&lt;/span>, str);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> printf(&lt;span style="color:#e6db74">&amp;#34;%s&amp;#34;&lt;/span>, str);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>注&lt;/strong>：&lt;code>%s&lt;/code>识别&lt;code>空格&lt;/code>作为字符串的结尾；&lt;code>scanf&lt;/code>在使用&lt;code>%s&lt;/code>时，对应数组名是不需要加&lt;code>&amp;amp;&lt;/code>运算符的。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>数组初始化符号&lt;code>{}&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>ascii&lt;/code>&lt;/p>
+&lt;p>A = 65; a: 97&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>结构体的初始化&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c++" data-lang="c++">&lt;span style="display:flex;">&lt;span>scanf(&lt;span style="color:#e6db74">&amp;#34;%d %c %d&amp;#34;&lt;/span>, &lt;span style="color:#f92672">&amp;amp;&lt;/span>a, &lt;span style="color:#f92672">&amp;amp;&lt;/span>data, &lt;span style="color:#f92672">&amp;amp;&lt;/span>b);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>node[a] &lt;span style="color:#f92672">=&lt;/span> {data, b, false}; &lt;span style="color:#75715e">// 注意时花括号，和数组初始化一样。
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>高位补0与高位补空&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c++" data-lang="c++">&lt;span style="display:flex;">&lt;span>printf(&lt;span style="color:#e6db74">&amp;#34;%05d&amp;#34;&lt;/span>, i); &lt;span style="color:#75715e">// 使不足５位的整数的高位补０。
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>printf(&lt;span style="color:#e6db74">&amp;#34;%5d&amp;#34;&lt;/span>, i); &lt;span style="color:#75715e">// 使不足５位的整数的高位补为空。
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="7">
+&lt;li>&lt;code>scanf()&lt;/code>使用&lt;code>%c&lt;/code>可以读入&lt;code>空格&lt;/code>，要注意格式！&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c++" data-lang="c++">&lt;span style="display:flex;">&lt;span>scanf(&lt;span style="color:#e6db74">&amp;#34;%d %c&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="8">
+&lt;li>
+&lt;p>使用new运算符为链表结点分配内存空间&lt;/p>
+&lt;p>使用方法：&lt;code>typename *p = new typename;&lt;/code>&lt;/p>
+&lt;p>例子如下&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c++" data-lang="c++">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#f92672">*&lt;/span>p &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>node &lt;span style="color:#f92672">*&lt;/span>p &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> node;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#f92672">*&lt;/span>p &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> arr[&lt;span style="color:#ae81ff">10000&lt;/span>];
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>&lt;code>memset&lt;/code>对数组中每一个元素赋相同的值&lt;/p>
+&lt;p>格式：&lt;code>memset(name, value, sizeof(name))&lt;/code>&lt;/p></description></item></channel></rss>

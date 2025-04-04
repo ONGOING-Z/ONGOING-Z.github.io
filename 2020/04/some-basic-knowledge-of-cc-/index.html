@@ -1,0 +1,256 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>C语言的一些基础知识 | ongoing's blog</title>
+<link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css></head><body><nav><ul class=menu><li><a href=/>首页</a></li><li><a href=/categories/>分类</a></li><li><a href=/about/>关于</a></li><li><a href=/tags/>标签</a></li></ul><hr></nav><div class=article-meta><h1><span class=title>C语言的一些基础知识</span></h1><h2 class=date>2020/04/04</h2></div><main><hr><h3 id=一些细节>一些细节</h3><ol><li><p>linux下编译运行c++程序</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span>g<span style=color:#f92672>++</span> <span style=color:#f92672>-</span>W file_name.cpp <span style=color:#f92672>-</span>o another_name
+</span></span><span style=display:flex><span>.<span style=color:#f92672>/</span>file_name
+</span></span></code></pre></div><p><code>-W</code> = 输入错误信息</p></li><li><p>字符数组的输入输出</p><p><code>scanf</code>输入，<code>printf</code>输出</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span> <span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;stdio.h&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span> <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>(){
+</span></span><span style=display:flex><span>     <span style=color:#66d9ef>char</span> str[<span style=color:#ae81ff>10</span>];
+</span></span><span style=display:flex><span>     scanf(<span style=color:#e6db74>&#34;%s&#34;</span>, str);
+</span></span><span style=display:flex><span>     printf(<span style=color:#e6db74>&#34;%s&#34;</span>, str);
+</span></span><span style=display:flex><span>     <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span> }
+</span></span></code></pre></div><p><strong>注</strong>：<code>%s</code>识别<code>空格</code>作为字符串的结尾；<code>scanf</code>在使用<code>%s</code>时，对应数组名是不需要加<code>&</code>运算符的。</p></li><li><p>数组初始化符号<code>{}</code></p></li><li><p><code>ascii</code></p><p>A = 65; a: 97</p></li><li><p>结构体的初始化</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span>scanf(<span style=color:#e6db74>&#34;%d %c %d&#34;</span>, <span style=color:#f92672>&amp;</span>a, <span style=color:#f92672>&amp;</span>data, <span style=color:#f92672>&amp;</span>b);
+</span></span><span style=display:flex><span>node[a] <span style=color:#f92672>=</span> {data, b, false};  <span style=color:#75715e>// 注意时花括号，和数组初始化一样。
+</span></span></span></code></pre></div></li><li><p>高位补0与高位补空</p></li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span>printf(<span style=color:#e6db74>&#34;%05d&#34;</span>, i);  <span style=color:#75715e>// 使不足５位的整数的高位补０。
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>printf(<span style=color:#e6db74>&#34;%5d&#34;</span>, i);  <span style=color:#75715e>// 使不足５位的整数的高位补为空。
+</span></span></span></code></pre></div><ol start=7><li><code>scanf()</code>使用<code>%c</code>可以读入<code>空格</code>，要注意格式！</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span>scanf(<span style=color:#e6db74>&#34;%d %c&#34;</span>);
+</span></span></code></pre></div><ol start=8><li><p>使用new运算符为链表结点分配内存空间</p><p>使用方法：<code>typename *p = new typename;</code></p><p>例子如下</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#f92672>*</span>p <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>int</span>;
+</span></span><span style=display:flex><span>node <span style=color:#f92672>*</span>p <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> node;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#f92672>*</span>p <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> arr[<span style=color:#ae81ff>10000</span>];
+</span></span></code></pre></div></li><li><p><code>memset</code>对数组中每一个元素赋相同的值</p><p>格式：<code>memset(name, value, sizeof(name))</code></p><p>前提条件：添加<code>string.h</code></p><p>==建议赋值为0或-1==，不易出错。</p></li></ol><h3 id=c>c++</h3><h4 id=1-vector>1. vector</h4><blockquote><p>使用：<code>#include&lt;vector></code>；除此之外，还需加上<code>using namespace std;</code></p></blockquote><h5 id=1定义>（1）定义</h5><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span>vector<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>typename</span><span style=color:#f92672>&gt;</span> name;
+</span></span></code></pre></div><p><em>注：其长度可以根据需要进行变化，“变长数组”</em></p><h5 id=2vector容器内元素的访问>（2）vector容器内元素的访问</h5><p>eg.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span>vector<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>typename</span><span style=color:#f92672>&gt;</span> vi;
+</span></span></code></pre></div><ul><li><p>通过<code>下标</code>访问</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span>vi[index];  <span style=color:#75715e>// 下标从为0~vi.size()-1
+</span></span></span></code></pre></div></li><li><p>通过<code>迭代器</code>访问</p><p>迭代器(iterator)定义：<code>vector&lt;typename> =:iterator it;</code></p><p>// it 是一个 vector =:iterator 型的变量</p><p>// 这样得到了迭代器it，访问vector里的内容方式如下：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span><span style=color:#f92672>*</span>it
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span><span style=color:#75715e>// 测试vector
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;cstdio&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;vector&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>using</span> <span style=color:#66d9ef>namespace</span> std;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>(){
+</span></span><span style=display:flex><span>    vector<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>int</span><span style=color:#f92672>&gt;</span> vi;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span>(<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>; i <span style=color:#f92672>&lt;=</span> <span style=color:#ae81ff>5</span>; i<span style=color:#f92672>++</span>){
+</span></span><span style=display:flex><span>        vi.push_back(i);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    vector<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>int</span><span style=color:#f92672>&gt;</span> <span style=color:#f92672>=:</span>iterator it <span style=color:#f92672>=</span> vi.begin(); <span style=color:#75715e>// vi.begin()取vi首元素地址
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>for</span>(<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>5</span>; i<span style=color:#f92672>++</span>){
+</span></span><span style=display:flex><span>        printf(<span style=color:#e6db74>&#34;%d</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>, <span style=color:#f92672>*</span>(it<span style=color:#f92672>+</span>i));
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span><span style=color:#75715e>// vector_test_2
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;cstdio&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;vector&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>using</span> <span style=color:#66d9ef>namespace</span> std;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>(){
+</span></span><span style=display:flex><span>    vector<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>int</span><span style=color:#f92672>&gt;</span> vi;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span>(<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>; i <span style=color:#f92672>&lt;=</span> <span style=color:#ae81ff>5</span>; i<span style=color:#f92672>++</span>){
+</span></span><span style=display:flex><span>        vi.push_back(i);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span>(vector<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>int</span><span style=color:#f92672>&gt;</span> <span style=color:#f92672>=:</span>iterator it <span style=color:#f92672>=</span> vi.begin(); it <span style=color:#f92672>!=</span> vi.end(); it<span style=color:#f92672>++</span>){
+</span></span><span style=display:flex><span>        printf(<span style=color:#e6db74>&#34;%d &#34;</span>, <span style=color:#f92672>*</span>it);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></li></ul><h5 id=3vector常用函数>（3）vector常用函数</h5><ul><li><p><code>push_back()</code></p><p>push_back(x) = 在vector后添加元素x，时间复杂度<code>O(1)</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span><span style=color:#75715e>// vector_test_3
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// push_back()
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;cstdio&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;vector&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>using</span> <span style=color:#66d9ef>namespace</span> std;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>(){
+</span></span><span style=display:flex><span>    vector<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>int</span><span style=color:#f92672>&gt;</span> vi;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span>(<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>; i <span style=color:#f92672>&lt;=</span><span style=color:#ae81ff>3</span>; i<span style=color:#f92672>++</span>){
+</span></span><span style=display:flex><span>        vi.push_back(i);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span>(<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>3</span>; i<span style=color:#f92672>++</span>){
+</span></span><span style=display:flex><span>        printf(<span style=color:#e6db74>&#34;%d &#34;</span>, vi[i]);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></li><li><p><code>pop_back()</code></p><p>pop_back() = 删除vector尾元素，时间复杂度<code>O(1)</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span><span style=color:#75715e>// vector_test_4
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// pop_back()
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;cstdio&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;vector&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>using</span> <span style=color:#66d9ef>namespace</span> std;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>(){
+</span></span><span style=display:flex><span>    vector<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>int</span><span style=color:#f92672>&gt;</span> vi;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span>(<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>; i <span style=color:#f92672>&lt;=</span> <span style=color:#ae81ff>5</span>; i<span style=color:#f92672>++</span>){
+</span></span><span style=display:flex><span>        vi.push_back(i);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    vi.pop_back();
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span>(<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> vi.size(); i<span style=color:#f92672>++</span>){
+</span></span><span style=display:flex><span>        printf(<span style=color:#e6db74>&#34;%d &#34;</span>, vi[i]);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#75715e>// result = 1 2 3 4
+</span></span></span></code></pre></div></li><li><p>size()</p><p>用来获得vector中元素个数，时间复杂度<code>O(1)</code></p></li><li><p>clear()</p><p>用来清空vector中的所有元素，时间复杂度<code>O(n)</code></p></li><li><p>insert()</p><p><code>insert(it, x)</code> = 向vector迭代器it处插入元素x，时间复杂度<code>O(N)</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span><span style=color:#75715e>// vector_test_7
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// insert(it, x)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;cstdio&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;vector&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>using</span> <span style=color:#66d9ef>namespace</span> std;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>(){
+</span></span><span style=display:flex><span>    vector<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>int</span><span style=color:#f92672>&gt;</span> vi;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span>(<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>; i <span style=color:#f92672>&lt;=</span> <span style=color:#ae81ff>3</span>; i<span style=color:#f92672>++</span>){
+</span></span><span style=display:flex><span>        vi.push_back(i);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    vi.insert(vi.begin()<span style=color:#f92672>+</span><span style=color:#ae81ff>2</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span>(<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> vi.size(); i<span style=color:#f92672>++</span>){
+</span></span><span style=display:flex><span>        printf(<span style=color:#e6db74>&#34;%d &#34;</span>, vi[i]);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#75715e>// result = 1 2 -1 3
+</span></span></span></code></pre></div></li><li><p>erase()</p><p>时间复杂度均为<code>O(N)</code></p><ul><li><p>删除单个元素 erase(it)</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span><span style=color:#75715e>// vector_test_8
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// erase()
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;cstdio&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;vector&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>using</span> <span style=color:#66d9ef>namespace</span> std;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>(){
+</span></span><span style=display:flex><span>    vector<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>int</span><span style=color:#f92672>&gt;</span> vi;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span>(<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>; i <span style=color:#f92672>&lt;=</span> <span style=color:#ae81ff>5</span>; i<span style=color:#f92672>++</span>){
+</span></span><span style=display:flex><span>        vi.push_back(i);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    vi.erase(vi.begin()<span style=color:#f92672>+</span><span style=color:#ae81ff>3</span>);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span>(<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> vi.size(); i<span style=color:#f92672>++</span>){
+</span></span><span style=display:flex><span>        printf(<span style=color:#e6db74>&#34;%d</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>, vi[i]);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#75715e>// result = 1 2 3 5
+</span></span></span></code></pre></div></li><li><p>删除区间所有元素 erase(first, last) <strong>左开右闭</strong></p></li></ul></li></ul><h4 id=2-stack>2. stack</h4><h5 id=1定义-1>（1）定义</h5><p>添加<code>#include &lt;stack></code>与<code>using namespace std;</code></p><p>定义写法：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span>stack<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>typename</span><span style=color:#f92672>&gt;</span> name;
+</span></span></code></pre></div><h5 id=2stack容器内元素访问>（2）stack容器内元素访问</h5><p>后进先出，只能通过<code>top()</code>访问栈顶元素。</p><h5 id=3常用函数>（3）常用函数</h5><ul><li><p>push()</p><p>push(x) = 将x入栈，时间复杂度<code>O(1)</code></p></li><li><p>top()</p><p>top() = 获得栈顶元素，时间复杂度<code>O(1)</code></p></li><li><p>pop()</p><p>pop() = 弹出栈顶元素，时间复杂度<code>O(1)</code></p></li><li><p>empty()</p><p>检测stack是否为空。返回<code>true</code>为空。时间复杂度<code>O(1)</code></p></li><li><p>size()</p><p>返回stack内元素个数。时间复杂度<code>O(1)</code></p></li></ul><h4 id=3-string>3. string</h4><h5 id=1定义-2>（1）定义</h5><p>添加<code>#include &lt;string></code>与<code>using namespace std</code></p><p><code>string str;</code></p><p>初始化：<code>string str = "abcd";</code></p><h5 id=2string中内容访问>（2）string中内容访问</h5><ul><li><p>通过下标访问</p><p><code>str[i]</code></p></li><li><p>通过迭代器访问</p><p>定义：<code>string =:iterator it;</code></p><p>通过<code>*it</code>访问string中的每一位。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span><span style=color:#75715e>// string_test_3
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;cstdio&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;string&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>using</span> <span style=color:#66d9ef>namespace</span> std;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>(){
+</span></span><span style=display:flex><span>    string str <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;abcd&#34;</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span>(string <span style=color:#f92672>=:</span>iterator it <span style=color:#f92672>=</span> str.begin(); it <span style=color:#f92672>!=</span> str.end(); it<span style=color:#f92672>++</span>){
+</span></span><span style=display:flex><span>        printf(<span style=color:#e6db74>&#34;%c&#34;</span>, <span style=color:#f92672>*</span>it);
+</span></span><span style=display:flex><span>    } 
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></li></ul><h5 id=3常用函数-1>（3）常用函数</h5><h4 id=4-queue>4. queue</h4><h5 id=1定义-3>（1）定义</h5><p>预先条件：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;queue&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>using</span> <span style=color:#66d9ef>namespace</span> std;
+</span></span></code></pre></div><p><code>queue&lt;typename> name;</code></p><h5 id=2容器内元素访问>（2）容器内元素访问</h5><p>通过<code>front()</code>访问队首元素，通过<code>back()</code>访问队尾元素。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span><span style=color:#75715e>// queue_test_1
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;cstdio&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;queue&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>using</span> <span style=color:#66d9ef>namespace</span> std;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>(){
+</span></span><span style=display:flex><span>    queue<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>int</span><span style=color:#f92672>&gt;</span> q;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span>(<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>5</span>; i<span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>        q.push(i);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    printf(<span style=color:#e6db74>&#34;%d %d</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>, q.front(), q.back());
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>result <span style=color:#f92672>=</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>0</span> <span style=color:#ae81ff>4</span>
+</span></span></code></pre></div><h5 id=3常用函数-2>（3）常用函数</h5><ul><li><p>push()</p><p><code>push(x)</code>：将x入队。</p><p>时间复杂度：<code>O(1)</code></p></li><li><p>front()/back()</p><p>时间复杂度：<code>O(1)</code></p></li><li><p>pop()</p><p>pop()：出队</p><p>时间复杂度：<code>O(1)</code></p></li><li><p>empty()</p><p>检测q是否为空，为空返回true.</p><p>时间复杂度：<code>O(1)</code></p></li><li><p>size()</p><p>返回元素个数。</p><p>时间复杂度：<code>O(1)</code></p></li></ul><h5 id=4用途>（4）用途</h5><ul><li>广度优先搜索</li></ul><h4 id=5-algorithm头文件下常用函数>5. algorithm头文件下常用函数</h4><blockquote><p>须添加<code>using namespace std;</code></p></blockquote><h5 id=1maxminabs>（1）max()/min()/abs()</h5><ul><li><p>max(x, y) = 返回x, y中最大值</p></li><li><p>min(x, y) = 返回x, y中最小值</p><p><strong>参数必须是两个， 可以是浮点数</strong></p></li><li><p>max(x, max(y, z)) = 返回三者中最大值</p></li><li><p>abx(x) = 返回x绝对值 // <strong>x必须是整数</strong></p></li><li><p>fabs(x) = <strong>浮点数绝对值，使用<code>math</code>头文件</strong></p></li></ul><h5 id=2swap>（2）swap()</h5><ul><li>swap(x, y) = 交换x和y的值</li></ul><h5 id=3reverse>（3）reverse()</h5><ul><li><p>reverse(it, it2) = 将数组指针在[it, it2)之间的元素或容器的迭代器在[it, it2)范围内的元素进行反转。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span><span style=color:#75715e>// algorithm_test_3
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;cstdio&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;algorithm&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>using</span> <span style=color:#66d9ef>namespace</span> std;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>(){
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> a[<span style=color:#ae81ff>10</span>] <span style=color:#f92672>=</span> {<span style=color:#ae81ff>10</span>, <span style=color:#ae81ff>11</span>, <span style=color:#ae81ff>12</span>, <span style=color:#ae81ff>13</span>, <span style=color:#ae81ff>14</span>, <span style=color:#ae81ff>15</span>};
+</span></span><span style=display:flex><span>    reverse(a, a<span style=color:#f92672>+</span><span style=color:#ae81ff>4</span>);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span>(<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>6</span>; i<span style=color:#f92672>++</span>){
+</span></span><span style=display:flex><span>        printf(<span style=color:#e6db74>&#34;%d &#34;</span>, a[i]);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>result <span style=color:#f92672>=</span> <span style=color:#ae81ff>13</span> <span style=color:#ae81ff>12</span> <span style=color:#ae81ff>11</span> <span style=color:#ae81ff>10</span> <span style=color:#ae81ff>14</span> <span style=color:#ae81ff>15</span>
+</span></span></code></pre></div></li></ul><h5 id=4sort>（4）sort()</h5><ul><li><p>如何使用sort排序</p><ul><li><p>使用</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;algorithm&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>using</span> <span style=color:#66d9ef>namespace</span> std;
+</span></span></code></pre></div><p><code>sort(首元素地址(必填), 尾元素地址(必填), 比较函数(非必填))</code></p><p>注：不写比较函数，默认递增排序</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span><span style=color:#75715e>// algorithm_test_4
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;cstdio&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;algorithm&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>using</span> <span style=color:#66d9ef>namespace</span> std;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>(){
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> a[<span style=color:#ae81ff>6</span>] <span style=color:#f92672>=</span> {<span style=color:#ae81ff>9</span>, <span style=color:#ae81ff>4</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>6</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>};
+</span></span><span style=display:flex><span>    sort(a, a<span style=color:#f92672>+</span><span style=color:#ae81ff>4</span>); <span style=color:#75715e>// [0, 4)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>for</span>(<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>6</span>; i<span style=color:#f92672>++</span>)
+</span></span><span style=display:flex><span>        printf(<span style=color:#e6db74>&#34;%d &#34;</span>, a[i]);
+</span></span><span style=display:flex><span>    printf(<span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
+</span></span><span style=display:flex><span>    sort(a, a<span style=color:#f92672>+</span><span style=color:#ae81ff>6</span>); <span style=color:#75715e>// [0, 6)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>for</span>(<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>6</span>; i<span style=color:#f92672>++</span>)
+</span></span><span style=display:flex><span>        printf(<span style=color:#e6db74>&#34;%d &#34;</span>, a[i]);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>result <span style=color:#f92672>=</span>
+</span></span></code></pre></div><p><img src=images/img_1.png alt=img_1></p></li></ul></li><li><p>如何实现比较函数cmp</p></li><li><p>基本数据类型数组的排序</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span><span style=color:#75715e>// 实现从大到小排序
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// algorithm_test_5
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;cstdio&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;algorithm&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>using</span> <span style=color:#66d9ef>namespace</span> std;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>bool</span> <span style=color:#a6e22e>cmp</span>(<span style=color:#66d9ef>int</span> a, <span style=color:#66d9ef>int</span> b){
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> a <span style=color:#f92672>&gt;</span> b;  <span style=color:#75715e>// 当a&gt;b时，a放在b前边
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>}
+</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>(){
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> a[] <span style=color:#f92672>=</span> {<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>4</span>};
+</span></span><span style=display:flex><span>    sort(a, a<span style=color:#f92672>+</span><span style=color:#ae81ff>4</span>, cmp);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span>(<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>4</span>; i<span style=color:#f92672>++</span>){
+</span></span><span style=display:flex><span>        printf(<span style=color:#e6db74>&#34;%d &#34;</span>, a[i]);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>result <span style=color:#f92672>=</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>4</span> <span style=color:#ae81ff>3</span> <span style=color:#ae81ff>2</span> <span style=color:#ae81ff>1</span>
+</span></span></code></pre></div></li><li><p>结构体数组的排序</p><p>定义如下结构体：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span><span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>node</span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> x, y;
+</span></span><span style=display:flex><span>}ssd[<span style=color:#ae81ff>10</span>];
+</span></span></code></pre></div><p><strong>将ssd数组按x从大到小排序</strong>：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span><span style=color:#66d9ef>bool</span> <span style=color:#a6e22e>cmp</span>(node a, node b){
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> a.x <span style=color:#f92672>&gt;</span> b.x;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>eg.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span><span style=color:#75715e>// algorithm_test_6
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// 结构体数组的排序
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;cstdio&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;algorithm&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>using</span> <span style=color:#66d9ef>namespace</span> std;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>node</span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> x, y;
+</span></span><span style=display:flex><span>}ssd[<span style=color:#ae81ff>10</span>];
+</span></span><span style=display:flex><span><span style=color:#66d9ef>bool</span> <span style=color:#a6e22e>cmp</span>(node a, node b){
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> a.x <span style=color:#f92672>&gt;</span> b.x;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>(){
+</span></span><span style=display:flex><span>    ssd[<span style=color:#ae81ff>0</span>].x <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span>;
+</span></span><span style=display:flex><span>    ssd[<span style=color:#ae81ff>0</span>].y <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span>;
+</span></span><span style=display:flex><span>    ssd[<span style=color:#ae81ff>1</span>].x <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>    ssd[<span style=color:#ae81ff>1</span>].y <span style=color:#f92672>=</span> <span style=color:#ae81ff>3</span>;
+</span></span><span style=display:flex><span>    ssd[<span style=color:#ae81ff>2</span>].x <span style=color:#f92672>=</span> <span style=color:#ae81ff>3</span>;
+</span></span><span style=display:flex><span>    ssd[<span style=color:#ae81ff>2</span>].y <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>    sort(ssd, ssd<span style=color:#f92672>+</span><span style=color:#ae81ff>3</span>, cmp);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span>(<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>3</span>; i<span style=color:#f92672>++</span>){
+</span></span><span style=display:flex><span>        printf(<span style=color:#e6db74>&#34;%d %d</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>, ssd[i].x, ssd[i].y);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>result =</p><p><img src=images/img_2.png alt=img_2></p></li></ul><h5 id=5fill>（5）fill</h5><ul><li>将数组或容器中某一段区间赋为某个相同的值。==赋值可以是数组类型对应的任何值==</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;cstdio&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;algorithm&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>using</span> <span style=color:#66d9ef>namespace</span> std;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> a[<span style=color:#ae81ff>5</span>] <span style=color:#f92672>=</span> {<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>4</span>, <span style=color:#ae81ff>5</span>};
+</span></span><span style=display:flex><span>    fill(a, a<span style=color:#f92672>+</span><span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>23</span>);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span>(<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>5</span>; i<span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>        printf(<span style=color:#e6db74>&#34;%d &#34;</span>, a[i]);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>result <span style=color:#f92672>=</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>23</span> <span style=color:#ae81ff>23</span> <span style=color:#ae81ff>23</span> <span style=color:#ae81ff>23</span> <span style=color:#ae81ff>23</span>
+</span></span></code></pre></div><h4 id=6-map>6. map</h4><blockquote><p>翻译为映射。</p><p>例如在定义数组时，是定义了一个从<code>int</code>到<code>int</code>的映射，如<code>arr[0] = 5</code>是将0映射到5.</p><p>map可以将任何基本类型映射到任何基本类型。</p></blockquote><h5 id=1定义-4>（1）定义</h5><ul><li><p>前提条件</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;map&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>using</span> <span style=color:#66d9ef>namespace</span> std;
+</span></span></code></pre></div></li><li><p>map定义</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span>map<span style=color:#f92672>&lt;</span>typename1, typename2<span style=color:#f92672>&gt;</span> mp;
+</span></span></code></pre></div><p>注：如果是字符串到整型的映射，必须使用<code>string</code>而不能用<code>char数组</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span>map<span style=color:#f92672>&lt;</span>string, <span style=color:#66d9ef>int</span><span style=color:#f92672>&gt;</span> mp;
+</span></span></code></pre></div></li></ul><h5 id=2容器内元素访问-1>（2）容器内元素访问</h5><ul><li><p>通过下标访问</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span><span style=color:#75715e>// map_test_1
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;cstdio&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;map&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>using</span> <span style=color:#66d9ef>namespace</span> std;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>() {
+</span></span><span style=display:flex><span>    map<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>char</span>, <span style=color:#66d9ef>int</span><span style=color:#f92672>&gt;</span> mp;
+</span></span><span style=display:flex><span>    mp[<span style=color:#e6db74>&#39;c&#39;</span>] <span style=color:#f92672>=</span> <span style=color:#ae81ff>20</span>;
+</span></span><span style=display:flex><span>    mp[<span style=color:#e6db74>&#39;c&#39;</span>] <span style=color:#f92672>=</span> <span style=color:#ae81ff>30</span>;
+</span></span><span style=display:flex><span>    printf(<span style=color:#e6db74>&#34;%d</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>, mp[<span style=color:#e6db74>&#39;c&#39;</span>]);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></li><li><p>通过迭代器访问(跳过)</p></li></ul><h5 id=3常用函数-3>（3）常用函数</h5><ul><li>find()</li><li>size()</li><li>clear()</li></ul></main><footer><hr>© <a href=https://ongoing-z.github.io>ONGOING-Z</a> 2020 &ndash; 2025</footer></body></html>

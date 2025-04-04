@@ -1,0 +1,44 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>文章关联github及查看文章源文件更新历史 | ongoing's blog</title>
+<link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css></head><body><nav><ul class=menu><li><a href=/>首页</a></li><li><a href=/categories/>分类</a></li><li><a href=/about/>关于</a></li><li><a href=/tags/>标签</a></li></ul><hr></nav><div class=article-meta><h1><span class=title>文章关联github及查看文章源文件更新历史</span></h1><h2 class=date>2020/05/06</h2></div><main><p>一段时间之前，看到过一篇博客，博客的最下方有一个按钮，点击之后可以看到博主同步在github中的markdown源文件，我觉得这个作用很不错。所以经过一番搜索之后，发现了一篇实现此功能的博客(参考中的第一篇)，还搜索了一下<code>swig</code>的语法特性，当然是不需要太多的知识的，因为参考中是<code>ejs</code>语法，这里大概就只需要知道**{{var}}**是变量的写法就足够了。</p><h2 id=作用>作用</h2><ul><li>点击进入仓库可以清晰发现文章增加或者删减的历史记录</li><li>可以在github的<code>issues</code>中讨论（稍稍充当评论系统???)</li></ul><h2 id=效果>效果</h2><p><img src=display.png alt=display>+08 = &lsquo;00&rsquo;
+可以看到<strong>更新历史</strong>一行有三项 =</p><ul><li><code>Blame</code> = 左边是<code>commit</code>信息，右边是对应代码</li><li><code>History</code> = 文章修改历史</li><li><code>.md Raw</code> = 文章markdown源文件</li></ul><h2 id=步骤>步骤</h2><p>首先需要新建一个仓库。仓库建好之后, 将<code>博客根目录/source/_posts/</code>文件夹下的文件push到github我们新建的仓库中，在我们的博客修改过后，需要我们手动进行上传。</p><p>将下方代码添加至<code>themes/next/layout/_macro/my-copyright-swig</code>下[^1], 注意这里的<code>my-copyright-swig</code>是我另建的显示文章结束后<strong>版权</strong>的文件。创建博客版权的文章在[这里](https =//www.jianshu.com/p/93170e7413e9)。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-diff data-lang=diff><span style=display:flex><span>{% if page.copyright %}
+</span></span><span style=display:flex><span>&lt;div class=&#34;my_post_copyright&#34;&gt;
+</span></span><span style=display:flex><span>  &lt;script src=&#34;//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js&#34;&gt;&lt;/script&gt;
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  &lt;!-- JS库 sweetalert 可修改路径 --&gt;
+</span></span><span style=display:flex><span>  &lt;script type=&#34;text/javascript&#34; src=&#34;http =//jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js&#34;&gt;&lt;/script&gt;
+</span></span><span style=display:flex><span>  &lt;script src=&#34;http =//jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js&#34;&gt;&lt;/script&gt;
+</span></span><span style=display:flex><span>  &lt;link rel=&#34;stylesheet&#34; type=&#34;text/css&#34; href=&#34;http =//jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css&#34;&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  &lt;p&gt;&lt;span&gt;本文标题 =&#34;&lt;/span&gt;{{ page.title }}&lt;/a&gt;&lt;/p&gt;&#34;
+</span></span><span style=display:flex><span>  &lt;p&gt;&lt;span&gt;文章作者 =&lt;/span&gt;{{ theme.author }}&lt;/a&gt;&lt;/p&gt;
+</span></span><span style=display:flex><span>T&lt;p&gt;&lt;span&gt;发布时间 = &#39;&lt;/span&gt;{{ page.date.format(&#34;YYYY年MM月DD日 - HH:mm:ss&#34;) }}&lt;/p&gt;+08:00&#39;
+</span></span><span style=display:flex><span>T&lt;p&gt;&lt;span&gt;最后更新 = &#39;&lt;/span&gt;{{ page.updated.format(&#34;YYYY年MM月DD日 - HH:mm:ss&#34;) }}&lt;/p&gt;+08:00&#39;
+</span></span><span style=display:flex><span><span style=color:#a6e22e>+  &lt;p&gt;
+</span></span></span><span style=display:flex><span><span style=color:#a6e22e>+      &lt;span&gt;更新历史 =&lt;/span&gt;&lt;i class=&#34;fa fa-github&#34;&gt;&lt;/i&gt;
+</span></span></span><span style=display:flex><span><span style=color:#a6e22e>+T    &lt;a href=&#39;&#34;&#34;https = //github.com/ONGOING-Z/Hexo-blog-backup/blame/master/{{ page.date.format(&#34;YYYY-MM-DD&#34;) }}-{{ page.title }}.md&#34; title=&#34;顺序查看文章各部分修改记录&#34; target = &#34;_blank&#34;&gt;Blame&lt;/a&gt;,&#34;+08:00&#39;
+</span></span></span><span style=display:flex><span><span style=color:#a6e22e>+T    &lt;a href=&#39;&#34;&#34;https = //github.com/ONGOING-Z/Hexo-blog-backup/commits/master/{{ page.date.format(&#34;YYYY-MM-DD&#34;) }}-{{ page.title }}.md&#34; title=&#34;查看文章有关更新记录&#34; target = &#34;_blank&#34;&gt;History&lt;/a&gt;&lt;span class=&#34;raw&#34;&gt;文本模式:&lt;/span&gt;&lt;i class=&#34;fa fa-file-text-o&#34;&gt;&lt;/i&gt;&#34;+08:00&#39;
+</span></span></span><span style=display:flex><span><span style=color:#a6e22e>+T    &lt;a href=&#39;&#34;&#34;https = //raw.githubusercontent.com/ONGOING-Z/Hexo-blog-backup/commits/master/{{ page.date.format(&#34;YYYY-MM-DD&#34;) }}-{{ page.title }}.md&#34; title=&#34;查看 &amp; 下载文章 Markdown 原始文本&#34; target = &#34;_blank&#34;&gt; .md Raw&lt;/a&gt;&#34;+08:00&#39;
+</span></span></span><span style=display:flex><span><span style=color:#a6e22e>+  &lt;/p&gt;
+</span></span></span><span style=display:flex><span><span style=color:#a6e22e></span>  &lt;p&gt;&lt;span&gt;原始链接 =&#34;&lt;/span&gt;&lt;a href=&#34;{{ url_for(page.path) }}&#34; title=&#34;{{ page.title }}&#34;&gt;{{ page.permalink }}&lt;/a&gt;&#34;
+</span></span><span style=display:flex><span>    &lt;span class=&#34;&#34;copy-path&#34;  title=&#34;点击复制文章链接&#34;&gt;&lt;i class=&#34;fa fa-clipboard&#34; data-clipboard-text=&#34;{{ page.permalink }}&#34;  aria-label=&#34;复制成功！&#34;&gt;&lt;/i&gt;&lt;/span&gt;&#34;
+</span></span><span style=display:flex><span>  &lt;/p&gt;
+</span></span><span style=display:flex><span>  &lt;p&gt;&lt;span&gt;许可协议 =&#34;&lt;/span&gt;&lt;i class=&#34;fa fa-creative-commons&#34;&gt;&lt;/i&gt; &lt;a rel=&#34;license&#34; href=&#34;https://creativecommons.org/licenses/by-nc-nd/4.0/&#34; target=&#34;_blank&#34; title=&#34;Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)&#34;&gt;署名-非商业性使用-禁止演绎 4.0 国际&lt;/a&gt; 转载请保留原文链接及作者。&lt;/p&gt;  &#34;
+</span></span><span style=display:flex><span>&lt;/div&gt;
+</span></span><span style=display:flex><span>&lt;script&gt; 
+</span></span><span style=display:flex><span>    var clipboard = new Clipboard(&#39;.fa-clipboard&#39;);
+</span></span><span style=display:flex><span>    clipboard.on(&#39;success&#39;, $(function(){
+</span></span><span style=display:flex><span>      $(&#34;.fa-clipboard&#34;).click(function(){
+</span></span><span style=display:flex><span>        swal({   
+</span></span><span style=display:flex><span>          title = &#34;&#34;&#34;,   &#34;
+</span></span><span style=display:flex><span>          text = &#39;复制成功&#39;,   
+</span></span><span style=display:flex><span>          html = false,
+</span></span><span style=display:flex><span>          timer = 500,   
+</span></span><span style=display:flex><span>          showConfirmButton = false
+</span></span><span style=display:flex><span>        });
+</span></span><span style=display:flex><span>      });
+</span></span><span style=display:flex><span>    }));  
+</span></span><span style=display:flex><span>&lt;/script&gt;
+</span></span><span style=display:flex><span>{% endif %}
+</span></span></code></pre></div><p>其中绿色部分代码是实现效果的代码。这之中我们修改<code>href</code>的属性对应自己的<strong>仓库信息</strong>和<strong>文章信息</strong>即可。</p><h2 id=参考>参考</h2><p>[1] [关联 GitHub, 让 Hexo 支持查看文章更新历史](http =//moxfive.xyz/2016/01/10/hexo-post-version-control/)
+[2] [hexo变量](https =//hexo.io/zh-cn/docs/variables.html)
+[3] https =//www.jianshu.com/p/93170e7413e9</p><p>[^1] = 我所使用的主题是next</p></main><footer><hr>© <a href=https://ongoing-z.github.io>ONGOING-Z</a> 2020 &ndash; 2025</footer></body></html>
