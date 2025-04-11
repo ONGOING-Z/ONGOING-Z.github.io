@@ -1,0 +1,45 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Bubble Sort | ongoing's blog</title>
+<link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css></head><body><nav><ul class=menu><li><a href=/>首页</a></li><li><a href=/categories/>分类</a></li><li><a href=/about/>关于</a></li><li><a href=/tags/>标签</a></li></ul><hr></nav><div class=article-meta><h1><span class=title>Bubble Sort</span></h1><h2 class=date>2020/10/16</h2></div><main><p>冒泡排序，是一种交换类的排序，通过一系列交换动作完成。在排序过程中，第一个关键字和第二个比较，若第一个大，则交换，否则不交换；然后第二个与第三个比较，进行之前类似动作，知道最大的关键字到了序列的最后，则一趟冒泡排序完成。无序序列元素减一，有序序列元素加一。经过多次排序，然后无序序列变为有序序列。</p><p><strong>算法结束条件</strong> = $\color{blue}{在一趟排序过程中没有发生关键字交换}$。</p><p>下边是算法的具体实现 =</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;iostream&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;stdio.h&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;cstdio&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;vector&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;algorithm&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&#34;dbg.h&#34;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>using</span> <span style=color:#66d9ef>namespace</span> std;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>bubbleSort</span>(<span style=color:#66d9ef>int</span> R[], <span style=color:#66d9ef>int</span> len)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> flag; <span style=color:#75715e>// 交换标志
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> len <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>; i <span style=color:#f92672>&gt;=</span> <span style=color:#ae81ff>1</span>; i<span style=color:#f92672>--</span>) <span style=color:#75715e>// 无序序列范围
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    {
+</span></span><span style=display:flex><span>        flag <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> j <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>; j <span style=color:#f92672>&lt;=</span> i; j<span style=color:#f92672>++</span>) <span style=color:#75715e>// i不断减小，无序序列元素不断减少，i之后都是有序序列元素
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> (R[j<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>] <span style=color:#f92672>&gt;</span> R[j]) <span style=color:#75715e>// 前一个关键字大于后一个，则交换
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>            {
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>int</span> temp <span style=color:#f92672>=</span> R[j];
+</span></span><span style=display:flex><span>                R[j] <span style=color:#f92672>=</span> R[j<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>];
+</span></span><span style=display:flex><span>                R[j<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>] <span style=color:#f92672>=</span> temp;
+</span></span><span style=display:flex><span>                
+</span></span><span style=display:flex><span>                <span style=color:#75715e>// 若发生交换，将falg置为1
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>                flag <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (flag <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>) <span style=color:#75715e>// 一趟排序中没有发生交换，则有序，算法结束。
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>            <span style=color:#66d9ef>return</span>;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>(<span style=color:#66d9ef>int</span> argc, <span style=color:#66d9ef>char</span> <span style=color:#f92672>*</span>argv[])
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> R[] <span style=color:#f92672>=</span> {<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>18</span>, <span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>28</span>, <span style=color:#ae81ff>23</span>, <span style=color:#ae81ff>38</span>, <span style=color:#ae81ff>7</span>, <span style=color:#ae81ff>8</span>};
+</span></span><span style=display:flex><span>    cout <span style=color:#f92672>&lt;&lt;</span> <span style=color:#e6db74>&#34;Before sorting = &#34;</span> <span style=color:#f92672>&lt;&lt;</span> endl;
+</span></span><span style=display:flex><span>    dbg(R);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> len <span style=color:#f92672>=</span> <span style=color:#66d9ef>sizeof</span>(R) <span style=color:#f92672>/</span> <span style=color:#66d9ef>sizeof</span>(R[<span style=color:#ae81ff>0</span>]);
+</span></span><span style=display:flex><span>    cout <span style=color:#f92672>&lt;&lt;</span> <span style=color:#e6db74>&#34;After sorting  = &#34;</span> <span style=color:#f92672>&lt;&lt;</span> endl;
+</span></span><span style=display:flex><span>    bubbleSort(R, len);
+</span></span><span style=display:flex><span>    dbg(R);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>运行结果 =
+<img src=bubble_sort.png alt=" bubble_sort "></p><p>时间复杂度</p><ol><li>最坏情况：序列逆序, 为$\color{blue}{O(n^2)}$。此时内外循环都要执行。</li><li>最好情况：序列有序，为$\color{blue}{O(n)}$。此时if条件始终不成立，内层循环执行n-1次后算法结束。</li></ol><p>空间复杂度$\color{blue}{O(1)}$ = 交换时使用的辅助变量temp，故为$O(1)$.</p></main><footer><hr>© <a href=https://ongoingblog.org/>ONGOING-Z</a> 2020 &ndash; 2025</footer></body></html>

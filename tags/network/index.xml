@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Network on ongoing's blog</title><link>https://ongoingblog.org/tags/network/</link><description>Recent content in Network on ongoing's blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Thu, 22 Jul 2021 19:57:00 +0800</lastBuildDate><atom:link href="https://ongoingblog.org/tags/network/index.xml" rel="self" type="application/rss+xml"/><item><title>让我困惑的Subnet Mask(子网掩码)</title><link>https://ongoingblog.org/2021/07/the-confusing-subnet-mask/</link><pubDate>Thu, 22 Jul 2021 19:57:00 +0800</pubDate><guid>https://ongoingblog.org/2021/07/the-confusing-subnet-mask/</guid><description>&lt;p>前言：之前一直不太懂 subnet mask(子网掩码)这个家伙的作用，不管是看了别人文章里的比喻还是一些计算后，自己还是很懵。但是其实自己懂了之后，其实关键是这个“东西”的作用到底是什么，这个“东西”到底扮演了什么样的角色，这才是较为重要的，不要一上来就直接进行计算，懂得为什么会去这样做才是重中之重。&lt;/p>
+&lt;p>首先来声明下 subnet mask的作用：用来标识主机所连接的网络。是区分 network Id（网络号）和 host Id（主机号）的边界。至于怎么来区别我们下面来说：&lt;/p>
+&lt;p>我们熟知的 ip 主要是由两部分组成 = &lt;code>Network ID&lt;/code> + &lt;code>Host ID&lt;/code>.中文翻译过来是 网络号 和 主机号。&lt;/p>
+&lt;p>现假设我们的 ip 是 &lt;code>99.0.129.36&lt;/code>，subnet mask 是 &lt;code>255.255.255.0&lt;/code>&lt;/p>
+&lt;p>首先我们将 ip 转换为其二进制的形式，对于 subnet mask 也是如此。&lt;/p>
+&lt;p>&lt;img src="Ip_ManimCE_v0.8.0.png" alt="ip-to-binary">&lt;/p>
+&lt;p>得到相对应的二进制编码形式后，有这样一个规则：subnet mask二进制形式中为1的位，则“启用”对应的 ip 的位置，来看下面这张图：&lt;/p>
+&lt;p>&lt;img src="TestBrace_ManimCE_v0.8.0.png" alt="compute_network_Id">&lt;/p>
+&lt;p>这样我们就得到了二进制形式的 Network ID = &lt;code>01100011.00000000.10000001&lt;/code>，转换为十进制即&lt;code>99.0.129.0&lt;/code>，这是网络号。&lt;/p>
+&lt;p>剩余的位则是 Host ID，有八位。&lt;/p>
+&lt;p>又因为在网段中有两个保留位置：&lt;/p>
+&lt;ul>
+&lt;li>Host ID 全为0时：表示网段号，即 Network ID&lt;/li>
+&lt;li>Host ID 全为1时：表示广播地址（这里是99.0.129.255）&lt;/li>
+&lt;/ul>
+&lt;p>因此这个网段可以支持的主机数量为 2^8 - 2 = 254 个。&lt;/p>
+&lt;p>当我们的网段中有1000台主机时，这个时候就需要给 host id 分配10位了，对应的 network id 有22位，之后就可以得到对应的网络号。&lt;/p></description></item></channel></rss>

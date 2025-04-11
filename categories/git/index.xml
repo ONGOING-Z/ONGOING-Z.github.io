@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Git on ongoing's blog</title><link>https://ongoingblog.org/categories/git/</link><description>Recent content in Git on ongoing's blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sun, 21 Aug 2022 20:18:00 +0800</lastBuildDate><atom:link href="https://ongoingblog.org/categories/git/index.xml" rel="self" type="application/rss+xml"/><item><title>use gpg to secure your commit</title><link>https://ongoingblog.org/2022/08/use-gpg-to-secure-your-commit/</link><pubDate>Sun, 21 Aug 2022 20:18:00 +0800</pubDate><guid>https://ongoingblog.org/2022/08/use-gpg-to-secure-your-commit/</guid><description>&lt;p>前言: 使用 gpg 加密自己的commit。&lt;/p>
+&lt;p>&lt;img src="gpg-01.png" alt="">&lt;/p>
+&lt;p>效果：类似下图，对于commit会有一个verify的绿色小标记&lt;/p>
+&lt;p>&lt;img src="verified.png" alt="">&lt;/p>
+&lt;h3 id="电脑环境">电脑环境&lt;/h3>
+&lt;p>系统：ubuntu16.04&lt;/p>
+&lt;h3 id="安装流程">安装流程&lt;/h3>
+&lt;p>&lt;a href="www.gnupg.org">源码&lt;/a>编译安装。&lt;/p>
+&lt;h3 id="使用">使用&lt;/h3>
+&lt;h4 id="一查看本机的-gpg-version">一、查看本机的 gpg version&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>gpg --version 
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="二生成本地-gpg-key">二、生成本地 gpg key&lt;/h4>
+&lt;h4 id="三将-gpg-key-和-git-关联起来">三、将 gpg key 和 git 关联起来&lt;/h4>
+&lt;h4 id="四将-gpg-公钥上传至-github">四、将 gpg 公钥上传至 github&lt;/h4>
+&lt;h4 id="五备份gpg">五、备份gpg&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>备份密钥分为备份公钥和私钥两个部分，备份公钥：
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>gpg -o keyfilename --export KeyID
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>如果没有KeyID则是备份所有的公钥，-o表示输出到文件keyfilename中，如果加上-a的参数则输出文本格式的信息，否则输出的是二进制格式信息。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>备份私钥：
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>gpg -o keyfilename --export-secret-keys KeyID
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>如果没有KeyID则是备份所有的私钥，-o表示输出到文件keyfilename中，如果加上-a的参数则输出文本格式的信息，否则输出的是二进制格式信息。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>然后在别的机器上可以通过
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>gpg --import filename
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>导入这些密钥信息。
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="六参考">六、参考&lt;/h3>
+&lt;p>&lt;a href="https://docs.github.com/zh/authentication/managing-commit-signature-verification/generating-a-new-gpg-key">Github官方文档&lt;/a>有比较详细的说明。&lt;/p></description></item><item><title>Git基础</title><link>https://ongoingblog.org/2020/04/git/</link><pubDate>Sun, 26 Apr 2020 13:11:41 +0800</pubDate><guid>https://ongoingblog.org/2020/04/git/</guid><description>&lt;h3 id="git-查看修改用户名与密码">git 查看修改用户名与密码&lt;/h3>
+&lt;p>查看用户名&lt;/p>
+
+
+
+&lt;div class="goat svg-container ">
+ 
+ &lt;svg
+ xmlns="http://www.w3.org/2000/svg"
+ font-family="Menlo,Lucida Console,monospace"
+ 
+ viewBox="0 0 240 25"
+ >
+ &lt;g transform='translate(8,16)'>
+&lt;path d='M 88,0 L 96,0' fill='none' stroke='currentColor'>&lt;/path>
+&lt;text text-anchor='middle' x='0' y='4' fill='currentColor' style='font-size:1em'>g&lt;/text>
+&lt;text text-anchor='middle' x='8' y='4' fill='currentColor' style='font-size:1em'>i&lt;/text>
+&lt;text text-anchor='middle' x='16' y='4' fill='currentColor' style='font-size:1em'>t&lt;/text>
+&lt;text text-anchor='middle' x='32' y='4' fill='currentColor' style='font-size:1em'>c&lt;/text>
+&lt;text text-anchor='middle' x='40' y='4' fill='currentColor' style='font-size:1em'>o&lt;/text>
+&lt;text text-anchor='middle' x='48' y='4' fill='currentColor' style='font-size:1em'>n&lt;/text>
+&lt;text text-anchor='middle' x='56' y='4' fill='currentColor' style='font-size:1em'>f&lt;/text>
+&lt;text text-anchor='middle' x='64' y='4' fill='currentColor' style='font-size:1em'>i&lt;/text>
+&lt;text text-anchor='middle' x='72' y='4' fill='currentColor' style='font-size:1em'>g&lt;/text>
+&lt;text text-anchor='middle' x='96' y='4' fill='currentColor' style='font-size:1em'>-&lt;/text>
+&lt;text text-anchor='middle' x='104' y='4' fill='currentColor' style='font-size:1em'>g&lt;/text>
+&lt;text text-anchor='middle' x='112' y='4' fill='currentColor' style='font-size:1em'>l&lt;/text>
+&lt;text text-anchor='middle' x='120' y='4' fill='currentColor' style='font-size:1em'>o&lt;/text>
+&lt;text text-anchor='middle' x='128' y='4' fill='currentColor' style='font-size:1em'>b&lt;/text>
+&lt;text text-anchor='middle' x='136' y='4' fill='currentColor' style='font-size:1em'>a&lt;/text>
+&lt;text text-anchor='middle' x='144' y='4' fill='currentColor' style='font-size:1em'>l&lt;/text>
+&lt;text text-anchor='middle' x='160' y='4' fill='currentColor' style='font-size:1em'>u&lt;/text>
+&lt;text text-anchor='middle' x='168' y='4' fill='currentColor' style='font-size:1em'>s&lt;/text>
+&lt;text text-anchor='middle' x='176' y='4' fill='currentColor' style='font-size:1em'>e&lt;/text>
+&lt;text text-anchor='middle' x='184' y='4' fill='currentColor' style='font-size:1em'>r&lt;/text>
+&lt;text text-anchor='middle' x='192' y='4' fill='currentColor' style='font-size:1em'>.&lt;/text>
+&lt;text text-anchor='middle' x='200' y='4' fill='currentColor' style='font-size:1em'>n&lt;/text>
+&lt;text text-anchor='middle' x='208' y='4' fill='currentColor' style='font-size:1em'>a&lt;/text>
+&lt;text text-anchor='middle' x='216' y='4' fill='currentColor' style='font-size:1em'>m&lt;/text>
+&lt;text text-anchor='middle' x='224' y='4' fill='currentColor' style='font-size:1em'>e&lt;/text>
+&lt;/g>
+
+ &lt;/svg>
+ 
+&lt;/div>
+&lt;p>修改用户名&lt;/p>
+
+
+
+&lt;div class="goat svg-container ">
+ 
+ &lt;svg
+ xmlns="http://www.w3.org/2000/svg"
+ font-family="Menlo,Lucida Console,monospace"
+ 
+ viewBox="0 0 336 25"
+ >
+ &lt;g transform='translate(8,16)'>
+&lt;path d='M 88,0 L 96,0' fill='none' stroke='currentColor'>&lt;/path>
+&lt;text text-anchor='middle' x='0' y='4' fill='currentColor' style='font-size:1em'>g&lt;/text>
+&lt;text text-anchor='middle' x='8' y='4' fill='currentColor' style='font-size:1em'>i&lt;/text>
+&lt;text text-anchor='middle' x='16' y='4' fill='currentColor' style='font-size:1em'>t&lt;/text>
+&lt;text text-anchor='middle' x='32' y='4' fill='currentColor' style='font-size:1em'>c&lt;/text>
+&lt;text text-anchor='middle' x='40' y='4' fill='currentColor' style='font-size:1em'>o&lt;/text>
+&lt;text text-anchor='middle' x='48' y='4' fill='currentColor' style='font-size:1em'>n&lt;/text>
+&lt;text text-anchor='middle' x='56' y='4' fill='currentColor' style='font-size:1em'>f&lt;/text>
+&lt;text text-anchor='middle' x='64' y='4' fill='currentColor' style='font-size:1em'>i&lt;/text>
+&lt;text text-anchor='middle' x='72' y='4' fill='currentColor' style='font-size:1em'>g&lt;/text>
+&lt;text text-anchor='middle' x='96' y='4' fill='currentColor' style='font-size:1em'>-&lt;/text>
+&lt;text text-anchor='middle' x='104' y='4' fill='currentColor' style='font-size:1em'>g&lt;/text>
+&lt;text text-anchor='middle' x='112' y='4' fill='currentColor' style='font-size:1em'>l&lt;/text>
+&lt;text text-anchor='middle' x='120' y='4' fill='currentColor' style='font-size:1em'>o&lt;/text>
+&lt;text text-anchor='middle' x='128' y='4' fill='currentColor' style='font-size:1em'>b&lt;/text>
+&lt;text text-anchor='middle' x='136' y='4' fill='currentColor' style='font-size:1em'>a&lt;/text>
+&lt;text text-anchor='middle' x='144' y='4' fill='currentColor' style='font-size:1em'>l&lt;/text>
+&lt;text text-anchor='middle' x='160' y='4' fill='currentColor' style='font-size:1em'>u&lt;/text>
+&lt;text text-anchor='middle' x='168' y='4' fill='currentColor' style='font-size:1em'>s&lt;/text>
+&lt;text text-anchor='middle' x='176' y='4' fill='currentColor' style='font-size:1em'>e&lt;/text>
+&lt;text text-anchor='middle' x='184' y='4' fill='currentColor' style='font-size:1em'>r&lt;/text>
+&lt;text text-anchor='middle' x='192' y='4' fill='currentColor' style='font-size:1em'>.&lt;/text>
+&lt;text text-anchor='middle' x='200' y='4' fill='currentColor' style='font-size:1em'>n&lt;/text>
+&lt;text text-anchor='middle' x='208' y='4' fill='currentColor' style='font-size:1em'>a&lt;/text>
+&lt;text text-anchor='middle' x='216' y='4' fill='currentColor' style='font-size:1em'>m&lt;/text>
+&lt;text text-anchor='middle' x='224' y='4' fill='currentColor' style='font-size:1em'>e&lt;/text>
+&lt;text text-anchor='middle' x='240' y='4' fill='currentColor' style='font-size:1em'>"&lt;/text>
+&lt;text text-anchor='middle' x='248' y='4' fill='currentColor' style='font-size:1em'>y&lt;/text>
+&lt;text text-anchor='middle' x='256' y='4' fill='currentColor' style='font-size:1em'>o&lt;/text>
+&lt;text text-anchor='middle' x='264' y='4' fill='currentColor' style='font-size:1em'>u&lt;/text>
+&lt;text text-anchor='middle' x='272' y='4' fill='currentColor' style='font-size:1em'>r&lt;/text>
+&lt;text text-anchor='middle' x='288' y='4' fill='currentColor' style='font-size:1em'>n&lt;/text>
+&lt;text text-anchor='middle' x='296' y='4' fill='currentColor' style='font-size:1em'>a&lt;/text>
+&lt;text text-anchor='middle' x='304' y='4' fill='currentColor' style='font-size:1em'>m&lt;/text>
+&lt;text text-anchor='middle' x='312' y='4' fill='currentColor' style='font-size:1em'>e&lt;/text>
+&lt;text text-anchor='middle' x='320' y='4' fill='currentColor' style='font-size:1em'>"&lt;/text>
+&lt;/g>
+
+ &lt;/svg>
+ 
+&lt;/div>
+&lt;p>查看邮箱地址&lt;/p></description></item></channel></rss>

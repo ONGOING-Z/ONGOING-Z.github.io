@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Sql on ongoing's blog</title><link>https://ongoingblog.org/categories/sql/</link><description>Recent content in Sql on ongoing's blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sat, 01 Mar 2025 10:39:00 +0800</lastBuildDate><atom:link href="https://ongoingblog.org/categories/sql/index.xml" rel="self" type="application/rss+xml"/><item><title>find difference in two data set by sql</title><link>https://ongoingblog.org/2025/03/find-difference-in-two-data-set-by-sql/</link><pubDate>Sat, 01 Mar 2025 10:39:00 +0800</pubDate><guid>https://ongoingblog.org/2025/03/find-difference-in-two-data-set-by-sql/</guid><description>&lt;p>&lt;img src="TwoCircle.png" alt="">&lt;/p>
+&lt;p>思路：&lt;/p>
+&lt;ol>
+&lt;li>找到 A 和 B 的公共部分 C, C = join A and B&lt;/li>
+&lt;li>A 的特有部分为 A - C, not in C but in A&lt;/li>
+&lt;li>B 的特有部分为 B - C, not in C but in B&lt;/li>
+&lt;/ol></description></item></channel></rss>
