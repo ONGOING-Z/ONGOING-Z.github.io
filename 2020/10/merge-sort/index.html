@@ -1,0 +1,50 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Merge Sort | ongoing's blog</title>
+<link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css></head><body><nav><ul class=menu><li><a href=/>首页</a></li><li><a href=/categories/>分类</a></li><li><a href=/about/>关于</a></li><li><a href=/tags/>标签</a></li></ul><hr></nav><div class=article-meta><h1><span class=title>Merge Sort</span></h1><h2 class=date>2020/10/15</h2></div><main><p>归并排序，将两个或两个以上的有序序列组合成一个新的有序序列。</p><p>下边这种将被排序表分成$ \lceil n/2 \rceil$个长度为2或1的有序表，然后再两两归并。被称作<code>二路归并排序</code>。</p><p>下边是<code>二路归并排序</code>代码</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;iostream&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;stdio.h&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;cstdio&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;vector&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;algorithm&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&#34;dbg.h&#34;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>using</span> <span style=color:#66d9ef>namespace</span> std;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// 将[low, mid] 和 [mid+1, high]合成一个有序表
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>merge</span>(<span style=color:#66d9ef>int</span> A[], <span style=color:#66d9ef>int</span> low, <span style=color:#66d9ef>int</span> mid, <span style=color:#66d9ef>int</span> high)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> i, j, k;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> B[high] <span style=color:#f92672>=</span> {<span style=color:#ae81ff>0</span>}; <span style=color:#75715e>// 定义辅助数组
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>for</span> (k <span style=color:#f92672>=</span> low; k <span style=color:#f92672>&lt;=</span> high; k<span style=color:#f92672>++</span>)
+</span></span><span style=display:flex><span>        B[k] <span style=color:#f92672>=</span> A[k]; <span style=color:#75715e>// 将A中元素复制到辅助数组B中
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>for</span> (i <span style=color:#f92672>=</span> low, j <span style=color:#f92672>=</span> mid <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>, k <span style=color:#f92672>=</span> i; i <span style=color:#f92672>&lt;=</span> mid <span style=color:#f92672>&amp;&amp;</span> j <span style=color:#f92672>&lt;=</span> high; k<span style=color:#f92672>++</span>)
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (B[i] <span style=color:#f92672>&lt;=</span> B[j]) <span style=color:#75715e>// 将较小值复制到A中
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>            A[k] <span style=color:#f92672>=</span> B[i<span style=color:#f92672>++</span>];
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>            A[k] <span style=color:#f92672>=</span> B[j<span style=color:#f92672>++</span>];
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// 对剩余的元素进行复制
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>while</span> (i <span style=color:#f92672>&lt;=</span> mid) A[k<span style=color:#f92672>++</span>] <span style=color:#f92672>=</span> B[i<span style=color:#f92672>++</span>];
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>while</span> (j <span style=color:#f92672>&lt;=</span> high) A[k<span style=color:#f92672>++</span>] <span style=color:#f92672>=</span> B[j<span style=color:#f92672>++</span>];
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>mergeSort</span>(<span style=color:#66d9ef>int</span> A[], <span style=color:#66d9ef>int</span> low, <span style=color:#66d9ef>int</span> high)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (low <span style=color:#f92672>&lt;</span> high)
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>int</span> mid <span style=color:#f92672>=</span> low <span style=color:#f92672>+</span> (high <span style=color:#f92672>-</span> low) <span style=color:#f92672>/</span> <span style=color:#ae81ff>2</span>; <span style=color:#75715e>// 划分序列
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        mergeSort(A, low, mid);           <span style=color:#75715e>// 对左子序列进行递归排序得到一个有序序列
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        mergeSort(A, mid <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>, high);      <span style=color:#75715e>// 对右子序列进行递归排序得到一个有序序列
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        merge(A, low, mid, high);         <span style=color:#75715e>// 对最终的两个有序序列进行归并
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>(<span style=color:#66d9ef>int</span> argc, <span style=color:#66d9ef>char</span> <span style=color:#f92672>*</span>argv[])
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> R[] <span style=color:#f92672>=</span> {<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>53</span>, <span style=color:#ae81ff>532</span>, <span style=color:#ae81ff>52</span>, <span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>67</span>, <span style=color:#ae81ff>68</span>};
+</span></span><span style=display:flex><span>    dbg(R);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> len <span style=color:#f92672>=</span> <span style=color:#66d9ef>sizeof</span>(R) <span style=color:#f92672>/</span> <span style=color:#66d9ef>sizeof</span>(R[<span style=color:#ae81ff>0</span>]);
+</span></span><span style=display:flex><span>    mergeSort(R, <span style=color:#ae81ff>0</span>, len <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>    dbg(R);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>运行结果</p><p><img src=merge_sort.png alt=merge_sort></p><p>时间复杂度 $\color{blue}{O(nlog_2n)}$</p><ol><li>(函数mergeSort)一共要执行$O(log_2n)$次排序，类似二分查找</li><li>(函数merge)每趟归并排序时间复杂度为$O(n)$</li></ol><p>空间复杂度$\color{blue}{O(n)}$ = <code>merge()</code>中辅助数组B占用n个单元，故为$O(n)$.</p></main><footer><hr>© <a href=https://ongoingblog.org/>ONGOING-Z</a> 2020 &ndash; 2025</footer></body></html>

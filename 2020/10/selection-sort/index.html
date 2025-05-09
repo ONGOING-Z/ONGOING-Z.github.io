@@ -1,0 +1,42 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Selection Sort | ongoing's blog</title>
+<link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css></head><body><nav><ul class=menu><li><a href=/>首页</a></li><li><a href=/categories/>分类</a></li><li><a href=/about/>关于</a></li><li><a href=/tags/>标签</a></li></ul><hr></nav><div class=article-meta><h1><span class=title>Selection Sort</span></h1><h2 class=date>2020/10/13</h2></div><main><p>选择排序是交换排序的一种。它的思想是每一轮选出最小者交换到左侧。</p><hr><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;iostream&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;stdio.h&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;cstdio&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&#34;dbg.h&#34;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>using</span> <span style=color:#66d9ef>namespace</span> std;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>selectSort</span>(<span style=color:#66d9ef>int</span> R[], <span style=color:#66d9ef>int</span> len);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>(<span style=color:#66d9ef>int</span> argc, <span style=color:#66d9ef>char</span> <span style=color:#f92672>*</span>argv[])
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> R[] <span style=color:#f92672>=</span> {<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>18</span>, <span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>28</span>, <span style=color:#ae81ff>23</span>, <span style=color:#ae81ff>38</span>, <span style=color:#ae81ff>7</span>, <span style=color:#ae81ff>8</span>};
+</span></span><span style=display:flex><span>    cout <span style=color:#f92672>&lt;&lt;</span> <span style=color:#e6db74>&#34;Before sorting = &#34;</span> <span style=color:#f92672>&lt;&lt;</span> endl;
+</span></span><span style=display:flex><span>    dbg(R);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> len <span style=color:#f92672>=</span> <span style=color:#66d9ef>sizeof</span>(R) <span style=color:#f92672>/</span> <span style=color:#66d9ef>sizeof</span>(R[<span style=color:#ae81ff>0</span>]);
+</span></span><span style=display:flex><span>    cout <span style=color:#f92672>&lt;&lt;</span> <span style=color:#e6db74>&#34;After sorting  = &#34;</span> <span style=color:#f92672>&lt;&lt;</span> endl;
+</span></span><span style=display:flex><span>    selectSort(R, len);
+</span></span><span style=display:flex><span>    dbg(R);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>selectSort</span>(<span style=color:#66d9ef>int</span> R[], <span style=color:#66d9ef>int</span> n)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> n <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>; i<span style=color:#f92672>++</span>)
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>int</span> minIndex <span style=color:#f92672>=</span> i;
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// 1. 找到元素i右侧最小值
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> j <span style=color:#f92672>=</span> i <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>; j <span style=color:#f92672>&lt;</span> n; j<span style=color:#f92672>++</span>)
+</span></span><span style=display:flex><span>        {
+</span></span><span style=display:flex><span>            minIndex <span style=color:#f92672>=</span> R[j] <span style=color:#f92672>&lt;</span> R[minIndex] <span style=color:#f92672>?</span> j  <span style=color:#f92672>=</span> minIndex;
+</span></span><span style=display:flex><span>            <span style=color:#75715e>//if (R[j] &lt; R[minIndex])
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>            <span style=color:#75715e>//    minIndex = j;
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        }
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// 2. 交换
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#66d9ef>int</span> temp <span style=color:#f92672>=</span> R[i];
+</span></span><span style=display:flex><span>        R[i] <span style=color:#f92672>=</span> R[minIndex];
+</span></span><span style=display:flex><span>        R[minIndex] <span style=color:#f92672>=</span> temp;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>运行结果 =
+<img src=selectSort.png alt=selectSort></p><p>时间复杂度 = <code>O(n^2)</code></p><ol><li>每次寻找最小值再交换到左侧是<code>O(n)</code></li><li>循环n-1轮是<code>O(n)</code></li></ol><p>空间复杂度 = <code>O(1)</code></p><p>注意：选择排序并不稳定，当序列中含有多个值相同的元素时，会使这些值相对次序发生变化。</p></main><footer><hr>© <a href=https://ongoingblog.org/>ONGOING-Z</a> 2020 &ndash; 2025</footer></body></html>

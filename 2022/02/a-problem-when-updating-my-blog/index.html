@@ -1,0 +1,27 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>About tomorrow-night codeblock, a problem when updating my blog | ongoing's blog</title>
+<link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css></head><body><nav><ul class=menu><li><a href=/>首页</a></li><li><a href=/categories/>分类</a></li><li><a href=/about/>关于</a></li><li><a href=/tags/>标签</a></li></ul><hr></nav><div class=article-meta><h1><span class=title>About tomorrow-night codeblock, a problem when updating my blog</span></h1><h2 class=date>2022/02/18</h2></div><main><p>前言: 晚上更新了一篇博客的部分内容，推送到远程仓库后，发现 actions 运行失败了，日志这样显示的：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>INFO  Start processing
+</span></span><span style=display:flex><span>41
+</span></span><span style=display:flex><span>FATAL {
+</span></span><span style=display:flex><span>42
+</span></span><span style=display:flex><span>  err = Error: ENOENT: no such file or directory, open &#39;/home/runner/work/xxx/xxx/node_modules/highlight.js/styles/tomorrow-night.css&#39;
+</span></span></code></pre></div><p>因为是 file not found 之类的报错，第一反应是之前依赖升级导致的（之前仓库的bot自动发起了PR），升级后这个文件被删除了。
+<img src=pr.png alt>
+然后将版本号改成4.0.0后更新到了远程仓库，action 运行后还是同样的报错。</p><p>之后又重新看了下日志，里面主要是因为找不到名为xx的文件导致运行失败的，就试着在本地仓库搜索了下这个文件名称，后来发现我在hexo配置中对于代码背景使用了这个 =</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#75715e># _config.next.yml</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>codeblock =</span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e># Code Highlight theme</span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e># All available themes = https://theme-next.js.org/highlight/</span>
+</span></span><span style=display:flex><span>  <span style=color:#ae81ff>theme =</span>
+</span></span><span style=display:flex><span>    <span style=color:#ae81ff>light = default</span>
+</span></span><span style=display:flex><span>    <span style=color:#ae81ff>dark = tomorrow-night</span>
+</span></span></code></pre></div><p>这里默认的代码块是使用的这个样式。
+然后我又去博客使用的next仓库里去找了下，发现了之前的一个<a href=https://github.com/next-theme/hexo-theme-next/commit/6fd36d9ab446fcfaf7357ed9f90c5c1e06115046>提交</a>
+<img src=next-history-about-tomorrow.png alt>
+这里将默认的代码块给修改了。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-diff data-lang=diff><span style=display:flex><span># _config.next.yml
+</span></span><span style=display:flex><span>codeblock =
+</span></span><span style=display:flex><span>  # Code Highlight theme
+</span></span><span style=display:flex><span>  # All available themes = https://theme-next.js.org/highlight/
+</span></span><span style=display:flex><span>  theme =
+</span></span><span style=display:flex><span>    light = default
+</span></span><span style=display:flex><span><span style=color:#f92672>-    dark = tomorrow-night
+</span></span></span><span style=display:flex><span><span style=color:#f92672></span><span style=color:#a6e22e>+    dark = stackoverflow-dark
+</span></span></span></code></pre></div><p>修改完后更新到远程后，此时的action就运行正常了。</p><p>所以说以后使用官方的主题，克隆使用的时候还是需要带有版本号的，不然总是会使用最新的，可能自己使用时的一些依赖，最新版本会进行删减，这个时候出问题的几率就会增加，所以克隆时添加一个版本号限制较好。</p></main><footer><hr>© <a href=https://ongoingblog.org/>ONGOING-Z</a> 2020 &ndash; 2025</footer></body></html>
