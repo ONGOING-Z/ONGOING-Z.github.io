@@ -1,0 +1,31 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>编译 Vim 8.2源码时遇到的错误 | ongoing's blog</title>
+<link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css></head><body><nav><ul class=menu><li><a href=/>首页</a></li><li><a href=/categories/>分类</a></li><li><a href=/about/>关于</a></li><li><a href=/tags/>标签</a></li></ul><hr></nav><div class=article-meta><h1><span class=title>编译 Vim 8.2源码时遇到的错误</span></h1><h2 class=date>2020/04/04</h2></div><main><p>一些自己在编译 vim 8.2 版本源码时遇到的一些错误。</p><ul><li><p>Error information below =</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>no terminal library found
+</span></span><span style=display:flex><span>checking for tgetent()... configure = error: NOT FOUND!
+</span></span><span style=display:flex><span>You need to install a terminal library; for example ncurses.
+</span></span><span style=display:flex><span>Or specify the name of the library with --with-tlib.
+</span></span></code></pre></div><p>解决方法 =</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>sudo apt-get install libncurses5-dev libncursesw5-dev
+</span></span></code></pre></div><p>It worked on Ubuntu16.04.</p></li><li><p>E492 = Not an editor command: NERDTreeToggle
+此错误是在我使用<code> =PlugInstall</code>后按下<code>F3</code>(此处F3是开启目录树)出现的。</p><blockquote><p>说出来你可能不相信，我忘记将<code>Plug nerdtree...</code>写进自己的配置文件了。一直
+以为是其他的什么问题。原来最大的问题就是自己没有装这个插件!!!</p></blockquote></li><li><p>tarbar不能使用
+前提是安装好ctags"</p></li><li><p>leaderF
+vim.error = Vim: E117: unknown function: bufadd
+猜测原因 = vim版本的原因，现在的是vim7.4，但是那个popup界面是需要vim8的.</p><blockquote><p>Not this reason uppon. It&rsquo;s because the compiled vim has no python and
+python3 lib.
+这个错误在python环境装好之后自动消失了。</p></blockquote></li><li><p>vim不支持&rsquo;+y&rsquo;粘贴操作
+Use <code>=echo has("clipboard")</code> to check.</p><blockquote><p>But now I can use it in Gvim. And +python and +python3 can be used in Gvim
+too! I have no idea.
+网上的i解决办法 = <code>sudo apt-get install vim-gnome</code>来安装<code>gvim</code>，但是安装了
+之后依旧不能解决.
+<strong>解决方法</strong> =
+在<code>.bashrc</code>文件中加入</p></blockquote><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>alias vim<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;gvim -v&#39;</span>
+</span></span></code></pre></div><p>然后<code>$source .bashrc</code>,再次查看<code>$vim --version | grep "clipboard"</code>后发现</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>+clipboard +xterm_clipboard
+</span></span></code></pre></div><blockquote><p>这个错误在python环境装好之后自动消失了。</p></blockquote></li><li><p>Error = LeaderF requires vim compiled with +python or +python3
+需要在vimi编译的时候加上<code>--enable-pythoninterp</code>, <code>--with-python-config-dir</code>
+options.</p><blockquote><p>按照上边的执行设置并未其作用。
+使用 =echo has(&ldquo;python&rdquo;)和:echo has(&ldquo;python3&rdquo;)没有相应的结果
+下边是另一个设置 =(但未尝试)</p></blockquote><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>--enable-python3interp<span style=color:#f92672>=</span>yes
+</span></span><span style=display:flex><span>--with-python3-command<span style=color:#f92672>=</span>/usr/bin/python3
+</span></span><span style=display:flex><span>--with-python3-config-dir<span style=color:#f92672>=</span>
+</span></span></code></pre></div></li></ul><p>*Error = &lsquo;TError detected while processing function leaderf#Gtags#updateGtags:"+08:00&rsquo;
+line 1 = E121: Undefined variable: g:Lf_py</p><pre><code>&gt; 这个错误在python环境装好之后自动消失了。
+</code></pre></main><script>document.addEventListener("DOMContentLoaded",function(){const e=new PhotoSwipeLightbox({gallery:".pswp-gallery",children:"a",pswpModule:PhotoSwipe});e.init()})</script>

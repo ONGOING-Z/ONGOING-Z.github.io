@@ -1,0 +1,38 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Insertion Sort | ongoing's blog</title>
+<link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css></head><body><nav><ul class=menu><li><a href=/>首页</a></li><li><a href=/categories/>分类</a></li><li><a href=/about/>关于</a></li><li><a href=/tags/>标签</a></li></ul><hr></nav><div class=article-meta><h1><span class=title>Insertion Sort</span></h1><h2 class=date>2020/10/07</h2></div><main><p>插入排序，将被排序序列分为两个序列，一个是已经排序好的<code>有序序列</code>, 一个是未经排序的<code>无序序列</code>, 在排序的过程中，每次取一个无序序列元素到插入到有序序列中适当位置，直到所有无序序列元素插入到有序序列中去。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;iostream&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;stdio.h&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;cstdio&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;vector&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;algorithm&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&#34;dbg.h&#34;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>using</span> <span style=color:#66d9ef>namespace</span> std;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>insertSort</span>(<span style=color:#66d9ef>int</span> R[], <span style=color:#66d9ef>int</span> len)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> temp;
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// 初始将index = 0的值默认为有序序列
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>; i <span style=color:#f92672>&lt;</span> len; i<span style=color:#f92672>++</span>)
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        temp <span style=color:#f92672>=</span> R[i];
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>int</span> j <span style=color:#f92672>=</span> i <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>; <span style=color:#75715e>// 有序序列最后一个元素
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#66d9ef>while</span> (j <span style=color:#f92672>&gt;=</span> <span style=color:#ae81ff>0</span> <span style=color:#f92672>&amp;&amp;</span> temp <span style=color:#f92672>&lt;</span> R[j])
+</span></span><span style=display:flex><span>        {
+</span></span><span style=display:flex><span>            R[j <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>] <span style=color:#f92672>=</span> R[j]; <span style=color:#75715e>// 后移
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>            j<span style=color:#f92672>--</span>;
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        R[j <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>] <span style=color:#f92672>=</span> temp;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>(<span style=color:#66d9ef>int</span> argc, <span style=color:#66d9ef>char</span> <span style=color:#f92672>*</span>argv[])
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> R[] <span style=color:#f92672>=</span> {<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>18</span>, <span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>28</span>, <span style=color:#ae81ff>23</span>, <span style=color:#ae81ff>38</span>, <span style=color:#ae81ff>7</span>, <span style=color:#ae81ff>8</span>};
+</span></span><span style=display:flex><span>    cout <span style=color:#f92672>&lt;&lt;</span> <span style=color:#e6db74>&#34;Before sorting = &#34;</span> <span style=color:#f92672>&lt;&lt;</span> endl;
+</span></span><span style=display:flex><span>    dbg(R);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> len <span style=color:#f92672>=</span> <span style=color:#66d9ef>sizeof</span>(R) <span style=color:#f92672>/</span> <span style=color:#66d9ef>sizeof</span>(R[<span style=color:#ae81ff>0</span>]);
+</span></span><span style=display:flex><span>    cout <span style=color:#f92672>&lt;&lt;</span> <span style=color:#e6db74>&#34;After sorting  = &#34;</span> <span style=color:#f92672>&lt;&lt;</span> endl;
+</span></span><span style=display:flex><span>    insertSort(R, len);
+</span></span><span style=display:flex><span>    dbg(R);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>运行结果 =</p><p><img src=insertion_sort.png alt=insertion_sort></p><p>最坏情况：整个序列为<code>逆序</code></p><ul><li>内层循环<code>temp &lt; R[j]</code>始终成立</li><li>时间复杂度 = O(n2)</li></ul><p>最好情况：整个序列为<code>有序</code></p><ul><li>内层循环<code>temp &lt; R[j]</code>始终不成立,退化为单层循环</li><li>时间复杂度 = O(n)</li></ul></main><script>document.addEventListener("DOMContentLoaded",function(){const e=new PhotoSwipeLightbox({gallery:".pswp-gallery",children:"a",pswpModule:PhotoSwipe});e.init()})</script>
