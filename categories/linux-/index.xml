@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on ongoing's blog</title><link>https://ongoingblog.org/categories/linux-/</link><description>Recent content in Linux on ongoing's blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Thu, 16 Apr 2020 16:18:51 +0800</lastBuildDate><atom:link href="https://ongoingblog.org/categories/linux-/index.xml" rel="self" type="application/rss+xml"/><item><title>Install Yahei Consolas Hybrid font in linux mint</title><link>https://ongoingblog.org/2020/04/install-yahei-consolas-hybrid-font-in-linux-mint/</link><pubDate>Thu, 16 Apr 2020 16:18:51 +0800</pubDate><guid>https://ongoingblog.org/2020/04/install-yahei-consolas-hybrid-font-in-linux-mint/</guid><description>&lt;p>由于刚刚安装的Linux mint终端中的中文字体显示为&lt;strong>楷体&lt;/strong>，但是这个楷体在终端中显示有些问题：字与字之间空隙很大。所以就打算换一款字体。&lt;/p>
+&lt;h3 id="1--字体介绍及下载">1 | 字体介绍及下载&lt;/h3>
+&lt;p>关于&lt;code>Yahei Consolas Hybrid&lt;/code>这个字体我是从&lt;a href="http://forum.ubuntu.org.cn/viewtopic.php?p=1312510">怎样修改终端字体&lt;/a>这篇文章中发现的。关于这款字体linux公社有一篇文章&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>，其中有这样一段描述:&lt;/p>
+&lt;blockquote>
+&lt;p>Consolas雅黑混合字体是什么？？Consolas是一种专门为编程人员设计的字体,这一字体的特性是所有字母、数字与符号均能非常容易辨认！而且所有字符都具有相同的宽度，让编程人员看着更舒服，当然在打个人和商业信函的时候，用这个字体也是不错的选择，这一字体还专门为ClearType做了优化，可以让它更舒适地展示在屏幕上。&lt;/p>&lt;/blockquote>
+&lt;p>这款字体的下载链接在这里&lt;sup id="fnref:2">&lt;a href="#fn:2" class="footnote-ref" role="doc-noteref">2&lt;/a>&lt;/sup>。&lt;/p>
+&lt;h3 id="2--字体的安装">2 | 字体的安装&lt;/h3>
+&lt;p>将&lt;code>YaHei.Consolas.1.11b.rar&lt;/code>解压，得到&lt;code>YaHei.Consolas.1.11b.ttf&lt;/code>。&lt;/p>
+&lt;p>之后在linux mint 系统字体文件夹中建立对应的字体文件夹&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo mkdir /usr/share/fonts/vista
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>复制字体文件到对应的文件夹下&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo cp YaHei.Consolas.1.11b.ttf /usr/share/fonts/vista
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>更改字体文件权限&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo chmod &lt;span style="color:#ae81ff">644&lt;/span> /usr/share/fonts/vista/YaHei.Consolas.1.11b.ttf
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>刷新并安装字体&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo mkfontscale &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> sudo mkfontdir &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> sudo fc-cache -fv
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="3--安装之后设置字体">3 | 安装之后设置字体&lt;/h3>
+&lt;p>在mint的左下角&lt;code>Menu&lt;/code>中搜索&lt;code>appearance&lt;/code>，打开。如下边这个界面&lt;/p>
+&lt;p>&lt;img src="Appearance_Preferences_001.png" alt="Appearance Preferences_001">
+在这里面可以设置应用字体，文档字体，桌面字体，窗口标题字体等等。&lt;/p>
+&lt;p>下面设置&lt;strong>终端字体&lt;/strong>
+打开终端，在终端左上角&lt;code>Edit -&amp;gt; Profiles&lt;/code>，打开&lt;/p>
+&lt;p>&lt;img src="Profiles_002.png" alt="Profiles_002">
+点击右边的&lt;code>Edit&lt;/code>, 就可以在&lt;code>General&lt;/code>界面下的&lt;code>font&lt;/code>进行选择字体了，在其中选择我们之前已经安装好了的Yahei Consolas Hybrid字体即可。&lt;/p>
+&lt;p>&lt;img src="Editing_Profile_Default_004.png" alt="Editing_Profile_Default_004">&lt;/p>
+&lt;h3 id="参考">参考&lt;/h3>
+&lt;ul>
+&lt;li>&lt;a href="https://forum.ubuntu.org.cn/viewtopic.php?p=1312510">怎样修改终端字体&lt;/a>&lt;/li>
+&lt;li>&lt;a href="http://www.linuxidc.com/Linux/2011-08/40747.htm">Consolas雅黑混合版yahei consolas hybrid编程字体下载&lt;/a>&lt;/li>
+&lt;li>&lt;a href="http://linux.linuxidc.com/linuxconf/download.php?file=Li9saW51eGZpbGVzL3B1Yi9PdGhlci/X1szlL0NvbnNvbGFz0cW62rvsus+w5nlhaGVpIGNvbnNvbGFzIGh5YnJpZLHgs8zX1szlz8LU2C8lNUJMaW51eElEQy5jb20lNURZYUhlaS5Db25zb2xhcy4xLjExYi5yYXI=">下载yahei consolas hybrid字体&lt;/a>&lt;/li>
+&lt;li>&lt;a href="http://www.cnblogs.com/MonkeyF/archive/2013/05/13/3076466.html">Linux下设置雅黑-Consolas混合字体&lt;/a>&lt;/li>
+&lt;li>&lt;a href="http://www.iteye.com/blog/fooler5-2406227">ubuntu安装微软雅黑和Consolas字体&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;div class="footnotes" role="doc-endnotes">
+&lt;hr>
+&lt;ol>
+&lt;li id="fn:1">
+&lt;p>&lt;a href="https://www.linuxidc.com/Linux/2011-08/40747.htm">Consolas雅黑混合版yahei consolas hybrid编程字体下载&lt;/a>&amp;#160;&lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:2">
+&lt;p>&lt;a href="https://linux.linuxidc.com/linuxconf/download.php?file=Li9saW51eGZpbGVzL3B1Yi9PdGhlci/X1szlL0NvbnNvbGFz0cW62rvsus+w5nlhaGVpIGNvbnNvbGFzIGh5YnJpZLHgs8zX1szlz8LU2C8lNUJMaW51eElEQy5jb20lNURZYUhlaS5Db25zb2xhcy4xLjExYi5yYXI=">下载yahei consolas hybrid字体&lt;/a>&amp;#160;&lt;a href="#fnref:2" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p></description></item><item><title>Install linux mint in vmware and other preparations</title><link>https://ongoingblog.org/2020/04/install-linux-mint-in-vmware-and-other-preparations/</link><pubDate>Thu, 16 Apr 2020 11:40:57 +0800</pubDate><guid>https://ongoingblog.org/2020/04/install-linux-mint-in-vmware-and-other-preparations/</guid><description>&lt;p>因为想要将Hexo博客的书写单独分离出一个生产环境，这样之后如果宿主操作系统更换之后博客的环境就不用再次安装了，因此昨天晚上在VMware虚拟机中安装了Linux mint（之前一直使用的桌面是Ubuntu16.04），今天来写一个安装过程以及安装好之后的一些准备工作。&lt;/p>
+&lt;h2 id="1--安装">1 | 安装&lt;/h2>
+&lt;p>下载&lt;a href="https://www.linuxmint.com/edition.php?id=276">Linux mint镜像文件&lt;/a>，这里我下载的是&lt;code>MATE&lt;/code>，官网可能下载的有些慢，可以使用&lt;code>xdm&lt;/code>进行下载。
+下载之后就可以使用虚拟机了，之后的安装步骤就不多说了，一些简单的步骤。&lt;/p>
+&lt;h2 id="2--下载之后的使用">2 | 下载之后的使用&lt;/h2>
+&lt;h3 id="换源">换源&lt;/h3>
+&lt;h3 id="vim">vim&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo apt install vim
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo apt install vim-gtk
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>注意将vim的桌面版本也下载上，不然可能vim的终端版本的&lt;code>clipboard&lt;/code>没有安装上，使用&lt;code>$vim version | grep &amp;quot;clipboard&amp;quot;&lt;/code>进行查看，如果有&lt;code>+clipboard&lt;/code>即表示已经安装上。&lt;/p>
+&lt;h3 id="git">git&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo apt install git
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="tmux">tmux&lt;/h3>
+&lt;h3 id="输入法">输入法&lt;/h3>
+&lt;h3 id="离线安装nodejs">离线安装nodejs&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>&lt;/h3>
+&lt;p>nodejs是hexo运行所必须的环境，下载&lt;a href="https://cdn.npm.taobao.org/dist/node/v12.16.2/node-v12.16.2-linux-x64.tar.xz">nodejs&lt;/a>&lt;/p>
+&lt;p>下载完毕后，解压，并将解压后的文件夹移入自己的某个文件夹中，这里我将文件夹放置在&lt;code>/usr/local/lib/nodejs&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo mkdir /usr/local/lib/nodejs
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo tar -xJvf node-xxx-xxx.tar.xz -C /usr/local/lib/nodejs
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo mv /usr/local/lib/nodejs/node-xxx-xxx /usr/local/lib/nodejs/node-xxx &lt;span style="color:#75715e"># 更改名称&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>设置环境变量，在&lt;code>/etc/profile&lt;/code>中，在文件最后添加&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Nodejs&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export NODEJS_HOME&lt;span style="color:#f92672">=&lt;/span>/usr/local/lib/nodejs/node-xxx/bin &lt;span style="color:#75715e"># xxx是版本号&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export PATH&lt;span style="color:#f92672">=&lt;/span>$NODEJS_HOME &lt;span style="color:#f92672">=&lt;/span>$PATH
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>刷新文件配置&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>. /etc/profile
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>测试&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>node -v
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>npm version
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>创建sudo链接&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo ln -s /usr/local/lib/nodejs/node-xxx/bin/node /usr/bin/node
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo ln -s /usr/local/lib/nodejs/node-xxx/bin/npm /usr/bin/npm
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo ln -s /usr/local/lib/nodejs/node-xxx/bin/npx /usr/bin/npx
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="其它一些配置">其它一些配置&lt;/h3>
+&lt;p>&lt;strong>将caps lock映射为ctrl&lt;/strong>&lt;/p></description></item></channel></rss>

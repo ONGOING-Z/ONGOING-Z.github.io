@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Env on ongoing's blog</title><link>https://ongoingblog.org/categories/env/</link><description>Recent content in Env on ongoing's blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Tue, 27 Jul 2021 19:04:00 +0800</lastBuildDate><atom:link href="https://ongoingblog.org/categories/env/index.xml" rel="self" type="application/rss+xml"/><item><title>Python环境安装</title><link>https://ongoingblog.org/2021/07/install-python-environment/</link><pubDate>Tue, 27 Jul 2021 19:04:00 +0800</pubDate><guid>https://ongoingblog.org/2021/07/install-python-environment/</guid><description>&lt;p>前言：在 Linux 下关于 Python3.9 版本的环境安装，在此记录下。&lt;/p>
+&lt;p>首先在 &lt;a href="https://www.python.org/downloads/source/">Python官网&lt;/a> 下载对应版本的源文件。&lt;/p>
+&lt;p>&lt;img src="image_python_source.png" alt="">&lt;/p>
+&lt;p>下载下来之后直接解压到文件夹 &lt;code>/usr/local/&lt;/code> 下&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>➜ pwd 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/usr/local/Python-3.9.6 &lt;span style="color:#75715e"># 路径&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>接下来对 Python 源码进行构建：&lt;/p>
+&lt;p>在 Python-3.9.6 的根目录下，执行&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>./configure
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>make
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>make install
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;em>注意：这里可能会出现权限不足的情况，直接 sudo 重试下。&lt;/em>&lt;/p>
+&lt;p>这一步完成后，退出当前 bash/zsh 后重启执行以下命令查看 Python3 的版本&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>➜ python3 -V 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Python 3.9.6
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>
