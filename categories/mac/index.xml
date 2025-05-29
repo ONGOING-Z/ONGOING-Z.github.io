@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Mac on ongoing's blog</title><link>https://ongoingblog.org/categories/mac/</link><description>Recent content in Mac on ongoing's blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sat, 11 Nov 2023 12:50:00 +0800</lastBuildDate><atom:link href="https://ongoingblog.org/categories/mac/index.xml" rel="self" type="application/rss+xml"/><item><title>Mac下朗读单词语音</title><link>https://ongoingblog.org/2023/11/mac-speech/</link><pubDate>Sat, 11 Nov 2023 12:50:00 +0800</pubDate><guid>https://ongoingblog.org/2023/11/mac-speech/</guid><description>&lt;p>前言: 在mac查单词很方便，但是没有看到单词语音的选项，搜索了一下，发现设置路径是：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>左上角苹果标🍎-&amp;gt;系统设置-&amp;gt;辅助功能-&amp;gt;朗读内容-&amp;gt;朗读所选内容
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>这个开关打开之后，使用快捷键&lt;code>option + esc&lt;/code>后就会有人声朗读单词了。&lt;/p>
+&lt;p>&lt;em>但是我发现有的英文单词读出来不对，最后还是用了翻译网页去查看单词读音的。&lt;/em>&lt;/p></description></item><item><title>mac terminal usage</title><link>https://ongoingblog.org/2023/02/mac-terminal-usage/</link><pubDate>Mon, 20 Feb 2023 12:49:00 +0800</pubDate><guid>https://ongoingblog.org/2023/02/mac-terminal-usage/</guid><description>&lt;p>前言: 一些 mac 使用体验。&lt;/p>
+&lt;p>从当前终端打开对应文件夹：&lt;code>$ open .&lt;/code>&lt;/p>
+&lt;h2 id="搜索">搜索&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>mdfind&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>mdfind -name &lt;span style="color:#e6db74">&amp;#34;文件名称&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>
