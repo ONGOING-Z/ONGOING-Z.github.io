@@ -1,0 +1,33 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Grub rescue | ongoing's blog</title><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css></head><body><nav><ul class=menu><li><a href=/>首页</a></li><li><a href=/categories/>分类</a></li><li><a href=/about/>关于</a></li></ul><hr></nav><div class=article-meta><h1><span class=title>Grub rescue</span></h1><h2 class=date>2020/09/30</h2></div><main><h3 id=背景1>背景1</h3><p>昨天晚上(20.4.1)忽然看到<code>ubuntu20.04</code>的操作画面，界面更加体贴用户了，配备了一些很不错的特性，其中一个我很喜欢的就是<code>黑夜模式</code>。所以就打算换到它了，但是我一直使用的Ubuntu版本是16.04，所以就先打算升级到18.04，再升级到20.04。接下来就开始了一系列更新操作，当时也没有将软件包全部更新到最新版，主要也是因为源的问题，一些包总是<code>请求超时</code>，所以忽略警告开始升级。</p><p>升级下载过程完毕后，安装花费了很长时间，最后在安装界面上<strong>一直停留在那里不动了</strong>，已经接近凌晨，索性<code>强制关机</code>，去睡觉了。</p><p>第二天早上起来接着开机，但是还是卡在那个地方。这个时候就决定放弃这次升级了，打算直接在官网下载<code>ubuntu19.10</code>版本进行<code>u盘安装</code>。将<code>iso文件</code>烧录至u盘后，插入自己的电脑，进入<code>bios界面</code>，选择从<code>u盘启动</code>，接下来就是一系列配置过程，可进行<code>默认设置</code>，或者<code>自定义设置</code>，这里我选择了自定义设置，因为需要对那几个目录(/home等等)进行磁盘分配。</p><p>设置完毕之后，重新启动，这时出现了问题，开机画面变成了</p><pre tabindex=0><code>GRUB loading
+error =unknow filesystem
+grub rescue&gt;
+</code></pre><p>这样的字符黑乎乎的界面，上网查找资料，使用了</p><pre tabindex=0><code>grub rescue&gt;set # 查看当前配置
+grub rescue&gt;ls  # 查看当前磁盘及磁盘分区
+(hd0) (hd0,msdos0)...(hd1) (hd1,msdos9) (hd1,msdos8)...
+# 这里的hd代表磁盘，msdosx代表分区(x为数字)
+</code></pre><p>开始使用<code>ls</code>命令找<code>grub</code>所在的磁盘，找到了，但是在<code>grub\</code>下并没有<code>normal.mo d</code>文件。</p><p>所以即使设置了</p><pre tabindex=0><code>set root=(hd1,msdos6) # 设置grub启动分区
+set prefix(hd1,msdos6)/boot/grub # 设置grub启动路径
+insmod normal
+</code></pre><p>后就会出现错误，显示<code>file not found</code></p><p>而且此时将之强制关机后，开机后会直接进入<code>grub rescue</code>界面，看不到开机过程中一闪而过的<code>进入bios</code>的选项界面了，我试了下在开机后，不断按下<code>F2</code>(我的电脑进入bios的热键是F2)，这下又出现了当初进入bios的界面了。</p><p>寻找Linux核心文件所在分区 =
+我的电脑在<code>(hd1,sdb8)</code>中有名字类似与vmlinuz-3.0.0-12-generic这样的文件，这是Linux核心文件，如果找到，记下(hd1,sdb<code>x</code>)中的x值。假设找到（hd0,5）时，显示了文件夹中的文件。</p><p>然后用Live USB启动，在Live USB的Ubuntu的终端中依次输入以下命令 =</p><ul><li>如果/boot单独分区：<pre tabindex=0><code>sudo mount /dev/sdb8 /mnt # 注意8这个数字，你需要改写成你自己的
+sudo grub-install --boot-directory=/mnt /dev/sda
+</code></pre></li><li>如果/boot没有单独分区：<pre tabindex=0><code>sudo mount /dev/sda5 /mnt
+sudo grub-install --boot-directory=/mnt/boot /dev/sda
+</code></pre></li></ul><p>重新启动Ubuntu后，发现熟悉的grub启动界面又回来了，这次虽然没有用到最新的20.04,
+但开始使用19.10版本了，也算是更新了!</p><ul><li>/grub/i386-pc/normal.mod not found</li></ul><p>使用boot-repair工具，在live-usb中安装这个工具，然后运行。</p><p>如果是ubuntu16.04的时候可能安装不了，那么就把源换成18.04的再进行安装。</p><hr><h3 id=背景2>背景2</h3><p><em>20.5.5</em></p><p>今天又进入到<code>grub rescue></code>了，这次是因为vmware扩容的问题。</p><p>上网找了下问题，搜索到的一个结果里边有这样一段话 =</p><pre tabindex=0><code>楼主的问题是光标的问题，
+其实那个问题已经在楼上有解决方案了，就是引导盘符的问题。
+重启虚拟机，还在虚拟机加载进度条的时候就按下ESC，就可以切换当前需要打开的引导了，切到CDROM就好了。
+或者干脆F2（不推荐），去修改引导，不推荐的原因是因为，你装完系统还要再改回来成硬盘引导。
+所以ESC用一下，装一下系统就好了。
+
+我说这层答案很好的原因是在切换引导之后，选择安装Win10的时候，会报错。
+报的错就是硬盘问题。
+没错，是这个问题。
+
+而这一层给出的就是这个问题的答案。
+
+直接在虚拟机设置里，在硬盘→高级里，把SATA换成IDE就好了。
+</code></pre><p>之前没有将这个答案看完整，直接<code>F2</code>进行高级设置了&mldr;
+根据<a href="https://blog.csdn.net/Q1302182594/article/details/51658229?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1">这篇博客</a>还有<a href=https://zhidao.baidu.com/question/2267276798977896028.html>这篇博客</a>对虚拟机扩容了20G，后使用<code>shutdown -r now</code>后直接进入了grub rescue界面。</p><p>本来以为虚拟机扩容大功告成，但不知竟然又发生了这种事情。</p><p>我觉得linux的磁盘那些操作真的好难啊！有些不懂。</p><p>使用<code>ls</code>对硬盘进行扫描，但是并未发现boot文件夹，除了一个<code>ex2</code>,其它都是<code>unknown filesystem</code>，不知道该怎么解决。</p><p>我决定重新装一个ubuntu20.</p><p>唉，之前也没及时对v2ray文件进行备份。也没有写教程.</p><hr><h3 id=背景3>背景3</h3><p><em>20.9.16 aft</em></p><p>今天因为想玩游戏，但是windows下需要合并两个分区（因为单独一个分区装不下我想玩的游戏&mldr;），在WePE中使用分区工具对两个分区进行合并之后，重新启动出现黑乎乎的界面 =<code>>grub rescue</code></p><p>内心已经做好重新装系统的准备，但是还是抱着一丝希望，先试试，毕竟这种情况已经遇到过一次了。</p><p>在这种界面需要记住几个<em>重要命令</em> =</p><ul><li><code>set</code> = 设置变量</li><li><code>ls</code> = 显示分区</li><li><code>insmod normal</code> = 在设置完成后想要回到正常界面需要输入这个命令</li><li><code>normal</code> = 这个命令和上边的是一起的</li></ul><p>接下来就是正差的操作流程了</p><ol><li>使用set查看<code>grub</code>分区，需要一个个的试,这时候需要使用<code>ls</code>命令</li><li>找到了之后就使用<code>set</code>进行设置，类似</li></ol><ul><li><code>set root=hd0,msdos2</code></li><li><code>set prefix=(hd0,msdos2)/grub</code></li></ul><ol start=3><li>进行设置了之后就使用<code>set</code>可以查看当前设置</li><li>输入<code>insmod normal</code>回退到grub启动界面,这个命令输入后还需要再次输入<code>normal</code>才行。</li><li>到了这里还没有完，需要进入linux更新grub</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>sudoupdate-grub+08 <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;00&#39;</span>
+</span></span><span style=display:flex><span>sudo grub-install /dev/sda
+</span></span></code></pre></div><hr><p>最后一个总结 = 遇到这种情况先别急着下结论，比如最坏就得重新装系统啦怎么怎么样，还是要到网上搜索一下有没有人遇到了类似的问题，比如我当时就已经打算重装系统了，但是还是抱着试一试的态度搜索了一下，也许是之前遇到过两次类似的情况，这次处理起来就顺利多了，就是系统找不到引导文件的事情，把路径设置进系统里就好了。</p></main><script>document.addEventListener("DOMContentLoaded",function(){const e=new PhotoSwipeLightbox({gallery:".pswp-gallery",children:"a",pswpModule:PhotoSwipe});e.init()})</script>

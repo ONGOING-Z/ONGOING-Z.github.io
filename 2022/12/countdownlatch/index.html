@@ -1,0 +1,72 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>countdownlatch | ongoing's blog</title><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css></head><body><nav><ul class=menu><li><a href=/>首页</a></li><li><a href=/categories/>分类</a></li><li><a href=/about/>关于</a></li></ul><hr></nav><div class=article-meta><h1><span class=title>countdownlatch</span></h1><h2 class=date>2022/12/22</h2></div><main><p>前言: 一个使用场景，例如分发10个线程，需要等到这10个线程全部都执行完毕后，再进行下一步的处理。</p><p>看到过一个例子：举行跑步比赛，发令枪响后，几位选手开始跑步，当最后一位选手跑完全程，然后开始公布选手成绩、以及颁奖仪式。</p><ol><li>模拟多个线程同时执行的场景</li><li>模拟依赖场景，例如一个数据的计算需要很多数据来源，需要这些数据来源全部加载完毕后才开始进行计算。</li></ol><p>主要方法</p><ol><li><code>int getCount</code></li><li><code>await()</code></li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>LatchTest</span> {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>final</span> Logger LOGGER <span style=color:#f92672>=</span> Logger.<span style=color:#a6e22e>getLogger</span>(<span style=color:#e6db74>&#34;LatchTest&#34;</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@Test</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>test</span>() {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        CountDownLatch latch <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> CountDownLatch(1);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0; i <span style=color:#f92672>&lt;</span> 10; i<span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>new</span> Thread(deal(i, latch)).<span style=color:#a6e22e>start</span>();
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        LOGGER.<span style=color:#a6e22e>info</span>(<span style=color:#e6db74>&#34;3秒后开始....&#34;</span>);
+</span></span><span style=display:flex><span>        SleepUtil.<span style=color:#a6e22e>sleep</span>(3000);
+</span></span><span style=display:flex><span>        latch.<span style=color:#a6e22e>countDown</span>();
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>private</span> Runnable <span style=color:#a6e22e>deal</span>(<span style=color:#66d9ef>int</span> threadNum, CountDownLatch latch) {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> Runnable() {
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>@Override</span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>run</span>() {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>try</span> {
+</span></span><span style=display:flex><span>                    latch.<span style=color:#a6e22e>await</span>();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>                    LOGGER.<span style=color:#a6e22e>info</span>(<span style=color:#e6db74>&#34;开始运行...&#34;</span>);
+</span></span><span style=display:flex><span>                } <span style=color:#66d9ef>catch</span> (InterruptedException e) {
+</span></span><span style=display:flex><span>                    <span style=color:#66d9ef>throw</span> <span style=color:#66d9ef>new</span> RuntimeException(e);
+</span></span><span style=display:flex><span>                }
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>        };
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@Test</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>test2</span>() {
+</span></span><span style=display:flex><span>        CountDownLatch latch <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> CountDownLatch(10);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0; i <span style=color:#f92672>&lt;</span> 10; i<span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>new</span> Thread(deal2(i, latch)).<span style=color:#a6e22e>start</span>();
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        LOGGER.<span style=color:#a6e22e>info</span>(<span style=color:#e6db74>&#34;等待加载中...&#34;</span>);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>try</span> {
+</span></span><span style=display:flex><span>            latch.<span style=color:#a6e22e>await</span>();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            LOGGER.<span style=color:#a6e22e>info</span>(<span style=color:#e6db74>&#34;开始进入主界面&#34;</span>);
+</span></span><span style=display:flex><span>        } <span style=color:#66d9ef>catch</span> (InterruptedException e) {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>throw</span> <span style=color:#66d9ef>new</span> RuntimeException(e);
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>private</span> Runnable <span style=color:#a6e22e>deal2</span>(<span style=color:#66d9ef>int</span> threadNum, CountDownLatch latch) {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> Runnable() {
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>@Override</span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>run</span>() {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>try</span> {
+</span></span><span style=display:flex><span>                    LOGGER.<span style=color:#a6e22e>info</span>(threadNum <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;开始运行&#34;</span>);
+</span></span><span style=display:flex><span>                    SleepUtil.<span style=color:#a6e22e>sleep</span>(1000);
+</span></span><span style=display:flex><span>                    LOGGER.<span style=color:#a6e22e>info</span>(threadNum <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;运行结束&#34;</span>);
+</span></span><span style=display:flex><span>                } <span style=color:#66d9ef>catch</span> (Exception e) {
+</span></span><span style=display:flex><span>                } <span style=color:#66d9ef>finally</span> {
+</span></span><span style=display:flex><span>                    latch.<span style=color:#a6e22e>countDown</span>(); <span style=color:#75715e>// 放在finally语句块中，无论程序正常执行还是出现异常，都会执行</span>
+</span></span><span style=display:flex><span>                }
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>        };
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></main><script>document.addEventListener("DOMContentLoaded",function(){const e=new PhotoSwipeLightbox({gallery:".pswp-gallery",children:"a",pswpModule:PhotoSwipe});e.init()})</script>

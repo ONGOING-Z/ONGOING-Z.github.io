@@ -1,0 +1,87 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>记录一些Vim基础 | ongoing's blog</title><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css></head><body><nav><ul class=menu><li><a href=/>首页</a></li><li><a href=/categories/>分类</a></li><li><a href=/about/>关于</a></li></ul><hr></nav><div class=article-meta><h1><span class=title>记录一些Vim基础</span></h1><h2 class=date>2020/05/13</h2></div><main><p>记录自己在使用vim中使用的命令和一些方法。</p><h2 id=basic>Basic</h2><ul><li><code>i</code>: Insert text before the cursor</li><li><code>o</code>: Begin a new line below the cursor</li><li><code>R</code>: Replace character continually</li><li><code>r</code>: Replace character once</li></ul><ol><li><p>在 vi 的环境中,如何将目前正在编辑的文件另存新档名为 newfilename</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>:w newfilename
+</span></span></code></pre></div></li><li><p>到达指定行
+2.1 In normal mode: <code>line_numberG</code>
+例: 到达第九行即<code>9G</code>
+2.2 In command mode: <code>:line_number</code>
+例: 到达第九行即<code>:9</code>
+<strong>注</strong>: 认为第一种方法更为快速，因为如果是第二种方法的话，目光还需要向下移动。</p></li><li><p>到达指定行
+( vim <code>&lt;leader></code>键: <code>\</code></p></li><li><p>vim 替换
+具体查看vim帮助文档<code>:h substitute</code>
+全局替换: <code>:%s/search_string/substituted_string/g</code>
+此处：</p><ul><li><code>%</code>: 指范围，相当于<code>1~$</code>，文档的第一行到最后一行</li><li><code>g</code>: replace all occurrences in the line. Without this argument, replacement occurs only for the first occurrence in each line.</li></ul></li><li><p>vim 替换
+vim精确查找
+先看一个例子，准确查找字符串int：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>/<span style=color:#ae81ff>\&lt;</span>int<span style=color:#ae81ff>\&gt;</span>
+</span></span></code></pre></div></li></ol><p>其中</p><ul><li><code>\&lt;</code>: 匹配单词开头</li><li><code>\></code>: 匹配单词结尾</li></ul><ol start=6><li><p>拷贝整个文件</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>:%y
+</span></span><span style=display:flex><span>ggyG
+</span></span></code></pre></div></li><li><p>获得当前文件的名称</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># 在屏幕上显示当前名称</span>
+</span></span><span style=display:flex><span>:echo expand<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;%:t&#34;</span><span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 粘贴复制当前文件名称</span>
+</span></span><span style=display:flex><span>:let @f<span style=color:#f92672>=</span>expand<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;%:t&#34;</span><span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>然后粘贴即可
+</span></span></code></pre></div></li><li><p><code>&lt;esc></code>:= <code>Ctrl - [</code></p></li><li><p>合并上下行<code>shift + j</code>
+<code>shift + j</code>可以删除行末尾的回车</p></li><li><p>查找到结果后
+(1) 向下查询：<code>n</code>
+(2) 向上查询：<code>shift + n</code>(联想到网页的tab与shift tab)</p></li><li><p>Visual mode in vim
+(1) <code>v</code>: 选择字符
+(1) <code>shift + v</code>: 选择整行
+(1) <code>ctrl + v</code>: 选择整块</p></li><li><p><code>gUaW</code>：大写一个单词</p></li><li><p>Paste local timestamp
+<code>"=strftime("%c")&lt;cr>p</code>
+<code>"=</code>: expression register</p></li><li><p><code>q:</code>
+Opens a history of previous commands.</p></li><li><p>vim宏录制
+目的: 减少重复动作.
+(1) In <code>normal</code> mode input <code>qa</code>(or qb, qc. ..a, b, c, d is your register)
+(2) And then you will see &ldquo;starting . ..&rdquo; singnal below.
+(3) Quit this function: in normal mode input <code>q</code>, you will end this process.
+使用宏:
+In <code>normal</code> mode input <code>@a</code>, <code>a</code> is your register name. If you want it to run several times, add <code>number</code> in front of <code>@a</code>. For example, <code>7@a</code>.</p></li><li><p>到达行首
+In normal mode input <code>0</code>.</p></li><li><p>替换实例</p></li></ol><pre><code>删除行首数字
+```bash
+:%s/^[0-9]//g
+```
+</code></pre><p>17.2 删除行尾数字
+<code>bash :%s/[0-9]$//g </code>18. 删除空行
+<code>:g/^$/d</code>
+如果空行开头有空格，这种方法就不好用了，使用
+<code>:g/^\s*$/d</code></p><ol start=19><li><p>在使用vim中的<code>y</code>进行复制后，使用<code>p</code>进行粘贴，再次使用<code>p</code>就不能粘贴了，想要粘贴还得去复制一次，很繁琐
+解决方法: 将使用<code>p</code>替换成<code>"0p</code>，这样就可以无限粘贴。
+<em>注: 寄存器<code>0</code>的位置放置的就是最近复制的内容。</em></p></li><li><p>vim <code>read</code>
+<code>bash :read !command </code>The way to append the output of an external command.</p></li><li><p><code>ctrl + f / ctrl + b</code>: 快速浏览</p></li><li><p><code>di(</code>
+Delete all content inside ()</p></li><li><p>delete a pairs by using tpope/vim-surround</p></li></ol><p>删除一对括号: <code>ds(</code> # delete surround
+删除一对双引号: <code>ds"</code>
+删除一对单引号: <code>ds'</code></p><p>添加一对括号:
+<em>普通模式</em>: <code>ysiw(</code>
+<em>可视模式</em>: <code>S(</code></p><p>以下是<a href=https://github.com/tpope/vim-surround>tpope/vim-surround</a>节选</p><p>It&rsquo;s easiest to explain with examples. Press <code>cs"'</code> inside</p><pre tabindex=0><code>&#34;Hello world!&#34;
+</code></pre><p>to change it to</p><pre tabindex=0><code>&#39;Hello world!&#39;
+</code></pre><p>Now press <code>cs'&lt;q></code> to change it to</p><pre tabindex=0><code>&lt;q&gt;Hello world!&lt;/q&gt;
+</code></pre><p>To go full circle, press <code>cst"</code> to get</p><pre tabindex=0><code>&#34;Hello world!&#34;
+</code></pre><p>To remove the delimiters entirely, press <code>ds"</code>.</p><pre tabindex=0><code>Hello world!
+</code></pre><ol start=24><li><p><code>!$</code>
+<code>!</code>$是一个特殊的环境变量，它代表了上一个命令的最后一个字符串。如：你可能会这样</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ mkdir mydir
+</span></span><span style=display:flex><span>$ mv mydir yourdir
+</span></span><span style=display:flex><span>$ cd yourdir
+</span></span></code></pre></div><p>可以改成：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ mkdir mydir
+</span></span><span style=display:flex><span>$ mv !$ yourdir
+</span></span><span style=display:flex><span>$ cd !$
+</span></span></code></pre></div></li><li><p>在 bash 里，使用 Ctrl-R 而不是上下光标键来查找历史命令。</p></li><li><p>使用 man ascii 来查看 ASCII 表。</p></li><li><p>命令行注释命令: <code>alt + #</code></p></li><li><p>vim中查看缓冲区: <code>:ls</code>
+然后使用<code>:buffer num</code>进行切换</p></li><li><p>vim 书签</p></li></ol><ul><li>创建书签: <code>m + 字母</code><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>ma  // 书签名称必须是单个字母，此处示例为a
+</span></span></code></pre></div></li><li>跳转书签<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#e6db74>`</span> + 书签名称
+</span></span></code></pre></div></li><li>列出所有书签: <code>:marks</code></li><li>删除书签: <code>:delmarks name</code></li></ul><ol start=30><li>在vim中访问shell
+30.1 进入shell: <code>:shell</code> or <code>:sh</code>
+30.2 离开shell: <code>exit</code></li></ol><h2 id=plug插件管理器删除插件>Plug插件管理器删除插件</h2><ol><li>注释掉或删除在<code>. vimrc</code>中的添加的<code>Plug</code>命令；</li><li>运行<code>:source ~/vimrc</code>或重启vim；</li><li>运行<code>:PlugClean</code>删除插件。</li></ol><h2 id=vim-example>Vim example</h2><ol><li><p>How to convert this piece of text(from vim in reddit)</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>Arch linux
+</span></span><span style=display:flex><span>Manjaro
+</span></span><span style=display:flex><span>Ubuntu
+</span></span></code></pre></div><p>into</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>1. Arch linux
+</span></span><span style=display:flex><span>2. Manjaro
+</span></span><span style=display:flex><span>3. Ubuntu
+</span></span></code></pre></div><p>Ways:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>(1) Make 3 lines of text out first one
+</span></span><span style=display:flex><span>(2) use visual-block mode to insert `0.` for 3 lines
+</span></span><span style=display:flex><span>(3) use visual-block again and `g&lt;Ctrl-a&gt;` to &#34;sequentially&#34; increase your `0`s
+</span></span></code></pre></div></li><li><p>正向匹配删除. 反向匹配删除
+删除文本中包含 day 的行</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>day1 
+</span></span><span style=display:flex><span>day2
+</span></span><span style=display:flex><span>our
+</span></span><span style=display:flex><span>us
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>:%g/day/d
+</span></span></code></pre></div><p>删除文本中不包含 day 的行</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>:%v/day/d
+</span></span></code></pre></div></li></ol><h2 id=vim-fzf>Vim fzf</h2><p>使用fzf模糊查找文件,并使用vim编辑。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>vim <span style=color:#66d9ef>$(</span>fzf<span style=color:#66d9ef>)</span>
+</span></span></code></pre></div><p>附: <a href=https://github.com/ONGOING-Z/dotfiles/blob/master/vim/vimrc_whole.backup>我的.vimrc</a></p></main><script>document.addEventListener("DOMContentLoaded",function(){const e=new PhotoSwipeLightbox({gallery:".pswp-gallery",children:"a",pswpModule:PhotoSwipe});e.init()})</script>
