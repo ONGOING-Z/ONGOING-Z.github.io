@@ -1,0 +1,17 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>idea debug堆栈窗口中的符号`&lt;init>` | ongoing's blog</title><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css></head><body><nav><ul class=menu><li><a href=/>首页</a></li><li><a href=/categories/>分类</a></li><li><a href=/about/>关于</a></li></ul><hr></nav><div class=article-meta><h1><span class=title>idea debug堆栈窗口中的符号<code>&lt;init></code></span></h1><h2 class=date>2025/05/08</h2></div><main><h3 id=一背景>一、背景</h3><p><img src=debug_init.png alt></p><p>在 debug 时发现 idea 中 debug 堆栈中有一个符号<code>&lt;init></code>，我不知道这是代表的什么意思。
+点进去看涉及的是类中的构造方法代码。</p><h3 id=二init代表的是什么>二、<code>&lt;init></code>代表的是什么？</h3><p>在 idea 的调试堆栈中，带有<code>&lt;init></code>的记录表示对象的构造函数或者实例初始化块，表示对象初始化逻辑。</p><h3 id=三示例代码>三、示例代码</h3><p>如下代码</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DebugInitDemo</span> {
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;初始化代码块&#34;</span>); <span style=color:#75715e>// 这里断点</span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>DebugInitDemo</span>() {
+</span></span><span style=display:flex><span>        System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;构造函数&#34;</span>); <span style=color:#75715e>// 这里断点</span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span>(String<span style=color:#f92672>[]</span> args) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>new</span> DebugInitDemo();
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>debug模式启动，查看调试堆栈。</p><p>初始化代码块涉及的堆栈信息
+<img src=init_block.png alt></p><p>构造函数涉及的堆栈信息
+<img src=constructor.png alt></p></main><script>document.addEventListener("DOMContentLoaded",function(){const e=new PhotoSwipeLightbox({gallery:".pswp-gallery",children:"a",pswpModule:PhotoSwipe});e.init()})</script>

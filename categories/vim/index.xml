@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Vim on ongoing's blog</title><link>https://ongoingblog.org/categories/vim/</link><description>Recent content in Vim on ongoing's blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Thu, 30 Jul 2020 22:15:03 +0800</lastBuildDate><atom:link href="https://ongoingblog.org/categories/vim/index.xml" rel="self" type="application/rss+xml"/><item><title>Vim markdown即时预览</title><link>https://ongoingblog.org/2020/07/vim-instant-preview/</link><pubDate>Thu, 30 Jul 2020 22:15:03 +0800</pubDate><guid>https://ongoingblog.org/2020/07/vim-instant-preview/</guid><description>&lt;p>在vim中书写markdown文件挺方便的，但是有时侯需要预览一下效果，就有些不方便了，下边我找到一个插件，可以实现这个功能。&lt;/p>
+&lt;hr>
+&lt;hr>
+&lt;h2 id="安装nodejs">安装node.js&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo add-apt-repository ppa &lt;span style="color:#f92672">=&lt;/span>chris-lea/node.js
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>T sudo apt-get update+08 &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;00&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo apt-get install nodejs
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="安装instant-markdown-d">安装instant-markdown-d&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo npm -g install instant-markdown-d
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>注 = 如果&lt;code>npm&lt;/code>太慢，就改用&lt;code>cnpm&lt;/code>进行安装。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>npm install cnpm -g --registry&lt;span style="color:#f92672">=&lt;/span>https://registry.npm.taobao.org 
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="安装vim插件vim-instant-markdown">安装vim插件vim-instant-Markdown&lt;/h2>
+&lt;p>可以搭配vim插件&lt;code>tabular&lt;/code>和vim插件&lt;code>vim-markdown&lt;/code>使用。如果没有安装这两个插件，在你的&lt;code>.vimrc&lt;/code>文件中加入(注：这里我所使用的vim插件管理器是&lt;code>vim-plug&lt;/code>)&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-vim" data-lang="vim">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Plug&lt;/span> &lt;span style="color:#e6db74">&amp;#39;godlygeek/tabular&amp;#39;&lt;/span> &lt;span style="color:#75715e">&amp;#34; 此插件必须在vim-markdown之前&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Plug&lt;/span> &lt;span style="color:#e6db74">&amp;#39;plasticboy/vim-markdown&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>这两个插件安装完毕之后开始安装&lt;code>vim-instant-Markdown&lt;/code>，在你的&lt;code>.vimrc&lt;/code>插件部分添加&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-vim" data-lang="vim">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Plug&lt;/span> &lt;span style="color:#e6db74">&amp;#39;suan/vim-instant-markdown&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>执行&lt;code> =PlugInstall&lt;/code>，插件安装完成后，在vim打开markdown文件就会在电脑默认的浏览器中打开一个窗口进行实时预览。&lt;/p></description></item><item><title>记录一些Vim基础</title><link>https://ongoingblog.org/2020/05/record-some-basics-of-vim/</link><pubDate>Wed, 13 May 2020 09:26:21 +0800</pubDate><guid>https://ongoingblog.org/2020/05/record-some-basics-of-vim/</guid><description>&lt;p>记录自己在使用vim中使用的命令和一些方法。&lt;/p>
+&lt;h2 id="basic">Basic&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>i&lt;/code>: Insert text before the cursor&lt;/li>
+&lt;li>&lt;code>o&lt;/code>: Begin a new line below the cursor&lt;/li>
+&lt;li>&lt;code>R&lt;/code>: Replace character continually&lt;/li>
+&lt;li>&lt;code>r&lt;/code>: Replace character once&lt;/li>
+&lt;/ul>
+&lt;ol>
+&lt;li>
+&lt;p>在 vi 的环境中,如何将目前正在编辑的文件另存新档名为 newfilename&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>:w newfilename
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>到达指定行
+2.1 In normal mode: &lt;code>line_numberG&lt;/code>
+例: 到达第九行即&lt;code>9G&lt;/code>
+2.2 In command mode: &lt;code>:line_number&lt;/code>
+例: 到达第九行即&lt;code>:9&lt;/code>
+&lt;strong>注&lt;/strong>: 认为第一种方法更为快速，因为如果是第二种方法的话，目光还需要向下移动。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>到达指定行
+( vim &lt;code>&amp;lt;leader&amp;gt;&lt;/code>键: &lt;code>\&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>vim 替换
+具体查看vim帮助文档&lt;code>:h substitute&lt;/code>
+全局替换: &lt;code>:%s/search_string/substituted_string/g&lt;/code>
+此处：&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>%&lt;/code>: 指范围，相当于&lt;code>1~$&lt;/code>，文档的第一行到最后一行&lt;/li>
+&lt;li>&lt;code>g&lt;/code>: replace all occurrences in the line. Without this argument, replacement occurs only for the first occurrence in each line.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>vim 替换
+vim精确查找
+先看一个例子，准确查找字符串int：&lt;/p></description></item><item><title>编译 Vim 8.2源码时遇到的错误</title><link>https://ongoingblog.org/2020/04/the-errors-when-compeling-vim8.2/</link><pubDate>Sat, 04 Apr 2020 19:02:39 +0800</pubDate><guid>https://ongoingblog.org/2020/04/the-errors-when-compeling-vim8.2/</guid><description>&lt;p>一些自己在编译 vim 8.2 版本源码时遇到的一些错误。&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Error information below =&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>no terminal library found
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>checking for tgetent()... configure = error: NOT FOUND!
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>You need to install a terminal library; for example ncurses.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Or specify the name of the library with --with-tlib.
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>解决方法 =&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo apt-get install libncurses5-dev libncursesw5-dev
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>It worked on Ubuntu16.04.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>E492 = Not an editor command: NERDTreeToggle
+此错误是在我使用&lt;code> =PlugInstall&lt;/code>后按下&lt;code>F3&lt;/code>(此处F3是开启目录树)出现的。&lt;/p>
+&lt;blockquote>
+&lt;p>说出来你可能不相信，我忘记将&lt;code>Plug nerdtree...&lt;/code>写进自己的配置文件了。一直
+以为是其他的什么问题。原来最大的问题就是自己没有装这个插件!!!&lt;/p>&lt;/blockquote>
+&lt;/li>
+&lt;li>
+&lt;p>tarbar不能使用
+前提是安装好ctags&amp;quot;&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>leaderF
+vim.error = Vim: E117: unknown function: bufadd
+猜测原因 = vim版本的原因，现在的是vim7.4，但是那个popup界面是需要vim8的.&lt;/p></description></item><item><title>如何在ubuntu16中安装vim8.2</title><link>https://ongoingblog.org/2020/04/how-to-install-vim8.2-in-ubuntu16.04/</link><pubDate>Sat, 04 Apr 2020 18:58:15 +0800</pubDate><guid>https://ongoingblog.org/2020/04/how-to-install-vim8.2-in-ubuntu16.04/</guid><description>&lt;h2 id="如何在ubuntu命令行升级进行安装">如何在ubuntu命令行升级进行安装&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo add-apt-repository ppa &lt;span style="color:#f92672">=&lt;/span>jonathonf/vim
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudoaptTupdate+08 &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;00&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo apt install vim
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>注意：这种方法可能会非常慢!&lt;/p>
+&lt;h2 id="ubuntu-1604-编译安装vim-v82推荐">Ubuntu 16.04 编译安装Vim v8.2(推荐)&lt;/h2>
+&lt;p>先卸载原本的vim&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo apt-get remove vim vim-runtime gvim vim-tiny vim-common vim-gui-common
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>接下来将&lt;code>vim源码&lt;/code>从github上clone下来后进行编译，注意编译的过程中可能会遇到各种各样的环
+境或依赖不匹配，根据自己的需要去进行安装。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$git clone https://github.com/vim/vim.git
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$cd vim
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$./configure --with-features&lt;span style="color:#f92672">=&lt;/span>huge --enable-gui&lt;span style="color:#f92672">=&lt;/span>auto --enable-cscope &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span> --prefix&lt;span style="color:#f92672">=&lt;/span>/usr -enable-python3interp&lt;span style="color:#f92672">=&lt;/span>yes &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span> --with-python3-command&lt;span style="color:#f92672">=&lt;/span>/usr/bin/python3 &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span> --with-python3-config-dir&lt;span style="color:#f92672">=&lt;/span>your_python3_path
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$sudo make VIMRUNTIMEDIR&lt;span style="color:#f92672">=&lt;/span>/usr/share/vim/vim82
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$sudo make install
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$vim --version &lt;span style="color:#75715e"># 检查vim版本&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>安装完成后需要检查安装好的vim中有没有&lt;code>clipboard&lt;/code>，使用&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>vim --version | grep &lt;span style="color:#e6db74">&amp;#34;clipboard&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>来检查，这一样对于粘贴板是非常重要的。如果没有的话就需要自己去分析是什么原因了。&lt;/p>
+&lt;p>&lt;em>20.9.3&lt;/em> = 第二次编译安装vim8.2依旧是没有clipboard这一项的，依旧使用了我的老办法&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>。&lt;/p>
+&lt;div class="footnotes" role="doc-endnotes">
+&lt;hr>
+&lt;ol>
+&lt;li id="fn:1">
+&lt;p>&lt;a href="https://ongoingblog.org/2020/04/the-errors-when-compeling-vim8.2/">编译 Vim 8.2源码时遇到的错误&lt;/a>&amp;#160;&lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/div></description></item></channel></rss>
