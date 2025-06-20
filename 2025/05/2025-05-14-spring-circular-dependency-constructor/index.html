@@ -1,0 +1,33 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Spring循环依赖（两个bean之间） - 基于构造器 | ongoing's blog</title><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css></head><body><nav><ul class=menu><li><a href=/>首页</a></li><li><a href=/categories/>分类</a></li><li><a href=/about/>关于</a></li></ul><hr></nav><div class=article-meta><h1><span class=title>Spring循环依赖（两个bean之间） - 基于构造器</span></h1><h2 class=date>2025/05/14</h2></div><main><h3 id=一背景>一、背景</h3><p>基于构造器的循环依赖。</p><h3 id=二测试程序>二、测试程序</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#f92672>package</span> com.ongoing.demo.circular_dependency.constructor;
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> org.springframework.context.annotation.AnnotationConfigApplicationContext;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ApplicationDemo</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span>(String<span style=color:#f92672>[]</span> args) {
+</span></span><span style=display:flex><span>        AnnotationConfigApplicationContext applicationContext <span style=color:#f92672>=</span>
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>new</span> AnnotationConfigApplicationContext(<span style=color:#e6db74>&#34;com.ongoing.demo.circular_dependency.constructor&#34;</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#f92672>package</span> com.ongoing.demo.circular_dependency.construct;
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> org.springframework.stereotype.Component;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>@Component</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Cat</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>Cat</span>(Person person) {
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#f92672>package</span> com.ongoing.demo.circular_dependency.construct;
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> org.springframework.stereotype.Component;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>@Component</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Person</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>Person</span>(Cat cat) {
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>应用运行结果</p><p><img src=exec_result.png alt></p><h3 id=二原因>二、原因</h3><p>先来看下<code>org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory#doCreateBean</code>的主要流程</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#75715e>// 1、创建新实例</span>
+</span></span><span style=display:flex><span>instanceWrapper <span style=color:#f92672>=</span> createBeanInstance(beanName, mbd, args);
+</span></span><span style=display:flex><span><span style=color:#75715e>// 2、添加单例工厂到第三级缓存</span>
+</span></span><span style=display:flex><span>addSingletonFactory(beanName, () <span style=color:#f92672>-&gt;</span> getEarlyBeanReference(beanName, mbd, bean));
+</span></span><span style=display:flex><span><span style=color:#75715e>// 3、属性赋值、依赖注入。完成bean的完整创建</span>
+</span></span><span style=display:flex><span>populateBean(beanName, mbd, instanceWrapper);
+</span></span></code></pre></div><p>由于构造器注入是在第一步发生的。
+这里：</p><ol><li>先初始化cat</li><li>发现cat的依赖person，去初始化person</li><li>发现person的依赖cat，实际通过构造函数再次创建，此时在集合<code>singletonsCurrentlyInCreation</code>发现cat正在创建中，被拦截下来报错。</li></ol><p>这里cat和person都不会接触到第三级缓存单例工厂。</p><h3 id=三流程图>三、流程图</h3><p><img src=process.png alt></p><p><img src=code_debug.png alt></p></main><script>document.addEventListener("DOMContentLoaded",function(){const e=new PhotoSwipeLightbox({gallery:".pswp-gallery",children:"a",pswpModule:PhotoSwipe});e.init()})</script>
