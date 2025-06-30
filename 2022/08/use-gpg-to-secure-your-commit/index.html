@@ -1,0 +1,19 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Use gpg to secure your commit | ongoing's blog</title><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css></head><body><nav><ul class=menu><li><a href=/>首页</a></li><li><a href=/categories/>分类</a></li><li><a href=/about/>关于</a></li></ul><hr></nav><div class=article-meta><h1><span class=title>Use gpg to secure your commit</span></h1><h2 class=date>2022/08/21</h2></div><main><p>前言：使用 gpg 加密自己的 commit。</p><p><img src=gpg-01.png alt></p><p>效果：类似下图，对于 commit 会有一个 verify 的绿色小标记</p><p><img src=verified.png alt></p><h3 id=电脑环境>电脑环境</h3><p>系统：ubuntu16.04</p><h3 id=安装流程>安装流程</h3><p><a href=www.gnupg.org>源码</a>编译安装。</p><h3 id=使用>使用</h3><h4 id=一查看本机的-gpg-version>一、查看本机的 gpg version</h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>gpg --version 
+</span></span></code></pre></div><h4 id=二生成本地-gpg-key>二、生成本地 gpg key</h4><h4 id=三将-gpg-key-和-git-关联起来>三、将 gpg key 和 git 关联起来</h4><h4 id=四将-gpg-公钥上传至-github>四、将 gpg 公钥上传至 github</h4><h4 id=五git-设置-gpg>五、git 设置 gpg</h4><h4 id=五备份-gpg>五、备份 gpg</h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>备份密钥分为备份公钥和私钥两个部分，备份公钥：
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>gpg -o keyfilename --export KeyID
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>如果没有KeyID则是备份所有的公钥，-o表示输出到文件keyfilename中，如果加上-a的参数则输出文本格式的信息，否则输出的是二进制格式信息。
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>备份私钥：
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>gpg -o keyfilename --export-secret-keys KeyID
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>如果没有KeyID则是备份所有的私钥，-o表示输出到文件keyfilename中，如果加上-a的参数则输出文本格式的信息，否则输出的是二进制格式信息。
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>然后在别的机器上可以通过
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>gpg --import filename
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>导入这些密钥信息。
+</span></span></code></pre></div><h3 id=六参考>六、参考</h3><p><a href=https://docs.github.com/zh/authentication/managing-commit-signature-verification/generating-a-new-gpg-key target=_blank rel="noopener noreferrer">Github 官方文档</a>有比较详细的说明。</p><p><a href=https://www.jetbrains.com/help/idea/2025.1/set-up-GPG-commit-signing.html?Set_up_GPG_commit_signing target=_blank rel="noopener noreferrer">idea 中关于 gnupg 的配置</a></p></main><script>document.addEventListener("DOMContentLoaded",function(){const e=new PhotoSwipeLightbox({gallery:".pswp-gallery",children:"a",pswpModule:PhotoSwipe});e.init()})</script>
