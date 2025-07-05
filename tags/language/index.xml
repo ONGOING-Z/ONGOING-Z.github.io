@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Language on ongoing's blog</title><link>https://ongoingblog.org/tags/language/</link><description>Recent content in Language on ongoing's blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Tue, 24 Jun 2025 15:17:53 +0800</lastBuildDate><atom:link href="https://ongoingblog.org/tags/language/index.xml" rel="self" type="application/rss+xml"/><item><title>英语单词前缀 -im</title><link>https://ongoingblog.org/2025/06/2025-06-24-word-prefix-im/</link><pubDate>Tue, 24 Jun 2025 15:17:53 +0800</pubDate><guid>https://ongoingblog.org/2025/06/2025-06-24-word-prefix-im/</guid><description>&lt;h3 id="表示否定或者相反not-without">表示否定或者相反，not, without&lt;/h3>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>im 单词&lt;/th>
+ &lt;th>去掉 im&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>immutable 不可变的&lt;/td>
+ &lt;td>mutable 可变的&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>impossible 不可能的&lt;/td>
+ &lt;td>possible 可能的&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>impatient 没有耐心的&lt;/td>
+ &lt;td>patient 有耐心的&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>impolite 不礼貌的&lt;/td>
+ &lt;td>polite 礼貌的&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table></description></item><item><title>less and xxless</title><link>https://ongoingblog.org/2025/04/less-and-xxless/</link><pubDate>Thu, 24 Apr 2025 23:07:52 +0800</pubDate><guid>https://ongoingblog.org/2025/04/less-and-xxless/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>之前看源码时遇到一个单词&lt;code>headless&lt;/code>，表示应用的无头模式，含义是没有显示器或者其他外设也可以正常工作。还遇到一个单词是&lt;code>serverless &lt;/code>，翻译成中文是无服务器。&lt;/p>
+&lt;p>不知道是不是遇到这样带有-less后缀的单词比较少的原因，并且对于 less 这个单词又很熟悉，形成肌肉记忆的那种，比较级，少的意思。
+less more一起经常背，所以遇到 headless, serverless，第一时间是把“少”给带入进去。&lt;/p>
+&lt;p>但是这样理解其实不太对，因为翻译成“头少”、“少头”，“服务器少”、“少服务器”不太对。
+就去网络上搜索了下这两个单词的区别，这里做一下整理。&lt;/p>
+&lt;h3 id="二区别">二、区别&lt;/h3>
+&lt;p>-less 要翻译成“无”的含义。
+例如xxLess: 无xx&lt;/p>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>less&lt;/th>
+ &lt;th>-less&lt;/th>
+ &lt;th>备注&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>强调量的减少&lt;/td>
+ &lt;td>强调质的缺失&lt;/td>
+ &lt;td>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>less time&lt;/td>
+ &lt;td>timeless&lt;/td>
+ &lt;td>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>less care&lt;/td>
+ &lt;td>careless&lt;/td>
+ &lt;td>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;/td>
+ &lt;td>wireless 无线&lt;/td>
+ &lt;td>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;/td>
+ &lt;td>endless 无尽&lt;/td>
+ &lt;td>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;/td>
+ &lt;td>harmless 无害&lt;/td>
+ &lt;td>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;/td>
+ &lt;td>useless&lt;/td>
+ &lt;td>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;/td>
+ &lt;td>starless&lt;/td>
+ &lt;td>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;/td>
+ &lt;td>waterless 无水&lt;/td>
+ &lt;td>the desert is waterless.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;/td>
+ &lt;td>windowless 无窗&lt;/td>
+ &lt;td>the room is windowless.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;/td>
+ &lt;td>stateless 无状态&lt;/td>
+ &lt;td>http 无状态协议&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;/td>
+ &lt;td>pointless = meaningless&lt;/td>
+ &lt;td>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;/td>
+ &lt;td>doubtless = without doubt&lt;/td>
+ &lt;td>He is doubtless the best person for the job.&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h3 id="三后续">三、后续&lt;/h3>
+&lt;p>遇到不认识的单词，先猜测一下，但是实际使用的时候还是看一下对应的英文解释之后，和自己的猜测做一个对照。&lt;/p></description></item></channel></rss>

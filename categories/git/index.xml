@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Git on ongoing's blog</title><link>https://ongoingblog.org/categories/git/</link><description>Recent content in Git on ongoing's blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Fri, 13 Jun 2025 14:09:34 +0800</lastBuildDate><atom:link href="https://ongoingblog.org/categories/git/index.xml" rel="self" type="application/rss+xml"/><item><title>本地git仓库信息错乱</title><link>https://ongoingblog.org/2025/06/2025-06-13-local-git-repository-info-disorder/</link><pubDate>Fri, 13 Jun 2025 14:09:34 +0800</pubDate><guid>https://ongoingblog.org/2025/06/2025-06-13-local-git-repository-info-disorder/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>本地的一个项目仓库莫名其妙有了两个git remote信息&lt;/p>
+&lt;p>idea中git信息窗口每次都有另一个和本项目无关的提交历史。
+但是我本地执行&lt;code>git remote -v&lt;/code>并无错误。&lt;/p>
+&lt;h3 id="二解决方案">二、解决方案&lt;/h3>
+&lt;p>我询问了下豆包，它给了几种解决方法，我选择了其中的一种&lt;/p>
+&lt;p>删除&lt;code>.idea&lt;/code>文件夹后，重新打开项目，就变正常了。&lt;/p></description></item><item><title>Git merge报错：error refusing to merge unrelated histories</title><link>https://ongoingblog.org/2025/05/2025-05-16-git-error-refusing-to-merge-unrelated-histories/</link><pubDate>Fri, 16 May 2025 23:00:54 +0800</pubDate><guid>https://ongoingblog.org/2025/05/2025-05-16-git-error-refusing-to-merge-unrelated-histories/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;ol>
+&lt;li>电脑本地的一个仓库莫名其妙的没有远程仓库信息了(执行 &lt;code>git remote -v&lt;/code>什么输出都没有)，不知道是不是我误操作&lt;/li>
+&lt;li>只能重新 set-url 下远程的仓库名称&lt;/li>
+&lt;li>set完毕之后，我看本地 git 历史中是没有 origin 的head显示的，只有本地的。&lt;/li>
+&lt;li>执行&lt;code>git pull&lt;/code>把远程仓库的信息拉取下来，这个时候遇到标题中的报错: &lt;code>error refusing to merge unrelated histories&lt;/code>&lt;/li>
+&lt;/ol>
+&lt;h3 id="二修复">二、修复&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>在本地仓库中执行&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git pull origin 你的远程仓库名称 --allow-unrelated-histories
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>这个命令执行完毕之后，git log 中正常出现了 origin 的标识。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>接下来进行正常的 git 操作。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="三为什么会出现这样的报错">三、为什么会出现这样的报错?&lt;/h3>
+&lt;ol>
+&lt;li>我的本地分支是一个测试分支，保留着未修改的原始 commit 信息&lt;/li>
+&lt;li>远程的分支 commit 信息因为一些信息的变更，全部重新生成了 commit hash id ，虽然 commit message
+还是原来的信息，但是 commit id 已经变更&lt;/li>
+&lt;li>所以这两个分支虽然表面看起来一样，那些 git 提交历史一样，但是它们并没有共同的祖先，所以报错不相关。&lt;/li>
+&lt;li>很容易的验证：查看第一个提交，内容虽然一样，但是 commit id 是不同的。&lt;/li>
+&lt;/ol></description></item><item><title>Git修改已提交记录的邮件地址</title><link>https://ongoingblog.org/2025/04/modify-email-address-of-your-committed-record/</link><pubDate>Thu, 24 Apr 2025 19:54:28 +0800</pubDate><guid>https://ongoingblog.org/2025/04/modify-email-address-of-your-committed-record/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>仓库中提交代码时发现邮件地址写错了，但是已经提交了，需要修改错误的邮件地址。&lt;/p>
+&lt;h3 id="二步骤">二、步骤&lt;/h3>
+&lt;h4 id="安装-git-filter-repo">安装 git-filter-repo&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>brew install git-filter-repo
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="修改邮件地址">修改邮件地址&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git filter-repo --email-callback &lt;span style="color:#e6db74">&amp;#39;return email.replace(b&amp;#34;旧邮件地址&amp;#34;, b&amp;#34;新邮件地址&amp;#34;)&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="三注意">三、注意&lt;/h3>
+&lt;p>原先的commit id会被覆盖掉，生成新的 commit id记录，可自行查看 git commit 记录的 hash id 和原来是不一样的了。&lt;/p></description></item><item><title>Use gpg to secure your commit</title><link>https://ongoingblog.org/2022/08/use-gpg-to-secure-your-commit/</link><pubDate>Sun, 21 Aug 2022 20:18:00 +0800</pubDate><guid>https://ongoingblog.org/2022/08/use-gpg-to-secure-your-commit/</guid><description>&lt;p>前言：使用 gpg 加密自己的 commit。&lt;/p>
+&lt;img src="gpg-01.png" alt="">&lt;p>效果：类似下图，对于 commit 会有一个 verify 的绿色小标记&lt;/p>
+&lt;img src="verified.png" alt="">&lt;h3 id="电脑环境">电脑环境&lt;/h3>
+&lt;p>系统：ubuntu16.04&lt;/p>
+&lt;h3 id="安装流程">安装流程&lt;/h3>
+&lt;p>&lt;a href="www.gnupg.org">源码&lt;/a>编译安装。&lt;/p>
+&lt;h3 id="使用">使用&lt;/h3>
+&lt;h4 id="一查看本机的-gpg-version">一、查看本机的 gpg version&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>gpg --version 
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="二生成本地-gpg-key">二、生成本地 gpg key&lt;/h4>
+&lt;h4 id="三将-gpg-key-和-git-关联起来">三、将 gpg key 和 git 关联起来&lt;/h4>
+&lt;h4 id="四将-gpg-公钥上传至-github">四、将 gpg 公钥上传至 github&lt;/h4>
+&lt;h4 id="五git-设置-gpg">五、git 设置 gpg&lt;/h4>
+&lt;h4 id="五备份-gpg">五、备份 gpg&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>备份密钥分为备份公钥和私钥两个部分，备份公钥：
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>gpg -o keyfilename --export KeyID
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>如果没有KeyID则是备份所有的公钥，-o表示输出到文件keyfilename中，如果加上-a的参数则输出文本格式的信息，否则输出的是二进制格式信息。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>备份私钥：
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>gpg -o keyfilename --export-secret-keys KeyID
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>如果没有KeyID则是备份所有的私钥，-o表示输出到文件keyfilename中，如果加上-a的参数则输出文本格式的信息，否则输出的是二进制格式信息。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>然后在别的机器上可以通过
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>gpg --import filename
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>导入这些密钥信息。
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="六参考">六、参考&lt;/h3>
+&lt;p>&lt;a href="https://docs.github.com/zh/authentication/managing-commit-signature-verification/generating-a-new-gpg-key"target="_blank" rel="noopener noreferrer">Github 官方文档&lt;/a>有比较详细的说明。&lt;/p>
+&lt;p>&lt;a href="https://www.jetbrains.com/help/idea/2025.1/set-up-GPG-commit-signing.html?Set_up_GPG_commit_signing"target="_blank" rel="noopener noreferrer">idea 中关于 gnupg 的配置&lt;/a>&lt;/p></description></item><item><title>Git 基础</title><link>https://ongoingblog.org/2020/04/git/</link><pubDate>Sun, 26 Apr 2020 13:11:41 +0800</pubDate><guid>https://ongoingblog.org/2020/04/git/</guid><description>&lt;h3 id="git-查看修改用户名与密码">git 查看修改用户名与密码&lt;/h3>
+&lt;p>查看用户名&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git config --global user.name
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>修改用户名&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git config --global user.name &lt;span style="color:#e6db74">&amp;#34;your name&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>查看邮箱地址&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git config --global user.email
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>修改邮箱地址&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git config --global user.email &lt;span style="color:#e6db74">&amp;#34;your email address&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="git-本地与远程仓库关联与解除">git 本地与远程仓库关联与解除&lt;/h3>
+&lt;p>查看远程仓库信息&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git remote -v
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>建立新仓库&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>在github中建立一个新的仓库
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>可以不要README.md文件
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>关联&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git remote add origin git@github.com &lt;span style="color:#f92672">=&lt;/span>your_name/repository_name.git
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>解除关联&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git remote remove origin
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="github快速更换绑定邮箱">GitHub快速更换绑定邮箱&lt;/h3>
+&lt;ol>
+&lt;li>点击头像&lt;/li>
+&lt;li>setting&lt;/li>
+&lt;li>Email&lt;/li>
+&lt;li>Add email address&lt;/li>
+&lt;li>新邮箱验证，返回github，将新邮箱验证Set Primary.&lt;/li>
+&lt;/ol>
+&lt;h3 id="git-推送">git 推送&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git push -u origin master
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="github-如何删除仓库">github 如何删除仓库&lt;/h3>
+&lt;ol>
+&lt;li>settings&lt;/li>
+&lt;li>页面最下方&amp;rsquo;Delete this repository'&lt;/li>
+&lt;/ol>
+&lt;h3 id="查看本地与远程的连接">查看本地与远程的连接&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>ssh -T git@github.com
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="git在本地配置公钥">git在本地配置公钥&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>ssh-keygen -t rsa -C email_address
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="对文件或文件夹重命名">对文件或文件夹重命名&lt;/h3>
+&lt;p>使用&lt;code>git mv&lt;/code>即可对文件或文件夹进行&lt;code>转移&lt;/code>或者&lt;code>重命名&lt;/code>。
+使用方法如下&lt;/p></description></item></channel></rss>
