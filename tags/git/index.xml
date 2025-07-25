@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Git on ongoing's blog</title><link>https://ongoingblog.org/tags/git/</link><description>Recent content in Git on ongoing's blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Mon, 07 Jul 2025 10:26:25 +0800</lastBuildDate><atom:link href="https://ongoingblog.org/tags/git/index.xml" rel="self" type="application/rss+xml"/><item><title>Git notes</title><link>https://ongoingblog.org/2025/07/2025-07-07-git-notes/</link><pubDate>Mon, 07 Jul 2025 10:26:25 +0800</pubDate><guid>https://ongoingblog.org/2025/07/2025-07-07-git-notes/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>我想要针对源码历史中的 commit 信息进行评论，例如写下对应英文的中文意思或者写下其他的笔记。&lt;/p>
+&lt;p>在 idea 中倒是没有找到这样的按钮，只能在命令行中去进行。&lt;/p>
+&lt;h3 id="二git-nots">二、git nots&lt;/h3>
+&lt;p>添加 notes&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git notes add -m &lt;span style="color:#e6db74">&amp;#34;你的信息&amp;#34;&lt;/span> git_hash_id
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>显示 notes&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git show git_hash_id
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>本地git仓库信息错乱</title><link>https://ongoingblog.org/2025/06/2025-06-13-local-git-repository-info-disorder/</link><pubDate>Fri, 13 Jun 2025 14:09:34 +0800</pubDate><guid>https://ongoingblog.org/2025/06/2025-06-13-local-git-repository-info-disorder/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>本地的一个项目仓库莫名其妙有了两个git remote信息&lt;/p>
+&lt;p>idea中git信息窗口每次都有另一个和本项目无关的提交历史。
+但是我本地执行&lt;code>git remote -v&lt;/code>并无错误。&lt;/p>
+&lt;h3 id="二解决方案">二、解决方案&lt;/h3>
+&lt;p>我询问了下豆包，它给了几种解决方法，我选择了其中的一种&lt;/p>
+&lt;p>删除&lt;code>.idea&lt;/code>文件夹后，重新打开项目，就变正常了。&lt;/p></description></item><item><title>Git merge报错：error refusing to merge unrelated histories</title><link>https://ongoingblog.org/2025/05/2025-05-16-git-error-refusing-to-merge-unrelated-histories/</link><pubDate>Fri, 16 May 2025 23:00:54 +0800</pubDate><guid>https://ongoingblog.org/2025/05/2025-05-16-git-error-refusing-to-merge-unrelated-histories/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;ol>
+&lt;li>电脑本地的一个仓库莫名其妙的没有远程仓库信息了(执行 &lt;code>git remote -v&lt;/code>什么输出都没有)，不知道是不是我误操作&lt;/li>
+&lt;li>只能重新 set-url 下远程的仓库名称&lt;/li>
+&lt;li>set完毕之后，我看本地 git 历史中是没有 origin 的head显示的，只有本地的。&lt;/li>
+&lt;li>执行&lt;code>git pull&lt;/code>把远程仓库的信息拉取下来，这个时候遇到标题中的报错: &lt;code>error refusing to merge unrelated histories&lt;/code>&lt;/li>
+&lt;/ol>
+&lt;h3 id="二修复">二、修复&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>在本地仓库中执行&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git pull origin 你的远程仓库名称 --allow-unrelated-histories
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>这个命令执行完毕之后，git log 中正常出现了 origin 的标识。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>接下来进行正常的 git 操作。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="三为什么会出现这样的报错">三、为什么会出现这样的报错?&lt;/h3>
+&lt;ol>
+&lt;li>我的本地分支是一个测试分支，保留着未修改的原始 commit 信息&lt;/li>
+&lt;li>远程的分支 commit 信息因为一些信息的变更，全部重新生成了 commit hash id ，虽然 commit message
+还是原来的信息，但是 commit id 已经变更&lt;/li>
+&lt;li>所以这两个分支虽然表面看起来一样，那些 git 提交历史一样，但是它们并没有共同的祖先，所以报错不相关。&lt;/li>
+&lt;li>很容易的验证：查看第一个提交，内容虽然一样，但是 commit id 是不同的。&lt;/li>
+&lt;/ol></description></item><item><title>Use gpg to secure your commit</title><link>https://ongoingblog.org/2022/08/use-gpg-to-secure-your-commit/</link><pubDate>Sun, 21 Aug 2022 20:18:00 +0800</pubDate><guid>https://ongoingblog.org/2022/08/use-gpg-to-secure-your-commit/</guid><description>&lt;p>前言：使用 gpg 加密自己的 commit。&lt;/p>
+&lt;img src="gpg-01.png" alt="">&lt;p>效果：类似下图，对于 commit 会有一个 verify 的绿色小标记&lt;/p>
+&lt;img src="verified.png" alt="">&lt;h3 id="电脑环境">电脑环境&lt;/h3>
+&lt;p>系统：ubuntu16.04&lt;/p>
+&lt;h3 id="安装流程">安装流程&lt;/h3>
+&lt;p>&lt;a href="www.gnupg.org">源码&lt;/a>编译安装。&lt;/p>
+&lt;h3 id="使用">使用&lt;/h3>
+&lt;h4 id="一查看本机的-gpg-version">一、查看本机的 gpg version&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>gpg --version 
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="二生成本地-gpg-key">二、生成本地 gpg key&lt;/h4>
+&lt;h4 id="三将-gpg-key-和-git-关联起来">三、将 gpg key 和 git 关联起来&lt;/h4>
+&lt;h4 id="四将-gpg-公钥上传至-github">四、将 gpg 公钥上传至 github&lt;/h4>
+&lt;h4 id="五git-设置-gpg">五、git 设置 gpg&lt;/h4>
+&lt;h4 id="五备份-gpg">五、备份 gpg&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>备份密钥分为备份公钥和私钥两个部分，备份公钥：
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>gpg -o keyfilename --export KeyID
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>如果没有KeyID则是备份所有的公钥，-o表示输出到文件keyfilename中，如果加上-a的参数则输出文本格式的信息，否则输出的是二进制格式信息。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>备份私钥：
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>gpg -o keyfilename --export-secret-keys KeyID
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>如果没有KeyID则是备份所有的私钥，-o表示输出到文件keyfilename中，如果加上-a的参数则输出文本格式的信息，否则输出的是二进制格式信息。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>然后在别的机器上可以通过
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>gpg --import filename
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>导入这些密钥信息。
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="六参考">六、参考&lt;/h3>
+&lt;p>&lt;a href="https://docs.github.com/zh/authentication/managing-commit-signature-verification/generating-a-new-gpg-key"target="_blank" rel="noopener noreferrer">Github 官方文档&lt;/a>有比较详细的说明。&lt;/p>
+&lt;p>&lt;a href="https://www.jetbrains.com/help/idea/2025.1/set-up-GPG-commit-signing.html?Set_up_GPG_commit_signing"target="_blank" rel="noopener noreferrer">idea 中关于 gnupg 的配置&lt;/a>&lt;/p></description></item><item><title>Git 基础</title><link>https://ongoingblog.org/2020/04/git/</link><pubDate>Sun, 26 Apr 2020 13:11:41 +0800</pubDate><guid>https://ongoingblog.org/2020/04/git/</guid><description>&lt;div class="toc-container">
+ &lt;h2 class="toc-title">文章目录&lt;/h2>
+ &lt;div class="toc-content">
+ &lt;nav id="TableOfContents">
+ &lt;ul>
+ &lt;li>
+ &lt;ul>
+ &lt;li>&lt;a href="#查看修改用户名与密码">查看修改用户名与密码&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#本地与远程仓库关联与解除">本地与远程仓库关联与解除&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#github-快速更换绑定邮箱">GitHub 快速更换绑定邮箱&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#推送到远程仓库">推送到远程仓库&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#github-如何删除仓库">github 如何删除仓库&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#查看本地与远程的连接">查看本地与远程的连接&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#git-在本地配置公钥">git 在本地配置公钥&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#对文件或文件夹重命名">对文件或文件夹重命名&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#git-基本操作">git 基本操作&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#git-删除-add-中的文件缓存文件">git 删除 add 中的文件（缓存文件）&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#git-每次-push-都需要输入用户名与密码">Git 每次 push 都需要输入用户名与密码&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#发现-github-上的绿色格子几天没有亮了">发现 github 上的绿色格子几天没有亮了&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#在终端中键入-git-status-后显示中文乱码">在终端中键入 git status 后显示中文乱码&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#重写最后一个-commit-信息">重写最后一个 commit 信息&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#恢复-git-rm-的文件">恢复 git rm 的文件&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#下载最新版本库不带有历史库">下载最新版本库，不带有历史库&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#tag-管理">tag 管理&lt;/a>&lt;/li>
+ &lt;/ul>
+ &lt;/li>
+ &lt;/ul>
+&lt;/nav>
+ &lt;/div>
+&lt;/div>
+
+&lt;style>
+ .toc-container {
+ border-left: 3px solid #4a86e8;
+ padding: 1.2rem 1.8rem;
+ margin: 2.5rem 0;
+ background: #f8fbfe;
+ border-radius: 0 8px 8px 0;
+ box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+ }
+
+ .toc-title {
+ font-size: 1.4rem;
+ margin-top: 0;
+ margin-bottom: 1rem;
+ color: #2c5282;
+ padding-bottom: 0.5rem;
+ border-bottom: 1px solid #e2e8f0;
+ }
+
+ .toc-content ul {
+ list-style: none;
+ padding-left: 1.2rem;
+ margin: 0;
+ }
+
+ .toc-content li {
+ margin: 0.7rem 0;
+ line-height: 1.1;
+ position: relative;
+ }
+
+ .toc-content a {
+ color: #3182ce;
+ text-decoration: none;
+ transition: all 0.3s ease;
+ display: block;
+ padding: 0.3rem 0.5rem;
+ border-radius: 4px;
+ }
+
+ .toc-content a:hover {
+ color: #020202;
+ background: #ebf4ff;
+ padding-left: 0.8rem;
+ }
+
+ .toc-warning {
+ padding: 1.2rem;
+ background: #fffaf0;
+ border: 1px solid #feebc8;
+ border-radius: 6px;
+ color: #dd6b20;
+ margin: 2rem 0;
+ }
+
+ .toc-warning p {
+ margin: 0.5rem 0;
+ }
+
+ .toc-highlight {
+ animation: highlight-fade 2s ease;
+ background-color: rgba(255, 230, 0, 0.3);
+ }
+
+ @keyframes highlight-fade {
+ 0% { background-color: rgba(255, 230, 0, 0.8); }
+ 100% { background-color: transparent; }
+ }
+
+ 
+ .toc-debug {
+ font-size: 0.9rem;
+ color: #4a5568;
+ }
+ .toc-debug h4 {
+ margin-top: 0;
+ color: #2b6cb0;
+ }
+&lt;/style>
+&lt;h3 id="查看修改用户名与密码">查看修改用户名与密码&lt;/h3>
+&lt;p>查看用户名&lt;/p></description></item></channel></rss>
