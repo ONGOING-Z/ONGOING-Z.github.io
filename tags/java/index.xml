@@ -1,0 +1,2808 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Java on ongoing's blog</title><link>https://ongoingblog.org/tags/java/</link><description>Recent content in Java on ongoing's blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sun, 03 Aug 2025 17:41:47 +0800</lastBuildDate><atom:link href="https://ongoingblog.org/tags/java/index.xml" rel="self" type="application/rss+xml"/><item><title>Seata 执行测试程序报错：程序包 org.apache.seata.core.protocol.generated 不存在</title><link>https://ongoingblog.org/2025/08/seata-core-package-generated/</link><pubDate>Sun, 03 Aug 2025 17:41:47 +0800</pubDate><guid>https://ongoingblog.org/2025/08/seata-core-package-generated/</guid><description>&lt;div class="toc-container">
+ &lt;h2 class="toc-title">文章目录&lt;/h2>
+ &lt;div class="toc-content">
+ &lt;nav id="TableOfContents">
+ &lt;ul>
+ &lt;li>
+ &lt;ul>
+ &lt;li>&lt;a href="#一背景">一、背景&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#二解决方法">二、解决方法&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#三快捷方式">三、快捷方式&lt;/a>&lt;/li>
+ &lt;/ul>
+ &lt;/li>
+ &lt;/ul>
+&lt;/nav>
+ &lt;/div>
+&lt;/div>
+
+&lt;style>
+ .toc-container {
+ border-left: 3px solid #4a86e8;
+ padding: 1.2rem 1.8rem;
+ margin: 2.5rem 0;
+ background: #f8fbfe;
+ border-radius: 0 8px 8px 0;
+ box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+ }
+
+ .toc-title {
+ font-size: 1.4rem;
+ margin-top: 0;
+ margin-bottom: 1rem;
+ color: #2c5282;
+ padding-bottom: 0.5rem;
+ border-bottom: 1px solid #e2e8f0;
+ }
+
+ .toc-content ul {
+ list-style: none;
+ padding-left: 1.2rem;
+ margin: 0;
+ }
+
+ .toc-content li {
+ margin: 0.7rem 0;
+ line-height: 1.1;
+ position: relative;
+ }
+
+ .toc-content a {
+ color: #3182ce;
+ text-decoration: none;
+ transition: all 0.3s ease;
+ display: block;
+ padding: 0.3rem 0.5rem;
+ border-radius: 4px;
+ }
+
+ .toc-content a:hover {
+ color: #020202;
+ background: #ebf4ff;
+ padding-left: 0.8rem;
+ }
+
+ .toc-warning {
+ padding: 1.2rem;
+ background: #fffaf0;
+ border: 1px solid #feebc8;
+ border-radius: 6px;
+ color: #dd6b20;
+ margin: 2rem 0;
+ }
+
+ .toc-warning p {
+ margin: 0.5rem 0;
+ }
+
+ .toc-highlight {
+ animation: highlight-fade 2s ease;
+ background-color: rgba(255, 230, 0, 0.3);
+ }
+
+ @keyframes highlight-fade {
+ 0% { background-color: rgba(255, 230, 0, 0.8); }
+ 100% { background-color: transparent; }
+ }
+
+ 
+ .toc-debug {
+ font-size: 0.9rem;
+ color: #4a5568;
+ }
+ .toc-debug h4 {
+ margin-top: 0;
+ color: #2b6cb0;
+ }
+&lt;/style>
+&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>把 seata 源码 clone 下来了，需要一个简单的例子，先把功能用起来，但是执行后发现报错，程序包 org.apache.seata.core.protocol.generated 不存在。&lt;/p></description></item><item><title>@Bean 方法之间的调用</title><link>https://ongoingblog.org/2025/07/invocation-between-beanmethod/</link><pubDate>Sun, 27 Jul 2025 15:04:47 +0800</pubDate><guid>https://ongoingblog.org/2025/07/invocation-between-beanmethod/</guid><description>&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;">
+ &lt;a href="https://ongoingblog.org/2025/07/invocation-between-beanmethod/spring_process-BeanMethod.svg"
+ data-pswp-width="800"
+ data-pswp-height="600"
+ target="_blank">
+ &lt;img src="https://ongoingblog.org/2025/07/invocation-between-beanmethod/spring_process-BeanMethod.svg"
+ alt=""
+ style="max-width: 100%; height: auto;" />
+ &lt;/a>
+ 
+&lt;/figure></description></item><item><title>Java 中的数字分隔</title><link>https://ongoingblog.org/2025/07/number-separation/</link><pubDate>Sun, 27 Jul 2025 14:10:16 +0800</pubDate><guid>https://ongoingblog.org/2025/07/number-separation/</guid><description>&lt;p>为什么提高代码的阅读性，可以在代码中将 100000 表示为&lt;code>100_000&lt;/code>，不会对性能产生影响。&lt;/p>
+&lt;p>数字字面量下划线（Underscores in Numeric Literals）的特性，从 Java 7 开始引入。这个设计主要是为了提高代码可读性。&lt;/p>
+&lt;p>可以在测试程序中多多使用。&lt;/p></description></item><item><title>适配器模式</title><link>https://ongoingblog.org/2025/07/adapter-pattern/</link><pubDate>Thu, 24 Jul 2025 10:18:42 +0800</pubDate><guid>https://ongoingblog.org/2025/07/adapter-pattern/</guid><description>&lt;p>一个转换层，起承上启下的作用。&lt;/p>
+&lt;img src="adapter.png" alt="">&lt;p>翻译家也可以说是适配器。&lt;/p>
+&lt;img src="adapter_in_real_world.png" alt="">&lt;p>适配器可以让不同的接口进行交互，充当两个不兼容接口之间的桥梁。&lt;/p>
+&lt;p>我想到收到请求，将之转换为 domain，返回响应，将 domain 转换为响应。&lt;/p>
+&lt;p>adapter wrap an object.&lt;/p>
+&lt;p>添加适配器前：外层直接访问 object，接口不同，访问不通&lt;/p>
+&lt;p>添加适配器后：可以直接访问 adapter，adapter 可以直接访问 object.&lt;/p>
+&lt;p>场景：装修的时候走水管时一堆的适配器&lt;/p>
+&lt;p>参考：guru 网站。&lt;/p></description></item><item><title>@Bean 方法名称的生成逻辑</title><link>https://ongoingblog.org/2025/07/the-generation-logic-of-at-bean-method-names/</link><pubDate>Wed, 23 Jul 2025 09:44:36 +0800</pubDate><guid>https://ongoingblog.org/2025/07/the-generation-logic-of-at-bean-method-names/</guid><description>&lt;p>org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader#loadBeanDefinitionsForBeanMethod&lt;/p>
+&lt;img src="bean_method_name.png" alt=""></description></item><item><title>激活框架日志</title><link>https://ongoingblog.org/2025/07/2025-07-16-active-spring-framework-logging/</link><pubDate>Wed, 16 Jul 2025 14:16:52 +0800</pubDate><guid>https://ongoingblog.org/2025/07/2025-07-16-active-spring-framework-logging/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>在 debug 程序过程中，将框架中原有的日志打印到控制台中也很有利于 debug 的进行。这里对 spring framework 的日志进行配置并且激活。&lt;/p>
+&lt;h3 id="二步骤">二、步骤&lt;/h3>
+&lt;h4 id="一添加依赖">（一）添加依赖&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-groovy" data-lang="groovy">&lt;span style="display:flex;">&lt;span>dependencies &lt;span style="color:#f92672">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Logback 实现
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> implementation &lt;span style="color:#e6db74">&amp;#39;ch.qos.logback:logback-classic:1.2.13&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// SLF4J API
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> implementation &lt;span style="color:#e6db74">&amp;#39;org.slf4j:slf4j-api:1.7.36&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 桥接 Commons Logging (JCL)
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> implementation &lt;span style="color:#e6db74">&amp;#39;org.slf4j:jcl-over-slf4j:1.7.36&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 桥接 Java Util Logging (JUL)
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> implementation &lt;span style="color:#e6db74">&amp;#39;org.slf4j:jul-to-slf4j:1.7.36&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 排除其他日志框架（同上）
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> configurations&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">all&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 排除所有 Log4j2 相关依赖
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> exclude group: &lt;span style="color:#e6db74">&amp;#39;org.apache.logging.log4j&amp;#39;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> module: &lt;span style="color:#e6db74">&amp;#39;log4j-core&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> exclude group: &lt;span style="color:#e6db74">&amp;#39;org.apache.logging.log4j&amp;#39;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> module: &lt;span style="color:#e6db74">&amp;#39;log4j-api&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> exclude group: &lt;span style="color:#e6db74">&amp;#39;org.apache.logging.log4j&amp;#39;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> module: &lt;span style="color:#e6db74">&amp;#39;log4j-slf4j-impl&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> exclude group: &lt;span style="color:#e6db74">&amp;#39;org.apache.logging.log4j&amp;#39;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> module: &lt;span style="color:#e6db74">&amp;#39;log4j-slf4j2-impl&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> exclude group: &lt;span style="color:#e6db74">&amp;#39;org.apache.logging.log4j&amp;#39;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> module: &lt;span style="color:#e6db74">&amp;#39;log4j-jcl&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> exclude group: &lt;span style="color:#e6db74">&amp;#39;org.apache.logging.log4j&amp;#39;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> module: &lt;span style="color:#e6db74">&amp;#39;log4j-jul&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 确保没有其他 SLF4J 实现
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> exclude group: &lt;span style="color:#e6db74">&amp;#39;org.slf4j&amp;#39;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> module: &lt;span style="color:#e6db74">&amp;#39;slf4j-simple&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> exclude group: &lt;span style="color:#e6db74">&amp;#39;org.slf4j&amp;#39;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> module: &lt;span style="color:#e6db74">&amp;#39;slf4j-log4j12&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="二添加配置文件">（二）添加配置文件&lt;/h4>
+&lt;p>logback.xml&lt;/p></description></item><item><title>事务代理对象的触发</title><link>https://ongoingblog.org/2025/07/2025-07-15-invocation-of-transactional-proxy-objects/</link><pubDate>Tue, 15 Jul 2025 09:48:54 +0800</pubDate><guid>https://ongoingblog.org/2025/07/2025-07-15-invocation-of-transactional-proxy-objects/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>事务代理对象生成完成后，现在了解下代理对象的触发流程。&lt;/p>
+&lt;h3 id="二流程图">二、流程图&lt;/h3>
+&lt;p>这里的事务代理对象依旧是依托于 &lt;a href="https://ongoingblog.org/2025/05/2025-05-27-proxy-object-invocation/">aop 代理对象触发&lt;/a>的，事务的处理具体在&lt;code>org.springframework.transaction.interceptor.TransactionInterceptor&lt;/code>中。&lt;/p>
+
+
+
+
+
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;">
+ &lt;a href="https://ongoingblog.org/2025/07/2025-07-15-invocation-of-transactional-proxy-objects/transactioninterceptor_hierarchy.png"
+ data-pswp-width="3200"
+ data-pswp-height="2264"
+ target="_blank">
+ &lt;img src="https://ongoingblog.org/2025/07/2025-07-15-invocation-of-transactional-proxy-objects/transactioninterceptor_hierarchy.png"
+ alt=""
+ style="max-width: 100%; height: auto;" />
+ &lt;/a>
+ 
+&lt;/figure>
+
+&lt;h4 id="一jdk-事务代理对象触发">（一）JDK 事务代理对象触发&lt;/h4>
+
+
+
+
+
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;">
+ &lt;a href="https://ongoingblog.org/2025/07/2025-07-15-invocation-of-transactional-proxy-objects/spring_process-transaction-aop-jdk-proxy-invocation.svg"
+ data-pswp-width="800"
+ data-pswp-height="600"
+ target="_blank">
+ &lt;img src="https://ongoingblog.org/2025/07/2025-07-15-invocation-of-transactional-proxy-objects/spring_process-transaction-aop-jdk-proxy-invocation.svg"
+ alt=""
+ style="max-width: 100%; height: auto;" />
+ &lt;/a>
+ 
+&lt;/figure></description></item><item><title>Spring 框架历史</title><link>https://ongoingblog.org/2025/07/2025-07-04-history-of-spring-framework/</link><pubDate>Fri, 04 Jul 2025 17:56:43 +0800</pubDate><guid>https://ongoingblog.org/2025/07/2025-07-04-history-of-spring-framework/</guid><description>&lt;img src="history_of_spring_framework.png" alt="">&lt;h3 id="参考">参考&lt;/h3>
+&lt;p>&lt;a href="http://www.ityouknow.com/springboot/2019/01/03/spring-pivotal.html"target="_blank" rel="noopener noreferrer">http://www.ityouknow.com/springboot/2019/01/03/spring-pivotal.html&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://www.quickprogrammingtips.com/spring-boot/history-of-spring-framework-and-spring-boot.html"target="_blank" rel="noopener noreferrer">https://www.quickprogrammingtips.com/spring-boot/history-of-spring-framework-and-spring-boot.html&lt;/a>&lt;/p></description></item><item><title>$Proxy29@123 JDK 代理对象名称生成逻辑</title><link>https://ongoingblog.org/2025/07/2025-07-03-jdk-proxy-object-name-generation-logic/</link><pubDate>Thu, 03 Jul 2025 14:41:42 +0800</pubDate><guid>https://ongoingblog.org/2025/07/2025-07-03-jdk-proxy-object-name-generation-logic/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>spring 在给接口生成代理对象时，会使用 jdk 内置的动态代理，生成的代理对象名称形如&lt;/p>
+&lt;img src="proxy_instance_name.png" alt="">&lt;p>这里来定位下对应的逻辑是在哪里。&lt;/p>
+&lt;h3 id="二名称生成的逻辑">二、名称生成的逻辑&lt;/h3>
+
+
+
+
+
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;">
+ &lt;a href="https://ongoingblog.org/2025/07/2025-07-03-jdk-proxy-object-name-generation-logic/name_generation_logic.png"
+ data-pswp-width="971"
+ data-pswp-height="2729"
+ target="_blank">
+ &lt;img src="https://ongoingblog.org/2025/07/2025-07-03-jdk-proxy-object-name-generation-logic/name_generation_logic.png"
+ alt=""
+ style="max-width: 100%; height: auto;" />
+ &lt;/a>
+ 
+&lt;/figure></description></item><item><title>优雅停</title><link>https://ongoingblog.org/2025/07/2025-07-03-graceful-shutdown/</link><pubDate>Thu, 03 Jul 2025 10:37:21 +0800</pubDate><guid>https://ongoingblog.org/2025/07/2025-07-03-graceful-shutdown/</guid><description>&lt;div class="toc-container">
+ &lt;h2 class="toc-title">文章目录&lt;/h2>
+ &lt;div class="toc-content">
+ &lt;nav id="TableOfContents">
+ &lt;ul>
+ &lt;li>
+ &lt;ul>
+ &lt;li>&lt;a href="#一配置的读取">一、配置的读取&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#二web-server-的初始化">二、web server 的初始化&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#三测试案例的搭建">三、测试案例的搭建&lt;/a>&lt;/li>
+ &lt;/ul>
+ &lt;/li>
+ &lt;/ul>
+&lt;/nav>
+ &lt;/div>
+&lt;/div>
+
+&lt;style>
+ .toc-container {
+ border-left: 3px solid #4a86e8;
+ padding: 1.2rem 1.8rem;
+ margin: 2.5rem 0;
+ background: #f8fbfe;
+ border-radius: 0 8px 8px 0;
+ box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+ }
+
+ .toc-title {
+ font-size: 1.4rem;
+ margin-top: 0;
+ margin-bottom: 1rem;
+ color: #2c5282;
+ padding-bottom: 0.5rem;
+ border-bottom: 1px solid #e2e8f0;
+ }
+
+ .toc-content ul {
+ list-style: none;
+ padding-left: 1.2rem;
+ margin: 0;
+ }
+
+ .toc-content li {
+ margin: 0.7rem 0;
+ line-height: 1.1;
+ position: relative;
+ }
+
+ .toc-content a {
+ color: #3182ce;
+ text-decoration: none;
+ transition: all 0.3s ease;
+ display: block;
+ padding: 0.3rem 0.5rem;
+ border-radius: 4px;
+ }
+
+ .toc-content a:hover {
+ color: #020202;
+ background: #ebf4ff;
+ padding-left: 0.8rem;
+ }
+
+ .toc-warning {
+ padding: 1.2rem;
+ background: #fffaf0;
+ border: 1px solid #feebc8;
+ border-radius: 6px;
+ color: #dd6b20;
+ margin: 2rem 0;
+ }
+
+ .toc-warning p {
+ margin: 0.5rem 0;
+ }
+
+ .toc-highlight {
+ animation: highlight-fade 2s ease;
+ background-color: rgba(255, 230, 0, 0.3);
+ }
+
+ @keyframes highlight-fade {
+ 0% { background-color: rgba(255, 230, 0, 0.8); }
+ 100% { background-color: transparent; }
+ }
+
+ 
+ .toc-debug {
+ font-size: 0.9rem;
+ color: #4a5568;
+ }
+ .toc-debug h4 {
+ margin-top: 0;
+ color: #2b6cb0;
+ }
+&lt;/style>
+&lt;h3 id="一配置的读取">一、配置的读取&lt;/h3>
+&lt;img src="graceful_shutdown_config.png" alt="">&lt;h3 id="二web-server-的初始化">二、web server 的初始化&lt;/h3>
+&lt;p>执行优雅停源码位置：&lt;code>org.springframework.boot.web.embedded.tomcat.GracefulShutdown#doShutdown&lt;/code>&lt;/p></description></item><item><title>underlying 单词的翻译</title><link>https://ongoingblog.org/2025/06/2025-06-24-underlying/</link><pubDate>Tue, 24 Jun 2025 10:48:37 +0800</pubDate><guid>https://ongoingblog.org/2025/06/2025-06-24-underlying/</guid><description>&lt;p>我把含有这个单词的句子输入到 deepseek 中去后，发现对应的翻译都是如“底层的&amp;hellip;”。&lt;/p>
+&lt;img src="underlying_in_spring_source_code.png" alt=""></description></item><item><title>注解 @Bean</title><link>https://ongoingblog.org/2025/06/2025-06-18-at-bean-annotation/</link><pubDate>Wed, 18 Jun 2025 19:16:20 +0800</pubDate><guid>https://ongoingblog.org/2025/06/2025-06-18-at-bean-annotation/</guid><description>&lt;div class="toc-container">
+ &lt;h2 class="toc-title">文章目录&lt;/h2>
+ &lt;div class="toc-content">
+ &lt;nav id="TableOfContents">
+ &lt;ul>
+ &lt;li>
+ &lt;ul>
+ &lt;li>&lt;a href="#一背景">一、背景&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#二bean">二、@Bean&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#三生命周期">三、生命周期&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#三bean-名称">三、bean 名称&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#四使用场景">四、使用场景&lt;/a>&lt;/li>
+ &lt;/ul>
+ &lt;/li>
+ &lt;/ul>
+&lt;/nav>
+ &lt;/div>
+&lt;/div>
+
+&lt;style>
+ .toc-container {
+ border-left: 3px solid #4a86e8;
+ padding: 1.2rem 1.8rem;
+ margin: 2.5rem 0;
+ background: #f8fbfe;
+ border-radius: 0 8px 8px 0;
+ box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+ }
+
+ .toc-title {
+ font-size: 1.4rem;
+ margin-top: 0;
+ margin-bottom: 1rem;
+ color: #2c5282;
+ padding-bottom: 0.5rem;
+ border-bottom: 1px solid #e2e8f0;
+ }
+
+ .toc-content ul {
+ list-style: none;
+ padding-left: 1.2rem;
+ margin: 0;
+ }
+
+ .toc-content li {
+ margin: 0.7rem 0;
+ line-height: 1.1;
+ position: relative;
+ }
+
+ .toc-content a {
+ color: #3182ce;
+ text-decoration: none;
+ transition: all 0.3s ease;
+ display: block;
+ padding: 0.3rem 0.5rem;
+ border-radius: 4px;
+ }
+
+ .toc-content a:hover {
+ color: #020202;
+ background: #ebf4ff;
+ padding-left: 0.8rem;
+ }
+
+ .toc-warning {
+ padding: 1.2rem;
+ background: #fffaf0;
+ border: 1px solid #feebc8;
+ border-radius: 6px;
+ color: #dd6b20;
+ margin: 2rem 0;
+ }
+
+ .toc-warning p {
+ margin: 0.5rem 0;
+ }
+
+ .toc-highlight {
+ animation: highlight-fade 2s ease;
+ background-color: rgba(255, 230, 0, 0.3);
+ }
+
+ @keyframes highlight-fade {
+ 0% { background-color: rgba(255, 230, 0, 0.8); }
+ 100% { background-color: transparent; }
+ }
+
+ 
+ .toc-debug {
+ font-size: 0.9rem;
+ color: #4a5568;
+ }
+ .toc-debug h4 {
+ margin-top: 0;
+ color: #2b6cb0;
+ }
+&lt;/style>
+&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>这篇文章来看类：&lt;code>org.springframework.context.annotation.Bean&lt;/code>。&lt;/p></description></item><item><title>单例双锁检测</title><link>https://ongoingblog.org/2025/06/2025-06-17-singleton/</link><pubDate>Tue, 17 Jun 2025 15:00:51 +0800</pubDate><guid>https://ongoingblog.org/2025/06/2025-06-17-singleton/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>这里复习一下单例。&lt;/p>
+&lt;h3 id="二类的构造函数私有化">二、类的构造函数私有化&lt;/h3>
+&lt;p>例如&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">A&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#a6e22e">A&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>注意，A 类的构造函数虽然私有化了，但是从内部还是可以进行 new 的，外部不可以。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">A&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">final&lt;/span> A INSTANCE &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> A(); &lt;span style="color:#75715e">// 可以从内部进行 new&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#a6e22e">A&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="三双锁检测-double-checked-locking">三、双锁检测 (double-checked locking)&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">SingletonDemo&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// volatile 防止指令重排序，并且保证变更对于其他线程可见。&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">volatile&lt;/span> SingletonDemo instance;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#a6e22e">SingletonDemo&lt;/span>() {}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> SingletonDemo &lt;span style="color:#a6e22e">getInstance&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 加锁前判断一次，防止不必要的加锁，缩小锁的范围&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (instance &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">synchronized&lt;/span> (SingletonDemo.&lt;span style="color:#a6e22e">class&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 预防其他线程也创建的实例，再次判断&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (instance &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> instance &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> SingletonDemo();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> instance;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Arthas</title><link>https://ongoingblog.org/2025/06/2025-06-13-arthas/</link><pubDate>Fri, 13 Jun 2025 15:32:07 +0800</pubDate><guid>https://ongoingblog.org/2025/06/2025-06-13-arthas/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>&lt;a href="https://arthas.aliyun.com/"target="_blank" rel="noopener noreferrer">Arthas&lt;/a>是阿里出的一款Java应用监控诊断的工具。&lt;/p>
+&lt;p>下面是官方文档中简述它可以起到的作用
+&lt;img src="arthas_effect.png" alt="">&lt;/p>
+&lt;p>我记得之前公司有人用它来介绍火焰图。&lt;/p>
+&lt;h3 id="二如何查看代理类的源码">二、如何查看代理类的源码&lt;/h3>
+&lt;p>找到对应的代理类后，直接执行命令&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>jad 代理类名称
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="三如何快速找到我想要定位的代理类所在进程-todo">三、如何快速找到我想要定位的代理类所在进程 todo&lt;/h3>
+&lt;h3 id="四在-idea-中如何看到当前运行的应用进程名-todo">四、在 idea 中如何看到当前运行的应用进程名 todo&lt;/h3>
+&lt;h3 id="三如何查看生成的lambda源码-todo">三、如何查看生成的lambda源码 todo&lt;/h3>
+&lt;h3 id="四一些命令">四、一些命令&lt;/h3>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>命令&lt;/th>
+ &lt;th>备注&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>sc&lt;/td>
+ &lt;td>search class 搜索类信息&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>sm&lt;/td>
+ &lt;td>search method 搜素类中方法信息&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>stop/shutdown&lt;/td>
+ &lt;td>关闭所有会话，停止arthas运行。&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>quit&lt;/td>
+ &lt;td>关闭当前会话，但是arthas还在运行&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>ctrl + d&lt;/td>
+ &lt;td>当前的会话还是在运行之中的&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>jad&lt;/td>
+ &lt;td>找到代理类，这个命令可以反编译，看源代码&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table></description></item><item><title>Mysql 终端帮助工具：mycli</title><link>https://ongoingblog.org/2025/06/2025-06-12-mysql-mycli/</link><pubDate>Thu, 12 Jun 2025 13:45:57 +0800</pubDate><guid>https://ongoingblog.org/2025/06/2025-06-12-mysql-mycli/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>mycli&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>是 mysql 的命令行小工具，支持 tab 快速弹出命令，加快效率。&lt;/p>
+&lt;img src="mycli.png" alt="">&lt;h3 id="二一些使用方法">二、一些使用方法&lt;/h3>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>场景&lt;/th>
+ &lt;th>方法&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>加载并执行外部 sql 文件&lt;/td>
+ &lt;td>source 文件的绝对路径&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h3 id="三mysql-的安装">三、Mysql 的安装&lt;/h3>
+&lt;p>推荐直接用 docker 安装，更方便一些，有现成的容器环境，直接下载下来在本地启动起来就可以，不污染宿主机环境。&lt;/p>
+&lt;div class="footnotes" role="doc-endnotes">
+&lt;hr>
+&lt;ol>
+&lt;li id="fn:1">
+&lt;p>&lt;a href="https://www.mycli.net/"target="_blank" rel="noopener noreferrer">https://www.mycli.net/&lt;/a>&amp;#160;&lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/div></description></item><item><title>Java 命令：jps</title><link>https://ongoingblog.org/2025/06/2025-06-12-java-jps/</link><pubDate>Thu, 12 Jun 2025 12:55:53 +0800</pubDate><guid>https://ongoingblog.org/2025/06/2025-06-12-java-jps/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>jps(JVM Process Status Tool): java 自带的命令行工具。可以展示当前系统正在运行的 Java 进程信息。&lt;/p>
+&lt;img src="jps_exec.png" alt="">&lt;h3 id="二功能">二、功能&lt;/h3>
+&lt;div class="table-left">
+ &lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>命令&lt;/th>
+ &lt;th>备注&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>jps&lt;/td>
+ &lt;td>进程 id 主类名&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>jps -l&lt;/td>
+ &lt;td>进程 id 全限定类名&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>jps -q&lt;/td>
+ &lt;td>只有进程 id&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+
+&lt;/div>
+
+&lt;style>
+ .table-left table {
+ margin-left: 0 !important;
+ margin-right: auto;
+ }
+&lt;/style></description></item><item><title>Idea下载依赖包失败，attatch source也失败</title><link>https://ongoingblog.org/2025/06/2025-06-12-idea-can-not-see-source-code-about-enhancer/</link><pubDate>Thu, 12 Jun 2025 10:15:04 +0800</pubDate><guid>https://ongoingblog.org/2025/06/2025-06-12-idea-can-not-see-source-code-about-enhancer/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>idea看到下面这段代码&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>时&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">protected&lt;/span> Enhancer &lt;span style="color:#a6e22e">createEnhancer&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Enhancer();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>点进Enhancer中，显示的是Enhancer.class文件，我想要看源文件，idea上有显示download，但是也是失败的(下图所示)。&lt;/p>
+&lt;img src="problem.png" alt="">&lt;h3 id="二解决方案">二、解决方案&lt;/h3>
+&lt;img src="solution.png" alt="">&lt;h3 id="三后语">三、后语&lt;/h3>
+&lt;p>但是我发现每次重新编译完spring源码后，我都需要重新去 attach 这个类的源码。&lt;/p>
+&lt;div class="footnotes" role="doc-endnotes">
+&lt;hr>
+&lt;ol>
+&lt;li id="fn:1">
+&lt;p>org.springframework.aop.framework.CglibAopProxy#createEnhancer&amp;#160;&lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/div></description></item><item><title>Jetbrains Toolbox</title><link>https://ongoingblog.org/2025/06/2025-06-11-jetbrains-toolbox/</link><pubDate>Wed, 11 Jun 2025 23:44:39 +0800</pubDate><guid>https://ongoingblog.org/2025/06/2025-06-11-jetbrains-toolbox/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>发现idea又出了新版本了。
+之前每次更新编程软件新版本的做法：&lt;/p>
+&lt;ol>
+&lt;li>去jetbrains官网找到最新版本的安装包&lt;/li>
+&lt;li>全量下载安装包&lt;/li>
+&lt;li>本地安装时会覆盖掉旧版本&lt;/li>
+&lt;/ol>
+&lt;p>询问了下ai工具，发现了jetbrains有一个专门用来管理更新的小工具叫作&lt;a href="https://www.jetbrains.com/toolbox-app/"target="_blank" rel="noopener noreferrer">JetBrains Toolbox App&lt;/a>。&lt;/p>
+&lt;h3 id="二jetbrains-toolbox-app">二、JetBrains Toolbox App&lt;/h3>
+&lt;img src="toolbox.png" alt="">&lt;p>如上图，这是它的样子，直接下载安装后。&lt;/p>
+&lt;p>应用再有更新就可以直接用它了，并且可以设置后台自动更新。
+优点是&lt;/p>
+&lt;ol>
+&lt;li>每次升级下载是patch安装包，而非全量的安装包，更快&lt;/li>
+&lt;li>可以管理所有jetbrains旗下的软件&lt;/li>
+&lt;/ol></description></item><item><title>接口的默认方法</title><link>https://ongoingblog.org/2025/06/2025-06-05-interface-default-method/</link><pubDate>Thu, 05 Jun 2025 11:16:05 +0800</pubDate><guid>https://ongoingblog.org/2025/06/2025-06-05-interface-default-method/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>例如这个场景&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>最开始，你写了一个接口TestInterface这个接口中没有声明任何方法，是一个空接口&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">TestInterface&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>你根据这个空接口有一个实现类TestInterfaceImpl&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">TestInterfaceImpl&lt;/span> &lt;span style="color:#66d9ef">implements&lt;/span> TestInterface {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 因为接口中没有声明任何方法，所以实现类自然也没有。&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>陆陆续续这个接口下面实现了很多很多类。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>现在想要对这个接口添加方法。如果在接口TestInterface中直接添加方法声明，会强制下面所有实现类全部都要实现方法&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">TestInterface&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">methodA&lt;/span>(); &lt;span style="color:#75715e">// 给接口添加方法声明，实现类TestInterfaceImpl也需要实现此方法&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>使用 default 关键在接口中去声明方法，不会影响到先有实现类的功能&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">TestInterface&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">default&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">newExec&lt;/span>() {}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;/ol>
+&lt;h3 id="二优点">二、优点&lt;/h3>
+&lt;ol>
+&lt;li>向后兼容，不会导致兼容性的问题。已有的实现类无需实现此方法，可正常工作。&lt;/li>
+&lt;li>符合开闭原则：对扩展开放，对修改关闭。&lt;/li>
+&lt;/ol>
+&lt;h3 id="三现有框架例子">三、现有框架例子&lt;/h3>
+&lt;p>直接在spring源码中搜索default关键字的接口，你会发现很多这样使用的例子。最开始就是普通接口及接口方法的声明，后面有default关键字声明的方法。&lt;/p>
+&lt;img src="spring_interface_default_method.png" alt=""></description></item><item><title>标记接口</title><link>https://ongoingblog.org/2025/06/2025-06-05-marker-interface/</link><pubDate>Thu, 05 Jun 2025 10:59:26 +0800</pubDate><guid>https://ongoingblog.org/2025/06/2025-06-05-marker-interface/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>在 spring 源码中遇到的空方法的接口，有些奇怪，因为一般接口都是行为的契约，但是这些接口都是空接口，里面没有任何方法的定义。&lt;/p>
+&lt;h3 id="二释义">二、释义&lt;/h3>
+&lt;p>表示实现类具有某种特性或者能力，可以用作一种能力标识。&lt;/p>
+&lt;p>最开始可以为空方法，后续如果想要添加，可以使用&lt;a href="https://ongoingblog.org/2025/06/2025-06-05-interface-default-method/">接口的默认方法&lt;/a>。&lt;/p>
+&lt;h3 id="三spring-中例子">三、Spring 中例子&lt;/h3>
+&lt;p>在源码中搜索关键词 &lt;code>marker interface&lt;/code>:&lt;/p>
+&lt;img src="marker_interface_in_spring.png" alt="">&lt;img src="afteradvice.png" alt="">&lt;img src="springproxy.png" alt=""></description></item><item><title>JDK Proxy 流程</title><link>https://ongoingblog.org/2025/06/2025-06-05-jdk-proxy-process/</link><pubDate>Thu, 05 Jun 2025 10:14:54 +0800</pubDate><guid>https://ongoingblog.org/2025/06/2025-06-05-jdk-proxy-process/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>展示 jdk 动态代理的流程。&lt;/p>
+&lt;h3 id="二流程图">二、流程图&lt;/h3>
+
+
+
+
+
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;">
+ &lt;a href="https://ongoingblog.org/2025/06/2025-06-05-jdk-proxy-process/spring_process-aoo-jdk-proxy-creation.svg"
+ data-pswp-width="800"
+ data-pswp-height="600"
+ target="_blank">
+ &lt;img src="https://ongoingblog.org/2025/06/2025-06-05-jdk-proxy-process/spring_process-aoo-jdk-proxy-creation.svg"
+ alt="jdk 动态代理"
+ style="max-width: 100%; height: auto;" />
+ &lt;/a>
+ &lt;figcaption style="text-align: center;">jdk 动态代理&lt;/figcaption>
+&lt;/figure>
+
+&lt;h3 id="三测试代码">三、测试代码&lt;/h3>
+&lt;p>&lt;a href="aopdemo_jdk/AopTest.java">AopTest.java&lt;/a>&lt;/p>
+&lt;p>&lt;a href="aopdemo_jdk/Application.java">Application.java&lt;/a>&lt;/p>
+&lt;p>&lt;a href="aopdemo_jdk/DemoInterface.java">DemoInterface.java&lt;/a>&lt;/p>
+&lt;p>&lt;a href="aopdemo_jdk/DemoService.java">DemoService.java&lt;/a>&lt;/p>
+&lt;p>&lt;a href="aopdemo_jdk/ServiceAspect.java">ServiceAspect.java&lt;/a>&lt;/p>
+&lt;p>这里的程序都是标准 bean 的生成路径，没有走&lt;code>org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory#resolveBeforeInstantiation&lt;/code>中的 short-cut 路径（流程图中菱形左侧分支的自定义场景）。&lt;/p></description></item><item><title>如何消除循环依赖</title><link>https://ongoingblog.org/2025/06/2025-06-04-how-to-resolve-circular-dependency/</link><pubDate>Wed, 04 Jun 2025 19:15:59 +0800</pubDate><guid>https://ongoingblog.org/2025/06/2025-06-04-how-to-resolve-circular-dependency/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>在遇到循环依赖后，我们应该怎么去消除循环依赖？&lt;/p>
+&lt;h3 id="二方法">二、方法&lt;/h3>
+&lt;ol>
+&lt;li>不要使用字段注入(field injection)，强制使用构造器注入&lt;/li>
+&lt;li>重构代码，从根本上消除掉相互依赖的逻辑。&lt;/li>
+&lt;/ol></description></item><item><title>CGLIB Proxy 流程</title><link>https://ongoingblog.org/2025/06/2025-06-04-code-generation-library/</link><pubDate>Wed, 04 Jun 2025 14:16:18 +0800</pubDate><guid>https://ongoingblog.org/2025/06/2025-06-04-code-generation-library/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>展示 cglib 生成代理对象流程。&lt;/p>
+&lt;p>CGLIB 是一个常用的字节码生成器的类库。
+提供的功能：生成和转换 Java 字节码。&lt;/p>
+&lt;p>CGLIB 可以覆盖 final 方法&lt;/p>
+&lt;p>技术背景：在 Java 早期，动态代理主要依赖 JDK 原生的 java.lang.reflect.Proxy，但该机制仅支持接口代理，无法直接代理普通类。CGLIB 则通过字节码生成技术（基于 ASM 框架），实现了对类的代理，弥补了 JDK 代理的局限性。&lt;/p>
+&lt;p>如果目标类没有实现接口，spring 会强制使用 CGLIB&lt;/p>
+&lt;p>代理对象和目标对象如何产生联系？&lt;/p>
+&lt;h3 id="二流程图">二、流程图&lt;/h3>
+
+
+
+
+
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;">
+ &lt;a href="https://ongoingblog.org/2025/06/2025-06-04-code-generation-library/spring_process-aoo-cglib-proxy-creation.svg"
+ data-pswp-width="800"
+ data-pswp-height="600"
+ target="_blank">
+ &lt;img src="https://ongoingblog.org/2025/06/2025-06-04-code-generation-library/spring_process-aoo-cglib-proxy-creation.svg"
+ alt="cglib 动态代理"
+ style="max-width: 100%; height: auto;" />
+ &lt;/a>
+ &lt;figcaption style="text-align: center;">cglib 动态代理&lt;/figcaption>
+&lt;/figure>
+
+&lt;h3 id="三测试代码">三、测试代码&lt;/h3>
+&lt;p>&lt;a href="aopdemo_cglib/AopTest.java">AopTest.java&lt;/a>&lt;/p>
+&lt;p>&lt;a href="aopdemo_cglib/Application.java">Application.java&lt;/a>&lt;/p>
+&lt;p>&lt;a href="aopdemo_cglib/DemoService.java">DemoService.java&lt;/a>&lt;/p>
+&lt;p>&lt;a href="aopdemo_cglib/ServiceAspect.java">ServiceAspect.java&lt;/a>&lt;/p>
+&lt;p>这里的程序都是标准 bean 的生成路径，没有走&lt;code>org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory#resolveBeforeInstantiation&lt;/code>中的 short-cut 路径（流程图中菱形左侧分支的自定义场景）。&lt;/p></description></item><item><title>Spring 术语</title><link>https://ongoingblog.org/2025/05/2025-05-30-spring-terminology/</link><pubDate>Fri, 30 May 2025 13:18:13 +0800</pubDate><guid>https://ongoingblog.org/2025/05/2025-05-30-spring-terminology/</guid><description>&lt;h3 id="一一些名词的含义">一、一些名词的含义&lt;/h3>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>名称&lt;/th>
+ &lt;th>解释&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>application code&lt;/td>
+ &lt;td>开发者编写的代码&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>framework code&lt;/td>
+ &lt;td>框架的代码&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Application-provided&lt;/td>
+ &lt;td>开发者提供的&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>User-provided&lt;/td>
+ &lt;td>用户提供的。和 Application-provided 意思其实一样&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>instantiation&lt;/td>
+ &lt;td>实例化。指创建 Bean 的实例对象，例如通过构造器或工厂方法创建对象。&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>initialization&lt;/td>
+ &lt;td>初始化。在实例化之后，进行属性填充、初始化方法调用等。&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>declarative programming&lt;/td>
+ &lt;td>声明式编程&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>semantic concepts&lt;/td>
+ &lt;td>语义概念&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>populate&lt;/td>
+ &lt;td>fill with data&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>first-class&lt;/td>
+ &lt;td>一等公民&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Transaction Demarcation&lt;/td>
+ &lt;td>事务界定 (定义事务开始和结束点的过程)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Transaction Boundary&lt;/td>
+ &lt;td>事务边界&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>non-invasive framework&lt;/td>
+ &lt;td>非侵入式框架&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>imperative transaction&lt;/td>
+ &lt;td>命令式事务&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>regular beans&lt;/td>
+ &lt;td>常规 Bean&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Most Specific&lt;/td>
+ &lt;td>最终实现/最具体。场景：继承链方法解析&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>idempotent behavior&lt;/td>
+ &lt;td>幂等行为&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>NonStop System&lt;/td>
+ &lt;td>不停机系统&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>R&amp;amp;D&lt;/td>
+ &lt;td>Research and Development，研发&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Codebase Awareness&lt;/td>
+ &lt;td>代码库感知&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>project internals&lt;/td>
+ &lt;td>项目内部结构&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;img src="most_specific.png" alt="">&lt;h3 id="二一些缩写">二、一些缩写&lt;/h3>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>名称&lt;/th>
+ &lt;th>解释&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>bf&lt;/td>
+ &lt;td>beanFactory&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>bd&lt;/td>
+ &lt;td>beanDefinition&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>ctx&lt;/td>
+ &lt;td>context&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>prop&lt;/td>
+ &lt;td>property&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table></description></item><item><title>隐式继承</title><link>https://ongoingblog.org/2025/05/2025-05-28-implicit-inheritance/</link><pubDate>Wed, 28 May 2025 10:45:01 +0800</pubDate><guid>https://ongoingblog.org/2025/05/2025-05-28-implicit-inheritance/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>今天看到&lt;code>org.springframework.beans.factory.ObjectFactory#getObject&lt;/code>抛出的&lt;code>org. springframework.beans.BeansException&lt;/code>，我一直往上找到&lt;code>Throwable &lt;/code>，往右侧看父类和子类的结构时，发现这个类代码中并没有去写继承Object，但是右侧层次结构中却有Object
+&lt;img src="object.png" alt="">&lt;/p>
+&lt;p>搜了一下，这种叫作隐式继承，突然想起很久之前看到java书中基本概念确实说过这个东西。&lt;/p>
+&lt;h3 id="二概念">二、概念&lt;/h3>
+&lt;p>隐式继承是指一个类没有使用&lt;code>extends&lt;/code>关键字显示指定父类时，会自动继承&lt;code>java.lang.Object&lt;/code>的机制。确保所有类都有一个共同的根。&lt;/p>
+&lt;p>在Object类中，有这样一段注释&lt;/p>
+&lt;img src="object_comment.png" alt="">&lt;p>随便找个类进行验证下&lt;/p>
+&lt;img src="sample.png" alt="">&lt;h3 id="三注意">三、注意&lt;/h3>
+&lt;p>接口不会继承Object，但是接口的实现类会继承。&lt;/p></description></item><item><title>代理对象的触发</title><link>https://ongoingblog.org/2025/05/2025-05-27-proxy-object-invocation/</link><pubDate>Tue, 27 May 2025 15:50:55 +0800</pubDate><guid>https://ongoingblog.org/2025/05/2025-05-27-proxy-object-invocation/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>代理对象生成完成后，现在了解下代理对象的触发流程。&lt;/p>
+&lt;h3 id="二流程图">二、流程图&lt;/h3>
+&lt;p>触发的主要流程 JDK 和 CGLIB 都是相同的，主要步骤就在&lt;code>org.springframework.aop.framework.ReflectiveMethodInvocation#proceed&lt;/code>中。&lt;/p>
+&lt;h4 id="一jdk-代理对象触发">（一）JDK 代理对象触发&lt;/h4>
+
+
+
+
+
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;">
+ &lt;a href="https://ongoingblog.org/2025/05/2025-05-27-proxy-object-invocation/spring_process-aoo-jdk-proxy-invocation.svg"
+ data-pswp-width="800"
+ data-pswp-height="600"
+ target="_blank">
+ &lt;img src="https://ongoingblog.org/2025/05/2025-05-27-proxy-object-invocation/spring_process-aoo-jdk-proxy-invocation.svg"
+ alt=""
+ style="max-width: 100%; height: auto;" />
+ &lt;/a>
+ 
+&lt;/figure>
+
+&lt;h4 id="二cglib-代理对象触发">（二）CGLIB 代理对象触发&lt;/h4>
+
+
+
+
+
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;">
+ &lt;a href="https://ongoingblog.org/2025/05/2025-05-27-proxy-object-invocation/spring_process-aoo-cglib-proxy-invocation.svg"
+ data-pswp-width="800"
+ data-pswp-height="600"
+ target="_blank">
+ &lt;img src="https://ongoingblog.org/2025/05/2025-05-27-proxy-object-invocation/spring_process-aoo-cglib-proxy-invocation.svg"
+ alt=""
+ style="max-width: 100%; height: auto;" />
+ &lt;/a>
+ 
+&lt;/figure></description></item><item><title>代理对象的创建</title><link>https://ongoingblog.org/2025/05/2025-05-27-proxy-object-creatation/</link><pubDate>Tue, 27 May 2025 15:25:19 +0800</pubDate><guid>https://ongoingblog.org/2025/05/2025-05-27-proxy-object-creatation/</guid><description>&lt;div class="toc-container">
+ &lt;h2 class="toc-title">文章目录&lt;/h2>
+ &lt;div class="toc-content">
+ &lt;nav id="TableOfContents">
+ &lt;ul>
+ &lt;li>
+ &lt;ul>
+ &lt;li>&lt;a href="#一背景">一、背景&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#二创建入口-时段run-time">二、创建入口 (时段：run-time)&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#三自动生成的代理对象的结构">三、自动生成的代理对象的结构&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#四名称逻辑">四、名称逻辑&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#五问题目标对象的代理对象创建了之后目标对象还会去创建吗">五、问题：目标对象的代理对象创建了之后，目标对象还会去创建吗？&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#六annotationawareaspectjautoproxycreator">六、AnnotationAwareAspectJAutoProxyCreator&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#七问题如何判断一个-bean-是否需要生成代理对象">七、问题：如何判断一个 bean 是否需要生成代理对象？&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#八问题getbean-获取代理对象的过程是怎样的">八、问题：getBean() 获取代理对象的过程是怎样的？&lt;/a>&lt;/li>
+ &lt;/ul>
+ &lt;/li>
+ &lt;/ul>
+&lt;/nav>
+ &lt;/div>
+&lt;/div>
+
+&lt;style>
+ .toc-container {
+ border-left: 3px solid #4a86e8;
+ padding: 1.2rem 1.8rem;
+ margin: 2.5rem 0;
+ background: #f8fbfe;
+ border-radius: 0 8px 8px 0;
+ box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+ }
+
+ .toc-title {
+ font-size: 1.4rem;
+ margin-top: 0;
+ margin-bottom: 1rem;
+ color: #2c5282;
+ padding-bottom: 0.5rem;
+ border-bottom: 1px solid #e2e8f0;
+ }
+
+ .toc-content ul {
+ list-style: none;
+ padding-left: 1.2rem;
+ margin: 0;
+ }
+
+ .toc-content li {
+ margin: 0.7rem 0;
+ line-height: 1.1;
+ position: relative;
+ }
+
+ .toc-content a {
+ color: #3182ce;
+ text-decoration: none;
+ transition: all 0.3s ease;
+ display: block;
+ padding: 0.3rem 0.5rem;
+ border-radius: 4px;
+ }
+
+ .toc-content a:hover {
+ color: #020202;
+ background: #ebf4ff;
+ padding-left: 0.8rem;
+ }
+
+ .toc-warning {
+ padding: 1.2rem;
+ background: #fffaf0;
+ border: 1px solid #feebc8;
+ border-radius: 6px;
+ color: #dd6b20;
+ margin: 2rem 0;
+ }
+
+ .toc-warning p {
+ margin: 0.5rem 0;
+ }
+
+ .toc-highlight {
+ animation: highlight-fade 2s ease;
+ background-color: rgba(255, 230, 0, 0.3);
+ }
+
+ @keyframes highlight-fade {
+ 0% { background-color: rgba(255, 230, 0, 0.8); }
+ 100% { background-color: transparent; }
+ }
+
+ 
+ .toc-debug {
+ font-size: 0.9rem;
+ color: #4a5568;
+ }
+ .toc-debug h4 {
+ margin-top: 0;
+ color: #2b6cb0;
+ }
+&lt;/style>
+&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>了解 Spring AOP 的代理对象的创建流程。&lt;/p></description></item><item><title>lambda 表达式生成的类是 final 的</title><link>https://ongoingblog.org/2025/05/2025-05-27-lambda-class-is-final/</link><pubDate>Tue, 27 May 2025 13:48:36 +0800</pubDate><guid>https://ongoingblog.org/2025/05/2025-05-27-lambda-class-is-final/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>在看 aop 创建方法&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>时，代码中第三个判断条件&lt;/p>
+&lt;img src="third_condition.png" alt="">&lt;p>&lt;code>ClassUtils.isLambdaClass(targetClass)&lt;/code>说 lambda 表达式生成的类是 final，不能被继承，所以强制得用 JDK 动态代理。&lt;/p>
+&lt;p>这里用例子检查 lambda 生成的类是否是 final 的。&lt;/p>
+&lt;h3 id="二代码">二、代码&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">LamdbaFinalDemo&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Runnable lambda &lt;span style="color:#f92672">=&lt;/span> () &lt;span style="color:#f92672">-&amp;gt;&lt;/span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;test&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Class&lt;span style="color:#f92672">&amp;lt;?&lt;/span> &lt;span style="color:#66d9ef">extends&lt;/span> Runnable&lt;span style="color:#f92672">&amp;gt;&lt;/span> aClass &lt;span style="color:#f92672">=&lt;/span> lambda.&lt;span style="color:#a6e22e">getClass&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;====&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">boolean&lt;/span> isFinal &lt;span style="color:#f92672">=&lt;/span> Modifier.&lt;span style="color:#a6e22e">isFinal&lt;/span>(aClass.&lt;span style="color:#a6e22e">getModifiers&lt;/span>());
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;isFinal: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> isFinal);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(aClass.&lt;span style="color:#a6e22e">getName&lt;/span>());
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>结果&lt;/p>
+&lt;img src="result.png" alt="">&lt;h3 id="三为什么生成的类是-final-的">三、为什么生成的类是 final 的？&lt;/h3>
+&lt;p>为了确保 不可变性和安全性，JVM 会将生成的类标记为 final，防止其他代码继承或修改其行为。&lt;/p>
+&lt;h3 id="四在-spring-aop-中的判断">四、在 spring aop 中的判断&lt;/h3>
+&lt;p>由于 Lambda 类无法被继承，Spring AOP 只能对其使用 JDK 动态代理（而非 CGLIB）。&lt;/p>
+&lt;div class="footnotes" role="doc-endnotes">
+&lt;hr>
+&lt;ol>
+&lt;li id="fn:1">
+&lt;p>org.springframework.aop.framework.DefaultAopProxyFactory#createAopProxy&amp;#160;&lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/div></description></item><item><title>Advice的类型</title><link>https://ongoingblog.org/2025/05/2025-05-27-advice-type/</link><pubDate>Tue, 27 May 2025 11:42:31 +0800</pubDate><guid>https://ongoingblog.org/2025/05/2025-05-27-advice-type/</guid><description>&lt;p>主要展示Advice发生作用的5种类型的类和接口的关系：&lt;/p>
+
+
+
+
+
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;">
+ &lt;a href="https://ongoingblog.org/2025/05/2025-05-27-advice-type/spring_process-aop_advice.png"
+ data-pswp-width="6008"
+ data-pswp-height="3848"
+ target="_blank">
+ &lt;img src="https://ongoingblog.org/2025/05/2025-05-27-advice-type/spring_process-aop_advice.png"
+ alt="aop advice"
+ style="max-width: 100%; height: auto;" />
+ &lt;/a>
+ &lt;figcaption style="text-align: center;">aop advice&lt;/figcaption>
+&lt;/figure></description></item><item><title>代码中的注释</title><link>https://ongoingblog.org/2025/05/2025-05-22-comment-in-source-code/</link><pubDate>Thu, 22 May 2025 11:26:23 +0800</pubDate><guid>https://ongoingblog.org/2025/05/2025-05-22-comment-in-source-code/</guid><description>&lt;p>&lt;code>为什么去做&lt;/code>和&lt;code>怎么做&lt;/code>。&lt;/p>
+&lt;p>注释最佳实践：&lt;/p>
+&lt;p>1、优先让代码去解释
+通过命名、函数去解释
+代码就是注释。&lt;/p>
+&lt;p>2、关注为什么，而非怎么做
+写这段代码的目的是什么?
+这么写的目的是什么。&lt;/p>
+&lt;p>3、不要用注释去一对一地对代码进行翻译，这种没有必要，只会消耗读者的精力&lt;/p>
+&lt;p>怎么去做：这个直接让代码去直观地展示即可，不要冗余再去使用注释&lt;/p>
+&lt;p>需要有意识的去注意到这些。&lt;/p></description></item><item><title>EnhancerBySpringCGLIB</title><link>https://ongoingblog.org/2025/05/2025-05-22-enhancerbyspringcglib/</link><pubDate>Thu, 22 May 2025 10:35:12 +0800</pubDate><guid>https://ongoingblog.org/2025/05/2025-05-22-enhancerbyspringcglib/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>在 idea debug 窗口中看到了这样的标识符号&lt;/p>
+&lt;img src="EnhancerBySpringCGLIB.png" alt="">&lt;p>如果一个类名是这个样子的，表示这个类是由CGLIB库生成的。&lt;/p>
+&lt;p>&lt;code>$$&lt;/code>符号是CGLIB生成的类的分隔符&lt;/p>
+&lt;img src="cglib_class_separator.png" alt="">&lt;h3 id="二生成的代理类命名规则">二、生成的代理类命名规则&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>原始类名 + $$EnhancerBySpringCGLIB$$ + 随机哈希值
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="三生成名称的源码逻辑">三、生成名称的源码逻辑&lt;/h3>
+
+
+
+
+
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;">
+ &lt;a href="https://ongoingblog.org/2025/05/2025-05-22-enhancerbyspringcglib/DefaultNamingPolicy.png"
+ data-pswp-width="819"
+ data-pswp-height="3237"
+ target="_blank">
+ &lt;img src="https://ongoingblog.org/2025/05/2025-05-22-enhancerbyspringcglib/DefaultNamingPolicy.png"
+ alt="生成CGLIB代理类的名称逻辑"
+ style="max-width: 100%; height: auto;" />
+ &lt;/a>
+ &lt;figcaption style="text-align: center;">生成CGLIB代理类的名称逻辑&lt;/figcaption>
+&lt;/figure>
+
+&lt;p>最后一张图片里需要去 github 上下载 CGLIB 的仓库查看下对应的源码。&lt;/p></description></item><item><title>idea 反编译</title><link>https://ongoingblog.org/2025/05/2025-05-21-idea-decompile/</link><pubDate>Wed, 21 May 2025 14:01:31 +0800</pubDate><guid>https://ongoingblog.org/2025/05/2025-05-21-idea-decompile/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>想要查看 jdk 动态代理生成的代理类或者 cglib 生成的代理类，找个工具。&lt;/p>
+&lt;h3 id="二工具">二、工具&lt;/h3>
+&lt;p>直接使用 &lt;a href="https://ongoingblog.org/2025/06/2025-06-13-arthas/">Arthas&lt;/a> 工具就很方便。&lt;/p></description></item><item><title>一个 AOP 的简单例子，用作源码触发入口</title><link>https://ongoingblog.org/2025/05/2025-05-20-aop-best-practice/</link><pubDate>Tue, 20 May 2025 13:43:20 +0800</pubDate><guid>https://ongoingblog.org/2025/05/2025-05-20-aop-best-practice/</guid><description>&lt;p>AopTest.java&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">AopTest&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Test&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">testAop&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> AnnotationConfigApplicationContext context &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> AnnotationConfigApplicationContext(Application.&lt;span style="color:#a6e22e">class&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 获取代理对象&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> DemoService demoService &lt;span style="color:#f92672">=&lt;/span> context.&lt;span style="color:#a6e22e">getBean&lt;/span>(DemoService.&lt;span style="color:#a6e22e">class&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 触发切面方法&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> demoService.&lt;span style="color:#a6e22e">save&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> context.&lt;span style="color:#a6e22e">close&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Application.java&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@Configuration&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@ComponentScan&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;mine.projects.aopdemo_cglib&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@EnableAspectJAutoProxy&lt;/span>(proxyTargetClass &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">false&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Application&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>DemoService.java&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@Service&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">DemoService&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">save&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Save run&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>ServiceAspect.java&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@Aspect&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@Component&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">ServiceAspect&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Before&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;execution(public * mine.projects.aopdemo_cglib.DemoService.*(..))&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">beforePrint&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;before run...&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>执行结果：&lt;/p>
+&lt;img src="exec_result.png" alt=""></description></item><item><title>Advisor的翻译</title><link>https://ongoingblog.org/2025/05/2025-05-19-advisor-translation/</link><pubDate>Mon, 19 May 2025 17:59:24 +0800</pubDate><guid>https://ongoingblog.org/2025/05/2025-05-19-advisor-translation/</guid><description>&lt;p>在最近看的一本书中，将 Advisor 翻译为&lt;code>增强器&lt;/code>，但是spring文档里翻译是&lt;code>通知器&lt;/code>。&lt;/p>
+&lt;p>问了下deepseek，回复是按spring文档中来的。&lt;/p>
+&lt;img src="advisor.png" alt=""></description></item><item><title>Spring 循环依赖（两个 bean 之间） - 基于构造器</title><link>https://ongoingblog.org/2025/05/2025-05-14-spring-circular-dependency-constructor/</link><pubDate>Wed, 14 May 2025 19:26:07 +0800</pubDate><guid>https://ongoingblog.org/2025/05/2025-05-14-spring-circular-dependency-constructor/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>基于构造器的循环依赖。&lt;/p>
+&lt;h3 id="二流程图">二、流程图&lt;/h3>
+&lt;img src="process.png" alt="">&lt;img src="code_debug.png" alt="">&lt;h3 id="三测试程序">三、测试程序&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">package&lt;/span> com.ongoing.demo.circular_dependency.constructor;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> org.springframework.context.annotation.AnnotationConfigApplicationContext;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">ApplicationDemo&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> AnnotationConfigApplicationContext applicationContext &lt;span style="color:#f92672">=&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">new&lt;/span> AnnotationConfigApplicationContext(&lt;span style="color:#e6db74">&amp;#34;com.ongoing.demo.circular_dependency.constructor&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">package&lt;/span> com.ongoing.demo.circular_dependency.construct;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> org.springframework.stereotype.Component;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@Component&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Cat&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#a6e22e">Cat&lt;/span>(Person person) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">package&lt;/span> com.ongoing.demo.circular_dependency.construct;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> org.springframework.stereotype.Component;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@Component&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span>(Cat cat) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>应用运行结果&lt;/p>
+&lt;img src="exec_result.png" alt="">&lt;h3 id="四原因">四、原因&lt;/h3>
+&lt;p>先来看下&lt;code>org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory#doCreateBean&lt;/code>的主要流程&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 1、创建新实例&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>instanceWrapper &lt;span style="color:#f92672">=&lt;/span> createBeanInstance(beanName, mbd, args);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 2、添加单例工厂到第三级缓存&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>addSingletonFactory(beanName, () &lt;span style="color:#f92672">-&amp;gt;&lt;/span> getEarlyBeanReference(beanName, mbd, bean));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 3、属性赋值、依赖注入。完成 bean 的完整创建&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>populateBean(beanName, mbd, instanceWrapper);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>由于构造器注入是在第一步发生的。
+这里：&lt;/p></description></item><item><title>Spring 循环依赖（两个 bean 之间） - 基于@Autowired</title><link>https://ongoingblog.org/2025/05/2025-05-14-spring-circular-dependency/</link><pubDate>Wed, 14 May 2025 13:53:58 +0800</pubDate><guid>https://ongoingblog.org/2025/05/2025-05-14-spring-circular-dependency/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>Spring 循环依赖。&lt;/p>
+&lt;p>多 debug 几遍，孰能生巧，越来越快。&lt;/p>
+&lt;h3 id="二流程图">二、流程图&lt;/h3>
+
+
+
+
+
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;">
+ &lt;a href="https://ongoingblog.org/2025/05/2025-05-14-spring-circular-dependency/spring_process-cat_person.png"
+ data-pswp-width="1638"
+ data-pswp-height="1276"
+ target="_blank">
+ &lt;img src="https://ongoingblog.org/2025/05/2025-05-14-spring-circular-dependency/spring_process-cat_person.png"
+ alt="循环依赖流程图"
+ style="max-width: 100%; height: auto;" />
+ &lt;/a>
+ &lt;figcaption style="text-align: center;">循环依赖流程图&lt;/figcaption>
+&lt;/figure>
+
+&lt;p>解决循环依赖的关键就在于 singletonFactories 这个第三级缓存。它存放的是半成品的 bean，未进行属性赋值和依赖注入的 bean。&lt;/p>
+&lt;h3 id="三测试程序">三、测试程序&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">package&lt;/span> com.ongoing.demo.circular_dependency.autowired;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> org.springframework.context.annotation.AnnotationConfigApplicationContext;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @description 测试循环依赖 基于注解类型的
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">ApplicationDemo&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> AnnotationConfigApplicationContext applicationContext &lt;span style="color:#f92672">=&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">new&lt;/span> AnnotationConfigApplicationContext(&lt;span style="color:#e6db74">&amp;#34;com.ongoing.demo.circular_dependency.autowired&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">package&lt;/span> com.ongoing.demo.circular_dependency.autowired;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> org.springframework.beans.factory.annotation.Autowired;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> org.springframework.stereotype.Component;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@Component&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Cat&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Autowired&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Person person;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">package&lt;/span> com.ongoing.demo.circular_dependency.autowired;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> org.springframework.beans.factory.annotation.Autowired;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> org.springframework.stereotype.Component;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@Component&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Autowired&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Cat cat;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="四注意">四、注意&lt;/h3>
+&lt;p>Spring 只解决单例作用域下的属性注入循环依赖，构造器注入和原型作用域的循环依赖无法自动解决，会抛出异常。&lt;/p></description></item><item><title>IOC容器的文件扫描顺序</title><link>https://ongoingblog.org/2025/05/ioc-container-init-sequence/</link><pubDate>Fri, 09 May 2025 10:43:08 +0800</pubDate><guid>https://ongoingblog.org/2025/05/ioc-container-init-sequence/</guid><description>&lt;p>先说下最终形成的顺序：按文件名称（例如&lt;code>cat.class&lt;/code>）进行升序排序的。&lt;/p>
+&lt;p>源码入口位置：&lt;code>org.springframework.context.annotation.AnnotationConfigApplicationContext#scan&lt;/code>&lt;/p>
+&lt;p>代码逻辑
+
+
+
+
+
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;">
+ &lt;a href="https://ongoingblog.org/2025/05/ioc-container-init-sequence/scan_process.png"
+ data-pswp-width="928"
+ data-pswp-height="5419"
+ target="_blank">
+ &lt;img src="https://ongoingblog.org/2025/05/ioc-container-init-sequence/scan_process.png"
+ alt="扫描顺序图"
+ style="max-width: 100%; height: auto;" />
+ &lt;/a>
+ &lt;figcaption style="text-align: center;">扫描顺序图&lt;/figcaption>
+&lt;/figure>
+&lt;/p></description></item><item><title>Idea debug堆栈窗口中的符号`&lt;init>`</title><link>https://ongoingblog.org/2025/05/idea-debug-stack-init/</link><pubDate>Thu, 08 May 2025 15:16:40 +0800</pubDate><guid>https://ongoingblog.org/2025/05/idea-debug-stack-init/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;img src="debug_init.png" alt="">&lt;p>在 debug 时发现 idea 中 debug 堆栈中有一个符号&lt;code>&amp;lt;init&amp;gt;&lt;/code>，我不知道这是代表的什么意思。
+点进去看涉及的是类中的构造方法代码。&lt;/p>
+&lt;h3 id="二init代表的是什么">二、&lt;code>&amp;lt;init&amp;gt;&lt;/code>代表的是什么？&lt;/h3>
+&lt;p>在 idea 的调试堆栈中，带有&lt;code>&amp;lt;init&amp;gt;&lt;/code>的记录表示对象的构造函数或者实例初始化块，表示对象初始化逻辑。&lt;/p>
+&lt;h3 id="三示例代码">三、示例代码&lt;/h3>
+&lt;p>如下代码&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">DebugInitDemo&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;初始化代码块&amp;#34;&lt;/span>); &lt;span style="color:#75715e">// 这里断点&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#a6e22e">DebugInitDemo&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;构造函数&amp;#34;&lt;/span>); &lt;span style="color:#75715e">// 这里断点&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">new&lt;/span> DebugInitDemo();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>debug模式启动，查看调试堆栈。&lt;/p>
+&lt;p>初始化代码块涉及的堆栈信息
+&lt;img src="init_block.png" alt="">&lt;/p>
+&lt;p>构造函数涉及的堆栈信息
+&lt;img src="constructor.png" alt="">&lt;/p></description></item><item><title>Git修改已提交记录的邮件地址</title><link>https://ongoingblog.org/2025/04/modify-email-address-of-your-committed-record/</link><pubDate>Thu, 24 Apr 2025 19:54:28 +0800</pubDate><guid>https://ongoingblog.org/2025/04/modify-email-address-of-your-committed-record/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>仓库中提交代码时发现邮件地址写错了，但是已经提交了，需要修改错误的邮件地址。&lt;/p>
+&lt;h3 id="二步骤">二、步骤&lt;/h3>
+&lt;h4 id="安装-git-filter-repo">安装 git-filter-repo&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>brew install git-filter-repo
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="修改邮件地址">修改邮件地址&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git filter-repo --email-callback &lt;span style="color:#e6db74">&amp;#39;return email.replace(b&amp;#34;旧邮件地址&amp;#34;, b&amp;#34;新邮件地址&amp;#34;)&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="三注意">三、注意&lt;/h3>
+&lt;p>原先的commit id会被覆盖掉，生成新的 commit id记录，可自行查看 git commit 记录的 hash id 和原来是不一样的了。&lt;/p></description></item><item><title>dependentBeanMap and dependenciesForBeanMap</title><link>https://ongoingblog.org/2025/04/dependentbeanmap-and-dependenciesforbeanmap/</link><pubDate>Wed, 23 Apr 2025 11:08:31 +0800</pubDate><guid>https://ongoingblog.org/2025/04/dependentbeanmap-and-dependenciesforbeanmap/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>在&lt;code>org.springframework.beans.factory.support.DefaultSingletonBeanRegistry&lt;/code>看到这两个变量&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>dependentBeanMap&lt;/code>: 本bean是其他bean的外部依赖，本bean是底层，别的bean需要本bean才能活下去。&lt;/li>
+&lt;li>&lt;code>dependenciesForBeanMap&lt;/code>: 外部依赖，本bean依赖于外部依赖。&lt;/li>
+&lt;/ul>
+&lt;h3 id="二结构">二、结构&lt;/h3>
+&lt;p>依赖关系如下图所示&lt;/p>
+&lt;img src="dependent_bean_and_dependency_bean.png" alt="">&lt;h4 id="dependentbeanmap反向依赖-">dependentBeanMap(反向依赖 &amp;lt;&amp;ndash;)&lt;/h4>
+&lt;ol>
+&lt;li>
+&lt;p>存放的是&lt;code>dependent bean&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>结构&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>Map&lt;span style="color:#f92672">&amp;lt;&lt;/span>String, Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&amp;gt;&lt;/span> dependentBeanMap &lt;span style="color:#f92672">=&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;beanA&amp;#34;&lt;/span>: &lt;span style="color:#f92672">[&lt;/span>&lt;span style="color:#e6db74">&amp;#34;beanB&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;beanC&amp;#34;&lt;/span>&lt;span style="color:#f92672">]&lt;/span>, &lt;span style="color:#75715e">// beanB, beanC 依赖 beanA&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;beanB&amp;#34;&lt;/span>: &lt;span style="color:#f92672">[&lt;/span>&lt;span style="color:#e6db74">&amp;#34;beanD&amp;#34;&lt;/span>&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#75715e">// beanD 依赖 beanB&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}; 
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>当 bean 被销毁时，通过 dependentBeanMap 找到依赖它的所有 bean，触发这些 bean 的销毁。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h4 id="dependenciesforbeanmap正向依赖-">dependenciesForBeanMap(正向依赖 &amp;ndash;&amp;gt;)&lt;/h4>
+&lt;ol>
+&lt;li>
+&lt;p>存放的是&lt;code>dependency bean&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>结构&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>Map&lt;span style="color:#f92672">&amp;lt;&lt;/span>String, Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&amp;gt;&lt;/span> dependenciesForBeanMap &lt;span style="color:#f92672">=&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;beanB&amp;#34;&lt;/span>: &lt;span style="color:#f92672">[&lt;/span>&lt;span style="color:#e6db74">&amp;#34;beanA&amp;#34;&lt;/span>&lt;span style="color:#f92672">]&lt;/span>, &lt;span style="color:#75715e">// beanB 依赖 beanA&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;beanC&amp;#34;&lt;/span>: &lt;span style="color:#f92672">[&lt;/span>&lt;span style="color:#e6db74">&amp;#34;beanA&amp;#34;&lt;/span>&lt;span style="color:#f92672">]&lt;/span>, &lt;span style="color:#75715e">// beanC 依赖 beanA&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;beanD&amp;#34;&lt;/span>: &lt;span style="color:#f92672">[&lt;/span>&lt;span style="color:#e6db74">&amp;#34;beanB&amp;#34;&lt;/span>&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#75715e">// beanD 依赖 beanB&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}; 
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>初始化 bean 阶段，根据这个 map 确认依赖是否已经就绪，因为需要确保依赖先就绪，再初始化本 bean&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="三dependent-bean">三、dependent bean&lt;/h3>
+&lt;p>那么&lt;code>dependent bean&lt;/code>的中文释义是如何翻译的呢？&lt;/p>
+&lt;p>依赖者。就是依赖某个bean的bean。&lt;/p>
+&lt;p>dependency: 被依赖者。
+例如项目pom文件中那些外部的依赖包，它们都是被依赖者，本项目依赖外部的那些依赖，它们不会依赖于本项目。&lt;/p></description></item><item><title>Class.isAssignableFrom()</title><link>https://ongoingblog.org/2025/04/class-isassignablefrom/</link><pubDate>Thu, 17 Apr 2025 16:06:00 +0800</pubDate><guid>https://ongoingblog.org/2025/04/class-isassignablefrom/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>在 spring 加载配置类，处理注解@Import&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>时，针对 candidate 做了比较，比较时就使用了&lt;code>Class&lt;/code>中的&lt;code>isAssignableFrom()&lt;/code>方法。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> (SourceClass candidate : importCandidates){
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span>(candidate.&lt;span style="color:#a6e22e">isAssignable&lt;/span>(ImportSelector .&lt;span style="color:#a6e22e">class&lt;/span>)){}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span> &lt;span style="color:#66d9ef">if&lt;/span>(candidate.&lt;span style="color:#a6e22e">isAssignable&lt;/span>(ImportBeanDefinitionRegistrar .&lt;span style="color:#a6e22e">class&lt;/span>)){}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span>{}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="二使用">二、使用&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">native&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">isAssignableFrom&lt;/span>(Class&lt;span style="color:#f92672">&amp;lt;?&amp;gt;&lt;/span> cls);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>其中&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>cls&lt;/code>是待检查的类&lt;/li>
+&lt;li>如果调用方法的类是 &lt;code>cls&lt;/code> 的父类、实现的接口，或者与 &lt;code>cls&lt;/code> 本身相同，返回 true.&lt;/li>
+&lt;/ul>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>关系&lt;/th>
+ &lt;th>备注&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>类继承关系&lt;/td>
+ &lt;td>父类.isAssignableFrom(子类) → true&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>接口实现关系&lt;/td>
+ &lt;td>接口.isAssignableFrom(实现类) → true&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>自身比较&lt;/td>
+ &lt;td>A.isAssignableFrom(A) → true&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>原始类型与包装类&lt;/td>
+ &lt;td>原始类型（如 int）和其包装类（如 Integer）不兼容&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h3 id="三测试代码">三、测试代码&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">AssignFromTest&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 接口实现&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// false&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(ArrayList.&lt;span style="color:#a6e22e">class&lt;/span>.&lt;span style="color:#a6e22e">isAssignableFrom&lt;/span>(List.&lt;span style="color:#a6e22e">class&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(List.&lt;span style="color:#a6e22e">class&lt;/span>.&lt;span style="color:#a6e22e">isAssignableFrom&lt;/span>(ArrayList.&lt;span style="color:#a6e22e">class&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 自身比较 true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(Client.&lt;span style="color:#a6e22e">class&lt;/span>.&lt;span style="color:#a6e22e">isAssignableFrom&lt;/span>(Client.&lt;span style="color:#a6e22e">class&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 继承&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(Number.&lt;span style="color:#a6e22e">class&lt;/span>.&lt;span style="color:#a6e22e">isAssignableFrom&lt;/span>(Integer.&lt;span style="color:#a6e22e">class&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// false&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(Integer.&lt;span style="color:#a6e22e">class&lt;/span>.&lt;span style="color:#a6e22e">isAssignableFrom&lt;/span>(Number.&lt;span style="color:#a6e22e">class&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 原始类型和包装类型&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// false&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span>.&lt;span style="color:#a6e22e">class&lt;/span>.&lt;span style="color:#a6e22e">isAssignableFrom&lt;/span>(Integer.&lt;span style="color:#a6e22e">class&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// false&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(Integer.&lt;span style="color:#a6e22e">class&lt;/span>.&lt;span style="color:#a6e22e">isAssignableFrom&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span>.&lt;span style="color:#a6e22e">class&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 数组&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(Object&lt;span style="color:#f92672">[]&lt;/span>.&lt;span style="color:#a6e22e">class&lt;/span>.&lt;span style="color:#a6e22e">isAssignableFrom&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span>.&lt;span style="color:#a6e22e">class&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// false&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span>.&lt;span style="color:#a6e22e">class&lt;/span>.&lt;span style="color:#a6e22e">isAssignableFrom&lt;/span>(Object.&lt;span style="color:#a6e22e">class&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>运行结果&lt;/p></description></item><item><title>Junit</title><link>https://ongoingblog.org/2025/04/junit/</link><pubDate>Tue, 15 Apr 2025 16:30:00 +0800</pubDate><guid>https://ongoingblog.org/2025/04/junit/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>Junit的使用。&lt;/p>
+&lt;h3 id="二一些注解">二、一些注解&lt;/h3>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>注解&lt;/th>
+ &lt;th>作用范围&lt;/th>
+ &lt;th>典型用途&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>@BeforeEach&lt;/td>
+ &lt;td>每个测试方法前执行&lt;/td>
+ &lt;td>初始化测试环境（如创建对象）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>@AfterEach&lt;/td>
+ &lt;td>每个测试方法后执行&lt;/td>
+ &lt;td>清理资源或重置状态&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table></description></item><item><title>Java 关键字：transient</title><link>https://ongoingblog.org/2025/04/transient/</link><pubDate>Tue, 15 Apr 2025 15:10:00 +0800</pubDate><guid>https://ongoingblog.org/2025/04/transient/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>Java 序列化机制中的排除标记，用于控制对象的持久化范围，确保敏感数据或临时数据不被保存或传输。&lt;/p>
+&lt;h3 id="二作用">二、作用&lt;/h3>
+&lt;p>序列化过程中，用 transient 标记的字段会被排除在序列化过程之外，反序列化时该字段的值会被设为默认值（对象为 null, int 类型字段为 0）。&lt;/p>
+&lt;h3 id="三使用场景">三、使用场景&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>敏感数据保护：密码、密钥不应被传输&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">User&lt;/span> &lt;span style="color:#66d9ef">implements&lt;/span> Serializable {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> String username;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">transient&lt;/span> String password; &lt;span style="color:#75715e">// 序列化时忽略此字段&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>} 
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>避免保存临时状态：例如缓存数据或中间计算结果&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">DataProcessor&lt;/span> &lt;span style="color:#66d9ef">implements&lt;/span> Serializable {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> rawData;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">transient&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> cachedResult; &lt;span style="color:#75715e">// 无需保存临时结果&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>} 
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;/ol>
+&lt;h3 id="四字段添加了-transient-和不加的对比">四、字段添加了 transient 和不加的对比&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;p>没有加 transient
+&lt;img src="without_transient.png" alt="">&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>添加了 transient
+&lt;img src="with_transient.png" alt="">&lt;/p>
+&lt;/li>
+&lt;/ul></description></item><item><title>回调 Callback</title><link>https://ongoingblog.org/2025/04/java-callback/</link><pubDate>Thu, 10 Apr 2025 16:25:00 +0800</pubDate><guid>https://ongoingblog.org/2025/04/java-callback/</guid><description>&lt;h3 id="一什么是回调">一、什么是回调？&lt;/h3>
+&lt;img src="callback.png" alt="">&lt;p>如上图所示&lt;/p>
+&lt;ol>
+&lt;li>client 端调用 server 端&lt;/li>
+&lt;li>在特定条件满足时，又由 server 端反向调用 client 端&lt;/li>
+&lt;/ol>
+&lt;p>25.07.08 Tue&lt;/p>
+&lt;p>补：前几天看电影迷失东京，斯嘉丽和她在美国的朋友打电话结束的时候说“call me back”，我想着这不也是回调嘛，你调用的模块，在某个条件来临时会来调用你。&lt;/p>
+&lt;h3 id="二回调使用的场景">二、回调使用的场景&lt;/h3>
+&lt;p>观察者模式&lt;/p>
+&lt;ol>
+&lt;li>观察者实现回调接口&lt;/li>
+&lt;li>被观察者状态发生变更时触发回调，观察者们接收对应的状态变更消息&lt;/li>
+&lt;/ol>
+&lt;h3 id="三好处">三、好处&lt;/h3>
+&lt;ol>
+&lt;li>调用方和被调用方分离，只通过接口进行交互&lt;/li>
+&lt;li>被调用方可以定义逻辑顺序，不管具体实现，只需要在约定的时机触发回调&lt;/li>
+&lt;li>至于接口方法逻辑如何被实现，由调用方自由进行控制&lt;/li>
+&lt;/ol>
+&lt;h3 id="四代码例子">四、代码例子&lt;/h3>
+&lt;p>接口定义&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @description 回调接口
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">Callback&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">callbackMethod&lt;/span>(String message);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>调用方实现接口&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @description 调用方
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Client&lt;/span> &lt;span style="color:#66d9ef">implements&lt;/span> Callback {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Override&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">callbackMethod&lt;/span>(String message) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;client 执行回调方法：&amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> message);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>传递对象、触发回调&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @description 被调用方
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Server&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> Callback callback;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * 注册 callback
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @param callback
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">registCallback&lt;/span>(Callback callback) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">callback&lt;/span> &lt;span style="color:#f92672">=&lt;/span> callback;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * 调用 callback
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">triggerCallback&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;server 触发 callback!&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (callback &lt;span style="color:#f92672">!=&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> callback.&lt;span style="color:#a6e22e">callbackMethod&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;事件已经触发到了！&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>验证执行&lt;/p></description></item><item><title>LinkedHashMap使用</title><link>https://ongoingblog.org/2025/04/linkedhashmap/</link><pubDate>Wed, 09 Apr 2025 09:45:00 +0800</pubDate><guid>https://ongoingblog.org/2025/04/linkedhashmap/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>可以用LinkedHashMap去实现LRUCache，这里说一下它的用法。&lt;/p>
+&lt;h3 id="二原理">二、原理&lt;/h3>
+&lt;p>使用双向链表来维护遍历顺序。&lt;/p>
+&lt;h3 id="三应用场景">三、应用场景&lt;/h3>
+&lt;p>基于LRU算法的缓存。&lt;/p>
+&lt;h3 id="四实现">四、实现&lt;/h3>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.util.LinkedHashMap;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.util.Map;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @description 使用LinkedHashMap实现LRUCache
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @date 2025-04-09
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">LRUCache&lt;/span> &lt;span style="color:#66d9ef">extends&lt;/span> LinkedHashMap&lt;span style="color:#f92672">&amp;lt;&lt;/span>Integer, Integer&lt;span style="color:#f92672">&amp;gt;&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 容量&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> capacity;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 初始化&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#a6e22e">LRUCache&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> capacity) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 注意：accessOrder必须设置为true,才会有LRU的特性。否则，只会维护插入顺序&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">super&lt;/span>(capacity, 0.&lt;span style="color:#a6e22e">75f&lt;/span>, &lt;span style="color:#66d9ef">true&lt;/span>); &lt;span style="color:#75715e">// loadFactor是float类型的&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">capacity&lt;/span> &lt;span style="color:#f92672">=&lt;/span> capacity;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 根据key获取value。存在返回，不存在返回-1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">get&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> key) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">super&lt;/span>.&lt;span style="color:#a6e22e">getOrDefault&lt;/span>(key, &lt;span style="color:#f92672">-&lt;/span>1);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 向缓存中插入(key, value)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">put&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> key, &lt;span style="color:#66d9ef">int&lt;/span> value) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">super&lt;/span>.&lt;span style="color:#a6e22e">put&lt;/span>(key, value);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 是否移除旧结点逻辑(双向链表的头部结点)，触发条件。注意：此为实现固定大小的缓存的关键&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// it allows the map to reduce memory consumption(内存消耗) by deleting &lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// stale(不新鲜的) entries.&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Override&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">protected&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">removeEldestEntry&lt;/span>(Map.&lt;span style="color:#a6e22e">Entry&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>Integer, Integer&lt;span style="color:#f92672">&amp;gt;&lt;/span> eldest) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">super&lt;/span>.&lt;span style="color:#a6e22e">size&lt;/span>() &lt;span style="color:#f92672">&amp;gt;&lt;/span> capacity;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>测试程序&lt;/p></description></item><item><title>设计 LRU</title><link>https://ongoingblog.org/2025/04/design-lru-algo/</link><pubDate>Tue, 08 Apr 2025 19:00:00 +0800</pubDate><guid>https://ongoingblog.org/2025/04/design-lru-algo/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;ul>
+&lt;li>含义：Least Recently Used, 最近最少使用。&lt;/li>
+&lt;li>作用：缓存空间不足时，决定哪些数据被移除。&lt;/li>
+&lt;li>场景
+&lt;ul>
+&lt;li>内存管理，页面置换算法&lt;/li>
+&lt;li>一种缓存淘汰策略&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="二原理">二、原理&lt;/h3>
+&lt;p>局部性原理&lt;/p>
+&lt;ul>
+&lt;li>时间局部性：被引用过一次的存储器位置在未来会被多次引用（通常在循环中）。&lt;/li>
+&lt;li>空间局部性：如果一个存储器的位置被引用，那么将来他附近的位置也会被引用。&lt;/li>
+&lt;/ul>
+&lt;h3 id="三实现">三、实现&lt;/h3>
+&lt;p>三个操作&lt;/p>
+&lt;ol>
+&lt;li>查找 get
+当某个元素被访问到，会把它移动到链表的表头&lt;/li>
+&lt;li>插入 put
+存在结点，更新
+不存在，插入到表头。如果空间不足，还需要淘汰掉末尾的结点&lt;/li>
+&lt;/ol>
+&lt;h4 id="单链表实现">单链表实现&lt;/h4>
+&lt;h4 id="双链表实现">双链表实现&lt;/h4>
+&lt;p>双向链表 + 哈希表&lt;/p>
+&lt;p>双向链表：最近使用的放在链表的前端，反之则是在链表的后端。&lt;/p>
+&lt;h4 id="linkedhashmap-实现">&lt;a href="https://ongoingblog.org/2025/04/linkedhashmap/">LinkedHashMap 实现&lt;/a>&lt;/h4></description></item><item><title>Headless Mode</title><link>https://ongoingblog.org/2025/04/java-headless-mode/</link><pubDate>Sun, 06 Apr 2025 14:47:00 +0800</pubDate><guid>https://ongoingblog.org/2025/04/java-headless-mode/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>第一次看到&lt;code>headless&lt;/code>这个词，先去搜索了下含义
+&lt;img src="headless_meaning.png" alt="">&lt;/p>
+&lt;p>叫作无头的，也就是说 java headless mode 翻译为中文就是 java 无头模式。&lt;/p>
+&lt;p>依旧不懂这个名词的意思，虽然翻译过来了。&lt;/p>
+&lt;p>继续搜索，网上的结果这样显示：&lt;/p>
+&lt;blockquote>
+&lt;p>Java 无头模式（Headless Mode）是 Java 提供的一种特殊运行模式，允许在没有物理显示设备、键盘或鼠标的环境（如服务器、后台服务、命令行环境）中执行依赖于图形界面的操作。它通过虚拟化图形环境，支持部分图形功能（如生成图片、PDF、图表等），而无需实际显示器。&lt;/p>&lt;/blockquote>
+&lt;p>联系到这个用途我就可以理解了，就是类似后台执行的程序一样，不需要前台的一个展示界面。&lt;/p>
+&lt;h3 id="二java-headless-mode">二、Java Headless Mode&lt;/h3>
+&lt;p>通过虚拟化一个“看不见的图形环境”（无头的图形环境），绕过对物理显示设备的依赖，但仍允许程序使用图形库的核心功能（如绘图、字体处理、图像生成）。&lt;/p>
+&lt;p>在服务器等无图形设备的环境中，依然能利用图形库完成关键任务（如生成报表、处理图片），是后台自动化处理的利器。&lt;/p>
+&lt;p>&lt;strong>如何配置&lt;code>headless mode&lt;/code>?&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">setProperty&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;java.awt.headless&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;true&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="三类似场景">三、类似场景&lt;/h3>
+&lt;p>&lt;a href="https://developer.chrome.google.cn/docs/chromium/headless?hl=zh-cn"target="_blank" rel="noopener noreferrer">Chrome 无头模式&lt;/a>：谷歌浏览器的无界面模式，用于自动化测试。&lt;/p>
+&lt;blockquote>
+&lt;p>借助 Chrome 无头模式，您可以在无人值守的环境中运行浏览器，而无需任何可见的界面。从本质上讲，您无需 chrome 即可运行 Chrome。
+&lt;img src="chrome_headful_and_headless_mode.png" alt="">&lt;/p>&lt;/blockquote>
+&lt;h3 id="四参考">四、参考&lt;/h3>
+&lt;ul>
+&lt;li>&lt;a href="https://www.oracle.com/technical-resources/articles/javase/headless.html"target="_blank" rel="noopener noreferrer">Using Headless Mode in the Java SE Platform&lt;/a>&lt;/li>
+&lt;li>遇到的一个产品支持的特性中有下面这样一条&lt;/li>
+&lt;/ul>
+&lt;img src="console_mode.png" alt=""></description></item><item><title>搭建 springboot 源码阅读环境</title><link>https://ongoingblog.org/2025/04/build-spring-boot-source-code-environment/</link><pubDate>Sun, 06 Apr 2025 08:22:00 +0800</pubDate><guid>https://ongoingblog.org/2025/04/build-spring-boot-source-code-environment/</guid><description>&lt;div class="toc-container">
+ &lt;h2 class="toc-title">文章目录&lt;/h2>
+ &lt;div class="toc-content">
+ &lt;nav id="TableOfContents">
+ &lt;ul>
+ &lt;li>
+ &lt;ul>
+ &lt;li>&lt;a href="#一背景">一、背景&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#二步骤">二、步骤&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#三框架前身-interface21-源码环境搭建">三、框架前身 interface21 源码环境搭建&lt;/a>&lt;/li>
+ &lt;/ul>
+ &lt;/li>
+ &lt;/ul>
+&lt;/nav>
+ &lt;/div>
+&lt;/div>
+
+&lt;style>
+ .toc-container {
+ border-left: 3px solid #4a86e8;
+ padding: 1.2rem 1.8rem;
+ margin: 2.5rem 0;
+ background: #f8fbfe;
+ border-radius: 0 8px 8px 0;
+ box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+ }
+
+ .toc-title {
+ font-size: 1.4rem;
+ margin-top: 0;
+ margin-bottom: 1rem;
+ color: #2c5282;
+ padding-bottom: 0.5rem;
+ border-bottom: 1px solid #e2e8f0;
+ }
+
+ .toc-content ul {
+ list-style: none;
+ padding-left: 1.2rem;
+ margin: 0;
+ }
+
+ .toc-content li {
+ margin: 0.7rem 0;
+ line-height: 1.1;
+ position: relative;
+ }
+
+ .toc-content a {
+ color: #3182ce;
+ text-decoration: none;
+ transition: all 0.3s ease;
+ display: block;
+ padding: 0.3rem 0.5rem;
+ border-radius: 4px;
+ }
+
+ .toc-content a:hover {
+ color: #020202;
+ background: #ebf4ff;
+ padding-left: 0.8rem;
+ }
+
+ .toc-warning {
+ padding: 1.2rem;
+ background: #fffaf0;
+ border: 1px solid #feebc8;
+ border-radius: 6px;
+ color: #dd6b20;
+ margin: 2rem 0;
+ }
+
+ .toc-warning p {
+ margin: 0.5rem 0;
+ }
+
+ .toc-highlight {
+ animation: highlight-fade 2s ease;
+ background-color: rgba(255, 230, 0, 0.3);
+ }
+
+ @keyframes highlight-fade {
+ 0% { background-color: rgba(255, 230, 0, 0.8); }
+ 100% { background-color: transparent; }
+ }
+
+ 
+ .toc-debug {
+ font-size: 0.9rem;
+ color: #4a5568;
+ }
+ .toc-debug h4 {
+ margin-top: 0;
+ color: #2b6cb0;
+ }
+&lt;/style>
+&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>搭建 SpringBoot 源码阅读环境。&lt;/p></description></item><item><title>Debug 的经验</title><link>https://ongoingblog.org/2025/04/debug/</link><pubDate>Sat, 05 Apr 2025 18:34:00 +0800</pubDate><guid>https://ongoingblog.org/2025/04/debug/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>这里存放一些优化 debug 行为的点。&lt;/p>
+&lt;h3 id="二场景">二、场景&lt;/h3>
+&lt;h4 id="01">01&lt;/h4>
+&lt;p>单元方法测试为了验证某个 assertNull(a), 可以在执行中直接 F2 修改原变量为 null，验证是否跑到。如果是整个服务范围的测试，建议从业务逻辑上考虑造出这样的数据。&lt;/p>
+&lt;h4 id="02">02&lt;/h4>
+&lt;p>idea debug 查看当前 BeanPostProcessor 类型的变量 pp 是否为 InfrastructureAdvisorAutoProxyCreator，断点语句应该怎么写？&lt;/p>
+&lt;img src="problem.png" alt="">&lt;p>条件断点表达式这样写：&lt;/p>
+&lt;p>&lt;code>pp.getClass() == org.springframework.aop.framework.autoproxy.InfrastructureAdvisorAutoProxyCreator.class&lt;/code>&lt;/p></description></item><item><title>IDEA不识别moudle</title><link>https://ongoingblog.org/2025/04/idea-not-identify-module/</link><pubDate>Fri, 04 Apr 2025 20:47:00 +0800</pubDate><guid>https://ongoingblog.org/2025/04/idea-not-identify-module/</guid><description>&lt;h3 id="一idea中突然不识别我新建的module了">一、IDEA中突然不识别我新建的module了&lt;/h3>
+&lt;p>显示如下图&lt;/p>
+&lt;img src="error_module.png" alt="">&lt;h3 id="二解决方案">二、解决方案&lt;/h3>
+&lt;p>在网上搜索了下其他人遇到的，但是对我并不适用。&lt;/p>
+&lt;p>索性直接新建了一个名为&lt;code>my-test2&lt;/code>的module，这次新建直接就是好的:
+&lt;img src="good_module.png" alt="">&lt;/p>
+&lt;p>为了避免下一次的问题出现，我想把这个样例先给commit下，发现有一个文件的变更，变更涉及到一句新增的代码:&lt;/p>
+&lt;p>涉及文件settings.gradle&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-diff" data-lang="diff">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">+ include &amp;#39;my-test2&amp;#39;
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>这个文件新增了一句这个。&lt;/p>
+&lt;p>我突然想起之前切换到源码的其他分支时，为了顺利切换，把新建my-test模块时涉及到的这个类似变更给扔到暂存里去了。&lt;/p>
+&lt;p>我把my-test的变更恢复回来，module就能识别到了&lt;/p>
+&lt;img src="recovered_module.png" alt=""></description></item><item><title>JavaBean</title><link>https://ongoingblog.org/2025/04/javabean/</link><pubDate>Fri, 04 Apr 2025 19:00:00 +0800</pubDate><guid>https://ongoingblog.org/2025/04/javabean/</guid><description>&lt;h3 id="一什么是-javabean">一、什么是 JavaBean&lt;/h3>
+&lt;p>遵守以下这些约定俗成规范的类就是 JavaBean:&lt;/p>
+&lt;ul>
+&lt;li>是一个 public 类&lt;/li>
+&lt;li>有一个 public 的无参构造函数&lt;/li>
+&lt;li>所有的属性都是私有的，提供 public 的 getter/setter 方法&lt;/li>
+&lt;li>如果希望能被持久化，需要实现&lt;a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html"target="_blank" rel="noopener noreferrer">Serializable 接口&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h3 id="二例子">二、例子&lt;/h3>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@Entity&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Employee&lt;/span> &lt;span style="color:#66d9ef">implements&lt;/span> Serializable{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Id&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> id;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> String name; 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> salary; 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#a6e22e">Employee&lt;/span>() {}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#a6e22e">Employee&lt;/span>(String name, &lt;span style="color:#66d9ef">int&lt;/span> salary) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">=&lt;/span> name;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">salary&lt;/span> &lt;span style="color:#f92672">=&lt;/span> salary;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">getId&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> id;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">setId&lt;/span>( &lt;span style="color:#66d9ef">int&lt;/span> id ) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">id&lt;/span> &lt;span style="color:#f92672">=&lt;/span> id;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> String &lt;span style="color:#a6e22e">getName&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> name;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">setName&lt;/span>( String name ) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">=&lt;/span> name;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">getSalary&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> salary;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">setSalary&lt;/span>( &lt;span style="color:#66d9ef">int&lt;/span> salary ) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">salary&lt;/span> &lt;span style="color:#f92672">=&lt;/span> salary;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="三pojoplain-old-java-object">三、POJO(Plain Old Java Object)&lt;/h3>
+&lt;p>和 JavaBean 都是对象模型。&lt;/p></description></item><item><title>委托模式</title><link>https://ongoingblog.org/2025/04/delegation/</link><pubDate>Fri, 04 Apr 2025 12:00:00 +0800</pubDate><guid>https://ongoingblog.org/2025/04/delegation/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;ul>
+&lt;li>一种组合方法。强调组合优于继承，通过对象的协作来实现功能&lt;/li>
+&lt;li>在委托方式下，两个对象处理一个请求，接受请求的对象将操作委托给它的代理者。&lt;/li>
+&lt;/ul>
+&lt;h3 id="二原理">二、原理&lt;/h3>
+&lt;p>组成角色&lt;/p>
+&lt;ol>
+&lt;li>委托者: 接受请求，派发任务&lt;/li>
+&lt;li>委托接口: 定义实现方法&lt;/li>
+&lt;li>具体委托对象：实际执行任务&lt;/li>
+&lt;/ol>
+&lt;p>我突然发现回调和委托逻辑很像。
+回调是委托模式的一种应用场景。&lt;/p>
+&lt;h3 id="三与其他模式的区别">三、与其他模式的区别&lt;/h3>
+&lt;p>委派和代理及装饰者模式不同
+委派仅仅是将方法的执行工作移交给另一个对象&lt;/p>
+&lt;p>代理可能在此做额外的处理
+装饰者会在方法执行前后做增强。&lt;/p>
+&lt;h3 id="四例子">四、例子&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">TaskHandler&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">handleTask&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Delegator&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> TaskHandler taskHandler;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">setTaskHandler&lt;/span>(TaskHandler taskHandler) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">taskHandler&lt;/span> &lt;span style="color:#f92672">=&lt;/span> taskHandler;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">executeTask&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (taskHandler &lt;span style="color:#f92672">!=&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> taskHandler.&lt;span style="color:#a6e22e">handleTask&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Delegator&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> TaskHandler taskHandler;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">setTaskHandler&lt;/span>(TaskHandler taskHandler) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">taskHandler&lt;/span> &lt;span style="color:#f92672">=&lt;/span> taskHandler;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">executeTask&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (taskHandler &lt;span style="color:#f92672">!=&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> taskHandler.&lt;span style="color:#a6e22e">handleTask&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">DelegateTest&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Delegator delegator &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Delegator();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> delegator.&lt;span style="color:#a6e22e">setTaskHandler&lt;/span>(&lt;span style="color:#66d9ef">new&lt;/span> ConcreteHandler());
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> delegator.&lt;span style="color:#a6e22e">executeTask&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>CAS(compare and swap)</title><link>https://ongoingblog.org/2025/04/compare-and-set/</link><pubDate>Thu, 03 Apr 2025 19:54:00 +0800</pubDate><guid>https://ongoingblog.org/2025/04/compare-and-set/</guid><description>&lt;div class="toc-container">
+ &lt;h2 class="toc-title">文章目录&lt;/h2>
+ &lt;div class="toc-content">
+ &lt;nav id="TableOfContents">
+ &lt;ul>
+ &lt;li>&lt;a href="#一背景">一、背景&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#二和传统锁的对比">二、和传统锁的对比&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#三实际的使用">三、实际的使用&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#四存在的问题">四、存在的问题&lt;/a>
+ &lt;ul>
+ &lt;li>&lt;a href="#一aba-问题">（一）ABA 问题&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#二开销问题">（二）开销问题&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#三只能保证一个共享变量的原子问题">（三）只能保证一个共享变量的原子问题&lt;/a>&lt;/li>
+ &lt;/ul>
+ &lt;/li>
+ &lt;/ul>
+&lt;/nav>
+ &lt;/div>
+&lt;/div>
+
+&lt;style>
+ .toc-container {
+ border-left: 3px solid #4a86e8;
+ padding: 1.2rem 1.8rem;
+ margin: 2.5rem 0;
+ background: #f8fbfe;
+ border-radius: 0 8px 8px 0;
+ box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+ }
+
+ .toc-title {
+ font-size: 1.4rem;
+ margin-top: 0;
+ margin-bottom: 1rem;
+ color: #2c5282;
+ padding-bottom: 0.5rem;
+ border-bottom: 1px solid #e2e8f0;
+ }
+
+ .toc-content ul {
+ list-style: none;
+ padding-left: 1.2rem;
+ margin: 0;
+ }
+
+ .toc-content li {
+ margin: 0.7rem 0;
+ line-height: 1.1;
+ position: relative;
+ }
+
+ .toc-content a {
+ color: #3182ce;
+ text-decoration: none;
+ transition: all 0.3s ease;
+ display: block;
+ padding: 0.3rem 0.5rem;
+ border-radius: 4px;
+ }
+
+ .toc-content a:hover {
+ color: #020202;
+ background: #ebf4ff;
+ padding-left: 0.8rem;
+ }
+
+ .toc-warning {
+ padding: 1.2rem;
+ background: #fffaf0;
+ border: 1px solid #feebc8;
+ border-radius: 6px;
+ color: #dd6b20;
+ margin: 2rem 0;
+ }
+
+ .toc-warning p {
+ margin: 0.5rem 0;
+ }
+
+ .toc-highlight {
+ animation: highlight-fade 2s ease;
+ background-color: rgba(255, 230, 0, 0.3);
+ }
+
+ @keyframes highlight-fade {
+ 0% { background-color: rgba(255, 230, 0, 0.8); }
+ 100% { background-color: transparent; }
+ }
+
+ 
+ .toc-debug {
+ font-size: 0.9rem;
+ color: #4a5568;
+ }
+ .toc-debug h4 {
+ margin-top: 0;
+ color: #2b6cb0;
+ }
+&lt;/style>
+&lt;h2 id="一背景">一、背景&lt;/h2>
+&lt;p>&lt;strong>为什么要有 CAS，它解决了什么问题？&lt;/strong>&lt;/p></description></item><item><title>模板方法</title><link>https://ongoingblog.org/2025/04/template-method/</link><pubDate>Wed, 02 Apr 2025 19:37:00 +0800</pubDate><guid>https://ongoingblog.org/2025/04/template-method/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>定义操作算法中的骨架，分离可变和不变的逻辑，将一些步骤延迟到子类中。&lt;/p>
+&lt;h3 id="二组成要素">二、组成要素&lt;/h3>
+&lt;h4 id="抽象类">抽象类&lt;/h4>
+&lt;ol>
+&lt;li>定义模板方法算法骨架&lt;/li>
+&lt;li>声明可变的方法和不可变的方法&lt;/li>
+&lt;/ol>
+&lt;h4 id="模板方法">模板方法&lt;/h4>
+&lt;p>定义整个流程。&lt;/p>
+&lt;h4 id="抽象方法">抽象方法&lt;/h4>
+&lt;p>子类必须实现。&lt;/p>
+&lt;h4 id="钩子-hook-方法">钩子 (hook) 方法&lt;/h4>
+&lt;p>预留扩展点，提供缺省行为 (子类可选实现)，通常是空的操作，由开发者进行扩展。&lt;/p>
+&lt;h3 id="三代码示例">三、代码示例&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">abstract&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">AbstractApplicationContext&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 模板方法&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">refresh&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// ...固定步骤&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> postProcessBeanFactory(beanFactory); &lt;span style="color:#75715e">// &amp;lt;- HOOK 1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// ...固定步骤&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> onRefresh(); &lt;span style="color:#75715e">// &amp;lt;- HOOK 2 (关键扩展点)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// ...固定步骤&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// HOOK 1: BeanFactory 后处理 (默认空实现)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">protected&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">postProcessBeanFactory&lt;/span>(ConfigurableListableBeanFactory beanFactory) {}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// HOOK 2: 子类特殊初始化 (默认空实现)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">protected&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">onRefresh&lt;/span>() {}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="四spring-中的命名约定">四、Spring 中的命名约定&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>前缀 &lt;strong>Do-&lt;/strong>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>例子&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>org.&lt;span style="color:#a6e22e">springframework&lt;/span>.&lt;span style="color:#a6e22e">beans&lt;/span>.&lt;span style="color:#a6e22e">factory&lt;/span>.&lt;span style="color:#a6e22e">support&lt;/span>.&lt;span style="color:#a6e22e">AbstractBeanFactory&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">#&lt;/span>createBean
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>org.&lt;span style="color:#a6e22e">springframework&lt;/span>.&lt;span style="color:#a6e22e">beans&lt;/span>.&lt;span style="color:#a6e22e">factory&lt;/span>.&lt;span style="color:#a6e22e">support&lt;/span>.&lt;span style="color:#a6e22e">AbstractAutowireCapableBeanFactory&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">#&lt;/span>doCreateBean
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;/ol>
+&lt;h3 id="五参考">五、参考&lt;/h3>
+&lt;ul>
+&lt;li>&lt;a href="https://www.cnblogs.com/aibi1/p/18752390"target="_blank" rel="noopener noreferrer">https://www.cnblogs.com/aibi1/p/18752390&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Spring 源码阅读</title><link>https://ongoingblog.org/2025/04/read-spring-code/</link><pubDate>Wed, 02 Apr 2025 12:10:00 +0800</pubDate><guid>https://ongoingblog.org/2025/04/read-spring-code/</guid><description>&lt;h3 id="beanfactory-体系">beanFactory 体系&lt;/h3>
+
+
+
+
+
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;">
+ &lt;a href="spring_process-beanFactory%26applicationContext.png"
+ target="_blank">
+ &lt;img src="spring_process-beanFactory%26applicationContext.png"
+ alt="BeanFactory 和 ApplicationContext"
+ style="max-width: 100%; height: auto;" />
+ &lt;/a>
+ &lt;figcaption style="text-align: center;">BeanFactory 和 ApplicationContext&lt;/figcaption>
+&lt;/figure>
+
+&lt;p>下属的各种实现&lt;/p>
+&lt;p>org.springframework.context.support.AbstractApplicationContext#prepareBeanFactory
+上面这个方法里框架自己注册了一些默认的 bean，框架不希望开发者操作它们&lt;/p>
+&lt;img src="register_default_environment_bean.png" alt="">&lt;p>AutowireCapableBeanFactory&lt;/p>
+&lt;p>可以自动注入的 bean factory.&lt;/p>
+&lt;blockquote>
+&lt;p>普通的 BeanFactory 只有读的操作，但是 Configurable 前缀的 BeanFactory 或者 ApplicationContext 具有写的操作&lt;/p>&lt;/blockquote>
+&lt;img src="ConfigurableBeanFactory.png" alt="">&lt;h3 id="applicationcontext-体系">ApplicationContext 体系&lt;/h3>
+&lt;p>容器和上下文的关系
+&lt;img src="ContextAndBean.png" alt="">&lt;/p>
+&lt;h3 id="我理解的依赖倒置">我理解的依赖倒置&lt;/h3>
+&lt;p>重点应该是&lt;strong>倒置&lt;/strong>这个词的理解。&lt;/p>
+&lt;p>倒置之前是什么样的&lt;/p>
+&lt;ul>
+&lt;li>旧：上层依赖下层&lt;/li>
+&lt;/ul>
+&lt;p>倒置之后是什么样的&lt;/p>
+&lt;ul>
+&lt;li>新：抽象出公共的标准协议，上层和下层都需要遵守&lt;/li>
+&lt;/ul>
+&lt;p>如何去实现它：&lt;/p>
+&lt;ul>
+&lt;li>每个类尽量都有接口或抽象类，或者抽象类和接口两者都具备。这是依赖倒置的基本要求，接口和抽象类都是属于抽象的，有了抽象才可能依赖倒置&lt;/li>
+&lt;/ul>
+&lt;p>站在长期去考虑，什么东西是变的，什么东西是不变的？&lt;/p>
+&lt;p>我问了下依赖倒置是不是就是面向接口编程，它说面向接口编程只是依赖倒置的一部分。&lt;/p>
+&lt;h3 id="参考">参考&lt;/h3>
+&lt;p>&lt;a href="https://developer.aliyun.com/article/847889"target="_blank" rel="noopener noreferrer">Java 新人常问：什么是依赖倒置原则？万字案例给你讲懂！（下）&lt;/a>&lt;/p></description></item><item><title>搭建Spring源码阅读环境</title><link>https://ongoingblog.org/2025/04/build-spring-source-code-environment/</link><pubDate>Wed, 02 Apr 2025 12:10:00 +0800</pubDate><guid>https://ongoingblog.org/2025/04/build-spring-source-code-environment/</guid><description>&lt;h3 id="一背景">一、背景&lt;/h3>
+&lt;p>搭建Spring源码阅读环境。&lt;/p>
+&lt;h3 id="二步骤">二、步骤&lt;/h3>
+&lt;h4 id="下载源码">下载源码&lt;/h4>
+&lt;p>打开&lt;a href="https://github.com/spring-projects/spring-framework"target="_blank" rel="noopener noreferrer">spring-framework仓库地址&lt;/a>，将项目源码clone到本地。&lt;/p>
+&lt;h4 id="本地编译源码">本地编译源码&lt;/h4>
+&lt;p>在用idea打开项目，这里我切换的分支是&lt;code>5.3.x&lt;/code>，项目就会自动拉取依赖进行编译。&lt;/p>
+&lt;p>但问题是下载依赖的速度太慢了。最好用【三、技巧】中的方法加快一下下载速度，编译也马上就完成了。&lt;/p>
+&lt;h4 id="验证编译是否有问题">验证编译是否有问题&lt;/h4>
+&lt;ol>
+&lt;li>
+&lt;p>新建一个自定义的模块&lt;/p>
+&lt;img src="create_a_new_module.png" alt="">&lt;p>建好后模块的目录树如下&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>➜ my-test git:&lt;span style="color:#f92672">(&lt;/span>5.3.x&lt;span style="color:#f92672">)&lt;/span> ✗ tree . -L &lt;span style="color:#ae81ff">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>├── build &lt;span style="color:#75715e"># 无需关注&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>│   ├── classes &lt;span style="color:#75715e"># 无需关注&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>│   ├── generated &lt;span style="color:#75715e"># 无需关注&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>│   ├── resources &lt;span style="color:#75715e"># 无需关注&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>│   └── tmp &lt;span style="color:#75715e"># 无需关注&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>├── build.gradle &lt;span style="color:#75715e"># 需要关注&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>└── src
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├── main &lt;span style="color:#75715e"># 需要关注&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├── test &lt;span style="color:#75715e"># 无需关注&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> └── testFixtures &lt;span style="color:#75715e"># 无需关注&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;/ol>
+&lt;h3 id="三技巧">三、技巧&lt;/h3>
+&lt;h4 id="idea设置代理加快项目下载依赖的速度">idea设置代理，加快项目下载依赖的速度&lt;/h4>
+&lt;p>设置路径：&lt;code>Settings | Appearance &amp;amp; Behavior | System Settings | HTTP Proxy&lt;/code>
+&lt;img src="idea_set_http_proxy.png" alt="">&lt;/p>
+&lt;h4 id="设置注释类型">设置注释类型&lt;/h4>
+&lt;img src="comment_initial_form.png" alt="">&lt;p>设置路径：&lt;code>Settings | Editor | General | Appearance&lt;/code>
+&lt;img src="config_set_path.png" alt="">&lt;/p></description></item><item><title>Mybatis缓存机制</title><link>https://ongoingblog.org/2024/09/mybatis-cache/</link><pubDate>Tue, 03 Sep 2024 12:10:00 +0800</pubDate><guid>https://ongoingblog.org/2024/09/mybatis-cache/</guid><description>&lt;p>提高查询效率和减轻数据库压力。&lt;/p>
+&lt;h3 id="分类">分类&lt;/h3>
+&lt;ul>
+&lt;li>一级缓存&lt;/li>
+&lt;li>二级缓存&lt;/li>
+&lt;li>第三方缓存&lt;/li>
+&lt;/ul>
+&lt;h3 id="一级缓存">一级缓存&lt;/h3>
+&lt;p>本地缓存。SqlSession级别。&lt;/p>
+&lt;p>如何验证，在IDEA中查看控制台是否执行了sql查询语句，如果是直接返回结果，就是从缓存中拿的，不是去查的数据库。&lt;/p>
+&lt;h3 id="二级缓存">二级缓存&lt;/h3>
+&lt;ol>
+&lt;li>作用域比一级缓存大。&lt;/li>
+&lt;li>多个sqlsession可以共用一级缓存。&lt;/li>
+&lt;li>默认情况下，二级缓存关闭，需要手工开启。&lt;/li>
+&lt;/ol>
+&lt;p>开启二级缓存后：二级缓存 - 一级缓存 - 数据库&lt;/p>
+&lt;h3 id="失效情形">失效情形&lt;/h3>
+&lt;p>两次查询之间执行增删改操作，会同时清空一级缓存和二级缓存。&lt;/p></description></item><item><title>程序上下文</title><link>https://ongoingblog.org/2024/03/context/</link><pubDate>Sat, 16 Mar 2024 11:34:00 +0800</pubDate><guid>https://ongoingblog.org/2024/03/context/</guid><description>&lt;p>前言: 程序上下文。&lt;/p>
+&lt;p>可以理解为环境。
+一段程序依赖的变量的集合，如果没有这些外部变量，这些单独的方法也做不了什么。
+一个功能在应用中可能包含了多个方法集合，从请求进入，到逻辑执行，到最后的输出，会加载变量，这些变量又会进入到各种方法，方法可能会对变量产生影响，这一整个过程中
+包含的各类变量大杂烩就是上下文。&lt;/p>
+&lt;p>上下文虽然叫上下文，程序一般只有上文而已。&lt;/p>
+&lt;p>&amp;ldquo;读者要想解读一段由这种符号组成的信息，必须事先知道这段信息的语境 -
+它的上下文关系，前因后果&amp;rdquo;&lt;/p>
+&lt;p>&lt;strong>线程的上下文切换&lt;/strong>
+当两个线程属于同一个进程时，因为虚拟内存是共享的，所以在切换时，虚拟内存资源就保持不动，只需要切换线程的私有数据、寄存器等不共享的数据。&lt;/p></description></item><item><title>Threadlocal</title><link>https://ongoingblog.org/2023/11/threadlocal/</link><pubDate>Wed, 08 Nov 2023 22:48:00 +0800</pubDate><guid>https://ongoingblog.org/2023/11/threadlocal/</guid><description>&lt;p>前言：Threadlocal 线程本地变量的例子。&lt;/p>
+&lt;p>&lt;code>ThreadlocalUtils.java&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.util.HashMap;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.util.Map;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">ThreadlocalUtils&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> ThreadLocal&lt;span style="color:#f92672">&amp;lt;&lt;/span>Map&lt;span style="color:#f92672">&amp;gt;&lt;/span> threadlocal &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ThreadLocal() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Override&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">protected&lt;/span> Object &lt;span style="color:#a6e22e">initialValue&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;threadlocal 初始化，值为空&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> };
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">setData&lt;/span>(String key, Object value) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Map map &lt;span style="color:#f92672">=&lt;/span> threadlocal.&lt;span style="color:#a6e22e">get&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (map &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> map &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> HashMap();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> map.&lt;span style="color:#a6e22e">put&lt;/span>(key, value);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> threadlocal.&lt;span style="color:#a6e22e">set&lt;/span>(map);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> map.&lt;span style="color:#a6e22e">put&lt;/span>(key, value);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> Object &lt;span style="color:#a6e22e">getData&lt;/span>(String key) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Map map &lt;span style="color:#f92672">=&lt;/span> threadlocal.&lt;span style="color:#a6e22e">get&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (map &lt;span style="color:#f92672">!=&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> map.&lt;span style="color:#a6e22e">get&lt;/span>(key);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">clear&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> threadlocal.&lt;span style="color:#a6e22e">remove&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>ThreadlocalUtilsTest.java&lt;/code>&lt;/p></description></item><item><title>Threadpool</title><link>https://ongoingblog.org/2023/06/threadpool/</link><pubDate>Sun, 18 Jun 2023 10:13:00 +0800</pubDate><guid>https://ongoingblog.org/2023/06/threadpool/</guid><description>&lt;h3 id="前言">前言&lt;/h3>
+&lt;p>线程池在我们日常开发中扮演着重要的角色。&lt;/p>
+&lt;ul>
+&lt;li>管理线程的创建和销毁，不需要开发者关系如何运作&lt;/li>
+&lt;/ul>
+&lt;p>&lt;code>keepAliveTime&lt;/code>: 为了释放多余的线程资源。非核心线程，空闲时有一个最长等待时间，就是 keepAliveTime，时间到了没有任务，会被终止。&lt;/p>
+&lt;p>优点：&lt;/p>
+&lt;ol>
+&lt;li>可以重用线程，避免线程创建的开销&lt;/li>
+&lt;li>任务过多时，通过排队避免创建过多线程，减少系统资源消耗&lt;/li>
+&lt;/ol>
+&lt;h4 id="sleep-与-yield">sleep() 与 yield()&lt;/h4>
+&lt;ol>
+&lt;li>
+&lt;p>sleep()
+不会事线程丢失监视器所有权，当前线程仍然占用 CPU 分片。
+可读性更好的写法：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>TimeUnit.&lt;span style="color:#a6e22e">SECONDS&lt;/span>.&lt;span style="color:#a6e22e">sleep&lt;/span>(1);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>yield() 让步
+线程让步。
+对线程调度器发出一个暗示，当前线程愿意让出使用的处理器。
+调用次方法后，状态可能由 running 状态转为 runnable 状态。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>join()
+表示无限等待，一直阻塞当前线程，知道目标线程执行完毕。
+通常是加入的意思，一个线程要加入到另外一个线程，最好是等着它一起走。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h4 id="守护线程-daemon">守护线程 (Daemon)&lt;/h4>
+&lt;ul>
+&lt;li>相当于闭馆后最后一个锁大门的管理者&lt;/li>
+&lt;/ul>
+&lt;h2 id="3-注意">3 注意&lt;/h2>
+&lt;ol>
+&lt;li>
+&lt;p>线程池中，核心线程和最大线程是否有特殊标记？&lt;/p>
+&lt;p>没有，无论是核心线程还是非核心线程，在线程池中都一样，当淘汰的时候，不关心是哪些线程，只需要留下核心线程数量个线程即可。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>线程数小于核心线程数，并且线程都处于空闲状态，现在提交一个任务，是新起一个线程还是给之前创建的线程运行？&lt;/p>
+&lt;p>execute 方法的注释中写道，&lt;code>If fewer than corePoolSize threads are running, try to start a new thread with the given command as its first task&lt;/code>. 从注释可以知道，此时线程池会新起一个线程来运行新任务，不管老线程是否空闲。&lt;/p>
+&lt;/li>
+&lt;/ol></description></item><item><title>Spring ApplicationEvent</title><link>https://ongoingblog.org/2023/02/spring-applicationevent/</link><pubDate>Thu, 02 Feb 2023 12:43:00 +0800</pubDate><guid>https://ongoingblog.org/2023/02/spring-applicationevent/</guid><description>&lt;p>前言：事件机制。&lt;/p>
+&lt;p>可以进行广播。&lt;/p>
+&lt;p>比如班级中发出一个信号，身高高于 180 厘米的同学，请起立，然后班级中高于这个身高的同学都会站起来，不用每一个单独进行通知。&lt;/p>
+&lt;p>spring 中的事件提供了 bean 之间的通信。一个 bean 完成了一部分工作，发布了一个事件，其余订阅了这个事件的 bean 们都会知道。&lt;/p>
+&lt;p>实现：180 厘米以上同学站起来的例子 (todo)。&lt;/p>
+&lt;h3 id="spring-中上下文事件-todo">Spring 中上下文事件 (todo)&lt;/h3></description></item><item><title>Countdownlatch</title><link>https://ongoingblog.org/2022/12/countdownlatch/</link><pubDate>Thu, 22 Dec 2022 12:34:00 +0800</pubDate><guid>https://ongoingblog.org/2022/12/countdownlatch/</guid><description>&lt;p>前言：一个使用场景，例如分发 10 个线程，需要等到这 10 个线程全部都执行完毕后，再进行下一步的处理。&lt;/p>
+&lt;p>看到过一个例子：举行跑步比赛，发令枪响后，几位选手开始跑步，当最后一位选手跑完全程，然后开始公布选手成绩、以及颁奖仪式。&lt;/p>
+&lt;ol>
+&lt;li>模拟多个线程同时执行的场景&lt;/li>
+&lt;li>模拟依赖场景，例如一个数据的计算需要很多数据来源，需要这些数据来源全部加载完毕后才开始进行计算。&lt;/li>
+&lt;/ol>
+&lt;p>主要方法&lt;/p>
+&lt;ol>
+&lt;li>&lt;code>int getCount&lt;/code>&lt;/li>
+&lt;li>&lt;code>await()&lt;/code>&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">LatchTest&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">final&lt;/span> Logger LOGGER &lt;span style="color:#f92672">=&lt;/span> Logger.&lt;span style="color:#a6e22e">getLogger&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;LatchTest&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Test&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">test&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> CountDownLatch latch &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> CountDownLatch(1);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> i &lt;span style="color:#f92672">=&lt;/span> 0; i &lt;span style="color:#f92672">&amp;lt;&lt;/span> 10; i&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">new&lt;/span> Thread(deal(i, latch)).&lt;span style="color:#a6e22e">start&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> LOGGER.&lt;span style="color:#a6e22e">info&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;3 秒后开始....&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> SleepUtil.&lt;span style="color:#a6e22e">sleep&lt;/span>(3000);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> latch.&lt;span style="color:#a6e22e">countDown&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> Runnable &lt;span style="color:#a6e22e">deal&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> threadNum, CountDownLatch latch) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Runnable() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Override&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">run&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">try&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> latch.&lt;span style="color:#a6e22e">await&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> LOGGER.&lt;span style="color:#a6e22e">info&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;开始运行...&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">catch&lt;/span> (InterruptedException e) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">throw&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> RuntimeException(e);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> };
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Test&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">test2&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> CountDownLatch latch &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> CountDownLatch(10);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> i &lt;span style="color:#f92672">=&lt;/span> 0; i &lt;span style="color:#f92672">&amp;lt;&lt;/span> 10; i&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">new&lt;/span> Thread(deal2(i, latch)).&lt;span style="color:#a6e22e">start&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> LOGGER.&lt;span style="color:#a6e22e">info&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;等待加载中...&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">try&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> latch.&lt;span style="color:#a6e22e">await&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> LOGGER.&lt;span style="color:#a6e22e">info&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;开始进入主界面&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">catch&lt;/span> (InterruptedException e) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">throw&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> RuntimeException(e);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> Runnable &lt;span style="color:#a6e22e">deal2&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> threadNum, CountDownLatch latch) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Runnable() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Override&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">run&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">try&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> LOGGER.&lt;span style="color:#a6e22e">info&lt;/span>(threadNum &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34;开始运行&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> SleepUtil.&lt;span style="color:#a6e22e">sleep&lt;/span>(1000);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> LOGGER.&lt;span style="color:#a6e22e">info&lt;/span>(threadNum &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34;运行结束&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">catch&lt;/span> (Exception e) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">finally&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> latch.&lt;span style="color:#a6e22e">countDown&lt;/span>(); &lt;span style="color:#75715e">// 放在 finally 语句块中，无论程序正常执行还是出现异常，都会执行&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> };
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>异步的使用</title><link>https://ongoingblog.org/2022/12/async-usage/</link><pubDate>Sat, 10 Dec 2022 10:30:00 +0800</pubDate><guid>https://ongoingblog.org/2022/12/async-usage/</guid><description>&lt;p>前言: 在代码逻辑中，你为什么要起异步？起异步的目的是什么？
+让这个逻辑的响应顺序返回给前台？&lt;/p>
+&lt;ul>
+&lt;li>还是为了加快程序的处理速度，让程序并行执行，压榨机器，利用好机器的每一份性能。&lt;/li>
+&lt;li>小心在业务程序中打日志。这是有可能影响性能的，如果要用的话，可以使用异步日志。当然这要考虑日志丢失的情况。&lt;/li>
+&lt;/ul>
+&lt;p>本类中调用异步方法
+在异步方法中断点，发现会阻断主程序。&lt;/p>
+&lt;p>使用IDEA软件中的断点时，将断点的类型置为Thread类型。&lt;/p></description></item><item><title>事务和异步</title><link>https://ongoingblog.org/2022/12/transaction-and-async/</link><pubDate>Tue, 06 Dec 2022 22:47:00 +0800</pubDate><guid>https://ongoingblog.org/2022/12/transaction-and-async/</guid><description>&lt;p>前言: 昨天在生产上遇到了一个问题。
+无缘无故遇到了空指针。但是大部分都是正常的，少部分根据那个key在表中查不到数据。&lt;/p>
+&lt;p>最后发现是因为外层事务未完成，里面起的异步线程就开始跑了，但是根据key查不到外面方法里要插的数据，因为这个时候外层方法还没有提交.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">A&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Transactional&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">exec&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * 事务开始
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// insert 操作&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> insert(key);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 调用异步方法&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> method(key);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * 事务结束
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">B&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Async&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Transactional&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">method&lt;/span>(String key) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * 异步操作开始
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> selectByKey(key);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * 其他操作
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>解决方法：&lt;/p>
+&lt;ol>
+&lt;li>将前面的插入操作单独起事务，在异步之前就让事务提交掉。&lt;/li>
+&lt;/ol></description></item><item><title>数据库表定义时表中冗余代码字段的重要性</title><link>https://ongoingblog.org/2022/08/the-importance-of-speccode/</link><pubDate>Thu, 11 Aug 2022 12:45:00 +0800</pubDate><guid>https://ongoingblog.org/2022/08/the-importance-of-speccode/</guid><description>&lt;p>前言：今天讲的是冗余代码的作用。&lt;/p>
+&lt;p>冗余代码不仅在数据库表中有重要作用，也在请求接口中有重要作用！&lt;/p>
+&lt;p>数据库中在设计表的时候就提前划分一个字段冗余码，我们后期想要添加什么信息，但是又不好动原表时，这个时候冗余码的作用就非常重要了，直接用上冗余码就好。&lt;/p>
+&lt;p>在续传接口也可以使用。&lt;/p></description></item><item><title>表查询中的续传</title><link>https://ongoingblog.org/2022/08/resume-from-break-point/</link><pubDate>Thu, 11 Aug 2022 12:33:00 +0800</pubDate><guid>https://ongoingblog.org/2022/08/resume-from-break-point/</guid><description>&lt;p>前言：关于表查询续传的注意事项。&lt;/p>
+&lt;p>todo 建一张测试表，里面插数据&lt;/p>
+&lt;p>InputX1.java&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">InputX1&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> String partitionNo;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> String name;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> String desc;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>InputY1.java&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">InputY1&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span> continuationCode; &lt;span style="color:#75715e">// 续传标志&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> String partitionNo; &lt;span style="color:#75715e">// 续传标志 -1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> String name; &lt;span style="color:#75715e">// 续传标志 -2&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> String specCode; &lt;span style="color:#75715e">// 冗余代码&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>注意：续传标志必须要为表的唯一键。&lt;/p>
+&lt;p>关于表的查询，有分页查询，也有续传查询，这里所说的是续传查询。&lt;/p>
+&lt;p>例如我们的&lt;code>Test_T&lt;/code>中记录数为 11，但是我们每次传输的数量为 10，我们作为请求记录的一方，如果第一次请求得到的记录数为 10，这个时候肯定想要知道表中是不是还有其他数据，这个时候续传的那些标志就起到的作用。&lt;/p>
+&lt;p>模拟请求第一次查询，因为不知道数据库表中的情况，Y1 中的那些字段全部置为空 =&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;continuationCode&amp;#34;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;partitionNo&amp;#34;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;specCode&amp;#34;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>把这个请求发到数据库中，表中有 21 条数据，查回来 10 条，我们这个时候接收到的 Y1 =&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;continuationCode&amp;#34;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Y&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;partitionNo&amp;#34;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;01&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Mike_10&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;specCode&amp;#34;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>我们发现续传标志为 Y，就表示表中是还存在记录的，我们继续查，将 Y1 原封不动返回回去：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;continuationCode&amp;#34;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Y&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;partitionNo&amp;#34;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;01&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Mike_10&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;specCode&amp;#34;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>得到传回来的 Y1 =&lt;/p></description></item><item><title>程序什么时候应该重试？</title><link>https://ongoingblog.org/2022/06/when-to-retry/</link><pubDate>Thu, 09 Jun 2022 20:47:00 +0800</pubDate><guid>https://ongoingblog.org/2022/06/when-to-retry/</guid><description>&lt;p>前言：两个服务交互的过程中，何时候需要去重试？&lt;/p>
+&lt;ol>
+&lt;li>因为网络的原因。例如网络的抖动导致响应超时。&lt;/li>
+&lt;li>因为对方资源被其他使用方锁定，我方暂时不能使用，这个也会导致响应超时。这个时候需要等上一段时间后进行重试。&lt;/li>
+&lt;li>重试还是失败了，这个时候怎么办？毕竟不能无限重试，总会有次数限制
+&lt;ol>
+&lt;li>是否需要状态转为人工，人为来处理。&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;/ol></description></item><item><title>Java 第四部分 多态</title><link>https://ongoingblog.org/2020/10/java-review-part-4-polymorphism/</link><pubDate>Tue, 13 Oct 2020 19:48:34 +0800</pubDate><guid>https://ongoingblog.org/2020/10/java-review-part-4-polymorphism/</guid><description>&lt;p>Java 基础知识第四部分。&lt;/p>
+
+
+
+
+&lt;div class="toc-container">
+ &lt;h2 class="toc-title">文章目录&lt;/h2>
+ &lt;div class="toc-content">
+ &lt;nav id="TableOfContents">
+ &lt;ul>
+ &lt;li>&lt;a href="#面向对象特性---多态">面向对象特性 - 多态&lt;/a>
+ &lt;ul>
+ &lt;li>&lt;a href="#对象的向上转型">对象的向上转型&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#对象的向下转型">对象的向下转型&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#instanceof-关键字">instanceof 关键字&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#一个案例">一个案例&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#final-关键字">final 关键字&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#四种权限修饰符">四种权限修饰符&lt;/a>&lt;/li>
+ &lt;li>&lt;a href="#内部类">内部类&lt;/a>&lt;/li>
+ &lt;/ul>
+ &lt;/li>
+ &lt;/ul>
+&lt;/nav>
+ &lt;/div>
+&lt;/div>
+
+&lt;style>
+ .toc-container {
+ border-left: 3px solid #4a86e8;
+ padding: 1.2rem 1.8rem;
+ margin: 2.5rem 0;
+ background: #f8fbfe;
+ border-radius: 0 8px 8px 0;
+ box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+ }
+
+ .toc-title {
+ font-size: 1.4rem;
+ margin-top: 0;
+ margin-bottom: 1rem;
+ color: #2c5282;
+ padding-bottom: 0.5rem;
+ border-bottom: 1px solid #e2e8f0;
+ }
+
+ .toc-content ul {
+ list-style: none;
+ padding-left: 1.2rem;
+ margin: 0;
+ }
+
+ .toc-content li {
+ margin: 0.7rem 0;
+ line-height: 1.1;
+ position: relative;
+ }
+
+ .toc-content a {
+ color: #3182ce;
+ text-decoration: none;
+ transition: all 0.3s ease;
+ display: block;
+ padding: 0.3rem 0.5rem;
+ border-radius: 4px;
+ }
+
+ .toc-content a:hover {
+ color: #020202;
+ background: #ebf4ff;
+ padding-left: 0.8rem;
+ }
+
+ .toc-warning {
+ padding: 1.2rem;
+ background: #fffaf0;
+ border: 1px solid #feebc8;
+ border-radius: 6px;
+ color: #dd6b20;
+ margin: 2rem 0;
+ }
+
+ .toc-warning p {
+ margin: 0.5rem 0;
+ }
+
+ .toc-highlight {
+ animation: highlight-fade 2s ease;
+ background-color: rgba(255, 230, 0, 0.3);
+ }
+
+ @keyframes highlight-fade {
+ 0% { background-color: rgba(255, 230, 0, 0.8); }
+ 100% { background-color: transparent; }
+ }
+
+ 
+ .toc-debug {
+ font-size: 0.9rem;
+ color: #4a5568;
+ }
+ .toc-debug h4 {
+ margin-top: 0;
+ color: #2b6cb0;
+ }
+&lt;/style>
+&lt;h2 id="面向对象特性---多态">面向对象特性 - 多态&lt;/h2>
+&lt;img src="java_31.png" alt="">&lt;p>多态针对的是对象。&lt;/p></description></item><item><title>Java第三部分 继承</title><link>https://ongoingblog.org/2020/10/java-review-part-3-object-oriented-inheritance/</link><pubDate>Mon, 12 Oct 2020 19:42:44 +0800</pubDate><guid>https://ongoingblog.org/2020/10/java-review-part-3-object-oriented-inheritance/</guid><description>&lt;p>Java 基础知识第三部分。&lt;/p>
+&lt;h2 id="面向对象特征---继承性">面向对象特征 - 继承性&lt;/h2>
+&lt;p>继承是多态的前提。&lt;/p>
+&lt;p>继承解决的主要问题：&lt;strong>共性抽取&lt;/strong>。&lt;/p>
+&lt;img src="java_12.png" alt="">&lt;p>继承关系当中的特点：&lt;/p>
+&lt;ol>
+&lt;li>子类可以拥有父类的“内容”&lt;/li>
+&lt;li>子类还可以拥有自己专有的内容&lt;/li>
+&lt;/ol>
+&lt;img src="java_13.png" alt="">&lt;p>在父子类的继承关系当中，如果成员变量重名，则&lt;em>创建子类&lt;/em>时，访问有两种方式：&lt;/p>
+&lt;ol>
+&lt;li>直接通过&lt;strong>子类对象&lt;/strong>访问成员变量 : 等号左边是谁，就优先用谁，没有则向上找。&lt;/li>
+&lt;li>间接通过&lt;strong>成员方法&lt;/strong>访问成员变量：该方法属于谁，就优先用谁，没有则向上找。&lt;/li>
+&lt;/ol>
+&lt;p>区分三种变量&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>局部变量：直接写局部变量名&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>本类的成员变量：this.成员变量名&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>父类成员变量：super.成员变量名&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>&lt;strong>继承中成员方法访问规则&lt;/strong> :&lt;/p>
+&lt;p>在父子类的继承关系中欧给你，创建子类对象，访问成员方法规则是&lt;/p>
+&lt;p>创建的对象是谁，就优先用谁，如果没有则向上找。、&lt;/p>
+&lt;p>注意事项：无论是成员方法还是成员变量，如果没有都是向上找父类，不会向下找子类。&lt;/p>
+&lt;p>继承中方法的重写(override)/&lt;strong>覆盖&lt;/strong> :&lt;img src="java-review-part-3-object-oriented-inheritance/java_14.png" alt="">&lt;/p>
+&lt;p>在&lt;strong>继承关系&lt;/strong>中，方法的名称一样，参数列表也一样。&lt;/p>
+&lt;p>方法覆盖重写特点 :创建的是子类对象，则优先用子类方法&lt;/p>
+&lt;p>注意事项：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>必须保证父子类之间方法的名称相同，参数列表也相同。&lt;/p>
+&lt;p>&lt;code>@override&lt;/code> :写在方法前面，用来&lt;strong>检测&lt;/strong>是不是有效的正确覆盖重写。&lt;/p>
+&lt;p>写上保证更加的安全。可以不写。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>子类方法的返回值必须&lt;strong>小于等于&lt;/strong>父类方法的返回值范围。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>子类方法权限必须&lt;strong>大于等于&lt;/strong>父类方法权限修饰符&lt;/p>
+&lt;p>&lt;code>public &amp;gt; protected &amp;gt; (default) &amp;gt; private&lt;/code>&lt;/p>
+&lt;p>注：(default)不是关键字default, 而是什么都不写，留空。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>设计原则：对于已经投入使用的类，尽量不要修改。推荐定义一个新的类，来重复利用其中共性内容，并且添加改动新内容。&lt;/p>
+&lt;p>继承中构造方法访问特点&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>子类构造方法中有一个默认隐含的&amp;quot;super()&amp;ldquo;调用，所以一定是先调用的父类构造，后执行的子类构造。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>子类构造可以通过super关键字来调用父类重载构造&lt;/p>
+&lt;img src="java-review-part-3-object-oriented-inheritance/java_15.png" alt="">&lt;img src="java-review-part-3-object-oriented-inheritance/java_16.png" alt="">&lt;/li>
+&lt;li>
+&lt;p>super的父类构造调用，必须是子类构造方法的第一个语句。不能子类构造调用多次super构造。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;img src="java_17.png" alt="">&lt;p>super关键字的用法 - 3种&lt;/p>
+&lt;ol>
+&lt;li>在子类的成员方法中，访问父类成员变量&lt;/li>
+&lt;li>在子类成员方法中，访问父类成员方法。&lt;/li>
+&lt;li>在子类构造方法中，访问父类构造方法。&lt;/li>
+&lt;/ol>
+&lt;img src="java_18.png" alt="">&lt;p>this关键字的用法&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>在本类成员方法中，访问本类成员变量&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>在本类成员方法中，访问本类的另一个成员方法&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>在本类构造方法中，访问本类另一个构造方法。&lt;/p>
+&lt;p>在第三种构造中注意：this(&amp;hellip;)调用也必须是构造方法的第一个语句。唯一一个。&lt;/p>
+&lt;p>super和this两种构造调用，不能同时使用，只能使用一个。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>this和super内存图解&lt;/p>
+&lt;img src="java_19.png" alt="">&lt;p>java继承的3个特点&lt;/p>
+&lt;ol>
+&lt;li>java语言是单继承的。一个类的直接父亲只能有唯一一个。
+&lt;img src="java-review-part-3-object-oriented-inheritance/java_20.png" alt="">&lt;/li>
+&lt;li>java语言可以多级继承。父亲有父亲。&lt;/li>
+&lt;li>一个子类的直接父类唯一，但是一个父类可以有很多子类。&lt;/li>
+&lt;/ol>
+&lt;h3 id="抽象">抽象&lt;/h3>
+&lt;img src="java_21.png" alt="">&lt;p>抽象方法定义与抽象类定义&lt;/p>
+&lt;img src="java_22.png" alt="">&lt;p>抽象类和抽象方法的使用：&lt;/p>
+&lt;ol>
+&lt;li>不能直接创建new抽象类对象&lt;/li>
+&lt;li>必须用一个子类来继承抽象父类。&lt;/li>
+&lt;li>子类必须&lt;strong>覆盖重写&lt;/strong>抽象父类当中所有的抽象方法。
+覆盖重写（实现）：子类去掉抽象方法的abstract关键字，补上大括号和方法体。&lt;/li>
+&lt;li>创建子类对象进行使用。
+&lt;img src="java_23.png" alt="">&lt;/li>
+&lt;/ol>
+&lt;h3 id="接口">接口&lt;/h3>
+&lt;ul>
+&lt;li>接口就是一种&lt;strong>公共规范标准&lt;/strong>。&lt;/li>
+&lt;li>接口是多个类的公共规范，接口是一种引用数据类型。&lt;/li>
+&lt;li>接口&lt;strong>最重要的内容&lt;/strong>就是：抽象方法。&lt;/li>
+&lt;/ul>
+&lt;p>接口定义基本格式：&lt;/p></description></item><item><title>Java 第二部分 封装</title><link>https://ongoingblog.org/2020/10/java-review-2-object-oriented-encapsulation/</link><pubDate>Sat, 10 Oct 2020 20:25:28 +0800</pubDate><guid>https://ongoingblog.org/2020/10/java-review-2-object-oriented-encapsulation/</guid><description>&lt;p>Java 基础知识第二部分。&lt;/p>
+&lt;h3 id="面向对象">面向对象&lt;/h3>
+&lt;ul>
+&lt;li>面向过程：强调步骤&lt;/li>
+&lt;li>面向对象：强调对象
+&lt;ul>
+&lt;li>特征：封装、继承、多态&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>类：一组相关属性和行为的集合。
+&lt;ul>
+&lt;li>属性：状态信息&lt;/li>
+&lt;li>行为：可以做什么&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>类和对象的关系
+&lt;ul>
+&lt;li>类是对一类事物的描述，是&lt;strong>抽象的&lt;/strong>&lt;/li>
+&lt;li>对象是一类事物的实例，是&lt;strong>具体的&lt;/strong>&lt;/li>
+&lt;li>类是对象的模板，对象是类的实体。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h4 id="类的定义">类的定义&lt;/h4>
+&lt;ul>
+&lt;li>成员变量（属性）
+&lt;ul>
+&lt;li>直接定义在类当中，&lt;strong>在方法外边&lt;/strong>。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>成员方法（行为)
+&lt;ul>
+&lt;li>无&lt;code>static&lt;/code>关键字&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>一个类不能直接使用，需要根据类创建一个对象，才能使用。&lt;/p>
+&lt;p>步骤：&lt;/p>
+&lt;ol>
+&lt;li>导包：指出需要什么类，在什么位置。
+&lt;code>import 包名称.类名称&lt;/code>
+对于和当前类属于同一个包的情况，可以省略导包语句。&lt;/li>
+&lt;li>创建：&lt;code>类名称 对象名 = new 类名称();&lt;/code>&lt;/li>
+&lt;li>使用
+&lt;ol>
+&lt;li>使用成员变量：&lt;code>对象名.成员变量名&lt;/code>&lt;/li>
+&lt;li>使用成员方法：&lt;code>对象名.成员方法名(参数)&lt;/code>&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;/ol>
+&lt;p>一个对象的内存图
+&lt;img src="java_7.png" alt="">&lt;/p>
+&lt;ul>
+&lt;li>方法的进栈和出栈&lt;/li>
+&lt;li>堆中&lt;code>成员方法&lt;/code>保存的是一个地址值&lt;/li>
+&lt;li>方法要执行，一定要进栈，执行完毕就出栈&lt;/li>
+&lt;li>new 之后有默认值&lt;/li>
+&lt;li>对象的名称也叫做对象的引用名&lt;/li>
+&lt;/ul>
+&lt;p>使用对象类型作为方法的参数：当一个对象作为方法的参数，传递到方法当中时，实际上传递进去的是对象的&lt;strong>地址值&lt;/strong>。&lt;/p>
+&lt;p>使用对象作为方法的返回值：返回值其实就是对象的&lt;strong>地址值&lt;/strong>。&lt;/p>
+&lt;p>成员变量与局部变量的区别：&lt;/p>
+&lt;ol>
+&lt;li>定义位置不一样（重要）
+&lt;ul>
+&lt;li>成员变量：在方法外部，直接写在类中&lt;/li>
+&lt;li>局部变量：在方法内部&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>作用范围不一样（重要）
+&lt;ul>
+&lt;li>成员变量：整个类可以通用&lt;/li>
+&lt;li>局部变量：只有方法中可以使用，出了方法不能使用。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>默认值不一样
+&lt;ul>
+&lt;li>成员变量：若没有赋值，会有默认值，规则和数组一样&lt;/li>
+&lt;li>局部变量：没有默认值，如果要想使用，必须手动进行赋值。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>内存位置不一样（了解）
+&lt;ul>
+&lt;li>成员变量：位于堆内存&lt;/li>
+&lt;li>局部变量：位于栈内存&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>生命周期不一样
+&lt;ul>
+&lt;li>成员变量：随着对象创建而诞生，随着对象被垃圾回收而消失。&lt;/li>
+&lt;li>局部变量：随着方法进栈而诞生，随着方法出栈而消失。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;p>方法的参数也是局部变量，在调用的时候必然会被赋值。&lt;/p>
+&lt;h2 id="面向对象---封装性">面向对象 - 封装性&lt;/h2>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>封装在 java 中体现&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>方法是一种封装&lt;/li>
+&lt;li>关键字&lt;code>private&lt;/code>也是一种封装
+使用 private 将需要保护的成员变量进行修饰。在本类中可以随意访问，但是超出本类范围之外不能&lt;strong>直接&lt;/strong>访问。
+间接访问 private 成员变量：设置一对 getter/setter 方法
+&lt;ul>
+&lt;li>setter 方法：有参数，无返回值。方法名称必须是&lt;code>set&lt;/code>+首字母变大写 (setXxx)&lt;/li>
+&lt;li>getter 方法：无参数，有返回值。方法名称必须是&lt;code>get&lt;/code>+首字母变大写 (getXxx)。&lt;/li>
+&lt;li>注意：对于基本数据类型中的&lt;code>boolean&lt;/code>型，Getter 方法一定要写成&lt;code>isXxx&lt;/code>形式，setXxx 规则不变。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>封装：将一些细节信息隐藏起来，对于外界不可见。&lt;/p></description></item><item><title>Java 第一部分 基础</title><link>https://ongoingblog.org/2020/10/java-review-part-1-basic/</link><pubDate>Sat, 10 Oct 2020 19:32:48 +0800</pubDate><guid>https://ongoingblog.org/2020/10/java-review-part-1-basic/</guid><description>&lt;p>学习 java 时还是大二的时候，当时很多现在新的特性都没有学习，现在重新复习一下 Java 基础部分。&lt;/p>
+&lt;h3 id="基础">基础&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>Javaa 虚拟机本身不具备跨平台功能，每个操作系统下有不同版本的虚拟机。&lt;/p>
+&lt;img src="JVM.png" alt="">&lt;/li>
+&lt;li>
+&lt;p>java 的方法就是类似 C 语言的函数&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Java" data-lang="Java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">method_name&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 方法体;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>方法名称命名规则：例如&lt;code>小驼峰&lt;/code>。&lt;/li>
+&lt;li>执行方法需要调用。&lt;/li>
+&lt;li>方法定义的顺序无所谓。&lt;/li>
+&lt;li>不能在一个方法内定义另一个方法，方法应该定义在类当中。&lt;/li>
+&lt;li>方法：若干语句的功能集合。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>编译器常量优化
+在给变量赋值时，如果右侧表达式都是常量，没有任何变量，那么编译器 javac 将会直接将若干个常量表达式计算得到结果。&lt;/p>
+&lt;p>例如：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">short&lt;/span> res &lt;span style="color:#f92672">=&lt;/span> 3 &lt;span style="color:#f92672">+&lt;/span> 8;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>编译之后就是&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">short&lt;/span> res &lt;span style="color:#f92672">=&lt;/span> 13;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>注意：一旦表达式中有变量参与，就不能进行这种优化了。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>overload(重载): 多个方法的名称相同，但是参数列表不一样。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">package&lt;/span> cn.mine.day01.demo01;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Demo03OverLoad&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(sum(10, 20));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(sum(10, 20, 30));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">sum&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> a, &lt;span style="color:#66d9ef">int&lt;/span> b) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> a &lt;span style="color:#f92672">+&lt;/span> b;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">sum&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> a, &lt;span style="color:#66d9ef">int&lt;/span> b, &lt;span style="color:#66d9ef">int&lt;/span> c) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> a &lt;span style="color:#f92672">+&lt;/span> b &lt;span style="color:#f92672">+&lt;/span> c;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">sum&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> a, &lt;span style="color:#66d9ef">int&lt;/span> b, &lt;span style="color:#66d9ef">int&lt;/span> c, &lt;span style="color:#66d9ef">int&lt;/span> d) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> a &lt;span style="color:#f92672">+&lt;/span> b &lt;span style="color:#f92672">+&lt;/span> c &lt;span style="color:#f92672">+&lt;/span> d;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>好处：只需要记住一个方法名称，实现类似的多个功能。&lt;/li>
+&lt;li>方法重载因素
+&lt;ol>
+&lt;li>参数 个数不同&lt;/li>
+&lt;li>参数类型不同&lt;/li>
+&lt;li>参数不同类型、且顺序不同&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>方法重载与下列因素无关
+&lt;ol>
+&lt;li>与参数名称无关&lt;/li>
+&lt;li>与方法返回值类型无关&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>在调用&lt;code>println&lt;/code>语句时，它就是进行了多种数据类型的重载形式。&lt;/li>
+&lt;/ul>
+&lt;h3 id="数组">数组&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>数组特点&lt;/p></description></item></channel></rss>

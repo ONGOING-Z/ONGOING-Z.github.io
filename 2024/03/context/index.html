@@ -1,0 +1,6 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>程序上下文 | ongoing's blog</title><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css></head><body><nav><ul class=menu><li><a href=/>首页</a></li><li><a href=/categories/>分类</a></li><li><a href=/about/>关于</a></li></ul><hr></nav><div class=article-meta><h1><span class=title>程序上下文</span></h1><h2 class=date>2024/03/16</h2></div><main><p>前言: 程序上下文。</p><p>可以理解为环境。
+一段程序依赖的变量的集合，如果没有这些外部变量，这些单独的方法也做不了什么。
+一个功能在应用中可能包含了多个方法集合，从请求进入，到逻辑执行，到最后的输出，会加载变量，这些变量又会进入到各种方法，方法可能会对变量产生影响，这一整个过程中
+包含的各类变量大杂烩就是上下文。</p><p>上下文虽然叫上下文，程序一般只有上文而已。</p><p>&ldquo;读者要想解读一段由这种符号组成的信息，必须事先知道这段信息的语境 -
+它的上下文关系，前因后果&rdquo;</p><p><strong>线程的上下文切换</strong>
+当两个线程属于同一个进程时，因为虚拟内存是共享的，所以在切换时，虚拟内存资源就保持不动，只需要切换线程的私有数据、寄存器等不共享的数据。</p></main><script>document.addEventListener("DOMContentLoaded",function(){const e=new PhotoSwipeLightbox({gallery:".pswp-gallery",children:"a",pswpModule:PhotoSwipe});e.init()})</script>
