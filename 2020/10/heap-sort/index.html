@@ -1,0 +1,56 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>堆排序 | ongoing's blog</title><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css></head><body><nav><ul class=menu><li><a href=/>首页</a></li><li><a href=/categories/>分类</a></li><li><a href=/about/>关于</a></li></ul><hr></nav><div class=article-meta><h1><span class=title>堆排序</span></h1><h2 class=date>2020/10/04</h2></div><main><p>预备知识 = <a href=https://ongoing-z.github.io/blog/posts/2020/10/Data-structure-heap.html target=_blank rel="noopener noreferrer">Heap</a></p><p>堆排序，我们知道，堆的根结点值不是最大的 (大顶堆) 就是最小的 (小顶堆)。</p><p>我们将一个无序序列调整为堆后，找到最大值或者最小值交换到序列的最前面或者是最后面，这样有序序列元素就增加一个，无序序列元素减少一个，对新的无序序列进行之前的操作，这样就实现了排序。</p><p>$\color{blue}{ 堆排序适用场景 }$ = 关键字很多的情况。典型例子是从 10000 个关键字中选取前 10 个最小的（或最大的)。例如面试题中经常问到的<code>海量数据问题</code>就可以使用堆来做。</p><p>如果关键字比较少，则不推荐使用堆排序。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;iostream&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;stdio.h&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;cstdio&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;vector&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;algorithm&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&#34;dbg.h&#34;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>using</span> <span style=color:#66d9ef>namespace</span> std;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// 大顶堆调整
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>adjustHeap</span>(<span style=color:#66d9ef>int</span> a[], <span style=color:#66d9ef>int</span> p, <span style=color:#66d9ef>int</span> len)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> curParent <span style=color:#f92672>=</span> a[p];  <span style=color:#75715e>// 当前父亲结点
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>int</span> child <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>*</span> p <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>; <span style=color:#75715e>// 找到当前结点左孩子，并让 child 指向左孩子
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>while</span> (child <span style=color:#f92672>&lt;</span> len)
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (child <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span> <span style=color:#f92672>&lt;</span> len <span style=color:#f92672>&amp;&amp;</span> a[child] <span style=color:#f92672>&lt;</span> a[child <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>])  <span style=color:#75715e>// 如果右孩子结点值大于左孩子
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>            child<span style=color:#f92672>++</span>;                                     <span style=color:#75715e>// child 指向右孩子
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#66d9ef>if</span> (curParent <span style=color:#f92672>&lt;</span> a[child]) <span style=color:#75715e>// 孩子结点值大于父亲结点
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        {
+</span></span><span style=display:flex><span>            a[p] <span style=color:#f92672>=</span> a[child];
+</span></span><span style=display:flex><span>            p <span style=color:#f92672>=</span> child;
+</span></span><span style=display:flex><span>            child <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>*</span> p <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>break</span>;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    a[p] <span style=color:#f92672>=</span> curParent;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>heapSort</span>(<span style=color:#66d9ef>int</span> a[], <span style=color:#66d9ef>int</span> len)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> len <span style=color:#f92672>/</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>; i <span style=color:#f92672>&gt;=</span> <span style=color:#ae81ff>0</span>; i<span style=color:#f92672>--</span>) <span style=color:#75715e>// 建立初始堆
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        adjustHeap(a, i, len);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> len <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>; i <span style=color:#f92672>&gt;=</span> <span style=color:#ae81ff>0</span>; i<span style=color:#f92672>--</span>)
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>int</span> temp <span style=color:#f92672>=</span> a[<span style=color:#ae81ff>0</span>];
+</span></span><span style=display:flex><span>        a[<span style=color:#ae81ff>0</span>] <span style=color:#f92672>=</span> a[i];
+</span></span><span style=display:flex><span>        a[i] <span style=color:#f92672>=</span> temp;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        adjustHeap(a, <span style=color:#ae81ff>0</span>, i);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>(<span style=color:#66d9ef>int</span> argc, <span style=color:#66d9ef>char</span> <span style=color:#f92672>*</span>argv[])
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> a[] <span style=color:#f92672>=</span> {<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>10</span>,<span style=color:#ae81ff>7</span>,<span style=color:#ae81ff>34</span>,<span style=color:#ae81ff>23</span>,<span style=color:#ae81ff>58</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>55</span>,<span style=color:#ae81ff>35</span>,<span style=color:#ae81ff>45</span>};
+</span></span><span style=display:flex><span>    cout <span style=color:#f92672>&lt;&lt;</span> <span style=color:#e6db74>&#34;Before sorting = &#34;</span> <span style=color:#f92672>&lt;&lt;</span> endl;
+</span></span><span style=display:flex><span>    dbg(a);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> len <span style=color:#f92672>=</span> <span style=color:#66d9ef>sizeof</span>(a) <span style=color:#f92672>/</span> <span style=color:#66d9ef>sizeof</span>(a[<span style=color:#ae81ff>0</span>]);
+</span></span><span style=display:flex><span>    heapSort(a, len);
+</span></span><span style=display:flex><span>    cout <span style=color:#f92672>&lt;&lt;</span> <span style=color:#e6db74>&#34;After sorting  = &#34;</span> <span style=color:#f92672>&lt;&lt;</span> endl;
+</span></span><span style=display:flex><span>    dbg(a);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>运行结果如下 =</p><img src=heap_sort.png alt><p>时间复杂度 = $\color{blue}{O(nlog_2n)}$。</p><p>分析 = 完全二叉树的高度为$\lceil{log_2(n+1)}\rceil$, 其时间复杂度可以认为是$O(log_2n)$</p><p>空间复杂度$\color{blue}{O(1)}$ = 使用了常数个辅助单元，故为$O(1)$.</p></main><script>document.addEventListener("DOMContentLoaded",function(){const e=new PhotoSwipeLightbox({gallery:".pswp-gallery",children:"a",pswpModule:PhotoSwipe});e.init()})</script>
