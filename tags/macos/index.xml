@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Macos on ongoing's blog</title><link>https://ongoingblog.org/tags/macos/</link><description>Recent content in Macos on ongoing's blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sun, 10 Aug 2025 11:47:25 +0800</lastBuildDate><atom:link href="https://ongoingblog.org/tags/macos/index.xml" rel="self" type="application/rss+xml"/><item><title>macos - pbcopy</title><link>https://ongoingblog.org/2025/08/pbcopy/</link><pubDate>Sun, 10 Aug 2025 11:47:25 +0800</pubDate><guid>https://ongoingblog.org/2025/08/pbcopy/</guid><description>&lt;p&gt;一些常用的命令&lt;/p&gt;
+&lt;p&gt;复制当前目录的文件列表&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ls | pbcopy
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;|（管道）：将 ls 的输出直接传递给剪贴板工具 pbcopy。
+执行后文件列表会进入剪贴板，可直接用 ⌘+V 粘贴。&lt;/p&gt;
+&lt;p&gt;复制 file.txt 的内容&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pbcopy &amp;lt; file.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这个命令在复制一些公钥的时候很有用，不需要去打开文件，直接复制内容出来。&lt;/p&gt;</description></item></channel></rss>
