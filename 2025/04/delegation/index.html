@@ -1,0 +1,43 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>委托模式 | ongoing's blog</title><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css></head><body><nav><ul class=menu><li><a href=/>首页</a></li><li><a href=/categories/>分类</a></li><li><a href=/about/>关于</a></li></ul><hr></nav><div class=article-meta><h1><span class=title>委托模式</span></h1><h2 class=date>2025/04/04</h2></div><main><h3 id=一背景>一、背景</h3><ul><li>一种组合方法。强调组合优于继承，通过对象的协作来实现功能</li><li>在委托方式下，两个对象处理一个请求，接受请求的对象将操作委托给它的代理者。</li></ul><h3 id=二原理>二、原理</h3><p>组成角色</p><ol><li>委托者: 接受请求，派发任务</li><li>委托接口: 定义实现方法</li><li>具体委托对象：实际执行任务</li></ol><p>我突然发现回调和委托逻辑很像。
+回调是委托模式的一种应用场景。</p><h3 id=三与其他模式的区别>三、与其他模式的区别</h3><p>委派和代理及装饰者模式不同
+委派仅仅是将方法的执行工作移交给另一个对象</p><p>代理可能在此做额外的处理
+装饰者会在方法执行前后做增强。</p><h3 id=四例子>四、例子</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>interface</span> <span style=color:#a6e22e>TaskHandler</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>handleTask</span>();
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Delegator</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>private</span> TaskHandler taskHandler;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>setTaskHandler</span>(TaskHandler taskHandler) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>taskHandler</span> <span style=color:#f92672>=</span> taskHandler;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>executeTask</span>() {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (taskHandler <span style=color:#f92672>!=</span> <span style=color:#66d9ef>null</span>) {
+</span></span><span style=display:flex><span>            taskHandler.<span style=color:#a6e22e>handleTask</span>();
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Delegator</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>private</span> TaskHandler taskHandler;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>setTaskHandler</span>(TaskHandler taskHandler) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>taskHandler</span> <span style=color:#f92672>=</span> taskHandler;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>executeTask</span>() {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (taskHandler <span style=color:#f92672>!=</span> <span style=color:#66d9ef>null</span>) {
+</span></span><span style=display:flex><span>            taskHandler.<span style=color:#a6e22e>handleTask</span>();
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DelegateTest</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span>(String<span style=color:#f92672>[]</span> args) {
+</span></span><span style=display:flex><span>        Delegator delegator <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Delegator();
+</span></span><span style=display:flex><span>        delegator.<span style=color:#a6e22e>setTaskHandler</span>(<span style=color:#66d9ef>new</span> ConcreteHandler());
+</span></span><span style=display:flex><span>        delegator.<span style=color:#a6e22e>executeTask</span>();
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></main><script>document.addEventListener("DOMContentLoaded",function(){const e=new PhotoSwipeLightbox({gallery:".pswp-gallery",children:"a",pswpModule:PhotoSwipe});e.init()})</script>
