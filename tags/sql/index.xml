@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Sql on ongoing's blog</title><link>https://ongoingblog.org/tags/sql/</link><description>Recent content in Sql on ongoing's blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sat, 09 Aug 2025 14:45:31 +0800</lastBuildDate><atom:link href="https://ongoingblog.org/tags/sql/index.xml" rel="self" type="application/rss+xml"/><item><title>Mysql processlist</title><link>https://ongoingblog.org/2025/08/mysql-processlist/</link><pubDate>Sat, 09 Aug 2025 14:45:31 +0800</pubDate><guid>https://ongoingblog.org/2025/08/mysql-processlist/</guid><description>&lt;p&gt;显示当前 MySQL 服务器实例中正在运行的所有线程（客户端连接和内部线程）的信息。相当于活动监视器。&lt;/p&gt;
+&lt;p&gt;是 MySQL 数据库管理员和开发人员必备的诊断工具。它提供了数据库服务器当前活动的实时快照。&lt;/p&gt;
+&lt;p&gt;触发的两种方式：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-sql" data-lang="sql"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;show&lt;/span&gt; processlist;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;SELECT&lt;/span&gt; &lt;span style="color:#f92672"&gt;*&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;FROM&lt;/span&gt; INFORMATION_SCHEMA.PROCESSLIST;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上面这两种方式是相同的效果。&lt;/p&gt;
+&lt;img src="show_processlist.png" alt=""&gt;</description></item><item><title>Mysql 终端帮助工具：mycli</title><link>https://ongoingblog.org/2025/06/2025-06-12-mysql-mycli/</link><pubDate>Thu, 12 Jun 2025 13:45:57 +0800</pubDate><guid>https://ongoingblog.org/2025/06/2025-06-12-mysql-mycli/</guid><description>&lt;h3 id="一背景"&gt;一、背景&lt;/h3&gt;
+&lt;p&gt;mycli&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt;是 mysql 的命令行小工具，支持 tab 快速弹出命令，加快效率。&lt;/p&gt;
+&lt;img src="mycli.png" alt=""&gt;&lt;h3 id="二一些使用方法"&gt;二、一些使用方法&lt;/h3&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;场景&lt;/th&gt;
+ &lt;th&gt;方法&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;加载并执行外部 sql 文件&lt;/td&gt;
+ &lt;td&gt;source 文件的绝对路径&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id="三mysql-的安装"&gt;三、Mysql 的安装&lt;/h3&gt;
+&lt;p&gt;推荐直接用 docker 安装，更方便一些，有现成的容器环境，直接下载下来在本地启动起来就可以，不污染宿主机环境。&lt;/p&gt;
+&lt;h3 id="四在-dbeaver-中连接报错public-key-retrieval-is-not-allowed"&gt;四、在 dbeaver 中连接报错：Public Key Retrieval is not allowed&lt;/h3&gt;
+&lt;img src="allowPublicKeyRetrieval.png" alt=""&gt;&lt;p&gt;也可以在连接串中设置属性 allowPublicKeyRetrieval。&lt;/p&gt;
+&lt;div class="footnotes" role="doc-endnotes"&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;&lt;a href="https://www.mycli.net/"target="_blank" rel="noopener noreferrer"&gt;https://www.mycli.net/&lt;/a&gt;&amp;#160;&lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink"&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description></item><item><title>使用 SQL 找出两个数据集中的不同点</title><link>https://ongoingblog.org/2025/03/find-difference-in-two-data-set-by-sql/</link><pubDate>Sat, 01 Mar 2025 10:39:00 +0800</pubDate><guid>https://ongoingblog.org/2025/03/find-difference-in-two-data-set-by-sql/</guid><description>&lt;img src="TwoCircle.png" alt=""&gt;&lt;p&gt;思路：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;找到 A 和 B 的公共部分 C, C = join A and B&lt;/li&gt;
+&lt;li&gt;A 的特有部分为 A - C, not in C but in A&lt;/li&gt;
+&lt;li&gt;B 的特有部分为 B - C, not in C but in B&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>MySQL crash course reading notes</title><link>https://ongoingblog.org/2020/10/mysql-crash-course-reading-notes/</link><pubDate>Fri, 02 Oct 2020 17:22:33 +0800</pubDate><guid>https://ongoingblog.org/2020/10/mysql-crash-course-reading-notes/</guid><description>&lt;p&gt;记录一些在读这本书&lt;a href="https://book.douban.com/subject/3354490/"target="_blank" rel="noopener noreferrer"&gt;《mysql必知必会》&lt;/a&gt;时一些重要的概念。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="一了解数据库"&gt;一、了解数据库&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;database&lt;/li&gt;
+&lt;li&gt;table(column, datatype, row)&lt;/li&gt;
+&lt;li&gt;row == record&lt;/li&gt;
+&lt;li&gt;schema(模式): 关于数据库和表的布局及特性的信息&lt;/li&gt;
+&lt;li&gt;primary key&lt;/li&gt;
+&lt;li&gt;表中任何列都可以作为主键
+&lt;ul&gt;
+&lt;li&gt;任意两行都不具有相同的主键值&lt;/li&gt;
+&lt;li&gt;每个行都必须具有一个主键值(主键列不允许NULL值)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;sql(structured query language): 结构化查询语言&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="二mysql简介"&gt;二、mysql简介&lt;/h3&gt;
+&lt;p&gt;MySQL命令行登录&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mysql -u root -p
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="三使用mysql"&gt;三、使用mysql&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;使用数据库 = use database_name;&lt;/li&gt;
+&lt;li&gt;显示数据库 = show databases;&lt;/li&gt;
+&lt;li&gt;获得数据库内表的列表 = show tables;&lt;/li&gt;
+&lt;li&gt;显示表列 = show columns from table_name;&lt;/li&gt;
+&lt;li&gt;自增量 = auto_increment&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="4th-检索数据"&gt;4th 检索数据&lt;/h3&gt;
+&lt;p&gt;mysql命令行&lt;strong&gt;必须加上分号&lt;/strong&gt;来结束sql语句。
+sql语句不区分大小写，但是对关键字进行大写更易于阅读。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;检索单个列&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-sql" data-lang="sql"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;select&lt;/span&gt; prod_name
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;from&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;table_name&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;检索多个列 = 在select后给出多个列名，列名间有逗号。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-sql" data-lang="sql"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;select&lt;/span&gt; col1, col2, col3
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;from&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;table_name&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;检索所有列(最后不要随便使用&lt;code&gt;*&lt;/code&gt;)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-sql" data-lang="sql"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;select&lt;/span&gt; &lt;span style="color:#f92672"&gt;*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;from&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;table_name&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;distinct关键字&lt;/p&gt;</description></item><item><title>SQL 语言的基本使用</title><link>https://ongoingblog.org/2020/04/basic-of-sql/</link><pubDate>Sun, 19 Apr 2020 19:41:09 +0800</pubDate><guid>https://ongoingblog.org/2020/04/basic-of-sql/</guid><description>&lt;p&gt;一月份的时候有一个考察，但是当时连一个很简单的语句都不会写了，之后就在&lt;a href="https://sqlbolt.com"target="_blank" rel="noopener noreferrer"&gt;SQLBolt&lt;/a&gt;上进行了一个回顾，这里进行记录，以后方便随时回来查看。&lt;/p&gt;
+&lt;h3 id="1-select"&gt;1. SELECT&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-SQL" data-lang="SQL"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;SELECT&lt;/span&gt; &lt;span style="color:#f92672"&gt;*&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;FROM&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;table_name&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="2-queries-with-constraints"&gt;2. Queries with constraints&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;WHERE clause&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-sql" data-lang="sql"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;SELECT&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;column&lt;/span&gt;,...
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;FORM &lt;span style="color:#66d9ef"&gt;table&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;WHERE&lt;/span&gt; condition
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Operator | SQL Example
+=-: | :-:
+BETWEEN &amp;hellip; AND &amp;hellip; | clo_name &lt;strong&gt;BETWEEN&lt;/strong&gt; 0.5 &lt;strong&gt;AND&lt;/strong&gt; 1.5
+NOT BETWEEN &amp;hellip; AND &amp;hellip; | clo_name NOT &lt;strong&gt;BETWEEN&lt;/strong&gt; 2000 &lt;strong&gt;AND&lt;/strong&gt; 2010
+IN (&amp;hellip;) | clo_name &lt;strong&gt;IN&lt;/strong&gt; (1, 3, 5)
+NOT IN (&amp;hellip;) | col_name &lt;strong&gt;NOT IN&lt;/strong&gt; (1, 3, 5)
+表 1&lt;/p&gt;
+&lt;p&gt;Operator | Condition | Example
+=-: | :-: | :-:
+LIKE | Case insensitive exact string comparison | col_name &lt;strong&gt;LIKE&lt;/strong&gt; &amp;lsquo;abc&amp;rsquo;
+NOT LIKE | Case insensitive exact string inequality comparison | col_name &lt;strong&gt;NOT LIKE&lt;/strong&gt; &amp;lsquo;abc&amp;rsquo;
+% | Match(only with LIKE or NOT LIKE | col_name &lt;strong&gt;LIKE&lt;/strong&gt; &amp;lsquo;%hello%&amp;rsquo;
+_ | Used to match a single character(only with LIKE or NOT LIKE) | col_name &lt;strong&gt;LIKE&lt;/strong&gt; &amp;ldquo;AN_&amp;rdquo;
+IN (&amp;hellip;) | String exists in a list | col_name &lt;strong&gt;IN&lt;/strong&gt; (&amp;ldquo;A&amp;rdquo;, &amp;ldquo;B&amp;rdquo;)
+NOT IN (&amp;hellip;) | String does not exit in a list | col_name &lt;strong&gt;NOT IN&lt;/strong&gt; (&amp;ldquo;C&amp;rdquo;, &amp;ldquo;E&amp;rdquo;)
+表 2&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,127 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>this 引用的逃逸 | ongoing's blog</title><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css></head><body><nav><ul class=menu><li><a href=/>首页</a></li><li><a href=/categories/>分类</a></li><li><a href=/about/>关于</a></li></ul><hr></nav><div class=article-meta><h1><span class=title>this 引用的逃逸</span></h1><h2 class=date>2025/11/04</h2></div><main><p>今天继续在看《JCIP》这本书。关于线程安全这里有说一个名词<code>this escape</code>，叫作 this 引用逃逸。它举了一个例子，但是不是很理解，给的例子如下</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ThisEscape</span> {
+</span></span><span style=display:flex><span> <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>ThisEscape</span>(EventSource eventSource) {
+</span></span><span style=display:flex><span>  eventSource.<span style=color:#a6e22e>registerListener</span>() {
+</span></span><span style=display:flex><span>   <span style=color:#66d9ef>new</span> EventListener() {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>handleEvent</span>(Object event) {
+</span></span><span style=display:flex><span>     doSomething(e);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>   }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span> }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>之后去问了下 deepseek，它给了我一个 Runnable 的例子，我看到这个一下就理解了。</p><p>测试程序</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>InnerClassDemo</span> {
+</span></span><span style=display:flex><span> <span style=color:#66d9ef>private</span> String name;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>innerClass</span> {
+</span></span><span style=display:flex><span>  Runnable task <span style=color:#f92672>=</span> () <span style=color:#f92672>-&gt;</span> {
+</span></span><span style=display:flex><span>   System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>printf</span>(name);
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span> }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>是的，平时在重写 run 方法时，会很平常地去使用类中的成员变量，想当然的可以去用，因为都在同一个类中。</p><p>但是并没有去想过内部类去访问外部类的属性时还有这一步。</p><p>上面这个例子并非 this 逃逸的例子，而是内部类访问外部类隐式拿到内部类的一个步骤。</p><img src=inner_class_name.png alt=image-20251105111057873><h3 id=一内部类访问外部类>一、内部类访问外部类</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>OuterClassDemo</span> {
+</span></span><span style=display:flex><span> <span style=color:#66d9ef>private</span> String name;
+</span></span><span style=display:flex><span> <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span> value <span style=color:#f92672>=</span> 100;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span> <span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e>  * 内部类：隐式持有外部类 OuterClassDemo 的引用
+</span></span></span><span style=display:flex><span><span style=color:#75715e>  * 这个引用可以通过 OuterClassDemo.this 显式访问
+</span></span></span><span style=display:flex><span><span style=color:#75715e>  */</span>
+</span></span><span style=display:flex><span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>InnerClass</span> {
+</span></span><span style=display:flex><span>  <span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   * 内部类可以直接访问外部类的私有字段
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   * 这是因为内部类隐式持有了外部类的引用
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   */</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>accessOuterFields</span>() {
+</span></span><span style=display:flex><span>   <span style=color:#75715e>// 方式 1：直接访问外部类字段（隐式使用 OuterClassDemo.this）</span>
+</span></span><span style=display:flex><span>   System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;直接访问外部类字段 name: &#34;</span> <span style=color:#f92672>+</span> name);
+</span></span><span style=display:flex><span>   System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;直接访问外部类字段 value: &#34;</span> <span style=color:#f92672>+</span> value);
+</span></span><span style=display:flex><span>   
+</span></span><span style=display:flex><span>   <span style=color:#75715e>// 方式 2：显式使用 OuterClassDemo.this 访问外部类引用</span>
+</span></span><span style=display:flex><span>   System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;外部类引用：&#34;</span> <span style=color:#f92672>+</span> OuterClassDemo.<span style=color:#a6e22e>this</span>);
+</span></span><span style=display:flex><span>   System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;通过显式引用访问 name: &#34;</span> <span style=color:#f92672>+</span> OuterClassDemo.<span style=color:#a6e22e>this</span>.<span style=color:#a6e22e>name</span>);
+</span></span><span style=display:flex><span>   System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;通过显式引用访问 value: &#34;</span> <span style=color:#f92672>+</span> OuterClassDemo.<span style=color:#a6e22e>this</span>.<span style=color:#a6e22e>value</span>);
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  <span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   * 在 lambda 表达式中访问外部类字段
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   * lambda 也会持有外部类的引用
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   */</span>
+</span></span><span style=display:flex><span>  Runnable task <span style=color:#f92672>=</span> () <span style=color:#f92672>-&gt;</span> {
+</span></span><span style=display:flex><span>   System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;Lambda 中访问外部类字段 name: &#34;</span> <span style=color:#f92672>+</span> name);
+</span></span><span style=display:flex><span>   System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;Lambda 中访问外部类引用：&#34;</span> <span style=color:#f92672>+</span> OuterClassDemo.<span style=color:#a6e22e>this</span>);
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  <span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   * 获取外部类引用
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   * 用于验证内部类确实持有外部类引用
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   */</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>public</span> OuterClassDemo <span style=color:#a6e22e>getOuterInstance</span>() {
+</span></span><span style=display:flex><span>   <span style=color:#66d9ef>return</span> OuterClassDemo.<span style=color:#a6e22e>this</span>;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  <span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   * 修改外部类字段
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   * 证明内部类可以通过隐式引用修改外部类状态
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   */</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>modifyOuterField</span>() {
+</span></span><span style=display:flex><span>   OuterClassDemo.<span style=color:#a6e22e>this</span>.<span style=color:#a6e22e>name</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;被内部类修改&#34;</span>;
+</span></span><span style=display:flex><span>   OuterClassDemo.<span style=color:#a6e22e>this</span>.<span style=color:#a6e22e>value</span> <span style=color:#f92672>=</span> 200;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span> }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span> <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span>(String<span style=color:#f92672>[]</span> args) {
+</span></span><span style=display:flex><span>  System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;========== 演示内部类隐式持有外部类引用 ==========\n&#34;</span>);
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// 创建外部类实例</span>
+</span></span><span style=display:flex><span>  OuterClassDemo outer1 <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> OuterClassDemo();
+</span></span><span style=display:flex><span>  outer1.<span style=color:#a6e22e>name</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;外部类实例 1&#34;</span>;
+</span></span><span style=display:flex><span>  outer1.<span style=color:#a6e22e>value</span> <span style=color:#f92672>=</span> 100;
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// 创建外部类实例 2</span>
+</span></span><span style=display:flex><span>  OuterClassDemo outer2 <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> OuterClassDemo();
+</span></span><span style=display:flex><span>  outer2.<span style=color:#a6e22e>name</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;外部类实例 2&#34;</span>;
+</span></span><span style=display:flex><span>  outer2.<span style=color:#a6e22e>value</span> <span style=color:#f92672>=</span> 200;
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;1. 创建外部类实例：&#34;</span>);
+</span></span><span style=display:flex><span>  System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;   outer1: &#34;</span> <span style=color:#f92672>+</span> outer1);
+</span></span><span style=display:flex><span>  System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;   outer2: &#34;</span> <span style=color:#f92672>+</span> outer2);
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// 从 outer1 创建内部类实例</span>
+</span></span><span style=display:flex><span>  OuterClassDemo.<span style=color:#a6e22e>InnerClass</span> inner1 <span style=color:#f92672>=</span> outer1.<span style=color:#a6e22e>new</span> <span style=color:#a6e22e>InnerClass</span>();
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// 从 outer2 创建内部类实例</span>
+</span></span><span style=display:flex><span>  OuterClassDemo.<span style=color:#a6e22e>InnerClass</span> inner2 <span style=color:#f92672>=</span> outer2.<span style=color:#a6e22e>new</span> <span style=color:#a6e22e>InnerClass</span>();
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;\n2. 从不同外部类实例创建内部类：&#34;</span>);
+</span></span><span style=display:flex><span>  System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;   inner1: &#34;</span> <span style=color:#f92672>+</span> inner1);
+</span></span><span style=display:flex><span>  System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;   inner2: &#34;</span> <span style=color:#f92672>+</span> inner2);
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;\n3. 验证内部类持有的外部类引用：&#34;</span>);
+</span></span><span style=display:flex><span>  System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;   inner1 持有的外部类引用：&#34;</span> <span style=color:#f92672>+</span> inner1.<span style=color:#a6e22e>getOuterInstance</span>());
+</span></span><span style=display:flex><span>  System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;   inner2 持有的外部类引用：&#34;</span> <span style=color:#f92672>+</span> inner2.<span style=color:#a6e22e>getOuterInstance</span>());
+</span></span><span style=display:flex><span>  System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;   inner1 的引用 == outer1? &#34;</span> <span style=color:#f92672>+</span> (inner1.<span style=color:#a6e22e>getOuterInstance</span>() <span style=color:#f92672>==</span> outer1));
+</span></span><span style=display:flex><span>  System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;   inner2 的引用 == outer2? &#34;</span> <span style=color:#f92672>+</span> (inner2.<span style=color:#a6e22e>getOuterInstance</span>() <span style=color:#f92672>==</span> outer2));
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;\n4. 内部类访问外部类字段（隐式引用）:&#34;</span>);
+</span></span><span style=display:flex><span>  inner1.<span style=color:#a6e22e>accessOuterFields</span>();
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;\n5. Lambda 表达式中的外部类引用：&#34;</span>);
+</span></span><span style=display:flex><span>  inner1.<span style=color:#a6e22e>task</span>.<span style=color:#a6e22e>run</span>();
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;\n6. 内部类修改外部类字段（通过隐式引用）:&#34;</span>);
+</span></span><span style=display:flex><span>  System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;   修改前 - outer1.name: &#34;</span> <span style=color:#f92672>+</span> outer1.<span style=color:#a6e22e>name</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;, outer1.value: &#34;</span> <span style=color:#f92672>+</span> outer1.<span style=color:#a6e22e>value</span>);
+</span></span><span style=display:flex><span>  inner1.<span style=color:#a6e22e>modifyOuterField</span>();
+</span></span><span style=display:flex><span>  System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;   修改后 - outer1.name: &#34;</span> <span style=color:#f92672>+</span> outer1.<span style=color:#a6e22e>name</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;, outer1.value: &#34;</span> <span style=color:#f92672>+</span> outer1.<span style=color:#a6e22e>value</span>);
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;\n7. 验证不同内部类实例持有不同的外部类引用：&#34;</span>);
+</span></span><span style=display:flex><span>  System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;   inner1 访问的 name: &#34;</span> <span style=color:#f92672>+</span> inner1.<span style=color:#a6e22e>getOuterInstance</span>().<span style=color:#a6e22e>name</span>);
+</span></span><span style=display:flex><span>  System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;   inner2 访问的 name: &#34;</span> <span style=color:#f92672>+</span> inner2.<span style=color:#a6e22e>getOuterInstance</span>().<span style=color:#a6e22e>name</span>);
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;\n========== 总结 ==========&#34;</span>);
+</span></span><span style=display:flex><span>  System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;内部类隐式持有外部类引用的关键点：&#34;</span>);
+</span></span><span style=display:flex><span>  System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;1. 内部类在创建时自动持有其外部类实例的引用&#34;</span>);
+</span></span><span style=display:flex><span>  System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;2. 内部类可以直接访问外部类的所有成员（包括私有成员）&#34;</span>);
+</span></span><span style=display:flex><span>  System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;3. 通过 OuterClassDemo.this 可以显式访问外部类引用&#34;</span>);
+</span></span><span style=display:flex><span>  System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;4. 每个内部类实例都绑定到一个特定的外部类实例&#34;</span>);
+</span></span><span style=display:flex><span> }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>内部类隐式持有外部类引用的关键点：</p><ol><li>内部类在创建时自动持有其外部类实例的引用</li><li>内部类可以直接访问外部类的所有成员（包括私有成员）</li><li>通过 OuterClassDemo.this 可以显式访问外部类引用</li><li>每个内部类实例都绑定到一个特定的外部类实例</li></ol><h3 id=二this-escape>二、this escape</h3><p>This escape 的核心问题：</p><ul><li>在构造函数完成之前，this 引用被暴露给其他线程</li><li>其他线程可能看到部分初始化的对象状态</li><li>这违反了 Java 内存模型中的"对象必须在发布前完全构造"的原则</li></ul></main><script>document.addEventListener("DOMContentLoaded",function(){const e=new PhotoSwipeLightbox({gallery:".pswp-gallery",children:"a",pswpModule:PhotoSwipe});e.init()})</script>

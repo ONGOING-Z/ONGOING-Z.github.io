@@ -1,0 +1,78 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>自定义 Scope | ongoing's blog</title><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css></head><body><nav><ul class=menu><li><a href=/>首页</a></li><li><a href=/categories/>分类</a></li><li><a href=/about/>关于</a></li></ul><hr></nav><div class=article-meta><h1><span class=title>自定义 Scope</span></h1><h2 class=date>2025/10/08</h2></div><main><p>当你觉得每次获取实例，只会返回给你同一个，或者每次获取实例，都会创建新的，这两种方式你都不满意的情况下，你就可以去自定义自己的作用域了。</p><p>我觉得这东西就和 facotrybean 一样，方便开发者来自定义一些创建逻辑，个性化的逻辑。</p><p>这里我想要实现一个功能：每次从容器中获取，都会给我返回一个这个实例的计数器，展示这个实例是第多个类下的实例。</p><p>大致步骤：</p><ul><li>定义自定义的 scope</li><li>把自定义的 scope 注册到容器中</li><li>多次从容器中获取 bean，验证效果是否正常。</li></ul><h3 id=一定义自定义的-scope>一、定义自定义的 scope</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#f92672>import</span> org.springframework.beans.factory.ObjectFactory;
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> org.springframework.beans.factory.config.Scope;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>OneScope</span> <span style=color:#66d9ef>implements</span> Scope {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span> index <span style=color:#f92672>=</span> 0;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@Override</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> Object <span style=color:#a6e22e>get</span>(String name, ObjectFactory<span style=color:#f92672>&lt;?&gt;</span> objectFactory) {
+</span></span><span style=display:flex><span>        System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;get 被调用&#34;</span>);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> Student(<span style=color:#e6db74>&#34;skywalker-&#34;</span> <span style=color:#f92672>+</span> (index<span style=color:#f92672>++</span>), index);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span> <span style=color:#a6e22e>@Override</span>
+</span></span><span style=display:flex><span> <span style=color:#66d9ef>public</span> Object <span style=color:#a6e22e>remove</span>(String name) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>null</span>;
+</span></span><span style=display:flex><span> }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span> <span style=color:#a6e22e>@Override</span>
+</span></span><span style=display:flex><span> <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>registerDestructionCallback</span>(String name, Runnable callback) {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span> }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span> <span style=color:#a6e22e>@Override</span>
+</span></span><span style=display:flex><span> <span style=color:#66d9ef>public</span> Object <span style=color:#a6e22e>resolveContextualObject</span>(String key) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>null</span>;
+</span></span><span style=display:flex><span> }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span> <span style=color:#a6e22e>@Override</span>
+</span></span><span style=display:flex><span> <span style=color:#66d9ef>public</span> String <span style=color:#a6e22e>getConversationId</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;&#34;</span>;
+</span></span><span style=display:flex><span> }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h3 id=二为自己的实例设置自定义的-scope>二、为自己的实例设置自定义的 scope</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#a6e22e>@Component</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>@Scope</span>(<span style=color:#e6db74>&#34;one&#34;</span>)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Student</span> {
+</span></span><span style=display:flex><span> <span style=color:#66d9ef>private</span> String name;
+</span></span><span style=display:flex><span> <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span> index;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span> <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>Student</span>(String name, <span style=color:#66d9ef>int</span> index) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>name</span> <span style=color:#f92672>=</span> name;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>index</span> <span style=color:#f92672>=</span> index;
+</span></span><span style=display:flex><span> }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span> <span style=color:#66d9ef>public</span> String <span style=color:#a6e22e>getName</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> name;
+</span></span><span style=display:flex><span> }
+</span></span><span style=display:flex><span> <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>setName</span>(String name) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>name</span> <span style=color:#f92672>=</span> name;
+</span></span><span style=display:flex><span> }
+</span></span><span style=display:flex><span> <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>getIndex</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> index;
+</span></span><span style=display:flex><span> }
+</span></span><span style=display:flex><span> <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>setIndex</span>(<span style=color:#66d9ef>int</span> index) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>index</span> <span style=color:#f92672>=</span> index;
+</span></span><span style=display:flex><span> }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h3 id=三测试验证>三、测试验证</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Application</span> {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span> <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span>(String<span style=color:#f92672>[]</span> args) {
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// 1、创建容器</span>
+</span></span><span style=display:flex><span>  AnnotationConfigApplicationContext context <span style=color:#f92672>=</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>new</span> AnnotationConfigApplicationContext();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// 2、注册 scope</span>
+</span></span><span style=display:flex><span>  context.<span style=color:#a6e22e>getBeanFactory</span>().<span style=color:#a6e22e>registerScope</span>(<span style=color:#e6db74>&#34;one&#34;</span>, <span style=color:#66d9ef>new</span> OneScope());
+</span></span><span style=display:flex><span>  context.<span style=color:#a6e22e>register</span>(MyConfig.<span style=color:#a6e22e>class</span>);
+</span></span><span style=display:flex><span>  context.<span style=color:#a6e22e>refresh</span>();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// 3、多次获取 Bean</span>
+</span></span><span style=display:flex><span>  Student myBean <span style=color:#f92672>=</span> context.<span style=color:#a6e22e>getBean</span>(Student.<span style=color:#a6e22e>class</span>);
+</span></span><span style=display:flex><span>  System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;==&gt;&#34;</span>);
+</span></span><span style=display:flex><span>  System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(myBean.<span style=color:#a6e22e>getName</span>());
+</span></span><span style=display:flex><span>  Student myBean2 <span style=color:#f92672>=</span> context.<span style=color:#a6e22e>getBean</span>(Student.<span style=color:#a6e22e>class</span>);
+</span></span><span style=display:flex><span>  System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(myBean2.<span style=color:#a6e22e>getName</span>());
+</span></span><span style=display:flex><span> }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>执行结果</p><img src=result.png alt></main><script>document.addEventListener("DOMContentLoaded",function(){const e=new PhotoSwipeLightbox({gallery:".pswp-gallery",children:"a",pswpModule:PhotoSwipe});e.init()})</script>

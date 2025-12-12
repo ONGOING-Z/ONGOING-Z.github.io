@@ -1,0 +1,97 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>InvocationHandler 例子 | ongoing's blog</title><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css></head><body><nav><ul class=menu><li><a href=/>首页</a></li><li><a href=/categories/>分类</a></li><li><a href=/about/>关于</a></li></ul><hr></nav><div class=article-meta><h1><span class=title>InvocationHandler 例子</span></h1><h2 class=date>2025/10/14</h2></div><main><p>这里展示一个手动用 jdk 代理创建代理对象的例子。</p><ul><li>定义业务接口及方法</li><li>自定义自己的 handler，设计好在方法前后要添加的逻辑</li><li>创建代理对象</li><li>触发代理对象</li></ul><h3 id=一自己的业务方法>一、自己的业务方法</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>interface</span> <span style=color:#a6e22e>SimpleInterface</span> {
+</span></span><span style=display:flex><span>    String <span style=color:#a6e22e>sayHello</span>(String name);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>calculate</span>(<span style=color:#66d9ef>int</span> a, <span style=color:#66d9ef>int</span> b);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>SimpleInterfaceImpl</span> <span style=color:#66d9ef>implements</span> SimpleInterface {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@Override</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> String <span style=color:#a6e22e>sayHello</span>(String name) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;Hello, &#34;</span> <span style=color:#f92672>+</span> name <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;!&#34;</span>;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@Override</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>calculate</span>(<span style=color:#66d9ef>int</span> a, <span style=color:#66d9ef>int</span> b) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> a <span style=color:#f92672>+</span> b;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h3 id=二实现-invocationhandler>二、实现 InvocationHandler</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * 自定义的 InvocationHandler，用于添加日志功能
+</span></span></span><span style=display:flex><span><span style=color:#75715e> */</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>LoggingInvocationHandler</span> <span style=color:#66d9ef>implements</span> InvocationHandler {
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>final</span> Object target; <span style=color:#75715e>// 被代理的目标对象</span>
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>LoggingInvocationHandler</span>(Object target) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>target</span> <span style=color:#f92672>=</span> target;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@Override</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> Object <span style=color:#a6e22e>invoke</span>(Object proxy, Method method, Object<span style=color:#f92672>[]</span> args) <span style=color:#66d9ef>throws</span> Throwable {
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// 方法调用前的日志</span>
+</span></span><span style=display:flex><span>        System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;=== 方法调用开始 ===&#34;</span>);
+</span></span><span style=display:flex><span>        System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;调用方法：&#34;</span> <span style=color:#f92672>+</span> method.<span style=color:#a6e22e>getName</span>());
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (args <span style=color:#f92672>!=</span> <span style=color:#66d9ef>null</span>) {
+</span></span><span style=display:flex><span>            System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;方法参数：&#34;</span> <span style=color:#f92672>+</span> java.<span style=color:#a6e22e>util</span>.<span style=color:#a6e22e>Arrays</span>.<span style=color:#a6e22e>toString</span>(args));
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>long</span> startTime <span style=color:#f92672>=</span> System.<span style=color:#a6e22e>currentTimeMillis</span>();
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>try</span> {
+</span></span><span style=display:flex><span>            <span style=color:#75715e>// 调用目标对象的方法</span>
+</span></span><span style=display:flex><span>            Object result <span style=color:#f92672>=</span> method.<span style=color:#a6e22e>invoke</span>(target, args);
+</span></span><span style=display:flex><span>            
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>long</span> endTime <span style=color:#f92672>=</span> System.<span style=color:#a6e22e>currentTimeMillis</span>();
+</span></span><span style=display:flex><span>            
+</span></span><span style=display:flex><span>            <span style=color:#75715e>// 方法调用后的日志</span>
+</span></span><span style=display:flex><span>            System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;方法返回值：&#34;</span> <span style=color:#f92672>+</span> result);
+</span></span><span style=display:flex><span>            System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;方法执行时间：&#34;</span> <span style=color:#f92672>+</span> (endTime <span style=color:#f92672>-</span> startTime) <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;ms&#34;</span>);
+</span></span><span style=display:flex><span>            System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;=== 方法调用结束 ===\n&#34;</span>);
+</span></span><span style=display:flex><span>            
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>return</span> result;
+</span></span><span style=display:flex><span>        } <span style=color:#66d9ef>catch</span> (Exception e) {
+</span></span><span style=display:flex><span>            System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;方法调用异常：&#34;</span> <span style=color:#f92672>+</span> e.<span style=color:#a6e22e>getMessage</span>());
+</span></span><span style=display:flex><span>            System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;=== 方法调用结束 ===\n&#34;</span>);
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>throw</span> e;
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h3 id=三测试验证>三、测试验证</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ProxyExample</span> {
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span>(String<span style=color:#f92672>[]</span> args) {
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// 1. 创建目标对象</span>
+</span></span><span style=display:flex><span>        SimpleInterface target <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> SimpleInterfaceImpl();
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// 2. 创建 InvocationHandler</span>
+</span></span><span style=display:flex><span>        LoggingInvocationHandler handler <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> LoggingInvocationHandler(target);
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// 3. 使用 Proxy.newProxyInstance 创建代理对象</span>
+</span></span><span style=display:flex><span>        SimpleInterface proxy <span style=color:#f92672>=</span> (SimpleInterface) Proxy.<span style=color:#a6e22e>newProxyInstance</span>(
+</span></span><span style=display:flex><span>            target.<span style=color:#a6e22e>getClass</span>().<span style=color:#a6e22e>getClassLoader</span>(),  <span style=color:#75715e>// 类加载器</span>
+</span></span><span style=display:flex><span>            target.<span style=color:#a6e22e>getClass</span>().<span style=color:#a6e22e>getInterfaces</span>(),   <span style=color:#75715e>// 接口数组</span>
+</span></span><span style=display:flex><span>            handler                              <span style=color:#75715e>// InvocationHandler</span>
+</span></span><span style=display:flex><span>        );
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// 4. 使用代理对象调用方法</span>
+</span></span><span style=display:flex><span>        System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;=== 使用代理对象调用方法 ===&#34;</span>);
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// 调用 sayHello 方法</span>
+</span></span><span style=display:flex><span>        String result1 <span style=color:#f92672>=</span> proxy.<span style=color:#a6e22e>sayHello</span>(<span style=color:#e6db74>&#34;张三&#34;</span>);
+</span></span><span style=display:flex><span>        System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;最终结果：&#34;</span> <span style=color:#f92672>+</span> result1);
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// 调用 calculate 方法</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>int</span> result2 <span style=color:#f92672>=</span> proxy.<span style=color:#a6e22e>calculate</span>(10, 20);
+</span></span><span style=display:flex><span>        System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;最终结果：&#34;</span> <span style=color:#f92672>+</span> result2);
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// 5. 对比：直接调用目标对象（无代理）</span>
+</span></span><span style=display:flex><span>        System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;\n=== 直接调用目标对象（无代理） ===&#34;</span>);
+</span></span><span style=display:flex><span>        String directResult1 <span style=color:#f92672>=</span> target.<span style=color:#a6e22e>sayHello</span>(<span style=color:#e6db74>&#34;李四&#34;</span>);
+</span></span><span style=display:flex><span>        System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;直接调用结果：&#34;</span> <span style=color:#f92672>+</span> directResult1);
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>int</span> directResult2 <span style=color:#f92672>=</span> target.<span style=color:#a6e22e>calculate</span>(5, 15);
+</span></span><span style=display:flex><span>        System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;直接调用结果：&#34;</span> <span style=color:#f92672>+</span> directResult2);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>运行结果</p><img src=result.png alt></main><script>document.addEventListener("DOMContentLoaded",function(){const e=new PhotoSwipeLightbox({gallery:".pswp-gallery",children:"a",pswpModule:PhotoSwipe});e.init()})</script>
