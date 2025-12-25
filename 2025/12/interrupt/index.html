@@ -1,0 +1,12 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>中断 | ongoing's blog</title><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css></head><body><nav><ul class=menu><li><a href=/>首页</a></li><li><a href=/categories/>分类</a></li><li><a href=/about/>关于</a></li><li><a href=/tags/>标签</a></li></ul><hr></nav><div class=article-meta><h1><span class=title>中断</span></h1><h2 class=date>2025/12/03</h2></div><main><p>我之前一直不太理解中断这个概念在程序中到底是什么含义。</p><p>生活中这个概念当然很容易理解，比如你在做事情 A，别人打断你，让你去做其他事情。</p><p>但是在 Java 中中断是什么含义呢？
+线程 A 在执行，其他线程去中断线程 A。似乎是同样的含义。
+之前我以为线程 A 当场就会反应针对这个中断进行反应，可能是直接报错什么的。
+现在我在看了一些资料后，发现中断也是一种线程间的沟通交流方式，就像 wait 和 notify 一样。</p><p>它是一种通知，一种信号。
+类似酶和受体，
+有对酶起反应的受体，受体就会有相应的化学反应发生。
+如果没有受体或者没有对那种酶产生反应的受体的话，那样就什么情况也没有。</p><p>程序中也是如此，如果你对当前线程执行了中断操作，后续步骤中如果没有响应中断的逻辑的话，程序不会有什么异常产生，就和正常程序一样。
+如果后续逻辑支持响应中断，那就可以消费掉这种信号，识别出这种信号，进而产生反应。
+如果你的程序中没有相应的逻辑去消费掉这种信号的话，这种信号就成为了一种废弃的、冗余的信号。</p><p>所以现在你如果需要在你的程序中去对外界对你产生的中断有反应的话，有两种方式：</p><ol><li>自行去判断当前线程是否被中断，这在 Thread 类中有专门的方法去判断。</li><li>使用已经封装了会响应中断的 API。这样的话，就不需要你去写响应中断的逻辑了。</li></ol><p><strong>另外一个值得注意的是，中断信号是一次性的。</strong>
+也就是说，你的线程如果消耗掉了，那就不会再有了。那些响应中断的 API 在抛出中断异常后，这种信号就没有了。所以常常会看到程序在 catch 掉中断异常后，又去触发了下当前线程的中断，来维持住中断信号的传递。</p><p><strong>中断还可以作为唤醒的一种手段。</strong>
+当线程在 wait, join 途中，是可以被中断的，这样的话，线程就会从当前状态中退出。
+具体的 API 是否会响应中断，可以看下对应 API 的文档，如果会响应中断，就会在文档中标识。</p></main><script>document.addEventListener("DOMContentLoaded",function(){const e=new PhotoSwipeLightbox({gallery:".pswp-gallery",children:"a",pswpModule:PhotoSwipe});e.init()})</script>

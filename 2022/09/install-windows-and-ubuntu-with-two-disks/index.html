@@ -1,0 +1,9 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>双系统的安装：windows 和 ubuntu | ongoing's blog</title><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css></head><body><nav><ul class=menu><li><a href=/>首页</a></li><li><a href=/categories/>分类</a></li><li><a href=/about/>关于</a></li><li><a href=/tags/>标签</a></li></ul><hr></nav><div class=article-meta><h1><span class=title>双系统的安装：windows 和 ubuntu</span></h1><h2 class=date>2022/09/04</h2></div><main><p>前言：
+因为最近疫情的原因，可能需要在家办公。但是因为上次想从 ubuntu16 换到 ubuntu22 的原因，导致自己电脑上 windows 系统不能启动的原因，我需要重新装一下 windows 系统。</p><p>我的电脑</p><ul><li>两块硬盘<ul><li>第一块：120G 固态</li><li>第二块：2T 机械
+现在选择将 windows 装在 120 G 固态上，将 ubuntu 装在机械硬盘上。</li></ul></li></ul><h2 id=windows-安装>Windows 安装</h2><ul><li>提前准备好 PE U 盘，复制好 windows 镜像到 u 盘中</li><li>使用 PE 的分区功能给硬盘分好区，可以快速分区，也可以自定义分区。<ul><li>因为只有 120G，所以分了三个区 (C = 40G, D: 20G, E: 52G)</li></ul></li><li>从 PE 中启动，右键镜像文件选择装载</li><li>点击 <code>setup.exe</code> 文件</li></ul><p>我这里点击了之后安装程序有报错：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>我们无法创建新的分区，也找不到现有的分区。
+</span></span></code></pre></div><p>最后使用复制方法安装的，复制解压后镜像中的四个文件</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>boot 文件夹
+</span></span><span class=line><span class=cl>sources 文件夹
+</span></span><span class=line><span class=cl>bootmgr 文件
+</span></span></code></pre></div><p>到已经分好区的系统盘 (之前分好的 C 盘).
+重启计算机即可。</p><h2 id=ubuntu16-安装>Ubuntu16 安装</h2><ul><li>关于 efi 和/boot 的安装
+这次是将/boot 和 windows 装在同一块硬盘上的。</li></ul></main><script>document.addEventListener("DOMContentLoaded",function(){const e=new PhotoSwipeLightbox({gallery:".pswp-gallery",children:"a",pswpModule:PhotoSwipe});e.init()})</script>

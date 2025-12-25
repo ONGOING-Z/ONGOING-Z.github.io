@@ -1,0 +1,11 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>备份你的 Ubuntu Apt 软件包列表 | ongoing's blog</title><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css></head><body><nav><ul class=menu><li><a href=/>首页</a></li><li><a href=/categories/>分类</a></li><li><a href=/about/>关于</a></li><li><a href=/tags/>标签</a></li></ul><hr></nav><div class=article-meta><h1><span class=title>备份你的 Ubuntu Apt 软件包列表</span></h1><h2 class=date>2023/08/19</h2></div><main><p>前言：备份在 ubuntu 中安装的包软件。</p><h2 id=backup-your-linux-apt-package>Backup your linux apt Package</h2><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>dpkg --get-selections &gt; ~/Package.list
+</span></span><span class=line><span class=cl>sudo cp -R /etc/apt/sources.list* ~/
+</span></span><span class=line><span class=cl>sudo apt-key exportall &gt; ~/Repo.keys
+</span></span></code></pre></div><h2 id=restore>Restore</h2><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>sudo apt-key add ~/Repo.keys
+</span></span><span class=line><span class=cl>sudo cp -R ~/sources.list* /etc/apt/
+</span></span><span class=line><span class=cl>sudo apt-get update
+</span></span><span class=line><span class=cl>sudo apt-get install dselect
+</span></span><span class=line><span class=cl>sudo <span class=k>select</span> update
+</span></span><span class=line><span class=cl>sudo dpkg --set-selections &lt; ~/Package.list
+</span></span><span class=line><span class=cl>sudo apt-get dselect-upgrade -y
+</span></span></code></pre></div><h3 id=参考>参考</h3><ul><li><a href=https://askubuntu.com/questions/9135/how-to-backup-settings-and-list-of-installed-packages target=_blank rel="noopener noreferrer">https://askubuntu.com/questions/9135/how-to-backup-settings-and-list-of-installed-packages</a></li></ul></main><script>document.addEventListener("DOMContentLoaded",function(){const e=new PhotoSwipeLightbox({gallery:".pswp-gallery",children:"a",pswpModule:PhotoSwipe});e.init()})</script>

@@ -1,0 +1,14 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>备份Hexo网站源码 | ongoing's blog</title><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css></head><body><nav><ul class=menu><li><a href=/>首页</a></li><li><a href=/categories/>分类</a></li><li><a href=/about/>关于</a></li><li><a href=/tags/>标签</a></li></ul><hr></nav><div class=article-meta><h1><span class=title>备份Hexo网站源码</span></h1><h2 class=date>2020/04/10</h2></div><main><p>今天忽然想起博客在github上存放的只是public中的文件，其他的建站源代码只保存在本地，这样的话如果本地电脑系统坏掉了或者发生了意外电脑不见了，那么没有了建站源码，我的网站不就gg了嘛！，所以上网搜了下备份网站源码的教程，下文是记录。</p><ol><li><p>首先在github博客所在仓库(即<code>yourname.github.io</code>)中<code>新建分支Hexo</code>(名字任意)，并且将其设为默认分支，
+在网站中进行设置即可；</p></li><li><p>将博客仓库<code>clone</code>至本地，将之前本地博客<strong>根文件夹</strong>下的<code>_config.yml</code>，<code>themes/</code>，<code>source/</code>，<code>scffolds/</code>，<code>package.json</code>，<code>.gitignore</code>
+复制到clone的文件夹<code>yourname.github.io/</code>下；</p></li><li><p>将<code>themes/next/</code>(next为使用的主题)中的**.git/**删除，否则无法将主题文件夹push；</p></li><li><p>在<code>yourname.github.io/</code>下执行</p><pre tabindex=0><code>$npm install
+$npm install hexo-deployer-git
+$npm install hexo-server --save  // 为使用本地测试hexo s作准备
+</code></pre></li><li><p>接下来就可以将网站源码备份了</p><pre tabindex=0><code>$git add *
+$git commit -m &#34;your message&#34;
+$git push origin Hexo  // 这里的Hexo是你新建的仓库分支名称
+</code></pre></li><li><p>执行<code>hexo g -d</code>生成静态页面并部署至github仓库中。</p></li></ol><p><strong>写一下书写hexo博客的依赖</strong></p><ol><li><p>git</p></li><li><p>nodejs</p></li><li><p>npm</p></li><li><p>github博客仓库clone至本地</p></li><li><p>在clone文件夹下执行</p><pre tabindex=0><code>$npm install hexo-cli -g
+$npm install
+$npm install hexo-deployer-git
+</code></pre></li></ol><p><strong>这种方法对于我的设置出问题了</strong></p><blockquote><p>之前我是将自己的主页设置成了自己的页面，也就是自己的域名打开后是自己写的界面，在自己的页面点击
+博客图标才是进入自己的博客<code>域名/blog</code>，这个界面就是使用<code>hexo + next</code>的界面，但是打开后是404.</p></blockquote><p>然后使用了这种方法就出了问题，<code>hexo g</code>自动生成的文件在<code>public/blog</code>，这个不需改变
+这个问题先放在这里。</p><hr><p><em>21.8.1</em></p><p>上面的这种方法已经过时了，现在我的博客是使用 <a href=https://ongoing-z.github.io/posts/deploy-blog-by-github-actions.html target=_blank rel="noopener noreferrer">github action 来进行部署</a> 的，博客源文件放在一个仓库里，博客生成的 html 文件放在另一个公开仓库里。也起到了备份网站源码的作用。</p><h3 id=参考>参考</h3><ul><li><a href=https://www.jianshu.com/p/baab04284923 target=_blank rel="noopener noreferrer">怎么去备份你的Hexo博客</a></li></ul></main><script>document.addEventListener("DOMContentLoaded",function(){const e=new PhotoSwipeLightbox({gallery:".pswp-gallery",children:"a",pswpModule:PhotoSwipe});e.init()})</script>

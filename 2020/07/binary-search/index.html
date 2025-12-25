@@ -1,0 +1,41 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>二分查找 | ongoing's blog</title><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css></head><body><nav><ul class=menu><li><a href=/>首页</a></li><li><a href=/categories/>分类</a></li><li><a href=/about/>关于</a></li><li><a href=/tags/>标签</a></li></ul><hr></nav><div class=article-meta><h1><span class=title>二分查找</span></h1><h2 class=date>2020/07/05</h2></div><main><p>二分法和c语言实现及时间复杂度分析</p><h2 id=1-实现---c>1. 实现 - C</h2><div class=highlight><pre tabindex=0 class=chroma><code class=language-c data-lang=c><span class=line><span class=cl><span class=c1>// 二分查找
+</span></span></span><span class=line><span class=cl><span class=c1>// 注意middle的下标和位于数组middle的值
+</span></span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;stdio.h&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=nf>binary_search</span><span class=p>(</span><span class=kt>int</span> <span class=n>a</span><span class=p>[],</span> <span class=kt>int</span> <span class=n>to_be_found</span><span class=p>,</span> <span class=kt>int</span> <span class=n>len</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>l</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>        <span class=c1>// left index
+</span></span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>r</span> <span class=o>=</span> <span class=n>len</span> <span class=o>-</span> <span class=mi>1</span><span class=p>;</span>  <span class=c1>// right index
+</span></span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>while</span> <span class=p>(</span><span class=n>l</span> <span class=o>&lt;=</span> <span class=n>r</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=c1>//int middle = (l + r) / 2; // find the middle number index
+</span></span></span><span class=line><span class=cl>        <span class=kt>int</span> <span class=n>middle</span> <span class=o>=</span> <span class=n>l</span> <span class=o>+</span> <span class=p>(</span><span class=n>r</span> <span class=o>-</span> <span class=n>l</span><span class=p>)</span> <span class=o>/</span> <span class=mi>2</span><span class=p>;</span> <span class=c1>// find the middle number index
+</span></span></span><span class=line><span class=cl>                                      <span class=c1>// 避免溢出
+</span></span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=n>a</span><span class=p>[</span><span class=n>middle</span><span class=p>]</span> <span class=o>==</span> <span class=n>to_be_found</span><span class=p>)</span>  <span class=c1>// 刚好中间数就是我们要找的数
+</span></span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=n>middle</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=n>a</span><span class=p>[</span><span class=n>middle</span><span class=p>]</span> <span class=o>&lt;</span> <span class=n>to_be_found</span><span class=p>)</span>   <span class=c1>// 中间数 &lt; 要找的数
+</span></span></span><span class=line><span class=cl>            <span class=n>l</span> <span class=o>=</span> <span class=n>middle</span> <span class=o>+</span> <span class=mi>1</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=k>else</span>
+</span></span><span class=line><span class=cl>            <span class=n>r</span> <span class=o>=</span> <span class=n>middle</span> <span class=o>-</span> <span class=mi>1</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=o>-</span><span class=mi>1</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=nf>main</span><span class=p>(</span><span class=kt>int</span> <span class=n>argc</span><span class=p>,</span> <span class=kt>char</span> <span class=o>*</span><span class=n>argv</span><span class=p>[])</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>a</span><span class=p>[</span><span class=mi>10</span><span class=p>]</span> <span class=o>=</span> <span class=p>{</span><span class=mi>1</span><span class=p>,</span> <span class=mi>2</span><span class=p>,</span> <span class=mi>3</span><span class=p>,</span> <span class=mi>4</span><span class=p>,</span> <span class=mi>5</span><span class=p>,</span> <span class=mi>6</span><span class=p>,</span> <span class=mi>7</span><span class=p>,</span> <span class=mi>8</span><span class=p>,</span> <span class=mi>9</span><span class=p>,</span> <span class=mi>10</span><span class=p>};</span>
+</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>len</span> <span class=o>=</span> <span class=k>sizeof</span><span class=p>(</span><span class=n>a</span><span class=p>)</span> <span class=o>/</span> <span class=k>sizeof</span><span class=p>(</span><span class=n>a</span><span class=p>[</span><span class=mi>0</span><span class=p>]);</span>  <span class=c1>// calculate the array&#39;s length
+</span></span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>res</span> <span class=o>=</span> <span class=nf>binary_search</span><span class=p>(</span><span class=n>a</span><span class=p>,</span> <span class=mi>4</span><span class=p>,</span> <span class=n>len</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=n>res</span> <span class=o>!=</span> <span class=o>-</span><span class=mi>1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=nf>printf</span><span class=p>(</span><span class=s>&#34;Find out index = %d</span><span class=se>\n</span><span class=s>&#34;</span><span class=p>,</span> <span class=n>res</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>else</span>
+</span></span><span class=line><span class=cl>        <span class=nf>printf</span><span class=p>(</span><span class=s>&#34;No answer!</span><span class=se>\n</span><span class=s>&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><h2 id=2-时间复杂度分析>2. 时间复杂度分析</h2><p>假设数组长度为n，每次查找后长度减半</p><pre tabindex=0><code>// 第一次 = n/2
+// 第二次 = n/4
+// ...
+// 第k次 = n * (1/2)^k
+</code></pre><p>最坏情况 = 数据长度为1时找到，即 n * (1/2)k = 1. 求解得k = log2(n).</p></main><script>document.addEventListener("DOMContentLoaded",function(){const e=new PhotoSwipeLightbox({gallery:".pswp-gallery",children:"a",pswpModule:PhotoSwipe});e.init()})</script>

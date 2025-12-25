@@ -1,0 +1,24 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>2020 最新版 Next 主题配置文件修改方式 | ongoing's blog</title><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css></head><body><nav><ul class=menu><li><a href=/>首页</a></li><li><a href=/categories/>分类</a></li><li><a href=/about/>关于</a></li><li><a href=/tags/>标签</a></li></ul><hr></nav><div class=article-meta><h1><span class=title>2020 最新版 Next 主题配置文件修改方式</span></h1><h2 class=date>2021/07/19</h2></div><main><p>前言：因为没有修改过的 Next 博客里的排版对于看过无数优秀版面的读者们实在是不太友好，所以需要修改下展示博客的页面。这里我只修改的两个地方的样式：一个是行距，另一个是字体的大小。</p><p>但是由于最新版的 <a href=https://github.com/next-theme/hexo-theme-next target=_blank rel="noopener noreferrer">Next</a> 主题的主题配置文件修改方式已经发生改变了，所以下面展示的是最新版的配置方式。我们现在可以直接在站点配置文件的同名目录下新建一个名为<code>_config.next.yml</code>文件，<strong>首次使用还请将官方主题配置文件全部复制到这里</strong>，之后对于主题配置的修改就在这里修改，不再对克隆下来的主题文件夹里的配置文件进行修改。</p><p>然后在里面设置启用<code>custom_file_path.variable</code></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-diff data-lang=diff><span class=line><span class=cl># Define custom file paths.
+</span></span><span class=line><span class=cl># Create your custom files in site directory `source/_data` and uncomment needed files below.
+</span></span><span class=line><span class=cl>custom_file_path =
+</span></span><span class=line><span class=cl>#head = source/_data/head.njk
+</span></span><span class=line><span class=cl>#header = source/_data/header.njk
+</span></span><span class=line><span class=cl>#sidebar = source/_data/sidebar.njk
+</span></span><span class=line><span class=cl>#postMeta = source/_data/post-meta.njk
+</span></span><span class=line><span class=cl>#postBodyEnd = source/_data/post-body-end.njk
+</span></span><span class=line><span class=cl>#footer = source/_data/footer.njk
+</span></span><span class=line><span class=cl>#bodyEnd = source/_data/body-end.njk
+</span></span><span class=line><span class=cl><span class=gd>-  #variable = source/_data/variables.styl
+</span></span></span><span class=line><span class=cl><span class=gi>+  variable = source/_data/variables.styl
+</span></span></span><span class=line><span class=cl>#mixin = source/_data/mixins.styl
+</span></span><span class=line><span class=cl>#style = source/_data/styles.styl
+</span></span></code></pre></div><p>然后在<code>博客根目录/source/</code>文件夹下新建<code>_data</code>文件夹，并且在<code>_data</code>文件夹下新建文件<code>variables.styl</code></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>touch variables.styl
+</span></span></code></pre></div><p>在这个文件里我们书写关于修改主题行高的配置，写入</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yml data-lang=yml><span class=line><span class=cl><span class=l>// Global line height</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=l>$line-height-base         = 2;</span><span class=w>
+</span></span></span></code></pre></div><p>这里我将全局文章行高设置为 2，阅读起来文字效果较为友好。</p><p>那么在哪里设置字体大小呢？全局字体的大小配置我们可以在博客根目录下的<code>_config.next.yml</code>中找到：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-diff data-lang=diff><span class=line><span class=cl> font =
+</span></span><span class=line><span class=cl>   global =
+</span></span><span class=line><span class=cl>     external = true
+</span></span><span class=line><span class=cl>     family = Noto Serif SC
+</span></span><span class=line><span class=cl><span class=gd>-    size =
+</span></span></span><span class=line><span class=cl><span class=gi>+    size = 0.9
+</span></span></span></code></pre></div><p>因为这里的 size 是以 <code>em</code>为单位的，而默认的就是 1 em，也就是 16px，我这里设置的是 0.9(14.4px)。</p><p><strong>注意这里只能保留 1 位小数，如果设置为 0.85 渲染出来的也只是 0.8。</strong></p><p>好了，关于博客文章行距和字体大小的设置就到这里了，关于新版 Next 主题的配置还在不断探索中，一起优化我们的博客观感吧！</p><h3 id=参考>参考</h3><p>[1] custom-files 官方文档设置 = <a href=https://theme-next.js.org/docs/advanced-settings/custom-files.html target=_blank rel="noopener noreferrer">https://theme-next.js.org/docs/advanced-settings/custom-files.html</a></p></main><script>document.addEventListener("DOMContentLoaded",function(){const e=new PhotoSwipeLightbox({gallery:".pswp-gallery",children:"a",pswpModule:PhotoSwipe});e.init()})</script>
