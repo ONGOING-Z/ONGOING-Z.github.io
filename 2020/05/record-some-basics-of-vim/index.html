@@ -1,0 +1,84 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>记录一些Vim基础 | ongoing's blog</title><link rel=dns-prefetch href=https://image.ongoingblog.org><link rel=preconnect href=https://image.ongoingblog.org crossorigin><link rel=preload href=/css/style.css as=style><link rel=preload href=/css/fonts.css as=style><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css><link rel=stylesheet href=/css/chroma.css><link rel=prefetch href=/js/katex/katex.min.css as=style><link rel=prefetch href=/js/katex/katex.min.js as=script><link rel=prefetch href=/css/loading.css as=style><script>function loadKaTeX(){const e=document.body?document.body.textContent:"",t=e.match(/\$\$|\\\[|\\\(|\$[^$\n]+\$/)||document.querySelector('script[type="math/tex"]');if(t){const e=document.createElement("link");e.rel="stylesheet",e.href="/js/katex/katex.min.css",e.onerror=function(){console.warn("KaTeX CSS 加载失败，尝试使用备用路径"),e.href="https://ongoingblog.org/js/katex/katex.min.css"},document.querySelector(`link[href="${e.href}"]`)||document.head.appendChild(e);const t=document.createElement("link");t.rel="stylesheet",t.href="/css/loading.css",t.onerror=function(){console.warn("loading.css 加载失败，尝试使用备用路径"),t.href="https://ongoingblog.org/css/loading.css"},document.querySelector(`link[href="${t.href}"]`)||document.head.appendChild(t);const n=document.createElement("script");n.src="/js/katex/katex.min.js",n.onerror=function(){console.warn("KaTeX JS 加载失败，尝试使用备用路径"),n.src="https://ongoingblog.org/js/katex/katex.min.js"},n.async=!0,n.onload=function(){const e=document.createElement("script");e.src="/js/katex/contrib/auto-render.min.js",e.async=!0,e.onload=function(){typeof renderMathInElement=="function"&&renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"\\[",right:"\\]",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1}],throwOnError:!1})},document.head.appendChild(e)},document.head.appendChild(n)}}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",function(){setTimeout(loadKaTeX,100)}):setTimeout(loadKaTeX,100)</script><script>document.addEventListener("DOMContentLoaded",()=>{const n=document.querySelectorAll("img.lazy-image[data-src]");function s(e){const t=e.getBoundingClientRect();return t.top>=0&&t.left>=0&&t.bottom<=(window.innerHeight||document.documentElement.clientHeight)+100&&t.right<=(window.innerWidth||document.documentElement.clientWidth)}function t(e){const t=e.getAttribute("data-src");if(t){const n=e.closest(".image-loading-container");return n&&n.classList.add("loading"),e.src=t,e.removeAttribute("data-src"),e.classList.remove("lazy-image"),e.addEventListener("load",function(){n&&n.classList.remove("loading")}),e.addEventListener("error",function(){n&&n.classList.remove("loading")}),!0}return!1}n.forEach(e=>{s(e)&&t(e)});const e=document.querySelectorAll("img.lazy-image[data-src]");if(e.length>0&&"IntersectionObserver"in window){const n=new IntersectionObserver((e,n)=>{e.forEach(e=>{if(e.isIntersecting){const s=e.target;t(s)&&n.unobserve(s)}})},{rootMargin:"100px"});e.forEach(e=>{n.observe(e)})}else e.length>0&&e.forEach(e=>{t(e)});document.querySelectorAll("main img").forEach(e=>{if(e.parentNode.tagName==="A"){e.parentNode.target="_blank";return}const t=document.createElement("a");t.href=e.src||e.getAttribute("data-src")||"",t.target="_blank",t.style.cursor="zoom-in",e.parentNode.insertBefore(t,e),t.appendChild(e)})})</script><link rel=prefetch href=/pagefind/pagefind-ui.css as=style><link rel=prefetch href=/pagefind/pagefind-ui.js as=script></head><body><nav><ul class=menu><li><a href=/>首页</a></li><li><a href=/categories/>分类</a></li><li><a href=/about/>关于</a></li><li><a href=/tags/>标签</a></li><li><a href=/#search onclick="return toggleSearch(),!1">搜索</a></li></ul><hr></nav><div id=search-container style=display:none><div id=search></div></div><script>let pagefindInitialized=!1,pagefindScriptLoaded=!1,pagefindCssLoaded=!1;function loadPagefind(){if(pagefindScriptLoaded)return;if(pagefindScriptLoaded=!0,!pagefindCssLoaded){const e=document.createElement("link");e.rel="stylesheet",e.href="/pagefind/pagefind-ui.css",e.onerror=function(){console.warn("Pagefind CSS 加载失败，尝试使用备用路径"),e.href="https://ongoingblog.org/pagefind/pagefind-ui.css"},document.head.appendChild(e),pagefindCssLoaded=!0}const e=document.createElement("script");e.src="/pagefind/pagefind-ui.js",e.async=!0,e.onload=function(){typeof PagefindUI!="undefined"&&initializePagefind()},e.onerror=function(){console.error("Pagefind JS 加载失败，尝试使用备用路径"),e.src="https://ongoingblog.org/pagefind/pagefind-ui.js"},document.head.appendChild(e)}function initializePagefind(){if(!pagefindInitialized)try{new PagefindUI({element:"#search",showSubResults:!0,showImages:!1}),pagefindInitialized=!0}catch(e){console.error("Pagefind 初始化失败:",e)}}function toggleSearch(){const e=document.getElementById("search-container");e.style.display==="none"||e.style.display===""?(e.style.display="block",pagefindScriptLoaded?!pagefindInitialized&&typeof PagefindUI!="undefined"&&initializePagefind():loadPagefind(),setTimeout(()=>{const t=e.querySelector("input");t&&t.focus()},100)):e.style.display="none"}</script><div class=article-meta><h1><span class=title>记录一些Vim基础</span></h1><h2 class=date>2020/05/13</h2></div><main data-pagefind-body><p>记录自己在使用vim中使用的命令和一些方法。</p><h2 id=basic>Basic</h2><ul><li><code>i</code>: Insert text before the cursor</li><li><code>o</code>: Begin a new line below the cursor</li><li><code>R</code>: Replace character continually</li><li><code>r</code>: Replace character once</li></ul><ol><li><p>在 vi 的环境中,如何将目前正在编辑的文件另存新档名为 newfilename</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>:w newfilename
+</span></span></code></pre></div></li><li><p>到达指定行
+2.1 In normal mode: <code>line_numberG</code>
+例: 到达第九行即<code>9G</code>
+2.2 In command mode: <code>:line_number</code>
+例: 到达第九行即<code>:9</code>
+<strong>注</strong>: 认为第一种方法更为快速，因为如果是第二种方法的话，目光还需要向下移动。</p></li><li><p>到达指定行
+( vim <code>&lt;leader></code>键: <code>\</code></p></li><li><p>vim 替换
+具体查看vim帮助文档<code>:h substitute</code>
+全局替换: <code>:%s/search_string/substituted_string/g</code>
+此处：</p><ul><li><code>%</code>: 指范围，相当于<code>1~$</code>，文档的第一行到最后一行</li><li><code>g</code>: replace all occurrences in the line. Without this argument, replacement occurs only for the first occurrence in each line.</li></ul></li><li><p>vim 替换
+vim精确查找
+先看一个例子，准确查找字符串int：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>/<span class=se>\&lt;</span>int<span class=se>\&gt;</span>
+</span></span></code></pre></div></li></ol><p>其中</p><ul><li><code>\&lt;</code>: 匹配单词开头</li><li><code>\></code>: 匹配单词结尾</li></ul><ol start=6><li><p>拷贝整个文件</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>:%y
+</span></span><span class=line><span class=cl>ggyG
+</span></span></code></pre></div></li><li><p>获得当前文件的名称</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=c1># 在屏幕上显示当前名称</span>
+</span></span><span class=line><span class=cl>:echo expand<span class=o>(</span><span class=s2>&#34;%:t&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=c1># 粘贴复制当前文件名称</span>
+</span></span><span class=line><span class=cl>:let @f<span class=o>=</span>expand<span class=o>(</span><span class=s2>&#34;%:t&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>然后粘贴即可
+</span></span></code></pre></div></li><li><p><code>&lt;esc></code>:= <code>Ctrl - [</code></p></li><li><p>合并上下行<code>shift + j</code>
+<code>shift + j</code>可以删除行末尾的回车</p></li><li><p>查找到结果后
+(1) 向下查询：<code>n</code>
+(2) 向上查询：<code>shift + n</code>(联想到网页的tab与shift tab)</p></li><li><p>Visual mode in vim
+(1) <code>v</code>: 选择字符
+(1) <code>shift + v</code>: 选择整行
+(1) <code>ctrl + v</code>: 选择整块</p></li><li><p><code>gUaW</code>：大写一个单词</p></li><li><p>Paste local timestamp
+<code>"=strftime("%c")&lt;cr>p</code>
+<code>"=</code>: expression register</p></li><li><p><code>q:</code>
+Opens a history of previous commands.</p></li><li><p>vim宏录制
+目的: 减少重复动作.
+(1) In <code>normal</code> mode input <code>qa</code>(or qb, qc. ..a, b, c, d is your register)
+(2) And then you will see &ldquo;starting . ..&rdquo; singnal below.
+(3) Quit this function: in normal mode input <code>q</code>, you will end this process.
+使用宏:
+In <code>normal</code> mode input <code>@a</code>, <code>a</code> is your register name. If you want it to run several times, add <code>number</code> in front of <code>@a</code>. For example, <code>7@a</code>.</p></li><li><p>到达行首
+In normal mode input <code>0</code>.</p></li><li><p>替换实例</p><p>删除行首数字</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>:%s/^<span class=o>[</span>0-9<span class=o>]</span>//g
+</span></span></code></pre></div></li></ol><p>17.2 删除行尾数字
+<code>bash :%s/[0-9]$//g </code>18. 删除空行
+<code>:g/^$/d</code>
+如果空行开头有空格，这种方法就不好用了，使用
+<code>:g/^\s*$/d</code></p><ol start=19><li>在使用vim中的<code>y</code>进行复制后，使用<code>p</code>进行粘贴，再次使用<code>p</code>就不能粘贴了，想要粘贴还得去复制一次，很繁琐
+解决方法: 将使用<code>p</code>替换成<code>"0p</code>，这样就可以无限粘贴。
+<em>注: 寄存器<code>0</code>的位置放置的就是最近复制的内容。</em></li><li>vim <code>read</code><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>:read !command
+</span></span></code></pre></div></li></ol><p>The way to append the output of an external command.</p><ol start=21><li><p><code>ctrl + f / ctrl + b</code>: 快速浏览</p></li><li><p><code>di(</code>
+Delete all content inside ()</p></li><li><p>delete a pairs by using tpope/vim-surround</p></li></ol><p>删除一对括号: <code>ds(</code> # delete surround
+删除一对双引号: <code>ds"</code>
+删除一对单引号: <code>ds'</code></p><p>添加一对括号:
+<em>普通模式</em>: <code>ysiw(</code>
+<em>可视模式</em>: <code>S(</code></p><p>以下是<a href=https://github.com/tpope/vim-surround target=_blank rel="noopener noreferrer">tpope/vim-surround</a>节选</p><p>It&rsquo;s easiest to explain with examples. Press <code>cs"'</code> inside</p><pre tabindex=0><code>&#34;Hello world!&#34;
+</code></pre><p>to change it to</p><pre tabindex=0><code>&#39;Hello world!&#39;
+</code></pre><p>Now press <code>cs'&lt;q></code> to change it to</p><pre tabindex=0><code>&lt;q&gt;Hello world!&lt;/q&gt;
+</code></pre><p>To go full circle, press <code>cst"</code> to get</p><pre tabindex=0><code>&#34;Hello world!&#34;
+</code></pre><p>To remove the delimiters entirely, press <code>ds"</code>.</p><pre tabindex=0><code>Hello world!
+</code></pre><ol start=24><li><p><code>!$</code>
+<code>!</code>$是一个特殊的环境变量，它代表了上一个命令的最后一个字符串。如：你可能会这样</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>mkdir mydir
+</span></span><span class=line><span class=cl>mv mydir yourdir
+</span></span><span class=line><span class=cl><span class=nb>cd</span> yourdir
+</span></span></code></pre></div><p>可以改成：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>mkdir mydir
+</span></span><span class=line><span class=cl>mv !$ yourdir
+</span></span><span class=line><span class=cl><span class=nb>cd</span> !$
+</span></span></code></pre></div></li><li><p>在 bash 里，使用 Ctrl-R 而不是上下光标键来查找历史命令。</p></li><li><p>使用 man ascii 来查看 ASCII 表。</p></li><li><p>命令行注释命令: <code>alt + #</code></p></li><li><p>vim中查看缓冲区: <code>:ls</code>
+然后使用<code>:buffer num</code>进行切换</p></li><li><p>vim 书签</p></li></ol><ul><li><p>创建书签: <code>m + 字母</code></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>ma  // 书签名称必须是单个字母，此处示例为a
+</span></span></code></pre></div></li><li><p>跳转书签</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=sb>`</span> + 书签名称
+</span></span></code></pre></div></li><li><p>列出所有书签: <code>:marks</code></p></li><li><p>删除书签: <code>:delmarks name</code></p></li></ul><ol start=30><li>在vim中访问shell
+30.1 进入shell: <code>:shell</code> or <code>:sh</code>
+30.2 离开shell: <code>exit</code></li></ol><h2 id=plug插件管理器删除插件>Plug插件管理器删除插件</h2><ol><li>注释掉或删除在<code>. vimrc</code>中的添加的<code>Plug</code>命令；</li><li>运行<code>:source ~/vimrc</code>或重启vim；</li><li>运行<code>:PlugClean</code>删除插件。</li></ol><h2 id=vim-example>Vim example</h2><ol><li><p>How to convert this piece of text(from vim in reddit)</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>Arch linux
+</span></span><span class=line><span class=cl>Manjaro
+</span></span><span class=line><span class=cl>Ubuntu
+</span></span></code></pre></div><p>into</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>1. Arch linux
+</span></span><span class=line><span class=cl>2. Manjaro
+</span></span><span class=line><span class=cl>3. Ubuntu
+</span></span></code></pre></div><p>Ways:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>(1) Make 3 lines of text out first one
+</span></span><span class=line><span class=cl>(2) use visual-block mode to insert `0.` for 3 lines
+</span></span><span class=line><span class=cl>(3) use visual-block again and `g&lt;Ctrl-a&gt;` to &#34;sequentially&#34; increase your `0`s
+</span></span></code></pre></div></li><li><p>正向匹配删除. 反向匹配删除
+删除文本中包含 day 的行</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>day1 
+</span></span><span class=line><span class=cl>day2
+</span></span><span class=line><span class=cl>our
+</span></span><span class=line><span class=cl>us
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>:%g/day/d
+</span></span></code></pre></div><p>删除文本中不包含 day 的行</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>:%v/day/d
+</span></span></code></pre></div></li></ol><h2 id=vim-fzf>Vim fzf</h2><p>使用fzf模糊查找文件,并使用vim编辑。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>vim <span class=k>$(</span>fzf<span class=k>)</span>
+</span></span></code></pre></div><p>附: <a href=https://github.com/ONGOING-Z/dotfiles/blob/master/vim/vimrc_whole.backup target=_blank rel="noopener noreferrer">我的.vimrc</a></p></main><footer><hr>&copy; <a href=https://ongoingblog.org/ target=_self>ONGOING-Z</a> 2020 -- 2026</footer></body></html>

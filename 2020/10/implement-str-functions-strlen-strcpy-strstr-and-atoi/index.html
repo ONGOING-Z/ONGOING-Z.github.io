@@ -1,0 +1,139 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Implement str functions: strlen, strcpy, strstr and atoi | ongoing's blog</title><link rel=dns-prefetch href=https://image.ongoingblog.org><link rel=preconnect href=https://image.ongoingblog.org crossorigin><link rel=preload href=/css/style.css as=style><link rel=preload href=/css/fonts.css as=style><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css><link rel=stylesheet href=/css/chroma.css><link rel=prefetch href=/js/katex/katex.min.css as=style><link rel=prefetch href=/js/katex/katex.min.js as=script><link rel=prefetch href=/css/loading.css as=style><script>function loadKaTeX(){const e=document.body?document.body.textContent:"",t=e.match(/\$\$|\\\[|\\\(|\$[^$\n]+\$/)||document.querySelector('script[type="math/tex"]');if(t){const e=document.createElement("link");e.rel="stylesheet",e.href="/js/katex/katex.min.css",e.onerror=function(){console.warn("KaTeX CSS 加载失败，尝试使用备用路径"),e.href="https://ongoingblog.org/js/katex/katex.min.css"},document.querySelector(`link[href="${e.href}"]`)||document.head.appendChild(e);const t=document.createElement("link");t.rel="stylesheet",t.href="/css/loading.css",t.onerror=function(){console.warn("loading.css 加载失败，尝试使用备用路径"),t.href="https://ongoingblog.org/css/loading.css"},document.querySelector(`link[href="${t.href}"]`)||document.head.appendChild(t);const n=document.createElement("script");n.src="/js/katex/katex.min.js",n.onerror=function(){console.warn("KaTeX JS 加载失败，尝试使用备用路径"),n.src="https://ongoingblog.org/js/katex/katex.min.js"},n.async=!0,n.onload=function(){const e=document.createElement("script");e.src="/js/katex/contrib/auto-render.min.js",e.async=!0,e.onload=function(){typeof renderMathInElement=="function"&&renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"\\[",right:"\\]",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1}],throwOnError:!1})},document.head.appendChild(e)},document.head.appendChild(n)}}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",function(){setTimeout(loadKaTeX,100)}):setTimeout(loadKaTeX,100)</script><script>document.addEventListener("DOMContentLoaded",()=>{const n=document.querySelectorAll("img.lazy-image[data-src]");function s(e){const t=e.getBoundingClientRect();return t.top>=0&&t.left>=0&&t.bottom<=(window.innerHeight||document.documentElement.clientHeight)+100&&t.right<=(window.innerWidth||document.documentElement.clientWidth)}function t(e){const t=e.getAttribute("data-src");if(t){const n=e.closest(".image-loading-container");return n&&n.classList.add("loading"),e.src=t,e.removeAttribute("data-src"),e.classList.remove("lazy-image"),e.addEventListener("load",function(){n&&n.classList.remove("loading")}),e.addEventListener("error",function(){n&&n.classList.remove("loading")}),!0}return!1}n.forEach(e=>{s(e)&&t(e)});const e=document.querySelectorAll("img.lazy-image[data-src]");if(e.length>0&&"IntersectionObserver"in window){const n=new IntersectionObserver((e,n)=>{e.forEach(e=>{if(e.isIntersecting){const s=e.target;t(s)&&n.unobserve(s)}})},{rootMargin:"100px"});e.forEach(e=>{n.observe(e)})}else e.length>0&&e.forEach(e=>{t(e)});document.querySelectorAll("main img").forEach(e=>{if(e.parentNode.tagName==="A"){e.parentNode.target="_blank";return}const t=document.createElement("a");t.href=e.src||e.getAttribute("data-src")||"",t.target="_blank",t.style.cursor="zoom-in",e.parentNode.insertBefore(t,e),t.appendChild(e)})})</script><link rel=prefetch href=/pagefind/pagefind-ui.css as=style><link rel=prefetch href=/pagefind/pagefind-ui.js as=script></head><body><nav><ul class=menu><li><a href=/>首页</a></li><li><a href=/categories/>分类</a></li><li><a href=/about/>关于</a></li><li><a href=/tags/>标签</a></li><li><a href=/#search onclick="return toggleSearch(),!1">搜索</a></li></ul><hr></nav><div id=search-container style=display:none><div id=search></div></div><script>let pagefindInitialized=!1,pagefindScriptLoaded=!1,pagefindCssLoaded=!1;function loadPagefind(){if(pagefindScriptLoaded)return;if(pagefindScriptLoaded=!0,!pagefindCssLoaded){const e=document.createElement("link");e.rel="stylesheet",e.href="/pagefind/pagefind-ui.css",e.onerror=function(){console.warn("Pagefind CSS 加载失败，尝试使用备用路径"),e.href="https://ongoingblog.org/pagefind/pagefind-ui.css"},document.head.appendChild(e),pagefindCssLoaded=!0}const e=document.createElement("script");e.src="/pagefind/pagefind-ui.js",e.async=!0,e.onload=function(){typeof PagefindUI!="undefined"&&initializePagefind()},e.onerror=function(){console.error("Pagefind JS 加载失败，尝试使用备用路径"),e.src="https://ongoingblog.org/pagefind/pagefind-ui.js"},document.head.appendChild(e)}function initializePagefind(){if(!pagefindInitialized)try{new PagefindUI({element:"#search",showSubResults:!0,showImages:!1}),pagefindInitialized=!0}catch(e){console.error("Pagefind 初始化失败:",e)}}function toggleSearch(){const e=document.getElementById("search-container");e.style.display==="none"||e.style.display===""?(e.style.display="block",pagefindScriptLoaded?!pagefindInitialized&&typeof PagefindUI!="undefined"&&initializePagefind():loadPagefind(),setTimeout(()=>{const t=e.querySelector("input");t&&t.focus()},100)):e.style.display="none"}</script><div class=article-meta><h1><span class=title>Implement str functions: strlen, strcpy, strstr and atoi</span></h1><h2 class=date>2020/10/16</h2></div><main data-pagefind-body><p>自己动手实现的四个库函数，分别是：</p><ol><li>strlen</li><li>strcpy</li><li>strstr</li><li>atoi</li></ol><p>代码如下：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;iostream&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;stdio.h&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;cstdio&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;dbg.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;string.h&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;string&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;assert.h&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;limits.h&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=k>using</span> <span class=k>namespace</span> <span class=n>std</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=cm>/*
+</span></span></span><span class=line><span class=cl><span class=cm> * 实现 strlen，获取字符串长度
+</span></span></span><span class=line><span class=cl><span class=cm> */</span>
+</span></span><span class=line><span class=cl><span class=n>size_t</span>  <span class=nf>strlen</span><span class=p>(</span><span class=k>const</span> <span class=kt>char</span> <span class=o>*</span><span class=n>str</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>const</span> <span class=kt>char</span> <span class=o>*</span><span class=n>s</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=p>(</span><span class=n>s</span> <span class=o>=</span> <span class=n>str</span><span class=p>;</span> <span class=o>*</span><span class=n>s</span><span class=p>;</span> <span class=n>s</span><span class=o>++</span><span class=p>)</span> <span class=p>{}</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>s</span> <span class=o>-</span> <span class=n>str</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=cm>/*
+</span></span></span><span class=line><span class=cl><span class=cm> * 实现 strcpy, 字符串拷贝函数
+</span></span></span><span class=line><span class=cl><span class=cm> */</span>
+</span></span><span class=line><span class=cl><span class=kt>char</span> <span class=o>*</span><span class=nf>strcpy</span><span class=p>(</span><span class=kt>char</span> <span class=o>*</span><span class=n>to</span><span class=p>,</span> <span class=k>const</span> <span class=kt>char</span><span class=o>*</span> <span class=n>from</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>assert</span><span class=p>(</span><span class=n>to</span> <span class=o>!=</span> <span class=nb>NULL</span> <span class=o>&amp;&amp;</span> <span class=n>from</span> <span class=o>!=</span> <span class=nb>NULL</span><span class=p>);</span> <span class=c1>// 注意边界条件
+</span></span></span><span class=line><span class=cl>    <span class=kt>char</span> <span class=o>*</span><span class=n>p</span> <span class=o>=</span> <span class=n>to</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>while</span> <span class=p>((</span><span class=o>*</span><span class=n>p</span><span class=o>++</span> <span class=o>=</span> <span class=o>*</span><span class=n>from</span><span class=o>++</span><span class=p>)</span> <span class=o>!=</span> <span class=sc>&#39;\0&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>to</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=cm>/*
+</span></span></span><span class=line><span class=cl><span class=cm> * 实现 strstr, 子串查找函数
+</span></span></span><span class=line><span class=cl><span class=cm> */</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>char</span> <span class=o>*</span><span class=nf>str_str</span><span class=p>(</span><span class=k>const</span> <span class=kt>char</span> <span class=o>*</span><span class=n>str</span><span class=p>,</span> <span class=k>const</span> <span class=kt>char</span> <span class=o>*</span><span class=n>sub</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>assert</span><span class=p>(</span><span class=n>str</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=n>assert</span><span class=p>(</span><span class=n>sub</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>const</span> <span class=kt>char</span> <span class=o>*</span><span class=n>str_p</span> <span class=o>=</span> <span class=n>str</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>const</span> <span class=kt>char</span> <span class=o>*</span><span class=n>start</span> <span class=o>=</span> <span class=n>str</span><span class=p>;</span> <span class=c1>// start 记录匹配成功的位置
+</span></span></span><span class=line><span class=cl>    <span class=k>const</span> <span class=kt>char</span> <span class=o>*</span><span class=n>sub_p</span> <span class=o>=</span> <span class=n>sub</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kt>char</span> <span class=o>*</span><span class=n>res</span> <span class=o>=</span> <span class=k>new</span> <span class=kt>char</span><span class=p>[</span><span class=mi>100</span><span class=p>];</span> 
+</span></span><span class=line><span class=cl>    <span class=k>while</span> <span class=p>(</span><span class=o>*</span><span class=n>start</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>str_p</span> <span class=o>=</span> <span class=n>start</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=n>sub_p</span> <span class=o>=</span> <span class=n>sub</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1>// 停止条件
+</span></span></span><span class=line><span class=cl>        <span class=c1>// 1. 其中一个已经到达&#39;\0&#39;
+</span></span></span><span class=line><span class=cl>        <span class=c1>// 2. 两个字符不相等
+</span></span></span><span class=line><span class=cl>        <span class=k>while</span> <span class=p>(</span><span class=o>*</span><span class=n>str_p</span> <span class=o>&amp;&amp;</span> <span class=o>*</span><span class=n>sub_p</span> <span class=o>&amp;&amp;</span> <span class=o>*</span><span class=n>str_p</span> <span class=o>==</span> <span class=o>*</span><span class=n>sub_p</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=n>str_p</span><span class=o>++</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>            <span class=n>sub_p</span><span class=o>++</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=o>*</span><span class=n>sub_p</span> <span class=o>==</span> <span class=sc>&#39;\0&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=c1>//dbg(sub_p);
+</span></span></span><span class=line><span class=cl>            <span class=n>strcpy</span><span class=p>(</span><span class=n>res</span><span class=p>,</span> <span class=n>start</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>            <span class=c1>//dbg(res);
+</span></span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=n>res</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>start</span><span class=o>++</span><span class=p>;</span> <span class=c1>// str 指针后移
+</span></span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nb>NULL</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=cm>/* 
+</span></span></span><span class=line><span class=cl><span class=cm> * 实现 atoi(), 将一个字符串转化为整数
+</span></span></span><span class=line><span class=cl><span class=cm> * 边界数据：
+</span></span></span><span class=line><span class=cl><span class=cm> * 1. 带有正负号的
+</span></span></span><span class=line><span class=cl><span class=cm> * 2. 有空格的
+</span></span></span><span class=line><span class=cl><span class=cm> * 3. 不是数字的，如字母
+</span></span></span><span class=line><span class=cl><span class=cm> * 4. 溢出的数据
+</span></span></span><span class=line><span class=cl><span class=cm> */</span>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=nf>my_atoi</span><span class=p>(</span><span class=k>const</span> <span class=kt>char</span> <span class=o>*</span><span class=n>str</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>num</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>sign</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>const</span> <span class=kt>int</span> <span class=n>len</span> <span class=o>=</span> <span class=n>strlen</span><span class=p>(</span><span class=n>str</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>,</span> <span class=n>j</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>while</span> <span class=p>(</span><span class=n>str</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>==</span> <span class=sc>&#39; &#39;</span> <span class=o>&amp;&amp;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>len</span><span class=p>)</span> <span class=n>i</span><span class=o>++</span><span class=p>;</span> <span class=c1>// 1. 去除左边空格
+</span></span></span><span class=line><span class=cl>    <span class=c1>// 2. 带有正负号
+</span></span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=n>str</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>==</span> <span class=sc>&#39;+&#39;</span><span class=p>)</span> <span class=n>i</span><span class=o>++</span><span class=p>;</span> <span class=c1>// 正号直接过
+</span></span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=n>str</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>==</span> <span class=sc>&#39;-&#39;</span><span class=p>)</span>      <span class=c1>// 负号需要记录下来
+</span></span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>sign</span> <span class=o>=</span> <span class=o>-</span><span class=mi>1</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=n>i</span><span class=o>++</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// 3. 转换
+</span></span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=p>(;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>len</span><span class=p>;</span> <span class=n>i</span><span class=o>++</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=c1>// 无效检测
+</span></span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=n>str</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>&lt;</span> <span class=sc>&#39;0&#39;</span> <span class=o>||</span> <span class=n>str</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>&gt;</span> <span class=sc>&#39;9&#39;</span><span class=p>)</span> 
+</span></span><span class=line><span class=cl>            <span class=k>break</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=c1>// 溢出检测
+</span></span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=n>num</span> <span class=o>&gt;</span> <span class=n>INT_MAX</span> <span class=o>/</span> <span class=mi>10</span> <span class=o>||</span> 
+</span></span><span class=line><span class=cl>            <span class=p>(</span><span class=n>num</span> <span class=o>==</span> <span class=n>INT_MAX</span> <span class=o>/</span> <span class=mi>10</span> <span class=o>&amp;&amp;</span> <span class=p>(</span><span class=n>str</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>-</span> <span class=sc>&#39;0&#39;</span><span class=p>)</span> <span class=o>&gt;</span> <span class=n>INT_MAX</span> <span class=o>%</span> <span class=mi>10</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=n>sign</span> <span class=o>==</span> <span class=o>-</span><span class=mi>1</span> <span class=o>?</span> <span class=n>INT_MIN</span>  <span class=o>=</span> <span class=n>INT_MAX</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>num</span> <span class=o>=</span> <span class=mi>10</span> <span class=o>*</span> <span class=n>num</span> <span class=o>+</span> <span class=p>(</span><span class=n>str</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>-</span> <span class=sc>&#39;0&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>sign</span> <span class=o>*</span> <span class=n>num</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=nf>main</span><span class=p>(</span><span class=kt>int</span> <span class=n>argc</span><span class=p>,</span> <span class=kt>char</span> <span class=o>*</span><span class=n>argv</span><span class=p>[])</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// 1. strlen
+</span></span></span><span class=line><span class=cl>    <span class=kt>char</span> <span class=n>str</span><span class=p>[</span><span class=mi>20</span><span class=p>]</span> <span class=o>=</span> <span class=s>&#34;helloworld&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>size_t</span> <span class=n>res</span> <span class=o>=</span> <span class=n>strlen</span><span class=p>(</span><span class=n>str</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;length = &#34;</span> <span class=o>&lt;&lt;</span> <span class=n>res</span> <span class=o>&lt;&lt;</span> <span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;====================&#34;</span> <span class=o>&lt;&lt;</span> <span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// 2. strcpy
+</span></span></span><span class=line><span class=cl>    <span class=kt>char</span> <span class=n>to</span><span class=p>[</span><span class=mi>20</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>    <span class=n>strcpy</span><span class=p>(</span><span class=n>to</span><span class=p>,</span> <span class=n>str</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;to = &#34;</span> <span class=o>&lt;&lt;</span> <span class=n>to</span> <span class=o>&lt;&lt;</span> <span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;====================&#34;</span> <span class=o>&lt;&lt;</span> <span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// 3. strstr
+</span></span></span><span class=line><span class=cl>    <span class=kt>char</span> <span class=o>*</span><span class=n>sub</span> <span class=o>=</span> <span class=s>&#34;or&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>dbg</span><span class=p>(</span><span class=n>str_str</span><span class=p>(</span><span class=n>str</span><span class=p>,</span> <span class=n>sub</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>    <span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;====================&#34;</span> <span class=o>&lt;&lt;</span> <span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// 4. atoi
+</span></span></span><span class=line><span class=cl>    <span class=n>dbg</span><span class=p>(</span><span class=n>my_atoi</span><span class=p>(</span><span class=s>&#34;124153&#34;</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>    <span class=n>dbg</span><span class=p>(</span><span class=n>my_atoi</span><span class=p>(</span><span class=s>&#34;-124153000000000000000000000000000&#34;</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>    <span class=n>dbg</span><span class=p>(</span><span class=n>my_atoi</span><span class=p>(</span><span class=s>&#34;hhhh&#34;</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>    <span class=n>dbg</span><span class=p>(</span><span class=n>my_atoi</span><span class=p>(</span><span class=s>&#34;     132&#34;</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><p>运行结果<figure class=pswp-gallery style=display:inline-block;margin:0><a href=https://image.ongoingblog.org/posts/2020-10-16-Implement-str-functions-strlen-strcpy-strstr-and-atoi/str.png class=image-loading-container data-pswp-width=860 data-pswp-height=243 target=_blank><img src=#ZgotmplZ data-src="https://image.ongoingblog.org/posts/2020-10-16-Implement-str-functions-strlen-strcpy-strstr-and-atoi/str.png?format=webp&amp;quality=85" alt class=lazy-image width=860 height=243 style=max-width:100%;height:auto></a></figure></p><p>前两个并不难，第三个稍微要考虑一些东西，最后一个需要注意边界情况。</p></main><footer><hr>&copy; <a href=https://ongoingblog.org/ target=_self>ONGOING-Z</a> 2020 -- 2026</footer></body></html>
