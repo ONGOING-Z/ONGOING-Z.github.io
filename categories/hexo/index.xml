@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hexo on ongoing's blog</title><link>https://ongoingblog.org/categories/hexo/</link><description>Recent content in Hexo on ongoing's blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Mon, 19 Jul 2021 12:30:00 +0800</lastBuildDate><atom:link href="https://ongoingblog.org/categories/hexo/index.xml" rel="self" type="application/rss+xml"/><item><title>2020 最新版 Next 主题配置文件修改方式</title><link>https://ongoingblog.org/2021/07/2020-latest-next-theme-config-way/</link><pubDate>Mon, 19 Jul 2021 12:30:00 +0800</pubDate><guid>https://ongoingblog.org/2021/07/2020-latest-next-theme-config-way/</guid><description>&lt;p&gt;前言：因为没有修改过的 Next 博客里的排版对于看过无数优秀版面的读者们实在是不太友好，所以需要修改下展示博客的页面。这里我只修改的两个地方的样式：一个是行距，另一个是字体的大小。&lt;/p&gt;
+&lt;p&gt;但是由于最新版的 &lt;a href="https://github.com/next-theme/hexo-theme-next"target="_blank" rel="noopener noreferrer"&gt;Next&lt;/a&gt; 主题的主题配置文件修改方式已经发生改变了，所以下面展示的是最新版的配置方式。我们现在可以直接在站点配置文件的同名目录下新建一个名为&lt;code&gt;_config.next.yml&lt;/code&gt;文件，&lt;strong&gt;首次使用还请将官方主题配置文件全部复制到这里&lt;/strong&gt;，之后对于主题配置的修改就在这里修改，不再对克隆下来的主题文件夹里的配置文件进行修改。&lt;/p&gt;
+&lt;p&gt;然后在里面设置启用&lt;code&gt;custom_file_path.variable&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-diff" data-lang="diff"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;# Define custom file paths.
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;# Create your custom files in site directory `source/_data` and uncomment needed files below.
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;custom_file_path =
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;#head = source/_data/head.njk
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;#header = source/_data/header.njk
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;#sidebar = source/_data/sidebar.njk
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;#postMeta = source/_data/post-meta.njk
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;#postBodyEnd = source/_data/post-body-end.njk
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;#footer = source/_data/footer.njk
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;#bodyEnd = source/_data/body-end.njk
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gd"&gt;- #variable = source/_data/variables.styl
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gi"&gt;+ variable = source/_data/variables.styl
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;#mixin = source/_data/mixins.styl
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;#style = source/_data/styles.styl
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后在&lt;code&gt;博客根目录/source/&lt;/code&gt;文件夹下新建&lt;code&gt;_data&lt;/code&gt;文件夹，并且在&lt;code&gt;_data&lt;/code&gt;文件夹下新建文件&lt;code&gt;variables.styl&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;touch variables.styl
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在这个文件里我们书写关于修改主题行高的配置，写入&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="l"&gt;// Global line height&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="l"&gt;$line-height-base = 2;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这里我将全局文章行高设置为 2，阅读起来文字效果较为友好。&lt;/p&gt;</description></item><item><title>通过 Github Actions 部署 Hexo 博客（一）</title><link>https://ongoingblog.org/2021/07/deploy-blog-by-github-actions/</link><pubDate>Mon, 12 Jul 2021 12:15:00 +0800</pubDate><guid>https://ongoingblog.org/2021/07/deploy-blog-by-github-actions/</guid><description>&lt;p&gt;前言：最近看了一些使用 Github Action 去自动化部署博客的文章，看了之后发现确实可以省去部署博客到远程仓库的步骤。使用这个可以带来的好处如下&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;本地不再需要 Hexo 环境（当然第一次初始化部署还是需要的），即写好博客后不再需要 &lt;code&gt;hexo clean &amp;amp;&amp;amp; hexo g &amp;amp;&amp;amp; hexo d&lt;/code&gt;这种生成文章并提交到远程仓库的步骤了。&lt;/li&gt;
+&lt;li&gt;本地只需要写好博客源文件 (markdown 格式) 后再提交到远程仓库（也有一种更方便的 &lt;em&gt;issue blog&lt;/em&gt; ，这种后面再说，先说基础版的）&lt;/li&gt;
+&lt;li&gt;第一次在 Github 上搭建好部署环境后，就可以脱离 hexo 的环境了，专注于写作上面。&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2021-07-12-deploy-blog-by-github-actions/hexo_action_process.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="854"
+ data-pswp-height="480"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2021-07-12-deploy-blog-by-github-actions/hexo_action_process.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="854"
+ height="480"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;下面是基础版的部署详细部署配置内容。&lt;/p&gt;
+&lt;h3 id="准备本地环境"&gt;准备本地环境&lt;/h3&gt;
+&lt;p&gt;第一次的使用还是需要安装 Hexo 环境的，因为需要初始化项目。&lt;/p&gt;
+&lt;p&gt;如果没有安装，使用如下方式进行安装：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;cnpm/npm instal hexo
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;先进行 Hexo 环境初始化（注意 hexo 初始化需要你的文件夹是空的）：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;hexo init
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;执行完毕后会发现目录下多了几个文件，如下面所示：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;|- .gitignore
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;|- _config.yml # 站点配置文件
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;|- package.json # 一些依赖信息
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;|- scaffolds/ # 模板文件，在本地 hexo new 时会用到，这里不会用到
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;|- source/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; |- _drafts/ # 博客草稿
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; |- _posts/ # 博客正文 markdown 文件
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;|- themes/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; |- landscape/ # 存放博客主题，这是官方默认的 Landscape 主题
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;现在在本地测试下 hexo 是否正常运行：&lt;/p&gt;</description></item><item><title>文章关联 github 及查看文章源文件更新历史</title><link>https://ongoingblog.org/2020/05/link-to-github-and-view-the-updated-history-of-articles/</link><pubDate>Wed, 06 May 2020 16:57:40 +0800</pubDate><guid>https://ongoingblog.org/2020/05/link-to-github-and-view-the-updated-history-of-articles/</guid><description>&lt;p&gt;一段时间之前，看到过一篇博客，博客的最下方有一个按钮，点击之后可以看到博主同步在 github 中的 markdown 源文件，我觉得这个作用很不错。所以经过一番搜索之后，发现了一篇实现此功能的博客 (参考中的第一篇)，还搜索了一下&lt;code&gt;swig&lt;/code&gt;的语法特性，当然是不需要太多的知识的，因为参考中是&lt;code&gt;ejs&lt;/code&gt;语法，这里大概就只需要知道**{{var}}**是变量的写法就足够了。&lt;/p&gt;
+&lt;h2 id="作用"&gt;作用&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;点击进入仓库可以清晰发现文章增加或者删减的历史记录&lt;/li&gt;
+&lt;li&gt;可以在 github 的&lt;code&gt;issues&lt;/code&gt;中讨论（稍稍充当评论系统？??)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="效果"&gt;效果&lt;/h2&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2020-05-06-link-to-github-and-view-the-updated-history-of-articles/display.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="740"
+ data-pswp-height="216"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2020-05-06-link-to-github-and-view-the-updated-history-of-articles/display.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="740"
+ height="216"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+
+可以看到&lt;strong&gt;更新历史&lt;/strong&gt;一行有三项 =&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Blame&lt;/code&gt; = 左边是&lt;code&gt;commit&lt;/code&gt;信息，右边是对应代码&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;History&lt;/code&gt; = 文章修改历史&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.md Raw&lt;/code&gt; = 文章 markdown 源文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="步骤"&gt;步骤&lt;/h2&gt;
+&lt;p&gt;首先需要新建一个仓库。仓库建好之后，将&lt;code&gt;博客根目录/source/_posts/&lt;/code&gt;文件夹下的文件 push 到 github 我们新建的仓库中，在我们的博客修改过后，需要我们手动进行上传。&lt;/p&gt;
+&lt;p&gt;将下方代码添加至&lt;code&gt;themes/next/layout/_macro/my-copyright-swig&lt;/code&gt;下&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt;, 注意这里的&lt;code&gt;my-copyright-swig&lt;/code&gt;是我另建的显示文章结束后&lt;strong&gt;版权&lt;/strong&gt;的文件。创建博客版权的文章在&lt;a href="https://www.jianshu.com/p/93170e7413e9"target="_blank" rel="noopener noreferrer"&gt;这里&lt;/a&gt;。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-diff" data-lang="diff"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{% if page.copyright %}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&amp;lt;div class=&amp;#34;my_post_copyright&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &amp;lt;script src=&amp;#34;//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &amp;lt;!-- JS库 sweetalert 可修改路径 --&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &amp;lt;script type=&amp;#34;text/javascript&amp;#34; src=&amp;#34;http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &amp;lt;script src=&amp;#34;http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; type=&amp;#34;text/css&amp;#34; href=&amp;#34;http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &amp;lt;p&amp;gt;&amp;lt;span&amp;gt;本文标题 =&amp;#34;&amp;lt;/span&amp;gt;{{ page.title }}&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &amp;lt;p&amp;gt;&amp;lt;span&amp;gt;文章作者 =&amp;lt;/span&amp;gt;{{ theme.author }}&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &amp;lt;p&amp;gt;&amp;lt;span&amp;gt;发布时间 = &amp;#39;&amp;lt;/span&amp;gt;{{ page.date.format(&amp;#34;YYYY年MM月DD日 - HH:mm:ss&amp;#34;) }}&amp;lt;/p&amp;gt;&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &amp;lt;p&amp;gt;&amp;lt;span&amp;gt;最后更新 = &amp;#39;&amp;lt;/span&amp;gt;{{ page.updated.format(&amp;#34;YYYY年MM月DD日 - HH:mm:ss&amp;#34;) }}&amp;lt;/p&amp;gt;&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gi"&gt;+ &amp;lt;p&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gi"&gt;+ &amp;lt;span&amp;gt;更新历史 =&amp;lt;/span&amp;gt;&amp;lt;i class=&amp;#34;fa fa-github&amp;#34;&amp;gt;&amp;lt;/i&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gi"&gt;+ &amp;lt;a href=&amp;#39;&amp;#34;&amp;#34;https://github.com/ONGOING-Z/Hexo-blog-backup/blame/master/{{ page.date.format(&amp;#34;YYYY-MM-DD&amp;#34;) }}-{{ page.title }}.md&amp;#34; title=&amp;#34;顺序查看文章各部分修改记录&amp;#34; target = &amp;#34;_blank&amp;#34;&amp;gt;Blame&amp;lt;/a&amp;gt;,&amp;#34;+08:00&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gi"&gt;+ &amp;lt;a href=&amp;#39;&amp;#34;&amp;#34;https://github.com/ONGOING-Z/Hexo-blog-backup/commits/master/{{ page.date.format(&amp;#34;YYYY-MM-DD&amp;#34;) }}-{{ page.title }}.md&amp;#34; title=&amp;#34;查看文章有关更新记录&amp;#34; target = &amp;#34;_blank&amp;#34;&amp;gt;History&amp;lt;/a&amp;gt;&amp;lt;span class=&amp;#34;raw&amp;#34;&amp;gt;文本模式:&amp;lt;/span&amp;gt;&amp;lt;i class=&amp;#34;fa fa-file-text-o&amp;#34;&amp;gt;&amp;lt;/i&amp;gt;&amp;#34;+08:00&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gi"&gt;+ &amp;lt;a href=&amp;#39;&amp;#34;&amp;#34;https://raw.githubusercontent.com/ONGOING-Z/Hexo-blog-backup/commits/master/{{ page.date.format(&amp;#34;YYYY-MM-DD&amp;#34;) }}-{{ page.title }}.md&amp;#34; title=&amp;#34;查看 &amp;amp; 下载文章 Markdown 原始文本&amp;#34; target = &amp;#34;_blank&amp;#34;&amp;gt; .md Raw&amp;lt;/a&amp;gt;&amp;#34;+08:00&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gi"&gt;+ &amp;lt;/p&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &amp;lt;p&amp;gt;&amp;lt;span&amp;gt;原始链接 =&amp;#34;&amp;lt;/span&amp;gt;&amp;lt;a href=&amp;#34;{{ url_for(page.path) }}&amp;#34; title=&amp;#34;{{ page.title }}&amp;#34;&amp;gt;{{ page.permalink }}&amp;lt;/a&amp;gt;&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &amp;lt;span class=&amp;#34;&amp;#34;copy-path&amp;#34; title=&amp;#34;点击复制文章链接&amp;#34;&amp;gt;&amp;lt;i class=&amp;#34;fa fa-clipboard&amp;#34; data-clipboard-text=&amp;#34;{{ page.permalink }}&amp;#34; aria-label=&amp;#34;复制成功！&amp;#34;&amp;gt;&amp;lt;/i&amp;gt;&amp;lt;/span&amp;gt;&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &amp;lt;/p&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &amp;lt;p&amp;gt;&amp;lt;span&amp;gt;许可协议 =&amp;#34;&amp;lt;/span&amp;gt;&amp;lt;i class=&amp;#34;fa fa-creative-commons&amp;#34;&amp;gt;&amp;lt;/i&amp;gt; &amp;lt;a rel=&amp;#34;license&amp;#34; href=&amp;#34;https://creativecommons.org/licenses/by-nc-nd/4.0/&amp;#34; target=&amp;#34;_blank&amp;#34; title=&amp;#34;Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)&amp;#34;&amp;gt;署名-非商业性使用-禁止演绎 4.0 国际&amp;lt;/a&amp;gt; 转载请保留原文链接及作者。&amp;lt;/p&amp;gt; &amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&amp;lt;/div&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&amp;lt;script&amp;gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; var clipboard = new Clipboard(&amp;#39;.fa-clipboard&amp;#39;);
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; clipboard.on(&amp;#39;success&amp;#39;, $(function(){
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; $(&amp;#34;.fa-clipboard&amp;#34;).click(function(){
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; swal({ 
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; title = &amp;#34;&amp;#34;&amp;#34;, &amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; text = &amp;#39;复制成功&amp;#39;, 
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; html = false,
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; timer = 500, 
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; showConfirmButton = false
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; });
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; });
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; })); 
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&amp;lt;/script&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{% endif %}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其中绿色部分代码是实现效果的代码。这之中我们修改&lt;code&gt;href&lt;/code&gt;的属性对应自己的&lt;strong&gt;仓库信息&lt;/strong&gt;和&lt;strong&gt;文章信息&lt;/strong&gt;即可。&lt;/p&gt;</description></item><item><title>设置自己的进入网站主页</title><link>https://ongoingblog.org/2020/04/%E8%AE%BE%E7%BD%AE%E8%87%AA%E5%B7%B1%E7%9A%84%E8%BF%9B%E5%85%A5%E7%BD%91%E7%AB%99%E4%B8%BB%E9%A1%B5/</link><pubDate>Sat, 11 Apr 2020 10:02:55 +0800</pubDate><guid>https://ongoingblog.org/2020/04/%E8%AE%BE%E7%BD%AE%E8%87%AA%E5%B7%B1%E7%9A%84%E8%BF%9B%E5%85%A5%E7%BD%91%E7%AB%99%E4%B8%BB%E9%A1%B5/</guid><description>&lt;p&gt;将&lt;code&gt;~/public/blog/&lt;/code&gt;下的&lt;code&gt;index.html&lt;/code&gt;替换为自己设置的网站进入页面，如果有css文件和图片文件自己设置好路径。&lt;/p&gt;</description></item><item><title>备份Hexo网站源码</title><link>https://ongoingblog.org/2020/04/how-to-backx-up-my-hexo-blog-source-code/</link><pubDate>Fri, 10 Apr 2020 21:41:28 +0800</pubDate><guid>https://ongoingblog.org/2020/04/how-to-backx-up-my-hexo-blog-source-code/</guid><description>&lt;p&gt;今天忽然想起博客在github上存放的只是public中的文件，其他的建站源代码只保存在本地，这样的话如果本地电脑系统坏掉了或者发生了意外电脑不见了，那么没有了建站源码，我的网站不就gg了嘛！，所以上网搜了下备份网站源码的教程，下文是记录。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;首先在github博客所在仓库(即&lt;code&gt;yourname.github.io&lt;/code&gt;)中&lt;code&gt;新建分支Hexo&lt;/code&gt;(名字任意)，并且将其设为默认分支，
+在网站中进行设置即可；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将博客仓库&lt;code&gt;clone&lt;/code&gt;至本地，将之前本地博客&lt;strong&gt;根文件夹&lt;/strong&gt;下的&lt;code&gt;_config.yml&lt;/code&gt;，&lt;code&gt;themes/&lt;/code&gt;，&lt;code&gt;source/&lt;/code&gt;，&lt;code&gt;scffolds/&lt;/code&gt;，&lt;code&gt;package.json&lt;/code&gt;，&lt;code&gt;.gitignore&lt;/code&gt;
+复制到clone的文件夹&lt;code&gt;yourname.github.io/&lt;/code&gt;下；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将&lt;code&gt;themes/next/&lt;/code&gt;(next为使用的主题)中的**.git/**删除，否则无法将主题文件夹push；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在&lt;code&gt;yourname.github.io/&lt;/code&gt;下执行&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;$npm install
+$npm install hexo-deployer-git
+$npm install hexo-server --save // 为使用本地测试hexo s作准备
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;接下来就可以将网站源码备份了&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;$git add *
+$git commit -m &amp;#34;your message&amp;#34;
+$git push origin Hexo // 这里的Hexo是你新建的仓库分支名称
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;执行&lt;code&gt;hexo g -d&lt;/code&gt;生成静态页面并部署至github仓库中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;写一下书写hexo博客的依赖&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;git&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;nodejs&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;npm&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;github博客仓库clone至本地&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在clone文件夹下执行&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;$npm install hexo-cli -g
+$npm install
+$npm install hexo-deployer-git
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;这种方法对于我的设置出问题了&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;之前我是将自己的主页设置成了自己的页面，也就是自己的域名打开后是自己写的界面，在自己的页面点击
+博客图标才是进入自己的博客&lt;code&gt;域名/blog&lt;/code&gt;，这个界面就是使用&lt;code&gt;hexo + next&lt;/code&gt;的界面，但是打开后是404.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;然后使用了这种方法就出了问题，&lt;code&gt;hexo g&lt;/code&gt;自动生成的文件在&lt;code&gt;public/blog&lt;/code&gt;，这个不需改变
+这个问题先放在这里。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;21.8.1&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;上面的这种方法已经过时了，现在我的博客是使用 &lt;a href="https://ongoing-z.github.io/posts/deploy-blog-by-github-actions.html"target="_blank" rel="noopener noreferrer"&gt;github action 来进行部署&lt;/a&gt; 的，博客源文件放在一个仓库里，博客生成的 html 文件放在另一个公开仓库里。也起到了备份网站源码的作用。&lt;/p&gt;
+&lt;h3 id="参考"&gt;参考&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.jianshu.com/p/baab04284923"target="_blank" rel="noopener noreferrer"&gt;怎么去备份你的Hexo博客&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>博客文章链接优化</title><link>https://ongoingblog.org/2020/04/optimize-blog-article-link/</link><pubDate>Thu, 09 Apr 2020 12:07:42 +0800</pubDate><guid>https://ongoingblog.org/2020/04/optimize-blog-article-link/</guid><description>&lt;p&gt;自定义文章链接&lt;/p&gt;
+&lt;p&gt;使用插件：&lt;a href="https://github.com/rozbo/hexo-abbrlink"target="_blank" rel="noopener noreferrer"&gt;hexo-abbrlink&lt;/a&gt;，安装:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;npm install hexo-abbrlink --save
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;修改&lt;code&gt;站点配置文件&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="l"&gt;permalink = :abbrlink/&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;之后在自己的博客文章开头中加入：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;abbrlink = seourl
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;此处&lt;code&gt;seouel&lt;/code&gt;填写自己的链接名称
+当然可以看官方文档增加其它的链接字段，比如在链接中自动生成日期加入，等等。&lt;/p&gt;
+&lt;p&gt;在生成的文章链接中添加日期，例如下面这种样式&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;your_domain/posts/2020/04/diff-synatx-in-code-blocks.html
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;需要在&lt;code&gt;站点配置文件&lt;/code&gt;中配置&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="l"&gt;permalink = posts/:year/:month/:abbrlink.html&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;并且这样做后生成的图片也不会乱，不必再次进行整理。&lt;/p&gt;
+&lt;h3 id="参考"&gt;参考&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://blog.zuiyu1818.cn/posts/NexT_seourl.html"target="_blank" rel="noopener noreferrer"&gt;博客文章链接优化&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>hexo出现的问题</title><link>https://ongoingblog.org/2020/04/some-problems-when-using-hexo/</link><pubDate>Wed, 08 Apr 2020 12:41:14 +0800</pubDate><guid>https://ongoingblog.org/2020/04/some-problems-when-using-hexo/</guid><description>&lt;h2 id="在next主题中点击tags出现cannot-get-tags20"&gt;在next主题中点击tags出现“Cannot GET /tags/%20/”&amp;quot;&lt;/h2&gt;
+&lt;p&gt;%20是网页地址的空格符。
+在&lt;code&gt;主题配置文件&lt;/code&gt;搜索&lt;code&gt;menu&lt;/code&gt;后将&lt;code&gt;||&lt;/code&gt;前的空格删除即可。&lt;/p&gt;
+&lt;h2 id="hexo不能使用hexo-s命令"&gt;hexo不能使用hexo s命令&lt;/h2&gt;
+&lt;p&gt;原因：未安装&lt;code&gt;hexo-server&lt;/code&gt;
+安装：&lt;code&gt;npm install hexo-server --save&lt;/code&gt;&lt;/p&gt;</description></item></channel></rss>

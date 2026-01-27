@@ -1,0 +1,2226 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tool on ongoing's blog</title><link>https://ongoingblog.org/tags/tool/</link><description>Recent content in Tool on ongoing's blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Thu, 30 Oct 2025 10:47:26 +0800</lastBuildDate><atom:link href="https://ongoingblog.org/tags/tool/index.xml" rel="self" type="application/rss+xml"/><item><title>draw.io 如何打开多个文件</title><link>https://ongoingblog.org/2025/10/drawio-open-mulit-files/</link><pubDate>Thu, 30 Oct 2025 10:47:26 +0800</pubDate><guid>https://ongoingblog.org/2025/10/drawio-open-mulit-files/</guid><description>&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2025-10-30-drawio-open-mulit-files/open_multi_files.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="1036"
+ data-pswp-height="506"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2025-10-30-drawio-open-mulit-files/open_multi_files.png?format=webp&amp;amp;quality=85"
+ alt="open_multi_files.png"
+ 
+ class="lazy-image"
+ 
+ width="1036"
+ height="506"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;</description></item><item><title>drawio 中的组合功能</title><link>https://ongoingblog.org/2025/08/drawio-group/</link><pubDate>Thu, 21 Aug 2025 10:58:48 +0800</pubDate><guid>https://ongoingblog.org/2025/08/drawio-group/</guid><description>&lt;h3 id="一背景"&gt;一、背景&lt;/h3&gt;
+&lt;p&gt;在画布里拖动图形，图形是有很多很多个小组件构成的。所以每次，都需要用鼠标把所有组件全部给圈定，不能少一个，不然图形就会乱套，这种操作很麻烦。&lt;/p&gt;
+&lt;h3 id="二解决方案"&gt;二、解决方案&lt;/h3&gt;
+&lt;p&gt;搜索了一下，可以把这些组成图形所有的组件进行组合，组后后作为一个整体，这样的话，拖动就只需要去拖动这个整体，整体会把所有的组件全都囊阔，我也就不会要去关注零零碎碎的东西了，比较方便。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;组合前：需要圈定所有的小组件&lt;/li&gt;
+&lt;li&gt;组合后：只需要去关注这个大整体&lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2025-08-21-drawio-group/cancel_grouping.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="880"
+ data-pswp-height="646"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2025-08-21-drawio-group/cancel_grouping.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="880"
+ height="646"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;</description></item><item><title>Mermaid</title><link>https://ongoingblog.org/2025/06/2025-06-26-mermaid/</link><pubDate>Thu, 26 Jun 2025 11:20:21 +0800</pubDate><guid>https://ongoingblog.org/2025/06/2025-06-26-mermaid/</guid><description>&lt;p&gt;我发现 deepseek 回答中的时间线图、流程图都是用这个工具渲染的。
+在 typora 中也支持，在 IDEA 中也支持对应的插件，应用范围很广，并且渲染效果还不错。&lt;/p&gt;
+&lt;p&gt;我觉得像是 mermaid 这类使用代码生成图像的做法，一个难点就是你在下笔之前很难去知道全貌，所以这个时候所见即所得是最好的。mermaid 适合于把已有的流程图移植一份，用代码保存起来，用代码表示后，就容易去做版本控制了。&lt;/p&gt;
+&lt;p&gt;所以以后画草图：依旧还是 draw.io，所见即所得。
+如果需要进行版本控制，就用 mermaid 代码表示。&lt;/p&gt;
+&lt;h4 id="251218-thu"&gt;25.12.18 Thu&lt;/h4&gt;
+&lt;p&gt;我几乎不会用这个工具，还是用的 draw.io。如果需要演示的话，并且数字很多，我会用 manim 会更加方便，而且现在有 cursor 帮我辅助编写，我说明意图，渲染出的图片底板就出来了，最后我再微调就行。&lt;/p&gt;</description></item><item><title>Idea view mode 中的 dock pinned 和 undock 分别是什么意思</title><link>https://ongoingblog.org/2025/06/2025-06-15-idea-view-mode-dock-pinned-and-undock/</link><pubDate>Sun, 15 Jun 2025 15:39:36 +0800</pubDate><guid>https://ongoingblog.org/2025/06/2025-06-15-idea-view-mode-dock-pinned-and-undock/</guid><description>&lt;h3 id="一背景"&gt;一、背景&lt;/h3&gt;
+&lt;p&gt;困扰了我一段时间的侧边栏展示问题被我试出解决方案了。&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2025-06-15-idea-view-mode-dock-pinned-and-undock/idea_sidebar.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="93"
+ data-pswp-height="216"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2025-06-15-idea-view-mode-dock-pinned-and-undock/idea_sidebar.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="93"
+ height="216"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;上图是 IDEA 打开项目后的侧边栏，我这里有三个展示，分别是&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Project&lt;/li&gt;
+&lt;li&gt;Structure&lt;/li&gt;
+&lt;li&gt;Commit&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;场景：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;先点击 Project，会展示项目的目录树&lt;/li&gt;
+&lt;li&gt;修改了文件后，我想要看下 Commit 中的文件变更，点击 Commit
+但是此时是上面是目录树窗口，下面是文件变更窗口&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;我想要的效果：点击 Project 就展示目录树，当前只展示目录树；点击 Commit
+就展示文件变更，当前只展示文件变更。而不是目录树和文件变更都展示。我更想要一个轻爽的界面查看。&lt;/p&gt;
+&lt;p&gt;问了下 deepseek，给出的回应并非指导我找到对应的配置。&lt;/p&gt;
+&lt;p&gt;因为我受到这个困扰有今天了，就只能自行去试试了。&lt;/p&gt;
+&lt;p&gt;我四处查看 IDEA 中的配置信息，最后试到这里
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2025-06-15-idea-view-mode-dock-pinned-and-undock/dock_view_mode.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="876"
+ data-pswp-height="297"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2025-06-15-idea-view-mode-dock-pinned-and-undock/dock_view_mode.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="876"
+ height="297"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;/p&gt;
+&lt;p&gt;发现可以实现我想要的轻爽界面效果，很不错。&lt;/p&gt;
+&lt;h3 id="原因不是这个什么-dock是分组的原因"&gt;原因不是这个什么 dock，是分组的原因&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2025-06-15-idea-view-mode-dock-pinned-and-undock/group.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="112"
+ data-pswp-height="415"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2025-06-15-idea-view-mode-dock-pinned-and-undock/group.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="112"
+ height="415"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;&lt;strong&gt;这个横线就是分组的依据，把按钮都移动到横线的一侧就可以了！！！&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;dock 是说侧边栏内容在打开文件后的一个状态：例如在左侧目录树选择了一个文件后，现在鼠标如果点进右侧的文件里，左侧目录树的一个状态（是继续固定还是要收起来）。&lt;/p&gt;</description></item><item><title>Idea 查找快捷键</title><link>https://ongoingblog.org/2025/05/2025-05-28-idea-shortcut/</link><pubDate>Wed, 28 May 2025 13:59:35 +0800</pubDate><guid>https://ongoingblog.org/2025/05/2025-05-28-idea-shortcut/</guid><description>&lt;div class="toc-container"&gt;
+ &lt;h2 class="toc-title"&gt;文章目录&lt;/h2&gt;
+ &lt;div class="toc-content"&gt;
+ &lt;nav id="TableOfContents"&gt;
+ &lt;ul&gt;
+ &lt;li&gt;
+ &lt;ul&gt;
+ &lt;li&gt;&lt;a href="#快捷键"&gt;快捷键&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#搜索技巧"&gt;搜索技巧&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#类中方法的排序方式"&gt;类中方法的排序方式&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#装订线图标"&gt;装订线图标&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#渲染全部-javadoc"&gt;渲染全部 javadoc&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#格式化代码"&gt;格式化代码&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#idea-的-show-diagram-一般是以当前类或接口为起点展示它的所有上级如何以当前类或接口为起点展示它所有的下级呢"&gt;idea 的 show diagram 一般是以当前类或接口为起点，展示它的所有上级。如何以当前类或接口为起点，展示它所有的下级呢？&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#依赖-attach-source"&gt;依赖 attach source&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#lambda-断点"&gt;lambda 断点&lt;/a&gt;&lt;/li&gt;
+ &lt;/ul&gt;
+ &lt;/li&gt;
+ &lt;/ul&gt;
+&lt;/nav&gt;
+ &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+ .toc-container {
+ border-left: 3px solid #4a86e8;
+ padding: 1.2rem 1.8rem;
+ margin: 2.5rem 0;
+ background: #f8fbfe;
+ border-radius: 0 8px 8px 0;
+ box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+ }
+
+ .toc-title {
+ font-size: 1.4rem;
+ margin-top: 0;
+ margin-bottom: 1rem;
+ color: #2c5282;
+ padding-bottom: 0.5rem;
+ border-bottom: 1px solid #e2e8f0;
+ }
+
+ .toc-content ul {
+ list-style: none;
+ padding-left: 1.2rem;
+ margin: 0;
+ }
+
+ .toc-content li {
+ margin: 0.7rem 0;
+ line-height: 1.1;
+ position: relative;
+ }
+
+ .toc-content a {
+ color: #3182ce;
+ text-decoration: none;
+ transition: all 0.3s ease;
+ display: block;
+ padding: 0.3rem 0.5rem;
+ border-radius: 4px;
+ }
+
+ .toc-content a:hover {
+ color: #020202;
+ background: #ebf4ff;
+ padding-left: 0.8rem;
+ }
+
+ .toc-warning {
+ padding: 1.2rem;
+ background: #fffaf0;
+ border: 1px solid #feebc8;
+ border-radius: 6px;
+ color: #dd6b20;
+ margin: 2rem 0;
+ }
+
+ .toc-warning p {
+ margin: 0.5rem 0;
+ }
+
+ .toc-highlight {
+ animation: highlight-fade 2s ease;
+ background-color: rgba(255, 230, 0, 0.3);
+ }
+
+ @keyframes highlight-fade {
+ 0% { background-color: rgba(255, 230, 0, 0.8); }
+ 100% { background-color: transparent; }
+ }
+
+ 
+ .toc-debug {
+ font-size: 0.9rem;
+ color: #4a5568;
+ }
+ .toc-debug h4 {
+ margin-top: 0;
+ color: #2b6cb0;
+ }
+&lt;/style&gt;
+&lt;h3 id="快捷键"&gt;快捷键&lt;/h3&gt;
+&lt;div class="table-left"&gt;
+ &lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;场景&lt;/th&gt;
+ &lt;th&gt;快捷键 (Macos 系统)&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;根据文件名查找文件&lt;/td&gt;
+ &lt;td&gt;command + shift + N&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;查看某个方法的调用链路&lt;/td&gt;
+ &lt;td&gt;option + F7&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;快速到达备忘录最下方进行编辑&lt;/td&gt;
+ &lt;td&gt;command + ↓&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;/div&gt;
+
+&lt;style&gt;
+ .table-left table {
+ margin-left: 0 !important;
+ margin-right: auto;
+ }
+&lt;/style&gt;
+&lt;h3 id="搜索技巧"&gt;搜索技巧&lt;/h3&gt;
+&lt;div class="table-left"&gt;
+ &lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;场景&lt;/th&gt;
+ &lt;th&gt;描述&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;查找类文件中的空实现方法&lt;/td&gt;
+ &lt;td&gt;根据正则表达式：{\s*(\n\s*)?}&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;查找变量引用位置&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;/div&gt;
+
+&lt;style&gt;
+ .table-left table {
+ margin-left: 0 !important;
+ margin-right: auto;
+ }
+&lt;/style&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2025-05-28-idea-shortcut/option_f7.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="1340"
+ data-pswp-height="789"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2025-05-28-idea-shortcut/option_f7.png?width=1200&amp;amp;format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="1340"
+ height="789"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;h3 id="类中方法的排序方式"&gt;类中方法的排序方式&lt;/h3&gt;
+&lt;p&gt;我认为还是不能按照字母表的顺序，应该按照类中原本的顺序，它的顺序涵盖了某种语义。&lt;/p&gt;</description></item><item><title>强制重新启动 iPhone</title><link>https://ongoingblog.org/2025/05/2025-05-17-force-restart-iphone/</link><pubDate>Sat, 17 May 2025 11:59:40 +0800</pubDate><guid>https://ongoingblog.org/2025/05/2025-05-17-force-restart-iphone/</guid><description>&lt;h3 id="一背景"&gt;一、背景&lt;/h3&gt;
+&lt;p&gt;1、早上使用手机时，突然在备忘录卡住了&lt;/p&gt;
+&lt;p&gt;2、下拉系统菜单是正常的，听歌也是正常的&lt;/p&gt;
+&lt;p&gt;3、但是主界面一直卡在了备忘录&lt;/p&gt;
+&lt;p&gt;4、持续很久，一开始想着一直按右侧的那个开关键重启，但是没啥用&lt;/p&gt;
+&lt;p&gt;5、去网上搜索了下重启的方式，这里记录下&lt;/p&gt;
+&lt;h3 id="二强制重启步骤"&gt;二、强制重启步骤&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2025-05-17-force-restart-iphone/force_restart.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="536"
+ data-pswp-height="659"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2025-05-17-force-restart-iphone/force_restart.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="536"
+ height="659"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;h3 id="三参考"&gt;三、参考&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://support.apple.com/zh-cn/guide/iphone/iph8903c3ee6/18.0/ios/18.0"target="_blank" rel="noopener noreferrer"&gt;https://support.apple.com/zh-cn/guide/iphone/iph8903c3ee6/18.0/ios/18.0&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>流程图工具 draw.io 默认字体大小如何调整</title><link>https://ongoingblog.org/2025/05/drwoio-modify-default-font-size/</link><pubDate>Thu, 08 May 2025 10:42:35 +0800</pubDate><guid>https://ongoingblog.org/2025/05/drwoio-modify-default-font-size/</guid><description>&lt;div class="toc-container"&gt;
+ &lt;h2 class="toc-title"&gt;文章目录&lt;/h2&gt;
+ &lt;div class="toc-content"&gt;
+ &lt;nav id="TableOfContents"&gt;
+ &lt;ul&gt;
+ &lt;li&gt;
+ &lt;ul&gt;
+ &lt;li&gt;&lt;a href="#一背景"&gt;一、背景&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#二步骤"&gt;二、步骤&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#三甬道图"&gt;三、甬道图&lt;/a&gt;&lt;/li&gt;
+ &lt;/ul&gt;
+ &lt;/li&gt;
+ &lt;/ul&gt;
+&lt;/nav&gt;
+ &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+ .toc-container {
+ border-left: 3px solid #4a86e8;
+ padding: 1.2rem 1.8rem;
+ margin: 2.5rem 0;
+ background: #f8fbfe;
+ border-radius: 0 8px 8px 0;
+ box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+ }
+
+ .toc-title {
+ font-size: 1.4rem;
+ margin-top: 0;
+ margin-bottom: 1rem;
+ color: #2c5282;
+ padding-bottom: 0.5rem;
+ border-bottom: 1px solid #e2e8f0;
+ }
+
+ .toc-content ul {
+ list-style: none;
+ padding-left: 1.2rem;
+ margin: 0;
+ }
+
+ .toc-content li {
+ margin: 0.7rem 0;
+ line-height: 1.1;
+ position: relative;
+ }
+
+ .toc-content a {
+ color: #3182ce;
+ text-decoration: none;
+ transition: all 0.3s ease;
+ display: block;
+ padding: 0.3rem 0.5rem;
+ border-radius: 4px;
+ }
+
+ .toc-content a:hover {
+ color: #020202;
+ background: #ebf4ff;
+ padding-left: 0.8rem;
+ }
+
+ .toc-warning {
+ padding: 1.2rem;
+ background: #fffaf0;
+ border: 1px solid #feebc8;
+ border-radius: 6px;
+ color: #dd6b20;
+ margin: 2rem 0;
+ }
+
+ .toc-warning p {
+ margin: 0.5rem 0;
+ }
+
+ .toc-highlight {
+ animation: highlight-fade 2s ease;
+ background-color: rgba(255, 230, 0, 0.3);
+ }
+
+ @keyframes highlight-fade {
+ 0% { background-color: rgba(255, 230, 0, 0.8); }
+ 100% { background-color: transparent; }
+ }
+
+ 
+ .toc-debug {
+ font-size: 0.9rem;
+ color: #4a5568;
+ }
+ .toc-debug h4 {
+ margin-top: 0;
+ color: #2b6cb0;
+ }
+&lt;/style&gt;
+&lt;h3 id="一背景"&gt;一、背景&lt;/h3&gt;
+&lt;p&gt;想要调整下流程图工具 draw.io 的默认字体大小，因为每次新开版面，字体都很小。&lt;/p&gt;</description></item><item><title>当 Rime 在 IDEA 社区版中切换时，默认是英文</title><link>https://ongoingblog.org/2025/04/rime-in-ideace-default-to-ascii/</link><pubDate>Thu, 17 Apr 2025 09:43:00 +0800</pubDate><guid>https://ongoingblog.org/2025/04/rime-in-ideace-default-to-ascii/</guid><description>&lt;h3 id="一背景"&gt;一、背景&lt;/h3&gt;
+&lt;p&gt;需求：当前电脑界面打开的是 IDEA 社区版，当我把输入法切换到 Rime 时，每次初始都是中文，我需要初始是英文。&lt;/p&gt;
+&lt;h3 id="二设置步骤"&gt;二、设置步骤&lt;/h3&gt;
+&lt;p&gt;电脑：Macos&lt;/p&gt;
+&lt;p&gt;输入法：Rime squirrel&lt;/p&gt;
+&lt;h4 id="一查看-idea-社区版-infoplist-信息"&gt;（一）查看 IDEA 社区版 info.plist 信息&lt;/h4&gt;
+&lt;p&gt;方法一：直接进行查看&lt;/p&gt;
+&lt;p&gt;我的这个文件位于：&lt;code&gt;/Applications/IntelliJ IDEA CE.app/Contents&lt;/code&gt;下&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2025-04-17-rime-in-ideace-default-to-ascii/info_plist.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="396"
+ data-pswp-height="211"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2025-04-17-rime-in-ideace-default-to-ascii/info_plist.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="396"
+ height="211"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;把红框中 com 的这一串字符串复制出来，我们后面要用到。&lt;/p&gt;
+&lt;p&gt;方法二：在命令行中执行命令&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mdls -name kMDItemCFBundleIdentifier Anki.app
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2025-04-17-rime-in-ideace-default-to-ascii/anki_bundle_id.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="449"
+ data-pswp-height="36"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2025-04-17-rime-in-ideace-default-to-ascii/anki_bundle_id.png?format=webp&amp;amp;quality=85"
+ alt="查看 anki bundle id"
+ class="lazy-image"
+ 
+ width="449"
+ height="36"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+ &lt;figcaption style="text-align: center;"&gt;查看 anki bundle id&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;h4 id="二打开-rime-用户文件夹打开squirrelcustomyaml配置如下设置"&gt;（二）打开 rime 用户文件夹，打开&lt;code&gt;squirrel.custom.yaml&lt;/code&gt;，配置如下设置&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;patch&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;app_options&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;com.jetbrains.intellij.ce&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c"&gt;# 设置 IDEA 社区版初始为英文模式&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;ascii_mode&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="三参考"&gt;三、参考&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/rime/home/wiki/CustomizationGuide#%E5%9C%A8%E7%89%B9%E5%AE%9A%E7%A8%8B%E5%BA%8F%E8%A3%8F%E9%97%9C%E9%96%89%E4%B8%AD%E6%96%87%E8%BC%B8%E5%85%A5"target="_blank" rel="noopener noreferrer"&gt;在特定程序裏關閉中文輸入&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>网易云音乐歌曲同步到苹果音乐</title><link>https://ongoingblog.org/2025/04/neteasemusic-to-applemusic/</link><pubDate>Wed, 16 Apr 2025 08:14:00 +0800</pubDate><guid>https://ongoingblog.org/2025/04/neteasemusic-to-applemusic/</guid><description>&lt;h3 id="一背景"&gt;一、背景&lt;/h3&gt;
+&lt;p&gt;由于一些音乐软件里广告太多，不限于&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;每次打开软件，都有一个广告界面，并且有时候不去触碰界面，也会跳转到一些购物软件中&lt;/li&gt;
+&lt;li&gt;对于一些歌曲需要试听&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;发现苹果音乐的优点&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;进入无广告界面&lt;/li&gt;
+&lt;li&gt;界面简洁，就是给你用来听歌的，连评论界面也没有&lt;/li&gt;
+&lt;li&gt;有杜比音效，音源好&lt;/li&gt;
+&lt;li&gt;每月会员消费还好，我这次有活动，3 个月只要 11 元。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;基于一些个人的偏好，我选择以后要多在苹果音乐里了，不想再看到什么花里胡哨的广告和控制不了的跳转。
+因此搜索了如何同步歌曲歌单的步骤。&lt;/p&gt;
+&lt;h3 id="二步骤"&gt;二、步骤&lt;/h3&gt;
+&lt;h4 id="1-根据歌单链接获取歌曲信息"&gt;1. 根据歌单链接获取歌曲信息&lt;/h4&gt;
+&lt;p&gt;工具：&lt;a href="https://music.unmeta.cn/"target="_blank" rel="noopener noreferrer"&gt;https://music.unmeta.cn/&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id="2-根据获取的歌曲信息将对应的歌曲导入到苹果音乐中"&gt;2. 根据获取的歌曲信息将对应的歌曲导入到苹果音乐中&lt;/h4&gt;
+&lt;p&gt;工具：&lt;a href="https://www.tunemymusic.com/zh-CN"target="_blank" rel="noopener noreferrer"&gt;tunemymusic&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2025-04-15-neteasemusic-to-applemusic/tunemymusic.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="1415"
+ data-pswp-height="721"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2025-04-15-neteasemusic-to-applemusic/tunemymusic.png?width=1200&amp;amp;format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="1415"
+ height="721"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+
+对于同步不成功的，这个平台也会把不成功的记录给显示出来。&lt;/p&gt;
+&lt;p&gt;注意：在进行实际的同步时需要自己的苹果音乐对这个平台进行授权，授权之后也可以把这个申请的授权给删除。&lt;/p&gt;</description></item><item><title>近期对于 Deepseek 的使用</title><link>https://ongoingblog.org/2025/04/recent-use-of-deepseek/</link><pubDate>Wed, 02 Apr 2025 22:24:00 +0800</pubDate><guid>https://ongoingblog.org/2025/04/recent-use-of-deepseek/</guid><description>&lt;h3 id="一背景"&gt;一、背景&lt;/h3&gt;
+&lt;p&gt;总结一些 deepseek 的使用。&lt;/p&gt;
+&lt;p&gt;现在主要涉及到下面这些方面&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;技术问题，编程&lt;/li&gt;
+&lt;li&gt;英文翻译问题&lt;/li&gt;
+&lt;li&gt;各种如何使用的问题，不仅仅是编程，还有生活中的问题&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="二一些指令"&gt;二、一些指令&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;/clear&lt;/code&gt;: 保留对话结构但清空内存，速度接近新对话。&lt;/p&gt;
+&lt;h3 id="三经验"&gt;三、经验&lt;/h3&gt;
+&lt;p&gt;如果问题不相关，就新起会话进行询问，也会快很多。&lt;/p&gt;</description></item><item><title>文档组织结构</title><link>https://ongoingblog.org/2025/03/document-organization-structure/</link><pubDate>Sun, 30 Mar 2025 15:09:00 +0800</pubDate><guid>https://ongoingblog.org/2025/03/document-organization-structure/</guid><description>&lt;h4 id="一背景"&gt;一、背景&lt;/h4&gt;
+&lt;p&gt;一个良好的文档组织结构可以帮你省去很多的麻烦。类似地图软件，在只知道出发点、终止地的前提下，在地图软件中输入这两个元素后就可以得到很多种方案。&lt;/p&gt;
+&lt;p&gt;在我们的个人电脑中，良好的目录组织结构可以起到辅助的地图软件作用，方便给我们的日常项目进行归纳整理，而不是到了要使用的时候发现找不到文件，并且也忘记了具体的位置。&lt;/p&gt;
+&lt;p&gt;将这种约定保存下来，以后任何在这份约定下的产物都可以复用这份逻辑，而不是 A 一套、B 一套，我们的脑子就可以释放空间处理更加重要的事情。&lt;/p&gt;
+&lt;h4 id="二如何组织"&gt;二、如何组织？&lt;/h4&gt;
+&lt;h5 id="文件夹实施中项目"&gt;文件夹：实施中项目&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;存放当前处理的项目&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id="文件夹已归档项目"&gt;文件夹：已归档项目&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;存放已完成的项目，不管是什么类型的资料，都按项目的维度进行划分。&lt;/li&gt;
+&lt;li&gt;也是工作成果的一个总结，至于按什么样的维度来展示可以自行决定。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id="三流转原则"&gt;三、流转原则&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;项目完毕就归档&lt;/strong&gt;。在项目结束之后，立即将相关的文件夹放入【归档】中，保证我们的处理区域是干净的。将有限的注意力放在我们需要解决的事情上，有限的注意力绝不去浪费一分。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id="四参考"&gt;四、参考&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;《The PARA method》&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>博客移植之路：Hexo 到 Hugo</title><link>https://ongoingblog.org/2025/03/hexo-to-hugo/</link><pubDate>Sat, 29 Mar 2025 10:10:00 +0800</pubDate><guid>https://ongoingblog.org/2025/03/hexo-to-hugo/</guid><description>&lt;h4 id="一背景"&gt;一、背景&lt;/h4&gt;
+&lt;p&gt;看到一个简洁的主题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;主页界面会展示所有的博客列表，只限于标题展示&lt;/li&gt;
+&lt;li&gt;不会进行分页，还需要让你点击上一页或者下一页，一页展示你所有的博客&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="二移植过程"&gt;二、移植过程&lt;/h4&gt;
+&lt;p&gt;由于 hexo 和 hugo 主要是文章开头的 formatter 不一致，所以这边移植过程主要是把 hexo 的格式映射到 hugo 的格式。&lt;/p&gt;
+&lt;p&gt;使用的工具是 sed.&lt;/p&gt;
+&lt;p&gt;使用完后觉得是很方便的工具，搭配 deepseek 使用更加得心应手。&lt;/p&gt;
+&lt;p&gt;处理日期时间、替换关键字、处理图片、处理文件位置。&lt;/p&gt;
+&lt;p&gt;主要的思路就是把 hexo 各个关键字都替换成 hugo 的关键字，用 sed 的行替换就很方便，或者可以说我的替换就全部都是 sed 来完成的，搭配上 deepseek 给的表达式，就可以方便的完成了。&lt;/p&gt;</description></item><item><title>查单词网站 word reference</title><link>https://ongoingblog.org/2025/03/%E6%9F%A5%E5%8D%95%E8%AF%8D%E7%BD%91%E7%AB%99-word-reference/</link><pubDate>Sun, 23 Mar 2025 16:08:00 +0800</pubDate><guid>https://ongoingblog.org/2025/03/%E6%9F%A5%E5%8D%95%E8%AF%8D%E7%BD%91%E7%AB%99-word-reference/</guid><description>&lt;p&gt;今天发现一个很好用的&lt;strong&gt;查词网站&lt;/strong&gt; &lt;a href="www.wordreference.com"&gt;www.wordreference.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;这个网站中提供了一个在浏览器中更方便快捷的[查词方式]&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
+&lt;h3 id="使用效果"&gt;使用效果&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2025-03-23-english-search-website-word-reference/img_wr_step01.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="1418"
+ data-pswp-height="192"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2025-03-23-english-search-website-word-reference/img_wr_step01.png?width=1200&amp;amp;format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="1418"
+ height="192"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2025-03-23-english-search-website-word-reference/img_wr_step02.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="1434"
+ data-pswp-height="180"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2025-03-23-english-search-website-word-reference/img_wr_step02.png?width=1200&amp;amp;format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="1434"
+ height="180"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2025-03-23-english-search-website-word-reference/img_wr_step03.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="1638"
+ data-pswp-height="184"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2025-03-23-english-search-website-word-reference/img_wr_step03.png?width=1200&amp;amp;format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="1638"
+ height="184"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;就会跳转到对应的详情界面：&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2025-03-23-english-search-website-word-reference/img_wr_website01.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="2292"
+ data-pswp-height="1104"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2025-03-23-english-search-website-word-reference/img_wr_website01.png?width=1200&amp;amp;format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="2292"
+ height="1104"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;h3 id="设置方式"&gt;设置方式&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在搜索框中输入&lt;code&gt;chrome://settings/searchEngines&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在网站搜索点击【添加】&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2025-03-23-english-search-website-word-reference/img_wr_step04.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="1426"
+ data-pswp-height="832"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2025-03-23-english-search-website-word-reference/img_wr_step04.png?width=1200&amp;amp;format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="1426"
+ height="832"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;根据图片中内容设置如下三项&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2025-03-23-english-search-website-word-reference/img_wr_step05.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="1018"
+ data-pswp-height="710"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2025-03-23-english-search-website-word-reference/img_wr_step05.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="1018"
+ height="710"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;WR English definition
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;wr
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://www.wordreference.com/redirect/translation.aspx?w=%s&amp;amp;dict=enzh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;注意链接&lt;code&gt;http://www.wordreference.com/redirect/translation.aspx?w=%s&amp;amp;dict=enzh&lt;/code&gt;中最后一个参数&lt;/p&gt;</description></item><item><title>有用的电子表格</title><link>https://ongoingblog.org/2025/03/useful-spreadsheet/</link><pubDate>Sat, 01 Mar 2025 10:50:00 +0800</pubDate><guid>https://ongoingblog.org/2025/03/useful-spreadsheet/</guid><description>&lt;p&gt;前言：电子表格在工作中真是超级好用的存在。数据处理简单快速且高效，当然需要对应的应用支持。&lt;/p&gt;
+&lt;p&gt;映射匹配万能函数 index + match，我几乎工作的时候，如果有那种梳理性质的工作，就会用到这个。&lt;/p&gt;
+&lt;p&gt;这里说下使用的方法：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;index(目的展示列[记得 F4 固定], match(key, 关联表的 key 范围[记得 F4 固定], 0))
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;我觉得它就像外键的使用，两个表中有共同的关联字段，你通过表 A 的外键找到表 B 对应的那条记录，并且输出对应的你想要的信息。&lt;/p&gt;
+&lt;p&gt;有效的前提&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;两个基础表中的数据都要保证是有效可用的&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>远程桌面软件 - Microsoft Remote Desktop for Mac</title><link>https://ongoingblog.org/2022/12/microsoft-remote-desktop-for-mac/</link><pubDate>Sun, 25 Dec 2022 13:05:00 +0800</pubDate><guid>https://ongoingblog.org/2022/12/microsoft-remote-desktop-for-mac/</guid><description>&lt;p&gt;前言：坐在 windows 电脑桌前太久了，想要换下方式办公，还有一台 mac 来办公。在网上找了下从 mac 远程回 windows 的方法。&lt;/p&gt;
+&lt;p&gt;这款软件在 AppStore 中是 Free 的，但是本地区不支持下载。&lt;/p&gt;
+&lt;p&gt;找到了这个链接 &lt;a href="https://go.microsoft.com/fwlink/?linkid=868963"target="_blank" rel="noopener noreferrer"&gt;Microsoft Remote Desktop for Mac&lt;/a&gt;, 可以点击直接进行下载。&lt;/p&gt;
+&lt;p&gt;微软关于此软件的介绍可以看这篇文档：&lt;a href="https://learn.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac"target="_blank" rel="noopener noreferrer"&gt;Get started with the macOS client&lt;/a&gt;。&lt;/p&gt;</description></item><item><title>wps-for-linux 的字体添加及配置</title><link>https://ongoingblog.org/2020/05/the-font-configuration-of-wps-for-linux/</link><pubDate>Sat, 16 May 2020 08:38:48 +0800</pubDate><guid>https://ongoingblog.org/2020/05/the-font-configuration-of-wps-for-linux/</guid><description>&lt;h3 id="一背景"&gt;一、背景&lt;/h3&gt;
+&lt;p&gt;这两天需要在 wps 中写点东西，但是里边并没有 word 软件中文的大部分字体，所以需要添加一些字体。&lt;/p&gt;
+&lt;p&gt;因为我的系统 (ubuntu16.04) 默认的是英文环境，所以在 wps 的字体选项中没有任何中文选项，就先将系统默认环境改成了中文。在系统应用中搜索&lt;code&gt;language support&lt;/code&gt;，然后将选择语言中的&lt;code&gt;中文&lt;/code&gt;调到第一项中，之后&lt;code&gt;应用到整个环境&lt;/code&gt;，这些都做完之后，登出重新登录。&lt;/p&gt;
+&lt;p&gt;现在打开 wps for linux，我发现字体选项中多了几种中文字体，但是常见的字体如“宋体”/“黑体”这些并没有。所以需要为 wps 配置字体。&lt;/p&gt;
+&lt;h3 id="二配置字体步骤"&gt;二、配置字体步骤&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;如果旁边有另一台配置 windows 系统的电脑或者本机里有 windows 电脑，就很方便，直接从&lt;code&gt;C:\windows\fonts\&lt;/code&gt;下复制字体文件，需要什么字体就在文件夹下搜索字体名称即可。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将复制的字体拷贝到 ubuntu 下的&lt;code&gt;/usr/share/fonts/&lt;/code&gt;下，下一步执行以下命令，生成字体的索引信息：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo mkfontscale
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo mkfontdir
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo fc-cache
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;重启 wps 后发现字体选项中中文字体出现了我们新添加的几种字体。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="三参考"&gt;三、参考&lt;/h3&gt;
+&lt;p&gt;[1] &lt;a href="https://blog.csdn.net/liweibin1994/article/details/73384790"target="_blank" rel="noopener noreferrer"&gt;Ubuntu 下 WPS 中文字体显示问题&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

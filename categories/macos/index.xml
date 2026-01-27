@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Macos on ongoing's blog</title><link>https://ongoingblog.org/categories/macos/</link><description>Recent content in Macos on ongoing's blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sun, 10 Aug 2025 11:47:25 +0800</lastBuildDate><atom:link href="https://ongoingblog.org/categories/macos/index.xml" rel="self" type="application/rss+xml"/><item><title>macos - pbcopy</title><link>https://ongoingblog.org/2025/08/pbcopy/</link><pubDate>Sun, 10 Aug 2025 11:47:25 +0800</pubDate><guid>https://ongoingblog.org/2025/08/pbcopy/</guid><description>&lt;p&gt;一些常用的命令&lt;/p&gt;
+&lt;p&gt;复制当前目录的文件列表&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ls &lt;span class="p"&gt;|&lt;/span&gt; pbcopy
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;|（管道）：将 ls 的输出直接传递给剪贴板工具 pbcopy。
+执行后文件列表会进入剪贴板，可直接用 ⌘+V 粘贴。&lt;/p&gt;
+&lt;p&gt;复制 file.txt 的内容&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;pbcopy &amp;lt; file.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这个命令在复制一些公钥的时候很有用，不需要去打开文件，直接复制内容出来。&lt;/p&gt;</description></item><item><title>Mac 下朗读单词语音</title><link>https://ongoingblog.org/2023/11/mac-speech/</link><pubDate>Sat, 11 Nov 2023 12:50:00 +0800</pubDate><guid>https://ongoingblog.org/2023/11/mac-speech/</guid><description>&lt;p&gt;前言：在 mac 查单词很方便，但是没有看到单词语音的选项，搜索了一下，发现设置路径是：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;左上角苹果标🍎-&amp;gt;系统设置-&amp;gt;辅助功能-&amp;gt;朗读内容-&amp;gt;朗读所选内容
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这个开关打开之后，使用快捷键&lt;code&gt;option + esc&lt;/code&gt;后就会有人声朗读单词了。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;但是我发现有的英文单词读出来不对，最后还是用了翻译网页去查看单词读音的。&lt;/em&gt;&lt;/p&gt;</description></item><item><title>Mac 命令行使用</title><link>https://ongoingblog.org/2023/02/mac-terminal-usage/</link><pubDate>Mon, 20 Feb 2023 12:49:00 +0800</pubDate><guid>https://ongoingblog.org/2023/02/mac-terminal-usage/</guid><description>&lt;p&gt;前言：一些 mac 使用体验。&lt;/p&gt;
+&lt;p&gt;从当前终端打开对应文件夹：&lt;code&gt;$ open .&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id="搜索"&gt;搜索&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;mdfind&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mdfind -name &lt;span class="s2"&gt;&amp;#34;文件名称&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item></channel></rss>

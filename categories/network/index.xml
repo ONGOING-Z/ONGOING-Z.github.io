@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Network on ongoing's blog</title><link>https://ongoingblog.org/categories/network/</link><description>Recent content in Network on ongoing's blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Fri, 27 Jun 2025 20:04:52 +0800</lastBuildDate><atom:link href="https://ongoingblog.org/categories/network/index.xml" rel="self" type="application/rss+xml"/><item><title>DMZ 是什么</title><link>https://ongoingblog.org/2025/06/2025-06-27-what-is-dmz/</link><pubDate>Fri, 27 Jun 2025 20:04:52 +0800</pubDate><guid>https://ongoingblog.org/2025/06/2025-06-27-what-is-dmz/</guid><description>&lt;p&gt;独立隔离区，处在独立隔离区的计算机是直接暴露在外，不经过防火墙保护的。&lt;/p&gt;
+&lt;p&gt;是公司内部网络和外部网络的隔离缓冲带。&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2025-06-27-what-is-dmz/dmz.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="827"
+ data-pswp-height="561"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2025-06-27-what-is-dmz/dmz.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="827"
+ height="561"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;</description></item><item><title>AP隔离</title><link>https://ongoingblog.org/2025/05/what-is-ap-isolation/</link><pubDate>Sat, 03 May 2025 19:54:06 +0800</pubDate><guid>https://ongoingblog.org/2025/05/what-is-ap-isolation/</guid><description>&lt;h3 id="背景"&gt;背景&lt;/h3&gt;
+&lt;p&gt;ap: access point&lt;/p&gt;
+&lt;p&gt;一种路由模式。
+开启之后，各个客户端之间不能相互通讯，只能访问互联网。lan用户之间不能彼此发现，增加安全性。&lt;/p&gt;
+&lt;p&gt;但是如果你没有路由器的控制权限的话，就不能使用AP模式了（例如路由器是房东的，你拿不到修改的权限）&lt;/p&gt;
+&lt;h3 id="使用场景"&gt;使用场景&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;公共场所的无线网络&lt;/li&gt;
+&lt;li&gt;合租网络：防止别人窥探你的设备&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>让我困惑的 Subnet Mask(子网掩码)</title><link>https://ongoingblog.org/2021/07/the-confusing-subnet-mask/</link><pubDate>Thu, 22 Jul 2021 19:57:00 +0800</pubDate><guid>https://ongoingblog.org/2021/07/the-confusing-subnet-mask/</guid><description>&lt;p&gt;前言：之前一直不太懂 subnet mask(子网掩码) 这个家伙的作用，不管是看了别人文章里的比喻还是一些计算后，自己还是很懵。但是其实自己懂了之后，其实关键是这个“东西”的作用到底是什么，这个“东西”到底扮演了什么样的角色，这才是较为重要的，不要一上来就直接进行计算，懂得为什么会去这样做才是重中之重。&lt;/p&gt;
+&lt;p&gt;首先来声明下 subnet mask 的作用：用来标识主机所连接的网络。是区分 network Id（网络号）和 host Id（主机号）的边界。至于怎么来区别我们下面来说：&lt;/p&gt;
+&lt;p&gt;我们熟知的 ip 主要是由两部分组成 = &lt;code&gt;Network ID&lt;/code&gt; + &lt;code&gt;Host ID&lt;/code&gt;.中文翻译过来是 网络号 和 主机号。&lt;/p&gt;
+&lt;p&gt;现假设我们的 ip 是 &lt;code&gt;99.0.129.36&lt;/code&gt;，subnet mask 是 &lt;code&gt;255.255.255.0&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;首先我们将 ip 转换为其二进制的形式，对于 subnet mask 也是如此。&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2021-07-22-the-confusing-subnet-mask/Ip_ManimCE_v0.8.0.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="854"
+ data-pswp-height="480"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2021-07-22-the-confusing-subnet-mask/Ip_ManimCE_v0.8.0.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="854"
+ height="480"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;得到相对应的二进制编码形式后，有这样一个规则：subnet mask 二进制形式中为 1 的位，则“启用”对应的 ip 的位置，来看下面这张图：&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2021-07-22-the-confusing-subnet-mask/TestBrace_ManimCE_v0.8.0.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="854"
+ data-pswp-height="480"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2021-07-22-the-confusing-subnet-mask/TestBrace_ManimCE_v0.8.0.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="854"
+ height="480"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;这样我们就得到了二进制形式的 Network ID = &lt;code&gt;01100011.00000000.10000001&lt;/code&gt;，转换为十进制即&lt;code&gt;99.0.129.0&lt;/code&gt;，这是网络号。&lt;/p&gt;
+&lt;p&gt;剩余的位则是 Host ID，有八位。&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,3464 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on ongoing's blog</title><link>https://ongoingblog.org/categories/linux/</link><description>Recent content in Linux on ongoing's blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Mon, 04 Aug 2025 17:02:39 +0800</lastBuildDate><atom:link href="https://ongoingblog.org/categories/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>Docker 上下文切换</title><link>https://ongoingblog.org/2025/08/docker-context-switching/</link><pubDate>Mon, 04 Aug 2025 17:02:39 +0800</pubDate><guid>https://ongoingblog.org/2025/08/docker-context-switching/</guid><description>&lt;h3 id="一背景"&gt;一、背景&lt;/h3&gt;
+&lt;p&gt;我的 macos 上安装了 docker desktop 和 colima 两个 docker 客户端软件，因为 desktop 很笨重，所以找到了 colima，这个是命令行里启动的。&lt;/p&gt;
+&lt;p&gt;之前一直在用 colima，但是由于两个软件的镜像是分别存储的，所以有时候就会交叉用着，不想去做移植了。&lt;/p&gt;
+&lt;p&gt;今天启动的时候遇到一个报错，macos docker desktop 已启动，但是执行 docker 报错&lt;code&gt;Cannot connect to the Docker daemon at unix:///Users/zero/.colima/default/docker.sock. Is the docker daemon running?&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id="二解决方法"&gt;二、解决方法&lt;/h3&gt;
+&lt;p&gt;切换切换 Docker 上下文到 Docker Desktop:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 查看所有上下文&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker context ls
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 切换到 Docker Desktop 的上下文（通常是 &amp;#34;default&amp;#34; 或 &amp;#34;desktop-linux&amp;#34;）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker context use default &lt;span class="c1"&gt;# 或 docker context use desktop-linux&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;现在就正常了。&lt;/p&gt;</description></item><item><title>Tmux 的复制和粘贴</title><link>https://ongoingblog.org/2025/08/tmux-copy-and-paste/</link><pubDate>Mon, 04 Aug 2025 16:46:01 +0800</pubDate><guid>https://ongoingblog.org/2025/08/tmux-copy-and-paste/</guid><description>&lt;h3 id="一背景"&gt;一、背景&lt;/h3&gt;
+&lt;p&gt;在终端中使用 tmux 界面时，更快捷的复制粘贴设置。&lt;/p&gt;
+&lt;h3 id="二按键步骤"&gt;二、按键步骤&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;按下 tmux prefix 键位 (默认是 ctrl + b)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[&lt;/code&gt;: 进入选择界面，可以使用 vim 的上下左右和其他跳转键位&lt;/li&gt;
+&lt;li&gt;使用&lt;code&gt;空格键&lt;/code&gt;触发选择&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;y&lt;/code&gt;: 复制到系统剪切板中&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="三配置"&gt;三、配置&lt;/h3&gt;
+&lt;h4 id="一安装"&gt;（一）安装&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;brew install reattach-to-user-namespace
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="二tmuxconf中添加配置"&gt;（二）&lt;code&gt;~/.tmux.conf&lt;/code&gt;中添加配置&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;bind&lt;/span&gt; -T copy-mode-vi y send-keys -X copy-pipe &lt;span class="s2"&gt;&amp;#34;reattach-to-user-namespace pbcopy&amp;#34;&lt;/span&gt; &lt;span class="c1"&gt;# macOS&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Docker 的使用</title><link>https://ongoingblog.org/2025/06/2025-06-18-docker-usage/</link><pubDate>Wed, 18 Jun 2025 14:20:35 +0800</pubDate><guid>https://ongoingblog.org/2025/06/2025-06-18-docker-usage/</guid><description>&lt;div class="toc-container"&gt;
+ &lt;h2 class="toc-title"&gt;文章目录&lt;/h2&gt;
+ &lt;div class="toc-content"&gt;
+ &lt;nav id="TableOfContents"&gt;
+ &lt;ul&gt;
+ &lt;li&gt;
+ &lt;ul&gt;
+ &lt;li&gt;&lt;a href="#copy-语法"&gt;COPY 语法&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#查看占用体积"&gt;查看占用体积&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#前缀docker-image"&gt;前缀：docker image&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#前缀docker-container"&gt;前缀：docker container&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#端口映射"&gt;端口映射&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#退出-docker-进程-macos"&gt;退出 docker 进程 (macos)&lt;/a&gt;&lt;/li&gt;
+ &lt;/ul&gt;
+ &lt;/li&gt;
+ &lt;/ul&gt;
+&lt;/nav&gt;
+ &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+ .toc-container {
+ border-left: 3px solid #4a86e8;
+ padding: 1.2rem 1.8rem;
+ margin: 2.5rem 0;
+ background: #f8fbfe;
+ border-radius: 0 8px 8px 0;
+ box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+ }
+
+ .toc-title {
+ font-size: 1.4rem;
+ margin-top: 0;
+ margin-bottom: 1rem;
+ color: #2c5282;
+ padding-bottom: 0.5rem;
+ border-bottom: 1px solid #e2e8f0;
+ }
+
+ .toc-content ul {
+ list-style: none;
+ padding-left: 1.2rem;
+ margin: 0;
+ }
+
+ .toc-content li {
+ margin: 0.7rem 0;
+ line-height: 1.1;
+ position: relative;
+ }
+
+ .toc-content a {
+ color: #3182ce;
+ text-decoration: none;
+ transition: all 0.3s ease;
+ display: block;
+ padding: 0.3rem 0.5rem;
+ border-radius: 4px;
+ }
+
+ .toc-content a:hover {
+ color: #020202;
+ background: #ebf4ff;
+ padding-left: 0.8rem;
+ }
+
+ .toc-warning {
+ padding: 1.2rem;
+ background: #fffaf0;
+ border: 1px solid #feebc8;
+ border-radius: 6px;
+ color: #dd6b20;
+ margin: 2rem 0;
+ }
+
+ .toc-warning p {
+ margin: 0.5rem 0;
+ }
+
+ .toc-highlight {
+ animation: highlight-fade 2s ease;
+ background-color: rgba(255, 230, 0, 0.3);
+ }
+
+ @keyframes highlight-fade {
+ 0% { background-color: rgba(255, 230, 0, 0.8); }
+ 100% { background-color: transparent; }
+ }
+
+ 
+ .toc-debug {
+ font-size: 0.9rem;
+ color: #4a5568;
+ }
+ .toc-debug h4 {
+ margin-top: 0;
+ color: #2b6cb0;
+ }
+&lt;/style&gt;
+&lt;h3 id="copy-语法"&gt;COPY 语法&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;如果目标目录不存在，docker 会自动创建目录&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;例子：将目录&lt;code&gt;docs.spring.io&lt;/code&gt;这个整个目录（包含目录及其内容）复制到&lt;code&gt;app&lt;/code&gt;目录下&lt;/p&gt;</description></item><item><title>Linux os-release文件</title><link>https://ongoingblog.org/2025/06/2025-06-16-os-release/</link><pubDate>Mon, 16 Jun 2025 21:41:57 +0800</pubDate><guid>https://ongoingblog.org/2025/06/2025-06-16-os-release/</guid><description>&lt;h3 id="一背景"&gt;一、背景&lt;/h3&gt;
+&lt;p&gt;知道这个文件，可以比较方便知道docker镜像的系统信息，这个文件保存着操作系统的识别数据。&lt;/p&gt;
+&lt;h3 id="二使用"&gt;二、使用&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;cat /etc/os-release
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;结果如下图&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2025-06-16-os-release/os-release.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="612"
+ data-pswp-height="219"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2025-06-16-os-release/os-release.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="612"
+ height="219"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;也可以查看下这个文件：&lt;code&gt;/usr/lib/os-release&lt;/code&gt;。&lt;/p&gt;
+&lt;h3 id="三参考"&gt;三、参考&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://www.freedesktop.org/software/systemd/man/latest/os-release.html"target="_blank" rel="noopener noreferrer"&gt;https://www.freedesktop.org/software/systemd/man/latest/os-release.html&lt;/a&gt;&lt;/p&gt;</description></item><item><title>bash shell 的 here document</title><link>https://ongoingblog.org/2025/05/2025-05-11-shell-here-document/</link><pubDate>Sun, 11 May 2025 18:20:28 +0800</pubDate><guid>https://ongoingblog.org/2025/05/2025-05-11-shell-here-document/</guid><description>&lt;h3 id="一背景"&gt;一、背景&lt;/h3&gt;
+&lt;p&gt;今天用 cursor 优化了下我之前写的博客创建脚本。经过它处理之后，我发现有一处标识，我之前没有见过&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;cat &amp;gt; file &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s"&gt;xxx
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s"&gt;EOF&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;类似这种，具体的代码如下图所示
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2025-05-11-shell-here-document/result.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="1174"
+ data-pswp-height="290"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2025-05-11-shell-here-document/result.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="1174"
+ height="290"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;/p&gt;
+&lt;p&gt;这段代码的主要功能是：每次新建博客 markdown 文件后，自动把 hugo 对应的表头文件信息给写入进去，因为这种表头信息都是标准化的。&lt;/p&gt;
+&lt;h3 id="二使用-echo-和使用-here-document-的区别"&gt;二、使用 echo 和使用 here document 的区别&lt;/h3&gt;
+&lt;h4 id="优化前"&gt;优化前&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;使用 echo&lt;/li&gt;
+&lt;li&gt;使用字符串&lt;/li&gt;
+&lt;li&gt;针对一些符号（如引号）还需要去做转义处理&lt;/li&gt;
+&lt;li&gt;换行不好处理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="优化后"&gt;优化后&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;不需要使用字符串&lt;/li&gt;
+&lt;li&gt;不需要做转义处理&lt;/li&gt;
+&lt;li&gt;换行更好处理&lt;/li&gt;
+&lt;li&gt;只需要用一个新的 here doc 的标识&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="三here-document"&gt;三、Here Document&lt;/h3&gt;
+&lt;p&gt;shell 中称上面那种做法叫作 here document。可以很方便地处理多行文本。&lt;/p&gt;
+&lt;p&gt;一个例子：把下列内容写入文件中&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;AAA
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;BBB
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;bash 脚本&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;cat &amp;gt; file &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s"&gt;AAA
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s"&gt;BBB
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s"&gt;EOF&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Tmux 移动窗口</title><link>https://ongoingblog.org/2025/04/tmux-swap-window/</link><pubDate>Tue, 08 Apr 2025 09:21:00 +0800</pubDate><guid>https://ongoingblog.org/2025/04/tmux-swap-window/</guid><description>&lt;h3 id="一背景"&gt;一、背景&lt;/h3&gt;
+&lt;p&gt;Tmux 移动窗口方便重新编排我的工作空间。&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;场景&lt;/th&gt;
+ &lt;th&gt;命令&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;列出会话&lt;/td&gt;
+ &lt;td&gt;tmux ls&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;关闭会话&lt;/td&gt;
+ &lt;td&gt;tmux kill-session -t 会话名&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;加载会话&lt;/td&gt;
+ &lt;td&gt;tmux attach -t 会话名&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id="二一些操作"&gt;二、一些操作&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;我想要互换窗口，例如将 4 窗口换到 2 窗口
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2025-04-08-tmux-swap-window/img_example.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="568"
+ data-pswp-height="432"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2025-04-08-tmux-swap-window/img_example.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="568"
+ height="432"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2025-04-08-tmux-swap-window/step01.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="569"
+ data-pswp-height="430"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2025-04-08-tmux-swap-window/step01.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="569"
+ height="430"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2025-04-08-tmux-swap-window/step02.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="574"
+ data-pswp-height="432"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2025-04-08-tmux-swap-window/step02.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="574"
+ height="432"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2025-04-08-tmux-swap-window/step03.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="573"
+ data-pswp-height="433"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2025-04-08-tmux-swap-window/step03.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="573"
+ height="433"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2025-04-08-tmux-swap-window/step04.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="572"
+ data-pswp-height="430"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2025-04-08-tmux-swap-window/step04.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="572"
+ height="430"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2025-04-08-tmux-swap-window/step05.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="573"
+ data-pswp-height="431"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2025-04-08-tmux-swap-window/step05.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="573"
+ height="431"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;/p&gt;</description></item><item><title>Linux sed 命令的使用</title><link>https://ongoingblog.org/2025/02/linux-sed/</link><pubDate>Sat, 22 Feb 2025 15:01:00 +0800</pubDate><guid>https://ongoingblog.org/2025/02/linux-sed/</guid><description>&lt;p&gt;前言: 有时需要在bash脚本中处理一些字符串的替换操作，发现 linux 下的 sed 命令可以实现这个功能。&lt;/p&gt;
+&lt;p&gt;很久以前就听过 linux 命令文本处理三剑客的大名，其中一个就是 sed ，使用了下发现还不错，模式匹配的格式就是通用的正则表达式。&lt;/p&gt;
+&lt;h3 id="例子"&gt;例子&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;将字符空格替换为&lt;code&gt;-&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;hello hhh&amp;#34;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed &lt;span class="s1"&gt;&amp;#39;s/\ /-/&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;直接修改源文件，不生成备份文件(macos写法)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sed -i &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;pattern&amp;#39;&lt;/span&gt; file.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;生成一个备份文件，备份文件名称为&lt;code&gt;file.txt.backup&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sed -i.backup &lt;span class="s1"&gt;&amp;#39;pattern&amp;#39;&lt;/span&gt; file.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="参数"&gt;参数&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-E&lt;/code&gt;: 使用正则表达式&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>端口转发</title><link>https://ongoingblog.org/2025/02/port-forward/</link><pubDate>Sat, 22 Feb 2025 12:39:00 +0800</pubDate><guid>https://ongoingblog.org/2025/02/port-forward/</guid><description>&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2025-02-22-port-forward/port_forward.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="1498"
+ data-pswp-height="778"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2025-02-22-port-forward/port_forward.png?width=1200&amp;amp;format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="1498"
+ height="778"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;</description></item><item><title>Ubuntu防火墙软件 - gufw</title><link>https://ongoingblog.org/2025/01/ubuntu-gufw/</link><pubDate>Sun, 26 Jan 2025 16:18:00 +0800</pubDate><guid>https://ongoingblog.org/2025/01/ubuntu-gufw/</guid><description>&lt;p&gt;前言: Ubuntu防火墙使用及安装。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用pip安装&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;注意：如果 Ubuntu 上开启了文件共享，注意要配置下防火墙，添加白名单，否则可能会出现连接不上的情况。
+因为默认是禁止所有的入向连接的。&lt;/p&gt;</description></item><item><title>用 Idea 在 Macos 命令行中打开 Java 项目</title><link>https://ongoingblog.org/2024/07/open-java-projects-in-macos-terminal/</link><pubDate>Tue, 16 Jul 2024 21:59:00 +0800</pubDate><guid>https://ongoingblog.org/2024/07/open-java-projects-in-macos-terminal/</guid><description>&lt;p&gt;前言：在 macos terminal 中打开 java 项目。&lt;/p&gt;
+&lt;h4 id="直接使用命令"&gt;直接使用命令&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;open -a &lt;span class="s2"&gt;&amp;#34;IntelliJ IDEA CE&amp;#34;&lt;/span&gt; . &lt;span class="c1"&gt;# 这里使用社区版本&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="使用脚本"&gt;使用脚本&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="cp"&gt;#!/bin/zsh
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;DIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;test&lt;/span&gt; -z &lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="nv"&gt;$DIR&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nv"&gt;DIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nb"&gt;pwd&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;open -a &lt;span class="s2"&gt;&amp;#34;IntelliJ IDEA&amp;#34;&lt;/span&gt; &lt;span class="nv"&gt;$DIR&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;打开当前目录：&lt;code&gt;idae .&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id="直接用命令别名更方便"&gt;直接用命令别名更方便&lt;/h4&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2024-07-16-open-java-projects-in-macos-terminal/bashrc_idea_alias.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="602"
+ data-pswp-height="36"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2024-07-16-open-java-projects-in-macos-terminal/bashrc_idea_alias.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="602"
+ height="36"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;</description></item><item><title>备份你的 Ubuntu Apt 软件包列表</title><link>https://ongoingblog.org/2023/08/backup-your-apt-package-list/</link><pubDate>Sat, 19 Aug 2023 20:54:00 +0800</pubDate><guid>https://ongoingblog.org/2023/08/backup-your-apt-package-list/</guid><description>&lt;p&gt;前言：备份在 ubuntu 中安装的包软件。&lt;/p&gt;
+&lt;h2 id="backup-your-linux-apt-package"&gt;Backup your linux apt Package&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;dpkg --get-selections &amp;gt; ~/Package.list
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo cp -R /etc/apt/sources.list* ~/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt-key exportall &amp;gt; ~/Repo.keys
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="restore"&gt;Restore&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt-key add ~/Repo.keys
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo cp -R ~/sources.list* /etc/apt/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt-get update
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt-get install dselect
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo &lt;span class="k"&gt;select&lt;/span&gt; update
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo dpkg --set-selections &amp;lt; ~/Package.list
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt-get dselect-upgrade -y
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="参考"&gt;参考&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://askubuntu.com/questions/9135/how-to-backup-settings-and-list-of-installed-packages"target="_blank" rel="noopener noreferrer"&gt;https://askubuntu.com/questions/9135/how-to-backup-settings-and-list-of-installed-packages&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Curl 命令的使用</title><link>https://ongoingblog.org/2023/02/curl-usage/</link><pubDate>Wed, 08 Feb 2023 22:28:00 +0800</pubDate><guid>https://ongoingblog.org/2023/02/curl-usage/</guid><description>&lt;p&gt;前言: 临时没有postman做接口测试，就直接在 terminal 里做的测试。&lt;/p&gt;
+&lt;h3 id="发起get请求"&gt;发起Get请求&lt;/h3&gt;
+&lt;p&gt;例如本地起的服务为&amp;quot;0.0.0.0 =8080/ask&amp;quot;，那么如何请求呢？&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;curl -G -d &lt;span class="s2"&gt;&amp;#34;name=mike&amp;#34;&lt;/span&gt; -d &lt;span class="s2"&gt;&amp;#34;height=170&amp;#34;&lt;/span&gt; 0.0.0.0 &lt;span class="o"&gt;=&lt;/span&gt;8080/ask
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这里&lt;code&gt;-G&lt;/code&gt;不带的话，就为 post 请求了。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;带header参数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;curl &lt;span class="nv"&gt;localhost&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;8080/api/rmi.do -H &lt;span class="s2"&gt;&amp;#34;key1:test1&amp;#34;&lt;/span&gt; -H &lt;span class="s2"&gt;&amp;#34;key2:test2&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="测试网址链接"&gt;测试网址链接&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;curl -I 你的网址
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="curl_param_i.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="800"
+ data-pswp-height="600"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="curl_param_i.png"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;h3 id="参考"&gt;参考&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://www.ruanyifeng.com/blog/2019/09/curl-reference.html"target="_blank" rel="noopener noreferrer"&gt;https://www.ruanyifeng.com/blog/2019/09/curl-reference.html&lt;/a&gt;&lt;/p&gt;</description></item><item><title>Linux 中的一些网络命令</title><link>https://ongoingblog.org/2022/09/network-commands-in-linux/</link><pubDate>Sun, 18 Sep 2022 12:20:00 +0800</pubDate><guid>https://ongoingblog.org/2022/09/network-commands-in-linux/</guid><description>&lt;p&gt;查看默认网关的三种方式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;route -n&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ip route show&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;netstat -rn&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="挂载"&gt;挂载&lt;/h3&gt;
+&lt;p&gt;编辑好&lt;code&gt;/etc/fstab&lt;/code&gt;文件后，重新加载配置使更改生效，使用&lt;code&gt;sudo mount&lt;/code&gt;去刷新这个文件。&lt;/p&gt;</description></item><item><title>个人电脑的磁盘管理</title><link>https://ongoingblog.org/2022/09/my-computer-disk-management/</link><pubDate>Mon, 12 Sep 2022 21:24:00 +0800</pubDate><guid>https://ongoingblog.org/2022/09/my-computer-disk-management/</guid><description>&lt;p&gt;前言: 说下电脑的磁盘管理。&lt;/p&gt;
+&lt;p&gt;现有两块硬盘. 内存12G.&lt;/p&gt;
+&lt;p&gt;第一块硬盘：120G固态。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;C = windows系统盘(40G)
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;D = 20G
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;E = 40G
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;/boot = 600M
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;第二块磁盘 = 2T机械硬盘&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;/ = 100G
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;/home = 1000G
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;/swap = 10G
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;F = 新加卷(300G)
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;FREE = 剩下的留在那里没有分配
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Linux rsync 命令的使用</title><link>https://ongoingblog.org/2022/09/usage-of-rsync-command/</link><pubDate>Mon, 12 Sep 2022 21:22:00 +0800</pubDate><guid>https://ongoingblog.org/2022/09/usage-of-rsync-command/</guid><description>&lt;p&gt;前言：在备份的过程中又了解了 rsync 这个命令。这个命令第一次是全部备份。第二次同步的时候就是增量备份了。&lt;/p&gt;
+&lt;h2 id="基本使用"&gt;基本使用&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;备份&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;rsync -r source_dir target_dir 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;-r&lt;/code&gt; = recursive&lt;/p&gt;
+&lt;p&gt;试验的话，不进行实际操作，可以使用选项&lt;code&gt;-ni&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id="参考"&gt;参考&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/opensourceway/rsync-backup-script"target="_blank" rel="noopener noreferrer"&gt;https://github.com/opensourceway/rsync-backup-script&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://linux.cn/article-8237-1.html"target="_blank" rel="noopener noreferrer"&gt;https://linux.cn/article-8237-1.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://banbanpeppa.github.io/2019/09/18/linux/rsync/"target="_blank" rel="noopener noreferrer"&gt;https://banbanpeppa.github.io/2019/09/18/linux/rsync/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://avcourt.github.io/tiny-cluster/2019/02/08/backups.html"target="_blank" rel="noopener noreferrer"&gt;https://avcourt.github.io/tiny-cluster/2019/02/08/backups.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://lex-2008.github.io/en/rsync-backups.html"target="_blank" rel="noopener noreferrer"&gt;https://lex-2008.github.io/en/rsync-backups.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>boot-repair</title><link>https://ongoingblog.org/2022/09/boot-repair/</link><pubDate>Tue, 06 Sep 2022 07:25:00 +0800</pubDate><guid>https://ongoingblog.org/2022/09/boot-repair/</guid><description>&lt;p&gt;前言：windows 和 ubuntu16 双系统引导有时候会出问题，这个时候我们可以使用&lt;code&gt;boot-repair&lt;/code&gt;这个工具来修复它。&lt;/p&gt;
+&lt;p&gt;我们需要准备&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一个修复 u 盘，里面烧录好 ubuntu 系统，我这里是 ubuntu16&lt;/li&gt;
+&lt;li&gt;bios 中选择从 u 盘启动&lt;/li&gt;
+&lt;li&gt;选择试用模式 try ubuntu&lt;/li&gt;
+&lt;li&gt;进入系统后，先调整系统时间，否则更新源的时候可能会有问题。&lt;/li&gt;
+&lt;li&gt;换源更新&lt;/li&gt;
+&lt;li&gt;从命令行中安装 boot-repair 工具&lt;/li&gt;
+&lt;li&gt;启动 boot-repair，选择推荐修复&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="命令行安装-boot-repair"&gt;命令行安装 boot-repair&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 这一步如果网络不好，可能会一直卡住，似乎手机流量可以临时添加下。&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo add-apt-repository &lt;span class="nv"&gt;ppa&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;yannubuntu/boot-repair 
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt-get update
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt-get install -y boot-repair
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安装如果出现&lt;code&gt;E = Unable to locate package boot-repair&lt;/code&gt;，则&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; /etc/apt/sources.list.d/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;打开此目录下名为&lt;code&gt;yannubuntu-ubuntu-boot-repair-xenial.list&lt;/code&gt;进行如下的更改&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-diff" data-lang="diff"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gd"&gt;- deb http://ppa.launchpad.net/yannubuntu/boot-repair/ubuntu xenial main
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gi"&gt;+ deb http://ppa.launchpad.net/yannubuntu/boot-repair/ubuntu bionic main
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>双系统的安装：windows 和 ubuntu</title><link>https://ongoingblog.org/2022/09/install-windows-and-ubuntu-with-two-disks/</link><pubDate>Sun, 04 Sep 2022 13:24:00 +0800</pubDate><guid>https://ongoingblog.org/2022/09/install-windows-and-ubuntu-with-two-disks/</guid><description>&lt;p&gt;前言：
+因为最近疫情的原因，可能需要在家办公。但是因为上次想从 ubuntu16 换到 ubuntu22 的原因，导致自己电脑上 windows 系统不能启动的原因，我需要重新装一下 windows 系统。&lt;/p&gt;
+&lt;p&gt;我的电脑&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;两块硬盘
+&lt;ul&gt;
+&lt;li&gt;第一块：120G 固态&lt;/li&gt;
+&lt;li&gt;第二块：2T 机械
+现在选择将 windows 装在 120 G 固态上，将 ubuntu 装在机械硬盘上。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="windows-安装"&gt;Windows 安装&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;提前准备好 PE U 盘，复制好 windows 镜像到 u 盘中&lt;/li&gt;
+&lt;li&gt;使用 PE 的分区功能给硬盘分好区，可以快速分区，也可以自定义分区。
+&lt;ul&gt;
+&lt;li&gt;因为只有 120G，所以分了三个区 (C = 40G, D: 20G, E: 52G)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;从 PE 中启动，右键镜像文件选择装载&lt;/li&gt;
+&lt;li&gt;点击 &lt;code&gt;setup.exe&lt;/code&gt; 文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我这里点击了之后安装程序有报错：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;我们无法创建新的分区，也找不到现有的分区。
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;最后使用复制方法安装的，复制解压后镜像中的四个文件&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;boot 文件夹
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sources 文件夹
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;bootmgr 文件
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;到已经分好区的系统盘 (之前分好的 C 盘).
+重启计算机即可。&lt;/p&gt;
+&lt;h2 id="ubuntu16-安装"&gt;Ubuntu16 安装&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;关于 efi 和/boot 的安装
+这次是将/boot 和 windows 装在同一块硬盘上的。&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Linux tar 命令的使用</title><link>https://ongoingblog.org/2022/08/usage-of-tar-command/</link><pubDate>Sat, 13 Aug 2022 20:19:00 +0800</pubDate><guid>https://ongoingblog.org/2022/08/usage-of-tar-command/</guid><description>&lt;p&gt;前言：前段时间为了安装新的系统需要将需要将一些目录备份下来，搜了下可以使用&lt;code&gt;tar&lt;/code&gt;这个命令。&lt;/p&gt;
+&lt;p&gt;Tar(Tape ARacive) = 磁带归档。&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;选项&lt;/th&gt;
+ &lt;th&gt;含义&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;-c&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;create a new tar file&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;-v&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;过程打印在 console 上&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;-f&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;指定文件&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;-z&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;gunzip&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;-j&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;bzip2&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;-p&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;保留原文档的权限与属性&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;-g&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;增量同步&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;使用 tar 时，可以将&lt;code&gt;-f filename&lt;/code&gt;与其他选项独立出来，会比较不容易发生问题。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;压缩：&lt;code&gt;tar -jcv -f filename.tar.bz2 需要被压缩的文件或目录&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;查询：&lt;code&gt;tar -jtv -f filename.tar.bz2&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;解压缩：&lt;code&gt;tar -jxv -f filename.tar.bz2 - C 放置解压缩文件的目录&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="增量备份"&gt;增量备份&lt;/h2&gt;
+&lt;p&gt;一个小测试。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;创建 test_tar 文件夹，文件夹中创建三个文件 = a, b, c。创建第一个 tarball:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar -g snapshot -zcf backup_full.tar.gz test_tar 
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar ztf backup_full.tar.gz 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;在 test_tar 文件夹中添加新文件 d 后，创建第二个 tarball =&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar -g snapshot -zcf back_ince_01.tar.gz test_tar 
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar ztf back_ince_01.tar.gz 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;在 test_tar 文件夹中添加新文件 e，并且往文件中写入一句话&amp;quot;hello, tar&amp;quot;，后创建第三个 tarball =&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar -g snapshot -zcf back_ince_02.tar.gz test_tar 
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar ztf back_ince_02.tar.gz 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;删除 test_tar 文件夹及其中文件，从 tarball 中还原出原来的文件：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# extract&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar zxf backup_full.tar.gz 
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar zxf back_ince_01.tar.gz 
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar zxf back_ince_02.tar.gz 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;打完包后如果想要加密的话，可以使用 7zip 或者其他软件进行加密。&lt;/p&gt;</description></item><item><title>Ubuntu 网络问题：device not managed</title><link>https://ongoingblog.org/2022/05/ubuntu-network-device-not-managed/</link><pubDate>Sat, 21 May 2022 21:44:00 +0800</pubDate><guid>https://ongoingblog.org/2022/05/ubuntu-network-device-not-managed/</guid><description>&lt;p&gt;前言：今天的 ubuntu 出了些问题，关于网络的。Wifi 列表突然消失，连不上网络。但是窗口里有 device not managed 的显示。&lt;/p&gt;
+&lt;p&gt;解决方法&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;编辑文件&lt;code&gt;/etc/NetworkManager/NetworkManager.conf&lt;/code&gt; 中的 managed 为 true&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-diff" data-lang="diff"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;[ifupdown]
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gd"&gt;-managed=false
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gi"&gt;+managed=true
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;重启电脑即可。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>About tomorrow-night codeblock, a problem when updating my blog</title><link>https://ongoingblog.org/2022/02/a-problem-when-updating-my-blog/</link><pubDate>Fri, 18 Feb 2022 20:05:00 +0800</pubDate><guid>https://ongoingblog.org/2022/02/a-problem-when-updating-my-blog/</guid><description>&lt;p&gt;前言：晚上更新了一篇博客的部分内容，推送到远程仓库后，发现 actions 运行失败了，日志这样显示的：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;INFO Start processing
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;41
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;FATAL {
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;42
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; err = Error: ENOENT: no such file or directory, open &amp;#39;/home/runner/work/xxx/xxx/node_modules/highlight.js/styles/tomorrow-night.css&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;因为是 file not found 之类的报错，第一反应是之前依赖升级导致的（之前仓库的 bot 自动发起了 PR），升级后这个文件被删除了。&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2022-02-18-a-problem-when-updating-my-blog/pr.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="498"
+ data-pswp-height="23"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2022-02-18-a-problem-when-updating-my-blog/pr.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="498"
+ height="23"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;然后将版本号改成 4.0.0 后更新到了远程仓库，action 运行后还是同样的报错。&lt;/p&gt;
+&lt;p&gt;之后又重新看了下日志，里面主要是因为找不到名为 xx 的文件导致运行失败的，就试着在本地仓库搜索了下这个文件名称，后来发现我在 hexo 配置中对于代码背景使用了这个 =&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# _config.next.yml&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;codeblock &lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c"&gt;# Code Highlight theme&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c"&gt;# All available themes : https://theme-next.js.org/highlight/&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;theme &lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;light &lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;default&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;dark &lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;tomorrow-night&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这里默认的代码块是使用的这个样式。
+然后我又去博客使用的 next 仓库里去找了下，发现了之前的一个&lt;a href="https://github.com/next-theme/hexo-theme-next/commit/6fd36d9ab446fcfaf7357ed9f90c5c1e06115046"target="_blank" rel="noopener noreferrer"&gt;提交&lt;/a&gt;&lt;/p&gt;</description></item><item><title>使用 submodule 遇到的一些坑</title><link>https://ongoingblog.org/2021/11/problems-when-using-submodule/</link><pubDate>Thu, 04 Nov 2021 21:42:00 +0800</pubDate><guid>https://ongoingblog.org/2021/11/problems-when-using-submodule/</guid><description>&lt;p&gt;前言：平时使用的一些常用的脚本以及常用组件如果在不同项目之间复制粘贴不易维护，所以把这些常使用的组件维护为一个仓库，其他项目在使用时把这个仓库添加为子模块 (submodule)，这样的话，易用性和维护性都有了提升。&lt;/p&gt;
+&lt;p&gt;下面是我在使用过程中遇到的两个坑点。&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2021-11-04-problems-when-using-submodule/app_and_submodule.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="597"
+ data-pswp-height="193"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2021-11-04-problems-when-using-submodule/app_and_submodule.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="597"
+ height="193"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;h3 id="第一个坑"&gt;第一个坑&lt;/h3&gt;
+&lt;p&gt;我的错误做法 = 在仓库里添加了子模块后，子模块的仓库会被 clone 到当前仓库中。使用&lt;code&gt;git status&lt;/code&gt;会发现我们的子模块被添加到了 git 的缓冲区了，我之前不想让它加入缓冲区，就在仓库的 .gitignore 中添加了排除子模块的语句，之后 git push 就不能使用了。尝试重新生成 ssh key，但依旧没有起作用。&lt;/p&gt;
+&lt;p&gt;解决：之后在 .gitignore 中删除了之前添加了忽略子模块的语句后，git push 就可以重新使用了。&lt;/p&gt;
+&lt;h3 id="第二个坑"&gt;第二个坑&lt;/h3&gt;
+&lt;p&gt;之前说过在 add submodule 后，子模块会被加到 git 的缓冲区中，类似下图中的黄色字体&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2021-11-04-problems-when-using-submodule/submodule.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="597"
+ data-pswp-height="193"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2021-11-04-problems-when-using-submodule/submodule.png?format=webp&amp;amp;quality=85"
+ alt="使用 git submodule add 后 可以发现缓存区多了两项"
+ 
+ class="lazy-image"
+ 
+ width="597"
+ height="193"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;因为当时我还有其他更改需要进行 commit，就使用 &lt;code&gt;git rm --cached 子模块&lt;/code&gt;，把子模块从缓冲区中删除掉了，这个命令执行之后，我的 git push 再次不能不能使用了 (O x O)。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;并且这个时候使用 git add 把子模块重新加载到缓冲区会有问题。&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Linux 服务器报错：No space left on device</title><link>https://ongoingblog.org/2021/10/no-space-left-on-device/</link><pubDate>Mon, 18 Oct 2021 12:56:00 +0800</pubDate><guid>https://ongoingblog.org/2021/10/no-space-left-on-device/</guid><description>&lt;p&gt;前言：之前在测试环境遇到了一个问题，查看应用的日志发现错误：No space left on device。以为是服务器磁盘满了。
+首先使用了&lt;code&gt;df -h&lt;/code&gt;查看磁盘的剩余容量，发现大部分都是还没有使用的，就很奇怪为什么会报上面这个错误。&lt;/p&gt;
+&lt;p&gt;因为不只是磁盘满了会报这个错误，还有另外一个错误，是关于 inode 的。&lt;/p&gt;
+&lt;p&gt;如果磁盘满了或者 inode 也满了，在这两种情况中的一个发生，就会让我们在控制台上看到&lt;code&gt;No space left on device&lt;/code&gt;这样的报错。&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2021-10-18-No-space-left-on-device/no-space.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="854"
+ data-pswp-height="282"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2021-10-18-No-space-left-on-device/no-space.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="854"
+ height="282"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;那么如何查看当前机器上的 inode 情况呢？使用&lt;code&gt;df -i&lt;/code&gt;命令即可查看。&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2021-10-18-No-space-left-on-device/df_i.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="535"
+ data-pswp-height="116"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2021-10-18-No-space-left-on-device/df_i.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="535"
+ height="116"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;所以当我们使用 &lt;code&gt;df -h&lt;/code&gt; 发现磁盘还未满的时候，还要用 &lt;code&gt;df -i&lt;/code&gt; 验证下 inode 是否已满，因为有可能发生 inode 已经用光，但是硬盘还未存满的情况。这时，就无法在硬盘上创建新文件。&lt;/p&gt;
+&lt;h3 id="参考"&gt;参考&lt;/h3&gt;
+&lt;p&gt;&lt;a href="http://www.ruanyifeng.com/blog/2011/12/inode.html"target="_blank" rel="noopener noreferrer"&gt;http://www.ruanyifeng.com/blog/2011/12/inode.html&lt;/a&gt;&lt;/p&gt;</description></item><item><title>Ubuntu16 安装 Rime 输入法</title><link>https://ongoingblog.org/2021/07/ubuntu16-install-rime-inputer/</link><pubDate>Thu, 29 Jul 2021 20:18:00 +0800</pubDate><guid>https://ongoingblog.org/2021/07/ubuntu16-install-rime-inputer/</guid><description>&lt;p&gt;前言：之前一直使用的是谷歌拼音，但是奈何谷歌拼音的词库太老了，有时候很常见的一个词语我就得慢慢挨个选字。现在我的系统里安装的都是 Rime 输入法，这个输入法自己可以定制很多信息。谷歌拼音用的太久了，也应该换个更加省力的输入法了。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://rime.im/"target="_blank" rel="noopener noreferrer"&gt;Rime&lt;/a&gt; 官网&lt;/li&gt;
+&lt;li&gt;机器环境：Ubuntu16.04&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这里我选用的是 &lt;code&gt;fcitx-rime&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;主要安装步骤如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在命令行中输入&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt install fcitx-rime
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安装完成后系统需要&lt;code&gt;logout&lt;/code&gt;下，重新登录电脑&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在命令行输入&lt;code&gt;fcitx-config-gtk3&lt;/code&gt;打开配置面板，搜索 rime&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Rime 的配置文件位于 = &lt;code&gt;~/.config/fcitx/rime&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;刚刚使用可能输出的字都是繁体的，需要打开 rime 配置界面：&lt;code&gt;ctrl + grove&lt;/code&gt;, 这里的 grave 键 是指键盘左上角带有波浪线的那个键位。&lt;/p&gt;
+&lt;p&gt;并且它的配置文件里也有配置信息：&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2021-07-29-ubuntu16-install-rime-inputer/rime-config.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="282"
+ data-pswp-height="212"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2021-07-29-ubuntu16-install-rime-inputer/rime-config.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="282"
+ height="212"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;</description></item><item><title>Zsh 下粘贴中文字符出现乱码</title><link>https://ongoingblog.org/2021/07/paste-chinese-characters-then-messy-code/</link><pubDate>Tue, 27 Jul 2021 19:44:00 +0800</pubDate><guid>https://ongoingblog.org/2021/07/paste-chinese-characters-then-messy-code/</guid><description>&lt;p&gt;前言：在 zsh 下想粘贴中文的字符，但是中文字符粘贴后就是乱码，这里介绍一种解决的方法。&lt;/p&gt;
+&lt;p&gt;乱码效果如下图所示：&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2021-07-27-paste-chinese-characters-then-messy-code/zsh-messy-code.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="472"
+ data-pswp-height="83"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2021-07-27-paste-chinese-characters-then-messy-code/zsh-messy-code.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="472"
+ height="83"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;修改路径为&lt;code&gt;~/.oh-my-zsh/lib&lt;/code&gt;下的 &lt;code&gt;misc.zsh&lt;/code&gt; 文件：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-diff" data-lang="diff"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;# *-magic is known buggy in some versions; disable if so
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gd"&gt;-if [[ $DISABLE_MAGIC_FUNCTIONS != true ]]; then
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gi"&gt;+if [[ $DISABLE_MAGIC_FUNCTIONS = true ]]; then
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; for d in $fpath; do
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;修改之处如绿色字体部分，将判断条件 &lt;code&gt;$DISABLE_MAGIC_FUNCTIONS != true&lt;/code&gt; 修改为 &lt;code&gt;$DISABLE_MAGIC_FUNCTIONS = true&lt;/code&gt;。之后重启 zsh 即可。&lt;/p&gt;</description></item><item><title>gdb STL pretty printer</title><link>https://ongoingblog.org/2020/11/gdb-stl-pretty-print/</link><pubDate>Thu, 05 Nov 2020 18:19:44 +0800</pubDate><guid>https://ongoingblog.org/2020/11/gdb-stl-pretty-print/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;GDB = not easy to learn, but easy to use
+=)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;gdb在打印普通变量时会有很好的作用，但是有时想要打印stl中的容器时，返回i的信息却并不怎么友好。&lt;/p&gt;
+&lt;p&gt;例如在打印一个&lt;code&gt;map&amp;lt;int, int&amp;gt; mp;&lt;/code&gt;中的变量&lt;code&gt;mp&lt;/code&gt;时，在gdb中使用&lt;code&gt;print mp&lt;/code&gt;返回的是如下的结果&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2020-11-05-gdb-STL-pretty-print/pretty_printer_1.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="957"
+ data-pswp-height="108"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2020-11-05-gdb-STL-pretty-print/pretty_printer_1.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="957"
+ height="108"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;这样的信息很杂，而一般在debug中重要的几点就是&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;容器中元素个数&lt;/li&gt;
+&lt;li&gt;容器中元素值&lt;/li&gt;
+&lt;li&gt;容器元素类型&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;而上面这几项在返回的信息中很难寻找。&lt;/p&gt;
+&lt;p&gt;经过一番搜索，我发现在gdb中可以使用python语言脚本，以及gdb内置的有一个名为&lt;code&gt;pretty printer&lt;/code&gt;的东西，这个东西可以使得在gdb中打印容器时返回的信息是&lt;strong&gt;非常友好&lt;/strong&gt;的！&lt;/p&gt;
+&lt;p&gt;这是一篇关于gdb pretty printer的 &lt;a href="https://sourceware.org/gdb/wiki/STLSupport"target="_blank" rel="noopener noreferrer"&gt;GDB wiki STL support&lt;/a&gt;，里边有三种方式，这里展示的是第一种方法。&lt;/p&gt;
+&lt;p&gt;下面的是具体的实现步骤，经过这些步骤我们再次在gdb中打印容器时，返回的就不是一大堆杂乱的信息，而是一些重要的信息，如下&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2020-11-05-gdb-STL-pretty-print/pretty_printer_2.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="381"
+ data-pswp-height="113"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2020-11-05-gdb-STL-pretty-print/pretty_printer_2.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="381"
+ height="113"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;对不对，这样的信息是不是就清晰明了的许多呢？如同在ide中debug一样，并且不用使用鼠标点来点去，非常方便。&lt;/p&gt;
+&lt;h4 id="使用svn下载一个官方仓库"&gt;使用&lt;code&gt;SVN&lt;/code&gt;下载一个官方仓库&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;先自己创建一个文件夹存放这个仓库，例如存放在&lt;code&gt;~/.gdb&lt;/code&gt;下&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mkdir ~/.gdb
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在本文件夹下执行如下命令
+&lt;em&gt;如果没有svn，则需要先安装 Install svn(ubuntu) =&lt;/em&gt; &lt;code&gt;sudo apt-get install subversion&lt;/code&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;svn co svn =//gcc.gnu.org/svn/gcc/trunk/libstdc++-v3/python
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这条命令执行完毕后会发现&lt;code&gt;~/.gdb&lt;/code&gt;目录下多了一个&lt;code&gt;python&lt;/code&gt;文件夹。&lt;/p&gt;</description></item><item><title>Linux gdb 的基本使用</title><link>https://ongoingblog.org/2020/10/gdb-basic-usage-and-some-useful-gdb-ui/</link><pubDate>Sat, 24 Oct 2020 20:31:14 +0800</pubDate><guid>https://ongoingblog.org/2020/10/gdb-basic-usage-and-some-useful-gdb-ui/</guid><description>&lt;p&gt;写 C 或者 C++ 程序时有时候发现出了问题，总是习惯于直接 printf 或者 cout，如果观察的地方比较少，用这种方法还好，但是一旦需要观察的变量多了起来，就非常麻烦。写一大堆累赘的 print 语句很麻烦，而且会让自己的程序变得混乱。&lt;/p&gt;
+&lt;p&gt;知道 gdb 这个 linux 调试工具是很久之前的事情了，但是那个时候还是 print 流派（或者不想付出学习新事物的时间，觉得 print 还能应付）,但是现在因为需求的变化，在慢慢使用 gdb 的过程中，发现确实非常好用，也慢慢开始变得熟练了起来。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="gdb-的一些基本命令"&gt;gdb 的一些基本命令&lt;/h3&gt;
+&lt;p&gt;注意：&lt;code&gt;[]&lt;/code&gt;中是可以省略输入的字母。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;设置断点：&lt;code&gt;b[reak] 行号&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;删除断点：&lt;code&gt;delete 断点id&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;删除所有断点：&lt;code&gt;delete&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;展示所有断点信息：&lt;code&gt;i[nfo] b[reakpoints]&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;注意想要使用 gdb，在编译的时候需要在最后加上&lt;code&gt;-g&lt;/code&gt;选项，以便生成的程序中带有调试信息。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;gcc main.c -o main -g&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;运行程序：&lt;code&gt;r[un]&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;查看变量的值：&lt;code&gt;p[rint] 变量名&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;查看变量类型：&lt;code&gt;ptype 变量名&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;单步执行&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;next&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;step&lt;/code&gt;
+两者的区别是 next 遇到函数不会进入函数内部，step 会执行到函数内部。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;查看堆栈内容：&lt;code&gt;i[nfo] frame&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;查看栈帧： &lt;code&gt;backtrace&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;查看全局变量和静态变量：&lt;code&gt;info variables&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;查看当前 stack frame 局部变量 =&lt;code&gt;info locals&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;查看当前 stack frame 参数：&lt;code&gt;info args&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;选取待 debug 文件：&lt;code&gt;file xxx&lt;/code&gt;&lt;/p&gt;</description></item><item><title>安装 gdb version 9.2</title><link>https://ongoingblog.org/2020/10/install-gdb-version-9.2/</link><pubDate>Sat, 24 Oct 2020 20:23:51 +0800</pubDate><guid>https://ongoingblog.org/2020/10/install-gdb-version-9.2/</guid><description>&lt;p&gt;想要使用 vim+gdb 的模式，但是本机上的 gdb 为 7.2, 需要手动编译最新的 gdb9.2.&lt;/p&gt;
+&lt;h3 id="卸载本机-gdb"&gt;卸载本机 gdb&lt;/h3&gt;
+&lt;p&gt;使用&lt;code&gt;rpm -qa | grep gdb&lt;/code&gt;检查，但是虽然本机上可以使用 gdb，上一条指令却没有任何结果。最后使用&lt;code&gt;apt remove&lt;/code&gt;删除了 gdb。&lt;/p&gt;
+&lt;h3 id="安装新版本-gdb"&gt;安装新版本 gdb&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在&lt;a href="http://ftp.gnu.org/gnu/gdb/"target="_blank" rel="noopener noreferrer"&gt;gun.org&lt;/a&gt;上获取 gdb-9.2.tar.gz
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2020-10-24-Install-gdb-version-9-2/gnu_gdb.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="354"
+ data-pswp-height="243"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2020-10-24-Install-gdb-version-9-2/gnu_gdb.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="354"
+ height="243"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;注：如果使用浏览器下载太慢，可以使用&lt;a href="https://github.com/subhra74/xdm"target="_blank" rel="noopener noreferrer"&gt;xdm&lt;/a&gt;进行下载。&lt;/em&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;解压&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;进入解压后的文件夹&lt;code&gt;gdb-9.2&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在本文件夹打开终端，如果此时直接执行&lt;code&gt;./configure&lt;/code&gt;后不会有结果，需要根据提示新建一个文件夹
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2020-10-24-Install-gdb-version-9-2/build_prob.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="479"
+ data-pswp-height="132"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2020-10-24-Install-gdb-version-9-2/build_prob.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="479"
+ height="132"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;mkdir build&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cd build&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pwd&lt;/code&gt;得到&lt;code&gt;configure&lt;/code&gt;文件的&lt;code&gt;绝对路径&lt;/code&gt;后执行&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;make&lt;/code&gt;. 键入 make 后就需要等待一段时间了。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;最后一步：&lt;code&gt;sudo make install&lt;/code&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2020-10-24-Install-gdb-version-9-2/installed_gdb_info.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="699"
+ data-pswp-height="302"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2020-10-24-Install-gdb-version-9-2/installed_gdb_info.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="699"
+ height="302"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;/p&gt;</description></item><item><title>Grub rescue</title><link>https://ongoingblog.org/2020/09/grub-rescue/</link><pubDate>Wed, 30 Sep 2020 12:06:27 +0800</pubDate><guid>https://ongoingblog.org/2020/09/grub-rescue/</guid><description>&lt;h3 id="背景-1"&gt;背景 1&lt;/h3&gt;
+&lt;p&gt;昨天晚上 (20.4.1) 忽然看到&lt;code&gt;ubuntu20.04&lt;/code&gt;的操作画面，界面更加体贴用户了，配备了一些很不错的特性，其中一个我很喜欢的就是&lt;code&gt;黑夜模式&lt;/code&gt;。所以就打算换到它了，但是我一直使用的 Ubuntu 版本是 16.04，所以就先打算升级到 18.04，再升级到 20.04。接下来就开始了一系列更新操作，当时也没有将软件包全部更新到最新版，主要也是因为源的问题，一些包总是&lt;code&gt;请求超时&lt;/code&gt;，所以忽略警告开始升级。&lt;/p&gt;
+&lt;p&gt;升级下载过程完毕后，安装花费了很长时间，最后在安装界面上&lt;strong&gt;一直停留在那里不动了&lt;/strong&gt;，已经接近凌晨，索性&lt;code&gt;强制关机&lt;/code&gt;，去睡觉了。&lt;/p&gt;
+&lt;p&gt;第二天早上起来接着开机，但是还是卡在那个地方。这个时候就决定放弃这次升级了，打算直接在官网下载&lt;code&gt;ubuntu19.10&lt;/code&gt;版本进行&lt;code&gt;u盘安装&lt;/code&gt;。将&lt;code&gt;iso文件&lt;/code&gt;烧录至 u 盘后，插入自己的电脑，进入&lt;code&gt;bios界面&lt;/code&gt;，选择从&lt;code&gt;u盘启动&lt;/code&gt;，接下来就是一系列配置过程，可进行&lt;code&gt;默认设置&lt;/code&gt;，或者&lt;code&gt;自定义设置&lt;/code&gt;，这里我选择了自定义设置，因为需要对那几个目录 (/home 等等) 进行磁盘分配。&lt;/p&gt;
+&lt;p&gt;设置完毕之后，重新启动，这时出现了问题，开机画面变成了&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;GRUB loading
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;error =unknow filesystem
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;grub rescue&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这样的字符黑乎乎的界面，上网查找资料，使用了&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;grub rescue&amp;gt;set # 查看当前配置
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;grub rescue&amp;gt;ls # 查看当前磁盘及磁盘分区
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;(hd0) (hd0,msdos0)...(hd1) (hd1,msdos9) (hd1,msdos8)...
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;# 这里的 hd 代表磁盘，msdosx 代表分区 (x 为数字)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;开始使用&lt;code&gt;ls&lt;/code&gt;命令找&lt;code&gt;grub&lt;/code&gt;所在的磁盘，找到了，但是在&lt;code&gt;grub\&lt;/code&gt;下并没有&lt;code&gt;normal.mo d&lt;/code&gt;文件。&lt;/p&gt;
+&lt;p&gt;所以即使设置了&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;set&lt;/span&gt; &lt;span class="nv"&gt;root&lt;/span&gt;&lt;span class="o"&gt;=(&lt;/span&gt;hd1,msdos6&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# 设置grub启动分区&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;set&lt;/span&gt; prefix&lt;span class="o"&gt;(&lt;/span&gt;hd1,msdos6&lt;span class="o"&gt;)&lt;/span&gt;/boot/grub &lt;span class="c1"&gt;# 设置grub启动路径&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;insmod normal
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;后就会出现错误，显示&lt;code&gt;file not found&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;而且此时将之强制关机后，开机后会直接进入&lt;code&gt;grub rescue&lt;/code&gt;界面，看不到开机过程中一闪而过的&lt;code&gt;进入bios&lt;/code&gt;的选项界面了，我试了下在开机后，不断按下&lt;code&gt;F2&lt;/code&gt;(我的电脑进入 bios 的热键是 F2)，这下又出现了当初进入 bios 的界面了。&lt;/p&gt;
+&lt;p&gt;寻找 Linux 核心文件所在分区 =
+我的电脑在&lt;code&gt;(hd1,sdb8)&lt;/code&gt;中有名字类似与 vmlinuz-3.0.0-12-generic 这样的文件，这是 Linux 核心文件，如果找到，记下 (hd1,sdb&lt;code&gt;x&lt;/code&gt;) 中的 x 值。假设找到（hd0,5）时，显示了文件夹中的文件。&lt;/p&gt;</description></item><item><title>shell 生产力环境恢复</title><link>https://ongoingblog.org/2020/07/recover-the-shell-production-environment/</link><pubDate>Thu, 30 Jul 2020 21:55:40 +0800</pubDate><guid>https://ongoingblog.org/2020/07/recover-the-shell-production-environment/</guid><description>&lt;p&gt;最近因为在安装一个 gdb 的浏览器版本时将 ubuntu16.04 本机的 Python2 环境给修改了，然后第二天早上打开我的电脑，发现启动不了，将修改的软链接给还原回来，还是不行&amp;hellip;&lt;/p&gt;
+&lt;p&gt;借着这个&amp;quot;机会&amp;quot;，我将 windows10 又重新装入我的电脑了，因为最近刚入手一个西部数据 1T 移动硬盘，买回来之后发现识别不了，它支持的平台只有 windows 和 mac，看了希捷移动硬盘介绍，也是这样。&lt;/p&gt;
+&lt;p&gt;中间省略装系统步骤&amp;hellip;这次安装的 ubuntu 版本还是 16.04，为什么呢？因为我之前也安装了 ubuntu20.04，安装好发现 vmware 在这个版本上少了一些库，但是我有好多个虚拟机需要使用，所以最后我又换回了稳定的 ubuntu16.04。&lt;/p&gt;
+&lt;p&gt;下面是我恢复 shell 中包括 vim、tmux、zsh 等等的生产力步骤。&lt;/p&gt;
+&lt;h2 id="快捷键映射cpas---ctrl"&gt;快捷键映射：cpas -&amp;gt; ctrl&lt;/h2&gt;
+&lt;p&gt;安装 &lt;code&gt;gnome-tweak-tool&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt install gnome-tweak-tool
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="tmux-tpm-插件管理器"&gt;tmux tpm 插件管理器&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://github.com/tmux-plugins/tpm"target="_blank" rel="noopener noreferrer"&gt;tpm 的 github 仓库&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安装 tmux 插件命令：&lt;code&gt;prefix + I&lt;/code&gt;，默认&lt;code&gt;prefix&lt;/code&gt;是&lt;code&gt;&amp;lt;ctrl&amp;gt;b&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id="zsh-install"&gt;zsh install&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt install zsh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="zplug"&gt;zplug&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://github.com/zplug/zplug"target="_blank" rel="noopener noreferrer"&gt;zplug 的 github 仓库&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git clone https://github.com/zplug/zplug .zplug
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="oh-my-zsh"&gt;oh-my-zsh&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://github.com/ohmyzsh/ohmyzsh"target="_blank" rel="noopener noreferrer"&gt;oh-my-zsh 的 github 仓库&lt;/a&gt;&lt;/p&gt;</description></item><item><title>一些Linux的使用</title><link>https://ongoingblog.org/2020/05/some-linux-usage-record/</link><pubDate>Sun, 03 May 2020 23:10:08 +0800</pubDate><guid>https://ongoingblog.org/2020/05/some-linux-usage-record/</guid><description>&lt;p&gt;记录自己在使用linux中渐渐使用的命令和一些方法。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在一个终端中打开另一个窗口&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ctrl + &lt;span class="nb"&gt;shift&lt;/span&gt; + t
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;回到上一次目录&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; -
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;列出当前登录用户&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;w
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Linux进出sudo的方法&lt;/p&gt;
+&lt;p&gt;进入&lt;code&gt;sudo&lt;/code&gt;mode = &lt;code&gt;sudo -i&lt;/code&gt;
+退出&lt;code&gt;sudo&lt;/code&gt;mode = &lt;code&gt;ctrl + d&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;grep(general regular expression print)
+&lt;code&gt;ls | grep &amp;quot;linux&amp;quot;&lt;/code&gt; = List file that its name includes string &amp;ldquo;linux&amp;rdquo;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Clear commands history
+&lt;code&gt;history -c&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;终端锁定与退出锁定(终端无法输入的假死问题)&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;终端锁定
+&lt;code&gt;ctrl + s&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;退出锁定
+&lt;code&gt;ctrl + q&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;File permission&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;chmod&lt;/code&gt;
+Change mode.
+10number = &lt;code&gt;d&lt;/code&gt;(directory) or &lt;code&gt;-&lt;/code&gt;(that represents file)
+Permission =
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;r&lt;/code&gt; = (100)&lt;sub&gt;2&lt;/sub&gt; //4&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;w&lt;/code&gt; = (010)&lt;sub&gt;2&lt;/sub&gt; //2&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;x&lt;/code&gt; = (001)&lt;sub&gt;2&lt;/sub&gt; //1
+eg. &lt;code&gt;chmod 777 file/dir&lt;/code&gt; // Give file/dir rwx permission.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;chgrp&lt;/code&gt;
+Change file group.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;chown&lt;/code&gt;
+Change file owner.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Change font size in terminal&lt;/p&gt;</description></item><item><title>在 Linux mint 中安装 Yahei Consolas Hybrid 字体</title><link>https://ongoingblog.org/2020/04/install-yahei-consolas-hybrid-font-in-linux-mint/</link><pubDate>Thu, 16 Apr 2020 16:18:51 +0800</pubDate><guid>https://ongoingblog.org/2020/04/install-yahei-consolas-hybrid-font-in-linux-mint/</guid><description>&lt;p&gt;由于刚刚安装的 Linux mint 终端中的中文字体显示为&lt;strong&gt;楷体&lt;/strong&gt;，但是这个楷体在终端中显示有些问题：字与字之间空隙很大。所以就打算换一款字体。&lt;/p&gt;
+&lt;h3 id="一字体介绍及下载"&gt;一、字体介绍及下载&lt;/h3&gt;
+&lt;p&gt;关于&lt;code&gt;Yahei Consolas Hybrid&lt;/code&gt;这个字体我是从&lt;a href="http://forum.ubuntu.org.cn/viewtopic.php?p=1312510"target="_blank" rel="noopener noreferrer"&gt;怎样修改终端字体&lt;/a&gt;这篇文章中发现的。关于这款字体 linux 公社有一篇文章&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt;，其中有这样一段描述：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Consolas 雅黑混合字体是什么？？Consolas 是一种专门为编程人员设计的字体，这一字体的特性是所有字母、数字与符号均能非常容易辨认！而且所有字符都具有相同的宽度，让编程人员看着更舒服，当然在打个人和商业信函的时候，用这个字体也是不错的选择，这一字体还专门为 ClearType 做了优化，可以让它更舒适地展示在屏幕上。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这款字体的下载链接在这里&lt;sup id="fnref:2"&gt;&lt;a href="#fn:2" class="footnote-ref" role="doc-noteref"&gt;2&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
+&lt;h3 id="二字体的安装"&gt;二、字体的安装&lt;/h3&gt;
+&lt;p&gt;将&lt;code&gt;YaHei.Consolas.1.11b.rar&lt;/code&gt;解压，得到&lt;code&gt;YaHei.Consolas.1.11b.ttf&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;之后在 linux mint 系统字体文件夹中建立对应的字体文件夹&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo mkdir /usr/share/fonts/vista
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;复制字体文件到对应的文件夹下&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo cp YaHei.Consolas.1.11b.ttf /usr/share/fonts/vista
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;更改字体文件权限&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo chmod &lt;span class="m"&gt;644&lt;/span&gt; /usr/share/fonts/vista/YaHei.Consolas.1.11b.ttf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;刷新并安装字体&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo mkfontscale &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo mkfontdir &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo fc-cache -fv
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="三安装之后设置字体"&gt;三、安装之后设置字体&lt;/h3&gt;
+&lt;p&gt;在 mint 的左下角&lt;code&gt;Menu&lt;/code&gt;中搜索&lt;code&gt;appearance&lt;/code&gt;，打开。如下边这个界面&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2020-04-16-Install-Yahei-Consolas-Hybrid-font-in-linux-mint/Appearance_Preferences_001.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="790"
+ data-pswp-height="588"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2020-04-16-Install-Yahei-Consolas-Hybrid-font-in-linux-mint/Appearance_Preferences_001.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="790"
+ height="588"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+
+在这里面可以设置应用字体，文档字体，桌面字体，窗口标题字体等等。&lt;/p&gt;
+&lt;p&gt;下面设置&lt;strong&gt;终端字体&lt;/strong&gt;
+打开终端，在终端左上角&lt;code&gt;Edit -&amp;gt; Profiles&lt;/code&gt;，打开&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2020-04-16-Install-Yahei-Consolas-Hybrid-font-in-linux-mint/Profiles_002.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="424"
+ data-pswp-height="328"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2020-04-16-Install-Yahei-Consolas-Hybrid-font-in-linux-mint/Profiles_002.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="424"
+ height="328"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+
+点击右边的&lt;code&gt;Edit&lt;/code&gt;, 就可以在&lt;code&gt;General&lt;/code&gt;界面下的&lt;code&gt;font&lt;/code&gt;进行选择字体了，在其中选择我们之前已经安装好了的 Yahei Consolas Hybrid 字体即可。&lt;/p&gt;</description></item><item><title>在 Vmware 中安装 linux mint</title><link>https://ongoingblog.org/2020/04/install-linux-mint-in-vmware-and-other-preparations/</link><pubDate>Thu, 16 Apr 2020 11:40:57 +0800</pubDate><guid>https://ongoingblog.org/2020/04/install-linux-mint-in-vmware-and-other-preparations/</guid><description>&lt;p&gt;因为想要将Hexo博客的书写单独分离出一个生产环境，这样之后如果宿主操作系统更换之后博客的环境就不用再次安装了，因此昨天晚上在VMware虚拟机中安装了Linux mint（之前一直使用的桌面是Ubuntu16.04），今天来写一个安装过程以及安装好之后的一些准备工作。&lt;/p&gt;
+&lt;h2 id="1--安装"&gt;1 | 安装&lt;/h2&gt;
+&lt;p&gt;下载&lt;a href="https://www.linuxmint.com/edition.php?id=276"target="_blank" rel="noopener noreferrer"&gt;Linux mint镜像文件&lt;/a&gt;，这里我下载的是&lt;code&gt;MATE&lt;/code&gt;，官网可能下载的有些慢，可以使用&lt;code&gt;xdm&lt;/code&gt;进行下载。
+下载之后就可以使用虚拟机了，之后的安装步骤就不多说了，一些简单的步骤。&lt;/p&gt;
+&lt;h2 id="2--下载之后的使用"&gt;2 | 下载之后的使用&lt;/h2&gt;
+&lt;h3 id="换源"&gt;换源&lt;/h3&gt;
+&lt;h3 id="vim"&gt;vim&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt install vim
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt install vim-gtk
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;注意将vim的桌面版本也下载上，不然可能vim的终端版本的&lt;code&gt;clipboard&lt;/code&gt;没有安装上，使用&lt;code&gt;$vim version | grep &amp;quot;clipboard&amp;quot;&lt;/code&gt;进行查看，如果有&lt;code&gt;+clipboard&lt;/code&gt;即表示已经安装上。&lt;/p&gt;
+&lt;h3 id="git"&gt;git&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt install git
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="tmux"&gt;tmux&lt;/h3&gt;
+&lt;h3 id="输入法"&gt;输入法&lt;/h3&gt;
+&lt;h3 id="离线安装nodejs"&gt;离线安装nodejs&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/h3&gt;
+&lt;p&gt;nodejs是hexo运行所必须的环境，下载&lt;a href="https://cdn.npm.taobao.org/dist/node/v12.16.2/node-v12.16.2-linux-x64.tar.xz"target="_blank" rel="noopener noreferrer"&gt;nodejs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;下载完毕后，解压，并将解压后的文件夹移入自己的某个文件夹中，这里我将文件夹放置在&lt;code&gt;/usr/local/lib/nodejs&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo mkdir /usr/local/lib/nodejs
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo tar -xJvf node-xxx-xxx.tar.xz -C /usr/local/lib/nodejs
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo mv /usr/local/lib/nodejs/node-xxx-xxx /usr/local/lib/nodejs/node-xxx &lt;span class="c1"&gt;# 更改名称&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;设置环境变量，在&lt;code&gt;/etc/profile&lt;/code&gt;中，在文件最后添加&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Nodejs&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;NODEJS_HOME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/usr/local/lib/nodejs/node-xxx/bin &lt;span class="c1"&gt;# xxx是版本号&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$NODEJS_HOME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$PATH&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;刷新文件配置&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;. /etc/profile
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;测试&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;node -v
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;npm version
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;创建sudo链接&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo ln -s /usr/local/lib/nodejs/node-xxx/bin/node /usr/bin/node
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo ln -s /usr/local/lib/nodejs/node-xxx/bin/npm /usr/bin/npm
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo ln -s /usr/local/lib/nodejs/node-xxx/bin/npx /usr/bin/npx
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="其它一些配置"&gt;其它一些配置&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;将caps lock映射为ctrl&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>换入新 ubuntu 要做的几件事情</title><link>https://ongoingblog.org/2020/04/things-should-be-done-when-change-into-new-ubuntu/</link><pubDate>Sat, 04 Apr 2020 13:11:08 +0800</pubDate><guid>https://ongoingblog.org/2020/04/things-should-be-done-when-change-into-new-ubuntu/</guid><description>&lt;p&gt;记录自己换入新 ubuntu 系统后的一些操作。&lt;/p&gt;
+&lt;h3 id="一换源"&gt;一、换源&lt;/h3&gt;
+&lt;p&gt;到阿里云或者其他镜像网站复制对应安装版本的源&lt;/p&gt;
+&lt;h3 id="二zsh"&gt;二、Zsh&lt;/h3&gt;
+&lt;p&gt;替换机器自带的 Bash.&lt;/p&gt;
+&lt;h3 id="三vim-8"&gt;三、Vim 8+&lt;/h3&gt;
+&lt;p&gt;安装 vim 的方式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;将源文件下载下来后可以采用编译的方法进行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在命令行中安装&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt install vim
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt install vim-gtk3
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;安装完毕后安装&lt;code&gt;vim-plug&lt;/code&gt;，其作用是管理 vim 的插件。安装有以下两种方式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;在终端中键入下边命令&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将&lt;a href="https://github.com/ONGOING-Z/dotfiles"target="_blank" rel="noopener noreferrer"&gt;plug.vim&lt;/a&gt;下载下来后移入&lt;code&gt;~/.vim/autoload&lt;/code&gt;文件夹下即可使用。
+&lt;strong&gt;注&lt;/strong&gt; = 使用 vim-plug 必须先安装 git，不然不能使用！
+使用自己的&lt;a href="https://github.com/ONGOING-Z/dotfiles"target="_blank" rel="noopener noreferrer"&gt;.vimrc&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="四tmux"&gt;四、Tmux&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt install tmux
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;使用自己的&lt;a href="https://github.com/ONGOING-Z/dotfiles"target="_blank" rel="noopener noreferrer"&gt;.tmux.conf&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="五git"&gt;五、Git&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt install git
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="六googlepinyin"&gt;六、Googlepinyin&lt;/h3&gt;
+&lt;p&gt;在&lt;code&gt;text entry setting&lt;/code&gt;可以设置，可能出现安装之后重新启动又得再次选择输入法的情况．&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在命令行中输入&lt;code&gt;fcitx&lt;/code&gt;，检查其是否已经安装，如果未安装，执行&lt;code&gt;sudo apt install fcitx&lt;/code&gt;进行安装。&lt;/li&gt;
+&lt;li&gt;在命令行中执行&lt;code&gt;im-config&lt;/code&gt;(Input Method Configuration)，进行一番点击之后在选择面板中选择&lt;strong&gt;fcitx&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;安装&lt;strong&gt;googlepinyin&lt;/strong&gt;，在命令行中执行&lt;code&gt;sudo apt install fcitx-googlepinyin&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;重启电脑，使配置生效。(注意 = 不重启有可能在接下来的步骤看不到 googlepinyin 的选项哦！)&lt;/li&gt;
+&lt;li&gt;在命令行中执行&lt;code&gt;fcitx-config-gtk3&lt;/code&gt;，打开配置面板 =
+&lt;ul&gt;
+&lt;li&gt;点击&lt;code&gt;+&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;不要勾选&lt;/strong&gt;Only Show Current Language，搜索一下就可以看到&lt;code&gt;googlepinin&lt;/code&gt;了，加入即可。
+&lt;strong&gt;注&lt;/strong&gt; = googlepinyin 对于 ubuntu20 也同样适用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="七rime"&gt;七、Rime&lt;/h3&gt;
+&lt;p&gt;之前一直使用的是上面的谷歌拼音，后来遇到了 Rime，要好用一些，具体的安装可以看&lt;a href="https://ongoing-z.github.io/posts/ubuntu16-install-rime-inputer.html"target="_blank" rel="noopener noreferrer"&gt;这篇文章&lt;/a&gt;。&lt;/p&gt;</description></item></channel></rss>

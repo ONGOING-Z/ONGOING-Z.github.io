@@ -1,0 +1,1175 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Spring on ongoing's blog</title><link>https://ongoingblog.org/tags/spring/</link><description>Recent content in Spring on ongoing's blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Tue, 08 Jul 2025 19:13:17 +0800</lastBuildDate><atom:link href="https://ongoingblog.org/tags/spring/index.xml" rel="self" type="application/rss+xml"/><item><title>@Postconstruct</title><link>https://ongoingblog.org/2025/07/2025-07-08-at-postconstruct/</link><pubDate>Tue, 08 Jul 2025 19:13:17 +0800</pubDate><guid>https://ongoingblog.org/2025/07/2025-07-08-at-postconstruct/</guid><description>&lt;p&gt;此注解位于 javax 包中。既然是位于 javax 包中，我想它肯定是在 spring 出现之前就定义出来的。&lt;/p&gt;
+&lt;p&gt;注意它的语义：post + construct, 构造函数之后。&lt;/p&gt;
+&lt;p&gt;spring 框架中针对这种标记是有怎样的处理呢？&lt;/p&gt;
+&lt;p&gt;源码位置：&lt;code&gt;org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;优点：和容器不耦合。&lt;/p&gt;
+&lt;p&gt;另外的替代：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;InitializingBean: &lt;code&gt;org.springframework.beans.factory.InitializingBean&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;@Bean 的 initMethod 属性：&lt;code&gt;org.springframework.context.annotation.Bean#initMethod&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;容器进入到初始化阶段这三个的顺序：&lt;/p&gt;
+&lt;p&gt;@PostConstruct -&amp;gt; InitializingBean -&amp;gt; init-method&lt;/p&gt;</description></item><item><title>Bean 生命周期</title><link>https://ongoingblog.org/2025/07/2025-07-08-bean-lifecycle/</link><pubDate>Tue, 08 Jul 2025 16:42:11 +0800</pubDate><guid>https://ongoingblog.org/2025/07/2025-07-08-bean-lifecycle/</guid><description>&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2025-07-08-bean-lifecycle/spring_process-bean_lifecycle.svg"
+ class="image-loading-container"
+ 
+ data-pswp-width="800"
+ data-pswp-height="600"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2025-07-08-bean-lifecycle/spring_process-bean_lifecycle.svg"
+ alt=""
+ class="lazy-image"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+ 
+&lt;/figure&gt;</description></item><item><title>@Configuration full and lite</title><link>https://ongoingblog.org/2025/06/2025-06-18-configuration-full-and-lite/</link><pubDate>Wed, 18 Jun 2025 17:59:46 +0800</pubDate><guid>https://ongoingblog.org/2025/06/2025-06-18-configuration-full-and-lite/</guid><description>&lt;h2 id="一背景"&gt;一、背景&lt;/h2&gt;
+&lt;p&gt;在这个类 (org.springframework.context.annotation.ConfigurationClassUtils) 中定义了两种模式&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2025-06-18-configuration-full-and-lite/configuration_full_lite.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="514"
+ data-pswp-height="71"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2025-06-18-configuration-full-and-lite/configuration_full_lite.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="514"
+ height="71"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;full 模式就是把@Bean 方法声明在常用的配置类中&lt;/p&gt;
+&lt;p&gt;lite 模式则不声明在配置类中，如果声明在@Component 类中，这种就是 lite 模式，至于其他候选项，可以查看下面这个&lt;/p&gt;
+&lt;p&gt;org.springframework.context.annotation.ConfigurationClassUtils#isConfigurationCandidate
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2025-06-18-configuration-full-and-lite/candidate.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="893"
+ data-pswp-height="380"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2025-06-18-configuration-full-and-lite/candidate.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="893"
+ height="380"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;/p&gt;
+&lt;h2 id="二确认是否是配置类候选者流程"&gt;二、确认是否是配置类候选者流程&lt;/h2&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2025-06-18-configuration-full-and-lite/spring_process-annotation_bean_lite_mode.svg"
+ class="image-loading-container"
+ 
+ data-pswp-width="800"
+ data-pswp-height="600"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2025-06-18-configuration-full-and-lite/spring_process-annotation_bean_lite_mode.svg"
+ alt=""
+ class="lazy-image"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+ 
+&lt;/figure&gt;
+&lt;h2 id="三对比"&gt;三、对比&lt;/h2&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;模式&lt;/th&gt;
+ &lt;th&gt;配置&lt;/th&gt;
+ &lt;th&gt;描述&lt;/th&gt;
+ &lt;th&gt;备注&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;full&lt;/td&gt;
+ &lt;td&gt;@Configuration + proxyBeanMethods=true&lt;/td&gt;
+ &lt;td&gt;使用 CGLIB 代理，支持 bean 间引用&lt;/td&gt;
+ &lt;td&gt;使用代理就是为了 bean 间引用时直接从容器中获取已存在的单例。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;lite&lt;/td&gt;
+ &lt;td&gt;@Component 或 @Configuration + proxyBeanMethods=false&lt;/td&gt;
+ &lt;td&gt;其中定义的@Bean 方法只是会被当成普通工厂方法&lt;/td&gt;
+ &lt;td&gt;不支持 bean 间引用，bean 间引用会创建新的实例&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;</description></item><item><title>Spring 框架等术语</title><link>https://ongoingblog.org/2025/05/2025-05-30-spring-terminology/</link><pubDate>Fri, 30 May 2025 13:18:13 +0800</pubDate><guid>https://ongoingblog.org/2025/05/2025-05-30-spring-terminology/</guid><description>&lt;h3 id="一一些名词的含义"&gt;一、一些名词的含义&lt;/h3&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;名称&lt;/th&gt;
+ &lt;th&gt;解释&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;application code&lt;/td&gt;
+ &lt;td&gt;开发者编写的代码&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;framework code&lt;/td&gt;
+ &lt;td&gt;框架的代码&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Application-provided&lt;/td&gt;
+ &lt;td&gt;开发者提供的&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;User-provided&lt;/td&gt;
+ &lt;td&gt;用户提供的。和 Application-provided 意思其实一样&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;instantiation&lt;/td&gt;
+ &lt;td&gt;实例化。指创建 Bean 的实例对象，例如通过构造器或工厂方法创建对象。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;initialization&lt;/td&gt;
+ &lt;td&gt;初始化。在实例化之后，进行属性填充、初始化方法调用等。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;declarative programming&lt;/td&gt;
+ &lt;td&gt;声明式编程&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;semantic concepts&lt;/td&gt;
+ &lt;td&gt;语义概念&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;populate&lt;/td&gt;
+ &lt;td&gt;fill with data&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;first-class&lt;/td&gt;
+ &lt;td&gt;一等公民&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Transaction Demarcation&lt;/td&gt;
+ &lt;td&gt;事务界定 (定义事务开始和结束点的过程)&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Transaction Boundary&lt;/td&gt;
+ &lt;td&gt;事务边界&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;non-invasive framework&lt;/td&gt;
+ &lt;td&gt;非侵入式框架&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;imperative transaction&lt;/td&gt;
+ &lt;td&gt;命令式事务&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;regular beans&lt;/td&gt;
+ &lt;td&gt;常规 Bean&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Most Specific&lt;/td&gt;
+ &lt;td&gt;最终实现/最具体。场景：继承链方法解析&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;idempotent behavior&lt;/td&gt;
+ &lt;td&gt;幂等行为&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;NonStop System&lt;/td&gt;
+ &lt;td&gt;不停机系统&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;R&amp;amp;D&lt;/td&gt;
+ &lt;td&gt;Research and Development，研发&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Codebase Awareness&lt;/td&gt;
+ &lt;td&gt;代码库感知&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;project internals&lt;/td&gt;
+ &lt;td&gt;项目内部结构&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;in turn&lt;/td&gt;
+ &lt;td&gt;次序&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;in question&lt;/td&gt;
+ &lt;td&gt;特指，this specific one&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;glue code&lt;/td&gt;
+ &lt;td&gt;胶水代码&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;bidirectional interface&lt;/td&gt;
+ &lt;td&gt;双向接口&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;specification&lt;/td&gt;
+ &lt;td&gt;规范&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;invariable roles&lt;/td&gt;
+ &lt;td&gt;固定角色&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;delinate&lt;/td&gt;
+ &lt;td&gt;界定&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;presumed rollback&lt;/td&gt;
+ &lt;td&gt;预设回滚机制&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;record stably&lt;/td&gt;
+ &lt;td&gt;稳定写入&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;protocol optimisations&lt;/td&gt;
+ &lt;td&gt;协议优化机制&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;hindrance&lt;/td&gt;
+ &lt;td&gt;impediment -&amp;gt; obstacle&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;empirical process&lt;/td&gt;
+ &lt;td&gt;实证过程&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;dirty flagging&lt;/td&gt;
+ &lt;td&gt;脏标记机制&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;in-house solution&lt;/td&gt;
+ &lt;td&gt;内部解决方案&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;coroutine&lt;/td&gt;
+ &lt;td&gt;协程&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;fine-grained concurrency&lt;/td&gt;
+ &lt;td&gt;细粒度并发控制&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;synchronization primitive&lt;/td&gt;
+ &lt;td&gt;同步原语&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;plumbing&lt;/td&gt;
+ &lt;td&gt;组件装配。一种隐喻。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;seamlessly integrate&lt;/td&gt;
+ &lt;td&gt;无缝集成&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;in-flight&lt;/td&gt;
+ &lt;td&gt;事务处理领域，它作为一个生动的比喻，专门用来描述一个已经开始但尚未最终完成的事务状态。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;statement&lt;/td&gt;
+ &lt;td&gt;语句。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;SQL statements&lt;/td&gt;
+ &lt;td&gt;sql 语句。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Eagerly initialize&lt;/td&gt;
+ &lt;td&gt;立即初始化&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;broker&lt;/td&gt;
+ &lt;td&gt;agent, 代理。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Livereload&lt;/td&gt;
+ &lt;td&gt;实时重载。This editor supports livereload for instant preview.&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;start timeout&lt;/td&gt;
+ &lt;td&gt;启动超时&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;long polling&lt;/td&gt;
+ &lt;td&gt;长轮询&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;square root&lt;/td&gt;
+ &lt;td&gt;平方根&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;exclusively owned&lt;/td&gt;
+ &lt;td&gt;独占&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;exclusive mode&lt;/td&gt;
+ &lt;td&gt;排他模式&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;excluding lock&lt;/td&gt;
+ &lt;td&gt;排他锁&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;monolithic architecture&lt;/td&gt;
+ &lt;td&gt;单体架构&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;memory barriers&lt;/td&gt;
+ &lt;td&gt;内存屏障&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;interleave&lt;/td&gt;
+ &lt;td&gt;Thread execution may interleave in unpredictable ways. 线程执行可能以不可预测的方式交错进行&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Mutual Exclusion&lt;/td&gt;
+ &lt;td&gt;互斥&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;serial number&lt;/td&gt;
+ &lt;td&gt;序列号&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;code smells&lt;/td&gt;
+ &lt;td&gt;代码异味&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;uncover bugs&lt;/td&gt;
+ &lt;td&gt;暴露缺陷&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;mutex&lt;/td&gt;
+ &lt;td&gt;互斥锁&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;leaseTime&lt;/td&gt;
+ &lt;td&gt;租期&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;low latency&lt;/td&gt;
+ &lt;td&gt;低延迟&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;event sourcing&lt;/td&gt;
+ &lt;td&gt;事件溯源&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;handler&lt;/td&gt;
+ &lt;td&gt;处理器&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Registration&lt;/td&gt;
+ &lt;td&gt;注册项&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Registry&lt;/td&gt;
+ &lt;td&gt;注册表&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Registrar&lt;/td&gt;
+ &lt;td&gt;注册器&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Resolver&lt;/td&gt;
+ &lt;td&gt;解析器&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;spurious wake-ups&lt;/td&gt;
+ &lt;td&gt;虚假唤醒&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;slow query&lt;/td&gt;
+ &lt;td&gt;慢查询&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;tuning methods&lt;/td&gt;
+ &lt;td&gt;调优方法&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;sentinel&lt;/td&gt;
+ &lt;td&gt;哨兵&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;concatenated index&lt;/td&gt;
+ &lt;td&gt;复合索引&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;anti-patterns&lt;/td&gt;
+ &lt;td&gt;反模式&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;logarithm&lt;/td&gt;
+ &lt;td&gt;对数&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;cycle&lt;/td&gt;
+ &lt;td&gt;周期&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;relay log&lt;/td&gt;
+ &lt;td&gt;中继日志&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;processing delays&lt;/td&gt;
+ &lt;td&gt;处理延迟&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2025-05-30-spring-terminology/most_specific.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="792"
+ data-pswp-height="586"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2025-05-30-spring-terminology/most_specific.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="792"
+ height="586"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2025-05-30-spring-terminology/works_out_of_the_box.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="767"
+ data-pswp-height="397"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2025-05-30-spring-terminology/works_out_of_the_box.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="767"
+ height="397"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;h3 id="二一些缩写"&gt;二、一些缩写&lt;/h3&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;名称&lt;/th&gt;
+ &lt;th&gt;解释&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;bf&lt;/td&gt;
+ &lt;td&gt;beanFactory&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;bd&lt;/td&gt;
+ &lt;td&gt;beanDefinition&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;ctx&lt;/td&gt;
+ &lt;td&gt;context&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;prop&lt;/td&gt;
+ &lt;td&gt;property&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id="三mysql-术语名词在线"&gt;三、mysql 术语名词在线&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://dev.mysql.com/doc/refman/8.0/en/glossary.html"target="_blank" rel="noopener noreferrer"&gt;MySQL Glossary&lt;/a&gt;&lt;/p&gt;</description></item><item><title>Spring 源码阅读</title><link>https://ongoingblog.org/2025/04/read-spring-code/</link><pubDate>Wed, 02 Apr 2025 12:10:00 +0800</pubDate><guid>https://ongoingblog.org/2025/04/read-spring-code/</guid><description>&lt;div class="toc-container"&gt;
+ &lt;h2 class="toc-title"&gt;文章目录&lt;/h2&gt;
+ &lt;div class="toc-content"&gt;
+ &lt;nav id="TableOfContents"&gt;
+ &lt;ul&gt;
+ &lt;li&gt;
+ &lt;ul&gt;
+ &lt;li&gt;&lt;a href="#一spring-主要流程"&gt;一、spring 主要流程&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#二beanfactory-体系"&gt;二、beanFactory 体系&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#三applicationcontext-体系"&gt;三、ApplicationContext 体系&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#四我理解的依赖倒置"&gt;四、我理解的依赖倒置&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#五springboot-主要流程"&gt;五、springboot 主要流程&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#六springboot-主要流程及对应事件"&gt;六、springboot 主要流程及对应事件&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#七参考"&gt;七、参考&lt;/a&gt;&lt;/li&gt;
+ &lt;/ul&gt;
+ &lt;/li&gt;
+ &lt;/ul&gt;
+&lt;/nav&gt;
+ &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+ .toc-container {
+ border-left: 3px solid #4a86e8;
+ padding: 1.2rem 1.8rem;
+ margin: 2.5rem 0;
+ background: #f8fbfe;
+ border-radius: 0 8px 8px 0;
+ box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+ }
+
+ .toc-title {
+ font-size: 1.4rem;
+ margin-top: 0;
+ margin-bottom: 1rem;
+ color: #2c5282;
+ padding-bottom: 0.5rem;
+ border-bottom: 1px solid #e2e8f0;
+ }
+
+ .toc-content ul {
+ list-style: none;
+ padding-left: 1.2rem;
+ margin: 0;
+ }
+
+ .toc-content li {
+ margin: 0.7rem 0;
+ line-height: 1.1;
+ position: relative;
+ }
+
+ .toc-content a {
+ color: #3182ce;
+ text-decoration: none;
+ transition: all 0.3s ease;
+ display: block;
+ padding: 0.3rem 0.5rem;
+ border-radius: 4px;
+ }
+
+ .toc-content a:hover {
+ color: #020202;
+ background: #ebf4ff;
+ padding-left: 0.8rem;
+ }
+
+ .toc-warning {
+ padding: 1.2rem;
+ background: #fffaf0;
+ border: 1px solid #feebc8;
+ border-radius: 6px;
+ color: #dd6b20;
+ margin: 2rem 0;
+ }
+
+ .toc-warning p {
+ margin: 0.5rem 0;
+ }
+
+ .toc-highlight {
+ animation: highlight-fade 2s ease;
+ background-color: rgba(255, 230, 0, 0.3);
+ }
+
+ @keyframes highlight-fade {
+ 0% { background-color: rgba(255, 230, 0, 0.8); }
+ 100% { background-color: transparent; }
+ }
+
+ 
+ .toc-debug {
+ font-size: 0.9rem;
+ color: #4a5568;
+ }
+ .toc-debug h4 {
+ margin-top: 0;
+ color: #2b6cb0;
+ }
+&lt;/style&gt;
+&lt;h3 id="一spring-主要流程"&gt;一、spring 主要流程&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="spring_process-spring-framework_20250812.svg"
+ class="image-loading-container"
+ 
+ data-pswp-width="800"
+ data-pswp-height="600"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="spring_process-spring-framework_20250812.svg"
+ alt=""
+ class="lazy-image"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+ 
+&lt;/figure&gt;
+&lt;h3 id="二beanfactory-体系"&gt;二、beanFactory 体系&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="spring_process-beanFactory%26applicationContext.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="800"
+ data-pswp-height="600"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="spring_process-beanFactory%26applicationContext.png"
+ alt="BeanFactory 和 ApplicationContext"
+ class="lazy-image"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+ &lt;figcaption style="text-align: center;"&gt;BeanFactory 和 ApplicationContext&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;下属的各种实现&lt;/p&gt;</description></item><item><title>Spring ApplicationEvent</title><link>https://ongoingblog.org/2023/02/spring-applicationevent/</link><pubDate>Thu, 02 Feb 2023 12:43:00 +0800</pubDate><guid>https://ongoingblog.org/2023/02/spring-applicationevent/</guid><description>&lt;p&gt;前言：事件机制。&lt;/p&gt;
+&lt;p&gt;可以进行广播。&lt;/p&gt;
+&lt;p&gt;比如班级中发出一个信号，身高高于 180 厘米的同学，请起立，然后班级中高于这个身高的同学都会站起来，不用每一个单独进行通知。&lt;/p&gt;
+&lt;p&gt;spring 中的事件提供了 bean 之间的通信。一个 bean 完成了一部分工作，发布了一个事件，其余订阅了这个事件的 bean 们都会知道。&lt;/p&gt;
+&lt;p&gt;实现：180 厘米以上同学站起来的例子 (todo)。&lt;/p&gt;
+&lt;h3 id="spring-中上下文事件-todo"&gt;Spring 中上下文事件 (todo)&lt;/h3&gt;</description></item></channel></rss>
