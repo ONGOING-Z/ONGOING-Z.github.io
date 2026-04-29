@@ -1,0 +1,111 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Java | ongoing's blog</title><link rel=dns-prefetch href=https://image.ongoingblog.org><link rel=preconnect href=https://image.ongoingblog.org crossorigin><link rel=preload href=/css/style.css as=style><link rel=preload href=/css/fonts.css as=style><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css><link rel=stylesheet href=/css/chroma.css><link rel=prefetch href=/js/katex/katex.min.css as=style><link rel=prefetch href=/js/katex/katex.min.js as=script><link rel=prefetch href=/css/loading.css as=style><script>function loadKaTeX(){const e=document.body?document.body.textContent:"",t=e.match(/\$\$|\\\[|\\\(|\$[^$\n]+\$/)||document.querySelector('script[type="math/tex"]');if(t){const e=document.createElement("link");e.rel="stylesheet",e.href="/js/katex/katex.min.css",e.onerror=function(){console.warn("KaTeX CSS 加载失败，尝试使用备用路径"),e.href="https://ongoingblog.org/js/katex/katex.min.css"},document.querySelector(`link[href="${e.href}"]`)||document.head.appendChild(e);const t=document.createElement("link");t.rel="stylesheet",t.href="/css/loading.css",t.onerror=function(){console.warn("loading.css 加载失败，尝试使用备用路径"),t.href="https://ongoingblog.org/css/loading.css"},document.querySelector(`link[href="${t.href}"]`)||document.head.appendChild(t);const n=document.createElement("script");n.src="/js/katex/katex.min.js",n.onerror=function(){console.warn("KaTeX JS 加载失败，尝试使用备用路径"),n.src="https://ongoingblog.org/js/katex/katex.min.js"},n.async=!0,n.onload=function(){const e=document.createElement("script");e.src="/js/katex/contrib/auto-render.min.js",e.async=!0,e.onload=function(){typeof renderMathInElement=="function"&&renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"\\[",right:"\\]",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1}],throwOnError:!1})},document.head.appendChild(e)},document.head.appendChild(n)}}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",function(){setTimeout(loadKaTeX,100)}):setTimeout(loadKaTeX,100)</script><script>document.addEventListener("DOMContentLoaded",()=>{const n=document.querySelectorAll("img.lazy-image[data-src]");function s(e){const t=e.getBoundingClientRect();return t.top>=0&&t.left>=0&&t.bottom<=(window.innerHeight||document.documentElement.clientHeight)+100&&t.right<=(window.innerWidth||document.documentElement.clientWidth)}function t(e){const t=e.getAttribute("data-src");if(t){const n=e.closest(".image-loading-container");return n&&n.classList.add("loading"),e.src=t,e.removeAttribute("data-src"),e.classList.remove("lazy-image"),e.addEventListener("load",function(){n&&n.classList.remove("loading")}),e.addEventListener("error",function(){n&&n.classList.remove("loading")}),!0}return!1}n.forEach(e=>{s(e)&&t(e)});const e=document.querySelectorAll("img.lazy-image[data-src]");if(e.length>0&&"IntersectionObserver"in window){const n=new IntersectionObserver((e,n)=>{e.forEach(e=>{if(e.isIntersecting){const s=e.target;t(s)&&n.unobserve(s)}})},{rootMargin:"100px"});e.forEach(e=>{n.observe(e)})}else e.length>0&&e.forEach(e=>{t(e)});document.querySelectorAll("main img").forEach(e=>{if(e.parentNode.tagName==="A"){e.parentNode.target="_blank";return}const t=document.createElement("a");t.href=e.src||e.getAttribute("data-src")||"",t.target="_blank",t.style.cursor="zoom-in",e.parentNode.insertBefore(t,e),t.appendChild(e)})})</script><link rel=prefetch href=/pagefind/pagefind-ui.css as=style><link rel=prefetch href=/pagefind/pagefind-ui.js as=script></head><body><nav><ul class=menu><li><a href=/>首页</a></li><li><a href=/categories/>分类</a></li><li><a href=/about/>关于</a></li><li><a href=/tags/>标签</a></li><li><a href=/#search onclick="return toggleSearch(),!1">搜索</a></li></ul><hr></nav><div id=search-container style=display:none><div id=search></div></div><script>let pagefindInitialized=!1,pagefindScriptLoaded=!1,pagefindCssLoaded=!1;function loadPagefind(){if(pagefindScriptLoaded)return;if(pagefindScriptLoaded=!0,!pagefindCssLoaded){const e=document.createElement("link");e.rel="stylesheet",e.href="/pagefind/pagefind-ui.css",e.onerror=function(){console.warn("Pagefind CSS 加载失败，尝试使用备用路径"),e.href="https://ongoingblog.org/pagefind/pagefind-ui.css"},document.head.appendChild(e),pagefindCssLoaded=!0}const e=document.createElement("script");e.src="/pagefind/pagefind-ui.js",e.async=!0,e.onload=function(){typeof PagefindUI!="undefined"&&initializePagefind()},e.onerror=function(){console.error("Pagefind JS 加载失败，尝试使用备用路径"),e.src="https://ongoingblog.org/pagefind/pagefind-ui.js"},document.head.appendChild(e)}function initializePagefind(){if(!pagefindInitialized)try{new PagefindUI({element:"#search",showSubResults:!0,showImages:!1}),pagefindInitialized=!0}catch(e){console.error("Pagefind 初始化失败:",e)}}function toggleSearch(){const e=document.getElementById("search-container");e.style.display==="none"||e.style.display===""?(e.style.display="block",pagefindScriptLoaded?!pagefindInitialized&&typeof PagefindUI!="undefined"&&initializePagefind():loadPagefind(),setTimeout(()=>{const t=e.querySelector("input");t&&t.focus()},100)):e.style.display="none"}</script><h1>Java</h1><ul><li><span class=date>2026/01/23</span>
+<a href=/2026/01/consistent-hashing/>一致性哈希</a></li><li><span class=date>2026/01/16</span>
+<a href=/2026/01/zgc/>The Z Garbage Collector</a></li><li><span class=date>2026/01/05</span>
+<a href=/2026/01/bloom-filter/>布隆过滤器</a></li><li><span class=date>2025/12/26</span>
+<a href=/2025/12/virtual-thread/>JDK21 - Virtual Thread(虚拟线程)</a></li><li><span class=date>2025/12/19</span>
+<a href=/2025/12/longadder/>LongAdder</a></li><li><span class=date>2025/12/18</span>
+<a href=/2025/12/after-call-object-wait-method/>调用 Object.wait() 方法之后</a></li><li><span class=date>2025/12/12</span>
+<a href=/2025/12/springboot-starter/>Springboot starter 的初始化时机</a></li><li><span class=date>2025/12/03</span>
+<a href=/2025/12/interrupt/>中断</a></li><li><span class=date>2025/11/26</span>
+<a href=/2025/11/spring-mvc/>Spring MVC</a></li><li><span class=date>2025/11/26</span>
+<a href=/2025/11/hikaricp/>hikaricp</a></li><li><span class=date>2025/11/26</span>
+<a href=/2025/11/spring-retry/>Spring retry</a></li><li><span class=date>2025/11/24</span>
+<a href=/2025/11/mbean/>MBean</a></li><li><span class=date>2025/11/24</span>
+<a href=/2025/11/jconsole/>jconsole</a></li><li><span class=date>2025/11/19</span>
+<a href=/2025/11/annotation-value/>Spring 注解：@Value</a></li><li><span class=date>2025/11/19</span>
+<a href=/2025/11/weak-reference/>WeakReference</a></li><li><span class=date>2025/11/12</span>
+<a href=/2025/11/java-label/>Java label 语法</a></li><li><span class=date>2025/11/04</span>
+<a href=/2025/11/this-escape/>this 引用的逃逸</a></li><li><span class=date>2025/10/24</span>
+<a href=/2025/10/broker-store/>rocketmq: broker store</a></li><li><span class=date>2025/10/22</span>
+<a href=/2025/10/rmq-producer-send/>rocketmq: producer send</a></li><li><span class=date>2025/10/22</span>
+<a href=/2025/10/pulling-and-consuming-messages/>rocketmq: pull message and consume</a></li><li><span class=date>2025/10/21</span>
+<a href=/2025/10/semaphore/>Semaphore</a></li><li><span class=date>2025/10/21</span>
+<a href=/2025/10/eclipse-debug-lock-owns/>Eclipse debug lock owns</a></li><li><span class=date>2025/10/14</span>
+<a href=/2025/10/create-proxy-object-manually/>InvocationHandler 例子</a></li><li><span class=date>2025/10/14</span>
+<a href=/2025/10/spring-async-object-invocation/>Spring Async 对象的触发</a></li><li><span class=date>2025/10/14</span>
+<a href=/2025/10/spring-async-object-creation/>Spring Async 对象的创建</a></li><li><span class=date>2025/10/08</span>
+<a href=/2025/10/custom-scope/>自定义 Scope</a></li><li><span class=date>2025/10/07</span>
+<a href=/2025/10/mybatis-query/>Mybatis 查询流程</a></li><li><span class=date>2025/09/25</span>
+<a href=/2025/09/spring-cache/>Spring Cache</a></li><li><span class=date>2025/09/16</span>
+<a href=/2025/09/seata-tcc-object-invocation/>Seata TCC 对象的触发</a></li><li><span class=date>2025/09/16</span>
+<a href=/2025/09/seata-tcc-object-creation/>Seata TCC 对象的创建</a></li><li><span class=date>2025/09/09</span>
+<a href=/2025/09/the-timing-of-seata-branch-transaction-registration/>Seata 分支事务注册的时机</a></li><li><span class=date>2025/09/09</span>
+<a href=/2025/09/jdbctemplate/>JdbcTemplate 对象的创建及触发</a></li><li><span class=date>2025/08/28</span>
+<a href=/2025/08/tx-required-nested/>事务传播：required - nested</a></li><li><span class=date>2025/08/28</span>
+<a href=/2025/08/tx-required-requiresnew/>事务传播：required - requiresnew</a></li><li><span class=date>2025/08/27</span>
+<a href=/2025/08/tx-required-required/>事务传播：required - required</a></li><li><span class=date>2025/08/25</span>
+<a href=/2025/08/local-message-table/>本地消息表</a></li><li><span class=date>2025/08/15</span>
+<a href=/2025/08/method-signature/>方法签名</a></li><li><span class=date>2025/08/09</span>
+<a href=/2025/08/seata-proxy-object-creatation/>Seata 代理对象的创建</a></li><li><span class=date>2025/08/05</span>
+<a href=/2025/08/spring-debugger/>IDEA plugin: spring-debugger</a></li><li><span class=date>2025/08/03</span>
+<a href=/2025/08/annotation-springboottest/>注解 @SpringBootTest</a></li><li><span class=date>2025/08/03</span>
+<a href=/2025/08/seata-core-package-generated/>Seata 执行测试程序报错：程序包 org.apache.seata.core.protocol.generated 不存在</a></li><li><span class=date>2025/07/27</span>
+<a href=/2025/07/invocation-between-beanmethod/>@Bean 方法之间的调用 (full 模式)</a></li><li><span class=date>2025/07/27</span>
+<a href=/2025/07/number-separation/>Java 中的数字分隔</a></li><li><span class=date>2025/07/23</span>
+<a href=/2025/07/the-generation-logic-of-at-bean-method-names/>@Bean 方法名称的生成逻辑</a></li><li><span class=date>2025/07/16</span>
+<a href=/2025/07/2025-07-16-active-spring-framework-logging/>激活框架日志</a></li><li><span class=date>2025/07/15</span>
+<a href=/2025/07/2025-07-15-invocation-of-transactional-proxy-objects/>事务代理对象的触发</a></li><li><span class=date>2025/07/15</span>
+<a href=/2025/07/2025-07-15-creation-of-transactional-proxy-objects/>事务代理对象的创建</a></li><li><span class=date>2025/07/13</span>
+<a href=/2025/07/2025-07-13-jvm-metaspace/>JVM metaspace（元空间）</a></li><li><span class=date>2025/07/04</span>
+<a href=/2025/07/2025-07-04-history-of-spring-framework/>Spring 框架历史</a></li><li><span class=date>2025/07/03</span>
+<a href=/2025/07/2025-07-03-jdk-proxy-object-name-generation-logic/>$Proxy29@123 JDK 代理对象名称生成逻辑</a></li><li><span class=date>2025/07/03</span>
+<a href=/2025/07/2025-07-03-graceful-shutdown/>优雅停</a></li><li><span class=date>2025/06/27</span>
+<a href=/2025/06/2025-06-27-class-load/>类加载</a></li><li><span class=date>2025/06/24</span>
+<a href=/2025/06/2025-06-24-underlying/>underlying 单词的翻译</a></li><li><span class=date>2025/06/18</span>
+<a href=/2025/06/2025-06-18-at-bean-annotation/>注解 @Bean</a></li><li><span class=date>2025/06/17</span>
+<a href=/2025/06/2025-06-17-singleton/>单例双重检查锁定 DCL</a></li><li><span class=date>2025/06/13</span>
+<a href=/2025/06/2025-06-13-arthas/>Arthas</a></li><li><span class=date>2025/06/12</span>
+<a href=/2025/06/2025-06-12-java-jps/>Java 命令：jps</a></li><li><span class=date>2025/06/12</span>
+<a href=/2025/06/2025-06-12-idea-can-not-see-source-code-about-enhancer/>Idea 下载依赖包失败，attatch source 也失败</a></li><li><span class=date>2025/06/11</span>
+<a href=/2025/06/2025-06-11-jetbrains-toolbox/>Jetbrains Toolbox</a></li><li><span class=date>2025/06/05</span>
+<a href=/2025/06/2025-06-05-interface-default-method/>接口的默认方法</a></li><li><span class=date>2025/06/05</span>
+<a href=/2025/06/2025-06-05-marker-interface/>标记接口</a></li><li><span class=date>2025/06/05</span>
+<a href=/2025/06/2025-06-05-jdk-proxy-process/>JDK Proxy 流程</a></li><li><span class=date>2025/06/04</span>
+<a href=/2025/06/2025-06-04-code-generation-library/>CGLIB Proxy 流程</a></li><li><span class=date>2025/05/28</span>
+<a href=/2025/05/2025-05-28-implicit-inheritance/>隐式继承</a></li><li><span class=date>2025/05/27</span>
+<a href=/2025/05/2025-05-27-proxy-object-invocation/>代理对象的触发</a></li><li><span class=date>2025/05/27</span>
+<a href=/2025/05/2025-05-27-proxy-object-creatation/>代理对象的创建</a></li><li><span class=date>2025/05/27</span>
+<a href=/2025/05/2025-05-27-lambda-class-is-final/>lambda 表达式生成的类是 final 的</a></li><li><span class=date>2025/05/27</span>
+<a href=/2025/05/2025-05-27-advice-type/>Advice的类型</a></li><li><span class=date>2025/05/22</span>
+<a href=/2025/05/2025-05-22-comment-in-source-code/>代码中的注释</a></li><li><span class=date>2025/05/22</span>
+<a href=/2025/05/2025-05-22-enhancerbyspringcglib/>EnhancerBySpringCGLIB</a></li><li><span class=date>2025/05/21</span>
+<a href=/2025/05/2025-05-21-idea-decompile/>IDEA 反编译</a></li><li><span class=date>2025/05/20</span>
+<a href=/2025/05/2025-05-20-aop-best-practice/>一个 AOP 的简单例子，用作源码触发入口</a></li><li><span class=date>2025/05/19</span>
+<a href=/2025/05/2025-05-19-advisor-translation/>Advisor的翻译</a></li><li><span class=date>2025/05/14</span>
+<a href=/2025/05/2025-05-14-spring-circular-dependency-constructor/>Spring 循环依赖（两个 bean 之间） - 基于构造器</a></li><li><span class=date>2025/05/14</span>
+<a href=/2025/05/2025-05-14-spring-circular-dependency/>Spring 循环依赖（两个 bean 之间） - 基于@Autowired</a></li><li><span class=date>2025/05/09</span>
+<a href=/2025/05/ioc-container-init-sequence/>IOC容器的文件扫描顺序</a></li><li><span class=date>2025/05/08</span>
+<a href=/2025/05/idea-debug-stack-init/>Idea debug 堆栈窗口中的符号<code>&lt;init></code></a></li><li><span class=date>2025/04/24</span>
+<a href=/2025/04/modify-email-address-of-your-committed-record/>Git修改已提交记录的邮件地址</a></li><li><span class=date>2025/04/23</span>
+<a href=/2025/04/dependentbeanmap-and-dependenciesforbeanmap/>dependentBeanMap and dependenciesForBeanMap</a></li><li><span class=date>2025/04/20</span>
+<a href=/2025/04/what-is-closure/>什么是闭包</a></li><li><span class=date>2025/04/17</span>
+<a href=/2025/04/class-isassignablefrom/>Class.isAssignableFrom()</a></li><li><span class=date>2025/04/16</span>
+<a href=/2025/04/juc/>juc 系列</a></li><li><span class=date>2025/04/15</span>
+<a href=/2025/04/junit/>Junit</a></li><li><span class=date>2025/04/15</span>
+<a href=/2025/04/transient/>Java 关键字：transient</a></li><li><span class=date>2025/04/10</span>
+<a href=/2025/04/java-callback/>回调 Callback</a></li><li><span class=date>2025/04/09</span>
+<a href=/2025/04/linkedhashmap/>LinkedHashMap使用</a></li><li><span class=date>2025/04/08</span>
+<a href=/2025/04/design-lru-algo/>设计 LRU</a></li><li><span class=date>2025/04/06</span>
+<a href=/2025/04/java-headless-mode/>Headless Mode</a></li><li><span class=date>2025/04/06</span>
+<a href=/2025/04/build-spring-boot-source-code-environment/>搭建 SpringBoot 源码阅读环境</a></li><li><span class=date>2025/04/05</span>
+<a href=/2025/04/service-provider-interface/>SPI</a></li><li><span class=date>2025/04/05</span>
+<a href=/2025/04/debug/>Debug 的经验</a></li><li><span class=date>2025/04/04</span>
+<a href=/2025/04/idea-not-identify-module/>IDEA不识别moudle</a></li><li><span class=date>2025/04/04</span>
+<a href=/2025/04/javabean/>JavaBean</a></li><li><span class=date>2025/04/03</span>
+<a href=/2025/04/compare-and-set/>CAS(compare and swap)</a></li><li><span class=date>2025/04/02</span>
+<a href=/2025/04/build-spring-source-code-environment/>搭建 Spring 源码阅读环境</a></li><li><span class=date>2024/09/03</span>
+<a href=/2024/09/mybatis-cache/>Mybatis缓存机制</a></li><li><span class=date>2024/03/16</span>
+<a href=/2024/03/context/>程序上下文</a></li><li><span class=date>2023/11/08</span>
+<a href=/2023/11/threadlocal/>Threadlocal</a></li><li><span class=date>2023/06/18</span>
+<a href=/2023/06/threadpool/>线程池</a></li><li><span class=date>2022/12/24</span>
+<a href=/2022/12/synchronized/>synchronized</a></li><li><span class=date>2022/12/22</span>
+<a href=/2022/12/countdownlatch/>Countdownlatch</a></li><li><span class=date>2022/12/10</span>
+<a href=/2022/12/async-usage/>异步的使用</a></li><li><span class=date>2022/12/06</span>
+<a href=/2022/12/transaction-and-async/>事务和异步</a></li><li><span class=date>2022/08/11</span>
+<a href=/2022/08/the-importance-of-speccode/>数据库表定义时表中冗余代码字段的重要性</a></li><li><span class=date>2022/08/11</span>
+<a href=/2022/08/resume-from-break-point/>表查询中的续传</a></li><li><span class=date>2022/06/09</span>
+<a href=/2022/06/when-to-retry/>程序什么时候应该重试？</a></li><li><span class=date>2020/10/13</span>
+<a href=/2020/10/java-review-part-4-polymorphism/>Java 第四部分 多态</a></li><li><span class=date>2020/10/12</span>
+<a href=/2020/10/java-review-part-3-object-oriented-inheritance/>Java 第三部分 继承</a></li><li><span class=date>2020/10/10</span>
+<a href=/2020/10/java-review-2-object-oriented-encapsulation/>Java 第二部分 封装</a></li><li><span class=date>2020/10/10</span>
+<a href=/2020/10/java-review-part-1-basic/>Java 第一部分 基础</a></li></ul><footer><hr>&copy; <a href=https://ongoingblog.org/ target=_self>ONGOING-Z</a> 2020 -- 2026</footer></body></html>
