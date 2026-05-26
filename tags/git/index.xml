@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Git on ongoing's blog</title><link>https://ongoingblog.org/tags/git/</link><description>Recent content in Git on ongoing's blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sat, 18 Oct 2025 16:24:34 +0800</lastBuildDate><atom:link href="https://ongoingblog.org/tags/git/index.xml" rel="self" type="application/rss+xml"/><item><title>Git worktree</title><link>https://ongoingblog.org/2025/10/git-worktree/</link><pubDate>Sat, 18 Oct 2025 16:24:34 +0800</pubDate><guid>https://ongoingblog.org/2025/10/git-worktree/</guid><description>&lt;p&gt;现在看源码我都会使用这种方式了。不需要再同一个目录下去切换不同的分支，不同的分支就是不同的项目，共同维护一份 git 记录，非常方便。&lt;/p&gt;
+&lt;h3 id="一背景"&gt;一、背景&lt;/h3&gt;
+&lt;p&gt;之前我在看 spring 源码时，选择了一个分支，5.3.x 分支，之后有时我想要去看下最新版的源码。&lt;/p&gt;
+&lt;p&gt;因为源码总是需要编译成功之后，在 idea 中才支持跳转，让你可以顺利的阅览。所以比如我想要去阅读 6.1 分支的代码，步骤就是&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;checkout branch 6.1
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;compile 源码
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;但是这种情况就会把我编译好的 5.3.x 的产物给清除掉。&lt;/p&gt;
+&lt;p&gt;今天我遇到了一个工具叫作 git worktree。这个工具可以让你不需要去 checkout，就可以阅读到别的版本的代码。&lt;/p&gt;
+&lt;h3 id="二原理"&gt;二、原理&lt;/h3&gt;
+&lt;p&gt;我使用完毕之后，发现它就是会给你新建一个目录，在那个新建的目录中去编译，相当于不会来污染你当前的工作，下次你想要阅读时就打开那个目录就行了。&lt;/p&gt;
+&lt;p&gt;注意：这些目录会共享同一个&lt;code&gt;.git&lt;/code&gt;目录，主目录是&lt;code&gt;.git&lt;/code&gt;存放的地方，其他目录都是对于这个目录的链接。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;相对“切分支+stash”更安全，相对“多仓库 clone”更高效、更省空间。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="三一些命令"&gt;三、一些命令&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 查看所有工作区&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git worktree list
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>显示两个 commit (1 -&gt; 2) 变更文件的数量</title><link>https://ongoingblog.org/2025/10/show-the-number-of-changed-files-between-two-commits/</link><pubDate>Wed, 15 Oct 2025 09:39:54 +0800</pubDate><guid>https://ongoingblog.org/2025/10/show-the-number-of-changed-files-between-two-commits/</guid><description>&lt;p&gt;场景：需要统计一下 commit1 到 commit2 之间总共变更了多少个文件。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git diff --name-only commit1 commit2 &lt;span class="p"&gt;|&lt;/span&gt; wc -l
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>git commit message</title><link>https://ongoingblog.org/2025/09/git-commit-message/</link><pubDate>Thu, 04 Sep 2025 10:54:34 +0800</pubDate><guid>https://ongoingblog.org/2025/09/git-commit-message/</guid><description>&lt;p&gt;注重意图而非细节。&lt;/p&gt;
+&lt;p&gt;写你提交的这些文件是要完成什么事情，而非琐碎的细节，变更本身就反映了这些事情，再在提交信息中重复一遍没有必要。&lt;/p&gt;</description></item><item><title>Git notes</title><link>https://ongoingblog.org/2025/07/2025-07-07-git-notes/</link><pubDate>Mon, 07 Jul 2025 10:26:25 +0800</pubDate><guid>https://ongoingblog.org/2025/07/2025-07-07-git-notes/</guid><description>&lt;h3 id="一背景"&gt;一、背景&lt;/h3&gt;
+&lt;p&gt;我想要针对源码历史中的 commit 信息进行评论，例如写下对应英文的中文意思或者写下其他的笔记。&lt;/p&gt;
+&lt;p&gt;在 IDEA 中倒是没有找到这样的按钮，只能在命令行中去进行。&lt;/p&gt;
+&lt;h3 id="二git-nots"&gt;二、git nots&lt;/h3&gt;
+&lt;p&gt;添加 notes&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git notes add -m &lt;span class="s2"&gt;&amp;#34;你的信息&amp;#34;&lt;/span&gt; git_hash_id
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;显示 notes&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git show git_hash_id
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>本地 git 仓库信息错乱</title><link>https://ongoingblog.org/2025/06/2025-06-13-local-git-repository-info-disorder/</link><pubDate>Fri, 13 Jun 2025 14:09:34 +0800</pubDate><guid>https://ongoingblog.org/2025/06/2025-06-13-local-git-repository-info-disorder/</guid><description>&lt;h3 id="一背景"&gt;一、背景&lt;/h3&gt;
+&lt;p&gt;本地的一个项目仓库莫名其妙有了两个 git remote 信息&lt;/p&gt;
+&lt;p&gt;IDEA 中 git 信息窗口每次都有另一个和本项目无关的提交历史。
+但是我本地执行&lt;code&gt;git remote -v&lt;/code&gt;并无错误。&lt;/p&gt;
+&lt;h3 id="二解决方案"&gt;二、解决方案&lt;/h3&gt;
+&lt;p&gt;我询问了下豆包，它给了几种解决方法，我选择了其中的一种&lt;/p&gt;
+&lt;p&gt;删除&lt;code&gt;.idea&lt;/code&gt;文件夹后，重新打开项目，就变正常了。&lt;/p&gt;</description></item><item><title>Git merge报错：error refusing to merge unrelated histories</title><link>https://ongoingblog.org/2025/05/2025-05-16-git-error-refusing-to-merge-unrelated-histories/</link><pubDate>Fri, 16 May 2025 23:00:54 +0800</pubDate><guid>https://ongoingblog.org/2025/05/2025-05-16-git-error-refusing-to-merge-unrelated-histories/</guid><description>&lt;h3 id="一背景"&gt;一、背景&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;电脑本地的一个仓库莫名其妙的没有远程仓库信息了(执行 &lt;code&gt;git remote -v&lt;/code&gt;什么输出都没有)，不知道是不是我误操作&lt;/li&gt;
+&lt;li&gt;只能重新 set-url 下远程的仓库名称&lt;/li&gt;
+&lt;li&gt;set完毕之后，我看本地 git 历史中是没有 origin 的head显示的，只有本地的。&lt;/li&gt;
+&lt;li&gt;执行&lt;code&gt;git pull&lt;/code&gt;把远程仓库的信息拉取下来，这个时候遇到标题中的报错: &lt;code&gt;error refusing to merge unrelated histories&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="二修复"&gt;二、修复&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在本地仓库中执行&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git pull origin 你的远程仓库名称 --allow-unrelated-histories
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这个命令执行完毕之后，git log 中正常出现了 origin 的标识。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;接下来进行正常的 git 操作。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="三为什么会出现这样的报错"&gt;三、为什么会出现这样的报错?&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;我的本地分支是一个测试分支，保留着未修改的原始 commit 信息&lt;/li&gt;
+&lt;li&gt;远程的分支 commit 信息因为一些信息的变更，全部重新生成了 commit hash id ，虽然 commit message
+还是原来的信息，但是 commit id 已经变更&lt;/li&gt;
+&lt;li&gt;所以这两个分支虽然表面看起来一样，那些 git 提交历史一样，但是它们并没有共同的祖先，所以报错不相关。&lt;/li&gt;
+&lt;li&gt;很容易的验证：查看第一个提交，内容虽然一样，但是 commit id 是不同的。&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Use gpg to secure your commit</title><link>https://ongoingblog.org/2022/08/use-gpg-to-secure-your-commit/</link><pubDate>Sun, 21 Aug 2022 20:18:00 +0800</pubDate><guid>https://ongoingblog.org/2022/08/use-gpg-to-secure-your-commit/</guid><description>&lt;p&gt;前言：使用 gpg 加密自己的 commit。&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2022-08-21-use-gpg-to-secure-your-commit/gpg-01.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="911"
+ data-pswp-height="726"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2022-08-21-use-gpg-to-secure-your-commit/gpg-01.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="911"
+ height="726"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;效果：类似下图，对于 commit 会有一个 verify 的绿色小标记&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2022-08-21-use-gpg-to-secure-your-commit/verified.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="83"
+ data-pswp-height="33"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2022-08-21-use-gpg-to-secure-your-commit/verified.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="83"
+ height="33"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;h3 id="电脑环境"&gt;电脑环境&lt;/h3&gt;
+&lt;p&gt;系统：ubuntu16.04&lt;/p&gt;
+&lt;h3 id="安装流程"&gt;安装流程&lt;/h3&gt;
+&lt;p&gt;&lt;a href="www.gnupg.org"&gt;源码&lt;/a&gt;编译安装。&lt;/p&gt;
+&lt;h3 id="使用"&gt;使用&lt;/h3&gt;
+&lt;h4 id="一查看本机的-gpg-version"&gt;一、查看本机的 gpg version&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;gpg --version 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="二生成本地-gpg-key"&gt;二、生成本地 gpg key&lt;/h4&gt;
+&lt;h4 id="三将-gpg-key-和-git-关联起来"&gt;三、将 gpg key 和 git 关联起来&lt;/h4&gt;
+&lt;h4 id="四将-gpg-公钥上传至-github"&gt;四、将 gpg 公钥上传至 github&lt;/h4&gt;
+&lt;h4 id="五git-设置-gpg"&gt;五、git 设置 gpg&lt;/h4&gt;
+&lt;h4 id="五备份-gpg"&gt;五、备份 gpg&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;备份密钥分为备份公钥和私钥两个部分，备份公钥：
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;gpg -o keyfilename --export KeyID
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;如果没有KeyID则是备份所有的公钥，-o表示输出到文件keyfilename中，如果加上-a的参数则输出文本格式的信息，否则输出的是二进制格式信息。
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;备份私钥：
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;gpg -o keyfilename --export-secret-keys KeyID
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;如果没有KeyID则是备份所有的私钥，-o表示输出到文件keyfilename中，如果加上-a的参数则输出文本格式的信息，否则输出的是二进制格式信息。
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;然后在别的机器上可以通过
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;gpg --import filename
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;导入这些密钥信息。
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="六参考"&gt;六、参考&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://docs.github.com/zh/authentication/managing-commit-signature-verification/generating-a-new-gpg-key"target="_blank" rel="noopener noreferrer"&gt;Github 官方文档&lt;/a&gt;有比较详细的说明。&lt;/p&gt;</description></item><item><title>Git 基础</title><link>https://ongoingblog.org/2020/04/git/</link><pubDate>Sun, 26 Apr 2020 13:11:41 +0800</pubDate><guid>https://ongoingblog.org/2020/04/git/</guid><description>&lt;div class="toc-container"&gt;
+ &lt;h2 class="toc-title"&gt;文章目录&lt;/h2&gt;
+ &lt;div class="toc-content"&gt;
+ &lt;nav id="TableOfContents"&gt;
+ &lt;ul&gt;
+ &lt;li&gt;
+ &lt;ul&gt;
+ &lt;li&gt;&lt;a href="#查看修改用户名与密码"&gt;查看修改用户名与密码&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#本地与远程仓库关联与解除"&gt;本地与远程仓库关联与解除&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#github-快速更换绑定邮箱"&gt;GitHub 快速更换绑定邮箱&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#推送到远程仓库"&gt;推送到远程仓库&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#github-如何删除仓库"&gt;github 如何删除仓库&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#查看本地与远程的连接"&gt;查看本地与远程的连接&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#git-在本地配置公钥"&gt;git 在本地配置公钥&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#对文件或文件夹重命名"&gt;对文件或文件夹重命名&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#git-基本操作"&gt;git 基本操作&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#git-删除-add-中的文件缓存文件"&gt;git 删除 add 中的文件（缓存文件）&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#git-每次-push-都需要输入用户名与密码"&gt;Git 每次 push 都需要输入用户名与密码&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#发现-github-上的绿色格子几天没有亮了"&gt;发现 github 上的绿色格子几天没有亮了&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#在终端中键入-git-status-后显示中文乱码"&gt;在终端中键入 git status 后显示中文乱码&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#重写最后一个-commit-信息"&gt;重写最后一个 commit 信息&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#恢复-git-rm-的文件"&gt;恢复 git rm 的文件&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#下载最新版本库不带有历史库"&gt;下载最新版本库，不带有历史库&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="#tag-管理"&gt;tag 管理&lt;/a&gt;&lt;/li&gt;
+ &lt;/ul&gt;
+ &lt;/li&gt;
+ &lt;/ul&gt;
+&lt;/nav&gt;
+ &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+ .toc-container {
+ border-left: 3px solid #4a86e8;
+ padding: 1.2rem 1.8rem;
+ margin: 2.5rem 0;
+ background: #f8fbfe;
+ border-radius: 0 8px 8px 0;
+ box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+ }
+
+ .toc-title {
+ font-size: 1.4rem;
+ margin-top: 0;
+ margin-bottom: 1rem;
+ color: #2c5282;
+ padding-bottom: 0.5rem;
+ border-bottom: 1px solid #e2e8f0;
+ }
+
+ .toc-content ul {
+ list-style: none;
+ padding-left: 1.2rem;
+ margin: 0;
+ }
+
+ .toc-content li {
+ margin: 0.7rem 0;
+ line-height: 1.1;
+ position: relative;
+ }
+
+ .toc-content a {
+ color: #3182ce;
+ text-decoration: none;
+ transition: all 0.3s ease;
+ display: block;
+ padding: 0.3rem 0.5rem;
+ border-radius: 4px;
+ }
+
+ .toc-content a:hover {
+ color: #020202;
+ background: #ebf4ff;
+ padding-left: 0.8rem;
+ }
+
+ .toc-warning {
+ padding: 1.2rem;
+ background: #fffaf0;
+ border: 1px solid #feebc8;
+ border-radius: 6px;
+ color: #dd6b20;
+ margin: 2rem 0;
+ }
+
+ .toc-warning p {
+ margin: 0.5rem 0;
+ }
+
+ .toc-highlight {
+ animation: highlight-fade 2s ease;
+ background-color: rgba(255, 230, 0, 0.3);
+ }
+
+ @keyframes highlight-fade {
+ 0% { background-color: rgba(255, 230, 0, 0.8); }
+ 100% { background-color: transparent; }
+ }
+
+ 
+ .toc-debug {
+ font-size: 0.9rem;
+ color: #4a5568;
+ }
+ .toc-debug h4 {
+ margin-top: 0;
+ color: #2b6cb0;
+ }
+&lt;/style&gt;
+&lt;h3 id="查看修改用户名与密码"&gt;查看修改用户名与密码&lt;/h3&gt;
+&lt;p&gt;查看用户名&lt;/p&gt;</description></item></channel></rss>

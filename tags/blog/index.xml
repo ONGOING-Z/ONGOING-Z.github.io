@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on ongoing's blog</title><link>https://ongoingblog.org/tags/blog/</link><description>Recent content in Blog on ongoing's blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sun, 29 Jun 2025 10:32:58 +0800</lastBuildDate><atom:link href="https://ongoingblog.org/tags/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>文章序号规范</title><link>https://ongoingblog.org/2025/06/2025-06-29-specification-for-article-numbering/</link><pubDate>Sun, 29 Jun 2025 10:32:58 +0800</pubDate><guid>https://ongoingblog.org/2025/06/2025-06-29-specification-for-article-numbering/</guid><description>&lt;p&gt;一、一级&lt;/p&gt;
+&lt;p&gt;二、二级&lt;/p&gt;
+&lt;p&gt;（一）二级中的第一级&lt;/p&gt;
+&lt;p&gt;（二）二级中的第二级&lt;/p&gt;
+&lt;p&gt;以此类推&amp;hellip;&lt;/p&gt;</description></item><item><title>markdown 语法中的 bare url</title><link>https://ongoingblog.org/2025/06/2025-06-22-markdown-bare-url/</link><pubDate>Sun, 22 Jun 2025 17:23:04 +0800</pubDate><guid>https://ongoingblog.org/2025/06/2025-06-22-markdown-bare-url/</guid><description>&lt;h3 id="一背景"&gt;一、背景&lt;/h3&gt;
+&lt;p&gt;今天在用格式化工具对 markdown 文章处理时，发现文章中的链接两侧被加上了&lt;code&gt;&amp;lt;&amp;gt;&lt;/code&gt;符号，一开始还以为是异常，但其实是一种包裹的结构。&lt;/p&gt;
+&lt;p&gt;裸 URL 可能破坏文档结构，建议用 &lt;code&gt;&amp;lt; &amp;gt;&lt;/code&gt; 包裹或嵌入链接文本。&lt;/p&gt;
+&lt;h3 id="二示例"&gt;二、示例&lt;/h3&gt;
+&lt;h4 id="错误场景裸-url-可能被误解析"&gt;错误场景（裸 URL 可能被误解析）&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;请访问 https://example.com. 了解更多 → 解析器可能将末尾的句号包含进 URL
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="安全写法"&gt;安全写法&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;请访问 &amp;lt;https://example.com&amp;gt;. 了解更多 → 句号明确排除在 URL 外
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;为何脚注定义需要此优化？
+脚注定义 ([^1]: &amp;hellip;) 中的 URL 通常是独立存在的（没有描述文本包裹），属于裸 URL 的高风险场景。优化为 &lt;code&gt;&amp;lt;https://...&amp;gt;&lt;/code&gt; 能确保：&lt;/p&gt;
+&lt;p&gt;任何 Markdown 解析器（如 GitHub、Obsidian、VSCode）均正确识别完整 URL。&lt;/p&gt;
+&lt;p&gt;避免 URL 中的特殊字符（如 _, ~, #）干扰渲染。&lt;/p&gt;</description></item><item><title>博客写作规则</title><link>https://ongoingblog.org/2020/04/blogs-writing-rules/</link><pubDate>Sun, 12 Apr 2020 17:09:29 +0800</pubDate><guid>https://ongoingblog.org/2020/04/blogs-writing-rules/</guid><description>&lt;ol&gt;
+&lt;li&gt;我认为&lt;code&gt;脚注&lt;/code&gt;在长文章中是非常有用的，脚注对于一个个小点的标注会使人知道它的“来源”，而&lt;code&gt;参考&lt;/code&gt;则更多是针对于全局文章。&lt;/li&gt;
+&lt;li&gt;博客文章结构
+&lt;ul&gt;
+&lt;li&gt;序言&lt;/li&gt;
+&lt;li&gt;目录&lt;/li&gt;
+&lt;li&gt;正文&lt;/li&gt;
+&lt;li&gt;参考&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;不要在小标题最后设置脚注，不然 hexo-toc 生成的目录点击不会跳转。&lt;/li&gt;
+&lt;li&gt;代码数较长的代码段在 md 文件中写出后，在下方贴上此段代码文件链接。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;标签&lt;/code&gt;和&lt;code&gt;分类&lt;/code&gt;在使用英文时&lt;strong&gt;首字母大写&lt;/strong&gt;，并且标签和分类是包含关系，分类包含标签。&lt;/li&gt;
+&lt;li&gt;多用代码说话。&lt;/li&gt;
+&lt;li&gt;博客文章不应该是网上已有信息的堆砌，而更多的是自己的思考过程。&lt;/li&gt;
+&lt;li&gt;针对数字说明，用 1 万而不是 10000，用 1 千而不是 1000，降低阅读难度。&lt;/li&gt;
+&lt;li&gt;所有你写的句子都应要有标点符号。&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>
