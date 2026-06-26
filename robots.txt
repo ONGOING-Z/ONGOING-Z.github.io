@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+User-agent: Cloudflare-AI-Search
+Allow: /
+
+Sitemap: https://ongoingblog.org/sitemap.xml

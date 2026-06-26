@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on ongoing's blog</title><link>https://ongoingblog.org/tags/blog/</link><description>Recent content in Blog on ongoing's blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Mon, 22 Jun 2026 19:32:58 +0800</lastBuildDate><atom:link href="https://ongoingblog.org/tags/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>为博客接入 AI search 和 AI chat</title><link>https://ongoingblog.org/2026/06/enable-ai-search-and-ai-chat-for-the-blog/</link><pubDate>Mon, 22 Jun 2026 19:32:58 +0800</pubDate><guid>https://ongoingblog.org/2026/06/enable-ai-search-and-ai-chat-for-the-blog/</guid><description>&lt;h3 id="一建立博客的-ai-search-实例让平台实例抓取博客网页生成数据库"&gt;一、建立博客的 AI search 实例，让平台实例抓取博客网页生成数据库&lt;/h3&gt;
+&lt;h3 id="二整合-ai-search-和-ai-chat-到博客中部署"&gt;二、整合 AI search 和 AI chat 到博客中，部署&lt;/h3&gt;
+&lt;h3 id="三查看下效果"&gt;三、查看下效果&lt;/h3&gt;
+&lt;p&gt;AI search
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2026-06-22-enable-ai-search-and-ai-chat-for-the-blog/AI_Search.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="617"
+ data-pswp-height="270"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2026-06-22-enable-ai-search-and-ai-chat-for-the-blog/AI_Search.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="617"
+ height="270"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.cloudflare.com/"target="_blank" rel="noopener noreferrer"&gt;Cloudflare 官方博客&lt;/a&gt; 用的也是这个
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2026-06-22-enable-ai-search-and-ai-chat-for-the-blog/Cloudflare_AI_Search.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="1295"
+ data-pswp-height="313"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2026-06-22-enable-ai-search-and-ai-chat-for-the-blog/Cloudflare_AI_Search.png?width=1200&amp;amp;format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="1295"
+ height="313"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;/p&gt;
+&lt;p&gt;AI chat
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2026-06-22-enable-ai-search-and-ai-chat-for-the-blog/AI_Chat.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="390"
+ data-pswp-height="512"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2026-06-22-enable-ai-search-and-ai-chat-for-the-blog/AI_Chat.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="390"
+ height="512"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;/p&gt;
+&lt;h3 id="四注意"&gt;四、注意&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;如果被爬取的网页内容是中文的，那最好用中文来提问，效果好的不是一星半点。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如果出现了问题，要用好平台上这个“Ask AI”的工具，最好用英文去询问。中文组织好后，让 AI 翻译下，贴到这个工具里，这个工具比较智能的一点是，它会先去看你当前的界面信息
+如果你的问题就是当前界面出现的，那回答就会很准确。比较好用。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2026-06-22-enable-ai-search-and-ai-chat-for-the-blog/Cloudflare_Ask_AI.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="605"
+ data-pswp-height="65"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2026-06-22-enable-ai-search-and-ai-chat-for-the-blog/Cloudflare_Ask_AI.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="605"
+ height="65"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>文章序号规范</title><link>https://ongoingblog.org/2025/06/2025-06-29-specification-for-article-numbering/</link><pubDate>Sun, 29 Jun 2025 10:32:58 +0800</pubDate><guid>https://ongoingblog.org/2025/06/2025-06-29-specification-for-article-numbering/</guid><description>&lt;p&gt;一、一级&lt;/p&gt;
+&lt;p&gt;二、二级&lt;/p&gt;
+&lt;p&gt;（一）二级中的第一级&lt;/p&gt;
+&lt;p&gt;（二）二级中的第二级&lt;/p&gt;
+&lt;p&gt;以此类推&amp;hellip;&lt;/p&gt;</description></item><item><title>markdown 语法中的 bare url</title><link>https://ongoingblog.org/2025/06/2025-06-22-markdown-bare-url/</link><pubDate>Sun, 22 Jun 2025 17:23:04 +0800</pubDate><guid>https://ongoingblog.org/2025/06/2025-06-22-markdown-bare-url/</guid><description>&lt;h3 id="一背景"&gt;一、背景&lt;/h3&gt;
+&lt;p&gt;今天在用格式化工具对 markdown 文章处理时，发现文章中的链接两侧被加上了&lt;code&gt;&amp;lt;&amp;gt;&lt;/code&gt;符号，一开始还以为是异常，但其实是一种包裹的结构。&lt;/p&gt;
+&lt;p&gt;裸 URL 可能破坏文档结构，建议用 &lt;code&gt;&amp;lt; &amp;gt;&lt;/code&gt; 包裹或嵌入链接文本。&lt;/p&gt;
+&lt;h3 id="二示例"&gt;二、示例&lt;/h3&gt;
+&lt;h4 id="错误场景裸-url-可能被误解析"&gt;错误场景（裸 URL 可能被误解析）&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;请访问 https://example.com. 了解更多 → 解析器可能将末尾的句号包含进 URL
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="安全写法"&gt;安全写法&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;请访问 &amp;lt;https://example.com&amp;gt;. 了解更多 → 句号明确排除在 URL 外
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;为何脚注定义需要此优化？
+脚注定义 ([^1]: &amp;hellip;) 中的 URL 通常是独立存在的（没有描述文本包裹），属于裸 URL 的高风险场景。优化为 &lt;code&gt;&amp;lt;https://...&amp;gt;&lt;/code&gt; 能确保：&lt;/p&gt;
+&lt;p&gt;任何 Markdown 解析器（如 GitHub、Obsidian、VSCode）均正确识别完整 URL。&lt;/p&gt;
+&lt;p&gt;避免 URL 中的特殊字符（如 _, ~, #）干扰渲染。&lt;/p&gt;</description></item><item><title>博客移植之路：Hexo 到 Hugo</title><link>https://ongoingblog.org/2025/03/hexo-to-hugo/</link><pubDate>Sat, 29 Mar 2025 10:10:00 +0800</pubDate><guid>https://ongoingblog.org/2025/03/hexo-to-hugo/</guid><description>&lt;h4 id="一背景"&gt;一、背景&lt;/h4&gt;
+&lt;p&gt;看到一个简洁的主题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;主页界面会展示所有的博客列表，只限于标题展示&lt;/li&gt;
+&lt;li&gt;不会进行分页，还需要让你点击上一页或者下一页，一页展示你所有的博客&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="二移植过程"&gt;二、移植过程&lt;/h4&gt;
+&lt;p&gt;由于 hexo 和 hugo 主要是文章开头的 formatter 不一致，所以这边移植过程主要是把 hexo 的格式映射到 hugo 的格式。&lt;/p&gt;
+&lt;p&gt;使用的工具是 sed.&lt;/p&gt;
+&lt;p&gt;使用完后觉得是很方便的工具，搭配 deepseek 使用更加得心应手。&lt;/p&gt;
+&lt;p&gt;处理日期时间、替换关键字、处理图片、处理文件位置。&lt;/p&gt;
+&lt;p&gt;主要的思路就是把 hexo 各个关键字都替换成 hugo 的关键字，用 sed 的行替换就很方便，或者可以说我的替换就全部都是 sed 来完成的，搭配上 deepseek 给的表达式，就可以方便的完成了。&lt;/p&gt;</description></item><item><title>博客写作规则</title><link>https://ongoingblog.org/2020/04/blogs-writing-rules/</link><pubDate>Sun, 12 Apr 2020 17:09:29 +0800</pubDate><guid>https://ongoingblog.org/2020/04/blogs-writing-rules/</guid><description>&lt;ol&gt;
+&lt;li&gt;我认为&lt;code&gt;脚注&lt;/code&gt;在长文章中是非常有用的，脚注对于一个个小点的标注会使人知道它的“来源”，而&lt;code&gt;参考&lt;/code&gt;则更多是针对于全局文章。&lt;/li&gt;
+&lt;li&gt;博客文章结构
+&lt;ul&gt;
+&lt;li&gt;序言&lt;/li&gt;
+&lt;li&gt;目录&lt;/li&gt;
+&lt;li&gt;正文&lt;/li&gt;
+&lt;li&gt;参考&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;不要在小标题最后设置脚注，不然 hexo-toc 生成的目录点击不会跳转。&lt;/li&gt;
+&lt;li&gt;代码数较长的代码段在 md 文件中写出后，在下方贴上此段代码文件链接。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;标签&lt;/code&gt;和&lt;code&gt;分类&lt;/code&gt;在使用英文时&lt;strong&gt;首字母大写&lt;/strong&gt;，并且标签和分类是包含关系，分类包含标签。&lt;/li&gt;
+&lt;li&gt;多用代码说话。&lt;/li&gt;
+&lt;li&gt;博客文章不应该是网上已有信息的堆砌，而更多的是自己的思考过程。&lt;/li&gt;
+&lt;li&gt;针对数字说明，用 1 万而不是 10000，用 1 千而不是 1000，降低阅读难度。&lt;/li&gt;
+&lt;li&gt;所有你写的句子都应要有标点符号。&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

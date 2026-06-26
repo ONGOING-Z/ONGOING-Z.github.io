@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Writing on ongoing's blog</title><link>https://ongoingblog.org/tags/writing/</link><description>Recent content in Writing on ongoing's blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Fri, 22 Oct 2021 19:14:00 +0800</lastBuildDate><atom:link href="https://ongoingblog.org/tags/writing/index.xml" rel="self" type="application/rss+xml"/><item><title>关于博客的一些想法</title><link>https://ongoingblog.org/2021/10/some-thoughts-of-my-blog/</link><pubDate>Fri, 22 Oct 2021 19:14:00 +0800</pubDate><guid>https://ongoingblog.org/2021/10/some-thoughts-of-my-blog/</guid><description>&lt;p&gt;前言：下午刷到了一个后缀为&lt;code&gt;.github.io&lt;/code&gt;的博客站点，点进去发现这个博客网站很符合我的审美：它简洁大方且有重点突出，没有其他花里胡哨的东西。并且可以看出博主对待每一篇文章都是很认真的，文章并不“水”，这很重要。&lt;/p&gt;
+&lt;p&gt;每次我一看到自己喜欢的博客风格，都想把它移植到我的博客上，但是奈何自己的前端太弱，也不想花太多时间在这个上面，因为博客文章终究还是需要靠质量的，就算博客主题再好看，这里有一点，我纠结的不是博客主题的好看，而是博客的简洁程度，它能够把最简洁的东西呈现在我们的浏览器上，摒弃其他很多不该要的东西，比如不需要的 UI，不需要的效果，因为这些元素的加载反而会拖慢博客文章的加载速度，这对读者并不好。&lt;/p&gt;
+&lt;p&gt;我自己的博客被折腾了几次了，每次都花费一番功夫后，把博客整的跟的上现在的“潮流”，然后让它“吃灰”，不再更新有质量有价值的文章。或者说写出有质量有价值的文章要花费的功夫是远远多于“修剪”自己的博客文章主题的。&lt;/p&gt;
+&lt;p&gt;如何写出对读者友好的博客是需要花费一番功夫的，不要水。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;关于博客基础设施平台的搭建，我现在使用的是使用 Github Pages 配合 Github Actions 搭建的，具体的可以参考&lt;a href="https://ongoing-z.github.io/posts/deploy-blog-by-github-actions"target="_blank" rel="noopener noreferrer"&gt;这篇文章&lt;/a&gt;,还有推荐一个写作的工具是 &lt;a href="https://www.jetbrains.com/pycharm/"target="_blank" rel="noopener noreferrer"&gt;PyCharm&lt;/a&gt;，当然 IDEA 类的软件其实都挺不错的 (缺点就是太占内存)。如果网络对于 github 网站的速度更加友好的话，可以直接使用 github issues 来书写自己的博客了，但我的电脑情况并不是这样，有时 github 的访问速度让人糟心，看着那个圈圈转了几分钟之后估计就没有写文章的心情了吧（哈哈哈）。&lt;/p&gt;
+&lt;p&gt;所以一个方法还是在本地写比较好，写好之后直接推到远程仓库里，当然如果你的网络环境支持你在线进行书写那就非常好了，因为人的想法并不是对着电脑就有的，而是可能在你吃饭时、散步时、打球时等的这些不在工作时间的时候，有句话说的好：“汝欲若学诗，功夫在诗外”。&lt;/p&gt;
+&lt;p&gt;文章多以纯文本为主，图片辅助，并且文章的段落需要安排好，各个段落的作用要有把控。如果有多个较短的段落，看能否把功能相同的段落合并在一起，太多闲散的段落不仅让人的注意力不能集中，并且渲染出来的样子也不是很好看。&lt;/p&gt;
+&lt;p&gt;有质量的文章不是短时间可以练就的，一点点累积。在生活中任何时候想到了可以表达的话语，就可以提炼出来，作为自己文章的一部分。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;25.11.14&lt;/p&gt;
+&lt;p&gt;我觉得还是少在博客里面去贴代码。更多的是要描述想法，而非实现。&lt;/p&gt;
+&lt;p&gt;你可以在把代码放一个链接引过去。&lt;/p&gt;</description></item><item><title>Markdown 的 diff 语法</title><link>https://ongoingblog.org/2020/04/diff-synatx-in-code-blocks/</link><pubDate>Sun, 12 Apr 2020 13:23:32 +0800</pubDate><guid>https://ongoingblog.org/2020/04/diff-synatx-in-code-blocks/</guid><description>&lt;p&gt;这几次看别人博客时总是发现了一些东西，比如有的博客中总是出现下面的这种样式：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-diff" data-lang="diff"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;// this is a test.
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gd"&gt;- this is removed;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gi"&gt;+ this is added.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;这样的样式，很方便：红色表示被删减，绿色表示被增加。人眼对色彩是非常敏感的，这样鲜明的对比很容易被人识别出来，方便阅读博客。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;第一次见到&lt;code&gt;diff syntax&lt;/code&gt;这个词是在这个&lt;a href="https://io-oi.me/tech/hexo-next-optimization/#fnref:1"target="_blank" rel="noopener noreferrer"&gt;地方&lt;/a&gt;，其中讲述到这个功能的地方如下图&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;figure class="pswp-gallery" style="display: inline-block; margin: 0;"&gt;
+ &lt;a href="https://image.ongoingblog.org/posts/2020-04-12-Diff-synatx-in-code-blocks/diff_example.png"
+ class="image-loading-container"
+ 
+ data-pswp-width="606"
+ data-pswp-height="442"
+ 
+ target="_blank"&gt;
+ &lt;img src="#ZgotmplZ"
+ data-src="https://image.ongoingblog.org/posts/2020-04-12-Diff-synatx-in-code-blocks/diff_example.png?format=webp&amp;amp;quality=85"
+ alt=""
+ 
+ class="lazy-image"
+ 
+ width="606"
+ height="442"
+ 
+ style="max-width: 100%; height: auto;" /&gt;
+ &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;当时很想找到如何才能在自己博客的代码段实现这个功能，百度中也未搜索到这个东西，在不知道这个功能名称的前提下去根据功能的描述进行搜索，很费脑筋去想关键词，这样一来如果自己的描述关键词不沾边，结果可想而知。&lt;/p&gt;
+&lt;p&gt;想要实现这个效果：
+在代码块中制定语言，在**```**后加上&lt;code&gt;diff&lt;/code&gt;表示语言，然后接着如下进行书写就可以了。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-diff" data-lang="diff"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gd"&gt;- removed
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gi"&gt;+ added
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="参考"&gt;参考&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://io-oi.me/tech/hexo-next-optimization/#fnref:1"target="_blank" rel="noopener noreferrer"&gt;打造个性超赞博客 Hexo + NexT + GitHub Pages 的超深度优化&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://stackoverflow.com/questions/40883421/diff-syntax-highlighting-in-github-markdown"target="_blank" rel="noopener noreferrer"&gt;stackoverflow: Diff syntax highlighting in Github Markdown&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://gist.github.com/salmedina/ad8bea4f46de97ea132f71b0bca73663#file-markdowndiffexample-md"target="_blank" rel="noopener noreferrer"&gt;MarkdownDiffExample.md&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>
