@@ -1,0 +1,36 @@
+.site-nav-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.menu-main {
+  flex: 1 1 auto;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-rss {
+  flex: 0 0 auto;
+  margin: 0 0 0 auto;
+  padding: 0;
+}
+
+.menu-rss li {
+  display: inline-block;
+}
+
+.menu a.menu-rss {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  background: transparent;
+  padding: 2px;
+}
+
+.menu-rss-icon {
+  display: block;
+  width: 22px;
+  height: 22px;
+}

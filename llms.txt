@@ -1,0 +1,22 @@
+# ongoing's blog
+> 中文技术博客：Java、Spring、数据库、DevOps、工具链等
+
+## 主要入口
+- 首页: https://ongoingblog.org/
+- 分类: https://ongoingblog.org/categories/
+- 标签: https://ongoingblog.org/tags/
+- 站点地图: https://ongoingblog.org/sitemap.xml
+- RSS Feed: https://ongoingblog.org/index.xml
+- Robots: https://ongoingblog.org/robots.txt
+
+## 内容政策
+- search: 允许（构建搜索索引）
+- ai-train: 禁止（不用于 AI 模型训练）
+详见 robots.txt 中的 Content-Signal 声明。
+
+## 源文与引用
+- 源码仓库: https://github.com/ONGOING-Z/HexoBlogSources
+- 文章页通常提供 Markdown 源文件链接（.md Raw）
+
+## Agent 发现
+- Agent Skills: https://ongoingblog.org/.well-known/agent-skills/index.json
