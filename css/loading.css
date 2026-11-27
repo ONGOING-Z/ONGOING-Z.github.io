@@ -1,0 +1,52 @@
+/* 图片加载时的 loading 动画 */
+.image-loading-container {
+  position: relative;
+  min-height: 50px; /* 最小高度，确保 loading 可见 */
+  /* background-color: #f8f9fa; */ /* 可选：淡灰色背景，暂时注释掉以免影响透明图片背景 */
+  display: inline-block; /* 保持图片布局 */
+}
+
+/* 懒加载图片的占位符样式 */
+.lazy-image {
+  background-color: #f8f9fa; /* 占位符背景色 */
+  min-height: 50px; /* 最小高度 */
+}
+
+/* Loading 旋转动画 */
+.image-loading-container::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  margin-top: -15px; /* 居中 */
+  margin-left: -15px;
+  border: 3px solid #e0e0e0; /* 浅灰色圆环 */
+  border-top: 3px solid #666; /* 深色旋转部分 */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  z-index: 1;
+  display: none; /* 默认不显示，只有在 loading 状态下显示 */
+}
+
+.image-loading-container.loading::before {
+  display: block;
+}
+
+/* 图片在加载时透明 */
+.image-loading-container.loading img {
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+}
+
+.image-loading-container img {
+  opacity: 1;
+  transition: opacity 0.3s ease-in;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+

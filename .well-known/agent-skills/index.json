@@ -1,0 +1,12 @@
+{
+  "$schema": "https://agentskills.io/schemas/discovery/v0.2.0",
+  "skills": [
+    {
+      "name": "ongoingblog-content",
+      "type": "documentation",
+      "description": "ONGOING 技术博客：Java、Spring、数据库、工具链等中文文章",
+      "url": "https://ongoingblog.org/llms.txt",
+      "sha256": "381a246f4db72708885f2f3eaa030732e9c959578855d35e342eb58d12898ed0"
+    }
+  ]
+}
